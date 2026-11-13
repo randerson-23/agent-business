@@ -457,6 +457,12 @@
     "time": "20:30",
     "title": "BOURBON 'N BRASS: LIVE JAZZ WITH THE BOURBON 'N BRASS BRIAN PATTI PROHIBITION DANCE BAND - 20s & 30s DANCE HITS",
     "venue": "Des Plaines Theatre"
+   },
+   {
+    "date": "2026-12-13",
+    "time": "15:00",
+    "title": "TOP OF THE WORLD…A CARPENTERS TRIBUTE - HOLIDAY SHOW",
+    "venue": "Des Plaines Theatre"
    }
   ],
   "name": "Des Plaines Theatre",
@@ -493,6 +499,26 @@
    {
     "date": "2026-11-24",
     "title": "The Christmas Schooner",
+    "venue": "Metropolis Performing Arts Centre"
+   },
+   {
+    "date": "2026-12-03",
+    "title": "A Christmas Carol",
+    "venue": "Metropolis Performing Arts Centre"
+   },
+   {
+    "date": "2026-12-06",
+    "title": "Holiday Cabaret: A Joyful Twist",
+    "venue": "Metropolis Performing Arts Centre"
+   },
+   {
+    "date": "2026-12-07",
+    "title": "THE 12 DAMES OF CHRISTMAS WITH ANGELA INGERSOLL",
+    "venue": "Metropolis Performing Arts Centre"
+   },
+   {
+    "date": "2026-12-13",
+    "title": "A Christmas Carol - Main Stage",
     "venue": "Metropolis Performing Arts Centre"
    }
   ],

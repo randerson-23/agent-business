@@ -2,362 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-11-12T22:10:33+00:00",
-  "numberOfItems": 87,
+  "dateModified": "2026-11-13T06:07:59+00:00",
+  "numberOfItems": 76,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Reading/Literacy Class",
-        "startDate": "2026-11-12T09:15:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-reading-literacy-class-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15801731",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "ESL (English as a Second Language) Class - Oakton College",
-        "startDate": "2026-11-12T09:15:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-esl-english-as-a-second-language-class-oakton-college-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15803242",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-11-12T10:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17001902",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 10:00am - 10:30am \n Ages 18-36 months. Drop-in at the Poet Tree Corner! Enjoy stories, songs, rhymes, movement, and more at Toddler…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Sewcial Club - Learning Embroidery",
-        "startDate": "2026-11-12T16:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-sewcial-club-learning-embroidery-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17306841",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 4:00pm - 5:00pm \n Join us in The Commons to learn basic embroidery stitches!\nFor Teens 7th-12th grade."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-11-12T17:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16339450",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Des Plaines Lions Club Meeting",
-        "startDate": "2026-11-12T18:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-lions-club-meeting-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17218379",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 6:00pm - 7:45pm \n The Des Plaines Lions Club meets monthly on the 2nd Thursday of the month from 6:00pm to 7:45pm.\nEmail:…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Event",
-        "name": "Google: Gmail Principiantes (Spanish)",
-        "startDate": "2026-11-12T18:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-google-gmail-principiantes-spanish-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17605868",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 6:30pm - 7:30pm \n Crear una cuenta de Gmail, aprenderás como usar y navegar Gmail. Buscar y organizar tu bandeja de entrada, crear…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "item": {
-        "@type": "Event",
-        "name": "Words, Power, and Community: Dr. Eve L. Ewing",
-        "startDate": "2026-11-12T19:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-words-power-and-community-dr-eve-l-ewing-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17541715",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 7:00pm - 8:00pm \n Engage in a thoughtful conversation with Dr. Eve L. Ewing, author, educator, poet, and cultural organizer whose…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "item": {
-        "@type": "Event",
-        "name": "Railroad Ties",
-        "startDate": "2026-11-12T19:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-railroad-ties-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17492009",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Thursday, November 12 2026 7:00pm - 8:30pm \n Learn how the railroad and access to it shaped the development of Arlington Heights, Des Plaines, and Mount…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "item": {
-        "@type": "Event",
-        "name": "JASON BONHAM'S LED ZEPPELIN EVENING",
-        "startDate": "2026-11-12T19:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-jason-bonham-s-led-zeppelin-evening-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1476 Miner Street"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/jason-bonhams-led-zeppelin-evening-2/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Theatre",
-          "url": "https://desplainestheatre.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Jason Bonham always finds himself at home behind the drumkit. From this spot, he has anchored the tempo for a myriad of the most legendary artists of…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "item": {
-        "@type": "Event",
-        "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES SHOW WITH SEAN McKEE BLUES BAND",
-        "startDate": "2026-11-12T19:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-blues-show-with-sean-mckee-bl-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1476 Miner Street"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-show-with-sean-mckee-blues-band-12/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Theatre",
-          "url": "https://desplainestheatre.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Sean McKee Band! Food…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -389,7 +39,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Ain't Wii Got Fun!",
@@ -421,7 +71,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Fall for Fabric",
@@ -453,7 +103,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Cookbook & Recipe Swap",
@@ -485,7 +135,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "GCS featuring ERIC GALES, DENNIS CHAMBERS and BILLY SHEEHAN with special guest SEAN McKEE BAND",
@@ -516,7 +166,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE JAZZ WITH THE BOURBON 'N BRASS BRIAN PATTI PROHIBITION DANCE BAND",
@@ -547,7 +197,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Service Hour Drop In",
@@ -579,7 +229,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Sewing Machine Basics- Learn to Sew Lanyards!",
@@ -611,7 +261,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Sound Bath Meditation",
@@ -643,7 +293,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "FILM SCREENING: \"BOB DOLE - A WALK THROUGH HISTORY\"",
@@ -674,7 +324,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "JOHN WAITE with SPECIAL GUEST JOHN CAFFERTY & THE BEAVER BROWN BAND",
@@ -705,7 +355,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with SONICSOUL BAND",
@@ -736,7 +386,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Seguridad de Internet 101 (Spanish)",
@@ -768,7 +418,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -800,7 +450,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -832,7 +482,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "I-Cash -Do You Have Unclaimed Property?",
@@ -864,7 +514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -896,7 +546,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Adult Board Game Night",
@@ -928,7 +578,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Toastmasters",
@@ -960,7 +610,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "LEGO League",
@@ -992,7 +642,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1024,7 +674,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1056,7 +706,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -1088,7 +738,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -1120,7 +770,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1152,7 +802,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -1184,7 +834,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "River Pointe Condo Assoc.",
@@ -1216,7 +866,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Internet Security 101",
@@ -1248,7 +898,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: At Eternity's Gate (2018)",
@@ -1280,7 +930,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1312,7 +962,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Prevention and Long-Term Success with Diabetes",
@@ -1344,7 +994,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "The Legacy of Marshall Fields",
@@ -1376,7 +1026,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -1409,7 +1059,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Teen Crafternoons",
@@ -1441,7 +1091,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: In-Person",
@@ -1473,7 +1123,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -1506,7 +1156,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "20s & 30s Book Club: Invisible Life of Addie Larue",
@@ -1538,7 +1188,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night Kits",
@@ -1570,7 +1220,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1602,7 +1252,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1634,7 +1284,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -1666,7 +1316,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Oakton College Information Table",
@@ -1698,7 +1348,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Liberation Bookmarks",
@@ -1730,7 +1380,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1762,7 +1412,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Linocut Block Printing Workshop",
@@ -1794,7 +1444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -1826,7 +1476,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "River's Edge Condo Assoc.",
@@ -1858,7 +1508,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "ART GARFUNKEL - WHAT A WONDERFUL WORLD CONCERT",
@@ -1889,7 +1539,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
@@ -1920,7 +1570,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion: Five Decembers",
@@ -1952,7 +1602,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1984,7 +1634,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Q & A One on One Appointment",
@@ -2016,7 +1666,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "THE PHIL COLLINS EXPERIENCE with SPECIAL GUEST THE SATURDAY JUNE BAND",
@@ -2047,7 +1697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
@@ -2078,7 +1728,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "DIY with DPPL",
@@ -2110,7 +1760,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Play Packs",
@@ -2142,7 +1792,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Cafecito Y Libritos",
@@ -2174,7 +1824,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Cat Toy Workshop",
@@ -2206,7 +1856,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "SNAP SHOT CLASSIC ROCK EXPERIENCE with SPECIAL GUEST CLASS OF 68",
@@ -2237,7 +1887,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with the DOWNTOWN CHARLIE BROWN BAND",
@@ -2268,7 +1918,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "POOH: 60th ANNIVERSARY TOUR - FINALE",
@@ -2299,7 +1949,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -2331,7 +1981,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -2363,7 +2013,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -2395,7 +2045,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "Happy Spinsters",
@@ -2427,7 +2077,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "$10 SILENT FILM SERIES - \"The Passion of Joan of Arc\" (1928), Presented by The Silent Film Society of Chicago",
@@ -2458,7 +2108,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -2490,7 +2140,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -2522,7 +2172,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "School's Out Drop-in Craft",
@@ -2554,7 +2204,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Design a Stanley in the Canvas",
@@ -2586,7 +2236,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -2618,7 +2268,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -2650,7 +2300,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -2682,7 +2332,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Bridges of Meaning",
@@ -2714,7 +2364,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 86,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "HAIRBANGERS BALL with SPECIAL GUEST MIKE & JOE - The Midwest's Most Renowed Cover Band",
@@ -2745,7 +2395,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 87,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: BLUES NIGHT EXTRAVAGANZA featuring DOWNTOWN CHARLIE BROWN, SEAN McKEE, MILES MINOR, JEFF BRINKMAN and JOE VALENTINO - THANKSGIVING EVE!",

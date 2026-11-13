@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-12T22:10:33+00:00",
+ "fetched_at": "2026-11-13T06:07:59+00:00",
  "items": [
   {
    "date": null,
@@ -12,6 +12,12 @@
    "detail": "",
    "title": "3D Printing: TinkerCAD Name Keychains",
    "url": "https://www.palatinelibrary.org/event/3d-printing-tinkercad-name-keychains-234940"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Pop Art Pet Prints",
+   "url": "https://www.palatinelibrary.org/event/3-color-pet-prints-workshop-title-tbd-227496"
   },
   {
    "date": null,
@@ -65,31 +71,7 @@
    "date": null,
    "detail": "",
    "title": "Toddler Storytime",
-   "url": "https://www.palatinelibrary.org/event/toddler-storytime-231947"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "Baby Storytime",
-   "url": "https://www.palatinelibrary.org/event/baby-storytime-227061"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "North Hoffman Book Discussion",
-   "url": "https://www.palatinelibrary.org/event/north-hoffman-book-discussion-234978"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "Citizenship Class",
-   "url": "https://www.palatinelibrary.org/event/citizenship-class-225565"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "Pop Art Pet Prints",
-   "url": "https://www.palatinelibrary.org/event/3-color-pet-prints-workshop-title-tbd-227496"
+   "url": "https://www.palatinelibrary.org/event/toddler-storytime-231948"
   },
   {
    "date": null,
@@ -168,6 +150,12 @@
    "detail": "",
    "title": "Toddler Storytime",
    "url": "https://www.palatinelibrary.org/event/toddler-storytime-241015"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Preschool Storytime",
+   "url": "https://www.palatinelibrary.org/event/preschool-storytime-240994"
   }
  ],
  "source": "Palatine Public Library District — Events"

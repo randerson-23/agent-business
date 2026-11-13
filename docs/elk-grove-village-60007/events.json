@@ -2,222 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Elk Grove Village — Within Ten",
-  "dateModified": "2026-11-12T22:10:33+00:00",
-  "numberOfItems": 88,
+  "dateModified": "2026-11-13T06:07:59+00:00",
+  "numberOfItems": 82,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "The Arlington Camera Club",
-        "startDate": "2026-11-12",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/16362680",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Thursday, November 12 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Picture Book Month Challenge",
-        "startDate": "2026-11-12",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17074012",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Thursday, November 12 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Word of the Week",
-        "startDate": "2026-11-12",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17354424",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Thursday, November 12 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Polish Storytime",
-        "startDate": "2026-11-12T10:00:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-polish-storytime-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/16995067",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Thursday, November 12 2026 10:00am - 10:30am \n Join us for a Polish-English story time that includes stories and rhymes. Recommended for ages 0 - 5."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Moments to Remember",
-        "startDate": "2026-11-12T11:30:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-moments-to-remember-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/16898029",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Thursday, November 12 2026 11:30am - 1:00pm \n Social gathering for women 55 years & older.\nLimited to 30"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "CSI Session 3",
-        "startDate": "2026-11-12T16:15:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17207958",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Thursday, November 12 2026 4:15pm - 4:45pm \n SESSION 3: Gravity, Force and Motion - Let's investigate with STEM! This class combines a little bit of Science,…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Event",
-        "name": "Japanese Storytime",
-        "startDate": "2026-11-12T18:30:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-japanese-storytime-2026-11-12",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17086198",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Thursday, November 12 2026 6:30pm - 7:00pm \n Drop-in for this bilingual storytime that will include songs, games, and crafts."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -247,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -277,7 +67,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -307,7 +97,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Advanced Players)",
@@ -337,7 +127,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Beginning Players)",
@@ -367,7 +157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -397,7 +187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -427,7 +217,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -457,7 +247,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -487,7 +277,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Spanish Storytime - Tiempo De Cuento",
@@ -517,7 +307,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "D&D: Open Play",
@@ -547,7 +337,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -577,7 +367,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -607,7 +397,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -637,7 +427,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Box Car Drive-In",
@@ -667,7 +457,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -697,7 +487,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -727,7 +517,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Baby Tales",
@@ -757,7 +547,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Makerspace Teen Takeover!",
@@ -787,7 +577,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Canvas Kids: Golden Gratitude",
@@ -817,7 +607,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Winter Holiday Craft",
@@ -847,7 +637,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -877,7 +667,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -907,7 +697,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -937,7 +727,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Mini Mad Science Storytime",
@@ -967,7 +757,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Supported Chair Yoga",
@@ -997,7 +787,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Tuesday Tech Help",
@@ -1027,7 +817,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Pop in and Create",
@@ -1057,7 +847,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "CSI Session 3",
@@ -1087,7 +877,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Gaming Group",
@@ -1117,7 +907,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Dealing with Grief and Other Emotional Challenges",
@@ -1147,7 +937,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Evening Book Discussion",
@@ -1177,7 +967,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1207,7 +997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -1237,7 +1027,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1267,7 +1057,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Alphabet Soup",
@@ -1297,7 +1087,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Make and Take Craft: Maple Leaf Door Hanger",
@@ -1327,7 +1117,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Book Bites",
@@ -1357,7 +1147,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Workshop Wednesdays",
@@ -1387,7 +1177,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Art Class: Floral Arranging with Garvin Gardens",
@@ -1417,7 +1207,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Giggle and Gobble",
@@ -1447,7 +1237,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1477,7 +1267,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -1507,7 +1297,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1537,7 +1327,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Bus Trip - SOLD OUT!",
@@ -1567,7 +1357,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Polish Storytime",
@@ -1597,7 +1387,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Get Started with Cloud Storage",
@@ -1627,7 +1417,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "CSI Session 3",
@@ -1657,7 +1447,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night: Read to the Dog",
@@ -1687,7 +1477,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Gorgeous Georgia",
@@ -1717,7 +1507,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1747,7 +1537,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -1777,7 +1567,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1807,7 +1597,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Youth Services Registration for December Programs",
@@ -1837,7 +1627,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Messy Play",
@@ -1867,7 +1657,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Advanced Players)",
@@ -1897,7 +1687,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Chess Club (Beginning Players)",
@@ -1927,7 +1717,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1957,7 +1747,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -1987,7 +1777,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -2017,7 +1807,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -2047,7 +1837,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "Animal Zines",
@@ -2077,7 +1867,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -2107,7 +1897,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Picture Book Month Challenge",
@@ -2137,7 +1927,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -2167,7 +1957,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "Crochet Corner",
@@ -2197,7 +1987,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -2227,7 +2017,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -2257,7 +2047,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Miss Jamie's Fall Sing-along",
@@ -2287,7 +2077,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Monday Matinee Movie",
@@ -2317,7 +2107,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "Fall Craft",
@@ -2347,7 +2137,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -2377,7 +2167,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -2407,7 +2197,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Coffee, Cake & Coloring",
@@ -2437,7 +2227,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "Tuesday Tech Help",
@@ -2467,7 +2257,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Mark Hayward Yo-yo and Comedy Show",
@@ -2497,7 +2287,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 77,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -2527,7 +2317,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 78,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -2557,7 +2347,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 86,
+      "position": 79,
       "item": {
         "@type": "Event",
         "name": "Incredible Indy Racers",
@@ -2587,7 +2377,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 87,
+      "position": 80,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -2617,7 +2407,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 88,
+      "position": 81,
       "item": {
         "@type": "Event",
         "name": "Sphero Strike Zone",
@@ -2643,6 +2433,36 @@
         },
         "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
         "description": "Wednesday, November 25 2026 2:00pm - 2:45pm \n Roll into robotic fun! Program a Sphero bot to weave through tricky obstacles then, line up the perfect shot,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 82,
+      "item": {
+        "@type": "Event",
+        "name": "The Arlington Camera Club",
+        "startDate": "2026-11-26",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-26",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/16362694",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Thursday, November 26 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
       }
     }
   ]

@@ -277,6 +277,18 @@
     "Library Events": 176,
     "Park District Events": 5
    }
+  },
+  {
+   "attendable": 24,
+   "date": "2026-11-13",
+   "dated": 24,
+   "distinct": 24,
+   "family": 6,
+   "source_items": {
+    "City Calendar": 1,
+    "Library Events": 262,
+    "Park District Events": 5
+   }
   }
  ]
 }
