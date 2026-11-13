@@ -21135,7 +21135,7 @@ is missing, and looks at the one price that changes on Sunday.
 
 #### P3 (new)
 
-500. **Sold-out events last on `/santa/`, and visibly so.** Build loop.
+500. (✅ DONE 2026-11-13: sold-out rows sort last within their day, are muted with a "Sold out" chip and have no Google Calendar link; `is_pick_worthy` refuses any sold-out event. Found while checking: axe flags colour contrast on /santa/'s town-coloured names (light: one town; dark: most) and its on-sale/note links in dark mode. These are older than this change and /santa/ isn't in lighthouserc.json; worth a follow-up item) 500. **Sold-out events last on `/santa/`, and visibly so.** Build loop.
      Events whose source says *sold out* (the *"Source says: sold out"*
      flag already shown on Arlington Heights' *Holly Jolly Trolly*) sort
      to the **end of their day**. Their card is muted with a ***"Sold

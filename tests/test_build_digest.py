@@ -6508,7 +6508,7 @@ def test_santa_page_window_keywords_badges_and_empty_state():
     page = build_digest.render_santa_page(entries, datetime(2026, 10, 25, 12, tzinfo=timezone.utc), None, _NL)
     assert "<title>Breakfast with Santa &amp; Santa Visits 2026: Palatine and Wheeling | Within Ten</title>" in page
     assert page.index("Sat, Nov 14") < page.index("Sat, Dec 5") and "Sign-up opens Tue, Nov 10" in page
-    assert page.count("Source says: sold out") == 1  # only where the source's own text says so
+    assert page.count('class="chip-sold-out">Sold out<') == 1  # only where the source's own text says so
     assert "remind:santa-2026" in page  # not yet in season: reminder signup
     empty = build_digest.render_santa_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": []}], datetime(2026, 10, 25, 12, tzinfo=timezone.utc), None, _NL)
     assert "Park districts usually post Santa events in early November" in empty
@@ -7682,3 +7682,16 @@ def test_holiday_listing_stays_20_through_dec_15_under_100_readers():
     assert build_digest.build_holiday_listing_offer(nov20, "h@x.com", launch=False)["price"] == "$50"
     high = build_digest.render_sponsor_page([], nov20, launch_rate=launch, list_size=150)
     assert "$20 until Nov 15, then $50" in high
+
+
+def test_sold_out_santa_events_sort_last_in_their_day_with_a_chip_and_no_calendar():
+    # ROADMAP.md item 500.
+    def ev(title, iso, detail="Photos with Santa."):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "detail": detail, "anchor_id": "a",
+                "google_calendar_url": "https://calendar.google.com/" + title.replace(" ", "")}
+    entries = [{"region_name": "Arlington Heights", "region_url": "https://x/ah/", "events": [
+        ev("Holly Jolly Trolly", "2026-12-05T09:00:00", "Ride with Santa. SOLD OUT"), ev("Breakfast with Santa", "2026-12-05T10:00:00")]}]
+    html = build_digest.render_santa_page(entries, datetime(2026, 11, 20, tzinfo=timezone.utc))
+    assert html.index("Breakfast with Santa") < html.index("Holly Jolly Trolly")
+    assert 'class="chip-sold-out">Sold out<' in html and "HollyJollyTrolly" not in html
+    assert not build_digest.is_pick_worthy({"title": "Holly Jolly Trolly", "detail": "Sold out", "tags": ["kid_friendly", "free"]})

@@ -2835,11 +2835,12 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
             rows.append({
                 "title": display_title(ev["title"]), "town": entry["region_name"], "color": color, "date_iso": ev["date_iso"],
                 "time_label": event_time_label(ev["date_iso"]), "page_url": page_url, "reg_badge": ev.get("reg_badge"),
-                "sold_out": bool(_SOLD_OUT.search(f"{ev['title']} {ev.get('detail') or ''}")),
-                "google_calendar_url": ev.get("google_calendar_url"),  # item 462
+                "sold_out": (sold := bool(_SOLD_OUT.search(f"{ev['title']} {ev.get('detail') or ''}"))),
+                # Item 500: nothing to attend, so no calendar link for a sold-out event.
+                "google_calendar_url": None if sold else ev.get("google_calendar_url"),  # item 462
                 "santa_reason": ev.get("santa_reason"),  # item 472
             })
-    rows.sort(key=lambda r: r["date_iso"])
+    rows.sort(key=lambda r: (r["date_iso"][:10], r["sold_out"], r["date_iso"]))  # item 500: sold out goes last in its day
     days = []
     for r in rows:
         label = event_date_label(r["date_iso"])
@@ -6848,6 +6849,8 @@ def is_pick_worthy(event: dict) -> bool:
     """ROADMAP.md item 380: only an event that reaches the minimum family
     score and is not a class, service or pick-up kit may be a "pick". Weak
     events stay on every list; they just never lead one."""
+    if _SOLD_OUT.search(f"{event.get('title') or ''} {event.get('detail') or ''}"):  # item 500
+        return False
     cfg = load_relevance_config()
     pattern = cfg.get("not_a_pick_pattern")
     if pattern is not None and pattern.search(event.get("title") or ""):
