@@ -110,7 +110,18 @@ TAG_DISPLAY: dict[str, dict[str, str]] = {
     "toddler": {"label": "Toddler", "emoji": "👶", "hue": "lime"},
     "elementary": {"label": "Elementary age", "emoji": "🎒", "hue": "cyan"},
     "teen": {"label": "Teen", "emoji": "🧑", "hue": "indigo"},
+    "sensory_friendly": {"label": "Sensory-friendly", "emoji": "🌿", "hue": "teal"},
 }
+
+# ROADMAP.md item 502: sessions the organiser describes as sensory-friendly.
+# Bare "sensory" is not enough (a toddler "sensory play" class is the opposite),
+# and "calm" counts only alongside "sensory".
+SENSORY_FRIENDLY = _re.compile(
+    r"sensory[- ]friendly|sensory[- ]inclusive|sensory storytime|sensory story time|quiet hours?|low[- ]sensory|"
+    r"autism[- ]friendly|neurodivergent|neurodiverse|gentle (?:greeting with )?santa|gentle santa",
+    _re.IGNORECASE,
+)
+_CALM_SENSORY = _re.compile(r"\bcalm\b.*\bsensory\b|\bsensory\b.*\bcalm\b", _re.IGNORECASE | _re.DOTALL)
 
 
 _NOT_A_KIDS_CRAFT = _re.compile(r"hand-?craft(?:ed)?|craft (?:beer|cocktail|brew|spirit|distill)\w*")
@@ -144,6 +155,8 @@ def infer_tags(*text_parts: str, section: str = "") -> list[str]:
         hay = kid_haystack if tag == "kid_friendly" else text if tag == "outdoor" else haystack
         if any(keyword in hay for keyword in keywords) or (tag == "outdoor" and _OUTDOOR_PARK.search(text)):
             matched.add(tag)
+    if SENSORY_FRIENDLY.search(text) or _CALM_SENSORY.search(text):  # item 502
+        matched.add("sensory_friendly")
     # An adult signal only ever removes the kid-friendly tag.
     if "kid_friendly" in matched and any(signal in haystack for signal in ADULT_SIGNALS):
         matched.discard("kid_friendly")

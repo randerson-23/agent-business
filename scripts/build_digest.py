@@ -39,7 +39,7 @@ from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0, str(Path(__file__).parent))
 from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, safe_http_url, submit_bing_urls, submit_indexnow  # noqa: E402
 import warm_prospects  # noqa: E402
-from tagging import infer_tags, is_informational, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
+from tagging import SENSORY_FRIENDLY, infer_tags, is_informational, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("build_digest")
@@ -2796,6 +2796,56 @@ def select_nye_events(blocks: list[dict], today: date) -> list[dict]:
     return picked
 
 
+SENSORY_WINDOW_DAYS = 30
+
+
+def select_sensory_events(blocks: list[dict], today: date) -> list[dict]:
+    """ROADMAP.md item 502: a town's events tagged sensory_friendly in the next
+    SENSORY_WINDOW_DAYS days, soonest first, one row per title and start."""
+    end = today + timedelta(days=SENSORY_WINDOW_DAYS)
+    picked, seen = [], set()
+    for block in blocks:
+        for event in block.get("events", []):
+            if "sensory_friendly" not in (event.get("tags") or []) or not (event.get("title") and event.get("url") and event.get("date_iso")) or event.get("attendable") is False:
+                continue
+            try:
+                day = datetime.fromisoformat(event["date_iso"]).date()
+            except ValueError:
+                continue
+            key = (event["title"].strip().lower(), event["date_iso"])
+            if today <= day <= end and key not in seen:
+                seen.add(key)
+                picked.append(dict(event))
+    picked.sort(key=lambda e: e["date_iso"])
+    return picked
+
+
+def render_sensory_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None) -> str:
+    """The /sensory-friendly/ page (item 502). `entries` is [{region_name, region_url, events}]."""
+    town_names = _join_names([e["region_name"] for e in entries])
+    rows = []
+    for i, entry in enumerate(entries):
+        color = EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]
+        for ev in entry.get("events") or []:
+            rows.append({
+                "title": display_title(ev["title"]), "town": entry["region_name"], "color": color, "date_iso": ev["date_iso"],
+                "date_label": event_date_label(ev["date_iso"]), "time_label": event_time_label(ev["date_iso"]),
+                "page_url": f"{entry['region_url']}#{ev.get('anchor_id') or event_anchor_id(ev)}", "google_calendar_url": ev.get("google_calendar_url"),
+            })
+    rows.sort(key=lambda r: r["date_iso"])
+    return get_template_env().get_template("sensory_friendly.html.j2").render(
+        page_title="Sensory-Friendly Events for Kids in the Northwest Suburbs | Within Ten",
+        og_title="Sensory-friendly events for kids",
+        description=f"Sensory-friendly storytimes, quiet hours and gentle Santa visits in {town_names}, for the next 30 days, each linked to the organiser's own listing.",
+        heading="Sensory-friendly events for kids",
+        subheading="Quieter, gentler sessions from the libraries, park districts and local businesses.",
+        rows=rows, year=now.year, in_season=True,
+        newsletter=newsletter or {"configured": False},
+        hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "sensory-friendly/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/default.png",
+    )
+
+
 def render_nye_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None) -> str:
     """The /new-years-eve/ page (item 446). `entries` is [{region_name, region_url, events}]."""
     today = now.astimezone(LOCAL_TZ).date()
@@ -2853,6 +2903,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
                 # Item 500: nothing to attend, so no calendar link for a sold-out event.
                 "google_calendar_url": None if sold else ev.get("google_calendar_url"),  # item 462
                 "santa_reason": ev.get("santa_reason"),  # item 472
+                "sensory": "sensory_friendly" in (ev.get("tags") or []) or bool(SENSORY_FRIENDLY.search(f"{ev['title']} {ev.get('detail_long') or ev.get('detail') or ''}")),  # item 502
             })
     rows.sort(key=lambda r: (r["date_iso"][:10], r["sold_out"], r["date_iso"]))  # item 500: sold out goes last in its day
     days = []
@@ -5655,6 +5706,7 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
         urls.append(SITE_BASE_URL + "give/")
     if nye_in_season_flag:
         urls.append(SITE_BASE_URL + "new-years-eve/")
+    urls.append(SITE_BASE_URL + "sensory-friendly/")  # item 502
     for r in region_summaries:
         base = SITE_BASE_URL + r["path"]
         urls += [
@@ -8386,6 +8438,7 @@ def main() -> None:
     holidays_entries = []
     santa_entries: list[dict] = []
     nye_entries: list[dict] = []  # item 446
+    sensory_entries: list[dict] = []  # item 502
     leaf_entries: list[dict] = []
     give_entries: list[dict] = []
     give_cfg = load_give_config()
@@ -8848,6 +8901,7 @@ def main() -> None:
         give_entries.append({"name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "links": santa_look_links(region_cfg), "drives": prepare_give_drives(region_id, give_cfg, local_today), "events": give_events, "volunteer": give_volunteer})
         warm_found += warm_prospects.collect_hosts([e for b in blocks for e in b.get("events", [])], region["name"])
         nye_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": select_nye_events(blocks, local_today)})
+        sensory_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": select_sensory_events(blocks, local_today)})
         santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "tree": tree_lighting, "links": santa_look_links(region_cfg), "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today, (region_cfg.get("tree_lighting") or {}).get("match") or ())]})
         # ROADMAP.md item 258: the town's holiday page - free events from its
         # own feeds plus any paid, labelled listings.
@@ -9220,6 +9274,9 @@ def main() -> None:
     nye_dir = OUTPUT_DIR / "new-years-eve"  # item 446
     nye_dir.mkdir(parents=True, exist_ok=True)
     (nye_dir / "index.html").write_text(render_nye_page(nye_entries, now, analytics, newsletter), encoding="utf-8")
+    sensory_dir = OUTPUT_DIR / "sensory-friendly"  # item 502
+    sensory_dir.mkdir(parents=True, exist_ok=True)
+    (sensory_dir / "index.html").write_text(render_sensory_page(sensory_entries, now, analytics, newsletter), encoding="utf-8")
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
     (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries, contact_email=contact_email), encoding="utf-8")
