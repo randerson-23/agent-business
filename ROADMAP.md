@@ -21172,7 +21172,7 @@ and at a group of parents the site doesn't serve at all.
 
 #### P1 (new)
 
-501. **Santa at local businesses: a free way in, and last year's hosts as
+501. (✅ DONE 2026-11-13: a "Hosting Santa at your shop or restaurant? Listing it is free" mailto box (subject "Santa event listing", fields business, date, time, address, cost, registration, link) on /santa/ and /holidays/. The 2025 hosts went into a new hand-kept config/past_hosts.yaml rather than data/warm_hosts.json, which CI writes and which keeps only 60 days; OUTREACH_PROSPECTS.md's Warm section lists them under "Hosted Santa in 2025". Berry Yo and Golden Brunch (Arlington Heights) from Patch's 2025 article; the toy shop's Gentle Greeting listing is on dscc.uic.edu, unreachable from this sandbox, so it isn't named) **Santa at local businesses: a free way in, and last year's hosts as
      warm leads.** Build loop:
 
      - On `/santa/` and `/holidays/`, add a box: ***"Hosting Santa at
@@ -21214,7 +21214,7 @@ and at a group of parents the site doesn't serve at all.
 
 #### P3 (new)
 
-503. **"Registration required, often sells out" on ticketed Santa events.**
+503. (✅ DONE 2026-11-13 on /santa/: "🎟 Registration required, often sells out" chip, with item 327's sign-up date when known, for a non-sold-out Santa event in the next 30 days whose text says registration required, tickets, space is limited or reservations required. The email has no Santa lines yet) **"Registration required, often sells out" on ticketed Santa events.**
      Build loop. On `/santa/` and in the email's Santa lines, a Santa
      event in the next 30 days whose source says *registration
      required*, *tickets*, *limited* or *space is limited*, and isn't

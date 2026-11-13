@@ -7695,3 +7695,34 @@ def test_sold_out_santa_events_sort_last_in_their_day_with_a_chip_and_no_calenda
     assert html.index("Breakfast with Santa") < html.index("Holly Jolly Trolly")
     assert 'class="chip-sold-out">Sold out<' in html and "HollyJollyTrolly" not in html
     assert not build_digest.is_pick_worthy({"title": "Holly Jolly Trolly", "detail": "Sold out", "tags": ["kid_friendly", "free"]})
+
+
+def test_santa_listing_box_and_ticketed_chip():
+    # ROADMAP.md items 501 and 503.
+    offer = build_digest.santa_listing_offer("h@x.com")
+    assert "subject=Santa%20event%20listing" in offer["url"]
+    for field in ("Business%20name", "Date", "Time", "Street%20address", "Cost", "Registration%20needed", "Link"):
+        assert field in offer["url"]
+    def ev(title, iso, detail):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "detail": detail, "anchor_id": "a"}
+    entries = [{"region_name": "Palatine", "region_url": "https://x/p/", "events": [
+        ev("Breakfast with Santa", "2026-11-28T09:00:00", "Registration required. Photos with Santa."),
+        ev("Santa Drop-In", "2026-11-28T13:00:00", "Free, no registration."),
+        ev("Santa Trolley", "2026-11-29T10:00:00", "Tickets required. SOLD OUT"),
+        ev("Late Santa Breakfast", "2026-12-24T09:00:00", "Registration required.")]}]
+    html = build_digest.render_santa_page(entries, datetime(2026, 11, 20, tzinfo=timezone.utc), contact_email="h@x.com")
+    assert html.count('class="chip-ticketed"') == 1  # the drop-in, the sold-out one and the one past 30 days get none
+    assert 'id="santa-listing"' in html
+
+
+def test_past_hosts_are_warm_leads_with_their_reason_and_no_contacts(tmp_path):
+    # ROADMAP.md item 501.
+    import warm_prospects as wp
+    hosts = wp.load_past_hosts()
+    assert {h["name"] for h in hosts} >= {"Berry Yo", "Golden Brunch"}
+    assert all(h["reason"] == "santa_host_2025" and "@" not in str(h) for h in hosts)
+    bad = tmp_path / "p.yaml"
+    bad.write_text('hosts:\n  - name: "Shop"\n    town: "x"\n    reason: r\n    event: "call 847-555-1234"\n', encoding="utf-8")
+    assert wp.load_past_hosts(bad) == []
+    text = "\n".join(wp.render_section({}, set(), hosts))
+    assert "### Hosted Santa in 2025" in text and "offer the free founding Event Promo for 2026" in text and "Berry Yo" in text

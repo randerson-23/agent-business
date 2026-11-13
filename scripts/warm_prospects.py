@@ -227,7 +227,47 @@ def _is_fair_organiser(host: dict) -> bool:
     return any(FAIR_TITLE.search(e["title"]) for e in host["events"])
 
 
-def render_section(registry: dict, venue_keys: set[str] | None = None) -> list[str]:
+PAST_HOSTS_PATH = ROOT / "config" / "past_hosts.yaml"
+_CONTACT_LIKE = re.compile(r"@|\+?\d[\d ().-]{6,}\d")
+
+
+def load_past_hosts(path: Path = PAST_HOSTS_PATH) -> list[dict]:
+    """ROADMAP.md item 501: last season's business hosts from config/past_hosts.yaml,
+    each with its reason's note. An entry carrying anything that looks like an
+    email address or phone number is refused (this repository is public)."""
+    import yaml
+
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return []
+    notes = data.get("notes") or {}
+    out = []
+    for h in data.get("hosts") or []:
+        if not isinstance(h, dict) or not h.get("name") or not h.get("reason"):
+            continue
+        fields = {k: str(h.get(k) or "") for k in ("name", "town", "reason", "event")}
+        if any(_CONTACT_LIKE.search(v) for v in fields.values()):
+            continue
+        out.append(dict(fields, note=str(notes.get(fields["reason"]) or "")))
+    return out
+
+
+def render_past_hosts(hosts: list[dict]) -> list[str]:
+    if not hosts:
+        return []
+    lines = []
+    for reason in dict.fromkeys(h["reason"] for h in hosts):
+        group = [h for h in hosts if h["reason"] == reason]
+        note = group[0]["note"]
+        lines += [f"### {note.split(':')[0] if note else reason}", ""] + ([note, ""] if note else [])
+        lines += ["| Host | Town | Last season |", "|---|---|---|"]
+        lines += [f"| {h['name'].replace('|', '/')} | {h['town']} | {h['event'].replace('|', '/')} |" for h in sorted(group, key=lambda h: (h["town"], h["name"].lower()))]
+        lines.append("")
+    return lines
+
+
+def render_section(registry: dict, venue_keys: set[str] | None = None, past_hosts: list[dict] | None = None) -> list[str]:
     """Markdown lines for the "Warm" section (item 387), with hosts that are
     configured calendar sources in a separate short list (item 391)."""
     venue_keys = venue_keys or set()
@@ -244,6 +284,7 @@ def render_section(registry: dict, venue_keys: set[str] | None = None) -> list[s
             "Names, events and dates only. Start here: they already hold public events.",
             "",
         ] + _table(warm)
+    lines += render_past_hosts(load_past_hosts() if past_hosts is None else past_hosts)  # item 501
     if organisers:
         lines += ["### Fair organisers", "", "Booster clubs, PTOs and programmes running a craft fair or holiday market. Send OUTREACH_TEMPLATES.md section 14b two weeks before the fair.", ""] + _table(organisers)
     if venues:

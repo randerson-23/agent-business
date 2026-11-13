@@ -2500,6 +2500,7 @@ def render_holidays_page(
         outside=outside or [],  # item 475
         year=now.year,
         listing_offer=build_holiday_listing_offer(now, contact_email, launch),
+        santa_listing=santa_listing_offer(contact_email),  # item 501
         town_names=_join_names([e["region_name"] for e in entries]),
         any_events=any(e.get("events") for e in entries),
         newsletter=newsletter or {"configured": False},
@@ -2620,6 +2621,9 @@ def santa_reason(event: dict, tree_names: list[str] | tuple = ()) -> str | None:
         return "Santa visits"
     return None
 _SOLD_OUT = re.compile(r"\bsold[- ]out\b", re.IGNORECASE)
+# ROADMAP.md item 503: a ticketed Santa event, worth acting on before it sells out.
+_TICKETED = re.compile(r"\bregistration (?:is )?required\b|\bregister (?:in advance|online|now)\b|\btickets?\b|\bspace is limited\b|\blimited (?:space|spots|seating|capacity)\b|\breservations? required\b", re.IGNORECASE)
+TICKETED_CHIP_DAYS = 30
 
 
 def santa_season_year(today: date) -> int:
@@ -2820,7 +2824,15 @@ def render_nye_page(entries: list[dict], now: datetime, analytics: dict | None =
     )
 
 
-def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None, outside: list[dict] | None = None, on_sale: list[dict] | None = None) -> str:
+def santa_listing_offer(contact_email: str | None) -> dict | None:
+    """ROADMAP.md item 501: "Hosting Santa at your shop or restaurant? Listing
+    it is free", a mailto with the fields a curated entry needs."""
+    if not contact_email:
+        return None
+    return {"text": "Hosting Santa at your shop or restaurant? Listing it is free", "url": build_contact_mailto_url(contact_email, "Santa event listing", SANTA_LISTING_FIELDS)}
+
+
+def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None, outside: list[dict] | None = None, on_sale: list[dict] | None = None, contact_email: str | None = None) -> str:
     """The /santa/ page. `entries` is [{region_name, region_url, events}]."""
     today = now.astimezone(LOCAL_TZ).date()
     year = santa_season_year(today)
@@ -2836,6 +2848,8 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
                 "title": display_title(ev["title"]), "town": entry["region_name"], "color": color, "date_iso": ev["date_iso"],
                 "time_label": event_time_label(ev["date_iso"]), "page_url": page_url, "reg_badge": ev.get("reg_badge"),
                 "sold_out": (sold := bool(_SOLD_OUT.search(f"{ev['title']} {ev.get('detail') or ''}"))),
+                "ticketed": (not sold and bool(_TICKETED.search(f"{ev['title']} {ev.get('detail_long') or ev.get('detail') or ''}"))
+                             and 0 <= (date.fromisoformat(ev["date_iso"][:10]) - today).days <= TICKETED_CHIP_DAYS),
                 # Item 500: nothing to attend, so no calendar link for a sold-out event.
                 "google_calendar_url": None if sold else ev.get("google_calendar_url"),  # item 462
                 "santa_reason": ev.get("santa_reason"),  # item 472
@@ -2859,6 +2873,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
         empty_message="Park districts usually post Santa events in early November; they appear here as soon as they do." if year == today.year else f"Santa events for {year} are usually posted in early November. Sign up below and we'll email you when they appear.",
         outside=outside or [],
         on_sale=on_sale if on_sale is not None else load_on_sale(now),  # item 474
+        santa_listing=santa_listing_offer(contact_email),  # item 501
         reminder_tag=None if in_season else f"remind:santa-{year}",
         reminder_headline=f"Email me when the {year} Santa events are posted",
         newsletter=newsletter or {"configured": False},
@@ -3233,6 +3248,8 @@ SPONSOR_INQUIRY_FIELDS = (
 )
 
 FOUNDING_PROMO_FIELDS = "Business name: \nEvent name: \nDate: \nTown: \nOne-line blurb: "
+# ROADMAP.md item 501: a business's own Santa visit, listed free.
+SANTA_LISTING_FIELDS = "Business name: \nDate: \nTime: \nStreet address: \nCost: \nRegistration needed? \nLink to your page about it: "
 CORRECTION_PROMPT = "What's wrong or missing, and which region/event: "
 
 
@@ -9205,7 +9222,7 @@ def main() -> None:
     (nye_dir / "index.html").write_text(render_nye_page(nye_entries, now, analytics, newsletter), encoding="utf-8")
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
-    (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries), encoding="utf-8")
+    (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries, contact_email=contact_email), encoding="utf-8")
     logger.info("Wrote %s", santa_dir / "index.html")
 
     for kind in THANKS_PAGES:

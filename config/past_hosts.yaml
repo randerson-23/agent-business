@@ -1,0 +1,19 @@
+# ROADMAP.md item 501: businesses that hosted a public family event last season,
+# kept by hand as warm leads (data/warm_hosts.json is written by CI and only keeps
+# the last 60 days). Business names and towns from a public article only: this
+# repository is public, so no people, emails or phone numbers. OUTREACH_PROSPECTS.md
+# lists them under Warm with `note`.
+hosts:
+  - name: "Berry Yo"
+    town: "Arlington Heights"
+    reason: santa_host_2025
+    event: "Santa visit with a hot-cocoa bar"
+    source: "https://patch.com/illinois/arlingtonheights/santa-claus-coming-arlington-heights-where-see-him-2025"
+  - name: "Golden Brunch"
+    town: "Arlington Heights"
+    reason: santa_host_2025
+    event: "Breakfast for Dinner with Santa"
+    source: "https://patch.com/illinois/arlingtonheights/santa-claus-coming-arlington-heights-where-see-him-2025"
+
+notes:
+  santa_host_2025: "Hosted Santa in 2025: offer the free founding Event Promo for 2026."
