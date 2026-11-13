@@ -21194,7 +21194,7 @@ and at a group of parents the site doesn't serve at all.
 
 #### P2 (new)
 
-502. **A sensory-friendly badge and page.** Build loop:
+502. (✅ DONE 2026-11-13: `sensory_friendly` tag in tagging.py (sensory-friendly/inclusive, sensory storytime, quiet hour, low-sensory, autism-friendly, neurodivergent, gentle Santa; "calm" only with "sensory"; bare "sensory" never, so a toddler sensory-play class is not tagged), "🌿 Sensory-friendly" badge and filter chip, /sensory-friendly/ for the next 30 days (sitemap, hub and town footers), and the badge on /santa/. First real result: Mount Prospect's Winter Wonderland, Fri Dec 11, with a sensory-friendly 4:30-5:00 PM before its open house) 502. **A sensory-friendly badge and page.** Build loop:
 
      - Tag events whose title or description says *sensory-friendly*,
        *sensory friendly*, *sensory storytime*, *quiet hour*,

@@ -7726,3 +7726,27 @@ def test_past_hosts_are_warm_leads_with_their_reason_and_no_contacts(tmp_path):
     assert wp.load_past_hosts(bad) == []
     text = "\n".join(wp.render_section({}, set(), hosts))
     assert "### Hosted Santa in 2025" in text and "offer the free founding Event Promo for 2026" in text and "Berry Yo" in text
+
+
+def test_sensory_friendly_tag_page_and_santa_badge():
+    # ROADMAP.md item 502.
+    from tagging import infer_tags
+    assert "sensory_friendly" in infer_tags("Sensory Storytime", "A calm, quiet session.")
+    assert "sensory_friendly" in infer_tags("Gentle Greeting with Santa", "")
+    assert "sensory_friendly" not in infer_tags("Calm Yoga for Adults", "")
+    assert "sensory_friendly" not in infer_tags("Toddler Sensory Play", "Messy sensory bins.")
+    assert "sensory_friendly" in infer_tags("Movie Morning", "Lights up, sound down, a calm sensory environment.")
+    today = date(2026, 11, 20)
+    blocks = [{"events": [
+        {"title": "Sensory Storytime", "url": "https://x/1", "date_iso": "2026-11-24T10:00:00", "tags": ["sensory_friendly", "kid_friendly"]},
+        {"title": "Lego Club", "url": "https://x/2", "date_iso": "2026-11-24T16:00:00", "tags": ["kid_friendly"]},
+        {"title": "Sensory Storytime", "url": "https://x/3", "date_iso": "2027-01-10T10:00:00", "tags": ["sensory_friendly"]},
+    ]}]
+    picked = build_digest.select_sensory_events(blocks, today)
+    assert [e["url"] for e in picked] == ["https://x/1"]
+    html = build_digest.render_sensory_page([{"region_name": "Palatine", "region_url": "https://x/p/", "events": picked}], datetime(2026, 11, 20, tzinfo=timezone.utc))
+    assert "Sensory Storytime" in html and "Lego Club" not in html and "Quieter, gentler sessions" in html
+    assert build_digest.SITE_BASE_URL + "sensory-friendly/" in build_digest.collect_sitemap_urls([])
+    santa = build_digest.render_santa_page([{"region_name": "Arlington Heights", "region_url": "https://x/ah/", "events": [
+        {"title": "Gentle Greeting with Santa", "url": "https://x/g", "date_iso": "2026-12-10T10:00:00", "detail": "A sensory-friendly visit.", "anchor_id": "g"}]}], datetime(2026, 11, 20, tzinfo=timezone.utc))
+    assert "🌿 Sensory-friendly" in santa
