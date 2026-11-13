@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **501** with **503** ("Hosting Santa? Listing it is free" on `/santa/`; last year's business Santa hosts as warm leads; a registration chip), then **502** (sensory-friendly badge and page).
 0. **498** (tree lightings with Santa on `/santa/`: Palatine Sat Nov 21 is missing; **by Nov 15**), **499** (Holiday listing stays $20 while the list is under 100; **before Sun Nov 15**), then **500**.
 0. **495, 496** (Mount Prospect's tree lighting Wed Nov 25 5 PM and Christkindlmarket from the Village's pages; Wheeling's from its own feed, Sun Nov 22 4:30 PM; both pages still say TBA), with **497** ("Tonight" block for the Wednesday Thanksgiving issue; **before Nov 24**).
 0. **489** (town pages describe their own sources and email coverage; Elk Grove's signup box), **491** (Thanksgiving issue on Wed Nov 25; **before Nov 24**), then **490** (exhibits as one card with a date range); check why `OUTREACH_PROSPECTS.md` is still dated Oct 31.
@@ -21153,6 +21154,85 @@ Palatine Park District's own tree-lighting pages**, and **past Wheeling
 Park District Holiday Hoopla notices** (a non-item until a 2026 page is
 readable). The design/UX angle is **the Holiday listing's Sunday price
 jump**, beside the launch rate.
+
+#### Research pass 2026-11-13 (hundred-and-forty-first pass)
+
+Overnight the build loop shipped items 498 (tree lightings with Santa, so
+Palatine is on `/santa/`), 499 (the Holiday listing stays $20 through Dec 15)
+and 500 (sold-out Santa events last and muted). Two days before item 428's
+Nov 15 target, `/santa/` covers every town's public Santa. This pass looks
+at the Santa visits the feeds **can't** see, the ones at local businesses,
+and at a group of parents the site doesn't serve at all.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Santa at local businesses, from Patch's yearly roundup** (Patch Arlington Heights, *"Santa Claus is coming to Arlington Heights: where to see him in 2025"* and earlier editions; a UIC Division of Specialized Care for Children listing for a *"Gentle Greeting with Santa in Arlington Heights"*, Dec 11, 2025, at a toy shop on East Palatine Road; the Daily Herald) | Patch's 2025 list mixes the public events the site now has (**Rotary Santa Run**, **Frostival**) with **business-hosted visits** no village or library feed carries: a **frozen-yogurt shop's Santa visit with a hot-cocoa bar** (Berry Yo), a restaurant's **"Breakfast for Dinner with Santa"** in pyjamas (Golden Brunch, Golf Rd), and the toy shop's **sensory-friendly "Gentle Greeting with Santa"**. No 2026 listings yet. Patch publishes the roundup every year in late November | These businesses **already spend on a family event and want to be seen doing it**, the warmest sponsor leads there are. They're exactly who the founding offer (a free Event Promo) is for. The site has no low-friction way for a business to add an event: the GitHub Issue Form needs an account, and the Google Form (item 246) waits on an unset secret (item 501) |
+| **Sensory-friendly events** (the "Gentle Greeting with Santa" listing; the search phrasing *"sensory friendly Santa near me"*; ROADMAP.md has **no mention of *sensory*** in 140 passes) | Libraries, park districts and shops run **sensory-friendly** sessions (quiet hours, gentle Santa visits, sensory storytimes, low-light movie showings) for autistic children and kids with sensory needs. They're scattered across feeds with no common label | A small, loyal group of parents who search for exactly this, are under-served, and share what works with each other. A badge and a filter page cost almost nothing, the library feeds already carry such sessions, and every one is an event a family would otherwise miss (item 502) |
+| **`/santa/` urgency for ticketed visits (design/UX)** (`docs/santa/index.html`: Arlington Heights' *Holly Jolly Trolly* marked *"SOLD OUT"* by its source on Nov 12) | Ticketed Santa events (trolleys, breakfasts, the Metra train) sell out weeks ahead, and the page shows *sold out* only once it's too late. The site already parses *registration required* and sign-up dates (item 327) | A ***"Registration required, often sells out"*** chip on a ticketed Santa event in the next 30 days tells a parent to act now. It's the same urgency the Metra line shows, applied to every ticketed visit (item 503) |
+
+#### P1 (new)
+
+501. **Santa at local businesses: a free way in, and last year's hosts as
+     warm leads.** Build loop:
+
+     - On `/santa/` and `/holidays/`, add a box: ***"Hosting Santa at
+       your shop or restaurant? Listing it is free →"***. It's a mailto
+       (the founding-offer pattern, item 452) with subject *"Santa event
+       listing"* and fields for business, date, time, address, cost,
+       *registration needed?* and a link. Entries go into
+       `config/regions/*.yaml` as curated events, after the owner
+       forwards the email (or the reply-to inbox the batch uses). No
+       new form or secret.
+     - Write the **2025 Santa hosts named in Patch's roundup** (business
+       names only, from the public article) into `data/warm_hosts.json`
+       with reason `"santa_host_2025"`. `OUTREACH_PROSPECTS.md` then
+       lists them under Warm with *"Hosted Santa in 2025: offer the free
+       founding Event Promo for 2026."*
+
+     Tests: the mailto has the subject and fields, and the warm hosts
+     carry the reason and no contact details.
+
+#### P2 (new)
+
+502. **A sensory-friendly badge and page.** Build loop:
+
+     - Tag events whose title or description says *sensory-friendly*,
+       *sensory friendly*, *sensory storytime*, *quiet hour*,
+       *low-sensory*, *autism-friendly*, *neurodivergent*, *gentle
+       Santa* or *calm*, the last only with *sensory* also present.
+       Show a ***"🌿 Sensory-friendly"*** badge, using the existing
+       badge pattern.
+     - Add a page, `/sensory-friendly/`, listing all six towns' tagged
+       events for the next 30 days, with an intro line: *"Quieter,
+       gentler sessions from the libraries, park districts and local
+       businesses."* Sitemap entry, footer link.
+     - On `/santa/`, tagged Santa visits show the badge.
+
+     Title: *"Sensory-Friendly Events for Kids in the Northwest Suburbs"*.
+     Tests: the keyword set tags a sensory storytime, *"calm"* alone
+     doesn't, and the page lists only tagged events.
+
+#### P3 (new)
+
+503. **"Registration required, often sells out" on ticketed Santa events.**
+     Build loop. On `/santa/` and in the email's Santa lines, a Santa
+     event in the next 30 days whose source says *registration
+     required*, *tickets*, *limited* or *space is limited*, and isn't
+     sold out, carries a ***"🎟 Registration required, often sells
+     out"*** chip. It carries the registration date when item 327 found
+     one. Tests: a ticketed event gets the chip, a free drop-in doesn't,
+     and a sold-out event keeps item 500's treatment instead.
+
+Re-rank: **501 goes to the top of the build queue**. Santa season's
+business events are announced over the next two weeks, and it's the
+cheapest sponsor funnel left. **502** follows: new, and cheap. **503** rides
+with 501.
+
+Competitors reviewed this pass: **Patch Arlington Heights' yearly "where
+to see Santa" roundup** (business-hosted visits the feeds miss) and **a
+sensory-friendly Santa listing**, a category the roadmap had never
+covered. The design/UX angle is **urgency on `/santa/`**, where *sold
+out* is the first warning a parent gets.
 
 
 ## Working agreements for autonomous iteration
