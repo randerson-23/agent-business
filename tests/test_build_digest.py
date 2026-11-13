@@ -7655,3 +7655,30 @@ def test_launch_rate_below_100_readers_and_regular_price_above(tmp_path):
     hist = tmp_path / "h.json"
     hist.write_text('[{"pre_send_subscriber_count": 1}, {"pre_send_subscriber_count": 3}]', encoding="utf-8")
     assert build_digest.current_list_size(tmp_path / "missing.json", hist) == 3
+
+
+def test_tree_lighting_with_santa_is_on_the_santa_page():
+    # ROADMAP.md item 498.
+    palatine = {"title": "Holiday Tree Lighting Ceremony", "detail": "Join Mayor Schwantz and Santa for the annual Holiday Tree Lighting."}
+    assert build_digest.santa_reason(palatine) == "Santa at the tree lighting"
+    assert build_digest.santa_reason({"title": "Holiday Tree Lighting Ceremony", "detail": "Carols and cocoa on the square."}) is None
+    wheeling = {"title": "Lights Around Wheeling", "detail": "Santa arrives by fire truck."}
+    assert build_digest.santa_reason(wheeling, ["Lights Around Wheeling"]) == "Santa at the tree lighting"
+    assert build_digest.santa_reason({"title": "Santa Fe Trail Talk", "detail": "History with Santa Fe photos."}) is None
+    assert build_digest.santa_reason({"title": "Holiday Concert", "detail": "Cookies with Santa and carols."}) == "Santa visits"
+
+
+def test_holiday_listing_stays_20_through_dec_15_under_100_readers():
+    # ROADMAP.md item 499.
+    launch = build_digest.load_yaml(build_digest.CONFIG_DIR / "sponsors.yaml")["launch_rate"]
+    nov20 = datetime(2026, 11, 20, 18, tzinfo=timezone.utc)
+    low = build_digest.render_sponsor_page([], nov20, launch_rate=launch, list_size=1)
+    assert "$20 through Dec 15" in low and "Launch price" in low and "Early-bird price ends" not in low
+    offer = build_digest.build_holiday_listing_offer(nov20, "h@x.com", launch=True)
+    assert offer["price"] == "$20" and not offer["early"]
+    hol = build_digest.render_holidays_page([], nov20, None, None, "h@x.com", launch=True)
+    assert "$20 through Dec 15 (launch price)" in hol and "rises to $50" not in hol
+    # At 100 readers the old rule returns.
+    assert build_digest.build_holiday_listing_offer(nov20, "h@x.com", launch=False)["price"] == "$50"
+    high = build_digest.render_sponsor_page([], nov20, launch_rate=launch, list_size=150)
+    assert "$20 until Nov 15, then $50" in high

@@ -205,7 +205,7 @@
   {% endif %}
   {% if listing_offer %}
   <div class="offer" id="holiday-listing">
-    <strong>Local shop? Get listed in the holiday guide, {{ listing_offer.price }}{% if listing_offer.early %} until Nov 15{% endif %}.</strong>
+    <strong>Local shop? Get listed in the holiday guide, {{ listing_offer.price }}{% if listing_offer.early %} until Nov 15{% elif listing_offer.through %} {{ listing_offer.through }}{% endif %}.</strong>
     A "Local business listing" on your town's holiday page, live through Dec 31.{% if listing_offer.early %} The price rises to $50 on Nov 16.{% endif %}
     <br><a href="{{ listing_offer.url }}">Get listed, {{ listing_offer.price }} &rarr;</a>
   </div>
