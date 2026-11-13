@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **504** with **506** (cancelled, postponed and rescheduled events detected, marked with eventStatus and never picked; a snow line in the email), then **505** (park districts' Rainout Line pages, probe first).
 0. **501** with **503** ("Hosting Santa? Listing it is free" on `/santa/`; last year's business Santa hosts as warm leads; a registration chip), then **502** (sensory-friendly badge and page).
 0. **498** (tree lightings with Santa on `/santa/`: Palatine Sat Nov 21 is missing; **by Nov 15**), **499** (Holiday listing stays $20 while the list is under 100; **before Sun Nov 15**), then **500**.
 0. **495, 496** (Mount Prospect's tree lighting Wed Nov 25 5 PM and Christkindlmarket from the Village's pages; Wheeling's from its own feed, Sun Nov 22 4:30 PM; both pages still say TBA), with **497** ("Tonight" block for the Wednesday Thanksgiving issue; **before Nov 24**).
@@ -21233,6 +21234,88 @@ to see Santa" roundup** (business-hosted visits the feeds miss) and **a
 sensory-friendly Santa listing**, a category the roadmap had never
 covered. The design/UX angle is **urgency on `/santa/`**, where *sold
 out* is the first warning a parent gets.
+
+#### Research pass 2026-11-13, evening (hundred-and-forty-second pass)
+
+Today the build loop shipped items 501 (a free Santa-listing box for
+businesses, with 2025 hosts as warm leads), 502 (the sensory-friendly
+badge and page) and 503 (the ticketed-Santa chip). The Nov 12 send's
+metrics arrive with Sunday's backfill. The last four issues each show
+**1 open, 0 clicks**. This pass looks ahead to winter weather. The site
+has **no handling for cancelled or postponed events anywhere**: no
+`cancel` in `build_digest.py`, and nothing in 141 passes beyond the
+outreach batch and warm-host filters.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Google's guidance for cancelled and postponed events** (Google Search Central's *Event structured data* page; the Webmaster Central Blog, *"New properties for virtual, postponed and canceled events"*, Mar 2020; Search Engine Roundtable and Yoast on applying it) | Set `eventStatus` to **`EventCancelled`** and **keep the original `startDate`**. For **`EventPostponed`**, keep the original date until a new one is known. For **`EventRescheduled`**, update the dates and optionally add `previousStartDate`. Google says this lets it **show the event's current status instead of dropping it** from event search. Every event's JSON-LD here says `EventScheduled`, always, and a source's *"CANCELLED:"* title prefix or an ICS `STATUS:CANCELLED` flows straight into the lists, the picks and the email | Winter is when Saturday events get cancelled for snow. A family who drives to a cancelled storytime because the email said so loses trust in one morning. And marking a cancelled event `EventScheduled` is wrong data sent to Google (item 504) |
+| **How the park districts announce weather cancellations** (Arlington Heights Park District's *Inclement weather policy* page and its 2026 *Rainout Line instructions* PDF; similar pages from other Illinois park districts) | AHPD says that when **District 25 closes or goes remote for weather, AHPD recreation programs are cancelled until 1 PM**, and cancellations are posted on its website or sent to participants. Its 2026 PDF points to **Rainout Line**, a third-party status service many park districts use, with public per-organisation status pages and real-time updates | A same-day cancellation shows up on a status page hours before it reaches the event feed. If Rainout Line's public page can be read, it's the fastest cancellation signal there is. The *D25-closed → programs cancelled until 1 PM* rule is worth one honest line on snow days (item 505) |
+| **What a snowy-weekend email should say (design/UX)** (the email's existing weather line, *"☁️ Sat 45° · ☁️ Sun 47°"*) | The email already fetches the weekend forecast and shows a single line. It has no way to say **"snow is likely, check before you go"** | One line, triggered only by a snow or ice forecast, sets the expectation and points to how the site marks changes. It costs nothing and protects trust on the days most likely to go wrong (item 506) |
+
+#### P1 (new)
+
+504. **Cancelled, postponed and rescheduled events: detect, mark, never
+     pick.** Build loop:
+
+     - **Detect:** ICS `STATUS:CANCELLED` and `STATUS:TENTATIVE`; The
+       Events Calendar REST `status`; title prefixes or suffixes
+       *CANCELLED / CANCELED / POSTPONED / RESCHEDULED*, with or without
+       a colon or brackets; and description lines starting with those
+       words.
+     - **Mark:** JSON-LD `eventStatus` `EventCancelled`, `EventPostponed`
+       or `EventRescheduled` (with `previousStartDate` when the source
+       gives the old date), keeping the original `startDate` as Google
+       asks. The card shows the title struck through and a
+       ***"Cancelled"*** or ***"Postponed"*** chip, with no calendar
+       link, and the source link kept.
+     - **Never** a pick, a "Don't miss", a *Tonight* line or an email
+       town item. If an issue already sent listed it, the next build's
+       IndexNow submission includes the changed URLs.
+
+     Tests: each status from each source type maps correctly, a cancelled
+     event leaves the picks, its JSON-LD keeps the original date, and
+     *"Cancellation policy: …"* in a description doesn't trigger.
+
+#### P2 (new)
+
+505. **Read the park districts' Rainout Line status pages, probe first.**
+     Build loop:
+
+     1. A probe round for AHPD's Rainout Line page (named in its 2026
+        instructions PDF), plus any other district's Rainout Line, via
+        the public per-organisation page. Record whether it answers a
+        plain GET and how statuses are shown.
+     2. If readable, map *"Cancelled"* or *"Closed"* entries for today
+        and tomorrow onto matching events and facilities (item 504's
+        marking), labelled ***"Status from the park district's weather
+        line"***, re-checked each build.
+     3. Add one line on town pages on a day when the District 25 closure
+        rule applies, only when D25's own calendar or news says so:
+        *"Arlington Heights Park District: programmes cancelled until 1
+        PM when D25 closes for weather"*, with a link to AHPD's policy.
+
+     Tests: a fixture status page cancels the matching event, and nothing
+     is inferred without a source.
+
+#### P3 (new)
+
+506. **A snow line in the email's weather box.** Build loop. When the
+     weekend forecast already fetched for the weather line says **snow,
+     sleet or ice** for Saturday or Sunday, add: ***"❄️ Snow likely
+     Saturday. Check the listing before you go; we mark cancellations
+     as sources post them."*** It isn't shown otherwise. Tests: a snow
+     forecast adds the line, and a cloudy one doesn't.
+
+Re-rank: **504 goes to the top of the build queue**. Winter's first snow
+is due any week, and the Thanksgiving and December issues carry the
+season's most-attended events. **505** follows, probe first. **506** rides
+with 504.
+
+Competitors reviewed this pass: **Google's event-status guidance** (Search
+Central, the 2020 Webmaster Central post, Search Engine Roundtable,
+Yoast) and **the park districts' weather-cancellation channels** (AHPD's
+policy page and Rainout Line instructions). The design/UX angle is **the
+email on a snowy weekend**.
 
 
 ## Working agreements for autonomous iteration
