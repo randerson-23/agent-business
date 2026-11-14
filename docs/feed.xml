@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 26 of 30 configured sources.</description>
-  <lastBuildDate>Sat, 14 Nov 2026 14:02:53 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 25 of 30 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
+  <lastBuildDate>Sat, 14 Nov 2026 22:04:17 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Family Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-14</link>
@@ -57,14 +57,6 @@
  Just in time for the holidays! All items have been specially selected for this sale so you can find the right… Official listing: https://mppl.libnet.info/event/13845873</description>
     <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/13845873">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Palatine: Palatine Winter Farmers' Market</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-11-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-11-14</guid>
-    <description>Palatine Winter Farmers' Market: Feeding you through the off se Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Des Plaines: Sewing Machine Basics- Learn to Sew Lanyards!</title>
@@ -135,14 +127,6 @@
  This is the place for Dungeons &amp; Dragons players of all levels to connect and play. Existing campaigns can meet… Official listing: https://egvpl.libnet.info/event/17118564</description>
     <pubDate>Sat, 14 Nov 2026 13:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17118564">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Palatine: "Guys and Dolls SR"</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-14</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-14</guid>
-    <description>"Guys and Dolls SR" presented by Palatine Park District Theatre Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Sat, 14 Nov 2026 14:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
@@ -441,6 +425,23 @@
  Bring your current writing projects for thoughtful support and constructive critique from a group of fellow writers. Official listing: https://mppl.libnet.info/event/14049849</description>
     <pubDate>Mon, 16 Nov 2026 19:00:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/14049849">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Holiday Print Cards</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-holiday-print-cards-2026-11-16</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-holiday-print-cards-2026-11-16</guid>
+    <description>Monday, November 16 2026 7:00pm - 8:00pm 
+ Terri Murphy, owner of Young-at-Heart Art Workshops, teaches block?printing by using various tools and techniques… Official listing: https://indiantrails.libnet.info/event/17101832</description>
+    <pubDate>Mon, 16 Nov 2026 19:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17101832">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Read to Learn (District 214)</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-11-17</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/194396</description>
+    <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.ahml.info/scheduling/reservation/194396">Arlington Heights Memorial Library — Events</source>
   </item>
 </channel>
 </rss>
