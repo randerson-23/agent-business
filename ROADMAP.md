@@ -21279,7 +21279,7 @@ outreach batch and warm-host filters.
 
 #### P2 (new)
 
-505. **Read the park districts' Rainout Line status pages, probe first.**
+505. (🟡 STEP 1 2026-11-14: probe round 44 in config/url_probes.yaml for AHPD's Rainout Line (847-574-2233, from its March 2026 instructions PDF): the organisation page rainoutline.com/search/dnis/8475742233 and extensions 31 and 5. Next: read data/url_probes.json after the probe run; build step 2 only if statuses are in the served HTML. Other districts' lines not yet found) 505. **Read the park districts' Rainout Line status pages, probe first.**
      Build loop:
 
      1. A probe round for AHPD's Rainout Line page (named in its 2026
