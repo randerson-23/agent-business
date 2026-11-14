@@ -350,3 +350,24 @@ probes:
     patterns:
       - '(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? 20\d\d[^<]{0,80}'
       - '(?i)\d{1,2}/\d{1,2}/20\d\d[^<]{0,60}'
+  # Round 44 (item 505, 2026-11-14): the park districts' Rainout Line status pages. Does a plain GET answer,
+  # and is each programme's status ("Open", "Closed", "Cancelled", a note) in the HTML or only drawn by
+  # JavaScript? AHPD's line is 847-574-2233 (its Rainout Line instructions PDF, March 2026).
+  - url: https://rainoutline.com/search/dnis/8475742233
+    item: 505
+    purpose: AHPD Rainout Line organisation page - list of programmes/facilities and their statuses
+    patterns:
+      - '(?i)(?:open|closed|cancel+ed|delayed|postponed)[^<]{0,80}'
+      - '(?i)extension[^<]{0,80}'
+      - '(?i)<script[^>]+src="[^"]{0,160}'
+  - url: https://rainoutline.com/search/extension/8475742233/31
+    item: 505
+    purpose: AHPD Rainout Line extension 31 - one programme's status and note as served
+    patterns:
+      - '(?i)(?:open|closed|cancel+ed|delayed|postponed)[^<]{0,80}'
+      - '(?i)(?:updated|last update)[^<]{0,80}'
+  - url: https://rainoutline.com/search/extension/8475742233/5
+    item: 505
+    purpose: AHPD Rainout Line extension 5 - one programme's status and note as served
+    patterns:
+      - '(?i)(?:open|closed|cancel+ed|delayed|postponed)[^<]{0,80}'
