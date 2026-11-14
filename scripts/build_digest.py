@@ -7130,6 +7130,24 @@ def select_tonight(sections: list[dict], now: datetime, limit: int = 3) -> dict 
     return {"label": f"TONIGHT ({day.strftime('%a %b')} {day.day})".upper(), "events": [f[3] for f in found[:limit]]}
 
 
+def build_conditional_email_body(by_town: dict[str, str], fallback: str) -> str:
+    """ROADMAP.md item 507: Buttondown renders its email body with Django
+    templating per subscriber, so one body can carry every town's version:
+    {% if "town:<id>" in subscriber.tags %} ... {% elif ... %} ... {% else %}
+    today's shared layout {% endif %}. Each version sits in {% verbatim %} so
+    event text that happens to contain template syntax is sent as written.
+    The signup forms tag readers "town:<region id>" (item 252)."""
+    def literal(html: str) -> str:
+        return "{% verbatim %}" + html.replace("{% endverbatim %}", "{ % endverbatim % }") + "{% endverbatim %}"
+    parts = []
+    for i, (town_id, html) in enumerate(by_town.items()):
+        parts.append(("{% if " if i == 0 else "{% elif ") + f'"town:{town_id}" in subscriber.tags %}}' + literal(html))
+    if not parts:
+        return fallback
+    parts.append("{% else %}" + literal(fallback) + "{% endif %}")
+    return "".join(parts)
+
+
 def town_one_liner(block: dict) -> str:
     """ROADMAP.md item 481: "Mount Prospect: Diwali Party, MPCB Fall Concert and 3 more"
     from the town's first two titles and a count of the rest."""
@@ -9195,6 +9213,13 @@ def main() -> None:
         (reader_dir / f"{town_id}.html").write_text(
             render_combined_email_digest(*combined_email_args, preview=True, reader_town=town_id, **combined_email_extra), encoding="utf-8"
         )
+    # ROADMAP.md item 507: one body for Buttondown's per-subscriber templating,
+    # each town's version behind its signup tag, today's layout for everyone
+    # else. Only the test-draft job sends it until a test send is verified.
+    (OUTPUT_DIR / "combined-email-conditional.html").write_text(build_conditional_email_body(
+        {sec["region_url"].rstrip("/").rsplit("/", 1)[-1]: render_combined_email_digest(*combined_email_args, reader_town=sec["region_url"].rstrip("/").rsplit("/", 1)[-1], **combined_email_extra) for sec in email_sections},
+        render_combined_email_digest(*combined_email_args, **combined_email_extra),
+    ), encoding="utf-8")
 
     sponsor_availability = build_sponsor_availability(sponsors_cfg, region_summaries)
     sponsor_stats = {

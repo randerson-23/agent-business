@@ -1,0 +1,37 @@
+name: Per-reader email test draft
+
+# ROADMAP.md item 507: send the per-reader email (each reader's town first) to
+# ONE test address as a Buttondown draft, so a real delivery can be compared
+# with /email-preview/<town>.html before the live send switches to it.
+# scripts/send_test_draft.py only creates a draft and sends it to the address in
+# the BUTTONDOWN_TEST_RECIPIENT secret; it has no live-send path. Without that
+# secret it does nothing. Runs on Tuesdays ahead of the Wednesday build, and by hand.
+on:
+  schedule:
+    - cron: "17 16 * * 2"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  test-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build digest
+        run: python scripts/build_digest.py
+
+      - name: Send the test draft
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          BUTTONDOWN_TEST_RECIPIENT: ${{ secrets.BUTTONDOWN_TEST_RECIPIENT }}
+        run: python scripts/send_test_draft.py

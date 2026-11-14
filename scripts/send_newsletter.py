@@ -333,6 +333,16 @@ def next_thursday_morning(now: datetime) -> datetime:
     return candidate
 
 
+def per_reader_verified(path: Path = NEWSLETTER_CONFIG) -> bool:
+    """ROADMAP.md item 507: `per_reader_email: {verified: true}` in
+    config/newsletter.yaml, set only after a test draft matched the previews."""
+    try:
+        cfg = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except OSError:
+        return False
+    return (cfg.get("per_reader_email") or {}).get("verified") is True
+
+
 def load_delivery_overrides(path: Path = NEWSLETTER_CONFIG) -> dict[date, datetime]:
     """ROADMAP.md item 491: one-off moves of a Thursday delivery, from
     `delivery_overrides:` in config/newsletter.yaml ({Thursday: new local
@@ -621,6 +631,14 @@ def main(argv: list[str] | None = None) -> int:
     except SendError as exc:
         logger.error("%s", exc)
         return 1
+    # ROADMAP.md item 507: the per-reader body goes out only once a test draft
+    # has been checked against the previews and recorded as verified.
+    clip_html = html
+    if cfg["region"] == COMBINED_REGION and per_reader_verified():
+        conditional = DOCS_DIR / "combined-email-conditional.html"
+        if conditional.exists():
+            html = conditional.read_text(encoding="utf-8")
+            logger.info("Per-reader email: sending the conditional body (each reader's town first).")
 
     now = datetime.now(timezone.utc)
     try:
@@ -664,7 +682,7 @@ def main(argv: list[str] | None = None) -> int:
         logger.info("=== DRY RUN - validating only, no email will be created ===")
     else:
         logger.info("=== LIVE: this will %s ===", banner_verb)
-    html_bytes = html_byte_size(html)
+    html_bytes = html_byte_size(clip_html)  # one reader's version, not every town's at once
     logger.info("Region:  %s", cfg["region"])
     logger.info("Subject: %s", subject)
     logger.info("Size:    %d bytes", html_bytes)
@@ -762,7 +780,7 @@ def main(argv: list[str] | None = None) -> int:
         issue_path = ISSUES_DIR / f"{issue_day.isoformat()}.html"
         if not issue_path.exists():
             ISSUES_DIR.mkdir(parents=True, exist_ok=True)
-            issue_path.write_text(html, encoding="utf-8")
+            issue_path.write_text(clip_html, encoding="utf-8")  # the shared layout, never the template tags (item 507)
 
     if cfg["mode"] == "send":
         logger.info("Sent. Buttondown id: %s", result.get("id", "?"))

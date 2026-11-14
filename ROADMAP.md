@@ -21337,7 +21337,7 @@ conditionals unlock.
 
 #### P1 (new)
 
-507. **Test the per-reader email from CI with a draft send, then turn it
+507. (🟡 BUILT 2026-11-14, waiting on one owner step: build_digest writes docs/combined-email-conditional.html (each emailed town's version behind `{% if "town:<id>" in subscriber.tags %}`, in `{% verbatim %}`, today's layout under `{% else %}`, byte-identical to the current send); scripts/send_test_draft.py creates it as a `status: draft` and sends that draft only to the BUTTONDOWN_TEST_RECIPIENT secret (tries /send-draft then /send-drafts, never the live-send path); test-send.yml runs it on Tuesdays 16:17 UTC and by hand; the live send switches only when config/newsletter.yaml `per_reader_email.verified` is true. **Owner step:** add the BUTTONDOWN_TEST_RECIPIENT secret (a subscribed address with a town tag), run "Per-reader email test draft", compare the email with /email-preview/<town>.html, then set `verified: true`. The live API reference (docs.buttondown.com) isn't reachable from this sandbox, so the endpoint path is tried both ways) 507. **Test the per-reader email from CI with a draft send, then turn it
      on.** Build loop:
 
      - Add a `workflow_dispatch` job, also run automatically on the
