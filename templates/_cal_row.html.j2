@@ -1,6 +1,7 @@
 {# ROADMAP.md item 462 (owner request 2026-11-07): one calendar row for every dated event. Google Calendar first (on a phone it opens the app), the .ics file second for Apple and Outlook. A multi-session card gets both links per session. #}
 {% macro cal_row(item) -%}
-{% if item.sessions %}
+{% if item.event_status %}{# ROADMAP.md item 504: nothing to add to a calendar #}
+{% elif item.sessions %}
 <div class="cal-row">{% for ss in item.sessions if ss.google_calendar_url or ss.ics_href %}<span class="cal-session">{{ ss.label }}:{% if ss.google_calendar_url %} <a href="{{ ss.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if ss.ics_href %} <a href="{{ ss.ics_href }}" download="event.ics">Apple / Outlook (.ics)</a>{% endif %}</span>{% endfor %}</div>
 {% elif item.google_calendar_url or item.ics_href %}
 <div class="cal-row">{% if item.google_calendar_url %}<a href="{{ item.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if item.ics_href %}<a href="{{ item.ics_href }}" download="event.ics">Apple / Outlook (.ics)</a>{% endif %}</div>

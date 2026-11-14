@@ -663,6 +663,9 @@
   .days-off .do-paid { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
   .election-line { margin: 12px 0; font-weight: 700; }
   .election-line a { color: var(--accent-2-text); }
+  /* ROADMAP.md item 504: a cancelled or postponed event stays listed, struck through, with its source link. */
+  .struck { text-decoration: line-through; }
+  .status-chip { display: inline-block; border: 1px solid var(--ink); color: var(--ink); font-size: 12px; font-weight: 700; padding: 0 6px; vertical-align: middle; text-transform: uppercase; letter-spacing: .5px; }
 </style>
 {{ signup_css() }}
 </head>
@@ -958,7 +961,7 @@
           {% if item.sponsored_by %}{{ featured_label(item.sponsored_by) }}{% endif %}
           {% if item.series %}<div class="series">{{ item.series }}</div>{% endif %}
           {% if item.run_label %}<div class="date"><time datetime="{{ item.date_iso }}">{{ item.run_label[0]|upper }}{{ item.run_label[1:] }}</time> · <span class="where">{{ region.name }}</span></div>{% elif item.sessions %}<div class="date">{% for ss in item.sessions %}<span{% if not loop.first %} id="{{ ss.anchor_id }}"{% endif %}>{{ ss.label }}</span>{% if not loop.last %} · {% endif %}{% endfor %} · <span class="where">{{ region.name }}</span></div>{% elif item.date %}<div class="date">{% if item.date_iso %}<time datetime="{{ item.date_iso }}">{{ item.date_label or item.date }}{% if item.time_label %} · {{ item.time_label }}{% endif %}</time>{% else %}{{ item.date }}{% endif %} · <span class="where">{{ region.name }}</span></div>{% endif %}
-          <h3>{% if item.url %}<a href="{{ item.url }}">{{ item.title|display_title }}</a>{% else %}{{ item.title|display_title }}{% endif %}</h3>{% if item.link_moved %}<p class="detail">Listing moved: this opens the source's calendar.</p>{% endif %}
+          <h3>{% if item.event_status %}<span class="status-chip">{{ item.event_status|capitalize }}</span> {% endif %}{% if item.url %}<a href="{{ item.url }}"{% if item.event_status %} class="struck"{% endif %}>{{ item.title|display_title }}</a>{% else %}{{ item.title|display_title }}{% endif %}</h3>{% if item.link_moved %}<p class="detail">Listing moved: this opens the source's calendar.</p>{% endif %}
           {% if item.recurrence_note %}<div class="recurrence-note">{{ item.recurrence_note }}</div>{% endif %}
           {% set card_text = item.card_detail if item.card_detail is defined else item.detail %}
         {% if card_text %}<p class="detail">{{ card_text }}</p>{% endif %}
