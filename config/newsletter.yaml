@@ -58,6 +58,13 @@ detail: "One email, Thursday mornings, covering Arlington Heights, Des Plaines, 
 # on 2026-09-17 once that template shipped (ROADMAP.md item 105):
 # docs/combined-email-send.html carries a short block per region, so
 # every subscriber finds their own town in the same issue.
+# ROADMAP.md item 507: the per-reader email (each reader's town first, item 481).
+# test-send.yml sends it as a draft to the BUTTONDOWN_TEST_RECIPIENT secret only.
+# Set `verified: true` after that test email matches /email-preview/<town>.html for
+# the test address's town tag; until then the live send keeps the shared layout.
+per_reader_email:
+  verified: false
+
 # ROADMAP.md item 491: one-off moves of a Thursday delivery (Thursday: new
 # local Central time). Read by send_newsletter.py (the Tuesday cron run sends
 # when one is due) and by build_digest.py (the on-sale subject window).

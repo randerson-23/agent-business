@@ -539,3 +539,42 @@ def test_thanksgiving_override_moves_delivery_and_gates_the_tuesday_run(tmp_path
     assert sn.issue_is_due(datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc), ov)
     # Late cron on a normal Wednesday (7h late) is still due.
     assert sn.issue_is_due(datetime(2026, 11, 19, 5, 37, tzinfo=timezone.utc), ov)
+
+
+def test_test_draft_is_a_draft_to_one_recipient_and_never_a_live_send():
+    # ROADMAP.md item 507.
+    import send_test_draft as st
+    calls = []
+
+    class R:
+        def __init__(self, code, body=None):
+            self.status_code, self.ok, self._b, self.text = code, 200 <= code < 300, body or {}, ""
+
+        def json(self):
+            return self._b
+
+    def post(url, headers=None, json=None, timeout=None):
+        calls.append((url, headers, json))
+        if url.endswith("/emails"):
+            return R(201, {"id": "em_1"})
+        return R(404) if url.endswith("/send-draft") else R(200)
+
+    email_id = st.create_draft("k", "36 things this weekend", '{% if "town:x" in subscriber.tags %}a{% else %}b{% endif %}', post=post)
+    path = st.send_draft("k", email_id, "test@example.com", post=post)
+    assert calls[0][2]["status"] == "draft" and "subscriber.tags" in calls[0][2]["body"]
+    assert calls[0][2]["subject"].startswith("[Test, per-reader]")
+    assert path == "send-drafts" and calls[-1][2] == {"recipients": ["test@example.com"]}
+    assert all("X-Buttondown-Live-Dangerously" not in (h or {}) for _, h, _ in calls)
+    assert all(j.get("status") in (None, "draft") for _, _, j in calls)
+
+
+def test_per_reader_body_is_used_only_once_verified(tmp_path):
+    # ROADMAP.md item 507.
+    import send_newsletter as sn
+    cfg = tmp_path / "n.yaml"
+    cfg.write_text("per_reader_email:\n  verified: false\n", encoding="utf-8")
+    assert sn.per_reader_verified(cfg) is False
+    cfg.write_text("per_reader_email:\n  verified: true\n", encoding="utf-8")
+    assert sn.per_reader_verified(cfg) is True
+    assert sn.per_reader_verified(tmp_path / "missing.yaml") is False
+    assert sn.per_reader_verified() is False  # the repository's own config starts off

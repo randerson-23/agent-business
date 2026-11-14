@@ -7777,3 +7777,11 @@ def test_snow_line_only_when_the_forecast_says_snow():
     assert line["snow"].startswith("❄️ Snow likely Saturday.")
     cloudy = [dict(snowy[1], day_name="Saturday"), snowy[1]]
     assert build_digest.build_email_weather_line(cloudy)["snow"] is None
+
+
+def test_conditional_email_body_has_a_branch_per_town_and_a_fallback():
+    # ROADMAP.md item 507.
+    body = build_digest.build_conditional_email_body({"mount-prospect-60056": "<p>MP first</p>", "wheeling-60090": "<p>{{ odd }} W</p>"}, "<p>shared</p>")
+    assert body.startswith('{% if "town:mount-prospect-60056" in subscriber.tags %}{% verbatim %}<p>MP first</p>{% endverbatim %}')
+    assert '{% elif "town:wheeling-60090" in subscriber.tags %}{% verbatim %}<p>{{ odd }} W</p>{% endverbatim %}' in body
+    assert body.endswith("{% else %}{% verbatim %}<p>shared</p>{% endverbatim %}{% endif %}")
