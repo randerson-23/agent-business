@@ -5030,9 +5030,9 @@ def _wx(day, high, precip, emoji="☀️"):
 def test_email_weather_line_dry_wet_and_missing():
     # ROADMAP.md item 291.
     dry = build_digest.build_email_weather_line([_wx("Friday", 60, 0), _wx("Saturday", 58.4, 10), _wx("Sunday", 61, 20)])
-    assert dry == {"text": "☀️ Sat 58° · ☀️ Sun 61°", "rain": False}
+    assert dry == {"text": "☀️ Sat 58° · ☀️ Sun 61°", "rain": False, "snow": None}
     wet = build_digest.build_email_weather_line([_wx("Saturday", 58, 10), _wx("Sunday", 55, 70, "🌧️")])
-    assert wet == {"text": "☀️ Sat 58° · 🌧️ Sun 55° 70% rain", "rain": True}
+    assert wet == {"text": "☀️ Sat 58° · 🌧️ Sun 55° 70% rain", "rain": True, "snow": None}
     assert build_digest.build_email_weather_line([_wx("Saturday", 50, 30)])["rain"] is False  # 30% is shown, not a rain plan
     assert build_digest.build_email_weather_line([]) is None
     assert build_digest.build_email_weather_line(None) is None
@@ -7750,3 +7750,30 @@ def test_sensory_friendly_tag_page_and_santa_badge():
     santa = build_digest.render_santa_page([{"region_name": "Arlington Heights", "region_url": "https://x/ah/", "events": [
         {"title": "Gentle Greeting with Santa", "url": "https://x/g", "date_iso": "2026-12-10T10:00:00", "detail": "A sensory-friendly visit.", "anchor_id": "g"}]}], datetime(2026, 11, 20, tzinfo=timezone.utc))
     assert "🌿 Sensory-friendly" in santa
+
+
+def test_event_status_detection_marking_and_exclusion():
+    # ROADMAP.md item 504.
+    d = build_digest.detect_event_status
+    assert d({"title": "Holiday Market", "status": "CANCELLED"}) == "cancelled"
+    assert d({"title": "Holiday Market", "status": "TENTATIVE"}) is None
+    assert d({"title": "Holiday Market", "status": "POSTPONED"}) == "postponed"
+    assert d({"title": "CANCELED: Family Skate"}) == "cancelled"
+    assert d({"title": "[Postponed] Tree Walk"}) == "postponed"
+    assert d({"title": "Bingo Night (Rescheduled)"}) == "rescheduled"
+    assert d({"title": "Bingo Night", "detail": "Cancelled due to weather.\nSorry."}) == "cancelled"
+    assert d({"title": "Gingerbread Class", "detail": "Cancellation policy: refunds up to 48 hours before."}) is None
+    ev = {"title": "CANCELED: Family Skate", "date_iso": "2026-12-05T10:00:00", "url": "https://x/s", "event_status": "cancelled", "tags": ["kid_friendly", "free"]}
+    assert not build_digest.is_pick_worthy(ev)
+    ld = build_digest.event_jsonld(ev, "https://x/page#s")
+    assert ld["eventStatus"] == "https://schema.org/EventCancelled" and ld["startDate"].startswith("2026-12-05")
+    assert build_digest.prepare_email_events([ev]) == []
+
+
+def test_snow_line_only_when_the_forecast_says_snow():
+    # ROADMAP.md item 506.
+    snowy = [{"day_name": "Saturday", "high_f": 30, "precip_percent": 70, "label": "Snow", "emoji": "🌨️"}, {"day_name": "Sunday", "high_f": 28, "precip_percent": 10, "label": "Overcast", "emoji": "☁️"}]
+    line = build_digest.build_email_weather_line(snowy)
+    assert line["snow"].startswith("❄️ Snow likely Saturday.")
+    cloudy = [dict(snowy[1], day_name="Saturday"), snowy[1]]
+    assert build_digest.build_email_weather_line(cloudy)["snow"] is None

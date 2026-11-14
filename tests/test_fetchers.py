@@ -1261,3 +1261,12 @@ def test_html_events_follows_pages_until_one_adds_nothing_and_respects_the_cap(m
     mock_get.side_effect = lambda url, **kw: page("Only")
     fetch_html_events("https://lib.example/events/upcoming")
     assert mock_get.call_count == 1  # no `pages`: one request, as before
+
+
+@patch("fetchers.requests.get")
+def test_fetch_ics_reads_status(mock_get):
+    # ROADMAP.md item 504: STATUS:CANCELLED reaches the item.
+    ics = "BEGIN:VCALENDAR\nBEGIN:VEVENT\nSUMMARY:Family Skate\nDTSTART:20991205T100000\nSTATUS:CANCELLED\nEND:VEVENT\nEND:VCALENDAR\n"
+    mock_get.return_value = _mock_response(ics)
+    items = fetch_ics("https://example.org/cal.ics")
+    assert items[0]["status"] == "CANCELLED"

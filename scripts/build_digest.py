@@ -1420,6 +1420,7 @@ def fetch_region_sections(
                 "date": format_event_date(item.get("date")),
                 "date_iso": parse_event_date_iso(item.get("date")),
                 "end_iso": parse_event_date_iso(item.get("end_date")) if item.get("end_date") else None,  # item 463
+                "event_status": detect_event_status(item),  # item 504
                 "tags": tags,
                 "tag_badges": [{"id": t, **tag_display(t)} for t in tags],
                 "attendable": attendable,
@@ -3656,7 +3657,7 @@ def select_editors_pick(region_cfg: dict, blocks: list[dict], evergreen: list[di
     # An Editor's Pick is an editorial choice; a paid Featured event (item
     # 245) is already labelled as one and never doubles as the other.
     candidates = [e for b in blocks for e in b["events"] if not e.get("sponsored_by")] + evergreen
-    candidates = [c for c in candidates if c.get("title") and c.get("url")]
+    candidates = [c for c in candidates if c.get("title") and c.get("url") and not c.get("event_status")]  # item 504
     if not candidates:
         return None
 
@@ -6036,6 +6037,32 @@ def event_image_url(event: dict, url: str) -> str:
     return f"{SITE_BASE_URL}og/{town.group(1) if town else 'default'}.png"
 
 
+# ROADMAP.md item 504: a title or description that says the event is off.
+_STATUS_WORD = r"(cancel+ed|postponed|rescheduled)"
+_STATUS_TITLE = re.compile(r"^\s*[\[(]?\s*" + _STATUS_WORD + r"\s*[\])]?\s*[:!\-–—]?\s+|\s+[\-–—(\[]?\s*" + _STATUS_WORD + r"\s*[\])]?\s*$", re.IGNORECASE)
+_STATUS_DETAIL = re.compile(r"^\s*\**\s*" + _STATUS_WORD + r"\b(?!\s+(?:policy|polic(?:ies)|fee|fees|refund))", re.IGNORECASE)
+EVENT_STATUS_SCHEMA = {"cancelled": "EventCancelled", "postponed": "EventPostponed", "rescheduled": "EventRescheduled"}
+
+
+def detect_event_status(item: dict) -> str | None:
+    """"cancelled", "postponed", "rescheduled" or None, from the source's own
+    status field (ICS STATUS:CANCELLED, The Events Calendar's event status),
+    a title prefix or suffix ("CANCELLED: ...", "... (Postponed)"), or a
+    description whose first line starts with the word. "Cancellation policy"
+    never counts; TENTATIVE is not treated as off (it says nothing either way)."""
+    raw = str(item.get("status") or "").strip().upper()
+    if raw in ("CANCELLED", "CANCELED"):
+        return "cancelled"
+    if raw in ("POSTPONED", "RESCHEDULED"):
+        return raw.lower()
+    for text, pattern in ((item.get("title") or "", _STATUS_TITLE), ((item.get("detail") or "").strip().splitlines()[0] if (item.get("detail") or "").strip() else "", _STATUS_DETAIL)):
+        m = pattern.search(text)
+        if m:
+            word = next(g for g in m.groups() if g).lower()
+            return "cancelled" if word.startswith("cancel") else word
+    return None
+
+
 def event_jsonld(event: dict, url: str) -> dict:
     """The one schema.org Event builder (ROADMAP.md item 375), used by the
     region pages, events.json, /trick-or-treat/ and the /e/ pages so they
@@ -6048,7 +6075,7 @@ def event_jsonld(event: dict, url: str) -> dict:
         "name": event["title"],
         "startDate": schema_start_date(event["date_iso"]),
         "url": url,
-        "eventStatus": "https://schema.org/EventScheduled",
+        "eventStatus": "https://schema.org/" + EVENT_STATUS_SCHEMA.get(event.get("event_status") or "", "EventScheduled"),  # item 504
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": schema_location(event),
     }
@@ -6920,6 +6947,8 @@ def is_pick_worthy(event: dict) -> bool:
     events stay on every list; they just never lead one."""
     if _SOLD_OUT.search(f"{event.get('title') or ''} {event.get('detail') or ''}"):  # item 500
         return False
+    if event.get("event_status"):  # item 504: never pick what isn't happening as listed
+        return False
     cfg = load_relevance_config()
     pattern = cfg.get("not_a_pick_pattern")
     if pattern is not None and pattern.search(event.get("title") or ""):
@@ -7085,7 +7114,7 @@ def select_tonight(sections: list[dict], now: datetime, limit: int = 3) -> dict 
                 continue
             if start.tzinfo is not None:
                 start = start.astimezone(LOCAL_TZ).replace(tzinfo=None)
-            if start.date() != day or start.time() < TONIGHT_FROM or e.get("attendable") is False or e.get("sponsored_by"):
+            if start.date() != day or start.time() < TONIGHT_FROM or e.get("attendable") is False or e.get("sponsored_by") or e.get("event_status"):
                 continue
             tree = bool(TREE_LIGHTING_TITLE.search(e.get("title") or ""))
             if not tree and family_relevance(e) < 0:
@@ -7174,7 +7203,7 @@ def prepare_email_events(events: list[dict], limit: int | None = None) -> list[d
     merge_repeated_sessions(events)  # items 381/467: one entry per event in the email too
     prepared = []
     for e in events:
-        if e.get("merged_away"):
+        if e.get("merged_away") or e.get("event_status"):  # item 504: not an email item
             continue
         when = None
         if e.get("date_iso"):
@@ -7395,6 +7424,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         edition=edition if edition_block else None,
         edition_block=edition_block,
         weather_line=weather_line["text"] if weather_line else None,
+        snow_line=weather_line.get("snow") if weather_line else None,  # item 506
         days_off_line=days_off_line,
         closures_line=closures_line,
         give_line=build_give_email_line(give or [], now),
@@ -7899,7 +7929,11 @@ def build_email_weather_line(weather: list[dict] | None) -> dict | None:
             part += f" {round(d['precip_percent'])}% rain"
         parts.append(part)
     rain = any((d.get("precip_percent") or 0) >= 60 for d in days)
-    return {"text": " · ".join(parts), "rain": rain}
+    # ROADMAP.md item 506: snow, sleet or ice in the forecast already fetched.
+    icy = next((d for d in days if re.search(r"snow|sleet|freezing|ice", d.get("label") or "", re.IGNORECASE)), None)
+    snow = (f"❄️ Snow likely {icy['day_name']}. Check the listing before you go; we mark cancellations as sources post them."
+            if icy else None)
+    return {"text": " · ".join(parts), "rain": rain, "snow": snow}
 
 
 def pick_rain_plan(blocks: list[dict], exclude: list[dict] | None = None, limit: int = 3) -> list[dict]:

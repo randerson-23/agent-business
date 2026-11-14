@@ -21254,7 +21254,7 @@ outreach batch and warm-host filters.
 
 #### P1 (new)
 
-504. **Cancelled, postponed and rescheduled events: detect, mark, never
+504. (✅ DONE 2026-11-14: `detect_event_status` from ICS STATUS (CANCELLED; TENTATIVE deliberately ignored), The Events Calendar REST `event_status`, title prefixes/suffixes with or without colon or brackets, and a description's first word ("Cancellation policy" excluded). JSON-LD `eventStatus` EventCancelled/EventPostponed/EventRescheduled with the original startDate; cards show a status chip and a struck-through title with the source link and no calendar row; never a pick, Editor's Pick, Tonight line or email item. Not done: `previousStartDate` (no source gives the old date) and re-submitting changed URLs to IndexNow. First results: Des Plaines Theatre's Aly & AJ show (Postponed), an AHML committee meeting (Cancelled)) **Cancelled, postponed and rescheduled events: detect, mark, never
      pick.** Build loop:
 
      - **Detect:** ICS `STATUS:CANCELLED` and `STATUS:TENTATIVE`; The
@@ -21299,7 +21299,7 @@ outreach batch and warm-host filters.
 
 #### P3 (new)
 
-506. **A snow line in the email's weather box.** Build loop. When the
+506. (✅ DONE 2026-11-14: "❄️ Snow likely Saturday. Check the listing before you go; we mark cancellations as sources post them." when Saturday's or Sunday's forecast label says snow, sleet, freezing or ice) **A snow line in the email's weather box.** Build loop. When the
      weekend forecast already fetched for the weather line says **snow,
      sleet or ice** for Saturday or Sunday, add: ***"❄️ Snow likely
      Saturday. Check the listing before you go; we mark cancellations

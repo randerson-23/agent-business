@@ -412,6 +412,9 @@ def fetch_ics(
             elif line.startswith("DTEND"):
                 # ROADMAP.md item 463: the source's own end, for calendar links.
                 current["end_date"] = line.split(":", 1)[-1].strip()
+            elif line.startswith("STATUS:"):
+                # ROADMAP.md item 504: CANCELLED / TENTATIVE / CONFIRMED.
+                current["status"] = line[len("STATUS:"):].strip().upper()
 
         def is_upcoming(ev: dict) -> bool:
             raw = ev.get("_sort_key")
@@ -492,6 +495,10 @@ def _tribe_rest(base: str, today: date, limit: int) -> list[dict] | None:
             if not (ev.get("title") and start):
                 continue
             item = {"title": _tribe_text(ev["title"]), "detail": _tribe_text(ev.get("description") or ev.get("excerpt")), "url": str(ev.get("url") or ""), "date": start}
+            if isinstance(ev.get("event_status") or ev.get("status"), str):  # item 504: the plugin's Event Status field, when present
+                status = str(ev.get("event_status") or "").strip().lower()
+                if status in ("canceled", "cancelled", "postponed", "rescheduled"):
+                    item["status"] = status.upper()
             finish = _tribe_stamp(ev.get("end_date"), False)
             if finish:
                 if all_day:  # the plugin's end is the last day's 23:59:59; the iCal form is exclusive
