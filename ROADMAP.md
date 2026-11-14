@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **507** (test the per-reader email from CI with a Buttondown draft send, then turn item 481 on), then **508** (town in the subject line) and **509** ("Which town is yours?" for untagged readers).
 0. **504** with **506** (cancelled, postponed and rescheduled events detected, marked with eventStatus and never picked; a snow line in the email), then **505** (park districts' Rainout Line pages, probe first).
 0. **501** with **503** ("Hosting Santa? Listing it is free" on `/santa/`; last year's business Santa hosts as warm leads; a registration chip), then **502** (sensory-friendly badge and page).
 0. **498** (tree lightings with Santa on `/santa/`: Palatine Sat Nov 21 is missing; **by Nov 15**), **499** (Holiday listing stays $20 while the list is under 100; **before Sun Nov 15**), then **500**.
@@ -21316,6 +21317,83 @@ Central, the 2020 Webmaster Central post, Search Engine Roundtable,
 Yoast) and **the park districts' weather-cancellation channels** (AHPD's
 policy page and Rainout Line instructions). The design/UX angle is **the
 email on a snowy weekend**.
+
+#### Research pass 2026-11-14 (hundred-and-forty-third pass)
+
+Overnight the build loop shipped item 504 (cancelled and postponed events
+detected, marked with `eventStatus` and never picked) and item 506 (the snow
+line). The one large piece still waiting is **item 481**: the per-reader
+email (each reader's town first) is built and previewed but not live,
+because *"wrapping it in Buttondown tag conditionals waits on a test send
+through the API, which this sandbox can't reach"*. This pass finds the
+documented way to do that test from CI, and what else the same
+conditionals unlock.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Buttondown's draft test send** (docs: *Sending drafts via the API* / `api-emails-send-draft`; the API changelog, Nov 15 2025, adding an optional **`X-Buttondown-Test-Mode`** header to send-draft; a 2024 post naming `/v1/emails/{id}/send-draft`; third-party wrappers that call it with a recipient list) | Buttondown has a **send-draft endpoint**: create the issue as a **draft** (the code already sets `status` explicitly), then send that draft to **named recipients** only, optionally in test mode. The path's singular or plural form differs between sources, so read the live API reference first. CI already holds the API key | This is the missing step for item 481. A CI job can render the conditional template, create a draft, send it to one tagged test address, and compare what arrives with the preview, with no owner step beyond the address (item 507) |
+| **What the conditionals can do** (Buttondown docs: *Templating*, *Template variables* (`subscriber.tags`), *Using templating*; the *"Referencing subscriber tags"* post) | The templating is **Django's**: `{% if "mount-prospect-60056" in subscriber.tags %}…{% elif … %}…{% else %}…{% endif %}`. The docs say conditionals work **in subject lines as well as bodies** (the 2021 post's *"else if"* should be Django's `elif`) | Once tested, the same mechanism gives each reader **their own town's subject line**: *"Mount Prospect: tree lighting Wednesday + 36 things"*. That's the most local thing an inbox can show, at no cost (item 508) |
+| **Readers without a town tag (design/UX)** (Buttondown's *Subscribers can tag themselves* (Feb 2024), *Subscriber autonomy* (Jun 2024) and *Better tag self-management* (Jan 2026, a portal toggle); the *Tags* docs) | Item 481's layout falls back to the five-equal-towns version for **untagged** readers. Signups through a town page carry a tag (item 252), but those from the hub, the share note or a forwarded email may not, and the **current subscriber may have none**. Buttondown lets subscribers **set their own tags from a link in the email**, once **self-tagging and the portal are enabled** in the newsletter's settings | A per-reader email that most readers never see is half-built. A single *"Which town is yours?"* line, and only for untagged readers, closes the gap. Enabling the portal is a newsletter setting; the build loop should try the newsletter-settings API before asking the owner (item 509) |
+
+#### P1 (new)
+
+507. **Test the per-reader email from CI with a draft send, then turn it
+     on.** Build loop:
+
+     - Add a `workflow_dispatch` job, also run automatically on the
+       Tuesday before each send, that renders the conditional template
+       and **creates a draft** via `/v1/emails` with `status: draft`.
+     - **Send the draft** through the send-draft endpoint (check the path
+       in the live reference) to **one test recipient**, held in a new
+       `BUTTONDOWN_TEST_RECIPIENT` secret. Use the account's own address
+       if the API accepts no recipient. Pass `X-Buttondown-Test-Mode`
+       only if it still delivers.
+     - Fetch the delivered rendering if the API exposes it, or have the
+       owner forward the test once, and diff it against
+       `/email-preview/<town>.html`.
+     - **Only when they match**, switch the live send to the conditional
+       template (item 481), with the untagged fallback.
+
+     The secret is a one-time owner step of about 1 minute; this item
+     counts it inside step 1 of the whole ask, not as a new step. Tests:
+     the draft payload carries the conditionals and `status: draft`, the
+     job never calls the live-send path, and the switch is gated on a
+     recorded match.
+
+#### P2 (new)
+
+508. **Each reader's town in the subject line.** Build loop, after 507
+     confirms conditionals render. Wrap the subject in the same
+     conditional. For a tagged reader: ***"Mount Prospect: tree lighting
+     Wed · 36 things this weekend"*** (their town's top one-off pick, or
+     the on-sale line from item 483 when it applies). Untagged readers
+     get today's subject. Keep item 363's 50-character limit for each
+     variant. Tests: each town's variant is at most 50 characters, and
+     the fallback is unchanged.
+
+509. **"Which town is yours?", shown only to readers without a town.**
+     Build loop:
+
+     - Try to enable self-tagging and the subscriber portal through the
+       newsletter-settings API (Buttondown has added settings fields to
+       the API). If the field isn't exposed, add one line to Needs Ryan
+       step 5's existing Buttondown-settings visit, not a new step.
+     - In the email, inside `{% if not <any town tag> %}`, show one line:
+       ***"Which town is yours? Arlington Heights · Des Plaines · Elk Grove
+       Village · Mount Prospect · Palatine · Wheeling"***. Each link uses
+       Buttondown's self-tag URL for that town's tag.
+
+     Tests: the line renders only in the untagged branch, and each link
+     carries its tag.
+
+Re-rank: **507 goes to the top of the build queue**. It's the gate for
+481, 508 and 509, and for the six-town email. **508** and **509** follow,
+in that order, once 507 records a match.
+
+Competitors reviewed this pass: none new. This pass read **Buttondown's
+API, templating and subscriber-autonomy documentation** to unblock the
+per-reader email. The design/UX angle is **readers without a town tag**,
+who would never see it.
 
 
 ## Working agreements for autonomous iteration
