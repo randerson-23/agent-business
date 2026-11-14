@@ -3,24 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 3 of 5 configured sources. 1 source is shown from its last update, up to 7 hours ago.</description>
-  <lastBuildDate>Fri, 13 Nov 2026 22:05:00 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: eBooks, eAudiobooks, Movies and More</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-ebooks-eaudiobooks-movies-and-more-2026-11-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-ebooks-eaudiobooks-movies-and-more-2026-11-13</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/234443</description>
-    <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/234443">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: Teen Night - Bikini Bottom Bash</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-teen-night-bikini-bottom-bash-2026-11-13</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-teen-night-bikini-bottom-bash-2026-11-13</guid>
-    <description>Calling all 6th-8th graders – we’re opening the Arlington Ridge Center just for you! Join us for a night of open swim, open gym, pizza, and Spongebob the… Official listing: https://www.ahpd.org/event/teen-night-bikini-bottom-bash/</description>
-    <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahpd.org/event/teen-night-bikini-bottom-bash/">Arlington Heights Park District — Events</source>
-  </item>
+  <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 4 of 5 configured sources.</description>
+  <lastBuildDate>Sat, 14 Nov 2026 06:07:24 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Family Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-14</link>

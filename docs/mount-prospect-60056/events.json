@@ -2,136 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-11-13T22:05:00+00:00",
-  "numberOfItems": 54,
+  "dateModified": "2026-11-14T06:07:24+00:00",
+  "numberOfItems": 50,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Storytime Playdate: Tiny Town",
-        "startDate": "2026-11-13T10:00:00-06:00",
-        "url": "https://withintenmiles.com/e/2026-11-13-storytime-playdate-tiny-town/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16638180",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/e/2026-11-13-storytime-playdate-tiny-town.png",
-        "description": "Friday, November 13 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Meet the Board",
-        "startDate": "2026-11-13T15:00:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-meet-the-board-2026-11-13",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/17821370",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Friday, November 13 2026 3:00pm - 5:00pm \n Drop by for cookies and an informal chat with a Mount Prospect Public Library Board member."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Teen Book Café",
-        "startDate": "2026-11-13T16:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-teen-book-caf-2026-11-13",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/14685927",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Friday, November 13 2026 4:30pm - 6:00pm \n Love books? Come hang out with us at Khepri Kitchen + Coffee, 106 S. Emerson St. We'll talk about new books,…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Build and Watch: Tarzan",
-        "startDate": "2026-11-13T17:00:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-build-and-watch-tarzan-2026-11-13",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16883000",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Friday, November 13 2026 5:00pm - 7:00pm \n Enjoy a movie night at the library and have fun building with LEGO bricks and other various toys!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Friends Holiday Book Sale",
@@ -162,7 +38,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "\"Artsgiving\" Crafty Cornucopia",
@@ -192,7 +68,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Tiny Town",
@@ -223,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -254,7 +130,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -285,7 +161,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -316,7 +192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Animal Investigators Junior: Puffins",
@@ -347,7 +223,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -378,7 +254,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "MPPL Writers Group",
@@ -409,7 +285,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -440,7 +316,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -471,7 +347,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -502,7 +378,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -533,7 +409,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -564,7 +440,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Chicago: Aviation's Incubator",
@@ -595,7 +471,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Teen Craft: Ping Pong Ball Snowmen",
@@ -626,7 +502,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "True Crime Book Discussion",
@@ -657,7 +533,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Toddler Storytime",
@@ -688,7 +564,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "$1 Bingo Bonanza",
@@ -718,7 +594,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Drop-In Gift Wrap Supplies and Holiday Decor Swap",
@@ -749,7 +625,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Fall Bingo",
@@ -780,7 +656,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Minecraft Engineers",
@@ -811,7 +687,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night",
@@ -843,7 +719,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -874,7 +750,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -905,7 +781,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Social Security Planning",
@@ -936,7 +812,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Education Foundation Meeting",
@@ -959,7 +835,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Tech Playground",
@@ -990,7 +866,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -1021,7 +897,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Epic Worlds and Celestial Prophecies With Rebecca Roanhorse",
@@ -1052,7 +928,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Substitute Educator Day",
@@ -1075,7 +951,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Hello Helpers",
@@ -1106,7 +982,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Family Photos",
@@ -1137,7 +1013,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Pokémon Club",
@@ -1168,7 +1044,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -1199,7 +1075,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "CheckMates Meetup",
@@ -1230,7 +1106,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Full Year Fitness Membership Sale",
@@ -1260,7 +1136,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Fall Break - No School",
@@ -1283,7 +1159,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Family Fun: Morris, the Magic Man",
@@ -1314,7 +1190,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 3 & 4",
@@ -1344,7 +1220,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -1375,7 +1251,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -1406,7 +1282,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Movies @ MPPL: Misconduct",
@@ -1437,7 +1313,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -1468,7 +1344,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 5 & 6",
@@ -1498,7 +1374,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -1529,7 +1405,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 7 & 8",
@@ -1559,7 +1435,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Christkindlmarket",
@@ -1589,7 +1465,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Village Tree Lighting Ceremony",
@@ -1620,7 +1496,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Free! Triple Turkey Burner",

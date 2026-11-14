@@ -1,36 +1,6 @@
 {
- "fetched_at": "2026-11-13T22:05:00+00:00",
+ "fetched_at": "2026-11-14T06:07:24+00:00",
  "items": [
-  {
-   "date": "Fri, 13 Nov 2026 00:00:00 +0000",
-   "detail": "Friday, November 13 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
-   "title": "The Arlington Camera Club",
-   "url": "https://egvpl.libnet.info/event/16362681"
-  },
-  {
-   "date": "Fri, 13 Nov 2026 00:00:00 +0000",
-   "detail": "Friday, November 13 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues belong to.",
-   "title": "Picture Book Month Challenge",
-   "url": "https://egvpl.libnet.info/event/17074013"
-  },
-  {
-   "date": "Fri, 13 Nov 2026 00:00:00 +0000",
-   "detail": "Friday, November 13 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
-   "title": "Word of the Week",
-   "url": "https://egvpl.libnet.info/event/17354425"
-  },
-  {
-   "date": "Fri, 13 Nov 2026 17:30:00 +0000",
-   "detail": "Friday, November 13 2026 5:30pm - 6:30pm \n Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess!",
-   "title": "Chess Club (Advanced Players)",
-   "url": "https://egvpl.libnet.info/event/17111661"
-  },
-  {
-   "date": "Fri, 13 Nov 2026 17:30:00 +0000",
-   "detail": "Friday, November 13 2026 5:30pm - 6:30pm \n Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess!",
-   "title": "Chess Club (Beginning Players)",
-   "url": "https://egvpl.libnet.info/event/17111762"
-  },
   {
    "date": "Sat, 14 Nov 2026 00:00:00 +0000",
    "detail": "Saturday, November 14 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
@@ -360,6 +330,36 @@
    "detail": "Friday, November 20 2026 9:00am - 9:00am \n Registration for Youth Services December programs, and all One Book, One Village programs, begins Friday, November 20, 9 am. Our programs can fill up quickly, for the best results register online.",
    "title": "Youth Services Registration for December Programs",
    "url": "https://egvpl.libnet.info/event/17487748"
+  },
+  {
+   "date": "Fri, 20 Nov 2026 10:30:00 +0000",
+   "detail": "Friday, November 20 2026 10:30am - 11:15am \n Come to the library for hands-on experiences that may include some mess and will always include fun!",
+   "title": "Messy Play",
+   "url": "https://egvpl.libnet.info/event/16920156"
+  },
+  {
+   "date": "Fri, 20 Nov 2026 17:30:00 +0000",
+   "detail": "Friday, November 20 2026 5:30pm - 6:30pm \n Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess!",
+   "title": "Chess Club (Advanced Players)",
+   "url": "https://egvpl.libnet.info/event/17111688"
+  },
+  {
+   "date": "Fri, 20 Nov 2026 17:30:00 +0000",
+   "detail": "Friday, November 20 2026 5:30pm - 6:30pm \n Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess!",
+   "title": "Chess Club (Beginning Players)",
+   "url": "https://egvpl.libnet.info/event/17111785"
+  },
+  {
+   "date": "Sat, 21 Nov 2026 00:00:00 +0000",
+   "detail": "Saturday, November 21 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
+   "title": "The Arlington Camera Club",
+   "url": "https://egvpl.libnet.info/event/16362689"
+  },
+  {
+   "date": "Sat, 21 Nov 2026 00:00:00 +0000",
+   "detail": "Saturday, November 21 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues belong to.",
+   "title": "Picture Book Month Challenge",
+   "url": "https://egvpl.libnet.info/event/17074020"
   }
  ],
  "source": "Elk Grove Village Public Library - Events"

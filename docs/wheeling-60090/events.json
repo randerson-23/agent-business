@@ -2,198 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-11-13T22:05:00+00:00",
-  "numberOfItems": 33,
+  "dateModified": "2026-11-14T06:07:24+00:00",
+  "numberOfItems": 28,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Toddler Storytime",
-        "startDate": "2026-11-13T10:00:00-06:00",
-        "url": "https://withintenmiles.com/e/2026-11-13-toddler-storytime/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16927102",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/e/2026-11-13-toddler-storytime.png",
-        "description": "Friday, November 13 2026 10:00am - 10:30am \n Start your day with books, rhymes and songs. TR"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Preschool Storytime",
-        "startDate": "2026-11-13T11:00:00-06:00",
-        "url": "https://withintenmiles.com/e/2026-11-13-preschool-storytime/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/16927126",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/e/2026-11-13-preschool-storytime.png",
-        "description": "Friday, November 13 2026 11:00am - 11:30am \n Boost early literacy skills with books, movement and songs. TR"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Quality Watercolor Techniques",
-        "startDate": "2026-11-13T11:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-quality-watercolor-techniques-2026-11-13",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17096881",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Friday, November 13 2026 11:00am - 12:00pm \n Learn how different grade art supplies affect watercolors and practice your professional skills using layering…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Movie Matinee: The Devil Wears Prada 2 (2026)",
-        "startDate": "2026-11-13T14:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-movie-matinee-the-devil-wears-prada-2-2026-2026-11-13",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17084807",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Friday, November 13 2026 2:00pm - 4:00pm \n Andy Sachs reunites with Miranda Priestly as they navigate their careers amid the decline of traditional magazine…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Family Craft Friday: Paint A Gzhel Plate | At The Branch",
-        "startDate": "2026-11-13T17:30:00-06:00",
-        "url": "https://withintenmiles.com/e/2026-11-13-family-craft-friday-paint-a-gzhel-plate-at-the-branch/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17087741",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/e/2026-11-13-family-craft-friday-paint-a-gzhel-plate-at-the-branch.png",
-        "description": "Friday, November 13 2026 5:30pm - 7:00pm \n Join us for a special cultural craft session to paint a decorative plate in a tradition of Russian Gzhel porcelain…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Thanksgiving Coasters",
-        "startDate": "2026-11-13T17:30:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-thanksgiving-coasters-2026-11-13",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17053394",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Friday, November 13 2026 5:30pm - 6:30pm \n Import Thanksgiving images into Inkscape to laser engrave a custom coaster. R"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Pop-Up Movie: Power Ballad (2026)",
@@ -224,7 +38,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Storytime Amigos",
@@ -255,7 +69,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -285,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Holiday Print Cards",
@@ -316,7 +130,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -347,7 +161,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Chapter One Book Club | Grades K-1",
@@ -378,7 +192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -409,7 +223,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Star Party",
@@ -440,7 +254,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Chess Club",
@@ -471,7 +285,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -502,7 +316,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -532,7 +346,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Advanced Excel",
@@ -563,7 +377,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -594,7 +408,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Office Hours IL State Treasurer Michael Frerich's Office",
@@ -625,7 +439,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -656,7 +470,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Memory Cafe",
@@ -687,7 +501,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Knitting for Beginners",
@@ -718,7 +532,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Super Saturday: Chicago Cossacks - Ukrainian Music and Dance",
@@ -749,7 +563,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Lights Around Wheeling",
@@ -779,7 +593,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Got Science? Space Exploration",
@@ -810,7 +624,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Introduction to Tinkercad",
@@ -842,7 +656,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Middle School Book Club | Grades 6-8",
@@ -873,7 +687,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -904,7 +718,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -935,7 +749,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -966,7 +780,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Finger Painting",
@@ -997,7 +811,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "EARLY CLOSING - Thanksgiving Holiday",
@@ -1024,6 +838,37 @@
         },
         "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, November 25 2026 5:00pm - 9:00pm \n EARLY CLOSING - Thanksgiving Holiday\nThe library will close at 5 pm."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 28,
+      "item": {
+        "@type": "Event",
+        "name": "Lotería Night | Noche de Lotería | At the Branch",
+        "startDate": "2026-11-27T17:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-loter-a-night-noche-de-loter-a-at-the-branch-2026-11-27",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17092640",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Friday, November 27 2026 5:00pm - 6:00pm \n Join us for a family night of Lotería, a traditional Mexican board game, similar to bingo.  Practice your Spanish…"
       }
     }
   ]
