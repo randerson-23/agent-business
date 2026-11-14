@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **510** with **512** (the Arlington Heights and Palatine turkey trots from their RunSignup pages, a register-by line in the **Nov 19** issue, and a Thanksgiving-morning line on Nov 25), then **511** (RunSignup races within ten miles, probe first).
 0. **507** (test the per-reader email from CI with a Buttondown draft send, then turn item 481 on), then **508** (town in the subject line) and **509** ("Which town is yours?" for untagged readers).
 0. **504** with **506** (cancelled, postponed and rescheduled events detected, marked with eventStatus and never picked; a snow line in the email), then **505** (park districts' Rainout Line pages, probe first).
 0. **501** with **503** ("Hosting Santa? Listing it is free" on `/santa/`; last year's business Santa hosts as warm leads; a registration chip), then **502** (sensory-friendly badge and page).
@@ -21394,6 +21395,84 @@ Competitors reviewed this pass: none new. This pass read **Buttondown's
 API, templating and subscriber-autonomy documentation** to unblock the
 per-reader email. The design/UX angle is **readers without a town tag**,
 who would never see it.
+
+#### Research pass 2026-11-14, evening (hundred-and-forty-fourth pass)
+
+Today the build loop shipped item 507's machinery: a conditional email body
+and a CI test-draft job, waiting on one owner secret. It also shipped probe
+round 44 for AHPD's Rainout Line (item 505). This pass looks at **Thanksgiving
+morning**: the turkey trots are the biggest family events of the holiday,
+and **none is in the site's data**. The only "turkey" event is a fitness
+class.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The 2026 turkey trots in these towns** (RunSignup pages for the *Arlington Heights Turkey Trot* and the *Palatine Park District Turkey Trot*; Fleet Feet's race listing; findarace and trainerday listings) | **Arlington Heights Turkey Trot, Thu Nov 26**, South Middle School (400 S Highland Ave): a **5K run/walk at 9:00 AM**, a **kids' fun run** before it, entry **by donation (listed $20) for the Wheeling Township Food Pantry**. **Palatine Park District Turkey Trot, Thu Nov 26, its 46th year**: a **2-mile (8:00 AM)** and **5-mile (8:30 AM)** run/walk at **$35**, and the **"Sammy Scurry" 100-yard kids' dash, $10**. Third-party listings differ on small details, so the RunSignup pages, the organisers' own, govern. Nothing found for Des Plaines, Mount Prospect, Wheeling or Elk Grove Village | `docs/*/events.json` has **no turkey trot at all** (only *"Free! Triple Turkey Burner"*, a fitness class). Online registration often closes before race day. The **Nov 19 issue** is the last one sent before Thanksgiving week, and the Thanksgiving issue arrives Wednesday, too late for anyone who needs to sign up. The Arlington Heights trot also **collects for a food pantry**, so it belongs on `/give/` (item 510) |
+| **RunSignup as a data source** (RunSignup's API docs: *races* endpoint, *API integration quick start*, *Searching for races*; its zip-code API note; a third-party race finder built on it) | RunSignup's quick start says that **without authentication the API returns all public races**. The races endpoint takes **`zipcode` and `radius`** (US only), paging up to 1,000 races, and a date filter appears on the shared platform. One overview page says calls need a key, so a keyless request must be **tested first**. The Rotary Santa Run (item 466) and both turkey trots are on RunSignup | Family races are the one event type no village, library or park-district feed carries reliably: Santa runs, turkey trots, Jingle Bell runs, spring fun runs, school 5Ks. **One radius query around the six towns** would list them automatically, with dates, distances, kids' races and registration links from the organiser's own page (item 511) |
+| **Thanksgiving morning in the email (design/UX)** | The Thanksgiving issue (Wed Nov 25) will have a *Tonight* block for Wednesday evening (item 497) and a weekend window starting Thursday. Its Thursday has **no race events**, so the issue says nothing about the morning when the most families are out together | A *"Thanksgiving morning"* line (the trots, their start times, the kids' dashes) is the most useful thing the issue can say about Thursday. The Nov 19 issue should carry the *register now* version (item 512) |
+
+#### P1 (new)
+
+510. **Add the two 2026 turkey trots from their RunSignup pages, with a
+     register-by line in the Nov 19 issue.** Build loop:
+
+     - Add `annual_events` entries from each race's own RunSignup page
+       (the organiser's registration page, as with item 466): **Arlington
+       Heights Turkey Trot** and **Palatine Park District Turkey Trot**.
+       Include date, start times, distances, the kids' race, price as
+       the page states it, venue, and the page's registration deadline
+       if shown.
+     - The Arlington Heights trot also goes on `/give/`, labelled
+       ***"Runs for the Wheeling Township Food Pantry"***, exactly as the
+       page words it.
+     - In the **Nov 19** issue, add a sign-ups line (item 327's block):
+       ***"🦃 Turkey trots on Thanksgiving morning: register online before
+       race day"***, with each race's deadline and a ⏰ *Remind me*
+       (item 476).
+
+     Tests: both races render in their towns on Nov 26, the food-pantry
+     line appears on `/give/`, and the Nov 19 email carries the line.
+
+#### P2 (new)
+
+511. **RunSignup races within ten miles, read automatically, probe
+     first.** Build loop:
+
+     1. Probe `https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&start_date=today`
+        **without a key**. Record whether it answers and which fields
+        come back.
+     2. If it does, add a `runsignup` fetcher. Run one query per town
+        centre (or one wider query filtered by distance), keep races
+        whose city is one of the six towns (others go to item 458's
+        "Just outside" section if within ten miles), and map name, date,
+        distances, kids' events, the race URL and the city.
+     3. Tag them `outdoor` and `active`. Races with a kids' event get
+        `kid-friendly`.
+
+     Re-probe every build. If the API needs a key, say so in the item
+     and stop (no owner key for this). Tests: a fixture response becomes
+     events, an out-of-area race is excluded, and a kids' dash sets the
+     tag.
+
+#### P3 (new)
+
+512. **A "Thanksgiving morning" line in the Wednesday issue.** Build loop.
+     In the Nov 25 issue, under the *Tonight* block (item 497), add
+     ***"🦃 Thanksgiving morning: Palatine Turkey Trot 8:00 AM (kids'
+     dash) · Arlington Heights Turkey Trot 9:00 AM"***, built from
+     Thursday-morning (before noon) race and family events, up to
+     three, with calendar links. Tests: a Nov 25 delivery shows the
+     line, and a normal Thursday delivery doesn't.
+
+Re-rank: **510 goes to the top of the build queue**, with a hard deadline
+of the **Nov 19 send**. **512** rides with it (the Nov 25 issue). **511**
+follows: it turns races into a standing source for every season.
+
+Competitors reviewed this pass: **the Arlington Heights and Palatine
+turkey trots' own RunSignup pages** (and Fleet Feet's, findarace's and
+trainerday's listings of them), plus **RunSignup's public race API** as a
+data source. The design/UX angle is **Thanksgiving morning in the
+Wednesday issue**.
 
 
 ## Working agreements for autonomous iteration
