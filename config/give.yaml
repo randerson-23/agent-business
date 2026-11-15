@@ -23,3 +23,10 @@ regions:
         drop_off: "Village Hall (33 S. Arlington Heights Rd.), Public Works (222 N. Ridge Ave.), Senior Center (1801 W. Central Rd.)"
         end_date: 2026-11-18
         source_url: "https://www.vah.com/news_detail_T13_R609.php"
+      # ROADMAP.md item 510: not a drop-off drive but a race whose entry fees go to a pantry, worded as the
+      # race's own RunSignup page states it (indexed by search, 2026-11-15).
+      - name: "Arlington Heights Turkey Trot (runs for the Wheeling Township Food Pantry)"
+        organiser: "Arlington Heights Turkey Trot"
+        drop_off: "Thanksgiving morning 5K at South Middle School, 9:00 AM; entry fees and donations support the Wheeling Township Food Pantry"
+        end_date: 2026-11-26
+        source_url: "https://runsignup.com/Race/IL/ArlingtonHeights/ArlingtonHeightsTurkeyTrot"

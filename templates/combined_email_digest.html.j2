@@ -202,6 +202,17 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 {% endif %}
 
+{% if thanksgiving %}
+{# ROADMAP.md items 510 and 512: Thanksgiving morning's races and family events. #}
+<tr>
+<td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:16px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.5;">
+<div class="wt-ink" style="font-weight:600; color:{{ ink }}; padding-bottom:6px;">{{ thanksgiving.label }}</div>
+{% for it in thanksgiving.rows %}<div class="wt-ink" style="color:{{ body_ink }}; padding:2px 0;"><a href="{{ it.url }}" class="wt-ink" style="color:{{ ink }}; text-decoration:underline;">{{ it.title }}</a>, {{ it.town }}{% if it.when %} &middot; {{ it.when }}{% endif %}{% if it.google_calendar_url %} &middot; <a href="{{ it.google_calendar_url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">📅 Add</a>{% endif %}</div>{% endfor %}
+</td>
+</tr>
+<tr><td style="padding:0 0 14px 0;"></td></tr>
+{% endif %}
+
 {% if top_picks %}
 {# "Don't miss": one standout per town, chosen by pick_email_top_picks(). #}
 <tr>

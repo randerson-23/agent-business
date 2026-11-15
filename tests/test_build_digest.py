@@ -7785,3 +7785,25 @@ def test_conditional_email_body_has_a_branch_per_town_and_a_fallback():
     assert body.startswith('{% if "town:mount-prospect-60056" in subscriber.tags %}{% verbatim %}<p>MP first</p>{% endverbatim %}')
     assert '{% elif "town:wheeling-60090" in subscriber.tags %}{% verbatim %}<p>{{ odd }} W</p>{% endverbatim %}' in body
     assert body.endswith("{% else %}{% verbatim %}<p>shared</p>{% endverbatim %}{% endif %}")
+
+
+def test_turkey_trots_register_line_on_nov_19_and_morning_line_on_nov_25(monkeypatch):
+    # ROADMAP.md items 510 and 512.
+    def ev(title, iso, url):
+        return {"title": title, "url": url, "date_iso": iso, "tags": ["kid_friendly", "outdoor"], "detail": "d", "attendable": True, "google_calendar_url": "https://calendar.google.com/" + url[-3:]}
+    secs = [{"region_name": "Palatine", "region_url": "https://x/p/", "weekend_events": [], "upcoming_events": [ev("🦃 Palatine Park District Turkey Trot", "2026-11-26T08:00:00", "https://p/tt1")]},
+            {"region_name": "Arlington Heights", "region_url": "https://x/ah/", "weekend_events": [], "upcoming_events": [ev("🦃 Arlington Heights Turkey Trot", "2026-11-26T09:00:00", "https://a/tt2"), ev("Thanksgiving Dinner Pickup", "2026-11-26T15:00:00", "https://a/din")]}]
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 11, 26): datetime(2026, 11, 25, 7, 0)})
+    nov19 = build_digest.thanksgiving_morning(secs, datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc))
+    assert nov19["label"].startswith("🦃 Turkey trots on Thanksgiving morning: register online")
+    assert [r["title"] for r in nov19["rows"]] == ["Palatine Park District Turkey Trot", "Arlington Heights Turkey Trot"]
+    nov25 = build_digest.thanksgiving_morning(secs, datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc))
+    assert nov25["label"] == "🦃 Thanksgiving morning"
+    assert build_digest.thanksgiving_morning(secs, datetime(2026, 11, 11, 22, 37, tzinfo=timezone.utc)) is None
+    html = build_digest.render_combined_email_digest(secs, "Nov 20–22", datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc))
+    assert "register online before race day" in html and "Palatine Park District Turkey Trot</a>, Palatine" in html
+    for rid, title in (("arlington-heights-60005", "Arlington Heights Turkey Trot"), ("palatine-60067", "Palatine Park District Turkey Trot")):
+        cfg = build_digest.load_yaml(build_digest.CONFIG_DIR / "regions" / f"{rid}.yaml")
+        assert any(title in e["title"] and e["date"].startswith("2026-11-26") for e in cfg["annual_events"])
+    give = build_digest.load_yaml(build_digest.CONFIG_DIR / "give.yaml")
+    assert any("Wheeling Township Food Pantry" in d["name"] for d in give["regions"]["arlington-heights-60005"]["drives"])

@@ -21280,7 +21280,7 @@ outreach batch and warm-host filters.
 
 #### P2 (new)
 
-505. (🟡 STEP 1 2026-11-14: probe round 44 in config/url_probes.yaml for AHPD's Rainout Line (847-574-2233, from its March 2026 instructions PDF): the organisation page rainoutline.com/search/dnis/8475742233 and extensions 31 and 5. Next: read data/url_probes.json after the probe run; build step 2 only if statuses are in the served HTML. Other districts' lines not yet found) 505. **Read the park districts' Rainout Line status pages, probe first.**
+505. (🟡 STEP 1 2026-11-14: probe round 44 in config/url_probes.yaml for AHPD's Rainout Line (847-574-2233, from its March 2026 instructions PDF): the organisation page rainoutline.com/search/dnis/8475742233 and extensions 31 and 5. Round 44 result: extension pages answer 200 and serve their status in HTML (title = facility, span.status2 = status, "Last updated at"); the organisation page loads its list by script from /search/dnis_refresh/, probed in round 45. Next: build step 2 if that list answers. Other districts' lines not yet found) 505. **Read the park districts' Rainout Line status pages, probe first.**
      Build loop:
 
      1. A probe round for AHPD's Rainout Line page (named in its 2026
@@ -21413,7 +21413,7 @@ class.
 
 #### P1 (new)
 
-510. **Add the two 2026 turkey trots from their RunSignup pages, with a
+510. (✅ DONE 2026-11-15: Arlington Heights Turkey Trot (RunSignup page: Thu Nov 26, South Middle School, 5K 9:00 AM, $20, Kids Fun Run, for the Wheeling Township Food Pantry) and Palatine Park District Turkey Trot (palatineparks.org event page: Harper College HRC, 2-mile 8:00, 5-mile 8:30, $35 through Nov 25, Sammy Scurry 9:30 $10) as annual events, both via search per item 478 (runsignup.com is unreachable from the sandbox). AH trot on /give/. `thanksgiving_morning` adds "🦃 Turkey trots on Thanksgiving morning: register online before race day" to the issue delivered the week before. No registration deadline is shown on either page, so no Remind me) **Add the two 2026 turkey trots from their RunSignup pages, with a
      register-by line in the Nov 19 issue.** Build loop:
 
      - Add `annual_events` entries from each race's own RunSignup page
@@ -21435,7 +21435,7 @@ class.
 
 #### P2 (new)
 
-511. **RunSignup races within ten miles, read automatically, probe
+511. (🟡 STEP 1 2026-11-15: probe round 45 asks RunSignup's /Rest/races for zip 60056, radius 10, with no key) **RunSignup races within ten miles, read automatically, probe
      first.** Build loop:
 
      1. Probe `https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&start_date=today`
@@ -21456,7 +21456,7 @@ class.
 
 #### P3 (new)
 
-512. **A "Thanksgiving morning" line in the Wednesday issue.** Build loop.
+512. (✅ DONE 2026-11-15: the same helper gives "🦃 Thanksgiving morning" with up to three before-noon events, races first, in the issue delivered the day before) **A "Thanksgiving morning" line in the Wednesday issue.** Build loop.
      In the Nov 25 issue, under the *Tonight* block (item 497), add
      ***"🦃 Thanksgiving morning: Palatine Turkey Trot 8:00 AM (kids'
      dash) · Arlington Heights Turkey Trot 9:00 AM"***, built from

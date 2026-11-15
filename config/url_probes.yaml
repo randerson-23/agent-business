@@ -371,3 +371,20 @@ probes:
     purpose: AHPD Rainout Line extension 5 - one programme's status and note as served
     patterns:
       - '(?i)(?:open|closed|cancel+ed|delayed|postponed)[^<]{0,80}'
+  # Round 45 (items 505, 511, 2026-11-15). Rainout Line: round 44 showed extension pages serve their status in
+  # HTML (span.status2, "Last updated at ..."), while the organisation page loads its list by script from
+  # /search/dnis_refresh/<dnis>/extension/<n>; this asks whether that list URL answers a plain GET.
+  - url: https://rainoutline.com/search/dnis_refresh/8475742233
+    item: 505
+    purpose: AHPD Rainout Line extension list as loaded by the organisation page's script (names, extensions, statuses)
+    patterns:
+      - '(?i)/search/extension/8475742233/\d+'
+      - '(?i)status\d?"?>[^<]{0,40}'
+  # RunSignup's public race search without a key: does it answer, and which fields come back?
+  - url: https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&events=T&results_per_page=50
+    item: 511
+    purpose: RunSignup races within 10 miles of 60056, no API key (name, next_date, address.city, url, events)
+    patterns:
+      - '"next_date":\s*"[^"]{0,20}"'
+      - '"city":\s*"[^"]{0,40}"'
+      - '(?i)"error[^}]{0,160}'

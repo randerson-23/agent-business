@@ -195,6 +195,13 @@ sources:
 # programming specifically - differ each day. Not yet confirmed by a
 # live fetch of the linked page.
 annual_events:
+  # ROADMAP.md item 510: the Palatine Park District's own event page (palatineparks.org), as indexed by search,
+  # 2026-11-15. Regular price $35 through Nov 25, $40 on the day.
+  - title: "🦃 Palatine Park District Turkey Trot"
+    date: "2026-11-26T08:00:00"
+    detail: "The 46th annual Thanksgiving Day Turkey Trot at Harper College's Health and Recreation Center: 2-mile run/walk at 8:00 AM, 5-mile at 8:30 AM ($35 through Nov 25, $40 on the day), and the Sammy Scurry 100-yard kids' dash at 9:30 AM ($10). Packet pick-up at the Community Center Nov 24-25, 9 AM-7 PM."
+    url: "https://jobs.palatineparks.org/event/turkey-trot/"
+    tags: ["kid_friendly", "outdoor"]
   # ROADMAP.md item 477: Metra's own pages as indexed by search, 2026-11-09 (runner blocked by CloudFront).
   - title: "🚂 Metra Holiday Train (UP Northwest)"
     date: "2026-12-12"
