@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **517** (near-empty pages noindex and out of the sitemap until they reach 3 entries, then submitted), **516** (Brave Search URL list in the Needs Ryan step 1 note), then **518**.
+0. **516** (near-empty pages noindex and out of the sitemap until they reach 3 entries, then submitted), **517** (Brave Search URL list in the Needs Ryan step 1 note), then **518**.
 0. **513** (turkey trots must be races, indoor ideas must be ideas; before the **Nov 19** send), then **514** (rink and event status from AHPD's Rainout Line, by Dec 15), **511** (RunSignup, keyless confirmed; filter on `next_date`), **515**.
 0. **510** with **512** (the Arlington Heights and Palatine turkey trots from their RunSignup pages, a register-by line in the **Nov 19** issue, and a Thanksgiving-morning line on Nov 25), then **511** (RunSignup races within ten miles, probe first).
 0. **507** (test the per-reader email from CI with a Buttondown draft send, then turn item 481 on), then **508** (town in the subject line) and **509** ("Which town is yours?" for untagged readers).
@@ -21565,13 +21565,13 @@ newest pages help or hurt how search engines see a young domain.
 
 | Angle | What it is / what we found | Why it matters here |
 |---|---|---|
-| **Brave Search, never mentioned in 145 passes** (Brave community-forum answers from staff; Brave's Search API news, Feb 2026, adding an **LLM-context endpoint for AI**; a third-party explainer on how AI assistants search the web) | Brave runs **its own independent index**, not Bing's or Google's. Its **Search API is sold to AI products**, now with an endpoint built for LLM context. There's **no webmaster console**; Brave staff point site owners to a **URL form at `search.brave.com/submit-url`**, and say plainly that a submission doesn't guarantee indexing | The site's indexing work has been Google, Bing (still refusing IndexNow), Yandex and Seznam. **Brave is a separate door, and the one several AI assistants look through.** A family asking an assistant *"what's on this weekend in Mount Prospect"* can only be pointed here if the site is in an index that assistant reads. The form takes a URL, no account (item 516) |
-| **Thin pages on a young domain** (`docs/sensory-friendly/`, built from item 502; the site's sitemap) | `/sensory-friendly/` is in the sitemap and indexable with **one event** (Mount Prospect's *Winter Wonderland*, Dec 11). Other seasonal hubs (`/give/`, `/new-years-eve/`, `/museum-passes/`, `/santa/` "just outside" sections) can also go live nearly empty. The site has **no rule** for keeping a near-empty page out of the index (`noindex` is never set by `build_digest.py`) | For a domain search engines are still deciding whether to index (Search Console showed many *"Discovered – currently not indexed"* pages, item 338), every thin page counts against the whole site. Holding a page back until it has something to show, then submitting it, is cheap insurance (item 517) |
+| **Brave Search, never mentioned in 145 passes** (Brave community-forum answers from staff; Brave's Search API news, Feb 2026, adding an **LLM-context endpoint for AI**; a third-party explainer on how AI assistants search the web) | Brave runs **its own independent index**, not Bing's or Google's. Its **Search API is sold to AI products**, now with an endpoint built for LLM context. There's **no webmaster console**; Brave staff point site owners to a **URL form at `search.brave.com/submit-url`**, and say plainly that a submission doesn't guarantee indexing | The site's indexing work has been Google, Bing (still refusing IndexNow), Yandex and Seznam. **Brave is a separate door, and the one several AI assistants look through.** A family asking an assistant *"what's on this weekend in Mount Prospect"* can only be pointed here if the site is in an index that assistant reads. The form takes a URL, no account (item 517) |
+| **Thin pages on a young domain** (`docs/sensory-friendly/`, built from item 502; the site's sitemap) | `/sensory-friendly/` is in the sitemap and indexable with **one event** (Mount Prospect's *Winter Wonderland*, Dec 11). Other seasonal hubs (`/give/`, `/new-years-eve/`, `/museum-passes/`, `/santa/` "just outside" sections) can also go live nearly empty. The site uses `noindex` for expired event pages and short-path redirects, but has **no rule** for keeping a near-empty *hub* page out of the index | For a domain search engines are still deciding whether to index (Search Console showed many *"Discovered – currently not indexed"* pages, item 338), every thin page counts against the whole site. Holding a page back until it has something to show, then submitting it, is cheap insurance (item 516) |
 | **The sensory-friendly page on a phone (design/UX)** | One dated card, an explanation, a share button and the signup. There are **no evergreen resources**: a sensory page with one event a month will look empty most of the year. National programmes that run locally (AMC's *Sensory Friendly Films*, monthly at participating theatres; AMC Randhurst 12 is in Mount Prospect, but participation isn't confirmed) and library sensory kits would fill it, but only where a first-party page confirms them | Parents of children with sensory needs plan around **recurring, dependable** options more than one-off events. A few sourced standing entries make the page worth bookmarking (item 518) |
 
 #### P1 (new)
 
-517. **Keep near-empty pages out of the index until they fill.** Build
+516. **Keep near-empty pages out of the index until they fill.** Build
      loop. A `thin_page` rule for hub pages and their town variants:
      `/sensory-friendly/`, `/give/`, `/new-years-eve/`, `/museum-passes/`,
      `/santa/`, `/holidays/`, `/winter-break/`, `/indoor-play/` and future
@@ -21592,7 +21592,7 @@ newest pages help or hurt how search engines see a young domain.
 
 #### P2 (new)
 
-516. **Submit the site to Brave Search (owner, 2 minutes, inside step 1).**
+517. **Submit the site to Brave Search (owner, 2 minutes, inside step 1).**
      The build loop writes a short list to the Needs Ryan step 1 note:
      the hub, the six town pages, `/this-weekend/`, `/santa/` and
      `/holidays/`. While doing step 1, paste each into
@@ -21617,11 +21617,11 @@ newest pages help or hurt how search engines see a young domain.
        theatres. AMC Randhurst 12 [if confirmed] →"*, *"Sensory kits to
        borrow: Arlington Heights Memorial Library [if confirmed] →"*.
 
-     They count toward item 517's threshold. Tests: an unconfirmed theatre
+     They count toward item 516's threshold. Tests: an unconfirmed theatre
      isn't listed, and a confirmed one renders with its source.
 
-Re-rank: **517 goes to the top of the build queue**. It protects every new
-seasonal page from here on. **516** goes in Needs Ryan step 1, no new step.
+Re-rank: **516 goes to the top of the build queue**. It protects every new
+seasonal page from here on. **517** goes in Needs Ryan step 1, no new step.
 **518** follows.
 
 Competitors reviewed this pass: **Brave Search** as an independent index
