@@ -7148,6 +7148,48 @@ def build_conditional_email_body(by_town: dict[str, str], fallback: str) -> str:
     return "".join(parts)
 
 
+_RACE_TITLE = re.compile(r"\b(?:turkey trot|trot|5k|10k|fun run|run/walk|race|dash|gobble)\b", re.IGNORECASE)
+
+
+def thanksgiving_morning(sections: list[dict], now: datetime, limit: int = 3) -> dict | None:
+    """ROADMAP.md items 510 and 512: Thanksgiving-morning family events (before
+    noon), races first. In the issue delivered the week before, a "register
+    now" line (online registration closes before race day); in the issue
+    delivered the day before (item 491's Wednesday), a "Thanksgiving morning"
+    line. None in every other issue."""
+    delivery = email_delivery_time(now)
+    day = _thanksgiving(delivery.year)
+    gap = (day - delivery.date()).days
+    if not 1 <= gap <= 8:
+        return None
+    found, seen = [], set()
+    for sec in sections:
+        for e in sec.get("upcoming_events") or []:
+            try:
+                start = datetime.fromisoformat(e.get("date_iso") or "")
+            except ValueError:
+                continue
+            start = start.astimezone(LOCAL_TZ).replace(tzinfo=None) if start.tzinfo else start
+            if start.date() != day or not (time(0, 1) <= start.time() < time(12, 0)) or e.get("event_status") or e.get("attendable") is False:
+                continue
+            race = bool(_RACE_TITLE.search(e.get("title") or ""))
+            if not race and family_relevance(e) < 0:
+                continue
+            key = (sec["region_name"], (e.get("title") or "").lower())
+            if key in seen:
+                continue
+            seen.add(key)
+            found.append((not race, start, {"town": sec["region_name"], "title": display_title(e["title"]).replace("🦃", "").strip(),
+                                             "when": event_time_label(start.isoformat()), "url": e.get("url"), "google_calendar_url": e.get("google_calendar_url")}))
+    if not found:
+        return None
+    found.sort(key=lambda f: f[:2])
+    items = [f[2] for f in found[:limit]]
+    if gap == 1:
+        return {"label": "🦃 Thanksgiving morning", "rows": items}
+    return {"label": "🦃 Turkey trots on Thanksgiving morning: register online before race day", "rows": items}
+
+
 def town_one_liner(block: dict) -> str:
     """ROADMAP.md item 481: "Mount Prospect: Diwali Party, MPCB Fall Concert and 3 more"
     from the town's first two titles and a count of the rest."""
@@ -7396,6 +7438,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
             region_blocks = [home] + [b for b in region_blocks if b is not home]
     top_picks = pick_email_top_picks(region_blocks)
     tonight = select_tonight(sections, now)  # item 497
+    thanksgiving = thanksgiving_morning(sections, now)  # items 510, 512
     event_total = sum(len([e for e in s["weekend_events"] if e.get("attendable", True)]) for s in sections)
     town_total = sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"]))
     empty_regions_summary = None
@@ -7427,6 +7470,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         region_blocks=region_blocks,
         reader_town_name=reader_town_name,
         tonight=tonight,
+        thanksgiving=thanksgiving,
         top_picks=top_picks,
         poll=poll_links(now.astimezone(LOCAL_TZ).date()),
         event_total=event_total,
