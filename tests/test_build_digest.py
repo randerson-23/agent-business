@@ -7807,3 +7807,20 @@ def test_turkey_trots_register_line_on_nov_19_and_morning_line_on_nov_25(monkeyp
         assert any(title in e["title"] and e["date"].startswith("2026-11-26") for e in cfg["annual_events"])
     give = build_digest.load_yaml(build_digest.CONFIG_DIR / "give.yaml")
     assert any("Wheeling Township Food Pantry" in d["name"] for d in give["regions"]["arlington-heights-60005"]["drives"])
+
+
+def test_turkey_trot_line_takes_races_only_and_indoor_ideas_must_be_ideas(monkeypatch):
+    # ROADMAP.md item 513.
+    def ev(title, iso, url):
+        return {"title": title, "url": url, "date_iso": iso, "tags": ["kid_friendly"], "detail": "d", "attendable": True}
+    secs = [{"region_name": "Mount Prospect", "upcoming_events": [ev("Free! Triple Turkey Burner", "2026-11-26T08:00:00", "https://mp/burn")]},
+            {"region_name": "Palatine", "upcoming_events": [ev("🦃 Palatine Park District Turkey Trot", "2026-11-26T08:00:00", "https://p/tt")]},
+            {"region_name": "Arlington Heights", "upcoming_events": [ev("🦃 Arlington Heights Turkey Trot", "2026-11-26T09:00:00", "https://runsignup.com/x")]}]
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {})
+    rows = build_digest.thanksgiving_morning(secs, datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc))["rows"]
+    assert [r["town"] for r in rows] == ["Palatine", "Arlington Heights"]
+    evergreen = [{"title": "Arlington Heights Memorial Library", "url": "https://ahml", "tags": ["indoor", "kid_friendly"]},
+                 {"title": "Arlington Heights Park District", "url": "https://ahpd", "tags": ["indoor"]}]
+    assert build_digest.thin_week_ideas(evergreen, 0) == []
+    idea = {"title": "Museum passes with your library card", "url": "https://ahml/passes", "tags": ["indoor", "free"]}
+    assert build_digest.thin_week_ideas(evergreen + [idea], 0) == [idea]

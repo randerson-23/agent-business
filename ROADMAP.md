@@ -21495,7 +21495,7 @@ the turkey-trot line.
 
 #### P1 (new)
 
-513. **Turkey trots must be races; indoor ideas must be ideas.** Build loop:
+513. (✅ DONE 2026-11-15: the Thanksgiving line takes only titles with trot, run, 5K, 10K, mile, dash or race, or a RunSignup link; `thin_week_ideas` skips evergreen entries whose title is only an organisation's name (library, park district, village, district, YMCA) unless they carry `idea: true`, so the line hides when that's all a town has) 513. **Turkey trots must be races; indoor ideas must be ideas.** Build loop:
 
      - **(a)** The Thanksgiving race selection requires *trot*, *run*,
        *5K*, *mile*, *dash* or *race* in the title, or a RunSignup
