@@ -7931,7 +7931,7 @@ THIN_WEEK_THRESHOLD = 4
 
 
 _ORG_NAME_ONLY = re.compile(
-    r"^\W*(?:[A-Z][\w.'’&-]*\s+){0,5}(?:public library|memorial library|library|park district|parks?|village(?: of [\w ]+)?|city of [\w ]+|school district(?: \d+)?|district \d+|ymca|community center)\W*$",
+    r"^\W*(?:[A-Z][\w.'’&-]*\s+){0,5}(?:(?:public |memorial )?library(?: district)?|park district|parks?|village(?: of [\w ]+)?|city of [\w ]+|school district(?: \d+)?|district \d+|ymca|community center)\W*$",
     re.IGNORECASE,
 )
 

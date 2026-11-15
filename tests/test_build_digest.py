@@ -7820,7 +7820,8 @@ def test_turkey_trot_line_takes_races_only_and_indoor_ideas_must_be_ideas(monkey
     rows = build_digest.thanksgiving_morning(secs, datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc))["rows"]
     assert [r["town"] for r in rows] == ["Palatine", "Arlington Heights"]
     evergreen = [{"title": "Arlington Heights Memorial Library", "url": "https://ahml", "tags": ["indoor", "kid_friendly"]},
-                 {"title": "Arlington Heights Park District", "url": "https://ahpd", "tags": ["indoor"]}]
+                 {"title": "Arlington Heights Park District", "url": "https://ahpd", "tags": ["indoor"]},
+                 {"title": "Palatine Public Library District", "url": "https://ppld", "tags": ["indoor"]}]
     assert build_digest.thin_week_ideas(evergreen, 0) == []
     idea = {"title": "Museum passes with your library card", "url": "https://ahml/passes", "tags": ["indoor", "free"]}
     assert build_digest.thin_week_ideas(evergreen + [idea], 0) == [idea]
