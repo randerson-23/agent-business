@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **513** (turkey trots must be races, indoor ideas must be ideas; before the **Nov 19** send), then **514** (rink and event status from AHPD's Rainout Line, by Dec 15), **511** (RunSignup, keyless confirmed; filter on `next_date`), **515**.
 0. **510** with **512** (the Arlington Heights and Palatine turkey trots from their RunSignup pages, a register-by line in the **Nov 19** issue, and a Thanksgiving-morning line on Nov 25), then **511** (RunSignup races within ten miles, probe first).
 0. **507** (test the per-reader email from CI with a Buttondown draft send, then turn item 481 on), then **508** (town in the subject line) and **509** ("Which town is yours?" for untagged readers).
 0. **504** with **506** (cancelled, postponed and rescheduled events detected, marked with eventStatus and never picked; a snow line in the email), then **505** (park districts' Rainout Line pages, probe first).
@@ -21449,6 +21450,8 @@ class.
      3. Tag them `outdoor` and `active`. Races with a kids' event get
         `kid-friendly`.
 
+     Filter on `next_date` inside the build window: the API returns
+     annual races whose next date may be a year out (pass 145).
      Re-probe every build. If the API needs a key, say so in the item
      and stop (no owner key for this). Tests: a fixture response becomes
      events, an out-of-area race is excluded, and a kids' dash sets the
@@ -21473,6 +21476,82 @@ turkey trots' own RunSignup pages** (and Fleet Feet's, findarace's and
 trainerday's listings of them), plus **RunSignup's public race API** as a
 data source. The design/UX angle is **Thanksgiving morning in the
 Wednesday issue**.
+
+#### Research pass 2026-11-15 (hundred-and-forty-fifth pass)
+
+Overnight the build loop shipped items 510 and 512 (the Arlington Heights and
+Palatine turkey trots, a register-now line, and a Thanksgiving-morning line)
+and ran probe round 45. **Both probes answered.** RunSignup's `/Rest/races`
+returned JSON **without a key** for zip 60056 within 10 miles, so item 511 can
+proceed. AHPD's **Rainout Line pages are readable**. This pass reads what
+Rainout Line actually lists, and checks today's email preview, the first with
+the turkey-trot line.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **What AHPD's Rainout Line lists** (`rainoutline.com/search/dnis_refresh/8475742233`, read by probe round 45; extension pages such as `/search/extension/8475742233/31`) | One status line per **facility or programme**, with statuses like ***"It's A Go!"*** and ***"Canceled"*** plus a note (Camelot Pool: *"Canceled – Closed for the season. See you in 2027!"*). The list includes **"Skate on Eastman Ice Rink" (ext. 37)**, **"Park District EVENTS" (ext. 7)**, **"Plan To Play Pop Up Events" (ext. 11)**, **"Recreation Park – Skate Park" (36)**, four pools, turf fields and league lines | This is the **live status of the winter outdoor places item 311 is about**. *"Is the rink open today?"* is the winter twin of trick-or-treat hours, and AHPD answers it here, daily, in plain HTML. Extension 7 is a same-day **event** status that feeds item 504's cancellation marking. Item 505 asked whether this was readable, and it is (item 514) |
+| **RunSignup, keyless** (probe round 45: `runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&events=T…`) | **200 with JSON.** Races carry `last_date` and **`next_date`**: one race read *last 09/20/2026, next 09/26/2027*. So the API returns **recurring annual races** whose next date may be a year out | Item 511 can be built as specified. The fetcher must filter on **`next_date` within the build window**, not just "upcoming", or next year's dates will crowd the pages. Recorded in item 511 (no new item) |
+| **Today's email preview (design/UX)** (`docs/combined-email-preview.html`, built Sun Nov 15) | The **turkey-trot line works**: *"🦃 Turkey trots on Thanksgiving morning: register online before race day"*, with Palatine at 8:00 and Arlington Heights at 9:00 and their calendar links. But its third entry is ***"Free! Triple Turkey Burner"* (Mount Prospect, 8:00 AM)**, a **fitness class** matched on *turkey*. The thin-weekend fallback (item 494's precursor) shows ***"Indoor ideas, anytime this week: Arlington Heights Memorial Library"***, just the library's name with no idea in it | A workout class listed as a turkey trot is the kind of small wrong thing a parent notices. The *"Indoor ideas"* line promises an idea and gives a building's name (item 513) |
+
+#### P1 (new)
+
+513. **Turkey trots must be races; indoor ideas must be ideas.** Build loop:
+
+     - **(a)** The Thanksgiving race selection requires *trot*, *run*,
+       *5K*, *mile*, *dash* or *race* in the title, or a RunSignup
+       source, not just *turkey*. *"Free! Triple Turkey Burner"* stays a
+       class in its town section.
+     - **(b)** Until item 492's indoor-play guide exists, the *"Indoor
+       ideas, anytime this week"* line names **something to do**, drawn
+       from the town's evergreen entries that have an activity (for
+       example *"AHML Kids' World play area"*, *"museum passes with your
+       library card"*). If none exists, **hide the line** rather than
+       print a building's name.
+
+     Tests: the Turkey Burner is excluded from the trot line, the line
+     keeps the two races, and the indoor line is hidden when only a
+     venue name is available.
+
+514. **Live status for rinks and park events from AHPD's Rainout Line.**
+     Build loop, item 505's step 2:
+
+     - A `rainoutline` fetcher that reads AHPD's `dnis_refresh` page once
+       per build and maps each extension's **name, status and note**.
+     - **Rinks and sled hills** (*"Skate on Eastman Ice Rink"* and any
+       winter extension that appears) become a ***"Today: Eastman ice
+       rink: open ✓"*** or ***"closed, [note]"*** line on the Arlington
+       Heights page and on item 311's winter-outdoors page, from Dec
+       15. It says *"from the park district's weather line, checked
+       [time]"*.
+     - **"Park District EVENTS" (ext. 7)**: a *Canceled* status naming an
+       event marks the matching event cancelled under item 504's rules.
+       If no event matches, nothing is inferred.
+     - Off-season lines (pools *"closed for the season"*) are ignored.
+
+     Tests: a fixture page yields the rink line with its timestamp, a
+     *Canceled* event status marks a matching event, and pool lines are
+     ignored.
+
+#### P2 (new)
+
+515. **Find the other districts' Rainout Lines.** Build loop, probe first.
+     Rainout Line is common among Illinois park districts. Probe for
+     Mount Prospect, Des Plaines, Palatine, Wheeling, Elk Grove and Salt
+     Creek park districts' Rainout Line numbers: search each district's
+     site for *"Rainout Line"* or *rainoutline.com* links in a probe
+     round. Where one exists, add it to item 514's fetcher with that
+     district's rinks and event extensions. Tests: one fixture per new
+     district and agency labels on the lines.
+
+Re-rank: **513 goes to the top of the build queue**. It's small, and the Nov
+19 issue will carry the turkey-trot line. **514** follows, ready by **Dec 15**
+when the rinks open. **511** proceeds (keyless confirmed), with the
+`next_date` filter. **515** follows 514.
+
+Competitors reviewed this pass: none new. This pass read **probe round
+45's answers** (AHPD's Rainout Line and RunSignup's keyless race API) as
+data sources. The design/UX angle is **today's email preview**: a fitness
+class among the turkey trots, and an "indoor idea" that's only a building.
 
 
 ## Working agreements for autonomous iteration
