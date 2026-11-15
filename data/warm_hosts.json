@@ -463,6 +463,12 @@
     "time": "15:00",
     "title": "TOP OF THE WORLD…A CARPENTERS TRIBUTE - HOLIDAY SHOW",
     "venue": "Des Plaines Theatre"
+   },
+   {
+    "date": "2026-12-15",
+    "time": "19:30",
+    "title": "TERRY FATOR: A VERY TERRY CHRISTMAS",
+    "venue": "Des Plaines Theatre"
    }
   ],
   "name": "Des Plaines Theatre",
@@ -519,6 +525,11 @@
    {
     "date": "2026-12-13",
     "title": "A Christmas Carol - Main Stage",
+    "venue": "Metropolis Performing Arts Centre"
+   },
+   {
+    "date": "2026-12-15",
+    "title": "Great Moments in Vinyl Gives You The Hits of the Holidays",
     "venue": "Metropolis Performing Arts Centre"
    }
   ],

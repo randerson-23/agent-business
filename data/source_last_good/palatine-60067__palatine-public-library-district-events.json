@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-14T13:39:43+00:00",
+ "fetched_at": "2026-11-15T06:08:40+00:00",
  "items": [
   {
    "date": null,
@@ -72,6 +72,12 @@
    "detail": "",
    "title": "Toddler Storytime",
    "url": "https://www.palatinelibrary.org/event/toddler-storytime-231947"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Baby Storytime",
+   "url": "https://www.palatinelibrary.org/event/baby-storytime-227061"
   },
   {
    "date": null,
@@ -168,6 +174,12 @@
    "detail": "",
    "title": "Preschool Storytime",
    "url": "https://www.palatinelibrary.org/event/preschool-storytime-240994"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Toddler Storytime",
+   "url": "https://www.palatinelibrary.org/event/toddler-storytime-241016"
   }
  ],
  "source": "Palatine Public Library District — Events"

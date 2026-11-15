@@ -2,42 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-11-14T22:04:17+00:00",
+  "dateModified": "2026-11-15T06:08:40+00:00",
   "numberOfItems": 17,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
-        "startDate": "2026-11-14T19:30:00-06:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-14",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Harper College",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Harper College",
-          "url": "https://events.harpercollege.edu"
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -67,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "\"Guys and Dolls SR\"",
@@ -97,7 +67,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -127,7 +97,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "New & Used Clothing Sale",
@@ -157,7 +127,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -187,7 +157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -217,7 +187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting Ceremony",
@@ -247,7 +217,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Helping Hands Pantry Food Drive at Holiday Tree Lighting",
@@ -277,7 +247,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -307,7 +277,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "No School | Parent/Teacher Conference Day",
@@ -331,7 +301,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "No School | Parent/Teacher Conference Day",
@@ -355,7 +325,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "No School | Nonattendance Day",
@@ -379,7 +349,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Fall Break - All D211 Buildings Closed",
@@ -403,7 +373,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "No School | Thanksgiving Recess",
@@ -423,6 +393,36 @@
         },
         "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "2026-27 Official School Calendar (English)2026-27 Official Sc"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "item": {
+        "@type": "Event",
+        "name": "🦃 Palatine Park District Turkey Trot",
+        "startDate": "2026-11-26T08:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-park-district-turkey-trot-2026-11-26",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://jobs.palatineparks.org/event/turkey-trot/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "the organiser",
+          "url": "https://jobs.palatineparks.org"
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "The 46th annual Thanksgiving Day Turkey Trot at Harper College's Health and Recreation Center: 2-mile run/walk at 8:00 AM, 5-mile at 8:30 AM ($35 through Nov…"
       }
     },
     {
