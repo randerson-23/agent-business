@@ -7148,7 +7148,7 @@ def build_conditional_email_body(by_town: dict[str, str], fallback: str) -> str:
     return "".join(parts)
 
 
-_RACE_TITLE = re.compile(r"\b(?:turkey trot|trot|5k|10k|fun run|run/walk|race|dash|gobble)\b", re.IGNORECASE)
+_RACE_TITLE = re.compile(r"\b(?:trot|run|5k|10k|mile|dash|race)\b", re.IGNORECASE)  # item 513(a): a race, not "turkey"
 
 
 def thanksgiving_morning(sections: list[dict], now: datetime, limit: int = 3) -> dict | None:
@@ -7172,8 +7172,8 @@ def thanksgiving_morning(sections: list[dict], now: datetime, limit: int = 3) ->
             start = start.astimezone(LOCAL_TZ).replace(tzinfo=None) if start.tzinfo else start
             if start.date() != day or not (time(0, 1) <= start.time() < time(12, 0)) or e.get("event_status") or e.get("attendable") is False:
                 continue
-            race = bool(_RACE_TITLE.search(e.get("title") or ""))
-            if not race and family_relevance(e) < 0:
+            race = bool(_RACE_TITLE.search(e.get("title") or "")) or "runsignup.com" in (e.get("url") or "")
+            if not race:  # item 513(a): "Free! Triple Turkey Burner" is a class, not a trot
                 continue
             key = (sec["region_name"], (e.get("title") or "").lower())
             if key in seen:
@@ -7930,6 +7930,12 @@ def build_days_off_email_line(sections: list[dict], now: datetime) -> dict | Non
 THIN_WEEK_THRESHOLD = 4
 
 
+_ORG_NAME_ONLY = re.compile(
+    r"^\W*(?:[A-Z][\w.'’&-]*\s+){0,5}(?:(?:public |memorial )?library(?: district)?|park district|parks?|village(?: of [\w ]+)?|city of [\w ]+|school district(?: \d+)?|district \d+|ymca|community center)\W*$",
+    re.IGNORECASE,
+)
+
+
 def thin_week_ideas(evergreen: list[dict], attendable_count: int, limit: int = 3) -> list[dict]:
     """Up to `limit` evergreen indoor ideas for a thin week (ROADMAP.md item
     312): when a town has fewer than THIN_WEEK_THRESHOLD attendable weekend
@@ -7938,7 +7944,8 @@ def thin_week_ideas(evergreen: list[dict], attendable_count: int, limit: int = 3
     a busy week."""
     if attendable_count >= THIN_WEEK_THRESHOLD:
         return []
-    indoor = [e for e in evergreen if "indoor" in (e.get("tags") or []) and e.get("title") and e.get("url")]
+    # Item 513(b): an idea names something to do, not just an organisation.
+    indoor = [e for e in evergreen if "indoor" in (e.get("tags") or []) and e.get("title") and e.get("url") and (e.get("idea") or not _ORG_NAME_ONLY.search(e["title"]))]
     indoor.sort(key=lambda e: -sum(1 for t in ("kid_friendly", "free") if t in (e.get("tags") or [])))
     return indoor[:limit]
 
