@@ -768,6 +768,14 @@
   <p class="do-sponsor"><span class="do-paid">Sponsored</span> Presented by <a href="{{ days_off_sponsor.url }}" rel="sponsored noopener">{{ days_off_sponsor.title }}</a>{% if days_off_sponsor.detail %} &mdash; {{ days_off_sponsor.detail }}{% endif %}</p>
   {% endif %}
   {% if election_line %}<p class="election-line"><a href="{{ election_line.url }}" rel="noopener">{{ election_line.text }} &rarr;</a></p>{% endif %}
+  {% if live_status %}
+  {# ROADMAP.md item 514: today's rink and sled-hill status from the park district's weather line. #}
+  <section class="days-off" id="live-status" aria-labelledby="live-status-heading">
+    <h2 id="live-status-heading">⛸️ Today</h2>
+    <ul>{% for l in live_status %}<li><a href="{{ l.url }}" rel="noopener">{{ l.text }}</a></li>{% endfor %}</ul>
+    <p class="note">{{ live_status[0].source }}.</p>
+  </section>
+  {% endif %}
   {% if closures %}
   {# ROADMAP.md items 307/444: closures the town's own feeds post, shown whenever one is dated in the next seven days. #}
   <section class="days-off" id="closures" aria-labelledby="closures-heading">

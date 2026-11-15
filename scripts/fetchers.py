@@ -1169,6 +1169,59 @@ def _submit_indexnow_fallbacks(host: str, key: str, key_location: str, urls: lis
     return accepted
 
 
+# ROADMAP.md item 514: Rainout Line, the weather-status line many park
+# districts use. The organisation's list page (/search/dnis_refresh/<dnis>)
+# gives each extension's name; each extension page serves its status in HTML
+# (<span class="status2">Canceled</span>&nbsp;-&nbsp;note, "Last updated at ...").
+RAINOUT_BASE = "https://rainoutline.com/search"
+_RAINOUT_ENTRY = re.compile(r'/search/extension/(\d+)/(\d+)"[^>]*>([^<]{1,120})</a>', re.IGNORECASE)
+_RAINOUT_STATUS = re.compile(r'class="status\d*"[^>]*>\s*([^<]{1,60}?)\s*</span>(?:\s*(?:&nbsp;|\s)*-(?:&nbsp;|\s)*([^<]{0,240}))?', re.IGNORECASE)
+_RAINOUT_UPDATED = re.compile(r"Last updated at\s+([^<]{4,40}?)\s+by", re.IGNORECASE)
+
+
+def parse_rainout_list(page: str, dnis: str) -> list[dict]:
+    seen, out = set(), []
+    for m in _RAINOUT_ENTRY.finditer(page or ""):
+        if m.group(1) != str(dnis) or m.group(2) in seen:
+            continue
+        seen.add(m.group(2))
+        out.append({"ext": m.group(2), "name": html.unescape(m.group(3)).strip()})
+    return out
+
+
+def parse_rainout_extension(page: str) -> dict | None:
+    m = _RAINOUT_STATUS.search(page or "")
+    if not m:
+        return None
+    updated = _RAINOUT_UPDATED.search(page)
+    return {"status": html.unescape(m.group(1)).strip(), "note": html.unescape(m.group(2) or "").strip(),
+            "updated": html.unescape(updated.group(1)).strip() if updated else None}
+
+
+def fetch_rainoutline(dnis: str, want: "re.Pattern[str]") -> list[dict] | None:
+    """Status of the extensions whose names match `want` (rinks, sled hills,
+    event lines). None when the list page can't be read; an extension whose
+    page fails is skipped. Never fatal."""
+    try:
+        listing = parse_rainout_list(_get(f"{RAINOUT_BASE}/dnis_refresh/{dnis}").text, dnis)
+    except Exception as exc:  # noqa: BLE001 - fail soft
+        logger.warning("Rainout Line list %s failed: %s", dnis, exc)
+        return None
+    out = []
+    for entry in listing:
+        if not want.search(entry["name"]):
+            continue
+        url = f"{RAINOUT_BASE}/extension/{dnis}/{entry['ext']}"
+        try:
+            status = parse_rainout_extension(_get(url).text)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Rainout Line %s ext %s failed: %s", dnis, entry["ext"], exc)
+            continue
+        if status:
+            out.append(dict(entry, url=url, **status))
+    return out
+
+
 FETCHERS = {
     "rss": fetch_rss,
     "ics": fetch_ics,

@@ -1270,3 +1270,16 @@ def test_fetch_ics_reads_status(mock_get):
     mock_get.return_value = _mock_response(ics)
     items = fetch_ics("https://example.org/cal.ics")
     assert items[0]["status"] == "CANCELLED"
+
+
+def test_rainout_list_and_extension_parsing():
+    # ROADMAP.md item 514: the markup probe rounds 44 and 45 recorded.
+    import fetchers
+    page = ('<div class="cell2 padding5 tborder"><h5><a href="https://rainoutline.com/search/extension/8475742233/37">Skate on Eastman Ice Rink</a></h5></div>'
+            '<div class="cell2 padding5 tborder"><h5><a href="https://rainoutline.com/search/extension/8475742233/31">Camelot Pool</a></h5></div>'
+            '<a href="https://rainoutline.com/search/extension/8475742233/37">Skate on Eastman Ice Rink</a>')
+    assert fetchers.parse_rainout_list(page, "8475742233") == [{"ext": "37", "name": "Skate on Eastman Ice Rink"}, {"ext": "31", "name": "Camelot Pool"}]
+    ext = ('<span class="status2">Canceled</span>&nbsp;-&nbsp;Closed for the season. See you in 2027! <br /><br /> '
+           '<span class="clue"><em>Last updated at 8/31/26 3:24 pm by AHPD</em></span>')
+    assert fetchers.parse_rainout_extension(ext) == {"status": "Canceled", "note": "Closed for the season. See you in 2027!", "updated": "8/31/26 3:24 pm"}
+    assert fetchers.parse_rainout_extension("<p>nothing</p>") is None
