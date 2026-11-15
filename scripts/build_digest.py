@@ -37,7 +37,7 @@ from jinja2 import Environment, FileSystemLoader
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_weather, safe_http_url, submit_bing_urls, submit_indexnow  # noqa: E402
+from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_rainoutline, fetch_weather, safe_http_url, submit_bing_urls, submit_indexnow  # noqa: E402
 import warm_prospects  # noqa: E402
 from tagging import SENSORY_FRIENDLY, infer_tags, is_informational, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
 
@@ -4310,6 +4310,7 @@ def render_region_page(
     camp_links: list[dict] | None = None,
     nye_events: list[dict] | None = None,
     closures: list[dict] | None = None,
+    live_status: list[dict] | None = None,
     build_scope_end_iso: str | None = None,
     stale_empty_message: str | None = None,
     empty_follow_url: str | None = None,
@@ -4366,6 +4367,7 @@ def render_region_page(
         now_year=nye_season_year(now.astimezone(LOCAL_TZ).date()),
         og_title=og_title,
         closures=closures,
+        live_status=live_status or [],
         election_line=election_day_line(now),
         faq=faq,
         faq_json_ld=build_faq_json_ld(faq) if faq else None,
@@ -7151,6 +7153,65 @@ def build_conditional_email_body(by_town: dict[str, str], fallback: str) -> str:
 _RACE_TITLE = re.compile(r"\b(?:trot|run|5k|10k|mile|dash|race)\b", re.IGNORECASE)  # item 513(a): a race, not "turkey"
 
 
+RAINOUT_WANT = re.compile(r"\bice\b|\brinks?\b|\bsled|toboggan|\bevents?\b", re.IGNORECASE)
+_RAINOUT_RINK = re.compile(r"\bice\b|\brinks?\b|\bsled|toboggan", re.IGNORECASE)
+_RAINOUT_OFF_SEASON = re.compile(r"for the (?:season|winter|year)|see you (?:in|next)", re.IGNORECASE)
+_RAINOUT_OPEN = re.compile(r"\bgo\b|\bopen\b", re.IGNORECASE)
+_RAINOUT_CLOSED = re.compile(r"cancel|closed", re.IGNORECASE)
+
+
+def rink_season(today: date) -> bool:
+    """ROADMAP.md item 514: rink status lines run Dec 15 to the end of February."""
+    return (today.month == 12 and today.day >= 15) or today.month in (1, 2)
+
+
+def rainout_status_lines(entries: list[dict] | None, today: date, checked: datetime, organiser: str) -> list[dict]:
+    """Rink and sled-hill lines from a park district's Rainout Line (item 514):
+    "Skate on Eastman Ice Rink: open ✓" or "closed, <note>", in season only,
+    and never an off-season line ("closed for the season")."""
+    if not entries or not rink_season(today):
+        return []
+    lines = []
+    for e in entries:
+        if not _RAINOUT_RINK.search(e["name"]) or _RAINOUT_OFF_SEASON.search(e.get("note") or ""):
+            continue
+        if _RAINOUT_OPEN.search(e["status"]):
+            state = "open ✓"
+        elif _RAINOUT_CLOSED.search(e["status"]):
+            state = "closed" + (f", {e['note']}" if e.get("note") else "")
+        else:
+            state = e["status"] + (f", {e['note']}" if e.get("note") else "")
+        lines.append({"text": f"{e['name']}: {state}", "url": e["url"],
+                      "source": f"From the {organiser}'s weather line, checked {checked.strftime('%-I:%M %p').lower()}"})
+    return lines
+
+
+def apply_rainout_event_status(entries: list[dict] | None, blocks: list[dict], today: date) -> int:
+    """Item 514: a "Canceled" status on the district's events line marks the
+    events it names (today or tomorrow) cancelled under item 504's rules. An
+    event matches only when every significant word of its title is in the
+    note; nothing is inferred otherwise."""
+    marked = 0
+    for e in entries or []:
+        if not re.search(r"\bevents?\b", e["name"], re.IGNORECASE) or not _RAINOUT_CLOSED.search(e["status"]):
+            continue
+        note = set(_title_words(e.get("note") or ""))
+        if not note:
+            continue
+        for block in blocks:
+            for ev in block.get("events", []):
+                words = set(_title_words(ev.get("title") or ""))
+                try:
+                    day = datetime.fromisoformat(ev.get("date_iso") or "").date()
+                except ValueError:
+                    continue
+                if len(words) >= 2 and words <= note and 0 <= (day - today).days <= 1 and not ev.get("event_status"):
+                    ev["event_status"] = "cancelled"
+                    ev["status_source"] = "Status from the park district's weather line"
+                    marked += 1
+    return marked
+
+
 def thanksgiving_morning(sections: list[dict], now: datetime, limit: int = 3) -> dict | None:
     """ROADMAP.md items 510 and 512: Thanksgiving-morning family events (before
     noon), races first. In the issue delivered the week before, a "register
@@ -8614,6 +8675,13 @@ def main() -> None:
         blocks, removed_closures = split_closures(blocks)  # item 444
         blocks = drop_school_admin(blocks)  # item 485
         clear_suspect_times(blocks)  # item 485
+        rainout_cfg = region_cfg.get("rainout_line") or {}
+        rainout_entries = fetch_rainoutline(str(rainout_cfg["dnis"]), RAINOUT_WANT) if rainout_cfg.get("dnis") else None  # item 514
+        if rainout_entries:
+            n = apply_rainout_event_status(rainout_entries, blocks, local_today)
+            if n:
+                logger.info("Rainout Line marked %d %s event(s) cancelled", n, region_id)
+        live_status = rainout_status_lines(rainout_entries, local_today, now.astimezone(LOCAL_TZ), rainout_cfg.get("organiser") or "park district")
         if tree_lighting and not tree_lighting.get("label"):  # item 496: the town's own feed fills an empty config
             from_feed = tree_lighting_from_feed(region_cfg, blocks, now.year)
             if from_feed:
@@ -8677,6 +8745,7 @@ def main() -> None:
             days_off=region_days_off,
             days_off_sponsor=build_days_off_sponsor(sponsors_cfg, region_id, local_today),
             closures=region_closures,
+            live_status=live_status,  # item 514
         )
 
         region_dir = OUTPUT_DIR / region_id

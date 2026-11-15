@@ -21512,7 +21512,7 @@ the turkey-trot line.
      keeps the two races, and the indoor line is hidden when only a
      venue name is available.
 
-514. **Live status for rinks and park events from AHPD's Rainout Line.**
+514. (✅ BUILT 2026-11-15: `fetch_rainoutline` reads AHPD's list page (dnis 8475742233, config `rainout_line:` in arlington-heights-60005.yaml) for names, then only the rink, sled and events extensions' own pages (span.status, note, "Last updated at"); from Dec 15 to Feb 28 the Arlington Heights page shows "⛸️ Today: Skate on Eastman Ice Rink: open ✓ / closed, <note>" with "From the Arlington Heights Park District's weather line, checked <time>"; off-season notes are ignored; a Canceled status on "Park District EVENTS" marks today's or tomorrow's events whose every title word is in the note cancelled (item 504). The sandbox can't reach rainoutline.com, so the first live reading is CI's; item 311's winter page doesn't exist yet) 514. **Live status for rinks and park events from AHPD's Rainout Line.**
      Build loop, item 505's step 2:
 
      - A `rainoutline` fetcher that reads AHPD's `dnis_refresh` page once

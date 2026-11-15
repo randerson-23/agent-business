@@ -7825,3 +7825,23 @@ def test_turkey_trot_line_takes_races_only_and_indoor_ideas_must_be_ideas(monkey
     assert build_digest.thin_week_ideas(evergreen, 0) == []
     idea = {"title": "Museum passes with your library card", "url": "https://ahml/passes", "tags": ["indoor", "free"]}
     assert build_digest.thin_week_ideas(evergreen + [idea], 0) == [idea]
+
+
+def test_rainout_rink_line_event_cancellation_and_pools_ignored():
+    # ROADMAP.md item 514.
+    entries = [
+        {"ext": "37", "name": "Skate on Eastman Ice Rink", "status": "It's A Go!", "note": "", "url": "https://r/37"},
+        {"ext": "31", "name": "Camelot Pool", "status": "Canceled", "note": "Closed for the season. See you in 2027!", "url": "https://r/31"},
+        {"ext": "7", "name": "Park District EVENTS", "status": "Canceled", "note": "Winter Fest at Recreation Park is cancelled today due to weather.", "url": "https://r/7"},
+    ]
+    checked = datetime(2026, 12, 19, 9, 5)
+    lines = build_digest.rainout_status_lines(entries, date(2026, 12, 19), checked, "Arlington Heights Park District")
+    assert [l["text"] for l in lines] == ["Skate on Eastman Ice Rink: open ✓"]
+    assert lines[0]["source"] == "From the Arlington Heights Park District's weather line, checked 9:05 am"
+    assert build_digest.rainout_status_lines(entries, date(2026, 11, 20), checked, "x") == []  # before Dec 15
+    closed = [dict(entries[0], status="Closed", note="Ice too soft")]
+    assert build_digest.rainout_status_lines(closed, date(2027, 1, 5), checked, "x")[0]["text"] == "Skate on Eastman Ice Rink: closed, Ice too soft"
+    blocks = [{"events": [{"title": "Winter Fest", "date_iso": "2026-12-19T12:00:00"}, {"title": "Recreation Park Cleanup", "date_iso": "2026-12-19T09:00:00"},
+                          {"title": "Winter Fest", "date_iso": "2026-12-26T12:00:00"}]}]
+    assert build_digest.apply_rainout_event_status(entries, blocks, date(2026, 12, 19)) == 1
+    assert blocks[0]["events"][0]["event_status"] == "cancelled" and "event_status" not in blocks[0]["events"][2]

@@ -136,6 +136,12 @@ sources:
 # fall festival, runs Fri-Sat, Oct 2-3, 2026, in Harmony Park - one entry
 # per day since Friday and Saturday have different hours. Not yet
 # confirmed by a live fetch of the linked page's exact hours.
+# ROADMAP.md item 514: AHPD's Rainout Line (847-574-2233, its March 2026 instructions PDF), read each build:
+# rink and sled-hill status from Dec 15, and its "Park District EVENTS" line marks named events cancelled.
+rainout_line:
+  dnis: "8475742233"
+  organiser: "Arlington Heights Park District"
+
 annual_events:
   # ROADMAP.md item 510: the race's own RunSignup page (the organiser's registration page), as indexed
   # by search (item 478: runsignup.com is unreachable from the build sandbox), 2026-11-15.
