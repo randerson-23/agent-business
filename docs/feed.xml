@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 21 of 30 configured sources. 4 sources are shown from their last update, up to 1 hour ago.</description>
-  <lastBuildDate>Sun, 15 Nov 2026 14:05:26 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 26 of 30 configured sources.</description>
+  <lastBuildDate>Sun, 15 Nov 2026 22:01:29 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: 3D Printing Essentials: Replicate a Piece</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-3d-printing-essentials-replicate-a-piece-2026-11-15</link>
@@ -56,14 +56,6 @@
     <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
     <pubDate>Sun, 15 Nov 2026 14:00:00 +0000</pubDate>
     <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
-  </item>
-  <item>
-    <title>Palatine: "Guys and Dolls SR"</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-15</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-guys-and-dolls-sr-2026-11-15</guid>
-    <description>"Guys and Dolls SR" presented by Palatine Park District Theatre Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Sun, 15 Nov 2026 14:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Elk Grove Village: Box Car Drive-In</title>
@@ -450,6 +442,15 @@
  Create a card for any occasion with supplies in The Makerspace. Official listing: https://egvpl.libnet.info/event/17006434</description>
     <pubDate>Tue, 17 Nov 2026 15:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17006434">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Maker's Place</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-maker-s-place-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-maker-s-place-2026-11-17</guid>
+    <description>Tuesday, November 17 2026 4:00pm - 5:30pm 
+ Come to the Maker's Place to make something cool and hang out. Official listing: https://desplaines.libnet.info/event/17194663</description>
+    <pubDate>Tue, 17 Nov 2026 16:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17194663">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>

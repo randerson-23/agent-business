@@ -538,6 +538,75 @@
   "url": "https://egvpl.libnet.info/event/15584326",
   "venue": "Elk Grove Village Public Library"
  },
+ "e/2026-11-20-family-photos/": {
+  "date_iso": "2026-11-20T11:00:00",
+  "detail": "Friday, November 20 2026 11:00am - 1:30pm \n Have a fun family photoshoot at South Branch!",
+  "detail_long": "Have a fun family photoshoot at South Branch!",
+  "first_seen": "2026-11-15",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261120T110000%0D%0ADTEND%3A20261120T120000%0D%0ASUMMARY%3AFamily%20Photos%0D%0ADESCRIPTION%3AFriday%5C%2C%20November%2020%202026%2011%3A00am%20-%201%3A30pm%20%5Cn%20Have%20a%20fun%20family%20photoshoot%20at%20South%20Branch%21%0D%0ALOCATION%3AMount%20Prospect%20Public%20Library%5C%2C%20125%20S%20Emerson%20St%5C%2C%20Mount%20Prospect%0D%0AURL%3Ahttps%3A//mppl.libnet.info/event/16883938%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-20-family-photos/",
+  "postal_code": null,
+  "region_id": "mount-prospect-60056",
+  "region_url": "https://withintenmiles.com/mount-prospect-60056/",
+  "source": "Mount Prospect Public Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "125 S Emerson St",
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Family Photos",
+  "town": "Mount Prospect",
+  "url": "https://mppl.libnet.info/event/16883938",
+  "venue": "Mount Prospect Public Library"
+ },
+ "e/2026-11-20-youth-services-registration-for-december-programs/": {
+  "date_iso": "2026-11-20T09:00:00",
+  "detail": "Friday, November 20 2026 9:00am - 9:00am \n Registration for Youth Services December programs, and all One Book, One Village programs, begins Friday, November…",
+  "detail_long": "Registration for Youth Services December programs, and all One Book, One Village programs, begins Friday, November 20, 9 am. Our programs can fill up quickly, for the best results register online.",
+  "first_seen": "2026-11-15",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261120T090000%0D%0ADTEND%3A20261120T100000%0D%0ASUMMARY%3AYouth%20Services%20Registration%20for%20December%20Programs%0D%0ADESCRIPTION%3AFriday%5C%2C%20November%2020%202026%209%3A00am%20-%209%3A00am%20%5Cn%20Registration%20for%20Youth%20Services%20December%20programs%5C%2C%20and%20all%20One%20Book%5C%2C%20One%20Village%20programs%5C%2C%20begins%20Friday%5C%2C%20November%E2%80%A6%0D%0AURL%3Ahttps%3A//egvpl.libnet.info/event/17487748%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-20-youth-services-registration-for-december-programs/",
+  "postal_code": null,
+  "region_id": "elk-grove-village-60007",
+  "region_url": "https://withintenmiles.com/elk-grove-village-60007/",
+  "source": "Elk Grove Village Public Library - Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Youth Services Registration for December Programs",
+  "town": "Elk Grove Village",
+  "url": "https://egvpl.libnet.info/event/17487748",
+  "venue": "Elk Grove Village Public Library"
+ },
+ "e/2026-11-21-family-time/": {
+  "date_iso": "2026-11-21T00:00:00",
+  "detail": "",
+  "detail_long": "",
+  "first_seen": "2026-11-15",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3BVALUE%3DDATE%3A20261121%0D%0ADTEND%3BVALUE%3DDATE%3A20261122%0D%0ASUMMARY%3AFamily%20Time%0D%0ALOCATION%3AArlington%20Heights%20Memorial%20Library%5C%2C%20500%20N.%20Dunton%20Ave.%5C%2C%20Arlington%20Heights%0D%0AURL%3Ahttps%3A//www.ahml.info/scheduling/reservation/224198%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-21-family-time/",
+  "postal_code": null,
+  "region_id": "arlington-heights-60005",
+  "region_url": "https://withintenmiles.com/arlington-heights-60005/",
+  "source": "Arlington Heights Memorial Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "500 N. Dunton Ave.",
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Family Time",
+  "town": "Arlington Heights",
+  "url": "https://www.ahml.info/scheduling/reservation/224198",
+  "venue": "Arlington Heights Memorial Library"
+ },
  "e/2026-11-21-holiday-tree-lighting-ceremony/": {
   "date_iso": "2026-11-21T16:00:00",
   "detail": "Join Mayor Schwantz and Santa for the annual Holiday Tree Light",
