@@ -21613,7 +21613,7 @@ newest pages help or hurt how search engines see a young domain.
 
 #### P3 (new)
 
-518. **Standing entries on `/sensory-friendly/`, sourced.** Build loop, probe
+518. (🟡 PROBE 2026-11-16: round 46 asks AMC's Sensory Friendly Films page whether Randhurst is named; library sensory-kit pages still to find) **Standing entries on `/sensory-friendly/`, sourced.** Build loop, probe
      first:
 
      - Probe AMC's *Sensory Friendly Films* page and AMC Randhurst 12's
@@ -21653,7 +21653,7 @@ programmes in winter.
 
 #### P1 (new)
 
-519. **Read the Forest Preserves of Cook County's north-region events.**
+519. (🟡 STEP 1 2026-11-16: probe round 46 asks FPCC's Events Calendar REST (north category) and its two iCal exports; read data/url_probes.json next) **Read the Forest Preserves of Cook County's north-region events.**
      Build loop, probe first:
 
      1. Probe `fpdcc.com/wp-json/tribe/events/v1/events?start_date=<today>&end_date=<+60d>&per_page=50`,
