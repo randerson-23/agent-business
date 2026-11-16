@@ -3,69 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 26 of 30 configured sources.</description>
-  <lastBuildDate>Sun, 15 Nov 2026 22:01:29 +0000</lastBuildDate>
-  <item>
-    <title>Arlington Heights: 3D Printing Essentials: Replicate a Piece</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-3d-printing-essentials-replicate-a-piece-2026-11-15</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-3d-printing-essentials-replicate-a-piece-2026-11-15</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/233443</description>
-    <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/233443">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: The Arlington Camera Club</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-15</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-15</guid>
-    <description>Sunday, November 15 2026 12:00am - 11:59pm 
- Arlington Camera Club photography exhibit. Official listing: https://egvpl.libnet.info/event/16362683</description>
-    <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/16362683">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Picture Book Month Challenge</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-15</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-15</guid>
-    <description>Sunday, November 15 2026 12:00am - 11:59pm 
- November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues… Official listing: https://egvpl.libnet.info/event/17074015</description>
-    <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/17074015">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Word of the Week</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-15</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-15</guid>
-    <description>Sunday, November 15 2026 12:00am - 11:59pm 
- Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up… Official listing: https://egvpl.libnet.info/event/17354427</description>
-    <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/17354427">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Seguridad de Internet 101 (Spanish)</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-seguridad-de-internet-101-spanish-2026-11-15</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-seguridad-de-internet-101-spanish-2026-11-15</guid>
-    <description>Sunday, November 15 2026 2:00pm - 3:00pm 
- Esta clase, ideal para principiantes, te enseña a detectar estafas comunes, identificar correos electrónicos falsos… Official listing: https://desplaines.libnet.info/event/17605874</description>
-    <pubDate>Sun, 15 Nov 2026 14:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17605874">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-15</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-15</guid>
-    <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
-    <pubDate>Sun, 15 Nov 2026 14:00:00 +0000</pubDate>
-    <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Box Car Drive-In</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-box-car-drive-in-2026-11-15</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-box-car-drive-in-2026-11-15</guid>
-    <description>Sunday, November 15 2026 2:30pm - 3:30pm 
- Take a box and turn it into a car during an afternoon of creativity! We will end this event with popcorn and a… Official listing: https://egvpl.libnet.info/event/16920140</description>
-    <pubDate>Sun, 15 Nov 2026 14:30:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/16920140">Elk Grove Village Public Library - Events</source>
-  </item>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 24 of 30 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Mon, 16 Nov 2026 06:06:48 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Kids' Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-16</link>
@@ -451,6 +390,69 @@
  Come to the Maker's Place to make something cool and hang out. Official listing: https://desplaines.libnet.info/event/17194663</description>
     <pubDate>Tue, 17 Nov 2026 16:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17194663">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Teen Craft: Ping Pong Ball Snowmen</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-teen-craft-ping-pong-ball-snowmen-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-teen-craft-ping-pong-ball-snowmen-2026-11-17</guid>
+    <description>Tuesday, November 17 2026 4:00pm - 5:00pm 
+  Each month we meet to get crafty and make something new with supplies from the library. This month, we're making… Official listing: https://mppl.libnet.info/event/14039966</description>
+    <pubDate>Tue, 17 Nov 2026 16:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/14039966">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Chapter One Book Club | Grades K-1</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-chapter-one-book-club-grades-k-1-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-chapter-one-book-club-grades-k-1-2026-11-17</guid>
+    <description>Tuesday, November 17 2026 4:00pm - 5:00pm 
+ Book pickup October 20-November 10 at the Youth Services Desk. Lucy and Nera both want the Moon Blossom. But when… Official listing: https://indiantrails.libnet.info/event/17104129</description>
+    <pubDate>Tue, 17 Nov 2026 16:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17104129">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: CSI Session 3</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-csi-session-3-2026-11-17</guid>
+    <description>Tuesday, November 17 2026 4:15pm - 4:45pm 
+ SESSION 3: Gravity, Force and Motion - Let's investigate with STEM! This class combines a little bit of Science,… Official listing: https://egvpl.libnet.info/event/17206269</description>
+    <pubDate>Tue, 17 Nov 2026 16:15:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17206269">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Book a Teen Librarian</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-17</guid>
+    <description>Tuesday, November 17 2026 5:00pm - 6:00pm 
+ Come in and get to know your teen librarians! Official listing: https://desplaines.libnet.info/event/17867457</description>
+    <pubDate>Tue, 17 Nov 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17867457">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Gaming Group</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-gaming-group-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-gaming-group-2026-11-17</guid>
+    <description>Tuesday, November 17 2026 5:00pm - 6:30pm 
+ This program will offer modded Minecraft and Roblox play for experienced gamers, and Feed the Beast to learn new… Official listing: https://egvpl.libnet.info/event/17295551</description>
+    <pubDate>Tue, 17 Nov 2026 17:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17295551">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Stitches on Miner</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-stitches-on-miner-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-stitches-on-miner-2026-11-17</guid>
+    <description>Tuesday, November 17 2026 5:30pm - 7:30pm 
+ Come join us for a few hours of dedicated crafting time, perfect for working on those eternal works-in-progress or… Official listing: https://desplaines.libnet.info/event/16742518</description>
+    <pubDate>Tue, 17 Nov 2026 17:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/16742518">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Resume Review &amp; Career Coaching Appointments</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-resume-review-career-coaching-appointments-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-resume-review-career-coaching-appointments-2026-11-17</guid>
+    <description>Tuesday, November 17 2026 6:00pm - 7:00pm 
+ Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching… Official listing: https://indiantrails.libnet.info/event/17102240</description>
+    <pubDate>Tue, 17 Nov 2026 18:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17102240">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

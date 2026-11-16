@@ -22,10 +22,6 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/224198"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/224220"
   },
   {
@@ -34,15 +30,15 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/226527"
+   "url": "https://www.ahml.info/scheduling/reservation/226523"
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/230133"
+   "url": "https://www.ahml.info/scheduling/reservation/233406"
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/233443"
+   "url": "https://www.ahml.info/scheduling/reservation/233828"
   },
   {
    "region": "arlington-heights-60005",
@@ -51,6 +47,10 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/236748"
+  },
+  {
+   "region": "arlington-heights-60005",
+   "url": "https://www.ahml.info/scheduling/reservation/236749"
   },
   {
    "region": "arlington-heights-60005",
@@ -79,6 +79,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15509801"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15509802"
   },
   {
    "region": "des-plaines-60016",
@@ -234,6 +238,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17253045"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17274961"
   },
   {
@@ -270,10 +278,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17605874"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17623532"
   },
   {
@@ -287,6 +291,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17635814"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17635815"
   },
   {
    "region": "des-plaines-60016",
@@ -307,6 +315,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17690869"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17829482"
   },
   {
    "region": "des-plaines-60016",
@@ -394,10 +406,6 @@
   },
   {
    "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/16362683"
-  },
-  {
-   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/16362684"
   },
   {
@@ -454,6 +462,10 @@
   },
   {
    "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/16362698"
+  },
+  {
+   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/16438021"
   },
   {
@@ -483,10 +495,6 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/16878203"
-  },
-  {
-   "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/16920140"
   },
   {
    "region": "elk-grove-village-60007",
@@ -555,10 +563,6 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17069393"
-  },
-  {
-   "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/17074015"
   },
   {
    "region": "elk-grove-village-60007",
@@ -662,10 +666,6 @@
   },
   {
    "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/17354427"
-  },
-  {
-   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17354428"
   },
   {
@@ -718,7 +718,19 @@
   },
   {
    "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17354441"
+  },
+  {
+   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17487748"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17872641"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17872670"
   },
   {
    "region": "mount-prospect-60056",
@@ -847,6 +859,14 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16856374"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16873363"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16873366"
   },
   {
    "region": "mount-prospect-60056",
@@ -986,6 +1006,10 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17048150"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17056882"
   },
   {
@@ -1003,6 +1027,10 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17101404"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17101476"
   },
   {
    "region": "wheeling-60090",
@@ -1031,6 +1059,14 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17104217"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17104244"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17104245"
   },
   {
    "region": "wheeling-60090",

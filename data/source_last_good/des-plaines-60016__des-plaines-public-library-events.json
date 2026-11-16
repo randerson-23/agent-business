@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-15T22:01:29+00:00",
+ "fetched_at": "2026-11-16T06:06:48+00:00",
  "items": [
-  {
-   "date": "Sun, 15 Nov 2026 14:00:00 +0000",
-   "detail": "Sunday, November 15 2026 2:00pm - 3:00pm \n Esta clase, ideal para principiantes, te enseña a detectar estafas comunes, identificar correos electrónicos falsos y crear contraseñas sencillas y seguras para proteger tu información privada.",
-   "title": "Seguridad de Internet 101 (Spanish)",
-   "url": "https://desplaines.libnet.info/event/17605874"
-  },
   {
    "date": "Mon, 16 Nov 2026 00:00:00 +0000",
    "detail": "Monday, November 16 2026 12:00am - 11:59pm \n Take & Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit throughout the month! Available while supplies last. For teens in grades 7-12.",
@@ -360,6 +354,12 @@
    "detail": "Thursday, November 26 2026 12:00am - 11:59pm \n Library Closed",
    "title": "Library Closed",
    "url": "https://desplaines.libnet.info/event/14793248"
+  },
+  {
+   "date": "Fri, 27 Nov 2026 00:00:00 +0000",
+   "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Library Closed",
+   "title": "Library Closed",
+   "url": "https://desplaines.libnet.info/event/14793249"
   }
  ],
  "source": "Des Plaines Public Library — Events"
