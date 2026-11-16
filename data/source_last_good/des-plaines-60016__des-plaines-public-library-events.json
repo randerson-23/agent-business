@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-16T14:01:13+00:00",
+ "fetched_at": "2026-11-16T16:02:49+00:00",
  "items": [
   {
    "date": "Mon, 16 Nov 2026 00:00:00 +0000",
@@ -168,6 +168,12 @@
    "detail": "Thursday, November 19 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and conversation skills",
    "title": "ESL (English as a Second Language) Class - Oakton College",
    "url": "https://desplaines.libnet.info/event/15803244"
+  },
+  {
+   "date": "Thu, 19 Nov 2026 09:30:00 +0000",
+   "detail": "Thursday, November 19 2026 9:30am - 11:30am \n Mary P.  847- 331-1888",
+   "title": "Des Plaines Garden Club",
+   "url": "https://desplaines.libnet.info/event/17921922"
   },
   {
    "date": "Thu, 19 Nov 2026 10:00:00 +0000",
@@ -354,12 +360,6 @@
    "detail": "Thursday, November 26 2026 12:00am - 11:59pm \n Library Closed",
    "title": "Library Closed",
    "url": "https://desplaines.libnet.info/event/14793248"
-  },
-  {
-   "date": "Fri, 27 Nov 2026 00:00:00 +0000",
-   "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Library Closed",
-   "title": "Library Closed",
-   "url": "https://desplaines.libnet.info/event/14793249"
   }
  ],
  "source": "Des Plaines Public Library — Events"

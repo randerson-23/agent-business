@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-11-16T14:10:57+00:00",
-  "numberOfItems": 71,
+  "dateModified": "2026-11-16T16:02:49+00:00",
+  "numberOfItems": 72,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -876,6 +876,38 @@
       "position": 28,
       "item": {
         "@type": "Event",
+        "name": "Des Plaines Garden Club",
+        "startDate": "2026-11-19T09:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-garden-club-2026-11-19",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17921922",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Thursday, November 19 2026 9:30am - 11:30am \n Mary P.  847- 331-1888"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 29,
+      "item": {
+        "@type": "Event",
         "name": "Toddler Time",
         "startDate": "2026-11-19T10:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-19",
@@ -905,7 +937,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Oakton College Information Table",
@@ -937,7 +969,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Liberation Bookmarks",
@@ -969,7 +1001,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1001,7 +1033,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Linocut Block Printing Workshop",
@@ -1033,7 +1065,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -1065,7 +1097,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "River's Edge Condo Assoc.",
@@ -1097,7 +1129,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "ART GARFUNKEL - WHAT A WONDERFUL WORLD CONCERT",
@@ -1128,7 +1160,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
@@ -1159,7 +1191,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion: Five Decembers",
@@ -1191,7 +1223,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1223,7 +1255,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Q & A One on One Appointment",
@@ -1255,7 +1287,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "THE PHIL COLLINS EXPERIENCE with SPECIAL GUEST THE SATURDAY JUNE BAND",
@@ -1286,7 +1318,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
@@ -1317,7 +1349,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "DIY with DPPL",
@@ -1349,7 +1381,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Play Packs",
@@ -1381,7 +1413,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Cafecito Y Libritos",
@@ -1413,7 +1445,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Cat Toy Workshop",
@@ -1445,7 +1477,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "SNAP SHOT CLASSIC ROCK EXPERIENCE with SPECIAL GUEST CLASS OF 68",
@@ -1476,7 +1508,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with the DOWNTOWN CHARLIE BROWN BAND",
@@ -1507,7 +1539,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "POOH: 60th ANNIVERSARY TOUR - FINALE",
@@ -1538,7 +1570,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -1570,7 +1602,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1602,7 +1634,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -1634,7 +1666,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Happy Spinsters",
@@ -1666,7 +1698,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "$10 SILENT FILM SERIES - \"The Passion of Joan of Arc\" (1928), Presented by The Silent Film Society of Chicago",
@@ -1697,7 +1729,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1729,7 +1761,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1761,7 +1793,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "School's Out Drop-in Craft",
@@ -1793,7 +1825,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Design a Stanley in the Canvas",
@@ -1825,7 +1857,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1857,7 +1889,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -1889,7 +1921,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -1921,7 +1953,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "Bridges of Meaning",
@@ -1953,7 +1985,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "HAIRBANGERS BALL with SPECIAL GUEST MIKE & JOE - The Midwest's Most Renowed Cover Band",
@@ -1984,7 +2016,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: BLUES NIGHT EXTRAVAGANZA featuring DOWNTOWN CHARLIE BROWN, SEAN McKEE, MILES MINOR, JEFF BRINKMAN and JOE VALENTINO - THANKSGIVING EVE!",
@@ -2015,7 +2047,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "KASHMIR: THE MUSIC OF LED ZEPPELIN",
@@ -2046,7 +2078,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with DONNY DeMARCO & TUNE TOWN",
@@ -2077,7 +2109,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "$1 CHRISTMAS CLASSIC FILM SERIES: \"How The Grinch Stole Christmas\" (2000)",
@@ -2108,7 +2140,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "The Financial Aid Process for College",
@@ -2140,7 +2172,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Tween Movie",
@@ -2172,7 +2204,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "AN EVENING WITH DEACON BLUES: STEELY DAN TRIBUTE",
@@ -2203,7 +2235,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE JAZZ WITH THE BOURBON 'N BRASS BRIAN PATTI PROHIBITION DANCE BAND - 20s & 30s DANCE HITS",
@@ -2234,7 +2266,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "Tech en el Forum (Spanish)",
