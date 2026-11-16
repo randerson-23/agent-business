@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-11-16T06:06:48+00:00",
+  "dateModified": "2026-11-16T14:01:13+00:00",
   "numberOfItems": 15,
   "itemListElement": [
     {
@@ -72,7 +72,7 @@
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
         "startDate": "2026-11-21T09:00:00-06:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-11-21",
+        "url": "https://withintenmiles.com/e/2026-11-21-palatine-winter-farmers-market/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -91,7 +91,7 @@
           "name": "the organiser",
           "url": "https://www.palatine.il.us"
         },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "image": "https://withintenmiles.com/og/e/2026-11-21-palatine-winter-farmers-market.png",
         "description": "1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April."
       }
     },
