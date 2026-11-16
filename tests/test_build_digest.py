@@ -7845,3 +7845,17 @@ def test_rainout_rink_line_event_cancellation_and_pools_ignored():
                           {"title": "Winter Fest", "date_iso": "2026-12-26T12:00:00"}]}]
     assert build_digest.apply_rainout_event_status(entries, blocks, date(2026, 12, 19)) == 1
     assert blocks[0]["events"][0]["event_status"] == "cancelled" and "event_status" not in blocks[0]["events"][2]
+
+
+def test_thin_hub_pages_are_noindex_and_out_of_the_sitemap():
+    # ROADMAP.md item 516.
+    html = '<html><head><meta name="robots" content="max-image-preview:large"></head><body></body></html>'
+    thin = set()
+    one = build_digest.apply_thin_page(html, "sensory-friendly/", 1, thin)
+    assert 'content="noindex, follow, max-image-preview:large"' in one and thin == {"sensory-friendly/"}
+    assert build_digest.apply_thin_page(html, "santa/", 3, thin) == html and "santa/" not in thin
+    urls = build_digest.collect_sitemap_urls([], thin_paths=thin)
+    assert build_digest.SITE_BASE_URL + "sensory-friendly/" not in urls and build_digest.SITE_BASE_URL + "santa/" in urls
+    xml = build_digest.build_sitemap_xml([], datetime(2026, 11, 16, tzinfo=timezone.utc), thin_paths=thin)
+    assert "sensory-friendly/" not in xml
+    assert build_digest.hub_entry_count([{"events": [1, 2], "tree": {"label": "Fri"}}, {"events": []}]) == 3
