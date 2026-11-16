@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **521** (regional sources add, not bury: merge FPCC repeats, drop adult wellness, cap at 15% of a town's cards, 8-mile radius; before the **Nov 19** send), then **522** (Schaumburg's Spring Valley Nature Center, probe first) and **523** (probe only).
 0. **519** with **520** (Forest Preserves of Cook County north-region events via the Events Calendar fetcher, nearest town with distance; probe first).
 0. **516** (near-empty pages noindex and out of the sitemap until they reach 3 entries, then submitted), **517** (Brave Search URL list in the Needs Ryan step 1 note), then **518**.
 0. **513** (turkey trots must be races, indoor ideas must be ideas; before the **Nov 19** send), then **514** (rink and event status from AHPD's Rainout Line, by Dec 15), **511** (RunSignup, keyless confirmed; filter on `next_date`), **515**.
@@ -21697,6 +21698,73 @@ Competitors reviewed this pass: **the Forest Preserves of Cook County**
 as a data source (fpdcc.com's event pages, its winter guide, the Friends
 of the Forest Preserves' calendar). The design/UX angle is **where a
 regional venue belongs** on six town pages.
+
+#### Research pass 2026-11-16, evening (hundred-and-forty-eighth pass)
+
+Today the build loop shipped items 519 and 520: the Forest Preserves of Cook
+County's north region (180 events, a 60-day horizon, read through its REST
+route), each event placed in its nearest town with a distance line. This
+pass reads what that did to the town pages, then looks at the two other
+nearby agencies with nature centres.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The FPCC volume on the town pages (design/UX)** (built `docs/<town>/index.html`, counted by card) | **Wheeling: 35 of 291 cards** are River Trail Nature Center (*"≈ 3 mi from Wheeling"*), led by **"Wildlife Connections" ×9** and **"What's On The Menu?" ×8**, repeats that item 381's merge doesn't catch. **Des Plaines: 45 mentions** of **Caldwell Woods Wellness Center (Chicago)**, mostly *"Weekly yoga class for all ages…"*, plus **Thatcher Woods (River Forest) at ≈ 10 mi**. Palatine gets Crabtree at ≈ 7 mi. Adult programmes (*Forest Therapy Walk*, *Monday Morning Mood Booster*, yoga) and a *Volunteer Workday* sit among the family listings | The source is right, but its weight is wrong. A Wheeling parent scrolls past a nature centre's daily feeding nine times, and a Des Plaines parent gets a Chicago yoga studio. A regional source should **add** the story trails and owl prowls a town lacks, not **bury** the town's own village, library and park district (item 521) |
+| **Schaumburg Park District's Spring Valley Nature Center** (parkfun.com event pages: *Puppet Show*, *Earth Day Party*, campfires; mykidlist's organiser page; ActiveKids class listings) | Spring Valley (1111 E. Schaumburg Rd) runs **free monthly puppet shows** in its nature-centre library, **family campfires** ($3/person, $12/family), an Earth Day party, a **Sugar Bush Fair** (maple sugaring, free) and preschool nature classes. It's ~5–6 miles from Palatine, Arlington Heights and Elk Grove Village. Its event URLs (`parkfun.com/event/<slug>`) match **The Events Calendar's** pattern, and classes register through **ActiveNet** | Another free family nature source within ten miles, with headline seasonal events (Sugar Bush Fair in March, campfires) that the towns don't run. If its Events Calendar answers like FPCC's, it's one config entry on the fetcher just built (item 522) |
+| **Lake County Forest Preserves, Ryerson Woods** (lcfpd.org's calendar week and month views; Daily Herald and Patch roundups of LCFPD programmes) | Ryerson Woods (Riverwoods) is ~7 miles from Wheeling. LCFPD publishes **HTML calendar views** (`/calendar/weeklist-<week>-<year>`, `/calendar/<month><year>`) with **no feed found**. Its family programmes (maple-syrup hikes, naturalist walks) **fill fast** | Lower value than Spring Valley (one venue, no feed), so it's worth a probe only. Recorded so it isn't re-researched (item 523) |
+
+#### P1 (new)
+
+521. **Make the regional sources add, not bury.** Build loop, for
+     `tribe_venues` and any future regional source (FPCC now, Schaumburg
+     next):
+
+     - **Merge repeats:** the same title at the same venue on 2 or more
+       dates in 14 days becomes **one card** with its dates
+       (*"Wildlife Connections · Sat & Sun, Nov 21–29"*), by extending
+       item 381/490's merge to regional sources, which it currently
+       misses.
+     - **Family fit:** use item 445's adult demotion, plus *yoga*,
+       *forest therapy*, *mood booster*, *wellness*, *meditation* and
+       *adults only* for regional sources. *Volunteer workday* goes to
+       `/give/`'s volunteer section (item 442), not the town list.
+     - **Weight:** regional events take **at most 15% of a town's cards**
+       and **one "Don't miss" slot** per weekend, ranked after the
+       town's own sources.
+     - **Radius:** **8 miles** for regional venues (Thatcher Woods at 10
+       mi drops), keeping 10 for "Just outside".
+
+     Success check: Wheeling's River Trail cards fall from 35 to under 10,
+     and Des Plaines carries no Chicago yoga class. Tests: the merge
+     collapses a nine-date series, yoga is excluded, the 15% cap holds,
+     and a 9-mile venue drops.
+
+#### P2 (new)
+
+522. **Schaumburg Park District's nature centre, probe first.** Build loop.
+     Probe `parkfun.com/wp-json/tribe/events/v1/events` and
+     `parkfun.com/events/?ical=1`. If either answers, add a `tribe_venues`
+     source **limited to Spring Valley Nature Center and other venues
+     within 8 miles** of a town centre, under item 521's rules. Its
+     seasonal headliners (puppet shows, campfires, the Sugar Bush Fair)
+     are the target. Tests: a fixture maps a Spring Valley puppet show to
+     the nearest town, and a far Schaumburg venue drops.
+
+#### P3 (new)
+
+523. **Lake County Forest Preserves' Ryerson Woods, probe only.** Build loop.
+     One probe of `lcfpd.org/calendar` for an iCal or RSS export and for
+     Ryerson Woods listings. Add a source only if a feed exists; never
+     scrape the week views. Tests: none until a feed is confirmed.
+
+Re-rank: **521 goes to the top of the build queue**. The FPCC weight is on
+every town page now, and in the Nov 19 issue's town sections. **522**
+follows once 521's rules exist. **523** is a probe only.
+
+Competitors reviewed this pass: **Schaumburg Park District's Spring Valley
+Nature Center** and **Lake County Forest Preserves' Ryerson Woods** as
+nearby nature sources. The design/UX angle is **what 180 FPCC events did
+to the town pages**.
 
 
 ## Working agreements for autonomous iteration
