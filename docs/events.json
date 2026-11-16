@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-16T14:01:13+00:00",
-  "numberOfItems": 254,
+  "dateModified": "2026-11-16T14:10:57+00:00",
+  "numberOfItems": 255,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -7431,6 +7431,36 @@
       "position": 244,
       "item": {
         "@type": "Event",
+        "name": "Schaumburg Turkey Trot Half Marathon & 5K",
+        "startDate": "2026-11-28T07:45:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-schaumburg-turkey-trot-half-marathon-5k-2026-11-28",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://runsignup.com/Race/IL/ElkGroveVillage/SchaumburgHalfMarathon5k",
+        "organizer": {
+          "@type": "Organization",
+          "name": "RunSignup",
+          "url": "https://runsignup.com"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Races: 5K, 5K - UNTIMED, Half Marathon, Half Marathon - Extended Online Registration, 5K - Extended Online Registration, 5K UNTIMED - Extended Online…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 245,
+      "item": {
+        "@type": "Event",
         "name": "Fun Factory Saturday",
         "startDate": "2026-11-28T09:30:00-06:00",
         "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-fun-factory-saturday-2026-11-28",
@@ -7458,7 +7488,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 245,
+      "position": 246,
       "item": {
         "@type": "Event",
         "name": "$1 CHRISTMAS CLASSIC FILM SERIES: \"How The Grinch Stole Christmas\" (2000)",
@@ -7489,7 +7519,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 246,
+      "position": 247,
       "item": {
         "@type": "Event",
         "name": "The Financial Aid Process for College",
@@ -7521,7 +7551,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 247,
+      "position": 248,
       "item": {
         "@type": "Event",
         "name": "Tween Movie",
@@ -7553,7 +7583,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 248,
+      "position": 249,
       "item": {
         "@type": "Event",
         "name": "Picture Book Bingo",
@@ -7583,7 +7613,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 249,
+      "position": 250,
       "item": {
         "@type": "Event",
         "name": "AN EVENING WITH DEACON BLUES: STEELY DAN TRIBUTE",
@@ -7614,7 +7644,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 250,
+      "position": 251,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE JAZZ WITH THE BOURBON 'N BRASS BRIAN PATTI PROHIBITION DANCE BAND - 20s & 30s DANCE HITS",
@@ -7645,7 +7675,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 251,
+      "position": 252,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -7675,7 +7705,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 252,
+      "position": 253,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -7705,7 +7735,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 253,
+      "position": 254,
       "item": {
         "@type": "Event",
         "name": "Reading Fair",
@@ -7736,7 +7766,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 254,
+      "position": 255,
       "item": {
         "@type": "Event",
         "name": "Tech en el Forum (Spanish)",
