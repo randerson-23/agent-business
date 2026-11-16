@@ -10,6 +10,10 @@
   },
   {
    "region": "arlington-heights-60005",
+   "url": "https://www.ahml.info/scheduling/reservation/195034"
+  },
+  {
+   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/218153"
   },
   {
@@ -19,6 +23,10 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/224184"
+  },
+  {
+   "region": "arlington-heights-60005",
+   "url": "https://www.ahml.info/scheduling/reservation/224198"
   },
   {
    "region": "arlington-heights-60005",
@@ -34,11 +42,7 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/233406"
-  },
-  {
-   "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/233828"
+   "url": "https://www.ahml.info/scheduling/reservation/226527"
   },
   {
    "region": "arlington-heights-60005",
@@ -47,10 +51,6 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/236748"
-  },
-  {
-   "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/236749"
   },
   {
    "region": "arlington-heights-60005",
@@ -391,6 +391,18 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/the-phil-collins-experience-10/"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://fpdcc.com/event/rock-and-crystal-gardens/"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-11-18/"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-11-25/"
   },
   {
    "region": "elk-grove-village-60007",
@@ -770,10 +782,6 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/15390278"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/15921892"
   },
   {
@@ -971,6 +979,62 @@
   {
    "region": "palatine-60067",
    "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/cicada-pinning-class-2/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/forest-therapy-walk-8/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/indoor-edible-gardens/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/monday-morning-mood-booster-7/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/nocturnal-hunters-owls-2/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/river-trail-nightlife-owl-prowl-2/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/river-trail-nightlife-owl-prowl/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/small-serendipity-5/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-11-21/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-11-22/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-11-28/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-11-29/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/wildlife-connections/2026-11-17/"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://fpdcc.com/event/wildlife-connections/2026-11-24/"
   },
   {
    "region": "wheeling-60090",

@@ -561,6 +561,28 @@
   "url": "https://mppl.libnet.info/event/16883938",
   "venue": "Mount Prospect Public Library"
  },
+ "e/2026-11-20-river-trail-nightlife-owl-prowl/": {
+  "date_iso": "2026-11-20T17:00:00",
+  "detail": "River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. A guided walk on our trail to search for local owls. Ages 8 & up.",
+  "detail_long": "River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. A guided walk on our trail to search for local owls. Ages 8 & up.",
+  "first_seen": "2026-11-16",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261120T170000%0D%0ADTEND%3A20261120T180000%0D%0ASUMMARY%3ARiver%20Trail%20Nightlife%3A%20Owl%20Prowl%0D%0ADESCRIPTION%3ARiver%20Trail%20Nature%20Center%20%28Northbrook%29%20%C2%B7%20%E2%89%88%203%20mi%20from%20Wheeling.%20A%20guided%20walk%20on%20our%20trail%20to%20search%20for%20local%20owls.%20Ages%208%20%26%20up.%0D%0AURL%3Ahttps%3A//fpdcc.com/event/river-trail-nightlife-owl-prowl/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-20-river-trail-nightlife-owl-prowl/",
+  "postal_code": null,
+  "region_id": "wheeling-60090",
+  "region_url": "https://withintenmiles.com/wheeling-60090/",
+  "source": "Forest Preserves of Cook County — north",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "outdoor"
+  ],
+  "title": "River Trail Nightlife: Owl Prowl",
+  "town": "Wheeling",
+  "url": "https://fpdcc.com/event/river-trail-nightlife-owl-prowl/",
+  "venue": null
+ },
  "e/2026-11-20-youth-services-registration-for-december-programs/": {
   "date_iso": "2026-11-20T09:00:00",
   "detail": "Friday, November 20 2026 9:00am - 9:00am \n Registration for Youth Services December programs, and all One Book, One Village programs, begins Friday, November…",

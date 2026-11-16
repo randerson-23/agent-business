@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 27 of 36 configured sources. 4 sources are shown from their last update, up to 5 hours ago.</description>
-  <lastBuildDate>Mon, 16 Nov 2026 18:36:56 +0000</lastBuildDate>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 42 configured sources. 4 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Mon, 16 Nov 2026 22:04:55 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Pop-Up Movie: Power Ballad (2026)</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-pop-up-movie-power-ballad-2026-2026-11-16</link>
@@ -39,6 +39,14 @@
  Terri Murphy, owner of Young-at-Heart Art Workshops, teaches block?printing by using various tools and techniques… Official listing: https://indiantrails.libnet.info/event/17101832</description>
     <pubDate>Mon, 16 Nov 2026 19:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17101832">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Wildlife Connections</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-11-17</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-11-17</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Stop by the visitor center to learn about reptiles, mammals and birds from the residents of… Official listing: https://fpdcc.com/event/wildlife-connections/2026-11-17/</description>
+    <pubDate>Tue, 17 Nov 2026 10:30:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/wildlife-connections/2026-11-17/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Wheeling: Paint and Steep Tea</title>
@@ -159,6 +167,14 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
     <source url="https://indiantrails.libnet.info/event/17127802">Indian Trails Public Library — Events</source>
   </item>
   <item>
+    <title>Wheeling: River Trail Nightlife: Owl Prowl</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-river-trail-nightlife-owl-prowl-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-river-trail-nightlife-owl-prowl-2026-11-20</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. A guided walk on our trail to search for local owls. Ages 8 &amp; up. Official listing: https://fpdcc.com/event/river-trail-nightlife-owl-prowl/</description>
+    <pubDate>Fri, 20 Nov 2026 17:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/river-trail-nightlife-owl-prowl/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
     <title>Wheeling: Super Saturday: Chicago Cossacks - Ukrainian Music and Dance</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-super-saturday-chicago-cossacks-ukrainian-music-and-dance-2026-11-21</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-super-saturday-chicago-cossacks-ukrainian-music-and-dance-2026-11-21</guid>
@@ -168,12 +184,52 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
     <source url="https://indiantrails.libnet.info/event/17109214">Indian Trails Public Library — Events</source>
   </item>
   <item>
+    <title>Wheeling: Indoor Edible Gardens</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-indoor-edible-gardens-2026-11-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-indoor-edible-gardens-2026-11-21</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Learn how to grow your own fresh herbs, salad greens and more. Presented with University of… Official listing: https://fpdcc.com/event/indoor-edible-gardens/</description>
+    <pubDate>Sat, 21 Nov 2026 12:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/indoor-edible-gardens/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Wheeling: What’s On The Menu?</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-what-s-on-the-menu-2026-11-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-what-s-on-the-menu-2026-11-21</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Join us at feeding time to learn about our outdoor ambassador animals and their habits. Official listing: https://fpdcc.com/event/whats-on-the-menu/2026-11-21/</description>
+    <pubDate>Sat, 21 Nov 2026 15:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/whats-on-the-menu/2026-11-21/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Wheeling: Nocturnal Hunters: Owls</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-nocturnal-hunters-owls-2026-11-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-nocturnal-hunters-owls-2026-11-22</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Learn what makes owls unique and fascinating. Official listing: https://fpdcc.com/event/nocturnal-hunters-owls-2/</description>
+    <pubDate>Sun, 22 Nov 2026 13:30:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/nocturnal-hunters-owls-2/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Wheeling: What’s On The Menu?</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-what-s-on-the-menu-2026-11-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-what-s-on-the-menu-2026-11-22</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Join us at feeding time to learn about our outdoor ambassador animals and their habits. Official listing: https://fpdcc.com/event/whats-on-the-menu/2026-11-22/</description>
+    <pubDate>Sun, 22 Nov 2026 15:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/whats-on-the-menu/2026-11-22/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
     <title>Wheeling: Lights Around Wheeling</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-lights-around-wheeling-2026-11-22</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-lights-around-wheeling-2026-11-22</guid>
     <description>https://www.wheelingil.gov/calendar.aspx?EID=2207 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sun, 22 Nov 2026 16:30:00 +0000</pubDate>
     <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
+  </item>
+  <item>
+    <title>Wheeling: Monday Morning Mood Booster</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-monday-morning-mood-booster-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-monday-morning-mood-booster-2026-11-23</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Fight the Monday blues and join us for a walk in the woods. Ages 18 &amp; up. Official listing: https://fpdcc.com/event/monday-morning-mood-booster-7/</description>
+    <pubDate>Mon, 23 Nov 2026 09:30:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/monday-morning-mood-booster-7/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Wheeling: Got Science? Space Exploration</title>
@@ -201,6 +257,22 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
  Book pickup September 28-November 16 at the Youth Services Desk. Mika knows she will struggle to survive the harsh… Official listing: https://indiantrails.libnet.info/event/17103897</description>
     <pubDate>Mon, 23 Nov 2026 19:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17103897">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Small Serendipity</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-small-serendipity-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-small-serendipity-2026-11-24</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Nature stories, crafts, and activities. Children ages 3-6 w/ adult. Official listing: https://fpdcc.com/event/small-serendipity-5/</description>
+    <pubDate>Tue, 24 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/small-serendipity-5/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Wheeling: Wildlife Connections</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-11-24</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Stop by the visitor center to learn about reptiles, mammals and birds from the residents of… Official listing: https://fpdcc.com/event/wildlife-connections/2026-11-24/</description>
+    <pubDate>Tue, 24 Nov 2026 10:30:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/wildlife-connections/2026-11-24/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Wheeling: Rise &amp; Read Morning Book Discussion</title>
@@ -258,6 +330,30 @@ The library will close at 5 pm. Official listing: https://indiantrails.libnet.in
     <source url="https://indiantrails.libnet.info/event/17092640">Indian Trails Public Library — Events</source>
   </item>
   <item>
+    <title>Wheeling: What’s On The Menu?</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-what-s-on-the-menu-2026-11-28</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-what-s-on-the-menu-2026-11-28</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Join us at feeding time to learn about our outdoor ambassador animals and their habits. Official listing: https://fpdcc.com/event/whats-on-the-menu/2026-11-28/</description>
+    <pubDate>Sat, 28 Nov 2026 15:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/whats-on-the-menu/2026-11-28/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Wheeling: Cicada Pinning Class</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-cicada-pinning-class-2026-11-29</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-cicada-pinning-class-2026-11-29</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Presented with The Insect Asylum, students will be walking through the process of entomology.… Official listing: https://fpdcc.com/event/cicada-pinning-class-2/</description>
+    <pubDate>Sun, 29 Nov 2026 11:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/cicada-pinning-class-2/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Wheeling: Forest Therapy Walk</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-forest-therapy-walk-2026-11-29</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-forest-therapy-walk-2026-11-29</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Reconnect with nature. Relaxing meditative practices and mindfulness led by the University of… Official listing: https://fpdcc.com/event/forest-therapy-walk-8/</description>
+    <pubDate>Sun, 29 Nov 2026 13:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/forest-therapy-walk-8/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
     <title>Wheeling: Reading Fair</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-reading-fair-2026-11-29</link>
     <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-reading-fair-2026-11-29</guid>
@@ -265,6 +361,14 @@ The library will close at 5 pm. Official listing: https://indiantrails.libnet.in
  Discover valuable reading resources, learn how to achieve your reading goals and explore the library's reading… Official listing: https://indiantrails.libnet.info/event/17101404</description>
     <pubDate>Sun, 29 Nov 2026 13:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17101404">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: What’s On The Menu?</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-what-s-on-the-menu-2026-11-29</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-what-s-on-the-menu-2026-11-29</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Join us at feeding time to learn about our outdoor ambassador animals and their habits. Official listing: https://fpdcc.com/event/whats-on-the-menu/2026-11-29/</description>
+    <pubDate>Sun, 29 Nov 2026 15:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/whats-on-the-menu/2026-11-29/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Wheeling: Discovery Play with The Leaf Thief</title>
@@ -293,6 +397,14 @@ Ages 14 and older.  A jaw-dropping exposé of how the… Official listing: https
  Join this informal group in a collaborative setting to explore library databases, research your family tree and… Official listing: https://indiantrails.libnet.info/event/17101476</description>
     <pubDate>Mon, 30 Nov 2026 19:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17101476">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Wildlife Connections</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-12-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-12-01</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Stop by the visitor center to learn about reptiles, mammals and birds from the residents of… Official listing: https://fpdcc.com/event/wildlife-connections/2026-12-01/</description>
+    <pubDate>Tue, 01 Dec 2026 10:30:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/wildlife-connections/2026-12-01/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Wheeling: Paint and Steep Tea</title>
@@ -329,131 +441,6 @@ Ages 14 and older.  A jaw-dropping exposé of how the… Official listing: https
  Share your work with others in a supportive atmosphere at this monthly community writers group led by author… Official listing: https://indiantrails.libnet.info/event/14284495</description>
     <pubDate>Tue, 01 Dec 2026 18:30:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/14284495">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Coloring Club</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-coloring-club-2026-12-02</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-coloring-club-2026-12-02</guid>
-    <description>Wednesday, December 02 2026 1:00pm - 2:30pm 
- Join fellow coloring page enthusiasts in a relaxed environment where you can work at your own pace. Bring your… Official listing: https://indiantrails.libnet.info/event/16929098</description>
-    <pubDate>Wed, 02 Dec 2026 13:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16929098">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Waterless Snowglobes</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-waterless-snowglobes-2026-12-02</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-waterless-snowglobes-2026-12-02</guid>
-    <description>Wednesday, December 02 2026 4:00pm - 5:00pm 
- Create a seasonal snowglobe-- without the water. R Official listing: https://indiantrails.libnet.info/event/17139274</description>
-    <pubDate>Wed, 02 Dec 2026 16:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17139274">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Jewelry Making Extravaganza</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-jewelry-making-extravaganza-2026-12-02</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-jewelry-making-extravaganza-2026-12-02</guid>
-    <description>Wednesday, December 02 2026 4:00pm - 5:30pm 
- Learn jewelry making techniques using our collection of beads and jewelry supplies to create a unique piece to… Official listing: https://indiantrails.libnet.info/event/16826778</description>
-    <pubDate>Wed, 02 Dec 2026 16:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16826778">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Paint and Steep Tea</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-12-02</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-12-02</guid>
-    <description>Wednesday, December 02 2026 6:00pm - 8:00pm 
- Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching… Official listing: https://indiantrails.libnet.info/event/17101429</description>
-    <pubDate>Wed, 02 Dec 2026 18:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17101429">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Plan Commission Meeting</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-2026-12-02</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-plan-commission-meeting-2026-12-02</guid>
-    <description>https://www.wheelingil.gov/calendar.aspx?EID=1972 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Wed, 02 Dec 2026 18:30:00 +0000</pubDate>
-    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
-  </item>
-  <item>
-    <title>Wheeling: Google Sheets</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-google-sheets-2026-12-02</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-google-sheets-2026-12-02</guid>
-    <description>Wednesday, December 02 2026 7:00pm - 8:00pm 
- Explore the free cloud-based Microsoft Excel alternative available to all who sign up with Gmail. 
-A Google… Official listing: https://indiantrails.libnet.info/event/17116313</description>
-    <pubDate>Wed, 02 Dec 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17116313">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Library Board Workshop</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-library-board-workshop-2026-12-02</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-library-board-workshop-2026-12-02</guid>
-    <description>Wednesday, December 02 2026 7:00pm - 9:00pm 
- The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.… Official listing: https://indiantrails.libnet.info/event/17723329</description>
-    <pubDate>Wed, 02 Dec 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17723329">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Office Hours with Congressman Brad Schneider's Office</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-12-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-12-03</guid>
-    <description>Thursday, December 03 2026 9:30am - 12:30pm 
- A representative is present to engage with the community, share important information relevant to residents and… Official listing: https://indiantrails.libnet.info/event/16326975</description>
-    <pubDate>Thu, 03 Dec 2026 09:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16326975">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Social Services | Servicios Sociales</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-social-services-servicios-sociales-2026-12-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-social-services-servicios-sociales-2026-12-03</guid>
-    <description>Thursday, December 03 2026 10:00am - 11:15am 
- A resource services coordinator from OMNI will provide resources for the community. Una representante de OMNI… Official listing: https://indiantrails.libnet.info/event/17922215</description>
-    <pubDate>Thu, 03 Dec 2026 10:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17922215">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Monogrammed Throw Blankets</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-monogrammed-throw-blankets-2026-12-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-monogrammed-throw-blankets-2026-12-03</guid>
-    <description>Thursday, December 03 2026 12:00pm - 1:30pm 
- Learn to use an embroidery machine to add a monogram to a fleece throw blanket. R Official listing: https://indiantrails.libnet.info/event/17067836</description>
-    <pubDate>Thu, 03 Dec 2026 12:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17067836">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Evening Book Discussion</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-evening-book-discussion-2026-12-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-evening-book-discussion-2026-12-03</guid>
-    <description>Thursday, December 03 2026 6:00pm - 7:00pm 
- Registration and book pickup begins November 3. Tales of magic and mayhem on the high seas in this story of… Official listing: https://indiantrails.libnet.info/event/17090943</description>
-    <pubDate>Thu, 03 Dec 2026 18:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17090943">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Night Owls</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-night-owls-2026-12-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-night-owls-2026-12-03</guid>
-    <description>Thursday, December 03 2026 6:00pm - 6:30pm 
- Not quite ready for bed? Relax with stories, songs and literacy activities. TR Official listing: https://indiantrails.libnet.info/event/16927182</description>
-    <pubDate>Thu, 03 Dec 2026 18:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16927182">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Peer Jury</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-12-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-12-03</guid>
-    <description>https://www.wheelingil.gov/calendar.aspx?EID=2053 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Thu, 03 Dec 2026 19:00:00 +0000</pubDate>
-    <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
-  </item>
-  <item>
-    <title>Wheeling: High School Book Club | Grades 9-12</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-high-school-book-club-grades-9-12-2026-12-03</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-high-school-book-club-grades-9-12-2026-12-03</guid>
-    <description>Thursday, December 03 2026 7:00pm - 8:00pm 
- Book pickup begins Oct 29 at the Youth Services Desk. Welcome to Blackwood Academy: the legendary school located… Official listing: https://indiantrails.libnet.info/event/16995841</description>
-    <pubDate>Thu, 03 Dec 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16995841">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

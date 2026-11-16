@@ -23,6 +23,9 @@
     7,
     7
   ],
+  "arlington-heights-60005:Forest Preserves of Cook County \u2014 north": [
+    180
+  ],
   "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": [
     19,
     19,
@@ -36,6 +39,7 @@
     19
   ],
   "arlington-heights-60005:RunSignup \u2014 races in Arlington Heights": [
+    1,
     1,
     1,
     1
@@ -89,7 +93,6 @@
     21
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
-    427,
     423,
     423,
     423,
@@ -97,11 +100,12 @@
     422,
     422,
     422,
+    423,
     423,
     423
   ],
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
-    57,
+    54,
     54,
     54,
     54,
@@ -112,7 +116,11 @@
     54,
     54
   ],
+  "des-plaines-60016:Forest Preserves of Cook County \u2014 north": [
+    180
+  ],
   "des-plaines-60016:RunSignup \u2014 races in Des Plaines": [
+    0,
     0,
     0,
     0
@@ -129,7 +137,11 @@
     500,
     500
   ],
+  "elk-grove-village-60007:Forest Preserves of Cook County \u2014 north": [
+    180
+  ],
   "elk-grove-village-60007:RunSignup \u2014 races in Elk Grove Village": [
+    3,
     3,
     3,
     3
@@ -153,6 +165,9 @@
     0,
     0
   ],
+  "mount-prospect-60056:Forest Preserves of Cook County \u2014 north": [
+    180
+  ],
   "mount-prospect-60056:Mount Prospect Park District \u2014 Events": [
     31,
     31,
@@ -166,7 +181,6 @@
     30
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
-    212,
     210,
     210,
     210,
@@ -175,7 +189,8 @@
     210,
     210,
     210,
-    210
+    210,
+    209
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
     52,
@@ -202,6 +217,7 @@
     1
   ],
   "mount-prospect-60056:RunSignup \u2014 races in Mount Prospect": [
+    0,
     0,
     0,
     0
@@ -237,13 +253,16 @@
     41,
     41
   ],
+  "palatine-60067:Forest Preserves of Cook County \u2014 north": [
+    180
+  ],
   "palatine-60067:Harper College \u2014 Public Events": [
-    8,
     7,
     7,
     7,
     7,
     7,
+    6,
     6,
     6,
     6,
@@ -263,7 +282,7 @@
   ],
   "palatine-60067:Palatine Public Library District \u2014 Events": [
     28,
-    28,
+    30,
     30,
     30,
     30,
@@ -274,6 +293,7 @@
     30
   ],
   "palatine-60067:RunSignup \u2014 races in Palatine": [
+    1,
     1,
     1,
     1
@@ -300,13 +320,13 @@
     10,
     10,
     10,
-    10
+    12
   ],
   "palatine-60067:Village of Palatine \u2014 Calendar": [
     21,
     21,
     21,
-    21,
+    20,
     20,
     20,
     20,
@@ -326,6 +346,9 @@
     4,
     4
   ],
+  "wheeling-60090:Forest Preserves of Cook County \u2014 north": [
+    180
+  ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
     206,
     206,
@@ -334,11 +357,12 @@
     206,
     206,
     206,
-    206,
     209,
-    210
+    210,
+    211
   ],
   "wheeling-60090:RunSignup \u2014 races in Wheeling": [
+    0,
     0,
     0,
     0

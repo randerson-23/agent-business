@@ -1,11 +1,25 @@
 {
- "fetched_at": "2026-11-16T14:01:13+00:00",
+ "fetched_at": "2026-11-16T22:04:55+00:00",
  "items": [
+  {
+   "date": "20261116T180000",
+   "detail": "All regular Board of Education meetings are held in the Anne Ko",
+   "end_date": "20261116T235900",
+   "title": "Special Board of Education Meeting",
+   "url": ""
+  },
   {
    "date": "20261125",
    "detail": "All District 211 buildings will be closed in observance of the",
-   "end_date": "20261127",
+   "end_date": "20261128",
    "title": "Fall Break - All D211 Buildings Closed",
+   "url": ""
+  },
+  {
+   "date": "20261210T180000",
+   "detail": "All regular Board of Education meetings are held in the Anne Ko",
+   "end_date": "20261210T235900",
+   "title": "D211 Board of Education Meeting",
    "url": ""
   },
   {

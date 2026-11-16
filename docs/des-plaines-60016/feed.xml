@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Des Plaines</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 9 of 12 configured sources. 2 sources are shown from their last update, up to 5 hours ago.</description>
-  <lastBuildDate>Mon, 16 Nov 2026 18:36:56 +0000</lastBuildDate>
+  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 11 of 14 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Mon, 16 Nov 2026 22:04:55 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Teen Take &amp; Make</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-16</link>
@@ -152,6 +152,14 @@
     <source url="https://desplaines.libnet.info/event/17191600">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Des Plaines: Yoga in the Preserves</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-yoga-in-the-preserves-2026-11-18</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-yoga-in-the-preserves-2026-11-18</guid>
+    <description>Caldwell Woods Wellness Center (Chicago) · ≈ 6 mi from Des Plaines. Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted . Official listing: https://fpdcc.com/event/yoga-in-the-preserves/2026-11-18/</description>
+    <pubDate>Wed, 18 Nov 2026 09:30:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/yoga-in-the-preserves/2026-11-18/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
     <title>Des Plaines: Baby Book Time</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-18</link>
     <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-18</guid>
@@ -262,6 +270,14 @@
     <source url="https://desplaines.libnet.info/event/17921922">Des Plaines Public Library — Events</source>
   </item>
   <item>
+    <title>Des Plaines: Rock and Crystal Gardens</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-rock-and-crystal-gardens-2026-11-19</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-rock-and-crystal-gardens-2026-11-19</guid>
+    <description>Caldwell Woods Wellness Center (Chicago) · ≈ 6 mi from Des Plaines. Come join us as we create small gardens that are great for indoor spaces as well as… Official listing: https://fpdcc.com/event/rock-and-crystal-gardens/</description>
+    <pubDate>Thu, 19 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/rock-and-crystal-gardens/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
     <title>Des Plaines: Toddler Time</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-19</link>
     <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-toddler-time-2026-11-19</guid>
@@ -325,10 +341,10 @@
     <source url="https://desplaines.libnet.info/event/17158005">Des Plaines Public Library — Events</source>
   </item>
   <item>
-    <title>Des Plaines: ART GARFUNKEL - WHAT A WONDERFUL WORLD CONCERT</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-art-garfunkel-what-a-wonderful-world-concert-2026-11-19</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-art-garfunkel-what-a-wonderful-world-concert-2026-11-19</guid>
-    <description>Art Garfunkel is known and celebrated as the “Voice of Generations” in entertainment history. He is an 8x Grammy Award winner including the Grammy Lifetime… Official listing: https://desplainestheatre.com/event/art-garfunkel-what-a-wonderful-world-celebration-concerts-2/</description>
+    <title>Des Plaines: POSTPONED: ART GARFUNKEL - WHAT A WONDERFUL WORLD CONCERT</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-postponed-art-garfunkel-what-a-wonderful-world-concert-2026-11-19</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-postponed-art-garfunkel-what-a-wonderful-world-concert-2026-11-19</guid>
+    <description>THIS EVENT HAS BEEN POSTPONED. A NEW DATE WILL BE ANNOUNCED SOON! ALL TICKETS WILL BE HONORED FOR NEW SHOW DATE! Art Garfunkel is known and celebrated as the… Official listing: https://desplainestheatre.com/event/art-garfunkel-what-a-wonderful-world-celebration-concerts-2/</description>
     <pubDate>Thu, 19 Nov 2026 19:30:00 +0000</pubDate>
     <source url="https://desplainestheatre.com/event/art-garfunkel-what-a-wonderful-world-celebration-concerts-2/">Des Plaines Theatre — Events</source>
   </item>
@@ -434,23 +450,6 @@
     <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Downtown Charlie Brown… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-8/</description>
     <pubDate>Sat, 21 Nov 2026 20:30:00 +0000</pubDate>
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-8/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: POOH: 60th ANNIVERSARY TOUR - FINALE</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22</guid>
-    <description>60 years of music, emotions and successes! In 2026, POOH are ready to return for what will be a highly anticipated year of celebrations and surprises for the… Official listing: https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/</description>
-    <pubDate>Sun, 22 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Teen Take &amp; Make</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-23</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-23</guid>
-    <description>Monday, November 23 2026 12:00am - 11:59pm 
- Take &amp; Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit… Official listing: https://desplaines.libnet.info/event/17635814</description>
-    <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17635814">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>
