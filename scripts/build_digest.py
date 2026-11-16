@@ -1341,6 +1341,7 @@ def fetch_region_sections(
                 exclude_patterns=source.get("exclude_patterns"),
                 max_per_week=source.get("max_per_week"),
                 pages=source.get("pages"),  # item 471: paginated html listings
+                cities=source.get("cities"),  # item 511: RunSignup races in this town only
             )
             # A fetcher returns None on a transport/parse failure (network
             # error, non-2xx status) versus a real [] (reached the page,

@@ -16,6 +16,15 @@ region:
   email: false
 
 sources:
+  # ROADMAP.md item 511: family races on RunSignup (keyless, probe round 45), kept only when the race's own
+  # address is in Elk Grove Village and its next date is within 60 days; recurring races a year out are dropped.
+  - name: "RunSignup — races in Elk Grove Village"
+    type: runsignup
+    url: "https://runsignup.com/Rest/races?format=json&zipcode=60007&radius=5&events=T&results_per_page=100"
+    cities: ["Elk Grove Village"]
+    section: "Races"
+    default_tags: ["outdoor"]
+    enabled: true
   - name: "Elk Grove Village Public Library - Events"
     type: rss
     default_tags: ["indoor"]
