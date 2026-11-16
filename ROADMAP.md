@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **519** with **520** (Forest Preserves of Cook County north-region events via the Events Calendar fetcher, nearest town with distance; probe first).
 0. **516** (near-empty pages noindex and out of the sitemap until they reach 3 entries, then submitted), **517** (Brave Search URL list in the Needs Ryan step 1 note), then **518**.
 0. **513** (turkey trots must be races, indoor ideas must be ideas; before the **Nov 19** send), then **514** (rink and event status from AHPD's Rainout Line, by Dec 15), **511** (RunSignup, keyless confirmed; filter on `next_date`), **515**.
 0. **510** with **512** (the Arlington Heights and Palatine turkey trots from their RunSignup pages, a register-by line in the **Nov 19** issue, and a Thanksgiving-morning line on Nov 25), then **511** (RunSignup races within ten miles, probe first).
@@ -21635,6 +21636,67 @@ Competitors reviewed this pass: **Brave Search** as an independent index
 that AI assistants use (its community guidance and Search API news), and
 **AMC's Sensory Friendly Films programme** as a standing local resource.
 The design/UX angle is **the one-event sensory-friendly page**.
+
+#### Research pass 2026-11-16 (hundred-and-forty-seventh pass)
+
+Today the build loop shipped item 516 (thin hub pages stay out of the index
+until they have three entries) and item 517 (the Brave Search URL list in
+Needs Ryan step 1). Metra Holiday Train tickets go on sale at noon today. The
+Nov 12 issue carried the reminder. This pass finds **a whole public agency the
+site has never read**, and it's the one that runs the most free outdoor family
+programmes in winter.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Forest Preserves of Cook County** (fpdcc.com's events pages, *"Nature Story Trail"*, *"Prehistoric Play Day"*, *"Animal Encounter"*, a *story, craft and adventure* programme for ages 2–6; the FPCC winter guide; Cook County's *"Fall fun in the forest preserves"*; the Friends of the Forest Preserves' calendar) | FPCC runs **nature centres with weekly family programmes**: story trails, animal encounters and feedings, toddler adventures, sunrise hikes, seasonal festivals. Most are **free**, and they run **all winter**. Its event URLs follow the WordPress **Events Calendar** pattern: `/events/2024-11-13`, `/events/category/north/day/2024-12-14`, `/events/list`. That's the plugin item 465's fetcher already reads by date range, and **there's a "north" category**. Nearby sites include **Crabtree Nature Center** (Barrington Hills, by Palatine), **River Trail Nature Center** (Northbrook, ~5 mi from Des Plaines and Wheeling), **Deer Grove** (Palatine) and **Busse Woods** (Elk Grove Village). The roadmap mentions FPCC **once**, in passing, and no config reads it | It's the largest free, outdoor, family-programme source within ten miles, and it **peaks exactly when the towns' calendars thin** (January–March). Every *"things to do with kids this weekend"* answer gets better with a story trail or an animal feeding in it. It's one config entry if the REST route or `?ical=1` answers (item 519) |
+| **Where a forest-preserve event belongs on the page (design/UX)** (item 479's distance line on "Just outside" cards; the town sections' venue line) | FPCC venues sit **between** the towns: Crabtree is in Barrington Hills, River Trail in Northbrook, Deer Grove in Palatine, Busse Woods in Elk Grove Village. Assigning each to one town hides it from the others, and a bare venue name doesn't say how far it is | Each event should go in the **nearest town's** section, with a distance line (*"Crabtree Nature Center · ≈ 4 mi from Palatine"*). The rule is already built for "Just outside" (item 479) and just needs to apply to in-section cards from a regional source (item 520) |
+
+#### P1 (new)
+
+519. **Read the Forest Preserves of Cook County's north-region events.**
+     Build loop, probe first:
+
+     1. Probe `fpdcc.com/wp-json/tribe/events/v1/events?start_date=<today>&end_date=<+60d>&per_page=50`,
+        `fpdcc.com/events/?ical=1` and the month export, plus the
+        **`north`** category (`/events/category/north/?ical=1`). Record
+        which answers, and the venue fields.
+     2. If any answers, add an `fpdcc` source using item 465's Events
+        Calendar fetcher. Keep only events at venues **within ten miles**
+        of a town centre: Crabtree, River Trail, Deer Grove, Busse Woods,
+        and any other venue with coordinates inside the radius. Assign
+        each to the **nearest town** (item 520).
+     3. Tag `outdoor` (unless the venue is a nature-centre building),
+        `free` when the listing says free, and `toddler` or
+        `kid-friendly` from the age line.
+
+     If FPCC blocks the runner, use item 478's search fallback for its
+     *seasonal* headliners only (festivals and holiday programmes), not
+     its weekly listings. Tests: a fixture REST response maps to events,
+     a venue beyond ten miles is dropped, and nearest-town assignment
+     picks Palatine for Crabtree.
+
+#### P2 (new)
+
+520. **Regional venues: nearest town, with the distance shown.** Build loop.
+     For sources that aren't a town's own (FPCC, Harper College, RunSignup
+     races from item 511), place each event in the **nearest town's**
+     sections by venue coordinates (`ZIP_COORDS` plus a small
+     `config/venues.yaml` of lat/lon for regional venues, items 335 and
+     372). Show ***"≈ N mi from <town>"*** on the card (item 479's
+     helper). Events stay **out of** other towns' lists, so nothing
+     appears twice. Tests: Crabtree goes to Palatine with its distance,
+     River Trail goes to the nearer of Des Plaines and Wheeling, and no
+     event appears in two town sections.
+
+Re-rank: **519 goes to the top of the build queue**. It's the biggest single
+source still missing, and it fills January, the thinnest month, with free
+outdoor family programmes. **520** rides with it. Item 492 (the indoor-play
+winter guide, Dec 1) and item 511 (RunSignup) stay next.
+
+Competitors reviewed this pass: **the Forest Preserves of Cook County**
+as a data source (fpdcc.com's event pages, its winter guide, the Friends
+of the Forest Preserves' calendar). The design/UX angle is **where a
+regional venue belongs** on six town pages.
 
 
 ## Working agreements for autonomous iteration
