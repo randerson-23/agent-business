@@ -37,6 +37,7 @@
   ],
   "arlington-heights-60005:RunSignup \u2014 races in Arlington Heights": [
     1,
+    1,
     1
   ],
   "arlington-heights-60005:Village of Arlington Heights \u2014 News": [
@@ -89,7 +90,6 @@
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     427,
-    427,
     423,
     423,
     423,
@@ -97,11 +97,12 @@
     422,
     422,
     422,
+    423,
     423
   ],
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
     57,
-    57,
+    54,
     54,
     54,
     54,
@@ -112,6 +113,7 @@
     54
   ],
   "des-plaines-60016:RunSignup \u2014 races in Des Plaines": [
+    0,
     0,
     0
   ],
@@ -128,6 +130,7 @@
     500
   ],
   "elk-grove-village-60007:RunSignup \u2014 races in Elk Grove Village": [
+    3,
     3,
     3
   ],
@@ -164,7 +167,7 @@
   ],
   "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
     212,
-    212,
+    210,
     210,
     210,
     210,
@@ -199,6 +202,7 @@
     1
   ],
   "mount-prospect-60056:RunSignup \u2014 races in Mount Prospect": [
+    0,
     0,
     0
   ],
@@ -235,12 +239,12 @@
   ],
   "palatine-60067:Harper College \u2014 Public Events": [
     8,
-    8,
     7,
     7,
     7,
     7,
     7,
+    6,
     6,
     6,
     6
@@ -260,7 +264,7 @@
   "palatine-60067:Palatine Public Library District \u2014 Events": [
     28,
     28,
-    28,
+    30,
     30,
     30,
     30,
@@ -270,6 +274,7 @@
     30
   ],
   "palatine-60067:RunSignup \u2014 races in Palatine": [
+    1,
     1,
     1
   ],
@@ -298,11 +303,11 @@
     10
   ],
   "palatine-60067:Village of Palatine \u2014 Calendar": [
-    23,
     21,
     21,
     21,
     21,
+    20,
     20,
     20,
     20,
@@ -330,10 +335,11 @@
     206,
     206,
     206,
-    206,
-    209
+    209,
+    210
   ],
   "wheeling-60090:RunSignup \u2014 races in Wheeling": [
+    0,
     0,
     0
   ],
