@@ -5691,7 +5691,32 @@ def write_event_pages(sections: list[dict], tot_entries: list[dict], now: dateti
     return active
 
 
-def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None, event_pages: list[dict] | None = None, leaf_pickup_in_season: bool = False, give_in_season: bool = False, nye_in_season_flag: bool = False) -> list[str]:
+THIN_PAGE_MIN = 3  # ROADMAP.md item 516
+_ROBOTS_META = re.compile(r'<meta name="robots" content="[^"]*">')
+
+
+def hub_entry_count(entries: list[dict], *keys: str) -> int:
+    """Dated (or sourced) entries on a cross-town hub page: the sum of each
+    town's lists under `keys` (default "events"), plus a confirmed tree
+    lighting where the entry has one."""
+    keys = keys or ("events",)
+    return sum(len(e.get(k) or []) for e in entries for k in keys) + sum(1 for e in entries if (e.get("tree") or {}).get("label"))
+
+
+def apply_thin_page(html: str, path: str, count: int, thin_paths: set[str]) -> str:
+    """ROADMAP.md item 516: a hub page with fewer than THIN_PAGE_MIN entries is
+    kept out of the index (noindex, follow) and out of sitemap.xml, but stays
+    reachable by link. Crossing the threshold puts it back in the sitemap,
+    which IndexNow then submits as a changed URL."""
+    if count >= THIN_PAGE_MIN:
+        return html
+    thin_paths.add(path)
+    logger.info("Thin page: /%s has %d entr%s (under %d), noindex and out of the sitemap", path, count, "y" if count == 1 else "ies", THIN_PAGE_MIN)
+    meta = '<meta name="robots" content="noindex, follow, max-image-preview:large">'
+    return _ROBOTS_META.sub(meta, html, count=1) if _ROBOTS_META.search(html) else html.replace("<head>", "<head>\n" + meta, 1)
+
+
+def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None = None, event_pages: list[dict] | None = None, leaf_pickup_in_season: bool = False, give_in_season: bool = False, nye_in_season_flag: bool = False, thin_paths: set[str] | None = None) -> list[str]:
     urls = [
         SITE_BASE_URL,
         SITE_BASE_URL + "this-weekend/",
@@ -5731,12 +5756,14 @@ def collect_sitemap_urls(region_summaries: list[dict], issues: list[dict] | None
         urls.append(SITE_BASE_URL + "issues/")
         urls += [SITE_BASE_URL + f"issues/{i['date']}/" for i in issues]
     urls += [SITE_BASE_URL + e["path"] for e in event_pages or []]  # item 369: active event pages only
+    if thin_paths:  # item 516
+        urls = [u for u in urls if u[len(SITE_BASE_URL):] not in thin_paths]
     return urls
 
 
-def build_sitemap_xml(region_summaries: list[dict], now: datetime, issues: list[dict] | None = None, event_pages: list[dict] | None = None) -> str:
+def build_sitemap_xml(region_summaries: list[dict], now: datetime, issues: list[dict] | None = None, event_pages: list[dict] | None = None, thin_paths: set[str] | None = None) -> str:
     lastmod = now.strftime("%Y-%m-%d")
-    urls = collect_sitemap_urls(region_summaries, issues, event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()), nye_in_season(now.astimezone(LOCAL_TZ).date()))
+    urls = collect_sitemap_urls(region_summaries, issues, event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()), nye_in_season(now.astimezone(LOCAL_TZ).date()), thin_paths)
     entries = "\n".join(
         f"  <url>\n    <loc>{u}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>" for u in urls
     )
@@ -9420,7 +9447,8 @@ def main() -> None:
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)
     outside_entries = load_just_outside(now.astimezone(LOCAL_TZ).date(), [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions])  # items 458/479
-    (holidays_dir / "index.html").write_text(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size())), encoding="utf-8")
+    thin_paths: set[str] = set()  # item 516
+    (holidays_dir / "index.html").write_text(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size())), "holidays/", hub_entry_count(holidays_entries), thin_paths), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
         warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])
@@ -9449,16 +9477,16 @@ def main() -> None:
     (leaf_dir / "index.html").write_text(render_leaf_pickup_page(leaf_entries, now, analytics, newsletter), encoding="utf-8")
     give_dir = OUTPUT_DIR / "give"
     give_dir.mkdir(parents=True, exist_ok=True)
-    (give_dir / "index.html").write_text(render_give_page(give_entries, now, analytics, newsletter, [o for o in outside_entries if o.get("give_note")]), encoding="utf-8")
+    (give_dir / "index.html").write_text(apply_thin_page(render_give_page(give_entries, now, analytics, newsletter, [o for o in outside_entries if o.get("give_note")]), "give/", hub_entry_count(give_entries, "events", "drives", "volunteer"), thin_paths), encoding="utf-8")
     nye_dir = OUTPUT_DIR / "new-years-eve"  # item 446
     nye_dir.mkdir(parents=True, exist_ok=True)
-    (nye_dir / "index.html").write_text(render_nye_page(nye_entries, now, analytics, newsletter), encoding="utf-8")
+    (nye_dir / "index.html").write_text(apply_thin_page(render_nye_page(nye_entries, now, analytics, newsletter), "new-years-eve/", hub_entry_count(nye_entries), thin_paths), encoding="utf-8")
     sensory_dir = OUTPUT_DIR / "sensory-friendly"  # item 502
     sensory_dir.mkdir(parents=True, exist_ok=True)
-    (sensory_dir / "index.html").write_text(render_sensory_page(sensory_entries, now, analytics, newsletter), encoding="utf-8")
+    (sensory_dir / "index.html").write_text(apply_thin_page(render_sensory_page(sensory_entries, now, analytics, newsletter), "sensory-friendly/", hub_entry_count(sensory_entries), thin_paths), encoding="utf-8")
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
-    (santa_dir / "index.html").write_text(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries, contact_email=contact_email), encoding="utf-8")
+    (santa_dir / "index.html").write_text(apply_thin_page(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries, contact_email=contact_email), "santa/", hub_entry_count(santa_entries), thin_paths), encoding="utf-8")
     logger.info("Wrote %s", santa_dir / "index.html")
 
     for kind in THANKS_PAGES:
@@ -9484,8 +9512,8 @@ def main() -> None:
                 out.mkdir(parents=True, exist_ok=True)
                 (out / "index.html").write_text(render_flyer(rid, town, examples, variant["campaign"], copies, EMAIL_TOWN_COLORS[flyer_index % len(EMAIL_TOWN_COLORS)][0]), encoding="utf-8")
 
-    sitemap_urls = collect_sitemap_urls(region_summaries, issues, active_event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()), nye_in_season(now.astimezone(LOCAL_TZ).date()))
-    (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues, active_event_pages), encoding="utf-8")
+    sitemap_urls = collect_sitemap_urls(region_summaries, issues, active_event_pages, is_leaf_pickup_season(now), is_give_season(now.astimezone(LOCAL_TZ).date()), nye_in_season(now.astimezone(LOCAL_TZ).date()), thin_paths)
+    (OUTPUT_DIR / "sitemap.xml").write_text(build_sitemap_xml(region_summaries, now, issues, active_event_pages, thin_paths), encoding="utf-8")
     (OUTPUT_DIR / "robots.txt").write_text(build_robots_txt(), encoding="utf-8")
     (OUTPUT_DIR / "llms.txt").write_text(build_llms_txt(region_summaries, source_completeness, issues), encoding="utf-8")
     (OUTPUT_DIR / "events.json").write_text(

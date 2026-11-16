@@ -262,6 +262,13 @@ reference, *not now*.
    **XML file** verification option and paste the code shown into
    `bing_site_auth:` in `config/analytics.yaml` (item 451). Same visit,
    about 2 extra minutes.
+   *Then Brave Search (item 517, 2 minutes, no account):* paste each of these
+   into https://search.brave.com/submit-url — https://withintenmiles.com/,
+   the six town pages (/arlington-heights-60005/, /des-plaines-60016/,
+   /elk-grove-village-60007/, /mount-prospect-60056/, /palatine-60067/,
+   /wheeling-60090/), /this-weekend/, /santa/ and /holidays/. Brave keeps
+   its own index, the one several AI assistants search. robots.txt already
+   allows it (`User-agent: *`, nothing disallowed).
 2. **Send this Thursday's issue to 20 local parents you know (10 min,
    once, item 432).** Copy the note in `SHARE_NOTE.md` (item 433) and send
    it by text or email from your own phone. Every small newsletter's first
@@ -21571,7 +21578,7 @@ newest pages help or hurt how search engines see a young domain.
 
 #### P1 (new)
 
-516. **Keep near-empty pages out of the index until they fill.** Build
+516. (✅ DONE 2026-11-16: `apply_thin_page` gives /holidays/, /give/, /new-years-eve/, /sensory-friendly/ and /santa/ `noindex, follow` and leaves them out of sitemap.xml under 3 entries (dated events, drives, volunteer sessions, confirmed tree lightings); crossing back puts the URL in the sitemap, and changed_indexnow_urls submits it. First build: /sensory-friendly/ (1) and /new-years-eve/ (0) held back. /museum-passes/, /winter-break/ and /indoor-play/ get the same call when they're built) **Keep near-empty pages out of the index until they fill.** Build
      loop. A `thin_page` rule for hub pages and their town variants:
      `/sensory-friendly/`, `/give/`, `/new-years-eve/`, `/museum-passes/`,
      `/santa/`, `/holidays/`, `/winter-break/`, `/indoor-play/` and future
@@ -21592,7 +21599,7 @@ newest pages help or hurt how search engines see a young domain.
 
 #### P2 (new)
 
-517. **Submit the site to Brave Search (owner, 2 minutes, inside step 1).**
+517. (✅ DONE 2026-11-16: the URL list is in Needs Ryan step 1; robots.txt checked, Brave is allowed by `User-agent: *` with nothing disallowed) **Submit the site to Brave Search (owner, 2 minutes, inside step 1).**
      The build loop writes a short list to the Needs Ryan step 1 note:
      the hub, the six town pages, `/this-weekend/`, `/santa/` and
      `/holidays/`. While doing step 1, paste each into
