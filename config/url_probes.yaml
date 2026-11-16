@@ -388,3 +388,33 @@ probes:
       - '"next_date":\s*"[^"]{0,20}"'
       - '"city":\s*"[^"]{0,40}"'
       - '(?i)"error[^}]{0,160}'
+  # Round 46 (items 519, 518, 2026-11-16). The Forest Preserves of Cook County run free family nature
+  # programmes all winter; its event URLs look like The Events Calendar (item 465's fetcher). Which route
+  # answers a plain GET from the runner, and are venue names and coordinates in the response?
+  - url: https://fpdcc.com/wp-json/tribe/events/v1/events?per_page=50&categories=north
+    item: 519
+    purpose: FPCC Events Calendar REST, north category - titles, dates, venue name/city/lat-lng
+    patterns:
+      - '"venue":\s*\{[^}]{0,300}'
+      - '"start_date":\s*"[^"]{0,20}"'
+      - '(?i)"(?:lat|geo_lat|lng|geo_lng)":\s*"?-?\d'
+  - url: https://fpdcc.com/events/?ical=1
+    item: 519
+    purpose: FPCC iCal export (all categories) - VEVENTs with LOCATION and GEO
+    patterns:
+      - 'BEGIN:VEVENT'
+      - 'LOCATION:[^\r\n]{0,120}'
+      - 'GEO:[^\r\n]{0,40}'
+  - url: https://fpdcc.com/events/category/north/?ical=1
+    item: 519
+    purpose: FPCC iCal export, north category
+    patterns:
+      - 'BEGIN:VEVENT'
+      - 'LOCATION:[^\r\n]{0,120}'
+  # Item 518: AMC's Sensory Friendly Films programme, and whether AMC Randhurst 12 (Mount Prospect) takes part.
+  - url: https://www.amctheatres.com/programs/sensory-friendly-films
+    item: 518
+    purpose: AMC Sensory Friendly Films - how often, which theatres, Randhurst named?
+    patterns:
+      - '(?i)randhurst[^<]{0,120}'
+      - '(?i)(?:lights up|sound down|second and fourth|every month|monthly)[^<]{0,160}'
