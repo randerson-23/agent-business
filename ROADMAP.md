@@ -21445,7 +21445,7 @@ class.
 
 #### P2 (new)
 
-511. (🟡 STEP 1 2026-11-15: probe round 45 asks RunSignup's /Rest/races for zip 60056, radius 10, with no key) **RunSignup races within ten miles, read automatically, probe
+511. (✅ DONE 2026-11-16: round 45 answered keyless. `fetch_runsignup` (type `runsignup`) in every live town's sources, zip radius 5, keeps races whose address city is that town and whose `next_date` is within 60 days (drops drafts, private races and next year's dates); start time is the day's earliest event, distances and kids' races go in the detail, `outdoor` by default and kid-friendly from a kids' race. Out-of-town races aren't routed to "Just outside" yet. The annual turkey-trot entries win the dedupe) **RunSignup races within ten miles, read automatically, probe
      first.** Build loop:
 
      1. Probe `https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&start_date=today`

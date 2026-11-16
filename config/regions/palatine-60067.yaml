@@ -78,6 +78,15 @@ region:
   # editors_pick_url: "https://www.palatinelibrary.org/"
 
 sources:
+  # ROADMAP.md item 511: family races on RunSignup (keyless, probe round 45), kept only when the race's own
+  # address is in Palatine and its next date is within 60 days; recurring races a year out are dropped.
+  - name: "RunSignup — races in Palatine"
+    type: runsignup
+    url: "https://runsignup.com/Rest/races?format=json&zipcode=60067&radius=5&events=T&results_per_page=100"
+    cities: ["Palatine"]
+    section: "Races"
+    default_tags: ["outdoor"]
+    enabled: true
   - name: "Harper College — Public Events"
     type: localist
     # ROADMAP.md item 286: Harper's Localist calendar (probe round 13, 2026-10-13: JSON API

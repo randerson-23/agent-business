@@ -1283,3 +1283,20 @@ def test_rainout_list_and_extension_parsing():
            '<span class="clue"><em>Last updated at 8/31/26 3:24 pm by AHPD</em></span>')
     assert fetchers.parse_rainout_extension(ext) == {"status": "Canceled", "note": "Closed for the season. See you in 2027!", "updated": "8/31/26 3:24 pm"}
     assert fetchers.parse_rainout_extension("<p>nothing</p>") is None
+
+
+def test_runsignup_races_keep_this_towns_races_in_the_window():
+    # ROADMAP.md item 511.
+    from datetime import date
+    import fetchers
+    data = {"races": [
+        {"race": {"name": "Arlington Heights Turkey Trot", "next_date": "11/26/2026", "url": "https://runsignup.com/Race/IL/ArlingtonHeights/ArlingtonHeightsTurkeyTrot",
+                  "address": {"city": "Arlington Heights"}, "is_draft_race": "F", "is_private_race": "F",
+                  "events": [{"name": "5K Run/Walk", "start_time": "11/26/2026 09:00"}, {"name": "Kids Fun Run", "start_time": "11/26/2026 08:30"}]}},
+        {"race": {"name": "Fall 10K", "next_date": "09/26/2027", "url": "https://r/f", "address": {"city": "Arlington Heights"}, "events": []}},
+        {"race": {"name": "Schaumburg Jingle 5K", "next_date": "12/05/2026", "url": "https://r/s", "address": {"city": "Schaumburg"}, "events": []}},
+        {"race": {"name": "Draft Run", "next_date": "12/01/2026", "url": "https://r/d", "address": {"city": "Arlington Heights"}, "is_draft_race": "T"}},
+    ]}
+    items = fetchers.parse_runsignup_races(data, date(2026, 11, 16), ["Arlington Heights"])
+    assert [i["title"] for i in items] == ["Arlington Heights Turkey Trot"]
+    assert items[0]["date"] == "20261126T083000" and items[0]["kids_race"] and "Kids Fun Run" in items[0]["detail"]

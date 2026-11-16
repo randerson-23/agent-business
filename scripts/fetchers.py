@@ -1169,6 +1169,71 @@ def _submit_indexnow_fallbacks(host: str, key: str, key_location: str, urls: lis
     return accepted
 
 
+# ROADMAP.md item 511: RunSignup's public race search, which answers without a
+# key (probe round 45). It returns recurring races whose `next_date` can be a
+# year out, so only races whose next date falls in the build window are kept.
+RUNSIGNUP_WINDOW_DAYS = 60
+_KIDS_RACE = re.compile(r"\bkids?\b|\bchildren\b|\byouth\b|\bdash\b|fun run|\bscurry\b|\btot\b|\bjunior\b", re.IGNORECASE)
+
+
+def _runsignup_day(value: str | None) -> date | None:
+    try:
+        return datetime.strptime(str(value or "").strip()[:10], "%m/%d/%Y").date()
+    except ValueError:
+        return None
+
+
+def parse_runsignup_races(data: dict, today: date, cities: list[str] | None = None, window_days: int = RUNSIGNUP_WINDOW_DAYS) -> list[dict]:
+    """Races (not drafts or private ones) whose next date is within the window,
+    in one of `cities` when given. Each becomes an item at its earliest event's
+    start time that day, with the distances and any kids' race in the detail."""
+    wanted = {c.lower() for c in cities or []}
+    items = []
+    for wrap in (data or {}).get("races") or []:
+        race = wrap.get("race") if isinstance(wrap, dict) and "race" in wrap else wrap
+        if not isinstance(race, dict) or race.get("is_draft_race") == "T" or race.get("is_private_race") == "T":
+            continue
+        day = _runsignup_day(race.get("next_date"))
+        if day is None or not (today <= day <= today + timedelta(days=window_days)):
+            continue
+        city = str((race.get("address") or {}).get("city") or "").strip()
+        if wanted and city.lower() not in wanted:
+            continue
+        events = [e for e in race.get("events") or [] if isinstance(e, dict) and _runsignup_day(e.get("start_time")) == day]
+        starts = []
+        for e in events:
+            try:
+                starts.append(datetime.strptime(str(e.get("start_time")).strip(), "%m/%d/%Y %H:%M"))
+            except ValueError:
+                pass
+        start = min(starts) if starts else None
+        names = [str(e.get("name") or "").strip() for e in events if e.get("name")]
+        kids = [n for n in names if _KIDS_RACE.search(n)]
+        detail = ("Races: " + ", ".join(dict.fromkeys(names)) + ". ") if names else ""
+        detail += "Register on the race's page."
+        items.append({
+            "title": html.unescape(str(race.get("name") or "")).strip(),
+            "url": str(race.get("url") or ""),
+            "date": start.strftime("%Y%m%dT%H%M%S") if start else day.strftime("%Y%m%d"),
+            "detail": detail,
+            "city": city,
+            "kids_race": bool(kids),
+        })
+    items.sort(key=lambda i: i["date"])
+    return [i for i in items if i["title"] and i["url"]]
+
+
+def fetch_runsignup(url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, cities: list[str] | None = None, **_ignored) -> list[dict] | None:
+    try:
+        data = _get(url).json()
+    except Exception as exc:  # noqa: BLE001 - fail soft
+        logger.warning("RunSignup fetch failed for %s: %s", url, exc)
+        if failure_info is not None:
+            failure_info.update({"error": str(exc)[:300]})
+        return None
+    return parse_runsignup_races(data, datetime.now(timezone.utc).date(), cities)[:limit]
+
+
 # ROADMAP.md item 514: Rainout Line, the weather-status line many park
 # districts use. The organisation's list page (/search/dnis_refresh/<dnis>)
 # gives each extension's name; each extension page serves its status in HTML
@@ -1229,4 +1294,5 @@ FETCHERS = {
     "html_events": fetch_html_events,
     "revize_news_json": fetch_revize_news_json,
     "localist": fetch_localist,
+    "runsignup": fetch_runsignup,  # item 511
 }

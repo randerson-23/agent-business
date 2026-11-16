@@ -78,6 +78,15 @@ region:
   # editors_pick_url: "https://www.dppl.org/"
 
 sources:
+  # ROADMAP.md item 511: family races on RunSignup (keyless, probe round 45), kept only when the race's own
+  # address is in Des Plaines and its next date is within 60 days; recurring races a year out are dropped.
+  - name: "RunSignup — races in Des Plaines"
+    type: runsignup
+    url: "https://runsignup.com/Rest/races?format=json&zipcode=60016&radius=5&events=T&results_per_page=100"
+    cities: ["Des Plaines"]
+    section: "Races"
+    default_tags: ["outdoor"]
+    enabled: true
   - name: "City of Des Plaines — News"
     type: html_events
     # Fixed 2026-08-30 (see header note): the City's real domain is

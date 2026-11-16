@@ -79,6 +79,15 @@ region:
   # editors_pick_url: "https://mppl.org/"
 
 sources:
+  # ROADMAP.md item 511: family races on RunSignup (keyless, probe round 45), kept only when the race's own
+  # address is in Mount Prospect and its next date is within 60 days; recurring races a year out are dropped.
+  - name: "RunSignup — races in Mount Prospect"
+    type: runsignup
+    url: "https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=5&events=T&results_per_page=100"
+    cities: ["Mount Prospect"]
+    section: "Races"
+    default_tags: ["outdoor"]
+    enabled: true
   - name: "Village of Mount Prospect — News"
     type: revize_news_json
     # ROADMAP.md item 192: /services/news 403'd for 34+ builds, then 404'd once
