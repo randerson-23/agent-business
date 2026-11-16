@@ -7859,3 +7859,20 @@ def test_thin_hub_pages_are_noindex_and_out_of_the_sitemap():
     xml = build_digest.build_sitemap_xml([], datetime(2026, 11, 16, tzinfo=timezone.utc), thin_paths=thin)
     assert "sensory-friendly/" not in xml
     assert build_digest.hub_entry_count([{"events": [1, 2], "tree": {"label": "Fri"}}, {"events": []}]) == 3
+
+
+def test_regional_events_go_to_the_nearest_town_with_their_distance():
+    # ROADMAP.md items 519 and 520.
+    towns = [{"name": "Palatine", "lat": 42.1103, "lon": -88.0342}, {"name": "Arlington Heights", "lat": 42.0884, "lon": -87.9806},
+             {"name": "Des Plaines", "lat": 42.0334, "lon": -87.8834}, {"name": "Wheeling", "lat": 42.1392, "lon": -87.9290}]
+    crabtree = {"title": "Nature Story Trail", "venue_name": "Crabtree Nature Center", "venue_city": "Barrington Hills", "lat": 42.1117, "lon": -88.1617, "detail": "Free."}
+    river_trail = {"title": "Wildlife Connections", "venue_name": "River Trail Nature Center", "venue_city": "Northbrook", "lat": 42.1093, "lon": -87.8378}
+    far = {"title": "Lakefront walk", "venue_name": "Downtown", "venue_city": "Chicago", "lat": 41.8781, "lon": -87.6298}
+    no_geo = {"title": "Somewhere", "venue_name": "X"}
+    items = [crabtree, river_trail, far, no_geo]
+    pal = build_digest.keep_nearest_town(items, "Palatine", towns)
+    assert [i["title"] for i in pal] == ["Nature Story Trail"]
+    assert pal[0]["detail"].startswith("Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine.")
+    placed = {t["name"]: [i["title"] for i in build_digest.keep_nearest_town(items, t["name"], towns)] for t in towns}
+    assert sum(len(v) for v in placed.values()) == 2  # nothing twice, the far and unlocated ones nowhere
+    assert placed["Wheeling"] == ["Wildlife Connections"] or placed["Des Plaines"] == ["Wildlife Connections"]

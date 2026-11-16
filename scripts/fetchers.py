@@ -1169,6 +1169,57 @@ def _submit_indexnow_fallbacks(host: str, key: str, key_location: str, urls: lis
     return accepted
 
 
+# ROADMAP.md item 519: a regional Events Calendar site (the Forest Preserves of
+# Cook County) whose events sit between the towns. Its REST route carries each
+# venue's name, city and coordinates; the build keeps an event only in the
+# nearest town within ten miles (item 520). One response serves every town.
+_TRIBE_VENUE_CACHE: dict[str, list[dict] | None] = {}
+
+
+def fetch_tribe_venues(url: str, limit: int = MAX_ITEMS_PER_SOURCE, *, failure_info: dict | None = None, **_ignored) -> list[dict] | None:
+    """`url` is the REST base with any filters, e.g.
+    https://fpdcc.com/wp-json/tribe/events/v1/events?categories=north ; this adds
+    a 60-day date range and follows up to 6 pages."""
+    if url in _TRIBE_VENUE_CACHE:
+        cached = _TRIBE_VENUE_CACHE[url]
+        return None if cached is None else [dict(i) for i in cached]
+    today = datetime.now(timezone.utc).date()
+    sep = "&" if "?" in url else "?"
+    nxt = f"{url}{sep}start_date={today.isoformat()}&end_date={(today + timedelta(days=60)).isoformat()}&per_page=50"
+    items: list[dict] = []
+    try:
+        for _ in range(6):
+            data = _get(nxt).json()
+            for ev in data.get("events") or []:
+                all_day = bool(ev.get("all_day"))
+                start = _tribe_stamp(ev.get("start_date"), all_day)
+                venue = ev.get("venue") if isinstance(ev.get("venue"), dict) else {}
+                if not (ev.get("title") and start):
+                    continue
+                item = {"title": _tribe_text(ev["title"]), "detail": _tribe_text(ev.get("excerpt") or ev.get("description")),
+                        "url": str(ev.get("url") or ""), "date": start,
+                        "venue_name": _tribe_text(venue.get("venue")), "venue_city": _tribe_text(venue.get("city"))}
+                try:
+                    item["lat"], item["lon"] = float(venue.get("geo_lat")), float(venue.get("geo_lng"))
+                except (TypeError, ValueError):
+                    pass
+                finish = _tribe_stamp(ev.get("end_date"), False)
+                if finish and not all_day:
+                    item["end_date"] = finish
+                items.append(item)
+            nxt = data.get("next_rest_url")
+            if not nxt or len(items) >= limit:
+                break
+    except Exception as exc:  # noqa: BLE001 - fail soft
+        logger.warning("Events Calendar REST failed for %s: %s", url, exc)
+        if failure_info is not None:
+            failure_info.update({"error": str(exc)[:300]})
+        _TRIBE_VENUE_CACHE[url] = None
+        return None
+    _TRIBE_VENUE_CACHE[url] = items[:limit]
+    return [dict(i) for i in items[:limit]]
+
+
 # ROADMAP.md item 511: RunSignup's public race search, which answers without a
 # key (probe round 45). It returns recurring races whose `next_date` can be a
 # year out, so only races whose next date falls in the build window are kept.
@@ -1295,4 +1346,5 @@ FETCHERS = {
     "revize_news_json": fetch_revize_news_json,
     "localist": fetch_localist,
     "runsignup": fetch_runsignup,  # item 511
+    "tribe_venues": fetch_tribe_venues,  # item 519
 }

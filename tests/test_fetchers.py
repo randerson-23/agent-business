@@ -1300,3 +1300,17 @@ def test_runsignup_races_keep_this_towns_races_in_the_window():
     items = fetchers.parse_runsignup_races(data, date(2026, 11, 16), ["Arlington Heights"])
     assert [i["title"] for i in items] == ["Arlington Heights Turkey Trot"]
     assert items[0]["date"] == "20261126T083000" and items[0]["kids_race"] and "Kids Fun Run" in items[0]["detail"]
+
+
+def test_tribe_venues_reads_venue_and_coordinates(monkeypatch):
+    # ROADMAP.md item 519.
+    import fetchers
+    class R:
+        def json(self):
+            return {"events": [{"title": "Nature Story Trail", "start_date": "2026-11-21 10:00:00", "end_date": "2026-11-21 11:00:00", "url": "https://fpdcc.com/event/x/",
+                                "excerpt": "<p>Free. Ages 2-6.</p>", "venue": {"venue": "Crabtree Nature Center", "city": "Barrington Hills", "geo_lat": "42.1117", "geo_lng": "-88.1617"}}]}
+    fetchers._TRIBE_VENUE_CACHE.clear()
+    monkeypatch.setattr(fetchers, "_get", lambda url: R())
+    items = fetchers.fetch_tribe_venues("https://fpdcc.com/wp-json/tribe/events/v1/events?categories=north")
+    assert items[0]["venue_name"] == "Crabtree Nature Center" and items[0]["lat"] == 42.1117 and items[0]["date"] == "20261121T100000"
+    assert items[0]["detail"] == "Free. Ages 2-6."

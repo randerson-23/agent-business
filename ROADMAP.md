@@ -21613,7 +21613,7 @@ newest pages help or hurt how search engines see a young domain.
 
 #### P3 (new)
 
-518. (🟡 PROBE 2026-11-16: round 46 asks AMC's Sensory Friendly Films page whether Randhurst is named; library sensory-kit pages still to find) **Standing entries on `/sensory-friendly/`, sourced.** Build loop, probe
+518. (🟡 2026-11-16: AMC's page answers the runner with 403, so Randhurst's participation is unconfirmed and nothing is listed for AMC; library sensory-kit pages still to find) **Standing entries on `/sensory-friendly/`, sourced.** Build loop, probe
      first:
 
      - Probe AMC's *Sensory Friendly Films* page and AMC Randhurst 12's
@@ -21653,7 +21653,7 @@ programmes in winter.
 
 #### P1 (new)
 
-519. (🟡 STEP 1 2026-11-16: probe round 46 asks FPCC's Events Calendar REST (north category) and its two iCal exports; read data/url_probes.json next) **Read the Forest Preserves of Cook County's north-region events.**
+519. (✅ BUILT 2026-11-16: round 46 found the REST route (north category, venue name/city/geo_lat/geo_lng) and both iCal exports answering. `fetch_tribe_venues` (type `tribe_venues`) reads the REST route for the next 60 days, up to 6 pages, cached once per build; a source per town with `nearest_town_only: true`. The first live reading is CI's; FPCC's own winter festivals need nothing extra) **Read the Forest Preserves of Cook County's north-region events.**
      Build loop, probe first:
 
      1. Probe `fpdcc.com/wp-json/tribe/events/v1/events?start_date=<today>&end_date=<+60d>&per_page=50`,
@@ -21677,7 +21677,7 @@ programmes in winter.
 
 #### P2 (new)
 
-520. **Regional venues: nearest town, with the distance shown.** Build loop.
+520. (✅ DONE 2026-11-16 for FPCC: `keep_nearest_town` keeps an event only in the town whose centre is nearest its venue, within 10 miles, and prefixes the card with "<venue> (<city>) · ≈ N mi from <town>"; no coordinates, no listing. RunSignup races still use their own city; Harper College isn't a source yet) **Regional venues: nearest town, with the distance shown.** Build loop.
      For sources that aren't a town's own (FPCC, Harper College, RunSignup
      races from item 511), place each event in the **nearest town's**
      sections by venue coordinates (`ZIP_COORDS` plus a small

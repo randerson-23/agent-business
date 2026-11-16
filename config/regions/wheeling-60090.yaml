@@ -74,6 +74,16 @@ region:
   # editors_pick_url: "https://www.indiantrailslibrary.org/"
 
 sources:
+  # ROADMAP.md items 519/520: the Forest Preserves of Cook County's north-region programmes (nature
+  # centres, story trails, animal encounters; mostly free, all winter). One REST response serves every
+  # town; each event is kept only by the town nearest its venue, within ten miles, with the distance shown.
+  - name: "Forest Preserves of Cook County — north"
+    type: tribe_venues
+    url: "https://fpdcc.com/wp-json/tribe/events/v1/events?categories=north"
+    nearest_town_only: true
+    section: "Forest Preserves"
+    max_items: 300
+    enabled: true
   # ROADMAP.md item 511: family races on RunSignup (keyless, probe round 45), kept only when the race's own
   # address is in Wheeling and its next date is within 60 days; recurring races a year out are dropped.
   - name: "RunSignup — races in Wheeling"

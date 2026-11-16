@@ -1399,6 +1399,8 @@ def fetch_region_sections(
             if transport_failure_details is not None:
                 update_transport_failure_details(transport_failure_details, source_key, failure_info)
 
+        if source.get("nearest_town_only"):  # item 520: a regional source, placed by venue
+            raw_items = keep_nearest_town(raw_items, region_cfg["region"]["name"], TOWN_CENTRES)
         events = []
         for item in raw_items:
             tags = infer_tags(item.get("title", ""), item.get("detail", ""), section=source["section"])
@@ -2712,6 +2714,29 @@ JUST_OUTSIDE_MAX_MILES = 10
 def is_roundup_url(url: str | None) -> bool:
     host = (urlparse(url or "").hostname or "").lower()
     return any(host == d or host.endswith("." + d) or d in host for d in ROUNDUP_DOMAINS)
+
+
+TOWN_CENTRES: list[dict] = []  # item 520: filled from the region configs in main()
+
+
+def keep_nearest_town(items: list[dict], region_name: str, towns: list[dict], max_miles: float = JUST_OUTSIDE_MAX_MILES) -> list[dict]:
+    """ROADMAP.md item 520: a regional source's events go only to the nearest
+    town (within `max_miles`), so nothing appears in two towns, and each says
+    where it is: "Crabtree Nature Center (Barrington Hills) · ≈ 4 mi from
+    Palatine". An item without coordinates is dropped, never guessed."""
+    kept = []
+    for item in items:
+        if item.get("lat") is None or item.get("lon") is None:
+            continue
+        near = nearest_town(float(item["lat"]), float(item["lon"]), towns)
+        if not near or near[0] != region_name or near[1] > max_miles:
+            continue
+        place = item.get("venue_name") or ""
+        if item.get("venue_city") and item["venue_city"].lower() not in place.lower():
+            place = f"{place} ({item['venue_city']})" if place else item["venue_city"]
+        where = f"{place} · ≈ {round(near[1])} mi from {region_name}" if place else f"≈ {round(near[1])} mi from {region_name}"
+        kept.append(dict(item, detail=f"{where}. {item.get('detail') or ''}".strip(), distance_note=where))
+    return kept
 
 
 def nearest_town(lat: float, lon: float, towns: list[dict]) -> tuple[str, float] | None:
@@ -8574,6 +8599,7 @@ def main() -> None:
     maps = load_maps_config(load_yaml(CONFIG_DIR / "maps.yaml"))
     regions = load_regions()
     now = datetime.now(timezone.utc)
+    TOWN_CENTRES[:] = [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions]  # item 520
     email_town_names = [c["region"]["name"] for c in regions if c["region"].get("email") is not False]  # item 489
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
