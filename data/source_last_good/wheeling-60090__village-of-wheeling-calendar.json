@@ -1,13 +1,6 @@
 {
- "fetched_at": "2026-11-16T22:04:55+00:00",
+ "fetched_at": "2026-11-17T06:00:41+00:00",
  "items": [
-  {
-   "date": "20261116T183000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2160",
-   "end_date": "20261116T235900",
-   "title": "Village Board Regular Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
   {
    "date": "20261118T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=1971",
@@ -419,6 +412,13 @@
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2015",
    "end_date": "20270906T235900",
    "title": "Village Board Regular Meeting",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20270908T183000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2146",
+   "end_date": "20270908T235900",
+   "title": "Plan Commission Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],

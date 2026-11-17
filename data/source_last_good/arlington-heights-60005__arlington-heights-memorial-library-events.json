@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-16T22:04:55+00:00",
+ "fetched_at": "2026-11-17T06:00:41+00:00",
  "items": [
-  {
-   "date": "2026-11-16",
-   "detail": "",
-   "title": "Kids' Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224220"
-  },
   {
    "date": "2026-11-17",
    "detail": "",
@@ -28,8 +22,8 @@
   {
    "date": "2026-11-20",
    "detail": "",
-   "title": "Improv Workshop for Brain Health",
-   "url": "https://www.ahml.info/scheduling/reservation/195034"
+   "title": "First-Time Parents' Meetup",
+   "url": "https://www.ahml.info/scheduling/reservation/230133"
   },
   {
    "date": "2026-11-21",
@@ -130,14 +124,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "HYBRID: Senior Center Popular Books: Culpability",
-   "url": "https://www.ahml.info/scheduling/reservation/230304"
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224268"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224268"
+   "title": "HYBRID: Senior Center Popular Books: Culpability",
+   "url": "https://www.ahml.info/scheduling/reservation/230304"
   },
   {
    "date": null,
@@ -208,14 +202,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/236759"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/236746"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/236746"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/236759"
   },
   {
    "date": null,
@@ -346,6 +340,12 @@
   {
    "date": null,
    "detail": "",
+   "title": "Senior Center: Tech Support",
+   "url": "https://www.ahml.info/scheduling/reservation/224984"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Veterans Affairs (VA) Resource Hour",
    "url": "https://www.ahml.info/scheduling/reservation/227194"
   },
@@ -358,8 +358,8 @@
   {
    "date": null,
    "detail": "",
-   "title": "Senior Center: Tech Support",
-   "url": "https://www.ahml.info/scheduling/reservation/224984"
+   "title": "Kids' Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224219"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

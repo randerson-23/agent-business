@@ -2,236 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-11-16T22:04:55+00:00",
-  "numberOfItems": 75,
+  "dateModified": "2026-11-17T06:00:41+00:00",
+  "numberOfItems": 70,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Teen Take & Make",
-        "startDate": "2026-11-16",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17635813",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Monday, November 16 2026 12:00am - 11:59pm \n Take & Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Baby Book Time",
-        "startDate": "2026-11-16T10:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16431793",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Monday, November 16 2026 10:00am - 11:00am \n To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "I-Cash -Do You Have Unclaimed Property?",
-        "startDate": "2026-11-16T10:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-i-cash-do-you-have-unclaimed-property-2026-11-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17690869",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Monday, November 16 2026 10:00am - 1:00pm \n A representative from the Illinois State Treasurer's Office will be in the library lobby assisting in looking up…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Book a Teen Librarian",
-        "startDate": "2026-11-16T17:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15509800",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Monday, November 16 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Adult Board Game Night",
-        "startDate": "2026-11-16T18:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-adult-board-game-night-2026-11-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/16875034",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Monday, November 16 2026 6:00pm - 8:00pm \n Meet fellow board gamers! Play our games or bring your own."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Des Plaines Toastmasters",
-        "startDate": "2026-11-16T18:15:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-toastmasters-2026-11-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17213134",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Monday, November 16 2026 6:15pm - 8:40pm \n James 847-804-2241"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "item": {
-        "@type": "Event",
-        "name": "LEGO League",
-        "startDate": "2026-11-16T18:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-lego-league-2026-11-16",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17061584",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Monday, November 16 2026 6:30pm - 7:30pm \n We supply LEGOs and a theme, you supply the imagination! Children under 8, please bring your caregiver. Grades K-8."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -263,7 +39,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -295,7 +71,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -327,7 +103,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Maker's Place",
@@ -359,7 +135,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -391,7 +167,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Stitches on Miner",
@@ -423,7 +199,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "River Pointe Condo Assoc.",
@@ -455,7 +231,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Internet Security 101",
@@ -487,7 +263,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "FilmTalkTuesdays: At Eternity's Gate (2018)",
@@ -519,37 +295,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
-      "item": {
-        "@type": "Event",
-        "name": "Yoga in the Preserves",
-        "startDate": "2026-11-18T09:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-yoga-in-the-preserves-2026-11-18",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://fpdcc.com/event/yoga-in-the-preserves/2026-11-18/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Forest Preserves of Cook County",
-          "url": "https://fpdcc.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Caldwell Woods Wellness Center (Chicago) · ≈ 6 mi from Des Plaines. Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted ."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 18,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -581,7 +327,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Prevention and Long-Term Success with Diabetes",
@@ -613,7 +359,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "The Legacy of Marshall Fields",
@@ -645,7 +391,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Preschool Storytime",
@@ -678,7 +424,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Teen Crafternoons",
@@ -710,7 +456,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: In-Person",
@@ -742,7 +488,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -775,7 +521,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "20s & 30s Book Club: Invisible Life of Addie Larue",
@@ -807,7 +553,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Family Reading Night Kits",
@@ -839,7 +585,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -871,7 +617,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -903,7 +649,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Garden Club",
@@ -935,7 +681,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Rock and Crystal Gardens",
@@ -965,7 +711,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -997,7 +743,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Oakton College Information Table",
@@ -1029,7 +775,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Liberation Bookmarks",
@@ -1061,7 +807,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1093,7 +839,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Linocut Block Printing Workshop",
@@ -1125,7 +871,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Library Board of Trustees Open Meeting",
@@ -1157,7 +903,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "River's Edge Condo Assoc.",
@@ -1189,7 +935,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "POSTPONED: ART GARFUNKEL - WHAT A WONDERFUL WORLD CONCERT",
@@ -1220,7 +966,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR \"ROCKIN THE BLUES\"",
@@ -1251,7 +997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Book Discussion: Five Decembers",
@@ -1283,7 +1029,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Baby Book Time",
@@ -1315,7 +1061,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Q & A One on One Appointment",
@@ -1347,7 +1093,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "THE PHIL COLLINS EXPERIENCE with SPECIAL GUEST THE SATURDAY JUNE BAND",
@@ -1378,7 +1124,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS",
@@ -1409,7 +1155,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "DIY with DPPL",
@@ -1441,7 +1187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Play Packs",
@@ -1473,7 +1219,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Cafecito Y Libritos",
@@ -1505,7 +1251,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Cat Toy Workshop",
@@ -1537,7 +1283,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "SNAP SHOT CLASSIC ROCK EXPERIENCE with SPECIAL GUEST CLASS OF 68",
@@ -1568,7 +1314,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE BLUES with the DOWNTOWN CHARLIE BROWN BAND",
@@ -1599,7 +1345,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "POOH: 60th ANNIVERSARY TOUR - FINALE",
@@ -1630,7 +1376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -1662,7 +1408,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1694,7 +1440,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -1726,7 +1472,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Happy Spinsters",
@@ -1758,7 +1504,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "$10 SILENT FILM SERIES - \"The Passion of Joan of Arc\" (1928), Presented by The Silent Film Society of Chicago",
@@ -1789,7 +1535,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1821,7 +1567,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1853,7 +1599,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "School's Out Drop-in Craft",
@@ -1885,7 +1631,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Design a Stanley in the Canvas",
@@ -1917,7 +1663,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1949,7 +1695,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -1981,7 +1727,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -2013,7 +1759,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Bridges of Meaning",
@@ -2045,37 +1791,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
-      "item": {
-        "@type": "Event",
-        "name": "Yoga in the Preserves",
-        "startDate": "2026-11-25T09:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-yoga-in-the-preserves-2026-11-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://fpdcc.com/event/yoga-in-the-preserves/2026-11-25/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Forest Preserves of Cook County",
-          "url": "https://fpdcc.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Caldwell Woods Wellness Center (Chicago) · ≈ 6 mi from Des Plaines. Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted ."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 66,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "HAIRBANGERS BALL with SPECIAL GUEST MIKE & JOE - The Midwest's Most Renowed Cover Band",
@@ -2106,7 +1822,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: BLUES NIGHT EXTRAVAGANZA featuring DOWNTOWN CHARLIE BROWN, SEAN McKEE, MILES MINOR, JEFF BRINKMAN and JOE VALENTINO - THANKSGIVING EVE!",
@@ -2137,7 +1853,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "KASHMIR: THE MUSIC OF LED ZEPPELIN",
@@ -2168,7 +1884,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with DONNY DeMARCO & TUNE TOWN",
@@ -2199,7 +1915,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "$1 CHRISTMAS CLASSIC FILM SERIES: \"How The Grinch Stole Christmas\" (2000)",
@@ -2230,7 +1946,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "The Financial Aid Process for College",
@@ -2262,7 +1978,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "Tween Movie",
@@ -2294,7 +2010,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "AN EVENING WITH DEACON BLUES: STEELY DAN TRIBUTE",
@@ -2325,7 +2041,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "BOURBON 'N BRASS: LIVE JAZZ WITH THE BOURBON 'N BRASS BRIAN PATTI PROHIBITION DANCE BAND - 20s & 30s DANCE HITS",
@@ -2356,7 +2072,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "Tech en el Forum (Spanish)",
@@ -2384,6 +2100,134 @@
         },
         "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Sunday, November 29 2026 1:30pm - 3:30pm \n ¿Tiene alguna pregunta sobre tecnología o sobre cómo usar los servicios de la biblioteca? La asistencia se brinda…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 67,
+      "item": {
+        "@type": "Event",
+        "name": "Teen Take & Make",
+        "startDate": "2026-11-30",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-30",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17635815",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Monday, November 30 2026 12:00am - 11:59pm \n Take & Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 68,
+      "item": {
+        "@type": "Event",
+        "name": "Book a Teen Librarian",
+        "startDate": "2026-11-30T17:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-30",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15509802",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Monday, November 30 2026 5:00pm - 6:00pm \n Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 69,
+      "item": {
+        "@type": "Event",
+        "name": "Des Plaines Shambhala Meditation Group",
+        "startDate": "2026-11-30T18:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-11-30",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17253045",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Monday, November 30 2026 6:30pm - 8:30pm \n For more information, please call 773-743-8147."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 70,
+      "item": {
+        "@type": "Event",
+        "name": "Horror Book Club",
+        "startDate": "2026-11-30T18:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-horror-book-club-2026-11-30",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/17829482",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Monday, November 30 2026 6:30pm - 8:30pm \n dphorrorclub@gmail.com"
       }
     }
   ]

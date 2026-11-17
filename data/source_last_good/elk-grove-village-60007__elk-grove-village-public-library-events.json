@@ -1,48 +1,6 @@
 {
- "fetched_at": "2026-11-16T22:04:55+00:00",
+ "fetched_at": "2026-11-17T06:00:41+00:00",
  "items": [
-  {
-   "date": "Mon, 16 Nov 2026 00:00:00 +0000",
-   "detail": "Monday, November 16 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
-   "title": "The Arlington Camera Club",
-   "url": "https://egvpl.libnet.info/event/16362684"
-  },
-  {
-   "date": "Mon, 16 Nov 2026 00:00:00 +0000",
-   "detail": "Monday, November 16 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
-   "title": "Word of the Week",
-   "url": "https://egvpl.libnet.info/event/17354428"
-  },
-  {
-   "date": "Mon, 16 Nov 2026 09:30:00 +0000",
-   "detail": "Monday, November 16 2026 9:30am - 10:15am \n Bond with your little one and meet new friends at a lap-sit storytime full of bounces, tickles, songs, and giggles.",
-   "title": "Baby Tales",
-   "url": "https://egvpl.libnet.info/event/16817292"
-  },
-  {
-   "date": "Mon, 16 Nov 2026 10:30:00 +0000",
-   "detail": "Monday, November 16 2026 10:30am - 11:15am \n Bond with your little one and meet new friends at a lap-sit storytime full of bounces, tickles, songs, and giggles.",
-   "title": "Baby Tales",
-   "url": "https://egvpl.libnet.info/event/16817320"
-  },
-  {
-   "date": "Mon, 16 Nov 2026 15:30:00 +0000",
-   "detail": "Monday, November 16 2026 3:30pm - 7:00pm \n Get ready for a TEEN TAKEOVER of the Makerspace! Enjoy dedicated time in the space just for teens! Learn about 3D printing, embroidery, make a craft, or just colorit's up to you!",
-   "title": "Makerspace Teen Takeover!",
-   "url": "https://egvpl.libnet.info/event/17241671"
-  },
-  {
-   "date": "Mon, 16 Nov 2026 16:15:00 +0000",
-   "detail": "Monday, November 16 2026 4:15pm - 5:00pm \n Create art projects using different artistic techniques and materials. Join us for a fun two-day art class.",
-   "title": "Canvas Kids: Golden Gratitude",
-   "url": "https://egvpl.libnet.info/event/16998469"
-  },
-  {
-   "date": "Mon, 16 Nov 2026 18:00:00 +0000",
-   "detail": "Monday, November 16 2026 6:00pm - 8:00pm \n Get into the festive spirit and craft a beautiful winter decoration for your home! This hands-on workshop guides you through creating a unique seasonal project from scratch.",
-   "title": "Winter Holiday Craft",
-   "url": "https://egvpl.libnet.info/event/16934332"
-  },
   {
    "date": "Tue, 17 Nov 2026 00:00:00 +0000",
    "detail": "Tuesday, November 17 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
@@ -360,6 +318,48 @@
    "detail": "Monday, November 23 2026 10:30am - 11:15am \n Join Terrance the Well-Dressed Turkey, and other funny farm friends, as we harvest the crops and share in the bounty of friendship through song during this interactive musical show.",
    "title": "Miss Jamie's Fall Sing-along",
    "url": "https://egvpl.libnet.info/event/17066295"
+  },
+  {
+   "date": "Mon, 23 Nov 2026 13:00:00 +0000",
+   "detail": "Monday, November 23 2026 1:00pm - 3:00pm \n Enjoy an afternoon movie in the Lee Maternowski Room.  Popcorn will be served!",
+   "title": "Monday Matinee Movie",
+   "url": "https://egvpl.libnet.info/event/16746077"
+  },
+  {
+   "date": "Mon, 23 Nov 2026 18:30:00 +0000",
+   "detail": "Monday, November 23 2026 6:30pm - 7:30pm \n Kids can join crafter Krystyna Jaro? to create a festive fall craft in celebration of the Thanksgiving season. This craft session is limited to registered participants.",
+   "title": "Fall Craft",
+   "url": "https://egvpl.libnet.info/event/16995039"
+  },
+  {
+   "date": "Tue, 24 Nov 2026 00:00:00 +0000",
+   "detail": "Tuesday, November 24 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
+   "title": "The Arlington Camera Club",
+   "url": "https://egvpl.libnet.info/event/16362692"
+  },
+  {
+   "date": "Tue, 24 Nov 2026 00:00:00 +0000",
+   "detail": "Tuesday, November 24 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
+   "title": "Word of the Week",
+   "url": "https://egvpl.libnet.info/event/17354436"
+  },
+  {
+   "date": "Tue, 24 Nov 2026 10:30:00 +0000",
+   "detail": "Tuesday, November 24 2026 10:30am - 11:30am \n Join us for adult coloring while enjoying a cup of coffee or tea, and coffee cake!",
+   "title": "Coffee, Cake & Coloring",
+   "url": "https://egvpl.libnet.info/event/16167279"
+  },
+  {
+   "date": "Tue, 24 Nov 2026 11:00:00 +0000",
+   "detail": "Tuesday, November 24 2026 11:00am - 1:00pm \n Got a technology question? Were here to help! Bring your device and question.",
+   "title": "Tuesday Tech Help",
+   "url": "https://egvpl.libnet.info/event/17238827"
+  },
+  {
+   "date": "Tue, 24 Nov 2026 13:30:00 +0000",
+   "detail": "Tuesday, November 24 2026 1:30pm - 2:30pm \n Get ready for a string-tastic show full of laughs, amazing yo-yo tricks, and family fun!",
+   "title": "Mark Hayward Yo-yo and Comedy Show",
+   "url": "https://egvpl.libnet.info/event/17066796"
   }
  ],
  "source": "Elk Grove Village Public Library - Events"

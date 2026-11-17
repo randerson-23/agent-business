@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-16T22:04:55+00:00",
+ "fetched_at": "2026-11-17T06:00:41+00:00",
  "items": [
   {
    "date": "20261117T103000",
@@ -574,6 +574,17 @@
    "venue_name": "River Trail Nature Center"
   },
   {
+   "date": "20261212T080000",
+   "detail": "Bundle up and experience a brisk 3.4-mile hike and the health benefits nature provides.",
+   "end_date": "20261212T080000",
+   "lat": 41.48722079,
+   "lon": -87.65304546,
+   "title": "Winter Wellness Hike",
+   "url": "https://fpdcc.com/event/winter-wellness-hike/",
+   "venue_city": "",
+   "venue_name": "Sauk Trail Woods-Central"
+  },
+  {
    "date": "20261212T093000",
    "detail": "Remove invasive species. Tools provided. Ages 8 & up w/ adult. High schoolers may earn service hours.",
    "end_date": "20261212T120000",
@@ -649,17 +660,6 @@
    "url": "https://fpdcc.com/event/wellness-in-the-woods-yoga-4/",
    "venue_city": "",
    "venue_name": "Dan Ryan Woods Visitor Center & Pavilion"
-  },
-  {
-   "date": "20261212T130000",
-   "detail": "Learn the fundamentals of drawing from nature and practice in a relaxed environment. For all skill levels. Materials provided.",
-   "end_date": "20261212T150000",
-   "lat": 41.89324535,
-   "lon": -87.82630546,
-   "title": "Nature Drawing Workshop",
-   "url": "https://fpdcc.com/event/nature-drawing-workshop/",
-   "venue_city": "River Forest",
-   "venue_name": "Trailside Museum of Natural History"
   }
  ],
  "source": "Forest Preserves of Cook County — north"
