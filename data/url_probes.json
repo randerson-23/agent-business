@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-11-16T23:23:43+00:00",
+      "probed_at": "2026-11-17T22:24:57+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,7 +22,7 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-11-16T23:23:43+00:00",
+      "probed_at": "2026-11-17T22:24:57+00:00",
       "status": 200,
       "final_url": "https://www.ahpd.org/parks/",
       "content_type": "text/html; charset=UTF-8",
@@ -95,17 +95,13 @@
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-11-16T23:23:44+00:00",
+      "probed_at": "2026-11-17T22:24:57+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 356252,
+      "bytes": 348833,
       "pattern_matches": {
         "\"venue_id\":\\d+": [
-          {
-            "match": "\"venue_id\":580433",
-            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":580433,\"ticket_url\":null,\"ticket_cost\":null,\"has_register\":true,\"k"
-          },
           {
             "match": "\"venue_id\":53736902137049",
             "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":53736902137049,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
@@ -143,23 +139,15 @@
             "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":399075,\"ticket_url\":\"https://www.harpercollege.edu/services/arts/b"
           },
           {
+            "match": "\"venue_id\":580433",
+            "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":580433,\"ticket_url\":null,\"ticket_cost\":null,\"has_register\":true,\"k"
+          },
+          {
             "match": "\"venue_id\":401055",
             "context": "e\":false,\"verified\":true,\"rejected\":false,\"sponsored\":false,\"venue_id\":401055,\"ticket_url\":\"\",\"ticket_cost\":\"\",\"has_register\":false,\"keyw"
           }
         ],
         "\"location_name\":\"[^\"]{2,60}\"": [
-          {
-            "match": "\"location_name\":\"Building L\"",
-            "context": "rue,\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"\",\"location_name\":\"Building L\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Avante\"",
-            "context": "llows_attendance\":true,\"location\":\"Avante\",\"room_number\":\"\",\"location_name\":\"Avante\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Admissions Outreach\"",
-            "context": "dmissions Outreach\",\"room_number\":\"Building C Office C-103\",\"location_name\":\"Admissions Outreach\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
           {
             "match": "\"location_name\":\"Hawks Care Resource Center\"",
             "context": "\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"D204\",\"location_name\":\"Hawks Care Resource Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
@@ -209,12 +197,28 @@
             "context": "ation\":\"Palatine, IL, Hawks' Fieldhouse\",\"room_number\":null,\"location_name\":\"Palatine, IL, Hawks' Fieldhouse\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
+            "match": "\"location_name\":\"Building L\"",
+            "context": "rue,\"allows_attendance\":true,\"location\":\"\",\"room_number\":\"\",\"location_name\":\"Building L\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"Building L (by the bookstore)\"",
+            "context": "\"location\":\"Building L (by the bookstore)\",\"room_number\":\"\",\"location_name\":\"Building L (by the bookstore)\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
             "match": "\"location_name\":\"L-260A (By the Bookstore)\"",
             "context": "rue,\"location\":\"L-260A (By the Bookstore)\",\"room_number\":\"\",\"location_name\":\"L-260A (By the Bookstore)\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
+            "match": "\"location_name\":\"Admissions Outreach\"",
+            "context": "dmissions Outreach\",\"room_number\":\"Building C Office C-103\",\"location_name\":\"Admissions Outreach\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
             "match": "\"location_name\":\"Building Z, Avantè Center\"",
             "context": "ndance\":true,\"location\":\"\",\"room_number\":\"Avanté Concourse\",\"location_name\":\"Building Z, Avantè Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
+          },
+          {
+            "match": "\"location_name\":\"F-226 (Library)\"",
+            "context": "endance\":true,\"location\":\"F-226 (Library)\",\"room_number\":\"\",\"location_name\":\"F-226 (Library)\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           },
           {
             "match": "\"location_name\":\"Building D\"",
@@ -223,10 +227,6 @@
           {
             "match": "\"location_name\":\"Milwaukee, WI, Kern Center\"",
             "context": ",\"location\":\"Milwaukee, WI, Kern Center\",\"room_number\":null,\"location_name\":\"Milwaukee, WI, Kern Center\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
-          },
-          {
-            "match": "\"location_name\":\"Dowagiac, MI\"",
-            "context": "tendance\":true,\"location\":\"Dowagiac, MI\",\"room_number\":null,\"location_name\":\"Dowagiac, MI\",\"status\":\"live\",\"experience\":\"inperson\",\"stream_url\":null,\""
           }
         ],
         "\"event_types\":\\[[^\\]]{0,200}\\]": [
@@ -235,20 +235,16 @@
             "context": "nts\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
-            "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]",
-            "context": "578,\"name\":\"Continuing Professional Education\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
-            "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]",
-            "context": "[{\"id\":43969347273322,\"name\":\"Admissions Tour\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
-          },
-          {
             "match": "\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
             "context": "nts\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
             "match": "\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]",
             "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
+            "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]",
+            "context": ":[{\"id\":43968335307329,\"name\":\"Adult Learners\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
             "match": "\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]",
@@ -267,6 +263,10 @@
             "context": "ty\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Free Speech Events\",\"id\":121368},{\"name\":\"Tabling\",\"id\":51896898230417}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
           {
+            "match": "\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]",
+            "context": "[{\"id\":43969347273322,\"name\":\"Admissions Tour\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
+          },
+          {
             "match": "\"event_types\":[{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]",
             "context": "\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Fairs / Expos\",\"id\":53736840270831}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\""
           },
@@ -281,84 +281,84 @@
         ],
         "\"filters\":\\{.{0,300}": [
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479216368,\"event_id\":54162479168219,\"start\":\"2026-11-16T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479216368,\"event_id\":54162479168219,\"start\":\"2026-11-16T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479217393,\"event_id\":54162479168219,\"start\":\"2026-11-17T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479217393,\"event_id\":54162479168219,\"start\":\"2026-11-17T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071388168735,\"event_id\":54071360169217,\"start\":\"2026-11-16T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/copy-of-young-democratic-socialists-of-ame",
-            "context": "lington Heights\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60005\"},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071388168735,\"event_id\":54071360169217,\"start\":\"2026-11-16T00:00:00-06:00\",\"end\":null,\"ranking\":0.09,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/copy-of-young-democratic-socialists-of-america\",\"localist_ics_url\":\"https://events.harpercollege.edu/e"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381709194,\"event_id\":53319381709193,\"start\":\"2026-11-17T00:00:00-06:00\",\"end\":\"2026-11-17T00:00:00-06:00\",\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"locali",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381709194,\"event_id\":53319381709193,\"start\":\"2026-11-17T00:00:00-06:00\",\"end\":\"2026-11-17T00:00:00-06:00\",\"ranking\":0.29,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54347775223113,\"event_id\":54347775219016,\"start\":\"2026-11-16T09:00:00-06:00\",\"end\":\"2026-11-16T16:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54347775223113,\"event_id\":54347775219016,\"start\":\"2026-11-16T09:00:00-06:00\",\"end\":\"2026-11-16T16:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/vaccine-clin"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54239556743941,\"event_id\":54239556742916,\"start\":\"2026-11-17T09:00:00-06:00\",\"end\":\"2026-11-17T17:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/registration-rally",
+            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54239556743941,\"event_id\":54239556742916,\"start\":\"2026-11-17T09:00:00-06:00\",\"end\":\"2026-11-17T17:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/registration-rally-1753\",\"localist_ics_url\":\"https://events.harpercollege.edu/"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54107573033583,\"event_id\":54107573032558,\"start\":\"2026-11-16T15:00:00-06:00\",\"end\":\"2026-11-16T16:00:00-06:00\",\"ranking\":0.29,\"all_day\":f",
-            "context": "43658394366578,\"name\":\"Continuing Professional Education\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54107573033583,\"event_id\":54107573032558,\"start\":\"2026-11-16T15:00:00-06:00\",\"end\":\"2026-11-16T16:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54106831535666,\"event_id\":54106831533616,\"start\":\"2026-11-17T16:00:00-06:00\",\"end\":\"2026-11-17T16:45:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/student-workshop-c",
+            "context": "67\"},\"departments\":[{\"id\":48163177298995,\"name\":\"Library\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54106831535666,\"event_id\":54106831533616,\"start\":\"2026-11-17T16:00:00-06:00\",\"end\":\"2026-11-17T16:45:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/student-workshop-citing-your-sources\",\"localist_ics_url\":\"https://events.harpe"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53825810304564,\"event_id\":53825810304563,\"start\":\"2026-11-16T17:00:00-06:00\",\"end\":\"2026-11-16T17:45:00-06:00\",\"ranking\":0.29,\"all_day\":f",
-            "context": "partments\":[{\"id\":43969347273322,\"name\":\"Admissions Tour\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Campus Tour\",\"id\":44198992944890}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53825810304564,\"event_id\":53825810304563,\"start\":\"2026-11-16T17:00:00-06:00\",\"end\":\"2026-11-16T17:45:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410561134,\"event_id\":53936410559085,\"start\":\"2026-11-17T17:00:00-06:00\",\"end\":\"2026-11-17T19:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410561134,\"event_id\":53936410559085,\"start\":\"2026-11-17T17:00:00-06:00\",\"end\":\"2026-11-17T19:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-basketba"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479217393,\"event_id\":54162479168219,\"start\":\"2026-11-17T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479217393,\"event_id\":54162479168219,\"start\":\"2026-11-17T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53744421238351,\"event_id\":53744421237326,\"start\":\"2026-11-17T18:00:00-06:00\",\"end\":\"2026-11-17T19:00:00-06:00\",\"ranking\":0.29,\"all_day\":f",
+            "context": "epartments\":[{\"id\":43968335307329,\"name\":\"Adult Learners\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53744421238351,\"event_id\":53744421237326,\"start\":\"2026-11-17T18:00:00-06:00\",\"end\":\"2026-11-17T19:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381709194,\"event_id\":53319381709193,\"start\":\"2026-11-17T00:00:00-06:00\",\"end\":\"2026-11-17T00:00:00-06:00\",\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"locali",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381709194,\"event_id\":53319381709193,\"start\":\"2026-11-17T00:00:00-06:00\",\"end\":\"2026-11-17T00:00:00-06:00\",\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122248009808,\"event_id\":54122248009807,\"start\":\"2026-11-17T19:00:00-06:00\",\"end\":\"2026-11-17T21:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
+            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122248009808,\"event_id\":54122248009807,\"start\":\"2026-11-17T19:00:00-06:00\",\"end\":\"2026-11-17T21:00:00-06:00\",\"ranking\":0.29,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54239556743941,\"event_id\":54239556742916,\"start\":\"2026-11-17T09:00:00-06:00\",\"end\":\"2026-11-17T17:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/registration-rally",
-            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54239556743941,\"event_id\":54239556742916,\"start\":\"2026-11-17T09:00:00-06:00\",\"end\":\"2026-11-17T17:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/registration-rally-1753\",\"localist_ics_url\":\"https://events.harpercollege.edu/"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479220466,\"event_id\":54162479168219,\"start\":\"2026-11-18T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479220466,\"event_id\":54162479168219,\"start\":\"2026-11-18T00:00:00-06:00\",\"end\":null,\"ranking\":0.08,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54106831535666,\"event_id\":54106831533616,\"start\":\"2026-11-17T16:00:00-06:00\",\"end\":\"2026-11-17T16:45:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/student-workshop-c",
-            "context": "67\"},\"departments\":[{\"id\":48163177298995,\"name\":\"Library\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54106831535666,\"event_id\":54106831533616,\"start\":\"2026-11-17T16:00:00-06:00\",\"end\":\"2026-11-17T16:45:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/student-workshop-citing-your-sources\",\"localist_ics_url\":\"https://events.harpe"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381710219,\"event_id\":53319381709193,\"start\":\"2026-11-18T00:00:00-06:00\",\"end\":\"2026-11-18T00:00:00-06:00\",\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"locali",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381710219,\"event_id\":53319381709193,\"start\":\"2026-11-18T00:00:00-06:00\",\"end\":\"2026-11-18T00:00:00-06:00\",\"ranking\":0.28,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410561134,\"event_id\":53936410559085,\"start\":\"2026-11-17T17:00:00-06:00\",\"end\":\"2026-11-17T19:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936410561134,\"event_id\":53936410559085,\"start\":\"2026-11-17T17:00:00-06:00\",\"end\":\"2026-11-17T19:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-womens-basketba"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53798366249229,\"event_id\":53798366249228,\"start\":\"2026-11-18T10:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53798366249229,\"event_id\":53798366249228,\"start\":\"2026-11-18T10:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/student-stud"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53744421238351,\"event_id\":53744421237326,\"start\":\"2026-11-17T18:00:00-06:00\",\"end\":\"2026-11-17T19:00:00-06:00\",\"ranking\":0.28,\"all_day\":f",
-            "context": "epartments\":[{\"id\":43968335307329,\"name\":\"Adult Learners\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53744421238351,\"event_id\":53744421237326,\"start\":\"2026-11-17T18:00:00-06:00\",\"end\":\"2026-11-17T19:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071092159166,\"event_id\":54071092159165,\"start\":\"2026-11-18T11:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071092159166,\"event_id\":54071092159165,\"start\":\"2026-11-18T11:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/hivsti-testi"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122248009808,\"event_id\":54122248009807,\"start\":\"2026-11-17T19:00:00-06:00\",\"end\":\"2026-11-17T21:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://e",
-            "context": "t\":null,\"city\":null,\"state\":null,\"country\":null,\"zip\":null},\"filters\":{\"event_types\":[{\"name\":\"Athletics\",\"id\":107041}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54122248009808,\"event_id\":54122248009807,\"start\":\"2026-11-17T19:00:00-06:00\",\"end\":\"2026-11-17T21:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/harper-college-mens-basketball"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514853076769,\"event_id\":53514853070614,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"local",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514853076769,\"event_id\":53514853070614,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-wednes"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479220466,\"event_id\":54162479168219,\"start\":\"2026-11-18T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479220466,\"event_id\":54162479168219,\"start\":\"2026-11-18T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
+            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135092111101,\"event_id\":54135092110076,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-netw",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135092111101,\"event_id\":54135092110076,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-networking\",\"localist_ics_url\":\"https://events.harpercollege.edu"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381710219,\"event_id\":53319381709193,\"start\":\"2026-11-18T00:00:00-06:00\",\"end\":\"2026-11-18T00:00:00-06:00\",\"ranking\":0.27,\"all_day\":true,\"num_attending\":0}}],\"locali",
-            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381710219,\"event_id\":53319381709193,\"start\":\"2026-11-18T00:00:00-06:00\",\"end\":\"2026-11-18T00:00:00-06:00\",\"ranking\":0.27,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007581612,\"event_id\":53843007576486,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007581612,\"event_id\":53843007576486,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.08,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/pause-and-pl"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53798366249229,\"event_id\":53798366249228,\"start\":\"2026-11-18T10:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "city\":\"Palatine\",\"state\":\"IL\",\"country\":\"US\",\"zip\":\"60067\"},\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53798366249229,\"event_id\":53798366249228,\"start\":\"2026-11-18T10:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/student-stud"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54106722845706,\"event_id\":54106722845705,\"start\":\"2026-11-18T16:30:00-06:00\",\"end\":\"2026-11-18T18:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"locali",
+            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54106722845706,\"event_id\":54106722845705,\"start\":\"2026-11-18T16:30:00-06:00\",\"end\":\"2026-11-18T18:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/poison-contr"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071092159166,\"event_id\":54071092159165,\"start\":\"2026-11-18T11:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54071092159166,\"event_id\":54071092159165,\"start\":\"2026-11-18T11:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/hivsti-testi"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936411191811,\"event_id\":53936411189760,\"start\":\"2026-11-18T17:00:00-06:00\",\"end\":null,\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}",
+            "context": "Admissions\"},{\"id\":43968366742397,\"name\":\"Health Careers\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53936411191811,\"event_id\":53936411189760,\"start\":\"2026-11-18T17:00:00-06:00\",\"end\":null,\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/he"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514853076769,\"event_id\":53514853070614,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.07,\"all_day\":false,\"num_attending\":0}}],\"local",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514853076769,\"event_id\":53514853070614,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.07,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-wednes"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54472038704055,\"event_id\":54472038704054,\"start\":\"2026-11-18T19:00:00-06:00\",\"end\":\"2026-11-18T20:00:00-06:00\",\"ranking\":0.28,\"all_day\":f",
+            "context": "43658394366578,\"name\":\"Continuing Professional Education\"}],\"filters\":{\"event_types\":[{\"name\":\"Admission\",\"id\":44198994778312},{\"name\":\"Information Session\",\"id\":107035}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54472038704055,\"event_id\":54472038704054,\"start\":\"2026-11-18T19:00:00-06:00\",\"end\":\"2026-11-18T20:00:00-06:00\",\"ranking\":0.28,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.har"
           },
           {
-            "match": "\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135092111101,\"event_id\":54135092110076,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-netw",
-            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54135092111101,\"event_id\":54135092110076,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/jprc-workshop-networking\",\"localist_ics_url\":\"https://events.harpercollege.edu"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479221491,\"event_id\":54162479168219,\"start\":\"2026-11-19T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54162479221491,\"event_id\":54162479168219,\"start\":\"2026-11-19T00:00:00-06:00\",\"end\":null,\"ranking\":0.07,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/feed-the-need-campus-food-drive-2969"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007581612,\"event_id\":53843007576486,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.07,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53843007581612,\"event_id\":53843007576486,\"start\":\"2026-11-18T12:00:00-06:00\",\"end\":\"2026-11-18T13:00:00-06:00\",\"ranking\":0.07,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/pause-and-pl"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381711244,\"event_id\":53319381709193,\"start\":\"2026-11-19T00:00:00-06:00\",\"end\":\"2026-11-19T00:00:00-06:00\",\"ranking\":0.27,\"all_day\":true,\"num_attending\":0}}],\"locali",
+            "context": "},\"departments\":[{\"id\":49453020010424,\"name\":\"Hawks Care\"}],\"filters\":{\"event_types\":[{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53319381711244,\"event_id\":53319381709193,\"start\":\"2026-11-19T00:00:00-06:00\",\"end\":\"2026-11-19T00:00:00-06:00\",\"ranking\":0.27,\"all_day\":true,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/illinois-ben"
           },
           {
-            "match": "\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54106722845706,\"event_id\":54106722845705,\"start\":\"2026-11-18T16:30:00-06:00\",\"end\":\"2026-11-18T18:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"locali",
-            "context": "3016984923,\"name\":\"Mental Health and Well-Being Services\"}],\"filters\":{\"event_types\":[{\"name\":\"Wellness and Health\",\"id\":46790322621181}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":54106722845706,\"event_id\":54106722845705,\"start\":\"2026-11-18T16:30:00-06:00\",\"end\":\"2026-11-18T18:00:00-06:00\",\"ranking\":0.27,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://events.harpercollege.edu/event/poison-contr"
+            "match": "\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879966932,\"event_id\":53514879959753,\"start\":\"2026-11-19T12:00:00-06:00\",\"end\":\"2026-11-19T13:00:00-06:00\",\"ranking\":0.07,\"all_",
+            "context": "ents\":[{\"id\":11536,\"name\":\"Job Placement Resource Center\"}],\"filters\":{\"event_types\":[{\"name\":\"Virtual Events\",\"id\":128836},{\"name\":\"Training and How-Tos\",\"id\":53736839190237}]},\"custom_fields\":{},\"event_instances\":[{\"event_instance\":{\"id\":53514879966932,\"event_id\":53514879959753,\"start\":\"2026-11-19T12:00:00-06:00\",\"end\":\"2026-11-19T13:00:00-06:00\",\"ranking\":0.07,\"all_day\":false,\"num_attending\":0}}],\"localist_url\":\"https://even"
           }
         ]
       }
@@ -367,11 +367,11 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-11-16T23:23:46+00:00",
+      "probed_at": "2026-11-17T22:24:59+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 95817,
+      "bytes": 95818,
       "title": "Calendar",
       "feed_links": [],
       "calendar_links": [
@@ -388,11 +388,11 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-11-16T23:23:49+00:00",
+      "probed_at": "2026-11-17T22:25:02+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 8230,
+      "bytes": 8234,
       "title": "Access denied | ccsd21.org used Cloudflare to restrict access | ccsd21.org | Cloudflare",
       "feed_links": [],
       "calendar_links": [],
@@ -406,11 +406,11 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-16T23:23:49+00:00",
+      "probed_at": "2026-11-17T22:25:02+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 125993,
+      "bytes": 125691,
       "title": "Calendars - Community Consolidated School District 62",
       "feed_links": [],
       "calendar_links": [],
@@ -439,6 +439,10 @@
           {
             "match": "No School K-8 (Return April 5)",
             "context": "strong>March 29-April 2</strong></td> <td>Intersession / No School K-8 (Return April 5)</td> </tr> <tr> <td><strong>April 30</strong> (Frida"
+          },
+          {
+            "match": "No School\n\t\t",
+            "context": "StyleSROnly\">CCSD62 Calendar</span> 10 Month Schools: No School </div> <div class=\"fsEventDetails\"> <div class=\"fsAll"
           },
           {
             "match": "No School (Institute Day)\" data-occur-id=\"206031082_2026-11-03T00:00:00Z_2026-11-04T00:00",
@@ -540,7 +544,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:23:50+00:00",
+        "probed_at": "2026-11-17T22:25:06+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -555,7 +559,7 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-16T23:23:50+00:00",
+      "probed_at": "2026-11-17T22:25:06+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
@@ -598,7 +602,7 @@
       "url": "https://www.mountprospect.org/",
       "purpose": "Village of Mount Prospect - home page; a 2026 tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-16T23:23:50+00:00",
+      "probed_at": "2026-11-17T22:25:06+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -616,7 +620,7 @@
         "url": "https://www.mountprospect.org/services/tree_care.php",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:23:51+00:00",
+        "probed_at": "2026-11-17T22:25:07+00:00",
         "status": 200,
         "final_url": "https://www.mountprospect.org/services/tree_care.php",
         "content_type": "text/html; charset=UTF-8",
@@ -636,11 +640,11 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - events page; tree lighting or Christkindlmarket dates",
       "item": 427,
-      "probed_at": "2026-11-16T23:23:51+00:00",
+      "probed_at": "2026-11-17T22:25:07+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 124907,
+      "bytes": 124873,
       "title": "Events | Mount Prospect Downtown Merchants",
       "feed_links": [
         {
@@ -678,11 +682,11 @@
       "url": "https://www.wheelingil.gov/",
       "purpose": "Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-16T23:23:56+00:00",
+      "probed_at": "2026-11-17T22:25:10+00:00",
       "status": 200,
       "final_url": "https://www.wheelingil.gov/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 140428,
+      "bytes": 140468,
       "title": "Wheeling, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
       "feed_links": [],
       "calendar_links": [
@@ -711,11 +715,11 @@
       "url": "https://www.desplainesil.gov/",
       "purpose": "City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)",
       "item": 427,
-      "probed_at": "2026-11-16T23:23:57+00:00",
+      "probed_at": "2026-11-17T22:25:11+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Home",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 281893,
+      "bytes": 281853,
       "title": "Home | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -795,11 +799,11 @@
         "url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:23:57+00:00",
+        "probed_at": "2026-11-17T22:25:11+00:00",
         "status": 200,
         "final_url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 77439,
+        "bytes": 77440,
         "title": "Street Maintenance | City of Des Plaines, IL",
         "feed_links": [],
         "calendar_links": [
@@ -815,11 +819,11 @@
       "url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "purpose": "City of Des Plaines - Holiday Tree Lighting and Winter Fair page, the 2026 date, time and place",
       "item": 427,
-      "probed_at": "2026-11-16T23:23:58+00:00",
+      "probed_at": "2026-11-17T22:25:12+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 84425,
+      "bytes": 84426,
       "title": "Holiday Tree Lighting and Winter Fair | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -866,7 +870,7 @@
       "url": "https://www.rtpd.org/",
       "purpose": "River Trails Park District - home page; an events calendar, a camp page, an ICS/webcal feed",
       "item": 439,
-      "probed_at": "2026-11-16T23:23:58+00:00",
+      "probed_at": "2026-11-17T22:25:12+00:00",
       "status": 200,
       "final_url": "https://www.rtpd.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -935,11 +939,11 @@
         "url": "https://www.rtpd.org/programs/athletics/youth-leagues-classes/sports-camps/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:23:59+00:00",
+        "probed_at": "2026-11-17T22:25:13+00:00",
         "status": 200,
         "final_url": "https://www.rtpd.org/programs/athletics/youth-leagues-classes/sports-camps/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 166381,
+        "bytes": 166379,
         "title": "Sports Camps and Clinics - River Trails Park District",
         "feed_links": [
           {
@@ -1070,11 +1074,11 @@
       "url": "https://www.mppd.org/",
       "purpose": "Mount Prospect Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-16T23:24:01+00:00",
+      "probed_at": "2026-11-17T22:25:15+00:00",
       "status": 200,
       "final_url": "https://www.mppd.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 101460,
+      "bytes": 100506,
       "title": "Home - Mt. Prospect Park District",
       "feed_links": [
         {
@@ -1122,11 +1126,11 @@
         "url": "https://www.mppd.org/summer-camp/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:24:01+00:00",
+        "probed_at": "2026-11-17T22:25:15+00:00",
         "status": 200,
         "final_url": "https://www.mppd.org/summer-camp/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 89537,
+        "bytes": 89539,
         "title": "Summer Camp - Mt. Prospect Park District",
         "feed_links": [
           {
@@ -1252,11 +1256,11 @@
       "url": "https://www.ahpd.org/",
       "purpose": "Arlington Heights Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-16T23:24:03+00:00",
+      "probed_at": "2026-11-17T22:25:16+00:00",
       "status": 200,
       "final_url": "https://www.ahpd.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 184360,
+      "bytes": 184431,
       "title": "Arlington Heights Park District - Arlington Heights, Illinois",
       "feed_links": [
         {
@@ -1317,11 +1321,11 @@
         "url": "https://www.ahpd.org/programs/camps/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:24:03+00:00",
+        "probed_at": "2026-11-17T22:25:17+00:00",
         "status": 200,
         "final_url": "https://www.ahpd.org/programs/camps/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 144543,
+        "bytes": 144541,
         "title": "Camps - Arlington Heights Park District",
         "feed_links": [
           {
@@ -1474,11 +1478,11 @@
       "url": "https://www.dpparks.org/",
       "purpose": "Des Plaines Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-16T23:24:06+00:00",
+      "probed_at": "2026-11-17T22:25:18+00:00",
       "status": 200,
       "final_url": "https://www.dpparks.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 301596,
+      "bytes": 301441,
       "title": "Home - Des Plaines Park District",
       "feed_links": [
         {
@@ -1539,7 +1543,7 @@
         "url": "https://www.dpparks.org/preschool-summer-camps/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:24:07+00:00",
+        "probed_at": "2026-11-17T22:25:18+00:00",
         "status": 200,
         "final_url": "https://www.dpparks.org/preschool-summer-camps/",
         "content_type": "text/html; charset=UTF-8",
@@ -1678,11 +1682,11 @@
       "url": "https://www.wheelingparkdistrict.com/",
       "purpose": "Wheeling Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-16T23:24:09+00:00",
+      "probed_at": "2026-11-17T22:25:18+00:00",
       "status": 200,
       "final_url": "https://www.wheelingparkdistrict.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 225301,
+      "bytes": 227496,
       "title": "Home - Wheeling Park District",
       "feed_links": [
         {
@@ -1717,11 +1721,11 @@
         "url": "https://www.wheelingparkdistrict.com/youth-winter-basketball-registration-open/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:24:09+00:00",
+        "probed_at": "2026-11-17T22:25:19+00:00",
         "status": 200,
         "final_url": "https://www.wheelingparkdistrict.com/program/youth-winter-basketball/",
         "content_type": "text/html; charset=UTF-8",
-        "bytes": 307210,
+        "bytes": 311323,
         "title": "Youth Winter Basketball - Wheeling Park District",
         "feed_links": [
           {
@@ -1791,11 +1795,11 @@
       "url": "https://www.palatineparks.org/",
       "purpose": "Palatine Park District - the href behind the home page's Winter Break Programming link",
       "item": 438,
-      "probed_at": "2026-11-16T23:24:10+00:00",
+      "probed_at": "2026-11-17T22:25:22+00:00",
       "status": 200,
       "final_url": "https://www.palatineparks.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 351593,
+      "bytes": 352719,
       "title": "Home - Palatine Park District",
       "feed_links": [
         {
@@ -1852,7 +1856,7 @@
       "url": "https://www.vah.com/",
       "purpose": "Village of Arlington Heights - home page; a 2026 toy, coat or food drive notice",
       "item": 441,
-      "probed_at": "2026-11-16T23:24:10+00:00",
+      "probed_at": "2026-11-17T22:25:22+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -1908,18 +1912,16 @@
       "url": "https://www.palatine.il.us/",
       "purpose": "Village of Palatine - home page; a 2026 toy, coat or food drive notice",
       "item": 441,
-      "probed_at": "2026-11-16T23:24:10+00:00",
+      "probed_at": "2026-11-17T22:25:22+00:00",
       "status": 200,
       "final_url": "https://www.palatine.il.us/",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 164741,
+      "bytes": 163128,
       "title": "Palatine, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
       "feed_links": [],
       "calendar_links": [
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=512",
         "https://www.palatine.il.us/CivicAlerts.aspx?AID=511",
         "https://www.palatine.il.us/CivicAlerts.aspx?AID=510",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=508",
         "https://www.palatine.il.us/CivicAlerts.aspx?AID=501",
         "https://www.palatine.il.us/CivicAlerts.aspx?AID=502",
         "https://www.palatine.il.us/CivicAlerts.aspx?CID=9,1,8,10,14"
@@ -1938,7 +1940,7 @@
       "url": "https://chicago-il.toysfortots.org/",
       "purpose": "Toys for Tots Chicago campaign - home page; 2026 drop-off locations, last day, and the local drop form",
       "item": 447,
-      "probed_at": "2026-11-16T23:24:11+00:00",
+      "probed_at": "2026-11-17T22:25:23+00:00",
       "status": 200,
       "final_url": "https://chicago-il.toysfortots.org/local-coordinator-sites/lco-sites/default.aspx?nPageID=0&nPreviewInd=0&nRedirectInd=3",
       "content_type": "text/html; charset=utf-8",
@@ -1954,7 +1956,7 @@
         "url": "https://secure.toysfortots.org/a/donatelocal?campaign_code=ILCHIC&campaign_name=Chicago IL",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-16T23:24:11+00:00",
+        "probed_at": "2026-11-17T22:25:23+00:00",
         "status": 200,
         "final_url": "https://secure.toysfortots.org/a/donatelocal?campaign_code=ILCHIC&campaign_name=Chicago%20IL",
         "content_type": "text/html; charset=utf-8",
@@ -1972,7 +1974,7 @@
       "url": "https://www.chicagolandtft.org/",
       "purpose": "Chicagoland Toys for Tots - drop box locations across the region (2026)",
       "item": 447,
-      "probed_at": "2026-11-16T23:24:12+00:00",
+      "probed_at": "2026-11-17T22:25:24+00:00",
       "status": 200,
       "final_url": "https://chicagolandtft.org/",
       "content_type": "text/html;charset=utf-8",
@@ -2011,7 +2013,7 @@
       "url": "https://www.vah.com/news_detail_T13_R609.php",
       "purpose": "Village of Arlington Heights - Community Food Drive Nov 9-18 news item (organiser, drop-off sites, last day)",
       "item": 441,
-      "probed_at": "2026-11-16T23:24:12+00:00",
+      "probed_at": "2026-11-17T22:25:24+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/news_detail_T13_R609.php",
       "content_type": "text/html; charset=UTF-8",
@@ -2212,7 +2214,7 @@
       "url": "https://www.dpparks.org/how-to-register/",
       "purpose": "Des Plaines Park District - how to register page; the registration platform and catalogue link",
       "item": 456,
-      "probed_at": "2026-11-16T23:24:12+00:00",
+      "probed_at": "2026-11-17T22:25:24+00:00",
       "status": 200,
       "final_url": "https://www.dpparks.org/how-to-register/",
       "content_type": "text/html; charset=UTF-8",
@@ -2276,11 +2278,11 @@
       "url": "https://www.wheelingparkdistrict.com/registration/",
       "purpose": "Wheeling Park District - registration page; the registration platform and catalogue link",
       "item": 456,
-      "probed_at": "2026-11-16T23:24:14+00:00",
+      "probed_at": "2026-11-17T22:25:25+00:00",
       "status": 200,
       "final_url": "https://www.wheelingparkdistrict.com/registration/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 188342,
+      "bytes": 190603,
       "title": "Registration - Wheeling Park District",
       "feed_links": [
         {
@@ -2315,23 +2317,23 @@
       "url": "https://register.desplainesparks.org/webtrac/web/search.html?Action=Start&keyword=santa&keywordoption=Match+One&search=yes",
       "purpose": "Des Plaines Park District WebTrac - keyword search for Santa programmes (names, dates, registration links)",
       "item": 456,
-      "probed_at": "2026-11-16T23:24:15+00:00",
+      "probed_at": "2026-11-17T22:25:25+00:00",
       "status": 403,
       "final_url": "https://register.desplainesparks.org/webtrac/web/search.html?Action=Start&keyword=santa&keywordoption=Match+One&search=yes",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 5957,
+      "bytes": 5979,
       "title": "Just a moment...",
       "feed_links": [],
       "calendar_links": [],
       "pattern_matches": {
         "(?is)santa.{0,300}": [
           {
-            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=OVmag29.5b1IzeK9dvZzukJVkcVntPaieDIqvr5C_S4-1794871456-1.0.1.1-mOs88C_j7Q3KQ3Jr9PhLFOpswYYMsh9uEWH2oFa31NE\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=M",
-            "context": "cUPMDTk:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=OVmag29.5b1IzeK9dvZzukJVkcVntPaieDIqvr5C_S4-1794871456-1.0.1.1-mOs88C_j7Q3KQ3Jr9PhLFOpswYYMsh9uEWH2oFa31NE\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_f_tk=OVmag29.5b1IzeK9"
+            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=bkPz2cVBUqQc3ZLJZ9vMQQ2pvX71V1xQ3aKRFNkig.k-1794954325-1.0.1.1-PLKAUEt2kONdZW.FOiLXQUaVciVgoBHL.YbOIjHrvzk\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=M",
+            "context": "cUPMDTk:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=bkPz2cVBUqQc3ZLJZ9vMQQ2pvX71V1xQ3aKRFNkig.k-1794954325-1.0.1.1-PLKAUEt2kONdZW.FOiLXQUaVciVgoBHL.YbOIjHrvzk\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_f_tk=bkPz2cVBUqQc3ZLJ"
           },
           {
-            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=OVmag29.5b1IzeK9dvZzukJVkcVntPaieDIqvr5C_S4-1794871456-1.0.1.1-mOs88C_j7Q3KQ3Jr9PhLFOpswYYMsh9uEWH2oFa31NE\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('he",
-            "context": "l, null,\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=OVmag29.5b1IzeK9dvZzukJVkcVntPaieDIqvr5C_S4-1794871456-1.0.1.1-mOs88C_j7Q3KQ3Jr9PhLFOpswYYMsh9uEWH2oFa31NE\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>"
+            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=bkPz2cVBUqQc3ZLJZ9vMQQ2pvX71V1xQ3aKRFNkig.k-1794954325-1.0.1.1-PLKAUEt2kONdZW.FOiLXQUaVciVgoBHL.YbOIjHrvzk\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('he",
+            "context": "l, null,\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=bkPz2cVBUqQc3ZLJZ9vMQQ2pvX71V1xQ3aKRFNkig.k-1794954325-1.0.1.1-PLKAUEt2kONdZW.FOiLXQUaVciVgoBHL.YbOIjHrvzk\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>"
           }
         ],
         "(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}": [],
@@ -2342,7 +2344,7 @@
       "url": "https://www.skokieparks.org/events/breakfast-with-santa/26/",
       "purpose": "Skokie Park District - Breakfast with Santa 2026 page (date, time, place, registration)",
       "item": 458,
-      "probed_at": "2026-11-16T23:24:16+00:00",
+      "probed_at": "2026-11-17T22:25:25+00:00",
       "status": 200,
       "final_url": "https://www.skokieparks.org/events/breakfast-with-santa/26/",
       "content_type": "text/html; charset=utf-8",
@@ -2377,7 +2379,7 @@
       "url": "https://niles-parks.org/calendar-list/event/7-breakfast-with-santa",
       "purpose": "Niles Park District - Breakfast with Santa page (is there a 2026 date?)",
       "item": 458,
-      "probed_at": "2026-11-16T23:24:16+00:00",
+      "probed_at": "2026-11-17T22:25:25+00:00",
       "status": 404,
       "final_url": "https://niles-parks.org/calendar-list/event/7-breakfast-with-santa",
       "content_type": "text/html; charset=utf-8",
@@ -2394,7 +2396,7 @@
       "url": "https://www.palatineparks.org/wp-json/tribe/events/v1/events?per_page=3",
       "purpose": "Palatine Park District - The Events Calendar REST route (JSON with an \"events\" list?)",
       "item": 465,
-      "probed_at": "2026-11-16T23:24:17+00:00",
+      "probed_at": "2026-11-17T22:25:26+00:00",
       "status": 404,
       "final_url": "https://www.palatineparks.org/wp-json/tribe/events/v1/events?per_page=3",
       "content_type": "application/json; charset=UTF-8",
@@ -2409,11 +2411,11 @@
       "url": "https://www.palatineparks.org/events/?ical=1",
       "purpose": "Palatine Park District - The Events Calendar iCal export (BEGIN:VCALENDAR?)",
       "item": 465,
-      "probed_at": "2026-11-16T23:24:18+00:00",
+      "probed_at": "2026-11-17T22:25:27+00:00",
       "status": 200,
       "final_url": "https://www.palatineparks.org/events/?ical=1",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 316232,
+      "bytes": 316236,
       "title": "Events - Palatine Park District",
       "feed_links": [
         {
@@ -2437,7 +2439,7 @@
       "url": "https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun",
       "purpose": "Arlington Heights Rotary Santa Run Walk & Reindeer Dash - registration page (2026 date, start times, place)",
       "item": 466,
-      "probed_at": "2026-11-16T23:24:20+00:00",
+      "probed_at": "2026-11-17T22:25:29+00:00",
       "status": 200,
       "final_url": "https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun",
       "content_type": "text/html; charset=utf-8",
@@ -2510,8 +2512,8 @@
             "context": "vents/IL/ArlingtonHeights/RotaryClubSantaRun#event-1147714\">Reindeer Dash (10 and under)</a> </h2> <div class=\"rsuEventTile__information\">"
           },
           {
-            "match": "Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1794871460,\"recaptchaSi",
-            "context": "ace\\/Contact\\/48627\",\"contactName\":\"Rotary Santa Run Walk & Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1794871460,\"recaptchaSiteKey\":\"6LcdnRATAAAAAA4C48ibTO2oi9ikfu_Avc1VfsZP\",\"contactPr"
+            "match": "Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1794954329,\"recaptchaSi",
+            "context": "ace\\/Contact\\/48627\",\"contactName\":\"Rotary Santa Run Walk & Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1794954329,\"recaptchaSiteKey\":\"6LcdnRATAAAAAA4C48ibTO2oi9ikfu_Avc1VfsZP\",\"contactPr"
           },
           {
             "match": "Reindeer Dash\",\"location\":{\"@type\":\"Place\",\"name\":\"Arlington Heights\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"220 West Campbell\",\"addressLocality\":\"Arlington Hei",
@@ -2562,7 +2564,7 @@
       "url": "https://www.palatinelibrary.org/events",
       "purpose": "Palatine Public Library - events page head and links; LibraryCalendar export paths (rss, ical, json, webcal)",
       "item": 471,
-      "probed_at": "2026-11-16T23:24:20+00:00",
+      "probed_at": "2026-11-17T22:25:29+00:00",
       "status": 403,
       "final_url": "https://www.palatinelibrary.org/events",
       "content_type": "text/plain; charset=utf-8",
@@ -2577,7 +2579,7 @@
       "url": "https://www.palatinelibrary.org/events/feed",
       "purpose": "Palatine Public Library - LibraryCalendar feed path (RSS/XML?)",
       "item": 471,
-      "probed_at": "2026-11-16T23:24:20+00:00",
+      "probed_at": "2026-11-17T22:25:30+00:00",
       "status": 403,
       "final_url": "https://www.palatinelibrary.org/events/feed",
       "content_type": "text/plain; charset=utf-8",
@@ -2591,11 +2593,11 @@
       "url": "https://www.ahml.info/events",
       "purpose": "Arlington Heights Memorial Library - events page; same export patterns (238 events, 22-day horizon)",
       "item": 471,
-      "probed_at": "2026-11-16T23:24:20+00:00",
+      "probed_at": "2026-11-17T22:25:30+00:00",
       "status": 200,
       "final_url": "https://www.ahml.info/attend/events",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 303598,
+      "bytes": 303584,
       "title": "Program Calendar | Arlington Heights Memorial Library",
       "feed_links": [],
       "calendar_links": [],
@@ -2608,7 +2610,7 @@
       "url": "https://metra.com/HolidayTrains",
       "purpose": "Metra Holiday Trains 2026 - UP Northwest date, ticket sale date and time, price",
       "item": 474,
-      "probed_at": "2026-11-16T23:24:22+00:00",
+      "probed_at": "2026-11-17T22:25:31+00:00",
       "status": 403,
       "final_url": "https://metra.com/HolidayTrains",
       "content_type": "text/html",
@@ -2628,7 +2630,7 @@
       "url": "https://metra.com/newsroom/nita-holiday-trains-and-buses",
       "purpose": "Metra newsroom - NITA holiday trains and buses (Holiday Train dates, ticket sale date and time)",
       "item": 474,
-      "probed_at": "2026-11-16T23:24:22+00:00",
+      "probed_at": "2026-11-17T22:25:32+00:00",
       "status": 403,
       "final_url": "https://metra.com/newsroom/nita-holiday-trains-and-buses",
       "content_type": "text/html",
@@ -2645,7 +2647,7 @@
       "url": "https://www.metra.com/holidaytrains",
       "purpose": "Metra Holiday Trains 2026 page via the www host (UP-NW date, sale time, price)",
       "item": 474,
-      "probed_at": "2026-11-16T23:24:23+00:00",
+      "probed_at": "2026-11-17T22:25:32+00:00",
       "status": 403,
       "final_url": "https://www.metra.com/holidaytrains",
       "content_type": "text/html",
@@ -2663,7 +2665,7 @@
       "url": "https://assets.metra.com/s3fs-public/2026-10/2026.12.12_Holiday_UPNW.pdf?VersionId=qtLgWz3HYWGhD0ojhIgFiPHLk7Rx.lY6",
       "purpose": "Metra's own UP-NW Dec 12, 2026 Holiday Train timetable (PDF) - does it exist and name train 7902?",
       "item": 474,
-      "probed_at": "2026-11-16T23:24:23+00:00",
+      "probed_at": "2026-11-17T22:25:32+00:00",
       "status": 403,
       "final_url": "https://assets.metra.com/s3fs-public/2026-10/2026.12.12_Holiday_UPNW.pdf?VersionId=qtLgWz3HYWGhD0ojhIgFiPHLk7Rx.lY6",
       "content_type": "text/html",
@@ -2680,11 +2682,11 @@
       "url": "https://www.cpkcr.com/",
       "purpose": "CPKC home page - link to the Holiday Train schedule page; Franklin Park stop date, time and place",
       "item": 475,
-      "probed_at": "2026-11-16T23:24:23+00:00",
+      "probed_at": "2026-11-17T22:25:32+00:00",
       "status": 200,
       "final_url": "https://www.cpkcr.com/en",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 252049,
+      "bytes": 256564,
       "title": "",
       "feed_links": [],
       "calendar_links": [],
@@ -2698,11 +2700,11 @@
       "url": "https://www.elkgrove.org/Home/Components/Calendar/Event/8782/17",
       "purpose": "Village of Elk Grove Village - Holiday Tree Lighting Ceremony 2026 (date, time, place)",
       "item": 482,
-      "probed_at": "2026-11-16T23:24:23+00:00",
+      "probed_at": "2026-11-17T22:25:32+00:00",
       "status": 403,
       "final_url": "https://www.elkgrove.org/Home/Components/Calendar/Event/8782/17",
       "content_type": "text/html",
-      "bytes": 464,
+      "bytes": 466,
       "title": "Access Denied",
       "feed_links": [],
       "calendar_links": [],
@@ -2715,7 +2717,7 @@
       "url": "https://rainoutline.com/search/dnis/8475742233",
       "purpose": "AHPD Rainout Line organisation page - list of programmes/facilities and their statuses",
       "item": 505,
-      "probed_at": "2026-11-16T23:24:23+00:00",
+      "probed_at": "2026-11-17T22:25:32+00:00",
       "status": 200,
       "final_url": "https://rainoutline.com/search/dnis/8475742233",
       "content_type": "text/html",
@@ -2815,7 +2817,7 @@
       "url": "https://rainoutline.com/search/extension/8475742233/31",
       "purpose": "AHPD Rainout Line extension 31 - one programme's status and note as served",
       "item": 505,
-      "probed_at": "2026-11-16T23:24:24+00:00",
+      "probed_at": "2026-11-17T22:25:33+00:00",
       "status": 200,
       "final_url": "https://rainoutline.com/search/extension/8475742233/31",
       "content_type": "text/html",
@@ -2854,7 +2856,7 @@
       "url": "https://rainoutline.com/search/extension/8475742233/5",
       "purpose": "AHPD Rainout Line extension 5 - one programme's status and note as served",
       "item": 505,
-      "probed_at": "2026-11-16T23:24:24+00:00",
+      "probed_at": "2026-11-17T22:25:33+00:00",
       "status": 200,
       "final_url": "https://rainoutline.com/search/extension/8475742233/5",
       "content_type": "text/html",
@@ -2870,7 +2872,7 @@
       "url": "https://rainoutline.com/search/dnis_refresh/8475742233",
       "purpose": "AHPD Rainout Line extension list as loaded by the organisation page's script (names, extensions, statuses)",
       "item": 505,
-      "probed_at": "2026-11-16T23:24:24+00:00",
+      "probed_at": "2026-11-17T22:25:33+00:00",
       "status": 200,
       "final_url": "https://rainoutline.com/search/dnis_refresh/8475742233",
       "content_type": "text/html",
@@ -2965,11 +2967,11 @@
       "url": "https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&events=T&results_per_page=50",
       "purpose": "RunSignup races within 10 miles of 60056, no API key (name, next_date, address.city, url, events)",
       "item": 511,
-      "probed_at": "2026-11-16T23:24:24+00:00",
+      "probed_at": "2026-11-17T22:25:33+00:00",
       "status": 200,
       "final_url": "https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&events=T&results_per_page=50",
       "content_type": "application/json; charset=utf-8",
-      "bytes": 207189,
+      "bytes": 207269,
       "pattern_matches": {
         "\"next_date\":\\s*\"[^\"]{0,20}\"": [
           {
@@ -3134,11 +3136,11 @@
       "url": "https://fpdcc.com/wp-json/tribe/events/v1/events?per_page=50&categories=north",
       "purpose": "FPCC Events Calendar REST, north category - titles, dates, venue name/city/lat-lng",
       "item": 519,
-      "probed_at": "2026-11-16T23:24:25+00:00",
+      "probed_at": "2026-11-17T22:25:33+00:00",
       "status": 200,
       "final_url": "https://fpdcc.com/wp-json/tribe/events/v1/events?per_page=50&categories=north",
       "content_type": "application/json; charset=UTF-8",
-      "bytes": 323439,
+      "bytes": 324041,
       "pattern_matches": {
         "\"venue\":\\s*\\{[^}]{0,300}": [
           {
@@ -3155,14 +3157,6 @@
           }
         ],
         "\"start_date\":\\s*\"[^\"]{0,20}\"": [
-          {
-            "match": "\"start_date\":\"2026-11-15 13:30:00\"",
-            "context": "bbe-may19-263x150.jpg\"}},\"filesize\":318803},\"all_day\":false,\"start_date\":\"2026-11-15 13:30:00\",\"start_date_details\":{\"year\":\"2026\",\"month\":\"11\",\"day\":\"15\""
-          },
-          {
-            "match": "\"start_date\":\"2026-11-15 15:00:00\"",
-            "context": "ail-group-children-03-apr25-263x150.jpg\"}}},\"all_day\":false,\"start_date\":\"2026-11-15 15:00:00\",\"start_date_details\":{\"year\":\"2026\",\"month\":\"11\",\"day\":\"15\""
-          },
           {
             "match": "\"start_date\":\"2026-11-17 10:30:00\"",
             "context": "-wildlife-connections-aug24-263x150.jpg\"}}},\"all_day\":false,\"start_date\":\"2026-11-17 10:30:00\",\"start_date_details\":{\"year\":\"2026\",\"month\":\"11\",\"day\":\"17\""
@@ -3234,6 +3228,14 @@
           {
             "match": "\"start_date\":\"2026-12-01 10:30:00\"",
             "context": "-wildlife-connections-aug24-263x150.jpg\"}}},\"all_day\":false,\"start_date\":\"2026-12-01 10:30:00\",\"start_date_details\":{\"year\":\"2026\",\"month\":\"12\",\"day\":\"01\""
+          },
+          {
+            "match": "\"start_date\":\"2026-12-02 09:30:00\"",
+            "context": "ds-banner-263x150.jpg\"}},\"filesize\":231406},\"all_day\":false,\"start_date\":\"2026-12-02 09:30:00\",\"start_date_details\":{\"year\":\"2026\",\"month\":\"12\",\"day\":\"02\""
+          },
+          {
+            "match": "\"start_date\":\"2026-12-03 13:30:00\"",
+            "context": "woods-birding-drawing-jul25-263x150.jpg\"}}},\"all_day\":false,\"start_date\":\"2026-12-03 13:30:00\",\"start_date_details\":{\"year\":\"2026\",\"month\":\"12\",\"day\":\"03\""
           }
         ],
         "(?i)\"(?:lat|geo_lat|lng|geo_lng)\":\\s*\"?-?\\d": [
@@ -3252,11 +3254,11 @@
       "url": "https://fpdcc.com/events/?ical=1",
       "purpose": "FPCC iCal export (all categories) - VEVENTs with LOCATION and GEO",
       "item": 519,
-      "probed_at": "2026-11-16T23:24:26+00:00",
+      "probed_at": "2026-11-17T22:25:35+00:00",
       "status": 200,
       "final_url": "https://fpdcc.com/events/?ical=1",
       "content_type": "text/calendar; charset=UTF-8",
-      "bytes": 31137,
+      "bytes": 31140,
       "ics_event_count": 30,
       "pattern_matches": {
         "BEGIN:VEVENT": [
@@ -3271,20 +3273,16 @@
             "context": "ernment. URL:https://fpdcc.com/event/nation-of-nations-2/ LOCATION:Trailside Museum of Natural History\\, 738 Thatcher Avenue\\, River Forest\\, IL\\, 60305\\, United States CATEGORIES:Central Cook County,Education,History & Culture"
           },
           {
-            "match": "LOCATION:Crabtree Nature Center\\, 3 Stover Road\\, Barrington Hills\\, IL\\, 60010",
-            "context": "s 13 & up. URL:https://fpdcc.com/event/waterfowl-watch-3/ LOCATION:Crabtree Nature Center\\, 3 Stover Road\\, Barrington Hills\\, IL\\, 60010 CATEGORIES:Birding,Education,Hiking & Walking,Northwest Co"
-          },
-          {
-            "match": "LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States",
-            "context": "L:https://fpdcc.com/event/wildlife-connections/2026-11-17/ LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Animal Ambassador,Education,North Cook County"
-          },
-          {
             "match": "LOCATION:Thatcher Woods Pavilion\\, Chicago Ave\\, west of Thatcher Ave\\, River Forest\\, IL\\, 60305\\, United States",
             "context": "& up. URL:https://fpdcc.com/event/senior-fitness-walk-6/ LOCATION:Thatcher Woods Pavilion\\, Chicago Ave\\, west of Thatcher Ave\\, River Forest\\, IL\\, 60305\\, United States CATEGORIES:Central Cook County,Fitness,Hiking & Walking,Se"
           },
           {
             "match": "LOCATION:Caldwell Woods Wellness Center\\, 6350 West Devon Avenue\\, Chicago\\, IL\\, 60646\\, United States",
             "context": ":https://fpdcc.com/event/yoga-in-the-preserves/2026-11-18/ LOCATION:Caldwell Woods Wellness Center\\, 6350 West Devon Avenue\\, Chicago\\, IL\\, 60646\\, United States CATEGORIES:Fitness,North Cook County,Wellness in the Woods"
+          },
+          {
+            "match": "LOCATION:Crabtree Nature Center\\, 3 Stover Road\\, Barrington Hills\\, IL\\, 60010",
+            "context": "URL:https://fpdcc.com/event/wee-wandering-wednesdays-12/ LOCATION:Crabtree Nature Center\\, 3 Stover Road\\, Barrington Hills\\, IL\\, 60010 CATEGORIES:Arts & Crafts,Nature Play,Northwest Cook County"
           },
           {
             "match": "LOCATION:Bemis Woods-South\\, IL",
@@ -3301,6 +3299,10 @@
           {
             "match": "LOCATION:Little Red Schoolhouse Nature Center\\, 9800 Willow Springs Rd\\, Willow Springs\\, IL\\, 60480\\, United States",
             "context": "provided. URL:https://fpdcc.com/event/natures-art-box-3/ LOCATION:Little Red Schoolhouse Nature Center\\, 9800 Willow Springs Rd\\, Willow Springs\\, IL\\, 60480\\, United States CATEGORIES:Arts & Crafts,Nature Play,Southwest Cook County"
+          },
+          {
+            "match": "LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States",
+            "context": "L:https://fpdcc.com/event/river-trail-nightlife-owl-prowl/ LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Astronomy,Birding,Education,Hiking & Walking,No"
           },
           {
             "match": "LOCATION:Dan Ryan Woods Visitor Center & Pavilion\\, IL",
@@ -3321,20 +3323,16 @@
             "context": "tent/uploads/2025/11/nation-of-nations-trailside-nov25.jpg GEO:41.89324535;-87.82630546 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Trailside"
           },
           {
-            "match": "GEO:42.11563369;-88.16357511",
-            "context": "ent/uploads/2025/08/whistler-woods-birding-02-oct2-adj.jpg GEO:42.11563369;-88.16357511 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Crabtree N"
-          },
-          {
-            "match": "GEO:42.09501105;-87.88484528",
-            "context": "5/river-trail-nature-center-wildlife-connections-aug24.jpg GEO:42.09501105;-87.88484528 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=River Trai"
-          },
-          {
             "match": "GEO:41.89585788;-87.83089023",
             "context": "oads/2026/08/senior-walk-thatcher-woods-group-04-nov25.jpg GEO:41.89585788;-87.83089023 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Thatcher W"
           },
           {
             "match": "GEO:41.998562036604;-87.785286183849",
             "context": "ing (North Zone)\":MAILTO:northzoneprogram@cookcountyil.gov GEO:41.998562036604;-87.785286183849 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Caldwell W"
+          },
+          {
+            "match": "GEO:42.11563369;-88.16357511",
+            "context": "ds/2024/05/maple-syrup-fest-river-trail-children-mar13.jpg GEO:42.11563369;-88.16357511 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Crabtree N"
           },
           {
             "match": "GEO:41.82217408;-87.909561",
@@ -3351,6 +3349,10 @@
           {
             "match": "GEO:41.70896743;-87.87715272",
             "context": "t/uploads/2019/12/rolling-knolls-art-making-event-fall.jpg GEO:41.70896743;-87.87715272 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Little Red"
+          },
+          {
+            "match": "GEO:42.09501105;-87.88484528",
+            "context": "-grassland-animal-short-eared-owl-by-mark-korosa-jan23.jpg GEO:42.09501105;-87.88484528 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=River Trai"
           },
           {
             "match": "GEO:41.73766183;-87.68113707",
@@ -3371,31 +3373,31 @@
       "url": "https://fpdcc.com/events/category/north/?ical=1",
       "purpose": "FPCC iCal export, north category",
       "item": 519,
-      "probed_at": "2026-11-16T23:24:26+00:00",
+      "probed_at": "2026-11-17T22:25:35+00:00",
       "status": 200,
       "final_url": "https://fpdcc.com/events/category/north/?ical=1",
       "content_type": "text/calendar; charset=UTF-8",
-      "bytes": 31428,
+      "bytes": 31681,
       "ics_event_count": 30,
       "pattern_matches": {
         "BEGIN:VEVENT": [
           {
             "match": "BEGIN:VEVENT",
-            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;TZID=America/Chicago:20261117T103000 DTEND;TZID=A"
+            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;TZID=America/Chicago:20261118T093000 DTEND;TZID=A"
           }
         ],
         "LOCATION:[^\\r\\n]{0,120}": [
-          {
-            "match": "LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States",
-            "context": "L:https://fpdcc.com/event/wildlife-connections/2026-11-17/ LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Animal Ambassador,Education,North Cook County"
-          },
           {
             "match": "LOCATION:Caldwell Woods Wellness Center\\, 6350 West Devon Avenue\\, Chicago\\, IL\\, 60646\\, United States",
             "context": ":https://fpdcc.com/event/yoga-in-the-preserves/2026-11-18/ LOCATION:Caldwell Woods Wellness Center\\, 6350 West Devon Avenue\\, Chicago\\, IL\\, 60646\\, United States CATEGORIES:Fitness,North Cook County,Wellness in the Woods"
           },
           {
+            "match": "LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States",
+            "context": "L:https://fpdcc.com/event/river-trail-nightlife-owl-prowl/ LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Astronomy,Birding,Education,Hiking & Walking,No"
+          },
+          {
             "match": "LOCATION:Camp Dan Beard\\, 200 Portwine Rd\\, Northbrook\\, IL\\, 60062\\, United States",
-            "context": "ermitting). URL:https://fpdcc.com/event/winter-bonfire-2/ LOCATION:Camp Dan Beard\\, 200 Portwine Rd\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Astronomy,Campfire,Camping,Nature Play,North Co"
+            "context": "t provided. URL:https://fpdcc.com/event/winter-bonfire-2/ LOCATION:Camp Dan Beard\\, 200 Portwine Rd\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Astronomy,Campfire,Camping,Nature Play,North Co"
           }
         ]
       }
@@ -3404,11 +3406,11 @@
       "url": "https://www.amctheatres.com/programs/sensory-friendly-films",
       "purpose": "AMC Sensory Friendly Films - how often, which theatres, Randhurst named?",
       "item": 518,
-      "probed_at": "2026-11-16T23:24:27+00:00",
+      "probed_at": "2026-11-17T22:25:36+00:00",
       "status": 403,
       "final_url": "https://www.amctheatres.com/programs/sensory-friendly-films",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 5662,
+      "bytes": 5666,
       "title": "Attention Required! | Cloudflare",
       "feed_links": [],
       "calendar_links": [],
