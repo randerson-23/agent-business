@@ -21,10 +21,18 @@ Businesses whose own events appeared on a town page in the last 60 days or the n
 
 Hosted Santa in 2025: offer the free founding Event Promo for 2026.
 
-| Host | Town | Last season |
+| Host | Town | Event |
 |---|---|---|
 | Berry Yo | Arlington Heights | Santa visit with a hot-cocoa bar |
 | Golden Brunch | Arlington Heights | Breakfast for Dinner with Santa |
+
+### Holiday fair organisers
+
+Holiday fair organisers: send OUTREACH_TEMPLATES.md section 14b two weeks before the fair, with the free founding Event Promo.
+
+| Host | Town | Event |
+|---|---|---|
+| Fremd Viking Booster Club | Palatine | Holiday Craft Fair, Sat Dec 12, Fremd High School (from listings; confirm on the club's own channels) |
 
 ### Fair organisers
 

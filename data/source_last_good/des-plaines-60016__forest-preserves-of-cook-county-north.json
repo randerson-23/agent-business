@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-17T14:03:39+00:00",
+ "fetched_at": "2026-11-17T21:59:49+00:00",
  "items": [
   {
    "date": "20261117T103000",
@@ -266,6 +266,16 @@
    "venue_name": "Camp Reinberg"
   },
   {
+   "date": "20261205",
+   "detail": "Open daily from 9 am to 4 pm (excluding Fridays), we invite you to view creations by the artistic talents of Forest Preserves staff, on display at Trailside’s Classroom Gallery.",
+   "lat": 41.89324535,
+   "lon": -87.82630546,
+   "title": "Forest Preserves Staff Art Show",
+   "url": "https://fpdcc.com/event/forest-preserves-staff-art-show/",
+   "venue_city": "River Forest",
+   "venue_name": "Trailside Museum of Natural History"
+  },
+  {
    "date": "20261205T083000",
    "detail": "Connect with nature and the energy of the natural world. Provided by Unity Temple of Oak Park. People with physical challenges are easily accommodated. For more info, email mindful@unitytemple.org .",
    "end_date": "20261205T103000",
@@ -355,7 +365,7 @@
   },
   {
    "date": "20261205T160000",
-   "detail": "Celebrate the start of winter with a giant bonfire. Enjoy s’mores and other snacks, games, and stargazing (weather permitting).",
+   "detail": "Celebrate the start of winter with a giant bonfire. Enjoy s’mores and other snacks, games, and stargazing (weather permitting). Park at Potawatomi Woods (E Dundee Rd, east of N Milwaukee Ave, Northbrook). Shuttle to event provided.",
    "end_date": "20261205T200000",
    "lat": 42.1502767,
    "lon": -87.89777876,
@@ -366,7 +376,7 @@
   },
   {
    "date": "20261205T160000",
-   "detail": "Celebrate the start of winter with a giant bonfire. Enjoy s’mores and other snacks, games, and stargazing (weather permitting).",
+   "detail": "Celebrate the start of winter with a giant bonfire. Enjoy s’mores and other snacks, games, and stargazing (weather permitting). Park at Potawatomi Woods (E Dundee Rd, east of N Milwaukee Ave, Northbrook). Shuttle to event provided.",
    "end_date": "20261205T200000",
    "lat": 42.1502767,
    "lon": -87.89777876,
@@ -552,6 +562,16 @@
    "venue_name": "Caldwell Woods Wellness Center"
   },
   {
+   "date": "20261211",
+   "detail": "Drop in and take a walk on a short trail near Trailside Museum and read the posted children’s story along the way. Afterwards, pick up a craft and activity bag at the Museum to start your own adventures. Drop-in.",
+   "lat": 41.89324535,
+   "lon": -87.82630546,
+   "title": "Story Trail–“The Snowy Day”",
+   "url": "https://fpdcc.com/event/story-trail-the-snowy-day/",
+   "venue_city": "River Forest",
+   "venue_name": "Trailside Museum of Natural History"
+  },
+  {
    "date": "20261211T190000",
    "detail": "Join a naturalist as we look for local birds. A limited supply of binoculars available for loan at select events. Ages 8 & up.",
    "end_date": "20261211T190000",
@@ -638,28 +658,6 @@
    "url": "https://fpdcc.com/event/volunteer-workday-3/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261212T100000",
-   "detail": "Help us restore native habitats— R emove I nvasive P lants with bow saws or loppers. Tools, gloves & snack provided. Closed toed shoes & long pants encouraged. Ages 15 & under w/ adult.",
-   "end_date": "20261212T120000",
-   "lat": 41.70896743,
-   "lon": -87.87715272,
-   "title": "R.I.P. Stewardship",
-   "url": "https://fpdcc.com/event/r-i-p-stewardship/",
-   "venue_city": "Willow Springs",
-   "venue_name": "Little Red Schoolhouse Nature Center"
-  },
-  {
-   "date": "20261212T110000",
-   "detail": "Join us for a FREE 1-hour class focused on building stability, flexibility, and relaxation through the practices of breathwork, mindful movement, and meditation. Liz, from Serendipity Yoga and Wellness in Homewood, will help you bring balance and ease to your mind and body through a series of seated, kneeling, lying, and standing poses. Please come dressed comfortably in active wear with your yoga mat (if you have one). The class will be held indoors.",
-   "end_date": "20261212T120000",
-   "lat": 41.73766183,
-   "lon": -87.68113707,
-   "title": "Wellness in the Woods: Yoga",
-   "url": "https://fpdcc.com/event/wellness-in-the-woods-yoga-4/",
-   "venue_city": "",
-   "venue_name": "Dan Ryan Woods Visitor Center & Pavilion"
   }
  ],
  "source": "Forest Preserves of Cook County — north"

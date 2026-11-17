@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-17T16:13:45+00:00",
+  "dateModified": "2026-11-17T21:59:49+00:00",
   "numberOfItems": 244,
   "itemListElement": [
     {
@@ -130,9 +130,9 @@
       "position": 5,
       "item": {
         "@type": "Event",
-        "name": "Deputy Chief Graduates from Executive Management Program",
+        "name": "Police Deputy Chief Graduates from Executive Management Program",
         "startDate": "2026-11-17",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-deputy-chief-graduates-from-executive-management-program-2026-11-17",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-police-deputy-chief-graduates-from-executive-management-prog-2026-11-17",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -157,6 +157,35 @@
     {
       "@type": "ListItem",
       "position": 6,
+      "item": {
+        "@type": "Event",
+        "name": "2027 457 Contribution Limits",
+        "startDate": "2026-11-17",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-2027-457-contribution-limits-2026-11-17",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mountprospect.org/articles/2027-457-Contribution-Limits-205.php",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Mount Prospect",
+          "url": "https://www.mountprospect.org"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -188,7 +217,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -220,7 +249,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Baby Storytime",
@@ -251,7 +280,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Toddler Time",
@@ -283,7 +312,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Mini Mad Science Storytime",
@@ -313,7 +342,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Family Storytime",
@@ -344,7 +373,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Wildlife Connections",
@@ -374,7 +403,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Supported Chair Yoga",
@@ -404,7 +433,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Tuesday Tech Help",
@@ -434,7 +463,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -465,7 +494,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Big Kids Storytime",
@@ -496,7 +525,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Chicago: Aviation's Incubator",
@@ -523,37 +552,6 @@
         },
         "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Tuesday, November 17 2026 2:00pm - 3:30pm \n Aviation historian Michael Haupt will explain the very critical role Chicago played in the development of aviation."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 18,
-      "item": {
-        "@type": "Event",
-        "name": "Paint and Steep Tea",
-        "startDate": "2026-11-17T14:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-11-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17101612",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 17 2026 2:00pm - 4:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…"
       }
     },
     {
@@ -3042,9 +3040,9 @@
       "position": 99,
       "item": {
         "@type": "Event",
-        "name": "First-Time Parents' Meetup",
+        "name": "Senior Center: Travelogue",
         "startDate": "2026-11-20",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-11-20",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -3058,7 +3056,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/230133",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/233828",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",

@@ -4,7 +4,7 @@
   <title>Within Ten — Upcoming events in Arlington Heights</title>
   <link>https://withintenmiles.com/</link>
   <description>Upcoming events in Arlington Heights, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 6 of 7 configured sources.</description>
-  <lastBuildDate>Tue, 17 Nov 2026 16:13:45 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 21:59:49 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Read to Learn (District 214)</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-read-to-learn-district-214-2026-11-17</link>
@@ -30,12 +30,12 @@
     <source url="https://www.ahml.info/scheduling/reservation/224184">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: First-Time Parents' Meetup</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-11-20</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/230133</description>
+    <title>Arlington Heights: Senior Center: Travelogue</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/233828</description>
     <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/230133">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/233828">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Arlington Heights: Family Time</title>
@@ -332,6 +332,14 @@
     <description>Purchase Tickets January 16, 2027: 7:30 PM Tickets: $40 ABOUT THE SHOW: MULBERRY STREET is the premier Billy Joel tribute! MULBERRY STREET brings the music of… Official listing: https://www.metropolisarts.com/event/mulberry-street-a-billy-joel-experience-2027/</description>
     <pubDate>Mon, 24 May 2027 00:00:00 +0000</pubDate>
     <source url="https://www.metropolisarts.com/event/mulberry-street-a-billy-joel-experience-2027/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Second Hand News: A Tribute to Fleetwood Mac</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-second-hand-news-a-tribute-to-fleetwood-mac-2027-05-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-second-hand-news-a-tribute-to-fleetwood-mac-2027-05-24</guid>
+    <description>Purchase Tickets April 1, 2027: 7:30 PM Tickets: $40 ABOUT THE SHOW: Second Hand News recreates the experience of seeing Fleetwood Mac in their heyday.… Official listing: https://www.metropolisarts.com/event/second-hand-news/</description>
+    <pubDate>Mon, 24 May 2027 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/second-hand-news/">Metropolis Performing Arts Centre — Shows</source>
   </item>
 </channel>
 </rss>
