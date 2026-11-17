@@ -7722,7 +7722,8 @@ def test_past_hosts_are_warm_leads_with_their_reason_and_no_contacts(tmp_path):
     import warm_prospects as wp
     hosts = wp.load_past_hosts()
     assert {h["name"] for h in hosts} >= {"Berry Yo", "Golden Brunch"}
-    assert all(h["reason"] == "santa_host_2025" and "@" not in str(h) for h in hosts)
+    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026") and "@" not in str(h) for h in hosts)
+    assert any(h["reason"] == "fair_organiser_2026" and h["name"] == "Fremd Viking Booster Club" for h in hosts)  # item 526
     bad = tmp_path / "p.yaml"
     bad.write_text('hosts:\n  - name: "Shop"\n    town: "x"\n    reason: r\n    event: "call 847-555-1234"\n', encoding="utf-8")
     assert wp.load_past_hosts(bad) == []
