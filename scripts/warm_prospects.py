@@ -261,7 +261,7 @@ def render_past_hosts(hosts: list[dict]) -> list[str]:
         group = [h for h in hosts if h["reason"] == reason]
         note = group[0]["note"]
         lines += [f"### {note.split(':')[0] if note else reason}", ""] + ([note, ""] if note else [])
-        lines += ["| Host | Town | Last season |", "|---|---|---|"]
+        lines += ["| Host | Town | Event |", "|---|---|---|"]
         lines += [f"| {h['name'].replace('|', '/')} | {h['town']} | {h['event'].replace('|', '/')} |" for h in sorted(group, key=lambda h: (h["town"], h["name"].lower()))]
         lines.append("")
     return lines

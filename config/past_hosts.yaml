@@ -15,5 +15,14 @@ hosts:
     event: "Breakfast for Dinner with Santa"
     source: "https://patch.com/illinois/arlingtonheights/santa-claus-coming-arlington-heights-where-see-him-2025"
 
+  # ROADMAP.md item 526: a fair organiser found through craft-fair listings (thecraftmap, Patch, FestivalNet).
+  # No organiser page was found, so the fair is NOT listed on the site (item 478); the lead is the club itself.
+  - name: "Fremd Viking Booster Club"
+    town: "Palatine"
+    reason: fair_organiser_2026
+    event: "Holiday Craft Fair, Sat Dec 12, Fremd High School (from listings; confirm on the club's own channels)"
+    source: "https://www.thecraftmap.com/fair/fremd-viking-booster-club-holiday-craft-fair-2026-palatine-il"
+
 notes:
   santa_host_2025: "Hosted Santa in 2025: offer the free founding Event Promo for 2026."
+  fair_organiser_2026: "Holiday fair organisers: send OUTREACH_TEMPLATES.md section 14b two weeks before the fair, with the free founding Event Promo."

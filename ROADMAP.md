@@ -21818,7 +21818,7 @@ the season's holiday markets the feeds don't carry.
      is dropped, a choir concert is kept, and *No School* goes to the
      days-off box only.
 
-526. **Holiday craft fairs: discover from the Daily Herald guide, add only
+526. (🟡 2026-11-17: the Fremd Viking Booster Club Holiday Craft Fair (Sat Dec 12, Fremd HS) is confirmed only by listings (thecraftmap, Patch, FestivalNet); no club page, vendor form or school page was found, so it is NOT on the site. The club is a warm lead in config/past_hosts.yaml (reason fair_organiser_2026, OUTREACH_PROSPECTS.md "Holiday fair organisers", section 14b by Nov 28). The Merry Makers Market couldn't be traced to an organiser. Not built: the weekly Daily Herald discovery probe, which needs the guide's current URL) 526. **Holiday craft fairs: discover from the Daily Herald guide, add only
      from the organiser's own page, and log the organisers as warm leads.**
      Build loop:
 
