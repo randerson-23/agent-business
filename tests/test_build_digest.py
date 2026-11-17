@@ -7486,8 +7486,10 @@ def test_suspect_evening_times_lose_their_time_and_school_admin_entries_leave_th
         {"title": "No School - End of Trimester Grading Day", "detail": "No school for students", "date_iso": "2026-11-16T00:00:00"},
         {"title": "Winter Concert", "date_iso": "2026-12-10T19:00:00"},
     ]}]
-    kept = [e["title"] for e in build_digest.drop_school_admin(school)[0]["events"]]
-    assert kept == ["No School - End of Trimester Grading Day", "Winter Concert"]
+    out = build_digest.drop_school_admin(school)[0]
+    assert [e["title"] for e in out["events"]] == ["Winter Concert"]
+    # Item 525: a no-school day is kept for the days-off box only.
+    assert [e["title"] for e in out["days_off_events"]] == ["No School - End of Trimester Grading Day"]
 
 
 def test_town_one_liner_lists_two_titles_and_count():
@@ -7895,3 +7897,35 @@ def test_regional_sources_add_not_bury():
     capped = build_digest.cap_regional_events([own, regional])
     assert len(capped[0]["events"]) == 20 and len(capped[1]["events"]) == 3
     assert {"Nature 0", "Nature 1"} <= {e["title"] for e in capped[1]["events"]}
+
+
+def test_school_calendar_allowlist_and_holiday_headliners_lead():
+    # ROADMAP.md items 525 and 524.
+    school = [{"section": "School Calendar", "events": [
+        {"title": "Substitute Educator Day", "date_iso": "2026-11-20T00:00:00"},
+        {"title": "5th Grade Choir Concert", "date_iso": "2026-11-20T19:00:00"},
+        {"title": "Early Dismissal", "date_iso": "2026-11-25T00:00:00"},
+        {"title": "Fall Break - All D211 Buildings Closed", "date_iso": "2026-10-12T00:00:00"},
+        {"title": "Free Developmental Screenings", "date_iso": "2026-12-02T09:00:00"}]}]
+    out = build_digest.drop_school_admin(school)[0]
+    assert [e["title"] for e in out["events"]] == ["5th Grade Choir Concert", "Free Developmental Screenings"]
+    assert [e["title"] for e in out["days_off_events"]] == ["Early Dismissal", "Fall Break - All D211 Buildings Closed"]
+
+    def ev(title, iso, detail="d", tags=("kid_friendly", "free")):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "detail": detail, "tags": list(tags), "attendable": True}
+    blocks = [
+        {"region_name": "Mount Prospect", "attendable_events": [ev("Family Photos", "2026-11-21T10:00:00")], "series": set()},
+        {"region_name": "Palatine", "attendable_events": [ev("Lego Club", "2026-11-21T10:00:00"),
+                                                           ev("Holiday Tree Lighting Ceremony", "2026-11-21T16:00:00", "Join Mayor Schwantz and Santa for the lighting.")], "series": set()},
+    ]
+    picks = build_digest.pick_email_top_picks(blocks)
+    assert picks[0]["title"] == "Holiday Tree Lighting Ceremony" and picks[0]["pick_town"] == "Palatine"
+    sections = [{"region_name": b["region_name"], "region_url": "https://x/", "weekend_events": b["attendable_events"]} for b in blocks]
+    now = datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc)
+    subject = build_digest.build_combined_email_subject_line(sections, now, picks, [])
+    assert subject == "Palatine tree lighting with Santa · 3 things" and len(subject) <= 50
+    # An on-sale lead still wins.
+    sale = [{"title": "Metra", "short": "Holiday Train tickets", "emoji": "🚂", "opens": datetime(2026, 11, 23, 12, 0)}]
+    assert build_digest.build_combined_email_subject_line(sections, now, picks, sale).startswith("🚂 Holiday Train tickets")
+    # Outside the season a tree lighting is not a headliner.
+    assert not build_digest.is_headliner({"title": "Tree Lighting"}, date(2026, 10, 1))

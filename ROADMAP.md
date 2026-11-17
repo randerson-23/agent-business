@@ -21782,7 +21782,7 @@ the season's holiday markets the feeds don't carry.
 
 #### P1 (new)
 
-524. **Holiday headliners lead "Don't miss" and the subject, Nov 15 – Dec 24.**
+524. (✅ DONE 2026-11-17: `is_headliner` (tree lighting, a town's `tree_lighting.match` name, Santa via `santa_reason`, holiday market, Holiday Train, Frostival and similar; never sold out, cancelled or weekly) ranks first for Don't miss, Nov 15 – Dec 24, and may be a pick even below the family-score floor; `headliner_subject` gives "Palatine tree lighting with Santa · 32 things" (the long "things this weekend" tail doesn't fit 50 characters with Santa). Nov 19 preview: Palatine's lighting, Lights Around Wheeling, then Family Photos; on-sale leads still win) **Holiday headliners lead "Don't miss" and the subject, Nov 15 – Dec 24.**
      Build loop, the pick ranking (item 484):
 
      - In season, events that are a **tree lighting** (config, feed or
@@ -21802,7 +21802,7 @@ the season's holiday markets the feeds don't carry.
 
 #### P2 (new)
 
-525. **School-district calendars: keep only what a family can attend.**
+525. (✅ DONE 2026-11-17: "School Calendar" sections keep only titles on SCHOOL_KEEP_TITLE (concerts, plays, fairs, open houses, family nights, sales, games, screenings, information sessions and similar); day-off entries (now including fall break and "buildings closed") go to the days-off box only; everything else is dropped and logged, 56 entries on today's build, mostly board meetings and staff-appreciation days) **School-district calendars: keep only what a family can attend.**
      Build loop. Replace the growing blocklist (items 485, 488) with an
      **allowlist for school-district sources**. Keep an entry only if its
      title says:

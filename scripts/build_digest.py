@@ -6856,6 +6856,8 @@ def build_combined_email_subject_line(sections: list[dict], now: datetime | None
     # orders what is left.
     ordered = ranked
     lead_first = bool(top_picks)
+    if top_picks and top_picks[0].get("_headliner"):  # item 524: the season's headliner leads the subject
+        return headliner_subject(top_picks[0], len(attendable))
     if lead_first:
         first = top_picks[0]
         second = next((p for p in top_picks[1:] if p.get("pick_town") != first.get("pick_town")), None) or (top_picks[1] if len(top_picks) > 1 else None)
@@ -7382,6 +7384,51 @@ def town_one_liner(block: dict) -> str:
     return f"{block['region_name']}: {listed}" + (f" and {rest} more" if rest > 0 else "")
 
 
+HOLIDAY_MARKET = re.compile(r"christkindl|holiday market|craft fair|holiday bazaar|winter market|makers[\u2019' ]*s? market|holiday boutique", re.IGNORECASE)
+SEASONAL_HEADLINER = re.compile(r"holiday train|frostival|lights around|winter wonderland|holiday parade|santa run|tree lighting", re.IGNORECASE)
+HEADLINER_NAMES: list[str] = []  # item 524: each town's own name for its lighting (tree_lighting.match), set in main()
+
+
+def _pick_today(event: dict) -> date | None:
+    """The season check runs against the event's own date (a pick is always
+    this weekend's), so no clock is needed in the ranking."""
+    try:
+        return datetime.fromisoformat(event.get("date_iso") or "").date()
+    except ValueError:
+        return None
+
+
+def is_headliner(event: dict, today: date | None = None) -> bool:
+    """ROADMAP.md item 524: Nov 15 - Dec 24, the season's headliners (a tree
+    lighting, a Santa visit, a holiday market, a confirmed seasonal event) lead
+    "Don't miss". Never one that is sold out, cancelled or recurring weekly."""
+    title = event.get("title") or ""
+    if today is not None and not (date(today.year, 11, 15) <= today <= date(today.year, 12, 24)):
+        return False
+    if event.get("event_status") or _SOLD_OUT.search(f"{title} {event.get('detail') or ''}") or RECURRING_TITLE.search(title):
+        return False
+    return bool(TREE_LIGHTING_TITLE.search(title) or SEASONAL_HEADLINER.search(title) or HOLIDAY_MARKET.search(title)
+                or any(n.lower() in title.lower() for n in HEADLINER_NAMES) or santa_reason(event))
+
+
+def headliner_subject(pick: dict, count: int, limit: int = 50) -> str:
+    """Item 524: "Palatine tree lighting with Santa · 33 things this weekend",
+    shortened to fit `limit`."""
+    title = display_title(_clean_subject_title(pick.get("title") or "")).replace("🦃", "").strip()
+    town = pick.get("pick_town") or ""
+    tail = f" · {count} things this weekend"
+    detail = f"{pick.get('title') or ''} {pick.get('detail') or ''}"
+    if TREE_LIGHTING_TITLE.search(pick.get("title") or "") or any(n.lower() in (pick.get("title") or "").lower() for n in HEADLINER_NAMES):
+        candidates = [f"{town} tree lighting with Santa", f"{town} tree lighting"] if re.search(r"\bsanta\b", detail, re.IGNORECASE) else [f"{town} tree lighting"]
+    else:
+        candidates = [f"{title} in {town}", title]
+    for lead in candidates:
+        for t in (tail, f" · {count} things", ""):
+            if len(lead + t) <= limit:
+                return lead + t
+    return truncate(candidates[-1], limit)
+
+
 def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
     """Up to `limit` "Don't miss" events for the top of the combined email,
     at most one per town: the most family-relevant attendable event in each
@@ -7391,19 +7438,21 @@ def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
     least two towns with something to pick, or the section is skipped."""
     candidates, spare = [], []
     for block in blocks:
-        pool = [e for e in (block.get("pick_pool") or block.get("attendable_events") or []) if not e.get("sponsored_by") and is_pick_worthy(e)]
+        pool = [e for e in (block.get("pick_pool") or block.get("attendable_events") or []) if not e.get("sponsored_by") and (is_pick_worthy(e) or is_headliner(e, _pick_today(e)))]
         if not pool:
             continue  # item 380: a town with nothing good contributes no pick
         series = block.get("series") or set()
         for e in pool:
             e["_recurring"] = is_recurring_programme(e, series)  # item 484
-        ranked = sorted(pool, key=lambda e: (e["_recurring"], bool(e.get("regional")), -family_relevance(e), e.get("date_iso") or "9999"))  # item 521
+        for e in pool:
+            e["_headliner"] = is_headliner(e, _pick_today(e))  # item 524
+        ranked = sorted(pool, key=lambda e: (not e["_headliner"], e["_recurring"], bool(e.get("regional")), -family_relevance(e), e.get("date_iso") or "9999"))  # item 521
         color = block.get("color", EMAIL_TOWN_COLORS[0][0])
         candidates.append(dict(ranked[0], pick_town=block["region_name"], pick_color=color))
         spare += [dict(e, pick_town=block["region_name"], pick_color=color) for e in ranked[1:]]
     if len(candidates) < 2:
         return []
-    key = lambda e: (e.get("_recurring", False), bool(e.get("regional")), -family_relevance(e), e.get("date_iso") or "9999")  # noqa: E731
+    key = lambda e: (not e.get("_headliner", False), e.get("_recurring", False), bool(e.get("regional")), -family_relevance(e), e.get("date_iso") or "9999")  # noqa: E731
     candidates.sort(key=key)
     if len(candidates) < limit:  # the empty towns' slots go to the strongest events elsewhere
         spare.sort(key=key)
@@ -7672,7 +7721,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
 # kept as the reason; nothing is inferred from a date alone.
 DAY_OFF_TITLE = re.compile(
     r"no school|non-?attendance|institute|half[- ]day|early (?:release|dismissal)|conferences?|"
-    r"holiday|winter break|spring break|thanksgiving break|school closed|schools closed|staff development",
+    r"holiday|winter break|spring break|thanksgiving break|fall break|school closed|schools closed|buildings closed|staff development",
     re.IGNORECASE,
 )
 DAYS_OFF_WINDOW = 45
@@ -7975,6 +8024,16 @@ def clear_suspect_times(blocks: list[dict]) -> int:
     return cleared
 
 
+# ROADMAP.md item 525: on a school calendar, only what a family can attend.
+SCHOOL_KEEP_TITLE = re.compile(
+    r"\b(?:concerts?|plays?|musicals?|performances?|fairs?|carnival|open house|family (?:night|fun night|event)|art shows?|"
+    r"sales?|festivals?|games?|recitals?|showcase|choir|band|orchestra|dance|science night|math night|literacy night|"
+    r"movie night|bingo|fun run|walk-?a-?thon|parade|spirit night|book fair|talent show|winter wonderland|"
+    r"screenings?|information session|info(?:rmation)? night|parent night|registration)\b",
+    re.IGNORECASE,
+)
+
+
 def drop_school_admin(blocks: list[dict]) -> list[dict]:
     """Item 485: school-calendar entries like "End of First Trimester" or
     "Board Meeting" are not things to do; they leave every list unless they
@@ -7984,9 +8043,17 @@ def drop_school_admin(blocks: list[dict]) -> list[dict]:
         keep, staff = [], []
         for e in block.get("events", []):
             text = f"{e.get('title') or ''} {e.get('detail') or ''}"
-            if SCHOOL_STAFF_DAY.search(e.get("title") or ""):
+            title = e.get("title") or ""
+            if SCHOOL_STAFF_DAY.search(title):
                 staff.append(e)
                 continue
+            if "school" in (block.get("section") or "").lower():  # item 525: an allowlist, not a blocklist
+                if DAY_OFF_TITLE.search(title) or NO_SCHOOL_TEXT.search(text):
+                    staff.append(e)  # the days-off box still reads it
+                    continue
+                if not SCHOOL_KEEP_TITLE.search(title):
+                    logger.info("School-calendar entry left out (not something a family attends): %r (%s)", title, block.get("section"))
+                    continue
             if SCHOOL_ADMIN_TITLE.search(e.get("title") or "") and not NO_SCHOOL_TEXT.search(text):
                 logger.info("School-admin entry left out of the lists: %r (%s)", e.get("title"), block.get("section"))
                 continue
@@ -8654,6 +8721,7 @@ def main() -> None:
     maps = load_maps_config(load_yaml(CONFIG_DIR / "maps.yaml"))
     regions = load_regions()
     now = datetime.now(timezone.utc)
+    HEADLINER_NAMES[:] = [str(m) for c in regions for m in ((c.get("tree_lighting") or {}).get("match") or [])]  # item 524
     TOWN_CENTRES[:] = [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions]  # item 520
     email_town_names = [c["region"]["name"] for c in regions if c["region"].get("email") is not False]  # item 489
 
