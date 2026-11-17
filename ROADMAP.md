@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **528** (headliner emoji: 🎄 for tree lightings, 📸 for photos; quick, before the Nov 19 send if possible), then **527** ("Holiday lights to visit" on `/holidays/`: North School Park free, Willow Hill Lights ticketed, just outside; for the Dec 3 issue).
 0. **524** with **525** (holiday headliners lead Don't miss and the subject; school calendars keep only attendable entries; **before the Nov 19 send's build, Wed evening**), then **526** (holiday craft fairs from organisers' pages, organisers as warm leads).
 0. **521** (regional sources add, not bury: merge FPCC repeats, drop adult wellness, cap at 15% of a town's cards, 8-mile radius; before the **Nov 19** send), then **522** (Schaumburg's Spring Valley Nature Center, probe first) and **523** (probe only).
 0. **519** with **520** (Forest Preserves of Cook County north-region events via the Events Calendar fetcher, nearest town with distance; probe first).
@@ -21847,6 +21848,73 @@ guide**, plus **thecraftmap**, **illinoisfairsandfestivals.com** and
 **allevents.in**'s holiday-market pages (aggregators: discovery only). The
 design/UX angle is **the Nov 19 issue's picks**: a library photoshoot
 leading the season's first tree-lighting weekend.
+
+#### Research pass 2026-11-17, evening (hundred-and-fiftieth pass)
+
+Today the build loop shipped items 524 and 525. The Nov 19 preview's subject is
+now ***"Palatine tree lighting with Santa · 32 things"***, with Palatine's
+lighting and **Lights Around Wheeling** as the first two picks. School
+calendars keep only what a family can attend. It also logged the **Fremd
+Viking Booster Club** as a warm lead without listing its fair, since no
+organiser page exists (item 526). This pass looks at December's other big
+family outing, **holiday light displays**, and at a small visual slip in
+the new picks.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Organised holiday light displays near the six towns** (WTTW, *"10 of the Chicago area's most dazzling holiday light shows"*, 2026; Patch Northbrook on Willow Hill Lights; the Daily Herald's weekly *"Things to do"* light-show listings; mykidlist's *"2026 best Christmas lights map with driving routes"*; Chicago Parent's 2026 lights and tree-lighting guide; AHPD's North School Park pages) | **Willow Hill Lights** (1350 Willow Rd, Northbrook, **~4–5 mi from Wheeling and Des Plaines**): a drive-through show of a million-plus LEDs, **Nov 13, 2026 – Jan 3, 2027** per WTTW. Last season it was **$40 per car with timed one-hour slots** and closed in bad weather (2026 price unconfirmed; willowhilllights.com governs). **Arlington Heights Park District lights North School Park** (and Harmony Park) for free through the new year. **Clearbrook's Winterland of Lights** (Arlington Heights) turns up only in a 2007 article, unconfirmed for 2026. Regional guides (mykidlist's map, Chicago Parent, WTTW) cover the Chicagoland shows, but **none sorts them by these towns** | *"Christmas lights near me"* is December's biggest family search after Santa, and it's a dated, sourced answer the site can give: one free town display, one ticketed show just outside, with dates and hours. It's also distinct from item 325's reader-built *house*-lights list. Willow Hill sells tickets by time slot, which is exactly what item 476's *"⏰ Remind me"* and item 503's *"often sells out"* chip are for (item 527) |
+| **Emoji on the new picks (design/UX)** (the Nov 19 preview's "Don't miss"; `build_digest.py`'s emoji table) | The two tree lightings show **📍**, the fallback emoji, because no rule covers *tree lighting*. *"Family Photos"* shows **💻**, because *photos* sits in the computer/device rule. The headliners now lead the email, so their icons are the first thing a reader sees | A pin for a tree lighting and a laptop for a family photoshoot make the top of the email look machine-made. It's a two-line table fix (item 528) |
+
+#### P1 (new)
+
+527. **"Holiday lights to visit" on `/holidays/`, Nov 27 – Jan 3.** Build
+     loop:
+
+     - A section from `config/light_displays.yaml`, each entry from the
+       **organiser's own page** (or item 478's search fallback):
+       **AHPD North School Park** (and Harmony Park if AHPD lists it):
+       free, dates and hours from ahpd.org. **Willow Hill Lights**:
+       Northbrook, *"≈ N mi from Wheeling"* (item 479), dates, hours,
+       *"ticketed, timed slots"* and the price only as its page states
+       it. **Clearbrook's Winterland of Lights** only if clearbrook.org
+       confirms 2026.
+     - Ticketed displays get item 503's ***"🎟 Timed tickets, often sells
+       out"*** chip and item 476's ***"⏰ Remind me"*** link.
+     - Show one email line from the Dec 3 issue to the Dec 24 issue:
+       *"✨ Holiday lights: North School Park (free) · Willow Hill Lights,
+       Northbrook (ticketed) →"*.
+     - The page counts toward item 516's threshold.
+     - Log Willow Hill's operator in `data/warm_hosts.json` with reason
+       `"holiday_attraction"`. It's a seasonal business selling to
+       exactly this audience.
+
+     Tests: an entry without a source is refused, the ticketed chip
+     appears for Willow Hill, the email line runs only in season, and the
+     distance line is present.
+
+#### P3 (new)
+
+528. **Fix the headliner emoji.** Build loop, `build_digest.py`'s emoji
+     table:
+
+     - Add **🎄** for *tree lighting*, *lights around*, *holiday lights*
+       and *Christkindlmarket*, and **🎅** for Santa-reason events.
+     - Move *photos* out of the 💻 rule into **📸** (*photo*,
+       *photoshoot*, *pictures*).
+     - Keep 📍 only as the last fallback.
+
+     Tests: *"Holiday Tree Lighting Ceremony"* gets 🎄, *"Family Photos"*
+     gets 📸, and *"Computer Basics"* keeps 💻.
+
+Re-rank: **527 goes to the top of the build queue**, ready for the **Dec 3
+issue** (Willow Hill is already open). **528** rides with the next email
+change, before Nov 19 if it's quick.
+
+Competitors reviewed this pass: **WTTW's 2026 light-show guide, mykidlist's
+2026 Christmas-lights driving map and Chicago Parent's holiday guide**
+(regional, not by town), and **Willow Hill Lights** and **AHPD's North
+School Park** as sources. The design/UX angle is **the emoji on the new
+headliner picks**.
 
 
 ## Working agreements for autonomous iteration
