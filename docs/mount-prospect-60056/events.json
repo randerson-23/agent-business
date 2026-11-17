@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-11-17T06:00:41+00:00",
-  "numberOfItems": 42,
+  "dateModified": "2026-11-17T14:03:39+00:00",
+  "numberOfItems": 39,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -506,29 +506,6 @@
       "position": 17,
       "item": {
         "@type": "Event",
-        "name": "Education Foundation Meeting",
-        "startDate": "2026-11-19T16:30:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-education-foundation-meeting-2026-11-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 18,
-      "item": {
-        "@type": "Event",
         "name": "Tech Playground",
         "startDate": "2026-11-19T18:00:00-06:00",
         "url": "https://withintenmiles.com/mount-prospect-60056/#ev-tech-playground-2026-11-19",
@@ -557,7 +534,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -588,7 +565,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Epic Worlds and Celestial Prophecies With Rebecca Roanhorse",
@@ -619,30 +596,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
-      "item": {
-        "@type": "Event",
-        "name": "Substitute Educator Day",
-        "startDate": "2026-11-20",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-substitute-educator-day-2026-11-20",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 22,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Storytime Playdate: Hello Helpers",
@@ -673,7 +627,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Family Photos",
@@ -704,7 +658,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Pokémon Club",
@@ -735,7 +689,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Teen Volunteering",
@@ -766,7 +720,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "CheckMates Meetup",
@@ -797,7 +751,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Full Year Fitness Membership Sale",
@@ -827,30 +781,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
-      "item": {
-        "@type": "Event",
-        "name": "Fall Break - No School",
-        "startDate": "2026-11-23",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-fall-break-no-school-2026-11-23",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 29,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Family Fun: Morris, the Magic Man",
@@ -881,7 +812,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 3 & 4",
@@ -911,7 +842,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -942,7 +873,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -973,7 +904,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Movies @ MPPL: Misconduct",
@@ -1004,7 +935,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -1035,7 +966,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 5 & 6",
@@ -1065,7 +996,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -1096,7 +1027,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 7 & 8",
@@ -1126,7 +1057,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Christkindlmarket",
@@ -1156,7 +1087,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Village Tree Lighting Ceremony",
@@ -1187,7 +1118,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Free! Triple Turkey Burner",
@@ -1217,7 +1148,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Hooked on Books!",
@@ -1249,7 +1180,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "A Club for Kids Who Like Books",

@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-11-17T06:00:41+00:00",
-  "numberOfItems": 15,
+  "dateModified": "2026-11-17T14:03:39+00:00",
+  "numberOfItems": 9,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -220,126 +220,6 @@
       "position": 8,
       "item": {
         "@type": "Event",
-        "name": "No School | Parent/Teacher Conference Day",
-        "startDate": "2026-11-23",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-parent-teacher-conference-day-2026-11-23",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "2026-27 Official School Calendar (English) | (Spanish)"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "item": {
-        "@type": "Event",
-        "name": "No School | Parent/Teacher Conference Day",
-        "startDate": "2026-11-24",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-parent-teacher-conference-day-2026-11-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "2026-27 Official School Calendar (English) | (Spanish)"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "item": {
-        "@type": "Event",
-        "name": "No School | Nonattendance Day",
-        "startDate": "2026-11-25",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-nonattendance-day-2026-11-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "2026-27 Official School Calendar (English) | (Spanish)"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "item": {
-        "@type": "Event",
-        "name": "Fall Break - All D211 Buildings Closed",
-        "startDate": "2026-11-25",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-fall-break-all-d211-buildings-closed-2026-11-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "All District 211 buildings will be closed in observance of the"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
-      "item": {
-        "@type": "Event",
-        "name": "No School | Thanksgiving Recess",
-        "startDate": "2026-11-26",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-thanksgiving-recess-2026-11-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "2026-27 Official School Calendar (English)2026-27 Official Sc"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 13,
-      "item": {
-        "@type": "Event",
         "name": "🦃 Palatine Park District Turkey Trot",
         "startDate": "2026-11-26T08:00:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-park-district-turkey-trot-2026-11-26",
@@ -367,7 +247,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "St. Nectarios Thanksgiving Community Meal",
@@ -394,30 +274,6 @@
         "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "Free hot Thanksgiving meal. Safe, welcoming space for individu",
         "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 15,
-      "item": {
-        "@type": "Event",
-        "name": "No School | Thanksgiving Recess",
-        "startDate": "2026-11-27",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-no-school-thanksgiving-recess-2026-11-27",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "2026-27 Official School Calendar (English)2026-27 Official Sc"
       }
     }
   ]
