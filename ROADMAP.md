@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **524** with **525** (holiday headliners lead Don't miss and the subject; school calendars keep only attendable entries; **before the Nov 19 send's build, Wed evening**), then **526** (holiday craft fairs from organisers' pages, organisers as warm leads).
 0. **521** (regional sources add, not bury: merge FPCC repeats, drop adult wellness, cap at 15% of a town's cards, 8-mile radius; before the **Nov 19** send), then **522** (Schaumburg's Spring Valley Nature Center, probe first) and **523** (probe only).
 0. **519** with **520** (Forest Preserves of Cook County north-region events via the Events Calendar fetcher, nearest town with distance; probe first).
 0. **516** (near-empty pages noindex and out of the sitemap until they reach 3 entries, then submitted), **517** (Brave Search URL list in the Needs Ryan step 1 note), then **518**.
@@ -21765,6 +21766,87 @@ Competitors reviewed this pass: **Schaumburg Park District's Spring Valley
 Nature Center** and **Lake County Forest Preserves' Ryerson Woods** as
 nearby nature sources. The design/UX angle is **what 180 FPCC events did
 to the town pages**.
+
+#### Research pass 2026-11-17 (hundred-and-forty-ninth pass)
+
+Overnight the build loop shipped item 521. Wheeling's regional cards fell from
+35 to 14 of 265, and Des Plaines carries 5 regional cards of 450. This pass
+reads the **Nov 19 issue's preview** (`docs/combined-email-preview.html`, Nov
+20–22), the last regular issue before Thanksgiving week, and looks for
+the season's holiday markets the feeds don't carry.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Nov 19 issue's picks (design/UX)** | Subject: ***"Family Photos and 32 more this weekend"***. **Don't miss:** *Family Photos* (a library photoshoot, Mount Prospect), *Indoor Edible Gardens* (an FPCC programme, Wheeling), *Family Time* (a weekly AHML session). The same weekend holds **Palatine's tree lighting with Santa (Sat Nov 21, 4 PM, Towne Square)** and **Lights Around Wheeling (Sun Nov 22, 4:30 PM)**, both confirmed in the site's own data and on `/santa/` and `/holidays/`, and **neither is a pick or in the subject**. Mount Prospect's list also leads with ***"Substitute Educator Day"*** (D57), another school-admin entry item 485's blocklist misses | The first tree lightings of the season are the weekend's headliners: free, all-ages, with Santa. A subject that leads with *"Family Photos"* is the weakest possible open for the strongest weekend so far. And every new school-admin phrase (*appreciation day*, *board member day*, *substitute educator day*) slips through a blocklist one at a time (items 524, 525) |
+| **Holiday craft fairs the feeds don't carry** (the Daily Herald's weekly *"Weekend guide to craft fairs"*, issue 6 on Nov 4, 2026; thecraftmap.com's Palatine and Illinois holiday-fair lists; illinoisfairsandfestivals.com; allevents.in's Des Plaines Christmas-markets page) | **Fremd Viking Booster Club's Holiday Craft Fair, Sat Dec 12, Fremd High School (1000 S. Quentin Rd, Palatine), free, 9–4**, and a **"Merry Makers Market"** at a Palatine community centre on Nov 21 (from an aggregator listing, unverified). The Daily Herald publishes a **weekly craft-fair guide through the season**. Booster clubs, PTOs and churches run these, and **none of them publishes to a village, library or park-district calendar** | Holiday markets are what families do on December Saturdays. The organisers are the **fair organisers** item 387's warm-lead category was built for, and they buy promotion, the founding Event Promo's natural first takers. The Daily Herald guide can be a **discovery list** (it's a roundup, so item 478 refuses it as a source), with each fair added only from its organiser's own page (item 526) |
+
+#### P1 (new)
+
+524. **Holiday headliners lead "Don't miss" and the subject, Nov 15 – Dec 24.**
+     Build loop, the pick ranking (item 484):
+
+     - In season, events that are a **tree lighting** (config, feed or
+       `tree_lighting.match`), a **Santa visit** (item 498's
+       `santa_reason`), a **holiday market** or a confirmed seasonal
+       headliner (Metra Holiday Train, Frostival, the CPKC train
+       just outside) rank **above** everything else for "Don't miss".
+       Spread them across towns.
+     - The subject uses the top headliner: ***"Palatine tree lighting with
+       Santa · 33 things this weekend"*** (within item 363's 50
+       characters; shorten the town if needed).
+     - Item 483's on-sale lead still wins when a sale opens within 4
+       days.
+
+     Tests: with Palatine's lighting in the weekend, it's pick one and
+     leads the subject, and an on-sale entry still wins.
+
+#### P2 (new)
+
+525. **School-district calendars: keep only what a family can attend.**
+     Build loop. Replace the growing blocklist (items 485, 488) with an
+     **allowlist for school-district sources**. Keep an entry only if its
+     title says:
+     - *concert*, *play*, *musical*, *performance*, *fair*, *carnival*,
+       *open house*, *family night*, *art show*, *sale*, *festival* or
+       *game*;
+     - or it's a **no-school or early-dismissal day** (kept for the
+       days-off box only).
+
+     Everything else (*Substitute Educator Day*, *End of Trimester*,
+     *Board Member Day*, institute and appreciation days) leaves the lists
+     and `events.json`. Log each drop. Tests: *Substitute Educator Day*
+     is dropped, a choir concert is kept, and *No School* goes to the
+     days-off box only.
+
+526. **Holiday craft fairs: discover from the Daily Herald guide, add only
+     from the organiser's own page, and log the organisers as warm leads.**
+     Build loop:
+
+     - A weekly probe of the Daily Herald's *"Weekend guide to craft
+       fairs"* (Nov–Dec) for fairs in the six towns. It's a **discovery
+       list only**: write the candidates to `data/fair_candidates.json`.
+     - For each candidate, probe the **organiser's own page** (a school,
+       booster club, church or park district). Add an `annual_events`
+       entry only from that page, with `source_url`. First targets: the
+       **Fremd Viking Booster Club Holiday Craft Fair (Dec 12, Fremd HS)**
+       and the **Merry Makers Market (Palatine, Nov 21)**, unconfirmed.
+     - Write every confirmed organiser into `data/warm_hosts.json` with
+       reason `"fair_organiser"` (item 387's category). Then
+       `OUTREACH_PROSPECTS.md` offers them the founding Event Promo
+       (template §14b).
+
+     Tests: a roundup-only fair isn't added, a confirmed one is, and its
+     organiser becomes a warm host without contact details.
+
+Re-rank: **524 goes to the top of the build queue**, with a hard deadline of
+**the Nov 19 send's build (Wed Nov 18, evening)**. **525** rides with it (the
+same issue). **526** follows: fairs run through Dec 19.
+
+Competitors reviewed this pass: **the Daily Herald's weekly craft-fair
+guide**, plus **thecraftmap**, **illinoisfairsandfestivals.com** and
+**allevents.in**'s holiday-market pages (aggregators: discovery only). The
+design/UX angle is **the Nov 19 issue's picks**: a library photoshoot
+leading the season's first tree-lighting weekend.
 
 
 ## Working agreements for autonomous iteration
