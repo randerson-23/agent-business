@@ -1444,6 +1444,8 @@ def fetch_region_sections(
             # ROADMAP.md item 327: only from an explicit phrase in the source's own text.
             reg = parse_registration_opens(f"{item.get('title', '')}. {item.get('detail', '')}", _event_day(event))
             event["registration_opens"] = reg.isoformat() if reg else None
+            if item.get("series_count"):  # item 521: a regional series shown once
+                event["recurrence_note"] = f"{item['series_count']} dates coming up; this card shows the next"
             events.append(event)
         # ROADMAP.md item 473: the horizon from the parsed events, so sources whose
         # raw dates are display text (html_events) get one too.
@@ -1454,8 +1456,11 @@ def fetch_region_sections(
                 horizons[source_key][-1]["horizon_days"] = (max(days) - today_h).days
         # ROADMAP.md item 308: the page a dead event link falls back to.
         source_page = source.get("calendar_page") or (source["url"] if source["type"] == "html_events" else None)
-        blocks.append({"section": source["section"], "events": events, "source_page": source_page})
-    return blocks
+        if source.get("nearest_town_only"):  # item 521
+            for e in events:
+                e["regional"] = True
+        blocks.append({"section": source["section"], "events": events, "source_page": source_page, "regional": bool(source.get("nearest_town_only"))})
+    return cap_regional_events(blocks)
 
 
 def prepare_evergreen(region_cfg: dict) -> list[dict]:
@@ -2719,7 +2724,55 @@ def is_roundup_url(url: str | None) -> bool:
 TOWN_CENTRES: list[dict] = []  # item 520: filled from the region configs in main()
 
 
-def keep_nearest_town(items: list[dict], region_name: str, towns: list[dict], max_miles: float = JUST_OUTSIDE_MAX_MILES) -> list[dict]:
+REGIONAL_MAX_MILES = 8  # item 521: regional venues; "Just outside" keeps 10
+REGIONAL_SHARE = 0.15  # item 521: a regional source's share of a town's cards
+REGIONAL_NOT_FAMILY = re.compile(r"\byoga\b|forest therapy|mood booster|\bwellness\b|meditat|adults? only|\b(?:18|21)\+|volunteer workday|stewardship workday|\bworkday\b", re.IGNORECASE)
+
+
+def _collapse_regional_repeats(items: list[dict]) -> list[dict]:
+    """Item 521: the same title at the same venue on several dates is one card,
+    its soonest date, with the other dates in the detail."""
+    groups: dict[tuple, list[dict]] = {}
+    for item in items:
+        groups.setdefault((_norm_title(item.get("title") or ""), (item.get("venue_name") or "").lower()), []).append(item)
+    out = []
+    for group in groups.values():
+        group.sort(key=lambda i: i.get("date") or "")
+        first = dict(group[0])
+        if len(group) > 1:
+            later = []
+            for i in group[1:]:
+                try:
+                    d = datetime.strptime(str(i.get("date"))[:8], "%Y%m%d")
+                    later.append(f"{d.strftime('%a %b')} {d.day}")
+                except ValueError:
+                    continue
+            shown = ", ".join(dict.fromkeys(later[:3]))
+            more = len(later) - 3
+            first["detail"] = (first.get("detail") or "") + f" Also {shown}" + (f" and {more} more date{'s' if more != 1 else ''}" if more > 0 else "") + "."
+            first["series_count"] = len(group)
+        out.append(first)
+    out.sort(key=lambda i: i.get("date") or "")
+    return out
+
+
+def cap_regional_events(blocks: list[dict], share: float = REGIONAL_SHARE) -> list[dict]:
+    """Item 521: regional events take at most `share` of a town's cards (at least
+    two), the most family-relevant first; the town's own sources are untouched."""
+    own = sum(len(b.get("events") or []) for b in blocks if not b.get("regional"))
+    cap = max(2, int(share * own / (1 - share)))
+    out = []
+    for b in blocks:
+        if b.get("regional") and len(b.get("events") or []) > cap:
+            keep = sorted(b["events"], key=lambda e: (-family_relevance(e), e.get("date_iso") or "9999"))[:cap]
+            ids = {id(e) for e in keep}
+            logger.info("Regional source %s: %d events capped to %d (own sources: %d)", b.get("section"), len(b["events"]), cap, own)
+            b = dict(b, events=[e for e in b["events"] if id(e) in ids])
+        out.append(b)
+    return out
+
+
+def keep_nearest_town(items: list[dict], region_name: str, towns: list[dict], max_miles: float = REGIONAL_MAX_MILES) -> list[dict]:
     """ROADMAP.md item 520: a regional source's events go only to the nearest
     town (within `max_miles`), so nothing appears in two towns, and each says
     where it is: "Crabtree Nature Center (Barrington Hills) · ≈ 4 mi from
@@ -2727,6 +2780,8 @@ def keep_nearest_town(items: list[dict], region_name: str, towns: list[dict], ma
     kept = []
     for item in items:
         if item.get("lat") is None or item.get("lon") is None:
+            continue
+        if REGIONAL_NOT_FAMILY.search(f"{item.get('title') or ''} {(item.get('detail') or '')[:160]}"):  # item 521
             continue
         near = nearest_town(float(item["lat"]), float(item["lon"]), towns)
         if not near or near[0] != region_name or near[1] > max_miles:
@@ -2736,7 +2791,7 @@ def keep_nearest_town(items: list[dict], region_name: str, towns: list[dict], ma
             place = f"{place} ({item['venue_city']})" if place else item["venue_city"]
         where = f"{place} · ≈ {round(near[1])} mi from {region_name}" if place else f"≈ {round(near[1])} mi from {region_name}"
         kept.append(dict(item, detail=f"{where}. {item.get('detail') or ''}".strip(), distance_note=where))
-    return kept
+    return _collapse_regional_repeats(kept)
 
 
 def nearest_town(lat: float, lon: float, towns: list[dict]) -> tuple[str, float] | None:
@@ -7342,13 +7397,13 @@ def pick_email_top_picks(blocks: list[dict], limit: int = 3) -> list[dict]:
         series = block.get("series") or set()
         for e in pool:
             e["_recurring"] = is_recurring_programme(e, series)  # item 484
-        ranked = sorted(pool, key=lambda e: (e["_recurring"], -family_relevance(e), e.get("date_iso") or "9999"))
+        ranked = sorted(pool, key=lambda e: (e["_recurring"], bool(e.get("regional")), -family_relevance(e), e.get("date_iso") or "9999"))  # item 521
         color = block.get("color", EMAIL_TOWN_COLORS[0][0])
         candidates.append(dict(ranked[0], pick_town=block["region_name"], pick_color=color))
         spare += [dict(e, pick_town=block["region_name"], pick_color=color) for e in ranked[1:]]
     if len(candidates) < 2:
         return []
-    key = lambda e: (e.get("_recurring", False), -family_relevance(e), e.get("date_iso") or "9999")  # noqa: E731
+    key = lambda e: (e.get("_recurring", False), bool(e.get("regional")), -family_relevance(e), e.get("date_iso") or "9999")  # noqa: E731
     candidates.sort(key=key)
     if len(candidates) < limit:  # the empty towns' slots go to the strongest events elsewhere
         spare.sort(key=key)

@@ -21715,7 +21715,7 @@ nearby agencies with nature centres.
 
 #### P1 (new)
 
-521. **Make the regional sources add, not bury.** Build loop, for
+521. (✅ DONE 2026-11-17: in `keep_nearest_town`, a regional source's repeats (same title and venue) become one card at the soonest date with "Also <dates> and N more dates" and a 🔁 note; yoga, forest therapy, mood booster, wellness, meditation, adults-only and volunteer workdays are dropped; the regional radius is 8 miles ("Just outside" keeps 10); `cap_regional_events` holds a regional block to 15% of the town's cards, most family-relevant first; picks rank regional events after the town's own. Checked on CI's last-good FPCC data: Wheeling 35 → 9 cards of 102, Des Plaines 1 with no Chicago yoga, Palatine 5. Volunteer workdays aren't yet routed to /give/) 521. **Make the regional sources add, not bury.** Build loop, for
      `tribe_venues` and any future regional source (FPCC now, Schaumburg
      next):
 
