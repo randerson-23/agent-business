@@ -7876,3 +7876,22 @@ def test_regional_events_go_to_the_nearest_town_with_their_distance():
     placed = {t["name"]: [i["title"] for i in build_digest.keep_nearest_town(items, t["name"], towns)] for t in towns}
     assert sum(len(v) for v in placed.values()) == 2  # nothing twice, the far and unlocated ones nowhere
     assert placed["Wheeling"] == ["Wildlife Connections"] or placed["Des Plaines"] == ["Wildlife Connections"]
+
+
+def test_regional_sources_add_not_bury():
+    # ROADMAP.md item 521.
+    towns = [{"name": "Wheeling", "lat": 42.1392, "lon": -87.9290}, {"name": "Des Plaines", "lat": 42.0334, "lon": -87.8834}]
+    rt = {"venue_name": "River Trail Nature Center", "venue_city": "Northbrook", "lat": 42.1093, "lon": -87.8378}
+    items = [dict(rt, title="Wildlife Connections", date=f"202611{d:02d}T103000", detail="Meet the animals.") for d in (17, 18, 19, 21, 22, 24, 25, 26, 28)]
+    items += [dict(rt, title="Forest Therapy Walk", date="20261121T090000"), dict(rt, title="Weekly yoga class for all ages", date="20261121T100000"),
+              dict(rt, title="Volunteer Workday", date="20261122T090000")]
+    thatcher = {"title": "Owl Prowl", "venue_name": "Thatcher Woods", "venue_city": "River Forest", "lat": 41.9064, "lon": -87.8217, "date": "20261121T180000"}
+    kept = build_digest.keep_nearest_town(items + [thatcher], "Wheeling", towns)
+    assert [i["title"] for i in kept] == ["Wildlife Connections"]
+    assert kept[0]["series_count"] == 9 and "and 5 more dates" in kept[0]["detail"]
+    assert build_digest.keep_nearest_town([thatcher], "Des Plaines", towns) == []  # ~9 mi: past the 8-mile regional radius
+    own = {"section": "Village", "events": [{"title": f"Town event {i}", "date_iso": "2026-11-21T10:00:00", "tags": []} for i in range(20)]}
+    regional = {"section": "Forest Preserves", "regional": True, "events": [{"title": f"Nature {i}", "date_iso": "2026-11-21T10:00:00", "tags": ["kid_friendly"] if i < 2 else []} for i in range(10)]}
+    capped = build_digest.cap_regional_events([own, regional])
+    assert len(capped[0]["events"]) == 20 and len(capped[1]["events"]) == 3
+    assert {"Nature 0", "Nature 1"} <= {e["title"] for e in capped[1]["events"]}
