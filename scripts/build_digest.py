@@ -2494,6 +2494,7 @@ def build_holiday_listing_offer(now: datetime, contact_email: str | None, launch
 def render_holidays_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
     contact_email: str | None = None, outside: list[dict] | None = None, launch: bool = False,
+    lights: list[dict] | None = None,
 ) -> str:
     """The cross-town /holidays/ page (ROADMAP.md item 274): tree lightings
     town by town (a confirmed date with its source, or an honest "not posted
@@ -2510,6 +2511,7 @@ def render_holidays_page(
         year=now.year,
         listing_offer=build_holiday_listing_offer(now, contact_email, launch),
         santa_listing=santa_listing_offer(contact_email),  # item 501
+        lights=lights or [],  # item 527
         town_names=_join_names([e["region_name"] for e in entries]),
         any_events=any(e.get("events") for e in entries),
         newsletter=newsletter or {"configured": False},
@@ -2804,6 +2806,49 @@ def nearest_town(lat: float, lon: float, towns: list[dict]) -> tuple[str, float]
         if best is None or miles < best[1]:
             best = (t["name"], miles)
     return best
+
+
+LIGHTS_SEASON = ((11, 27), (1, 3))  # ROADMAP.md item 527
+
+
+def lights_in_season(today: date) -> bool:
+    return (today.month == 11 and today.day >= 27) or today.month == 12 or (today.month == 1 and today.day <= 3)
+
+
+def load_light_displays(today: date, towns: list[dict] | None = None) -> list[dict]:
+    """ROADMAP.md item 527: holiday light displays from config/light_displays.yaml,
+    in season only (Nov 27 - Jan 3), each from an organiser's page (never a
+    roundup), with a distance line for one outside the towns."""
+    if not lights_in_season(today):
+        return []
+    path = CONFIG_DIR / "light_displays.yaml"
+    cfg = load_yaml(path) if path.exists() else {}
+    town_names = {t["name"] for t in towns or []}
+    out = []
+    for raw in cfg.get("displays") or []:
+        url = safe_http_url(raw.get("source_url"))
+        if not (raw.get("name") and raw.get("line") and url) or is_roundup_url(url):
+            continue
+        until = _parse_promo_day(raw.get("until"))
+        if until and today > until:
+            continue
+        entry = {k: str(raw.get(k) or "").strip() for k in ("name", "town", "where", "line", "price")}
+        entry.update(url=url, ticketed=bool(raw.get("ticketed")), distance=None)
+        if entry["town"] not in town_names and raw.get("lat") is not None and towns:
+            near = nearest_town(float(raw["lat"]), float(raw["lon"]), towns)
+            if near:
+                entry["distance"] = f"≈ {round(near[1])} mi from {near[0]}"
+        out.append(entry)
+    return out
+
+
+def build_lights_email_line(displays: list[dict], now: datetime) -> dict | None:
+    """Item 527: one line in the issues from Dec 3 to Dec 24."""
+    day = email_delivery_time(now).date()
+    if not displays or not (date(day.year, 12, 3) <= day <= date(day.year, 12, 24)):
+        return None
+    parts = [f"{d['name']}" + (f", {d['town']}" if d.get("distance") else "") + (" (ticketed)" if d["ticketed"] else f" ({d['price'].lower()})" if d.get("price") else "") for d in displays]
+    return {"text": "✨ Holiday lights: " + " · ".join(parts), "url": SITE_BASE_URL + "holidays/#lights"}
 
 
 def load_just_outside(today: date, towns: list[dict] | None = None) -> list[dict]:
@@ -7085,6 +7130,9 @@ def order_weekend_events(events: list[dict]) -> list[dict]:
 # than as a generic indoor programme. Plain Unicode, so every client renders
 # it with no images to block.
 _EMAIL_EMOJI_RULES: tuple[tuple[tuple[str, ...], str], ...] = (
+    # ROADMAP.md item 528: the season's headliners lead the email; their icons come first.
+    (("tree lighting", "tree-lighting", "lights around", "holiday lights", "light show", "christkindl"), "🎄"),
+    (("santa", "mrs. claus", "mrs claus", "north pole"), "🎅"),
     (("halloween", "spooky", "trick-or-treat", "trick or treat", "costume", "haunted", "monster", "boo "), "🎃"),
     (("pumpkin", "harvest", "hayride", "apple", "fall fest", "autumn", "scarecrow"), "🍂"),
     (("farmers market", "market"), "🧺"),
@@ -7101,7 +7149,8 @@ _EMAIL_EMOJI_RULES: tuple[tuple[tuple[str, ...], str], ...] = (
     (("food", "taste", "pancake", "breakfast", "dinner", "cook", "bake", "wine", "beer"), "🍽️"),
     (("festival", "fest", "fair", "parade", "carnival", "celebration", "re-opening", "grand opening"), "🎉"),
     (("sale", "shop"), "🛍️"),
-    (("computer", "digital", "photos", "device", "tablet", "phone"), "💻"),
+    (("photo", "photoshoot", "pictures", "portrait"), "📸"),  # item 528: before the device rule
+    (("computer", "digital", "device", "tablet", "phone"), "💻"),
 )
 _EMAIL_TAG_EMOJI_ORDER = ("kid_friendly", "outdoor", "food", "art_culture", "toddler", "dog_friendly", "elementary", "teen", "free", "indoor")
 _EMAIL_BADGE_ORDER = ("free", "kid_friendly", "outdoor", "dog_friendly")
@@ -7657,6 +7706,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     top_picks = pick_email_top_picks(region_blocks)
     tonight = select_tonight(sections, now)  # item 497
     thanksgiving = thanksgiving_morning(sections, now)  # items 510, 512
+    lights_line = build_lights_email_line(load_light_displays(email_delivery_time(now).date(), TOWN_CENTRES), now)  # item 527
     event_total = sum(len([e for e in s["weekend_events"] if e.get("attendable", True)]) for s in sections)
     town_total = sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"]))
     empty_regions_summary = None
@@ -7689,6 +7739,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         reader_town_name=reader_town_name,
         tonight=tonight,
         thanksgiving=thanksgiving,
+        lights_line=lights_line,
         top_picks=top_picks,
         poll=poll_links(now.astimezone(LOCAL_TZ).date()),
         event_total=event_total,
@@ -9597,8 +9648,9 @@ def main() -> None:
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)
     outside_entries = load_just_outside(now.astimezone(LOCAL_TZ).date(), [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions])  # items 458/479
+    light_displays = load_light_displays(now.astimezone(LOCAL_TZ).date(), TOWN_CENTRES)  # item 527
     thin_paths: set[str] = set()  # item 516
-    (holidays_dir / "index.html").write_text(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size())), "holidays/", hub_entry_count(holidays_entries), thin_paths), encoding="utf-8")
+    (holidays_dir / "index.html").write_text(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size()), lights=light_displays), "holidays/", hub_entry_count(holidays_entries) + len(light_displays), thin_paths), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
         warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])

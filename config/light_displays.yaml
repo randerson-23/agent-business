@@ -1,0 +1,26 @@
+# ROADMAP.md item 527: holiday light displays for /holidays/ ("Holiday lights to visit", Nov 27 - Jan 3)
+# and one line in the Dec 3 - Dec 24 issues. Each entry ONLY from the organiser's own page (or item 478's
+# search fallback with confirmed_via), never a roundup. Say only what that page says: no hours or end date
+# the page doesn't give. `lat`/`lon` give the "≈ N mi from <town>" line for a display outside the towns.
+displays:
+  - name: "North School Park lights"
+    town: "Arlington Heights"
+    where: "North School Park, 307 N. Evergreen Ave."
+    line: "Over 100,000 lights, switched on at the Holiday Tree Lighting on Fri Nov 27 (4:30-6:30 PM)."
+    price: "Free"
+    ticketed: false
+    from: "2026-11-27"
+    source_url: "https://www.ahpd.org/event/holiday-tree-lighting-2026/"
+    confirmed_via: "search, 2026-11-18 (ahpd.org's own event page)"
+  - name: "Willow Hill Lights"
+    town: "Northbrook"
+    where: "1350 Willow Rd, Northbrook (Willow Hill Golf Course)"
+    lat: 42.1069
+    lon: -87.8566
+    line: "A 2.5-mile drive-through show of over a million lights, nightly from 5 PM, Nov 13 - Jan 3."
+    price: "$40 per car online, $50 at the gate"
+    ticketed: true
+    from: "2026-11-13"
+    until: "2027-01-03"
+    source_url: "https://www.willowhilllights.com/"
+    confirmed_via: "search, 2026-11-18 (willowhilllights.com)"

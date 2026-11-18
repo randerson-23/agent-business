@@ -7722,7 +7722,7 @@ def test_past_hosts_are_warm_leads_with_their_reason_and_no_contacts(tmp_path):
     import warm_prospects as wp
     hosts = wp.load_past_hosts()
     assert {h["name"] for h in hosts} >= {"Berry Yo", "Golden Brunch"}
-    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026") and "@" not in str(h) for h in hosts)
+    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026", "holiday_attraction") and "@" not in str(h) for h in hosts)
     assert any(h["reason"] == "fair_organiser_2026" and h["name"] == "Fremd Viking Booster Club" for h in hosts)  # item 526
     bad = tmp_path / "p.yaml"
     bad.write_text('hosts:\n  - name: "Shop"\n    town: "x"\n    reason: r\n    event: "call 847-555-1234"\n', encoding="utf-8")
@@ -7930,3 +7930,31 @@ def test_school_calendar_allowlist_and_holiday_headliners_lead():
     assert build_digest.build_combined_email_subject_line(sections, now, picks, sale).startswith("🚂 Holiday Train tickets")
     # Outside the season a tree lighting is not a headliner.
     assert not build_digest.is_headliner({"title": "Tree Lighting"}, date(2026, 10, 1))
+
+
+def test_headliner_and_photo_emoji():
+    # ROADMAP.md item 528.
+    e = build_digest.email_event_emoji
+    assert e({"title": "Holiday Tree Lighting Ceremony"}) == "🎄"
+    assert e({"title": "Lights Around Wheeling"}) == "🎄"
+    assert e({"title": "Breakfast with Santa"}) == "🎅"
+    assert e({"title": "Family Photos"}) == "📸"
+    assert e({"title": "Computer Basics"}) == "💻"
+
+
+def test_holiday_light_displays_page_and_email_line(monkeypatch):
+    # ROADMAP.md item 527.
+    towns = [{"name": "Wheeling", "lat": 42.1392, "lon": -87.9290}, {"name": "Arlington Heights", "lat": 42.0884, "lon": -87.9806}]
+    assert build_digest.load_light_displays(date(2026, 11, 20), towns) == []  # before Nov 27
+    shown = build_digest.load_light_displays(date(2026, 12, 5), towns)
+    names = [d["name"] for d in shown]
+    assert names == ["North School Park lights", "Willow Hill Lights"]
+    willow = shown[1]
+    assert willow["ticketed"] and willow["distance"] == "≈ 4 mi from Wheeling" and shown[0]["distance"] is None
+    html = build_digest.render_holidays_page([], datetime(2026, 12, 5, tzinfo=timezone.utc), lights=shown)
+    assert 'id="lights"' in html and "🎟 Timed tickets, often sells out" in html
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {})
+    line = build_digest.build_lights_email_line(shown, datetime(2026, 12, 2, 22, 37, tzinfo=timezone.utc))
+    assert line["text"] == "✨ Holiday lights: North School Park lights (free) · Willow Hill Lights, Northbrook (ticketed)"
+    assert build_digest.build_lights_email_line(shown, datetime(2026, 11, 25, 22, 37, tzinfo=timezone.utc)) is None
+    assert all(not build_digest.is_roundup_url(d["url"]) and d["url"] for d in shown)

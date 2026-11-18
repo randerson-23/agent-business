@@ -21867,7 +21867,7 @@ the new picks.
 
 #### P1 (new)
 
-527. **"Holiday lights to visit" on `/holidays/`, Nov 27 – Jan 3.** Build
+527. (✅ DONE 2026-11-18: config/light_displays.yaml with AHPD's North School Park lights (free; switched on at the Nov 27 lighting; ahpd.org gives no end date, so none is stated) and Willow Hill Lights (Northbrook, nightly from 5 PM, Nov 13 - Jan 3, $40 online / $50 gate, "≈ 4 mi from Wheeling", timed-tickets chip), both from their own pages via search; a "✨ Holiday lights to visit" section on /holidays/ from Nov 27 (counts toward item 516), and one email line in the Dec 3 - Dec 24 issues. Willow Hill is a warm lead (holiday_attraction) in config/past_hosts.yaml. Clearbrook's Winterland of Lights isn't listed: no 2026 page found. No Remind-me link: there's no single date to remind about) **"Holiday lights to visit" on `/holidays/`, Nov 27 – Jan 3.** Build
      loop:
 
      - A section from `config/light_displays.yaml`, each entry from the
@@ -21894,7 +21894,7 @@ the new picks.
 
 #### P3 (new)
 
-528. **Fix the headliner emoji.** Build loop, `build_digest.py`'s emoji
+528. (✅ DONE 2026-11-18: 🎄 for tree lightings, Lights Around, holiday lights and Christkindlmarket; 🎅 for Santa; 📸 for photos ahead of the 💻 device rule. The Nov 19 picks now show 🎄 🎄 📸) **Fix the headliner emoji.** Build loop, `build_digest.py`'s emoji
      table:
 
      - Add **🎄** for *tree lighting*, *lights around*, *holiday lights*
