@@ -21934,7 +21934,7 @@ traffic will land on, at phone width.
 
 #### P1 (new)
 
-529. **`/holidays/` family first; ticketed shows grouped; ALL-CAPS titles
+529. (✅ DONE 2026-11-18: `is_ticketed_show` (events from desplainestheatre.com, metropolisarts.com and harpercollege.edu that aren't Santa or kid-tagged) moves venue shows into a collapsed `<details>` "Holiday shows (ticketed) · N" under each town's family list on /holidays/ (Des Plaines 6, one other town 1 on today's build); /holidays/ titles and events.json/JSON-LD `name` go through `display_title`, the original kept in `data-title`; the title-caser now keeps local acronyms (MPCB, TSO, AHML, …) and any short vowel-less capitals, and capitalises the word after a colon or dash) 529. **`/holidays/` family first; ticketed shows grouped; ALL-CAPS titles
      tamed.** Build loop:
 
      - In each town's holiday list, show **family events first**:
