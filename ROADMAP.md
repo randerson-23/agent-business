@@ -21956,7 +21956,7 @@ traffic will land on, at phone width.
 
 #### P2 (new)
 
-530. **Say what the site checked, in a form AI search can cite.** Build
+530. (✅ DONE 2026-11-18: `add_compilation_note` adds "Compiled from N official calendars (the villages, libraries and park districts of these towns), checked <day time>." and a CollectionPage JSON-LD (url, dateModified, publisher, isBasedOn: each official source page) to every town page and to /this-weekend/, /holidays/, /santa/ and /give/. N counts only sources whose name is a village, city, library, park district, school district or forest preserve and that answered this build (RunSignup and Randhurst aren't counted); with none, nothing is added. A sandbox build fetches nothing, so the first real line is CI's) 530. **Say what the site checked, in a form AI search can cite.** Build
      loop, the hub pages (`/this-weekend/`, `/holidays/`, `/santa/`,
      `/give/`, each town page):
 
