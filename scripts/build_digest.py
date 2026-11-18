@@ -2491,6 +2491,19 @@ def build_holiday_listing_offer(now: datetime, contact_email: str | None, launch
     }
 
 
+TICKETED_VENUE_DOMAINS = ("desplainestheatre.com", "metropolisarts.com", "harpercollege.edu")
+
+
+def is_ticketed_show(event: dict) -> bool:
+    """Item 529: a concert or show from a venue's own feed (the Des Plaines
+    Theatre, Metropolis, Harper's performing-arts calendar), not a family
+    event, unless it is itself a Santa or kids' event."""
+    host = (urlparse(event.get("url") or "").hostname or "").lower()
+    if not any(host == d or host.endswith("." + d) for d in TICKETED_VENUE_DOMAINS):
+        return False
+    return not (santa_reason(event) or "kid_friendly" in (event.get("tags") or []))
+
+
 def render_holidays_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
     contact_email: str | None = None, outside: list[dict] | None = None, launch: bool = False,
@@ -2504,6 +2517,8 @@ def render_holidays_page(
     # ROADMAP.md item 294: each town keeps its email colour, events get emoji.
     entries = [{**e, "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]} for i, e in enumerate(entries)]
     entries = [{**e, "events": [{**ev, "emoji": email_event_emoji(ev)} for ev in e.get("events") or []]} for e in entries]
+    # ROADMAP.md item 529: family events first; a venue's ticketed shows in their own group.
+    entries = [{**e, "events": [ev for ev in e["events"] if not is_ticketed_show(ev)], "shows": [ev for ev in e["events"] if is_ticketed_show(ev)]} for e in entries]
     return template.render(
         entries=entries,
         on_sale=load_on_sale(now),  # item 474
@@ -2513,7 +2528,7 @@ def render_holidays_page(
         santa_listing=santa_listing_offer(contact_email),  # item 501
         lights=lights or [],  # item 527
         town_names=_join_names([e["region_name"] for e in entries]),
-        any_events=any(e.get("events") for e in entries),
+        any_events=any(e.get("events") or e.get("shows") for e in entries),
         newsletter=newsletter or {"configured": False},
         hub_url=SITE_BASE_URL,
         canonical_url=SITE_BASE_URL + "holidays/",
@@ -5349,7 +5364,9 @@ def annotate_registration(blocks: list[dict], today: date) -> None:
 # ROADMAP.md item 334: publishers' ALL-CAPS titles read as shouting in an email
 # or on a card. Title-cased for display only; the stored title and the
 # JSON-LD name keep the publisher's own text.
-_KEEP_UPPER = frozenset({"ESL", "STEM", "STEAM", "LEGO", "AARP", "DIY", "CPR", "PTA", "PTO", "MS", "AI", "USA", "HS", "DJ", "LGBTQ", "ASL", "GED", "IL"})
+_KEEP_UPPER = frozenset({"ESL", "STEM", "STEAM", "LEGO", "AARP", "DIY", "CPR", "PTA", "PTO", "MS", "AI", "USA", "HS", "DJ", "LGBTQ", "ASL", "GED", "IL",
+                         # item 529: local acronyms
+                         "MPCB", "TSO", "AHML", "MPPL", "DPPL", "PPL", "ITPL", "AHPD", "MPPD", "DPPD", "WPD", "EGPD", "NSSEO", "MPAC", "DJ", "AMC", "CPKC"})
 _SMALL_WORDS = frozenset({"a", "an", "and", "as", "at", "but", "by", "for", "in", "of", "on", "or", "the", "to", "with"})
 _TITLE_WORD = re.compile(r"[A-Za-z][A-Za-z']*")
 
@@ -5366,8 +5383,8 @@ def display_title(title: str | None) -> str:
     def fix(m: re.Match) -> str:
         nonlocal first
         word = m.group(0)
-        is_first, first = first, False
-        if word.upper() in _KEEP_UPPER:
+        is_first, first = first or bool(re.search(r"[:–—-]\s*$", title[:m.start()])), False  # a subtitle starts again
+        if word.upper() in _KEEP_UPPER or (word.isupper() and len(word) <= 4 and not re.search(r"[AEIOUY]", word)):  # item 529: an unlisted short acronym
             return word.upper()
         low = word.lower()
         return low if low in _SMALL_WORDS and not is_first else low[0].upper() + low[1:]
@@ -6227,7 +6244,7 @@ def event_jsonld(event: dict, url: str) -> dict:
     any future `offers`). Only `url` differs per output."""
     entry = {
         "@type": "Event",
-        "name": event["title"],
+        "name": display_title(event["title"]),  # item 529: no shouting titles in events.json either
         "startDate": schema_start_date(event["date_iso"]),
         "url": url,
         "eventStatus": "https://schema.org/" + EVENT_STATUS_SCHEMA.get(event.get("event_status") or "", "EventScheduled"),  # item 504

@@ -7958,3 +7958,19 @@ def test_holiday_light_displays_page_and_email_line(monkeypatch):
     assert line["text"] == "✨ Holiday lights: North School Park lights (free) · Willow Hill Lights, Northbrook (ticketed)"
     assert build_digest.build_lights_email_line(shown, datetime(2026, 11, 25, 22, 37, tzinfo=timezone.utc)) is None
     assert all(not build_digest.is_roundup_url(d["url"]) and d["url"] for d in shown)
+
+
+def test_holidays_page_family_first_and_shows_grouped():
+    # ROADMAP.md item 529.
+    def ev(title, url, tags=()):
+        return {"title": title, "url": url, "date_iso": "2026-12-05T19:00:00", "date_label": "Sat Dec 5", "anchor_id": "a", "tags": list(tags)}
+    entries = [{"region_name": "Des Plaines", "region_url": "https://x/dp/", "region_id": "des-plaines-60016", "tree": None, "events": [
+        ev("A MOTOWN CHRISTMAS FEATURING SALUTES TO MARTHA REEVES", "https://desplainestheatre.com/event/motown/"),
+        ev("Make Holiday Cards with the Lions Club", "https://dppl.org/x", ("kid_friendly",)),
+        ev("MPCB HOLIDAY CONCERT AT THE LIBRARY", "https://dppl.org/y")]}]
+    html = build_digest.render_holidays_page(entries, datetime(2026, 12, 1, tzinfo=timezone.utc))
+    family, shows = html.split("Holiday shows (ticketed)")[0], html.split("Holiday shows (ticketed)")[1]
+    assert "Make Holiday Cards with the Lions Club" in family and "A Motown Christmas Featuring Salutes to Martha Reeves" in shows
+    assert "MPCB Holiday Concert at the Library" in family
+    assert 'data-title="A MOTOWN CHRISTMAS FEATURING SALUTES TO MARTHA REEVES"' in shows
+    assert build_digest.event_jsonld(ev("TERRY FATOR: A VERY TERRY CHRISTMAS", "https://desplainestheatre.com/e"), "https://x/#a")["name"] == "Terry Fator: A Very Terry Christmas"

@@ -191,14 +191,22 @@
   <p class="note">Towns usually post their tree lighting in the fall. A date appears here once the town's own {{ year }} listing names it, and each one links to that listing. A town showing "not yet posted" has no {{ year }} announcement we could confirm, so check its page directly. We never show a date from a previous year.</p>
   {% if any_events %}
   <h2 class="events-heading">Holiday events, town by town</h2>
-  {% for entry in entries if entry.events %}
+  {% for entry in entries if entry.events or entry.shows %}
   <section class="town" id="{{ entry.region_id }}">
     <h3><a href="{{ entry.region_url }}">{{ entry.region_name }}</a></h3>
     <ul class="events">
       {% for event in entry.events %}
-      <li><span class="emoji" aria-hidden="true">{{ event.emoji }}</span><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ entry.region_url }}#{{ event.anchor_id }}">{{ event.title }}</a>{% if event.google_calendar_url %} <a class="cal-g" href="{{ event.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ entry.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
+      <li data-title="{{ event.title }}"><span class="emoji" aria-hidden="true">{{ event.emoji }}</span><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ entry.region_url }}#{{ event.anchor_id }}">{{ event.title|display_title }}</a>{% if event.google_calendar_url %} <a class="cal-g" href="{{ event.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if event.also_at %} <span class="hours-note">Also at: {% for a in event.also_at %}<a href="{{ entry.region_url }}#{{ a.anchor_id }}">{{ a.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}</li>
       {% endfor %}
     </ul>
+    {% if entry.shows %}
+    {# ROADMAP.md item 529: venue concerts and theatre, collapsed below the family list; no JavaScript. #}
+    <details class="shows"><summary>Holiday shows (ticketed) &middot; {{ entry.shows|length }}</summary>
+    <ul class="events">
+      {% for event in entry.shows %}<li data-title="{{ event.title }}"><time datetime="{{ event.date_iso }}">{{ event.date_label }}</time> <a href="{{ entry.region_url }}#{{ event.anchor_id }}">{{ event.title|display_title }}</a></li>{% endfor %}
+    </ul>
+    </details>
+    {% endif %}
   </section>
   {% endfor %}
   <p class="note">Every event above comes from that town's library, park district, or village calendar, and links to its listing on the town's page.</p>
