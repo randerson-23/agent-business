@@ -7974,3 +7974,19 @@ def test_holidays_page_family_first_and_shows_grouped():
     assert "MPCB Holiday Concert at the Library" in family
     assert 'data-title="A MOTOWN CHRISTMAS FEATURING SALUTES TO MARTHA REEVES"' in shows
     assert build_digest.event_jsonld(ev("TERRY FATOR: A VERY TERRY CHRISTMAS", "https://desplainestheatre.com/e"), "https://x/#a")["name"] == "Terry Fator: A Very Terry Christmas"
+
+
+def test_compilation_note_counts_only_official_sources_that_answered():
+    # ROADMAP.md item 530.
+    answered = {"palatine-60067": [{"name": "Village of Palatine — Calendar", "url": "https://palatine.il.us/cal"},
+                                   {"name": "Palatine Public Library District — Events", "url": "https://palatinelibrary.org/ev"}],
+                "wheeling-60090": [{"name": "Wheeling Park District — Events", "url": "https://wheelingparkdistrict.com/e"}]}
+    html = "<html><body><main><h1>x</h1></main></body></html>"
+    now = datetime(2026, 11, 18, 21, 51, tzinfo=timezone.utc)
+    out = build_digest.add_compilation_note(html, ["palatine-60067", "wheeling-60090"], "https://withintenmiles.com/this-weekend/", now, answered)
+    assert "Compiled from 3 official calendars (the villages, libraries and park districts of these towns), checked Wed 3:51 pm." in out
+    ld = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', out).group(1))
+    assert ld["@type"] == "CollectionPage" and [s["url"] for s in ld["isBasedOn"]] == ["https://palatine.il.us/cal", "https://palatinelibrary.org/ev", "https://wheelingparkdistrict.com/e"]
+    assert build_digest.add_compilation_note(html, ["elk-grove-village-60007"], "https://x/", now, answered) == html  # none answered: nothing claimed
+    assert build_digest.OFFICIAL_SOURCE.search("Village of Wheeling — Calendar") and not build_digest.OFFICIAL_SOURCE.search("RunSignup — races in Wheeling")
+    assert not build_digest.OFFICIAL_SOURCE.search("Randhurst Village — Events")

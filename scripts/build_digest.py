@@ -1379,6 +1379,9 @@ def fetch_region_sections(
             source_key = f"{region_id}:{source['name']}"
             if not transport_failed and completeness is not None:
                 completeness["reporting"] += 1
+            if not transport_failed and OFFICIAL_SOURCE.search(source["name"]):  # item 530
+                ANSWERED_SOURCES.setdefault(region_id, []).append(
+                    {"name": source["name"], "url": safe_http_url(source.get("calendar_page") or source["url"])})
             if health is not None and not transport_failed:
                 update_source_health(health, source_key, len(raw_items))
             if horizons is not None and not transport_failed:  # item 468
@@ -2738,7 +2741,37 @@ def is_roundup_url(url: str | None) -> bool:
     return any(host == d or host.endswith("." + d) or d in host for d in ROUNDUP_DOMAINS)
 
 
-TOWN_CENTRES: list[dict] = []  # item 520: filled from the region configs in main()
+TOWN_CENTRES: list[dict] = []  # item 520
+# ROADMAP.md item 530: the official calendars (village, city, library, park district, school district,
+# forest preserve) that answered this build, by region id, for the "Compiled from" line and isBasedOn.
+ANSWERED_SOURCES: dict[str, list[dict]] = {}
+OFFICIAL_SOURCE = re.compile(r"\b(?:village|city|town) of\b|librar|park district|school district|\bccsd\b|\bd\d{2,3}\b|district \d+|forest preserve", re.IGNORECASE)
+
+
+def add_compilation_note(html: str, region_ids: list[str], page_url: str, now: datetime, answered: dict[str, list[dict]] | None = None) -> str:
+    """Item 530: a visible "Compiled from N official calendars …, checked <time>"
+    line before </main>, and a CollectionPage JSON-LD with isBasedOn listing
+    each official source that answered this build. Nothing when none did."""
+    answered = ANSWERED_SOURCES if answered is None else answered
+    seen, sources = set(), []
+    for rid in region_ids:
+        for src in answered.get(rid, []):
+            if src["url"] and src["url"] not in seen:
+                seen.add(src["url"])
+                sources.append(src)
+    if not sources or "</main>" not in html:
+        return html
+    local = now.astimezone(LOCAL_TZ)
+    checked = f"{local.strftime('%a')} {local.strftime('%-I:%M %p').lower()}"
+    n = len(sources)
+    line = (f'<p class="note compiled">Compiled from {n} official calendar{"s" if n != 1 else ""} '
+            f'(the villages, libraries and park districts of {"this town" if len(region_ids) == 1 else "these towns"}), checked {checked}.</p>')
+    ld = {"@context": "https://schema.org", "@type": "CollectionPage", "url": page_url,
+          "dateModified": now.isoformat(timespec="seconds"),
+          "publisher": {"@type": "Organization", "name": "Within Ten", "url": SITE_BASE_URL},
+          "isBasedOn": [{"@type": "WebPage", "name": s["name"], "url": s["url"]} for s in sources]}
+    script = '<script type="application/ld+json">' + json_for_script(ld) + "</script>"
+    return html.replace("</main>", line + "\n" + script + "\n</main>", 1)
 
 
 REGIONAL_MAX_MILES = 8  # item 521: regional venues; "Just outside" keeps 10
@@ -8789,6 +8822,7 @@ def main() -> None:
     maps = load_maps_config(load_yaml(CONFIG_DIR / "maps.yaml"))
     regions = load_regions()
     now = datetime.now(timezone.utc)
+    ANSWERED_SOURCES.clear()  # item 530: this build's answers only
     HEADLINER_NAMES[:] = [str(m) for c in regions for m in ((c.get("tree_lighting") or {}).get("match") or [])]  # item 524
     TOWN_CENTRES[:] = [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions]  # item 520
     email_town_names = [c["region"]["name"] for c in regions if c["region"].get("email") is not False]  # item 489
@@ -8995,6 +9029,7 @@ def main() -> None:
 
         region_dir = OUTPUT_DIR / region_id
         region_dir.mkdir(parents=True, exist_ok=True)
+        html = add_compilation_note(html, [region_id], SITE_BASE_URL + region_id + "/", now)  # item 530
         (region_dir / "index.html").write_text(html, encoding="utf-8")
         logger.info("Wrote %s", region_dir / "index.html")
 
@@ -9494,6 +9529,7 @@ def main() -> None:
     )
     weekend_hub_dir = OUTPUT_DIR / "this-weekend"
     weekend_hub_dir.mkdir(parents=True, exist_ok=True)
+    weekend_hub_html = add_compilation_note(weekend_hub_html, [c["region"]["id"] for c in regions], SITE_BASE_URL + "this-weekend/", now)  # item 530
     (weekend_hub_dir / "index.html").write_text(weekend_hub_html, encoding="utf-8")
     logger.info("Wrote %s (%d region section%s)", weekend_hub_dir / "index.html", len(hub_weekend_sections), "" if len(hub_weekend_sections) == 1 else "s")
 
@@ -9667,7 +9703,7 @@ def main() -> None:
     outside_entries = load_just_outside(now.astimezone(LOCAL_TZ).date(), [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions])  # items 458/479
     light_displays = load_light_displays(now.astimezone(LOCAL_TZ).date(), TOWN_CENTRES)  # item 527
     thin_paths: set[str] = set()  # item 516
-    (holidays_dir / "index.html").write_text(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size()), lights=light_displays), "holidays/", hub_entry_count(holidays_entries) + len(light_displays), thin_paths), encoding="utf-8")
+    (holidays_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size()), lights=light_displays), "holidays/", hub_entry_count(holidays_entries) + len(light_displays), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "holidays/", now), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
         warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])
@@ -9696,7 +9732,7 @@ def main() -> None:
     (leaf_dir / "index.html").write_text(render_leaf_pickup_page(leaf_entries, now, analytics, newsletter), encoding="utf-8")
     give_dir = OUTPUT_DIR / "give"
     give_dir.mkdir(parents=True, exist_ok=True)
-    (give_dir / "index.html").write_text(apply_thin_page(render_give_page(give_entries, now, analytics, newsletter, [o for o in outside_entries if o.get("give_note")]), "give/", hub_entry_count(give_entries, "events", "drives", "volunteer"), thin_paths), encoding="utf-8")
+    (give_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_give_page(give_entries, now, analytics, newsletter, [o for o in outside_entries if o.get("give_note")]), "give/", hub_entry_count(give_entries, "events", "drives", "volunteer"), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "give/", now), encoding="utf-8")
     nye_dir = OUTPUT_DIR / "new-years-eve"  # item 446
     nye_dir.mkdir(parents=True, exist_ok=True)
     (nye_dir / "index.html").write_text(apply_thin_page(render_nye_page(nye_entries, now, analytics, newsletter), "new-years-eve/", hub_entry_count(nye_entries), thin_paths), encoding="utf-8")
@@ -9705,7 +9741,7 @@ def main() -> None:
     (sensory_dir / "index.html").write_text(apply_thin_page(render_sensory_page(sensory_entries, now, analytics, newsletter), "sensory-friendly/", hub_entry_count(sensory_entries), thin_paths), encoding="utf-8")
     santa_dir = OUTPUT_DIR / "santa"
     santa_dir.mkdir(parents=True, exist_ok=True)
-    (santa_dir / "index.html").write_text(apply_thin_page(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries, contact_email=contact_email), "santa/", hub_entry_count(santa_entries), thin_paths), encoding="utf-8")
+    (santa_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_santa_page(santa_entries, now, analytics, newsletter, {e["path"] for e in active_event_pages}, outside_entries, contact_email=contact_email), "santa/", hub_entry_count(santa_entries), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "santa/", now), encoding="utf-8")
     logger.info("Wrote %s", santa_dir / "index.html")
 
     for kind in THANKS_PAGES:
