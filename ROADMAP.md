@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **532** (per-reader test draft to the existing subscriber by ID, no new secret; unblocks 481, 508, 509).
 0. **529** (`/holidays/` family first, ticketed shows grouped, ALL-CAPS titles in title case site-wide), then **530** ("compiled from N official calendars" line and `isBasedOn` on hub pages).
 0. **528** (headliner emoji: 🎄 for tree lightings, 📸 for photos; quick, before the Nov 19 send if possible), then **527** ("Holiday lights to visit" on `/holidays/`: North School Park free, Willow Hill Lights ticketed, just outside; for the Dec 3 issue).
 0. **524** with **525** (holiday headliners lead Don't miss and the subject; school calendars keep only attendable entries; **before the Nov 19 send's build, Wed evening**), then **526** (holiday craft fairs from organisers' pages, organisers as warm leads).
@@ -278,16 +279,22 @@ reference, *not now*.
    once, item 432).** Copy the note in `SHARE_NOTE.md` (item 433) and send
    it by text or email from your own phone. Every small newsletter's first
    subscribers came this way.
-3. **The $50 Meta test: reply "yes", "holiday" or "no" (1 min).** If
-   yes, set it up from `META_AD_KIT.md` (about 10 min).
+3. **The $50 Meta test: reply "holiday" or "no" (1 min).** "Holiday"
+   runs it from the day you reply until Dec 13, landing on `/holidays/`;
+   set it up from `META_AD_KIT.md` (about 10 min).
 4. **First add `owner_name` and a mailing address (a registered mailbox is fine) to `config/newsletter.yaml` (1 min; required by law in commercial email, item 430). Then send the emails in `OUTREACH_BATCH.md` (about 15 min).** It exists
-   now. **Block 1 (PHS Pirate Boosters, fair Sat Nov 7) by Sun Nov 1**
-   (2 min, item 414); the rest when convenient. The offer is the free
-   first Event Promo.
-5. **Buttondown settings (3 min):** sender name "Within Ten"; paste
+   now. Start with the warm hosts at the top (the Santa hosts and fair
+   organisers, items 501 and 526); the rest when convenient. The offer
+   is the free first Event Promo, and the Holiday listing is $20 through
+   Dec 15 (item 499).
+5. **Buttondown settings (3 min, plus 2 min for item 532):** sender name "Within Ten"; paste
    `CONFIRMATION_EMAIL.md` into Settings → Subscribing → Confirmation
    (item 402) and `WELCOME_EMAIL.md` into Welcome email (this replaces
    step 8c).
+   *Then (item 532):* open the **"Per-reader email test"** email the build
+   loop sends you, check it against `withintenmiles.com/email-preview/`
+   for your town, and reply "matches" (or note what's off). That one word
+   turns on each reader's own town first.
 
 Everything below needs the owner to take an action outside this repo.
 **Cleaned up 2026-10-06 at Ryan's request:** stale and closed entries
@@ -298,19 +305,7 @@ agreements): the research loop keeps at most **three open owner
 indefinitely. Quick actions that need no decision do not count against
 that limit.
 
-**This week (Oct 26 – Nov 1), in order (items 343, 383):**
-
-- **By Tue Oct 27, decide the $50 Meta test (item 383).** Either run the
-  ready kit (`META_AD_KIT.md`) Oct 27–31 at $10/day, landing on
-  `/trick-or-treat/`, or say "holiday instead" and it will run Nov 16 –
-  Dec 6. Or say "no" and it stops being asked.
-- **Any day, 2 min:** add the Bing API key as `BING_WEBMASTER_API_KEY`
-  (step 3c). It's still unset, and Bing is still refusing the site's
-  pings.
-- **If not done yet, 7 min:** the trick-or-treat note to the Daily
-  Herald, NBC and WGN (step 8b). After Oct 28 it's too late to matter.
-- **Optional:** the café and library flyers (step 8g), and §9 to two
-  Facebook group admins.
+*(The "This week (Oct 26 – Nov 1)" block was removed on 2026-11-18 by item 531: every line in it had passed.)*
 
 **Quick account actions — about 25 minutes in total, no decisions:**
 
@@ -21984,6 +21979,59 @@ Competitors reviewed this pass: **the Mount Prospect weekend results**
 changes** (Nieman Lab, The Next Web, Search Engine Roundtable, eMarketer,
 PPC Land). The design/UX angle is **`/holidays/` on a phone**: great
 tree-lighting cards, then a wall of capitalised ticketed concerts.
+
+#### Research pass 2026-11-18, evening (hundred-and-fifty-second pass)
+
+Today the build loop shipped item 529 (`/holidays/` family first, ticketed shows
+grouped, capitalised titles tamed) and item 530 (*"Compiled from N official
+calendars"* with `isBasedOn` markup). This pass looks at the one part of the
+roadmap the owner actually reads, the **Needs Ryan** block, and at the
+per-reader email's last blocker, which turns out not to need a new secret.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Needs Ryan block, read as the owner would (design/UX)** | The five-step *whole ask* is intact, but around it:<br>**(a)** A ***"This week (Oct 26 – Nov 1)"*** block still asks the owner to decide the Meta test *"by Tue Oct 27"*, send a trick-or-treat note *"after Oct 28 it's too late"*, and add the Bing key. All of it has passed or is repeated in step 1.<br>**(b)** Step 4 still says ***"Block 1 (PHS Pirate Boosters, fair Sat Nov 7) by Sun Nov 1"***.<br>**(c)** Step 3 offers the Meta test as *"yes / holiday / no"* with a holiday window of *"Nov 16 – Dec 6"*, which has started.<br>**(d)** Item 507's owner step (add `BUTTONDOWN_TEST_RECIPIENT`, run the job, compare, set `verified: true`) **isn't in the block at all**, only inside item 507's note | The owner has acted on direct requests this month (the email redesign, Google Calendar links) but not on the block. A list that opens with three-week-old deadlines reads as stale, and stale lists don't get done. Each step should be current, dated forward and short (item 531, **done in this pass**) |
+| **Buttondown's send-draft recipients** (Buttondown docs, *Send draft* (`api-emails-send-draft`) and *Draft send*; the 2024 note that drafts can't be sent through the subscriber endpoint; the Nov 2025 API changelog adding the test-mode header) | The send-draft endpoint's recipient field is **a list of subscriber IDs**, all parameters optional. The dashboard's *Send draft* dialog does the same: pick subscribers. The list has **one subscriber**, the account's own. So the test can go to that **subscriber's ID, fetched through the API in CI**, with **no new secret and no email address anywhere in the repo** | Item 507 currently waits on the owner creating `BUTTONDOWN_TEST_RECIPIENT`, then running a job, comparing pages and editing YAML. With the subscriber-ID route, the only human step left is *"open the test email and reply 'matches'"* (item 532) |
+
+#### P1 (new)
+
+531. ✅ **DONE in this pass: the Needs Ryan block refreshed.**
+     - The stale *"This week (Oct 26 – Nov 1)"* block is removed, with a
+       one-line note saying so.
+     - Step 3's Meta test now reads *"holiday" or "no"*. Holiday runs
+       from the reply until Dec 13, landing on `/holidays/`.
+     - Step 4's past Nov 7 fair block is replaced by *"start with the warm
+       hosts at the top (Santa hosts and fair organisers); the Holiday
+       listing is $20 through Dec 15"*.
+     - Step 5 gains item 532's one-word check (2 minutes).
+
+     The five steps and item 400's cap are unchanged.
+
+532. **Send the per-reader test draft to the existing subscriber by ID, with
+     no new secret.** Build loop, `scripts/send_test_draft.py`:
+
+     - When `BUTTONDOWN_TEST_RECIPIENT` is unset, list subscribers
+       through the API. **If and only if** there is exactly one active
+       subscriber, or a subscriber tagged `owner`, send the draft to
+       that subscriber's **ID** (the field send-draft takes). With more
+       than one and no `owner` tag, stop and say so. **Never** send a
+       test to an unknown reader.
+     - Subject the draft ***"Per-reader email test: does this match
+       /email-preview/<town>?"***.
+     - When the owner replies *"matches"* (Needs Ryan step 5), set
+       `per_reader_email.verified: true`, which turns on item 481.
+     - No address is written to the repo or the logs.
+
+     Tests: one subscriber gets the draft by ID, two subscribers without
+     an `owner` tag stop the job, and the logs carry no email address.
+
+Re-rank: **532 goes to the top of the build queue**. It removes the only new
+owner secret since the whole ask was set, and unblocks items 481, 508 and
+509.
+
+Competitors reviewed this pass: none. This pass read **Buttondown's
+send-draft documentation** for the per-reader email's last blocker. The
+design/UX angle is **the Needs Ryan block as the owner reads it**.
 
 
 ## Working agreements for autonomous iteration
