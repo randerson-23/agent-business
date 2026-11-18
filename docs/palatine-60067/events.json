@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-11-17T21:59:49+00:00",
-  "numberOfItems": 9,
+  "dateModified": "2026-11-18T06:02:04+00:00",
+  "numberOfItems": 10,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -274,6 +274,30 @@
         "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "Free hot Thanksgiving meal. Safe, welcoming space for individu",
         "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Event",
+        "name": "MPAC English 2027 ACCESS Information Session",
+        "startDate": "2026-12-01T18:30:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-mpac-english-2027-access-information-session-2026-12-01",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "Please join us virtually for an overview of the 2027 WIDA ACCES"
       }
     }
   ]

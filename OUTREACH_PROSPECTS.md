@@ -34,6 +34,14 @@ Holiday fair organisers: send OUTREACH_TEMPLATES.md section 14b two weeks before
 |---|---|---|
 | Fremd Viking Booster Club | Palatine | Holiday Craft Fair, Sat Dec 12, Fremd High School (from listings; confirm on the club's own channels) |
 
+### Seasonal attractions near the towns
+
+Seasonal attractions near the towns: offer a Weekly Spot at the launch rate for the December issues.
+
+| Host | Town | Event |
+|---|---|---|
+| Willow Hill Lights | Northbrook | Drive-through holiday light show, Nov 13 - Jan 3, timed tickets |
+
 ### Fair organisers
 
 Booster clubs, PTOs and programmes running a craft fair or holiday market. Send OUTREACH_TEMPLATES.md section 14b two weeks before the fair.
@@ -50,7 +58,7 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 | Host | Town | Events |
 |---|---|---|
 | Metropolis Performing Arts Centre | Arlington Heights | The Rock N' Horror Halloween Concert (2026-10-30); The Lightning Thief: The Percy Jackson Musical (2026-11-05); Myths and Mayhem (2026-11-05); +6 more |
-| Des Plaines Theatre | Des Plaines | RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT (2026-10-28); WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29); BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR "ROCKIN THE BLUES" (2026-10-29); +82 more |
+| Des Plaines Theatre | Des Plaines | RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT (2026-10-28); WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29); BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR "ROCKIN THE BLUES" (2026-10-29); +84 more |
 
 ## Arlington Heights
 

@@ -1,17 +1,6 @@
 {
- "fetched_at": "2026-11-17T21:59:49+00:00",
+ "fetched_at": "2026-11-18T06:02:04+00:00",
  "items": [
-  {
-   "date": "20261117T103000",
-   "detail": "Stop by the visitor center to learn about reptiles, mammals and birds from the residents of Misericordia – Heart of Mercy. All ages.",
-   "end_date": "20261117T120000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Wildlife Connections",
-   "url": "https://fpdcc.com/event/wildlife-connections/2026-11-17/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
   {
    "date": "20261118T093000",
    "detail": "Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted .",
@@ -209,28 +198,6 @@
    "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-12-02/",
    "venue_city": "Chicago",
    "venue_name": "Caldwell Woods Wellness Center"
-  },
-  {
-   "date": "20261202T093000",
-   "detail": "Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted .",
-   "end_date": "20261202T104500",
-   "lat": 41.998562036604,
-   "lon": -87.785286183849,
-   "title": "Yoga in the Preserves",
-   "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-12-02/",
-   "venue_city": "Chicago",
-   "venue_name": "Caldwell Woods Wellness Center"
-  },
-  {
-   "date": "20261202T100000",
-   "detail": "A special program for little naturalists. Ages 2-6 w/ caregiver. Tickets on a first-come, first-serve basis starting at 9:30 am.",
-   "end_date": "20261202T100000",
-   "lat": 42.11563369,
-   "lon": -88.16357511,
-   "title": "Wee Wanderer Wednesday",
-   "url": "https://fpdcc.com/event/wee-wanderer-wednesday/",
-   "venue_city": "Barrington Hills",
-   "venue_name": "Crabtree Nature Center"
   },
   {
    "date": "20261203T133000",
@@ -658,6 +625,39 @@
    "url": "https://fpdcc.com/event/volunteer-workday-3/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261212T100000",
+   "detail": "Help us restore native habitats— R emove I nvasive P lants with bow saws or loppers. Tools, gloves & snack provided. Closed toed shoes & long pants encouraged. Ages 15 & under w/ adult.",
+   "end_date": "20261212T120000",
+   "lat": 41.70896743,
+   "lon": -87.87715272,
+   "title": "R.I.P. Stewardship",
+   "url": "https://fpdcc.com/event/r-i-p-stewardship/",
+   "venue_city": "Willow Springs",
+   "venue_name": "Little Red Schoolhouse Nature Center"
+  },
+  {
+   "date": "20261212T110000",
+   "detail": "Join us for a FREE 1-hour class focused on building stability, flexibility, and relaxation through the practices of breathwork, mindful movement, and meditation. Liz, from Serendipity Yoga and Wellness in Homewood, will help you bring balance and ease to your mind and body through a series of seated, kneeling, lying, and standing poses. Please come dressed comfortably in active wear with your yoga mat (if you have one). The class will be held indoors.",
+   "end_date": "20261212T120000",
+   "lat": 41.73766183,
+   "lon": -87.68113707,
+   "title": "Wellness in the Woods: Yoga",
+   "url": "https://fpdcc.com/event/wellness-in-the-woods-yoga-4/",
+   "venue_city": "",
+   "venue_name": "Dan Ryan Woods Visitor Center & Pavilion"
+  },
+  {
+   "date": "20261212T130000",
+   "detail": "Learn the fundamentals of drawing from nature and practice in a relaxed environment. For all skill levels. Materials provided.",
+   "end_date": "20261212T150000",
+   "lat": 41.89324535,
+   "lon": -87.82630546,
+   "title": "Nature Drawing Workshop",
+   "url": "https://fpdcc.com/event/nature-drawing-workshop/",
+   "venue_city": "River Forest",
+   "venue_name": "Trailside Museum of Natural History"
   }
  ],
  "source": "Forest Preserves of Cook County — north"

@@ -2,135 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-11-17T21:59:49+00:00",
-  "numberOfItems": 34,
+  "dateModified": "2026-11-18T06:02:04+00:00",
+  "numberOfItems": 35,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Wildlife Connections",
-        "startDate": "2026-11-17T10:30:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-11-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Wheeling, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://fpdcc.com/event/wildlife-connections/2026-11-17/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Forest Preserves of Cook County",
-          "url": "https://fpdcc.com"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Stop by the visitor center to learn about reptiles, mammals and birds from the residents of…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Chapter One Book Club | Grades K-1",
-        "startDate": "2026-11-17T16:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-chapter-one-book-club-grades-k-1-2026-11-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17104129",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 17 2026 4:00pm - 5:00pm \n Book pickup October 20-November 10 at the Youth Services Desk. Lucy and Nera both want the Moon Blossom. But when…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Resume Review & Career Coaching Appointments",
-        "startDate": "2026-11-17T18:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-resume-review-career-coaching-appointments-2026-11-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17102240",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 17 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Star Party",
-        "startDate": "2026-11-17T19:30:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-star-party-2026-11-17",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17139951",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Tuesday, November 17 2026 7:30pm - 8:30pm \n Bundle up to gaze at the stars with our friends from the Lake County Astronomical Society. Dress for cold weather.…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Chess Club",
@@ -161,7 +38,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -192,7 +69,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -222,7 +99,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Advanced Excel",
@@ -253,7 +130,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -284,7 +161,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Office Hours IL State Treasurer Michael Frerich's Office",
@@ -315,7 +192,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance",
@@ -346,7 +223,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Memory Cafe",
@@ -377,7 +254,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Knitting for Beginners",
@@ -408,7 +285,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "River Trail Nightlife: Owl Prowl",
@@ -438,7 +315,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Super Saturday: Chicago Cossacks - Ukrainian Music and Dance",
@@ -469,7 +346,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Indoor Edible Gardens",
@@ -499,7 +376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "What’s On The Menu?",
@@ -529,7 +406,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Nocturnal Hunters: Owls",
@@ -559,7 +436,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Lights Around Wheeling",
@@ -589,7 +466,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Got Science? Space Exploration",
@@ -620,7 +497,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Introduction to Tinkercad",
@@ -652,7 +529,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Middle School Book Club | Grades 6-8",
@@ -683,7 +560,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Small Serendipity",
@@ -713,7 +590,37 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 20,
+      "item": {
+        "@type": "Event",
+        "name": "Wildlife Connections",
+        "startDate": "2026-11-24T10:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://fpdcc.com/event/wildlife-connections/2026-11-24/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Forest Preserves of Cook County",
+          "url": "https://fpdcc.com"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Stop by the visitor center to learn about reptiles, mammals and birds from the residents of…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -744,7 +651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -775,7 +682,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -806,7 +713,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Finger Painting",
@@ -837,7 +744,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "EARLY CLOSING - Thanksgiving Holiday",
@@ -868,7 +775,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Lotería Night | Noche de Lotería | At the Branch",
@@ -899,7 +806,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Cicada Pinning Class",
@@ -929,7 +836,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Reading Fair",
@@ -960,7 +867,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -991,7 +898,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "CSI Book Club",
@@ -1022,7 +929,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Genealogy Interest Group Meeting",
@@ -1049,6 +956,130 @@
         },
         "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Monday, November 30 2026 7:00pm - 8:30pm \n Join this informal group in a collaborative setting to explore library databases, research your family tree and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 32,
+      "item": {
+        "@type": "Event",
+        "name": "Paint and Steep Tea",
+        "startDate": "2026-12-01T14:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-12-01",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17101420",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Tuesday, December 01 2026 2:00pm - 4:00pm \n Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 33,
+      "item": {
+        "@type": "Event",
+        "name": "Alcohol Marker Basics for Coloring",
+        "startDate": "2026-12-01T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-alcohol-marker-basics-for-coloring-2026-12-01",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17045693",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Tuesday, December 01 2026 6:00pm - 7:30pm \n Learn about alcohol markers and how to use them in your own coloring. Bring your own markers or use ours. R"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 34,
+      "item": {
+        "@type": "Event",
+        "name": "Resume Review & Career Coaching Appointments",
+        "startDate": "2026-12-01T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-resume-review-career-coaching-appointments-2026-12-01",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17101987",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Tuesday, December 01 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 35,
+      "item": {
+        "@type": "Event",
+        "name": "Writers Workshop",
+        "startDate": "2026-12-01T18:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-writers-workshop-2026-12-01",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/14284495",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Tuesday, December 01 2026 6:30pm - 8:45pm \n Share your work with others in a supportive atmosphere at this monthly community writers group led by author…"
       }
     }
   ]

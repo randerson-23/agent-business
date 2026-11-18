@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 36 configured sources.</description>
-  <lastBuildDate>Tue, 17 Nov 2026 21:59:49 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 31 of 36 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
+  <lastBuildDate>Wed, 18 Nov 2026 06:02:04 +0000</lastBuildDate>
   <item>
     <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-20</link>
@@ -76,14 +76,6 @@
     <description>Free hot Thanksgiving meal. Safe, welcoming space for individu Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Thu, 26 Nov 2026 10:30:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
-  </item>
-  <item>
-    <title>Palatine: Wee Wanderer Wednesday</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-wee-wanderer-wednesday-2026-12-02</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-wee-wanderer-wednesday-2026-12-02</guid>
-    <description>Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine. A special program for little naturalists. Ages 2-6 w/ caregiver. Tickets on a first-come,… Official listing: https://fpdcc.com/event/wee-wanderer-wednesday/</description>
-    <pubDate>Wed, 02 Dec 2026 10:00:00 +0000</pubDate>
-    <source url="https://fpdcc.com/event/wee-wanderer-wednesday/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Palatine: Poetry Open Mic</title>
@@ -220,6 +212,14 @@
     <description>1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April. Official listing: https://www.palatine.il.us/217/Farmers-Market</description>
     <pubDate>Sat, 02 Jan 2027 09:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/217/Farmers-Market">Palatine</source>
+  </item>
+  <item>
+    <title>Palatine: Wee Wanderer Wednesday</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-wee-wanderer-wednesday-2027-01-06</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-wee-wanderer-wednesday-2027-01-06</guid>
+    <description>Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine. A special program for little naturalists. Ages 2-6 w/ caregiver. Tickets on a first-come,… Official listing: https://fpdcc.com/event/wee-wanderer-wednesday-2/</description>
+    <pubDate>Wed, 06 Jan 2027 10:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/wee-wanderer-wednesday-2/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Palatine: Winter Painting</title>
