@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-18T06:02:04+00:00",
+ "fetched_at": "2026-11-18T14:02:53+00:00",
  "items": [
   {
    "date": "20261125",
@@ -51,6 +51,13 @@
    "url": ""
   },
   {
+   "date": "20270121T180000",
+   "detail": "All regular Board of Education meetings are held in the Anne Ko",
+   "end_date": "20270121T235900",
+   "title": "D211 Board of Education Meeting",
+   "url": ""
+  },
+  {
    "date": "20270215",
    "detail": "All District 211 buildings will be closed in observance of Pres",
    "end_date": "20270216",
@@ -62,6 +69,13 @@
    "detail": "",
    "end_date": "20270218",
    "title": "End of 6-Week Grading Period",
+   "url": ""
+  },
+  {
+   "date": "20270218T180000",
+   "detail": "All regular Board of Education meetings are held in the Anne Ko",
+   "end_date": "20270218T235900",
+   "title": "D211 Board of Education Meeting",
    "url": ""
   },
   {

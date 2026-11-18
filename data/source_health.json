@@ -29,6 +29,7 @@
     194,
     194,
     196,
+    201,
     201
   ],
   "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": [
@@ -39,11 +40,12 @@
     19,
     19,
     19,
-    19,
+    20,
     20,
     20
   ],
   "arlington-heights-60005:RunSignup \u2014 races in Arlington Heights": [
+    1,
     1,
     1,
     1,
@@ -83,7 +85,7 @@
     3,
     3,
     3,
-    3,
+    4,
     4,
     4,
     4,
@@ -104,7 +106,6 @@
   ],
   "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
     422,
-    422,
     423,
     423,
     423,
@@ -112,6 +113,7 @@
     424,
     424,
     425,
+    415,
     415
   ],
   "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
@@ -132,9 +134,11 @@
     194,
     194,
     196,
+    201,
     201
   ],
   "des-plaines-60016:RunSignup \u2014 races in Des Plaines": [
+    0,
     0,
     0,
     0,
@@ -163,9 +167,11 @@
     194,
     194,
     196,
+    201,
     201
   ],
   "elk-grove-village-60007:RunSignup \u2014 races in Elk Grove Village": [
+    3,
     3,
     3,
     3,
@@ -201,6 +207,7 @@
     194,
     194,
     196,
+    201,
     201
   ],
   "mount-prospect-60056:Mount Prospect Park District \u2014 Events": [
@@ -219,12 +226,12 @@
     210,
     210,
     210,
-    210,
     209,
     202,
     202,
     202,
     202,
+    194,
     194
   ],
   "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
@@ -236,7 +243,7 @@
     52,
     52,
     52,
-    52,
+    51,
     51
   ],
   "mount-prospect-60056:Randhurst Village \u2014 Events": [
@@ -252,6 +259,7 @@
     1
   ],
   "mount-prospect-60056:RunSignup \u2014 races in Mount Prospect": [
+    0,
     0,
     0,
     0,
@@ -276,8 +284,8 @@
     36,
     36,
     36,
-    36,
     37,
+    38,
     38,
     38
   ],
@@ -299,6 +307,7 @@
     194,
     194,
     196,
+    201,
     201
   ],
   "palatine-60067:Harper College \u2014 Public Events": [
@@ -331,13 +340,14 @@
     30,
     30,
     30,
-    30,
     29,
     29,
     28,
+    27,
     27
   ],
   "palatine-60067:RunSignup \u2014 races in Palatine": [
+    1,
     1,
     1,
     1,
@@ -364,13 +374,13 @@
     10,
     10,
     10,
-    10,
     12,
     11,
     11,
     11,
     11,
-    11
+    11,
+    13
   ],
   "palatine-60067:Village of Palatine \u2014 Calendar": [
     20,
@@ -390,7 +400,7 @@
     4,
     4,
     4,
-    4,
+    2,
     2,
     2,
     2,
@@ -402,10 +412,10 @@
     194,
     194,
     196,
+    201,
     201
   ],
   "wheeling-60090:Indian Trails Public Library \u2014 Events": [
-    206,
     206,
     209,
     210,
@@ -414,9 +424,11 @@
     208,
     208,
     207,
+    203,
     203
   ],
   "wheeling-60090:RunSignup \u2014 races in Wheeling": [
+    0,
     0,
     0,
     0,
@@ -433,7 +445,7 @@
     140,
     140,
     140,
-    140,
+    139,
     139,
     139,
     139,
