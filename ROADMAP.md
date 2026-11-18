@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **529** (`/holidays/` family first, ticketed shows grouped, ALL-CAPS titles in title case site-wide), then **530** ("compiled from N official calendars" line and `isBasedOn` on hub pages).
 0. **528** (headliner emoji: 🎄 for tree lightings, 📸 for photos; quick, before the Nov 19 send if possible), then **527** ("Holiday lights to visit" on `/holidays/`: North School Park free, Willow Hill Lights ticketed, just outside; for the Dec 3 issue).
 0. **524** with **525** (holiday headliners lead Don't miss and the subject; school calendars keep only attendable entries; **before the Nov 19 send's build, Wed evening**), then **526** (holiday craft fairs from organisers' pages, organisers as warm leads).
 0. **521** (regional sources add, not bury: merge FPCC repeats, drop adult wellness, cap at 15% of a town's cards, 8-mile radius; before the **Nov 19** send), then **522** (Schaumburg's Spring Valley Nature Center, probe first) and **523** (probe only).
@@ -21915,6 +21916,74 @@ Competitors reviewed this pass: **WTTW's 2026 light-show guide, mykidlist's
 (regional, not by town), and **Willow Hill Lights** and **AHPD's North
 School Park** as sources. The design/UX angle is **the emoji on the new
 headliner picks**.
+
+#### Research pass 2026-11-18 (hundred-and-fifty-first pass)
+
+Overnight the build loop shipped item 527 (*Holiday lights to visit*: AHPD's
+North School Park, free, and Willow Hill Lights, ticketed) and item 528 (🎄 and
+📸 on the picks). The Nov 19 issue is built tonight with *"Palatine tree
+lighting with Santa · 32 things"*. This pass re-runs the periodic checks on
+search and Google's AI surfaces, and reads `/holidays/`, the page December's
+traffic will land on, at phone width.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **"Things to do in Mount Prospect IL this weekend", re-checked (Nov 18)** | Still almost all **Eventbrite**, on every country domain, plus one undated Turkish American Society social night and a Wheaton museum event 30 minutes away. No curated local page ranks | **No new item.** Same as Nov 3 and Nov 13. Indexing (Bing's key, Brave's form, item 517) is still the gate, and the query is still held by thin pages |
+| **Google's AI search changes, 2026** (Nieman Lab and The Next Web on the May 2026 link changes; Search Engine Roundtable's November 2026 webmaster report; eMarketer and PPC Land on the five link features; reports of an **Oct 15** update) | **May:** inline citations placed closer to the claims, hover previews, and labels for subscribed publications. **Oct 15** (as reported): **"Highly Cited" labels** for original reporting, wider timely-article carousels, and **a test of a top section for one or two official websites**. **November:** a reported test of dropping citation cards. Nothing local-events-specific | For a local query, Google is testing putting the **village's or park district's own page on top**, the very sources this site compiles. The site's value is the **cross-town, cross-agency compilation**, and it should say so in a form machines read: what it checked, when, and from which official pages. That makes it citable as the summary rather than competing with the sources (item 530) |
+| **`/holidays/` at 390 px (design/UX)** | The tree-lighting cards are excellent: six towns, each with date, time, place and a Google Calendar link. Below them, ***"Holiday events, town by town"*** is dominated in Des Plaines by **ticketed adult concerts from the Des Plaines Theatre feed**, many in **ALL CAPS** (*"A MOTOWN CHRISTMAS featuring SALUTES TO MARTHA REEVES…"*, *"CHRISTMAS WIZARDS…A NIGHT OF TRANS-SIBERIAN ORCHESTRA…"*, *"TERRY FATOR: A VERY TERRY CHRISTMAS"*, *"DAVID ARCHULETA – THE WARM ME UP HOLIDAY TOUR"*). The family items (*Make Holiday Cards with the Lions Club*, *Holiday Hoopla*, the Metra Holiday Train) are scattered between them | `/holidays/` is the site's best December landing page, and its family content is hard to find under a wall of capitalised concert titles. Venue feeds belong on the site (the *Night out* slot uses them), but on a family page they should sit **below** the family list, not interleaved with it (item 529) |
+
+#### P1 (new)
+
+529. **`/holidays/` family first; ticketed shows grouped; ALL-CAPS titles
+     tamed.** Build loop:
+
+     - In each town's holiday list, show **family events first**:
+       kid-friendly, free, Santa, lights, tree lightings, holiday
+       markets, the Metra train. Then a collapsed ***"Holiday shows
+       (ticketed) · N"*** group for venue-feed concerts and theatre
+       (Des Plaines Theatre, Metropolis, Harper), opened by a
+       `<details>` element with no JavaScript.
+     - **Site-wide title case:** a title that is **70% or more
+       capitals** and longer than 12 letters is rendered in title case
+       (*"A Motown Christmas featuring Salutes to Martha Reeves…"*).
+       Keep acronyms (≤ 4 letters, e.g. *MPCB*, *TSO*) and names already
+       in mixed case. Apply it in pages, the email and `events.json`'s
+       `name`; the source's original stays in a data attribute.
+
+     Tests: a Des Plaines Theatre concert lands in the ticketed group, a
+     Lions Club card-making event stays in the family list, and the caps
+     title converts while *MPCB* is kept.
+
+#### P2 (new)
+
+530. **Say what the site checked, in a form AI search can cite.** Build
+     loop, the hub pages (`/this-weekend/`, `/holidays/`, `/santa/`,
+     `/give/`, each town page):
+
+     - Add a visible line: ***"Compiled from N official calendars (the
+       villages, libraries and park districts of these towns), checked
+       [day, time]."*** N is counted from the sources that answered this
+       build.
+     - In JSON-LD, the page's `WebPage` or `CollectionPage` gets
+       `isBasedOn` listing each official source URL used, plus
+       `dateModified` and `publisher`. Event items keep their `sameAs`
+       to the official listing.
+     - No claims beyond what was fetched.
+
+     The aim: when Google's reported Oct 2026 test puts *"one or two
+     official websites"* on top, this page is the one that can be cited
+     for *all six towns at once*. Tests: N matches the sources that
+     answered, `isBasedOn` lists their URLs, and a failed source isn't
+     counted.
+
+Re-rank: **529 goes to the top of the build queue**, before the Dec 3 issue
+starts linking `/holidays/` weekly. **530** follows.
+
+Competitors reviewed this pass: **the Mount Prospect weekend results**
+(re-checked; unchanged) and **Google's 2026 AI Overviews and AI Mode link
+changes** (Nieman Lab, The Next Web, Search Engine Roundtable, eMarketer,
+PPC Land). The design/UX angle is **`/holidays/` on a phone**: great
+tree-lighting cards, then a wall of capitalised ticketed concerts.
 
 
 ## Working agreements for autonomous iteration
