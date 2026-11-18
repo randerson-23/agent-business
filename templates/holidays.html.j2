@@ -203,6 +203,13 @@
   {% endfor %}
   <p class="note">Every event above comes from that town's library, park district, or village calendar, and links to its listing on the town's page.</p>
   {% endif %}
+  {% if lights %}
+  {# ROADMAP.md item 527: holiday light displays, each from its organiser's page. #}
+  <h2 class="events-heading" id="lights">✨ Holiday lights to visit</h2>
+  <ul class="events">
+    {% for d in lights %}<li><strong>{{ d.name }}</strong>{% if d.distance %} &middot; {{ d.distance }}{% endif %} &middot; {{ d.where }}. {{ d.line }} {% if d.price %}{{ d.price }}.{% endif %}{% if d.ticketed %} <span class="hours-note">🎟 Timed tickets, often sells out</span>{% endif %} <a href="{{ d.url }}" rel="noopener">Official page &rarr;</a></li>{% endfor %}
+  </ul>
+  {% endif %}
   {% if santa_listing %}<p class="note" id="santa-listing"><strong><a href="{{ santa_listing.url }}">{{ santa_listing.text }} &rarr;</a></strong> Email the date, time, address and cost, and it goes on this page and the town's page.</p>{% endif %}
   {% if listing_offer %}
   <div class="offer" id="holiday-listing">

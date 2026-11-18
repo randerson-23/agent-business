@@ -23,6 +23,14 @@ hosts:
     event: "Holiday Craft Fair, Sat Dec 12, Fremd High School (from listings; confirm on the club's own channels)"
     source: "https://www.thecraftmap.com/fair/fremd-viking-booster-club-holiday-craft-fair-2026-palatine-il"
 
+  # ROADMAP.md item 527: a seasonal attraction selling to exactly this audience (willowhilllights.com).
+  - name: "Willow Hill Lights"
+    town: "Northbrook"
+    reason: holiday_attraction
+    event: "Drive-through holiday light show, Nov 13 - Jan 3, timed tickets"
+    source: "https://www.willowhilllights.com/"
+
 notes:
   santa_host_2025: "Hosted Santa in 2025: offer the free founding Event Promo for 2026."
+  holiday_attraction: "Seasonal attractions near the towns: offer a Weekly Spot at the launch rate for the December issues."
   fair_organiser_2026: "Holiday fair organisers: send OUTREACH_TEMPLATES.md section 14b two weeks before the fair, with the free founding Event Promo."
