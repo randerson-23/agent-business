@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
-  <lastBuildDate>Wed, 18 Nov 2026 14:02:53 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 42 configured sources. 4 sources are shown from their last update, up to 2 hours ago.</description>
+  <lastBuildDate>Wed, 18 Nov 2026 15:48:39 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Small Business Coffee &amp; Connect</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-small-business-coffee-connect-2026-11-18</link>
@@ -39,6 +39,14 @@
  Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it… Official listing: https://egvpl.libnet.info/event/17354430</description>
     <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17354430">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Police Sergeant Graduates from Northwestern Center for Public Safety</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-police-sergeant-graduates-from-northwestern-center-for-publi-2026-11-18</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-police-sergeant-graduates-from-northwestern-center-for-publi-2026-11-18</guid>
+    <description>Official listing: https://www.mountprospect.org/articles/Police-Sergeant-Graduates-from-Northwestern-Center-for-Public-Safety-207.php</description>
+    <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/Police-Sergeant-Graduates-from-Northwestern-Center-for-Public-Safety-207.php">Village of Mount Prospect — News</source>
   </item>
   <item>
     <title>Elk Grove Village: Alphabet Soup</title>
@@ -445,15 +453,6 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
  Learn more about educational opportunities at Oakton College! Official listing: https://desplaines.libnet.info/event/17412940</description>
     <pubDate>Thu, 19 Nov 2026 15:30:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17412940">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Liberation Bookmarks</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-liberation-bookmarks-2026-11-19</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-liberation-bookmarks-2026-11-19</guid>
-    <description>Thursday, November 19 2026 4:00pm - 5:00pm 
- Earn service hours by making bookmarks for incarcerated youth! Materials will be provided. For teens in grades… Official listing: https://desplaines.libnet.info/event/17036424</description>
-    <pubDate>Thu, 19 Nov 2026 16:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17036424">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>
