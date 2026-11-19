@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="max-image-preview:large">
-<title>Holiday Tree Lightings {{ year }} — {{ town_names }} — Within Ten</title>
+<title>Holiday Lightings {{ year }}: Tree Lightings and Menorah Lightings in {{ town_names }} — Within Ten</title>
 <meta name="description" content="Holiday tree lighting dates for {{ town_names }} in {{ year }}, each linked to the town's own listing{% if any_events %}, plus holiday events from their calendars{% endif %}.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Within Ten">
@@ -165,7 +165,7 @@
   <div class="h-hero-inner">
     <a class="back" href="{{ hub_url }}">&larr; All regions</a>
     <div class="kicker">🎄 The holidays</div>
-    <h1>Holiday Tree Lightings {{ year }}: {{ town_names }}</h1>
+    <h1>Holiday Lightings {{ year }}: Tree Lightings and Menorah Lightings in {{ town_names }}</h1>
     <div class="sub">Tree lighting dates for {{ town_names }}, each linked to the listing it came from.</div>
   </div>
 </header>
@@ -187,6 +187,15 @@
     </div>
     {% endfor %}
   </div>
+  {% if menorahs %}
+  {# ROADMAP.md item 533: public menorah lightings, each from its organiser's page or the town's own feed; no "TBA". #}
+  <h2 class="events-heading" id="menorah">🕎 Menorah lightings{% if chanukah %} · Chanukah, {{ chanukah }}{% endif %}</h2>
+  <div class="entry-list">
+    {% for m in menorahs %}
+    <div class="entry"><span class="region">{{ m.town }}</span><span class="hours"><a href="{{ m.url }}" rel="noopener">{{ m.title }}: {{ m.label }}{% if m.place %}, {{ m.place }}{% endif %}</a>{% if m.google_calendar_url %} <a class="cal-g" href="{{ m.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}</span></div>
+    {% endfor %}
+  </div>
+  {% endif %}
   <p class="note"><a href="{{ hub_url }}santa/">Breakfast with Santa &amp; Santa visits in every town &rarr;</a></p>
   <p class="note">Towns usually post their tree lighting in the fall. A date appears here once the town's own {{ year }} listing names it, and each one links to that listing. A town showing "not yet posted" has no {{ year }} announcement we could confirm, so check its page directly. We never show a date from a previous year.</p>
   {% if any_events %}

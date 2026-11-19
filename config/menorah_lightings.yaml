@@ -1,0 +1,15 @@
+# ROADMAP.md item 533: public menorah lightings for /holidays/ (Chanukah 2026: evening of Fri Dec 4
+# to Sat Dec 12). Add an entry ONLY from the organiser's own 2026 page (Chabad of Arlington Heights,
+# Chabad of Wheeling / Wheeling Town Center, Northwest Suburban Chabad), or item 478's search fallback
+# with confirmed_via. Never carry a past year's date forward: a town with no entry shows nothing.
+# Lightings that appear in a town's own feeds (e.g. AHPD's calendar for North School Park) are found
+# automatically and need no entry here.
+#
+# lightings:
+#   - town: "Arlington Heights"
+#     title: "Chanukah menorah lighting"
+#     date: "2026-12-06T16:00:00"
+#     place: "North School Park"
+#     source_url: "https://example.org/the-2026-page"
+#     confirmed_via: "probe, 2026-11-25"
+lightings: []

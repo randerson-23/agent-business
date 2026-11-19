@@ -118,7 +118,7 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 {% endfor %}
 
-{% if weather_line or election_line or closures_line or days_off_line or give_line or new_towns or lights_line %}
+{% if weather_line or election_line or closures_line or days_off_line or give_line or new_towns or lights_line or giving_tuesday_line %}
 {# ROADMAP.md items 291, 296, 307: the week's short notices, as plain lines in one card. #}
 <tr>
 <td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:14px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.5;">
@@ -129,6 +129,7 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 {% if closures_line %}<div style="padding:3px 0;"><a href="{{ closures_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ closures_line.text }} &rarr;</a></div>{% endif %}
 {% for n in new_towns %}<div style="padding:3px 0;"><a href="{{ n.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;"><strong>New:</strong> {{ n.name }} &rarr;</a></div>{% endfor %}
 {% if give_line %}<div style="padding:3px 0;"><a href="{{ give_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ give_line.text }} &rarr;</a></div>{% endif %}
+{% if giving_tuesday_line %}<div style="padding:3px 0;"><a href="{{ giving_tuesday_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ giving_tuesday_line.text }} &rarr;</a></div>{% endif %}
 {% if days_off_line %}<div style="padding:3px 0;"><a href="{{ days_off_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ days_off_line.text }} &rarr;</a></div>{% endif %}
 </td>
 </tr>
