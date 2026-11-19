@@ -22050,7 +22050,7 @@ doesn't mark yet: **Chanukah** and **GivingTuesday**.
 
 #### P1 (new)
 
-533. **Menorah lightings on `/holidays/`, Dec 4–12.** Build loop:
+533. (✅ BUILT 2026-11-19, waiting on 2026 listings: config/menorah_lightings.yaml (empty: no 2026 page from Chabad of Arlington Heights or Chabad of Wheeling yet) plus menorah or Chanukah lightings found in the towns' own feeds (AHPD's calendar covers North School Park), Chanukah window by year (2026: Dec 4–12; unknown years give nothing); a "🕎 Menorah lightings · Chanukah, Dec 4–12" card section after the tree lightings, nothing for an unconfirmed town; /holidays/ title and H1 "Holiday Lightings 2026: Tree Lightings and Menorah Lightings in …"; menorah lightings are headliners (item 524); probe round 47 reads wheelingchabad.com. Chabad of Arlington Heights' own site wasn't found) **Menorah lightings on `/holidays/`, Dec 4–12.** Build loop:
 
      - Add a `menorah_lighting:` entry per town in the region YAMLs,
        filled **only from the organiser's own 2026 page**: Chabad of
@@ -22073,7 +22073,7 @@ doesn't mark yet: **Chanukah** and **GivingTuesday**.
 
 #### P2 (new)
 
-534. **GivingTuesday on `/give/` and in the Thanksgiving issue.** Build loop:
+534. (✅ DONE 2026-11-19: `giving_tuesday(year)` = Thanksgiving + 5 days (2026: Tue Dec 1; 2027: Tue Nov 30); /give/ banner "🤝 GivingTuesday is Tue Dec 1: N drives and volunteer sessions near you" from Nov 23 to the day, N from the page's live entries; one email line in the issue delivered in the week before (the Nov 25 issue)) **GivingTuesday on `/give/` and in the Thanksgiving issue.** Build loop:
 
      - From **Nov 23 to Dec 1**, `/give/` shows a banner: ***"GivingTuesday is
        Tue Dec 1: N drives and volunteer sessions near you"*** (N counts

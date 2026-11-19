@@ -2228,6 +2228,7 @@ def prepare_tree_lighting(region_cfg: dict, year: int) -> dict | None:
     return {"url": block["url"], "label": label, "date_iso": day.isoformat() if label else None, "google_calendar_url": google}
 
 
+MENORAH_TITLE = re.compile(r"\bmenorah\b|\bchanukah\b.{0,30}\blight|\bhanukkah\b.{0,30}\blight|\blight\w*\b.{0,30}\b(?:chanukah|hanukkah)\b", re.IGNORECASE)  # item 533
 TREE_LIGHTING_TITLE = re.compile(r"\btree[- ]lighting\b|\blighting of the (?:village |holiday )?tree\b", re.IGNORECASE)
 TREE_LIGHTING_SOURCE = re.compile(r"\b(?:village|city|town) of\b|\bvillage\b|\bpark district\b", re.IGNORECASE)
 
@@ -2507,10 +2508,59 @@ def is_ticketed_show(event: dict) -> bool:
     return not (santa_reason(event) or "kid_friendly" in (event.get("tags") or []))
 
 
+def chanukah_dates(year: int) -> tuple[date, date] | None:
+    """ROADMAP.md item 533: the first and last day of Chanukah, by year (the
+    first candle is lit the evening before the first day). Only years we have
+    checked; None otherwise, so nothing is guessed."""
+    return {2026: (date(2026, 12, 4), date(2026, 12, 12)), 2027: (date(2027, 12, 24), date(2028, 1, 1))}.get(year)
+
+
+def select_menorah_lightings(entries: list[dict], blocks_by_town: dict[str, list[dict]], year: int) -> list[dict]:
+    """Public menorah lightings, Chanukah only: config/menorah_lightings.yaml
+    entries (each from its organiser's page) plus events in a town's own feeds
+    titled as a menorah or Chanukah lighting. Soonest first; one per title and day."""
+    window = chanukah_dates(year)
+    if not window:
+        return []
+    start, end = window[0] - timedelta(days=1), window[1]
+    out, seen = [], set()
+    cfg_path = CONFIG_DIR / "menorah_lightings.yaml"
+    for raw in (load_yaml(cfg_path) if cfg_path.exists() else {}).get("lightings") or []:
+        url = safe_http_url(raw.get("source_url"))
+        try:
+            when = datetime.fromisoformat(str(raw.get("date")))
+        except ValueError:
+            continue
+        if url and not is_roundup_url(url) and raw.get("town") and start <= when.date() <= end:
+            out.append({"town": str(raw["town"]), "title": str(raw.get("title") or "Menorah lighting"), "date_iso": when.isoformat(),
+                        "place": str(raw.get("place") or ""), "url": url})
+    for town, blocks in blocks_by_town.items():
+        for b in blocks:
+            for e in b.get("events", []):
+                if not MENORAH_TITLE.search(e.get("title") or "") or e.get("event_status"):
+                    continue
+                try:
+                    day = datetime.fromisoformat(e.get("date_iso") or "").date()
+                except ValueError:
+                    continue
+                if start <= day <= end and e.get("url"):
+                    out.append({"town": town, "title": display_title(e["title"]), "date_iso": e["date_iso"], "place": e.get("venue") or "", "url": e["url"],
+                                "google_calendar_url": e.get("google_calendar_url")})
+    uniq = []
+    for m in sorted(out, key=lambda m: m["date_iso"]):
+        key = (m["town"], m["date_iso"][:10])
+        if key not in seen:
+            seen.add(key)
+            m["label"] = event_date_label(m["date_iso"]) + (f", {event_time_label(m['date_iso'])}" if event_time_label(m["date_iso"]) else "")
+            uniq.append(m)
+    return uniq
+
+
 def render_holidays_page(
     entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None,
     contact_email: str | None = None, outside: list[dict] | None = None, launch: bool = False,
     lights: list[dict] | None = None,
+    menorahs: list[dict] | None = None,
 ) -> str:
     """The cross-town /holidays/ page (ROADMAP.md item 274): tree lightings
     town by town (a confirmed date with its source, or an honest "not posted
@@ -2530,6 +2580,8 @@ def render_holidays_page(
         listing_offer=build_holiday_listing_offer(now, contact_email, launch),
         santa_listing=santa_listing_offer(contact_email),  # item 501
         lights=lights or [],  # item 527
+        menorahs=menorahs or [],  # item 533
+        chanukah=(lambda w: f"{w[0].strftime('%b')} {w[0].day}–{w[1].day}" if w and w[0].month == w[1].month else None)(chanukah_dates(now.year)),
         town_names=_join_names([e["region_name"] for e in entries]),
         any_events=any(e.get("events") or e.get("shows") for e in entries),
         newsletter=newsletter or {"configured": False},
@@ -3177,6 +3229,21 @@ def select_give_events(blocks: list[dict], today: date) -> tuple[list[dict], lis
     return drives, volunteer
 
 
+def giving_tuesday(year: int) -> date:
+    """ROADMAP.md item 534: the Tuesday after Thanksgiving (the fourth Thursday)."""
+    return _thanksgiving(year) + timedelta(days=5)
+
+
+def giving_tuesday_email_line(now: datetime) -> dict | None:
+    """Item 534: one line in the issue delivered in the week before GivingTuesday."""
+    day = email_delivery_time(now).date()
+    gt = giving_tuesday(day.year)
+    if not (0 < (gt - day).days <= 7):
+        return None
+    return {"text": f"🤝 GivingTuesday is {gt.strftime('%b')} {gt.day}: food drives, toy drives and family volunteer sessions in every town",
+            "url": SITE_BASE_URL + "give/?utm_source=email&utm_campaign=givingtuesday"}
+
+
 def build_give_email_line(entries: list[dict], now: datetime) -> dict | None:
     """ROADMAP.md item 441 step 4: one email line, from Nov 19 to Dec 20, naming
     the drives whose last day falls in the next seven days, linked to /give/."""
@@ -3208,7 +3275,12 @@ def render_give_page(entries: list[dict], now: datetime, analytics: dict | None 
     blood.sort(key=lambda v: v["date_iso"])
     year = today.year
     has_drive = any(t["drives"] or t["events"] for t in towns)  # item 448: a toy, coat or food drive exists
+    gt = giving_tuesday(today.year)
+    live = sum(len(e.get("drives") or []) + len(e.get("events") or []) + len(e.get("volunteer") or []) for e in entries)
+    giving_tuesday_banner = (f"GivingTuesday is {gt.strftime('%a %b')} {gt.day}: {live} drive{'s' if live != 1 else ''} and volunteer session{'s' if live != 1 else ''} near you"
+                             if date(today.year, 11, 23) <= today <= gt and live else None)  # item 534
     return get_template_env().get_template("give.html.j2").render(
+        giving_tuesday_banner=giving_tuesday_banner,
         page_title=(f"Toy and Coat Drives {year}: {names} | Within Ten" if has_drive else f"Giving Back This Season: Drives and Volunteering in {names} | Within Ten"),
         description=f"Toy, coat and food drives and volunteering in {names} in {year}, each linked to the town's own page.",
         heading=(f"Toy, coat and food drives, {year}" if has_drive else f"Giving back this season, {year}"),
@@ -7506,7 +7578,7 @@ def is_headliner(event: dict, today: date | None = None) -> bool:
         return False
     if event.get("event_status") or _SOLD_OUT.search(f"{title} {event.get('detail') or ''}") or RECURRING_TITLE.search(title):
         return False
-    return bool(TREE_LIGHTING_TITLE.search(title) or SEASONAL_HEADLINER.search(title) or HOLIDAY_MARKET.search(title)
+    return bool(TREE_LIGHTING_TITLE.search(title) or MENORAH_TITLE.search(title) or SEASONAL_HEADLINER.search(title) or HOLIDAY_MARKET.search(title)
                 or any(n.lower() in title.lower() for n in HEADLINER_NAMES) or santa_reason(event))
 
 
@@ -7809,6 +7881,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         days_off_line=days_off_line,
         closures_line=closures_line,
         give_line=build_give_email_line(give or [], now),
+        giving_tuesday_line=giving_tuesday_email_line(now),  # item 534
         on_sale=on_sale or [],
         new_towns=new_towns or [],
         text_friend_url=text_friend_url(),
@@ -8882,6 +8955,7 @@ def main() -> None:
     santa_entries: list[dict] = []
     nye_entries: list[dict] = []  # item 446
     sensory_entries: list[dict] = []  # item 502
+    holiday_blocks_by_town: dict[str, list[dict]] = {}  # item 533
     leaf_entries: list[dict] = []
     give_entries: list[dict] = []
     give_cfg = load_give_config()
@@ -9342,6 +9416,7 @@ def main() -> None:
         logger.info("Wrote %s (%d listing%s)", directory_dir / "index.html", len(directory), "" if len(directory) == 1 else "s")
 
         if tree_lighting:
+            holiday_blocks_by_town[region["name"]] = blocks  # item 533
             holidays_entries[-1]["events"] = [
                 dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state"))
                 for e in select_holiday_events(blocks, local_today)
@@ -9701,9 +9776,10 @@ def main() -> None:
     holidays_dir = OUTPUT_DIR / "holidays"
     holidays_dir.mkdir(parents=True, exist_ok=True)
     outside_entries = load_just_outside(now.astimezone(LOCAL_TZ).date(), [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions])  # items 458/479
+    menorah_lightings = select_menorah_lightings(holidays_entries, holiday_blocks_by_town, now.year)  # item 533
     light_displays = load_light_displays(now.astimezone(LOCAL_TZ).date(), TOWN_CENTRES)  # item 527
     thin_paths: set[str] = set()  # item 516
-    (holidays_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size()), lights=light_displays), "holidays/", hub_entry_count(holidays_entries) + len(light_displays), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "holidays/", now), encoding="utf-8")
+    (holidays_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size()), lights=light_displays, menorahs=menorah_lightings), "holidays/", hub_entry_count(holidays_entries) + len(light_displays) + len(menorah_lightings), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "holidays/", now), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
         warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])

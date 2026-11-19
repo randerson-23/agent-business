@@ -4820,7 +4820,7 @@ def test_render_holidays_page_states_dates_and_not_posted():
          "tree": {"url": "https://v/w", "label": None, "date_iso": None}, "events": []},
     ]
     html = build_digest.render_holidays_page(entries, datetime(2026, 10, 11, tzinfo=timezone.utc))
-    assert "<title>Holiday Tree Lightings 2026 — Palatine and Wheeling — Within Ten</title>" in html
+    assert "<title>Holiday Lightings 2026: Tree Lightings and Menorah Lightings in Palatine and Wheeling — Within Ten</title>" in html
     assert '<a href="https://v/p">Saturday, November 21, 4–7 PM</a>' in html
     assert "Not yet posted for 2026" in html and "https://v/w" in html
     assert "Holiday events, town by town" not in html
@@ -7990,3 +7990,34 @@ def test_compilation_note_counts_only_official_sources_that_answered():
     assert build_digest.add_compilation_note(html, ["elk-grove-village-60007"], "https://x/", now, answered) == html  # none answered: nothing claimed
     assert build_digest.OFFICIAL_SOURCE.search("Village of Wheeling — Calendar") and not build_digest.OFFICIAL_SOURCE.search("RunSignup — races in Wheeling")
     assert not build_digest.OFFICIAL_SOURCE.search("Randhurst Village — Events")
+
+
+def test_menorah_lightings_from_feeds_only_in_chanukah_and_headliners():
+    # ROADMAP.md item 533.
+    blocks = {"Arlington Heights": [{"events": [
+        {"title": "Chabad Grand Menorah Lighting", "date_iso": "2026-12-06T16:00:00", "url": "https://ahpd.org/e/menorah", "venue": "North School Park"},
+        {"title": "Menorah Craft", "date_iso": "2026-11-20T16:00:00", "url": "https://lib/x"}]}],
+              "Wheeling": [{"events": [{"title": "Lights Around Wheeling", "date_iso": "2026-11-22T16:30:00", "url": "https://w/x"}]}]}
+    found = build_digest.select_menorah_lightings([], blocks, 2026)
+    assert [(m["town"], m["title"]) for m in found] == [("Arlington Heights", "Chabad Grand Menorah Lighting")]
+    html = build_digest.render_holidays_page([], datetime(2026, 11, 25, tzinfo=timezone.utc), menorahs=found)
+    assert "🕎 Menorah lightings · Chanukah, Dec 4–12" in html and "North School Park" in html
+    assert "Tree Lighting" in html.split("</title>")[0]
+    assert build_digest.render_holidays_page([], datetime(2026, 11, 25, tzinfo=timezone.utc)).count('id="menorah"') == 0  # nothing confirmed, nothing shown
+    assert build_digest.is_headliner({"title": "Chabad Grand Menorah Lighting", "date_iso": "2026-12-06T16:00:00"}, date(2026, 12, 6))
+    assert build_digest.select_menorah_lightings([], blocks, 2031) == []  # a year we haven't checked: nothing guessed
+
+
+def test_giving_tuesday_date_banner_and_email_line(monkeypatch):
+    # ROADMAP.md item 534.
+    assert build_digest.giving_tuesday(2026) == date(2026, 12, 1)
+    assert build_digest.giving_tuesday(2027) == date(2027, 11, 30)
+    entries = [{"name": "Arlington Heights", "region_url": "https://x/ah/", "links": [], "drives": [{"name": "Food drive", "end": date(2026, 11, 26), "end_label": "Thu Nov 26"}], "events": [], "volunteer": []}]
+    html = build_digest.render_give_page(entries, datetime(2026, 11, 24, 15, tzinfo=timezone.utc))
+    assert "🤝 GivingTuesday is Tue Dec 1: 1 drive and volunteer session near you" in html
+    assert "GivingTuesday" not in build_digest.render_give_page(entries, datetime(2026, 11, 20, 15, tzinfo=timezone.utc))
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 11, 26): datetime(2026, 11, 25, 7, 0)})
+    line = build_digest.giving_tuesday_email_line(datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc))  # the Nov 25 issue
+    assert line["text"].startswith("🤝 GivingTuesday is Dec 1")
+    assert build_digest.giving_tuesday_email_line(datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc)) is None  # Nov 19 issue
+    assert build_digest.giving_tuesday_email_line(datetime(2026, 12, 2, 22, 37, tzinfo=timezone.utc)) is None

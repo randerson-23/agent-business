@@ -193,6 +193,7 @@
 
 <div class="wrap">
   <main>
+  {% if giving_tuesday_banner %}<p class="on-sale" style="border:1px solid var(--border); padding:12px 14px; margin:16px 0; font-weight:600;">🤝 {{ giving_tuesday_banner }}</p>{% endif %}
   {% if volunteer_first %}
   <h2 class="events-heading">🤝 Volunteer with your kids</h2>
   {% if volunteer %}

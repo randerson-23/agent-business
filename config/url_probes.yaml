@@ -418,3 +418,11 @@ probes:
     patterns:
       - '(?i)randhurst[^<]{0,120}'
       - '(?i)(?:lights up|sound down|second and fourth|every month|monthly)[^<]{0,160}'
+  # Round 47 (item 533, 2026-11-19): Chabad of Wheeling's own site, for its 2026 public menorah lighting
+  # (Chanukah: evening of Fri Dec 4 - Sat Dec 12). Past years: Wheeling Town Center, 75 W. Dundee Rd.
+  - url: https://www.wheelingchabad.com/
+    item: 533
+    purpose: Chabad of Wheeling - 2026 public menorah lighting (date, time, place)
+    patterns:
+      - '(?i)menorah[^<]{0,200}'
+      - '(?i)(?:dec(?:ember)?\.?\s+\d{1,2})[^<]{0,120}'
