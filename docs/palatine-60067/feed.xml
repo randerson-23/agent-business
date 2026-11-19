@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 29 of 36 configured sources. 4 sources are shown from their last update, up to 8 hours ago.</description>
-  <lastBuildDate>Wed, 18 Nov 2026 22:01:00 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 29 of 36 configured sources. 4 sources are shown from their last update, up to 16 hours ago.</description>
+  <lastBuildDate>Thu, 19 Nov 2026 06:00:43 +0000</lastBuildDate>
   <item>
     <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-20</link>
@@ -86,28 +86,12 @@
     <source url="https://events.harpercollege.edu/event/poetry-open-mic">Harper College — Public Events</source>
   </item>
   <item>
-    <title>Palatine: Owl Prowl</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-owl-prowl-2026-12-04</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-owl-prowl-2026-12-04</guid>
-    <description>Camp Reinberg (Palatine) · ≈ 3 mi from Palatine. Learn about our local owls and hear who’s hooting. Ages 12 &amp; up. Official listing: https://fpdcc.com/event/owl-prowl-7/</description>
-    <pubDate>Fri, 04 Dec 2026 19:00:00 +0000</pubDate>
-    <source url="https://fpdcc.com/event/owl-prowl-7/">Forest Preserves of Cook County — north</source>
-  </item>
-  <item>
     <title>Palatine: Palatine Winter Farmers' Market</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-12-05</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-12-05</guid>
     <description>1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April. Official listing: https://www.palatine.il.us/217/Farmers-Market</description>
     <pubDate>Sat, 05 Dec 2026 09:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/217/Farmers-Market">Palatine</source>
-  </item>
-  <item>
-    <title>Palatine: Meet Our Ambassador Animals</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-meet-our-ambassador-animals-2026-12-05</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-meet-our-ambassador-animals-2026-12-05</guid>
-    <description>Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine. Meet the animals that call Crabtree home. Official listing: https://fpdcc.com/event/meet-our-ambassador-animals-3/</description>
-    <pubDate>Sat, 05 Dec 2026 11:00:00 +0000</pubDate>
-    <source url="https://fpdcc.com/event/meet-our-ambassador-animals-3/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Palatine: Little Sprouts Sound Lab</title>
@@ -236,6 +220,14 @@
     <description>1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April. Official listing: https://www.palatine.il.us/217/Farmers-Market</description>
     <pubDate>Sat, 16 Jan 2027 09:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/217/Farmers-Market">Palatine</source>
+  </item>
+  <item>
+    <title>Palatine: Animal Enrichment Studio</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-animal-enrichment-studio-2027-01-18</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-animal-enrichment-studio-2027-01-18</guid>
+    <description>Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine. Create new items for our ambassador animals then watch how enrichment is used as an… Official listing: https://fpdcc.com/event/animal-enrichment-studio-2/</description>
+    <pubDate>Mon, 18 Jan 2027 11:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/animal-enrichment-studio-2/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Palatine: Palatine Winter Farmers' Market</title>

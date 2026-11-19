@@ -1,17 +1,6 @@
 {
- "fetched_at": "2026-11-18T22:01:00+00:00",
+ "fetched_at": "2026-11-19T06:00:43+00:00",
  "items": [
-  {
-   "date": "20261118T093000",
-   "detail": "Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted .",
-   "end_date": "20261118T104500",
-   "lat": 41.998562036604,
-   "lon": -87.785286183849,
-   "title": "Yoga in the Preserves",
-   "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-11-18/",
-   "venue_city": "Chicago",
-   "venue_name": "Caldwell Woods Wellness Center"
-  },
   {
    "date": "20261119T100000",
    "detail": "Come join us as we create small gardens that are great for indoor spaces as well as outdoors! We will make small planters that incorporate rocks and crystals into the design while exploring the sensory qualities of these gardens. Participants are encouraged to bring collected rocks and crystals and recycled plant containers.",
@@ -209,71 +198,6 @@
    "url": "https://fpdcc.com/event/nature-arts-for-health-2/",
    "venue_city": "Chicago",
    "venue_name": "Caldwell Woods Wellness Center"
-  },
-  {
-   "date": "20261203T133000",
-   "detail": "Experience art and wellness in this interactive nature journaling class. Led by University of Illinois Extension.",
-   "end_date": "20261203T150000",
-   "lat": 41.998562036604,
-   "lon": -87.785286183849,
-   "title": "Nature Arts for Health",
-   "url": "https://fpdcc.com/event/nature-arts-for-health-2/",
-   "venue_city": "Chicago",
-   "venue_name": "Caldwell Woods Wellness Center"
-  },
-  {
-   "date": "20261204T190000",
-   "detail": "Learn about our local owls and hear who’s hooting. Ages 12 & up.",
-   "end_date": "20261204T190000",
-   "lat": 42.14253314,
-   "lon": -88.06152828,
-   "title": "Owl Prowl",
-   "url": "https://fpdcc.com/event/owl-prowl-7/",
-   "venue_city": "Palatine",
-   "venue_name": "Camp Reinberg"
-  },
-  {
-   "date": "20261205",
-   "detail": "Open daily from 9 am to 4 pm (excluding Fridays), we invite you to view creations by the artistic talents of Forest Preserves staff, on display at Trailside’s Classroom Gallery.",
-   "lat": 41.89324535,
-   "lon": -87.82630546,
-   "title": "Forest Preserves Staff Art Show",
-   "url": "https://fpdcc.com/event/forest-preserves-staff-art-show/",
-   "venue_city": "River Forest",
-   "venue_name": "Trailside Museum of Natural History"
-  },
-  {
-   "date": "20261205T083000",
-   "detail": "Connect with nature and the energy of the natural world. Provided by Unity Temple of Oak Park. People with physical challenges are easily accommodated. For more info, email mindful@unitytemple.org .",
-   "end_date": "20261205T103000",
-   "lat": 41.89585788,
-   "lon": -87.83089023,
-   "title": "Sacred Wanderings in Thatcher Woods",
-   "url": "https://fpdcc.com/event/sacred-wanderings-in-thatcher-woods-4/",
-   "venue_city": "River Forest",
-   "venue_name": "Thatcher Woods Pavilion"
-  },
-  {
-   "date": "20261205T100000",
-   "detail": "Join us for a guided walk to photograph nature. For all levels and camera types.",
-   "end_date": "20261205T100000",
-   "lat": 41.920197401208,
-   "lon": -87.832397267666,
-   "title": "Photography Walk",
-   "url": "https://fpdcc.com/event/photography-walk-3/",
-   "venue_city": "",
-   "venue_name": "Jerome Huppert Woods"
-  },
-  {
-   "date": "20261205T110000",
-   "detail": "Meet the animals that call Crabtree home.",
-   "end_date": "20261205T110000",
-   "lat": 42.11563369,
-   "lon": -88.16357511,
-   "title": "Meet Our Ambassador Animals",
-   "url": "https://fpdcc.com/event/meet-our-ambassador-animals-3/",
-   "venue_city": "Barrington Hills",
-   "venue_name": "Crabtree Nature Center"
   },
   {
    "date": "20261205T110000",
@@ -658,6 +582,83 @@
    "url": "https://fpdcc.com/event/nature-drawing-workshop/",
    "venue_city": "River Forest",
    "venue_name": "Trailside Museum of Natural History"
+  },
+  {
+   "date": "20261212T130000",
+   "detail": "Learn simple care and maintenance for your cross-country skis. Bring your own to work on!",
+   "end_date": "20261212T130000",
+   "lat": 41.68926677,
+   "lon": -87.92571427,
+   "title": "Wax Clinic",
+   "url": "https://fpdcc.com/event/wax-clinic/",
+   "venue_city": "Lemont",
+   "venue_name": "Sagawau Environmental Learning Center"
+  },
+  {
+   "date": "20261212T150000",
+   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
+   "end_date": "20261212T150000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "What’s On The Menu?",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-12/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261212T150000",
+   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
+   "end_date": "20261212T150000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "What’s On The Menu?",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-12/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261212T160000",
+   "detail": "Celebrate winter around a bonfire. Enjoy guided walks, s’mores and nighttime activities at the campground.",
+   "end_date": "20261212T190000",
+   "lat": 41.60537779,
+   "lon": -87.56303721,
+   "title": "Winter Bonfire",
+   "url": "https://fpdcc.com/event/winter-bonfire/",
+   "venue_city": "South Holland",
+   "venue_name": "Camp Shabbona Woods"
+  },
+  {
+   "date": "20261213T053000",
+   "detail": "Listen for owls during the Christmas Bird Count. Led by John Elliot from Chicago Bird Alliance. Ages 10 & up.",
+   "end_date": "20261213T053000",
+   "lat": 41.89324535,
+   "lon": -87.82630546,
+   "title": "Dawn Owl Prowl",
+   "url": "https://fpdcc.com/event/dawn-owl-prowl-2/",
+   "venue_city": "River Forest",
+   "venue_name": "Trailside Museum of Natural History"
+  },
+  {
+   "date": "20261213T070000",
+   "detail": "Step into the quiet stillness of early morning and join us for a early morning hike to witness the beauty of a new day unfolding. Gates and restroom open 15 minutes prior to start time.",
+   "end_date": "20261213T070000",
+   "lat": 41.70896743,
+   "lon": -87.87715272,
+   "title": "Sunrise Hike",
+   "url": "https://fpdcc.com/event/sunrise-hike-4/",
+   "venue_city": "Willow Springs",
+   "venue_name": "Little Red Schoolhouse Nature Center"
+  },
+  {
+   "date": "20261213T100000",
+   "detail": "Enjoy watching the bird feeding station and learn about their preferred winter diet.",
+   "end_date": "20261213T100000",
+   "lat": 41.68926677,
+   "lon": -87.92571427,
+   "title": "Winter Bird Feeding",
+   "url": "https://fpdcc.com/event/winter-bird-feeding/",
+   "venue_city": "Lemont",
+   "venue_name": "Sagawau Environmental Learning Center"
   }
  ],
  "source": "Forest Preserves of Cook County — north"
