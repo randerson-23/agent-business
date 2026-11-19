@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-19T14:03:01+00:00",
+ "fetched_at": "2026-11-19T15:53:28+00:00",
  "items": [
   {
    "date": "Thu, 19 Nov 2026 00:00:00 +0000",
@@ -45,21 +45,9 @@
   },
   {
    "date": "Thu, 19 Nov 2026 18:00:00 +0000",
-   "detail": "Thursday, November 19 2026 6:00pm - 7:00pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach.",
-   "title": "Career Coaching Appointment",
-   "url": "https://mppl.libnet.info/event/16519381"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 18:00:00 +0000",
    "detail": "Thursday, November 19 2026 6:00pm - 7:00pm \n Step into a world of celestial magic, political intrigue, and ancient prophecies with New York Times bestselling author Rebecca Roanhorse as we dive deep into her Between Earth and Sky trilogy.",
    "title": "Epic Worlds and Celestial Prophecies With Rebecca Roanhorse",
    "url": "https://mppl.libnet.info/event/17310611"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 19:15:00 +0000",
-   "detail": "Thursday, November 19 2026 7:15pm - 8:15pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach.",
-   "title": "Career Coaching Appointment",
-   "url": "https://mppl.libnet.info/event/16519388"
   },
   {
    "date": "Fri, 20 Nov 2026 10:00:00 +0000",
@@ -360,6 +348,18 @@
    "detail": "Thursday, December 10 2026 2:00pm - 4:30pm \n Join us for a screening of The Devil Wears Prada 2.",
    "title": "Movies @ MPPL: The Devil Wears Prada 2",
    "url": "https://mppl.libnet.info/event/14038370"
+  },
+  {
+   "date": "Thu, 10 Dec 2026 14:00:00 +0000",
+   "detail": "Thursday, December 10 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email, Microsoft Office, e-books, and more!",
+   "title": "Drop-In Tech Help",
+   "url": "https://mppl.libnet.info/event/14756627"
+  },
+  {
+   "date": "Thu, 10 Dec 2026 15:00:00 +0000",
+   "detail": "Thursday, December 10 2026 3:00pm - 4:00pm \n Local entrepreneurs and small businesses can get one-on-one support by meeting with an experienced mentor from SCORE North Cook and Lake Counties.",
+   "title": "SCORE Business Mentoring",
+   "url": "https://mppl.libnet.info/event/16031259"
   }
  ],
  "source": "Mount Prospect Public Library — Events"
