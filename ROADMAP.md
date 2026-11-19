@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
 0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
 0. **532** (per-reader test draft to the existing subscriber by ID, no new secret; unblocks 481, 508, 509).
 0. **529** (`/holidays/` family first, ticketed shows grouped, ALL-CAPS titles in title case site-wide), then **530** ("compiled from N official calendars" line and `isBasedOn` on hub pages).
@@ -22109,6 +22110,70 @@ Competitors reviewed this pass: **the Journal & Topics Chanukah roundup**
 and **the area's Chabad sites** (as sources), plus **GivingTuesday's date
 and family-giving guides**. The design/UX angle is **`/holidays/` with
 six tree lightings and no menorah lighting**.
+
+#### Research pass 2026-11-19, evening (hundred-and-fifty-fourth pass)
+
+Today the build loop built item 533 (menorah lightings on `/holidays/`, waiting
+on 2026 listings: Wheeling's Chabad site answers the runner 403) and shipped
+item 534 (GivingTuesday). It also ran probe round 48 for Schaumburg's and
+Lake County's calendars. This pass asks why every issue's metrics read the
+same: **1 open, 0 clicks**, ten issues running.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Buttondown's tracking defaults** (Buttondown, *"Email tracking is now off by default"*; the *Click tracking* docs: *"opt-in… rewrite all links… through a proxy URL"*; *Granular tracking settings*; *Custom click tracking domains*, Feb 2026; *Archive click tracking*, May 2025; an October 2026 changelog moving the tracking toggles into email and archive settings) | **Buttondown's analytics are off by default, and click tracking is opt-in.** Since Feb 2026 it can use **the sender's own domain** for the tracking proxy, instead of a shared Buttondown domain. The October 2026 change **moved the toggles**, so a setting turned on earlier may now sit somewhere else. `data/send_history.json` has recorded **0 clicks on every issue**. Opens are recorded, so open tracking is on; **click tracking very likely is not** | Clicks are the number a sponsor can believe. Opens are inflated by Apple Mail's privacy proxy and say nothing about interest. Every promo receipt (item 390), every *"Did you go?"* signal and every future sponsor report will read zero clicks **however good the email is**, until click tracking is on. Nothing in the roadmap has checked it (item 536) |
+| **What `SPONSOR_KIT.md` promises (design/UX: the sponsor's view)** | The kit says the list products are *"priced on who opens it"* and promises to *"report our actual [open] rate"*. It calls the site *"five-region"* (Elk Grove Village made six on Nov 9). Opens are the least trustworthy email number in 2026, and the kit doesn't mention clicks or site visits, the two numbers the site can actually prove once item 536 and GoatCounter (step 1) are on | The first sponsor conversation will use this file. It should promise the numbers that will exist and be honest (clicks per link, page visits from the email), and get the town count right (item 537) |
+
+#### P1 (new)
+
+536. **Find out whether Buttondown is tracking clicks, and turn it on.** Build
+     loop:
+
+     - Read the newsletter's settings through the API (Buttondown has
+       been adding newsletter settings to the API) and record the
+       tracking state for **opens, clicks and archive clicks** in
+       `data/audience_snapshot.json` (item 266) on every run.
+     - If the API exposes the click-tracking toggle, **enable it** there,
+       which is a settings change in the owner's own account for the
+       owner's own list.
+     - If it doesn't, add one line to **Needs Ryan step 5** (Buttondown
+       settings, already a visit): *"Turn on click tracking (Settings →
+       Emails, where the October 2026 update moved it)."* Optionally use
+       withintenmiles.com as the custom tracking domain, if the sending
+       domain is verified.
+     - The weekly metrics backfill then reports clicks per link. Item
+       390's promo receipts gain *"N clicks"* once they're non-zero.
+
+     Tests: the snapshot records the tracking state, the step-5 line
+     appears only when the API can't set it, and the receipts show
+     clicks only when non-zero.
+
+#### P2 (new)
+
+537. **Bring `SPONSOR_KIT.md` up to date: six towns, and the honest
+     numbers.** Build loop:
+
+     - Replace *"five-region"* and similar with the town count from
+       config.
+     - Rewrite the list-products paragraph to lead with what the site
+       will **report**: **clicks per sponsor link** (item 536), **visits
+       from the email** (GoatCounter UTM counts, once step 1's token
+       exists), and **open rate as a secondary figure**, noting that
+       Apple Mail's privacy proxy inflates opens.
+     - Keep the retention and cadence facts as they are.
+     - Generate the town list and count from config at build time, the
+       way `/sponsor/` already does, so the kit can't drift again.
+
+     Tests: the kit's town count matches config, and *"five-region"* no
+     longer appears.
+
+Re-rank: **536 goes to the top of the build queue**. Every number a sponsor
+would see depends on it, and it's a settings read plus at most one line for
+the owner. **537** follows.
+
+Competitors reviewed this pass: none. This pass read **Buttondown's tracking
+documentation and changelog** to explain ten issues of zero clicks. The
+design/UX angle is **the sponsor kit as a sponsor reads it**.
 
 
 ## Working agreements for autonomous iteration
