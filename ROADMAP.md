@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
 0. **532** (per-reader test draft to the existing subscriber by ID, no new secret; unblocks 481, 508, 509).
 0. **529** (`/holidays/` family first, ticketed shows grouped, ALL-CAPS titles in title case site-wide), then **530** ("compiled from N official calendars" line and `isBasedOn` on hub pages).
 0. **528** (headliner emoji: 🎄 for tree lightings, 📸 for photos; quick, before the Nov 19 send if possible), then **527** ("Holiday lights to visit" on `/holidays/`: North School Park free, Willow Hill Lights ticketed, just outside; for the Dec 3 issue).
@@ -22032,6 +22033,82 @@ owner secret since the whole ask was set, and unblocks items 481, 508 and
 Competitors reviewed this pass: none. This pass read **Buttondown's
 send-draft documentation** for the per-reader email's last blocker. The
 design/UX angle is **the Needs Ryan block as the owner reads it**.
+
+#### Research pass 2026-11-19 (hundred-and-fifty-third pass)
+
+This morning's issue went out as ***"Palatine tree lighting with Santa · 32
+things"*** (the tenth send, still one subscriber). Overnight the build loop
+shipped item 532: the per-reader test draft goes to the one subscriber by
+ID, with no new secret. This pass looks at two December dates the site
+doesn't mark yet: **Chanukah** and **GivingTuesday**.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Public menorah lightings, Chanukah 2026** (Chabad.org's 2026 dates; the Journal & Topics roundup *"Chanukah celebrations in northwest suburbs"*, last year's; Northwest Suburban Chabad's site; CBS Chicago on security at Chicago-area lightings) | **Chanukah runs from the evening of Fri Dec 4 to Sat Dec 12, 2026.** Last year: **Chabad of Arlington Heights lit a menorah at North School Park** (Sun, 4–5 PM), and **Chabad of Wheeling with Wheeling Town Center** held a public lighting at the Town Center. No 2026 listings yet. Chabad sites post them in late November. The site's holiday keyword regex includes *menorah* and *Hanukkah*, but `/holidays/` is titled ***"Holiday Tree Lightings 2026"*** and has **no menorah section**. The `is_headliner` rule (item 524) doesn't name menorah lightings | Two of the six towns hold public menorah lightings, in the same parks as their tree lightings. A family page that lists six tree lightings and no menorah lighting tells Jewish families it isn't for them. It's also a dated, local, once-a-year search, like the others (item 533) |
+| **GivingTuesday, Tue Dec 1, 2026** (publicholidays.com and GivingTuesday's own guidance; family-giving roundups from SignUp, REI and others) | GivingTuesday is **the Tuesday after Thanksgiving: Dec 1, 2026**. Family ideas cluster around **food banks, gift drives, sorting donations, cards for seniors**: exactly what `/give/` already lists (the Arlington Heights food drive, the turkey trot for the Wheeling Township Food Pantry, Palatine's Helping Hands drive, the volunteer sessions). **`/give/` never mentions GivingTuesday** | The page that answers *"how can my family help this season"* exists. It just doesn't say so on the day people search for it. One line in the Thanksgiving issue (Wed Nov 25) is the right moment: it lands the day before the long weekend, ahead of Dec 1 (item 534) |
+| **Discovery from local roundups, generalised** (the Journal & Topics holiday roundups, the Daily Herald's weekly guides, Patch's yearly *"where to see Santa"*; item 526's `data/fair_candidates.json`) | Items 501 (Santa hosts), 526 (craft fairs) and this pass (menorahs) each found their leads in a **local roundup**, then needed the **organiser's own page** to list anything. Item 526 built that two-step pattern for fairs only | One discovery file for every seasonal category means each new roundup feeds the probes automatically, and nothing goes live without its organiser's page (item 535) |
+
+#### P1 (new)
+
+533. **Menorah lightings on `/holidays/`, Dec 4–12.** Build loop:
+
+     - Add a `menorah_lighting:` entry per town in the region YAMLs,
+       filled **only from the organiser's own 2026 page**: Chabad of
+       Arlington Heights, Chabad of Wheeling / Wheeling Town Center, and
+       Northwest Suburban Chabad for the other towns if it lists them.
+       Probe them weekly from Nov 20, and use item 478's search fallback
+       if a page blocks the runner.
+     - On `/holidays/`, add a ***"Menorah lightings · Chanukah, Dec 4–12"***
+       section right after the tree-lighting cards, in the same card
+       style. A town with no confirmed lighting shows nothing (no "TBA").
+       Rename the page's H1 and title to ***"Holiday Lightings 2026: Tree
+       and Menorah Lightings in Arlington Heights, …"***, keeping *"tree
+       lighting"* in it for search.
+     - Add *menorah lighting* to `is_headliner` (item 524), so a lighting
+       in the weekend leads "Don't miss" like a tree lighting.
+
+     Tests: a confirmed entry renders as a card, an unconfirmed town shows
+     nothing, the headliner rule picks it, and the title keeps *"tree
+     lighting"*.
+
+#### P2 (new)
+
+534. **GivingTuesday on `/give/` and in the Thanksgiving issue.** Build loop:
+
+     - From **Nov 23 to Dec 1**, `/give/` shows a banner: ***"GivingTuesday is
+       Tue Dec 1: N drives and volunteer sessions near you"*** (N counts
+       the page's live entries).
+     - The **Nov 25 issue** carries one line: *"🤝 GivingTuesday is Dec 1:
+       food drives, toy drives and family volunteer sessions in all six
+       towns →"* (`/give/`, with UTM).
+     - The date is computed (the Tuesday after the fourth Thursday of
+       November), never hard-coded.
+
+     Tests: the date for 2026 and 2027, the banner window, and the email
+     line in the Nov 25 build only.
+
+#### P3 (new)
+
+535. **One discovery file for seasonal roundups.** Build loop. Generalise
+     item 526's `data/fair_candidates.json` into
+     `data/seasonal_candidates.json`, with a `category` per entry
+     (*santa*, *lights*, *menorah*, *fair*, *drive*). Weekly probes read
+     the local roundups (the Daily Herald's guides, Journal & Topics'
+     holiday roundups, Patch's yearly Santa list) **for candidates
+     only**. A candidate becomes a listing only when its organiser's
+     page is probed and confirms it. Confirmed organisers go to
+     `data/warm_hosts.json` with the category as the reason. Tests: a
+     roundup-only candidate never renders, and a confirmed one renders
+     and becomes a warm host.
+
+Re-rank: **533 goes to the top of the build queue**, live before Dec 4.
+**534** must ship **before the Nov 25 issue's build (Tue Nov 24)**. **535**
+follows.
+
+Competitors reviewed this pass: **the Journal & Topics Chanukah roundup**
+and **the area's Chabad sites** (as sources), plus **GivingTuesday's date
+and family-giving guides**. The design/UX angle is **`/holidays/` with
+six tree lightings and no menorah lighting**.
 
 
 ## Working agreements for autonomous iteration
