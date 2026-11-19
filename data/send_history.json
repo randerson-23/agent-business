@@ -130,5 +130,13 @@
       "open_rate": 1.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-11-19T03:50:56.321355+00:00",
+    "subject": "Palatine tree lighting with Santa \u00b7 32 things",
+    "buttondown_id": "em_3r1m86ry499pdacrf3b1f3wmqs",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
