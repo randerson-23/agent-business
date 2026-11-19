@@ -426,3 +426,24 @@ probes:
     patterns:
       - '(?i)menorah[^<]{0,200}'
       - '(?i)(?:dec(?:ember)?\.?\s+\d{1,2})[^<]{0,120}'
+  # Round 48 (items 522, 523, 2026-11-19). Schaumburg Park District (parkfun.com) runs Spring Valley Nature
+  # Center (free puppet shows, campfires, the Sugar Bush Fair); its event URLs look like The Events Calendar.
+  # Lake County Forest Preserves (Ryerson Woods): is there any feed at all? Probe only; never scrape week views.
+  - url: https://www.parkfun.com/wp-json/tribe/events/v1/events?per_page=50
+    item: 522
+    purpose: Schaumburg Park District Events Calendar REST - venues (Spring Valley Nature Center?) and geo
+    patterns:
+      - '(?i)spring valley[^"]{0,80}'
+      - '(?i)"(?:geo_lat|geo_lng)":\s*"?-?\d'
+  - url: https://www.parkfun.com/events/?ical=1
+    item: 522
+    purpose: Schaumburg Park District iCal export - LOCATION lines
+    patterns:
+      - 'BEGIN:VEVENT'
+      - 'LOCATION:[^\r\n]{0,120}'
+  - url: https://www.lcfpd.org/calendar/
+    item: 523
+    purpose: Lake County Forest Preserves calendar - an iCal/RSS export link, Ryerson Woods listings
+    patterns:
+      - '(?i)href="[^"]{0,160}(?:ical|\.ics|rss|feed)[^"]{0,80}"'
+      - '(?i)ryerson[^<]{0,120}'
