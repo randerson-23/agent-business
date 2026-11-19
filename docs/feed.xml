@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 39 of 42 configured sources.</description>
-  <lastBuildDate>Thu, 19 Nov 2026 15:53:28 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources. 1 source is shown from its last update, up to 6 hours ago.</description>
+  <lastBuildDate>Thu, 19 Nov 2026 21:59:42 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Toddler Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-11-19</link>
@@ -95,24 +95,6 @@
  A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for… Official listing: https://mppl.libnet.info/event/16637939</description>
     <pubDate>Thu, 19 Nov 2026 09:30:00 +0000</pubDate>
     <source url="https://mppl.libnet.info/event/16637939">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Office Hours with Congressman Brad Schneider's Office</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-11-19</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-11-19</guid>
-    <description>Thursday, November 19 2026 9:30am - 12:30pm 
- A representative is present to engage with the community, share important information relevant to residents and… Official listing: https://indiantrails.libnet.info/event/16326974</description>
-    <pubDate>Thu, 19 Nov 2026 09:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16326974">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Office Hours IL State Treasurer Michael Frerich's Office</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-office-hours-il-state-treasurer-michael-frerich-s-office-2026-11-19</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-office-hours-il-state-treasurer-michael-frerich-s-office-2026-11-19</guid>
-    <description>Thursday, November 19 2026 9:30am - 12:30pm 
- A representative is present to share information on programs like Bright Start and ICash. The goal is to make… Official listing: https://indiantrails.libnet.info/event/17754827</description>
-    <pubDate>Thu, 19 Nov 2026 09:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17754827">Indian Trails Public Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: Rock and Crystal Gardens</title>
@@ -452,6 +434,24 @@ Hoopla or another library app?… Official listing: https://indiantrails.libnet.
     <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. A guided walk on our trail to search for local owls. Ages 8 &amp; up. Also Fri Nov 20. Official listing: https://fpdcc.com/event/river-trail-nightlife-owl-prowl/</description>
     <pubDate>Fri, 20 Nov 2026 17:00:00 +0000</pubDate>
     <source url="https://fpdcc.com/event/river-trail-nightlife-owl-prowl/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Chess Club (Advanced Players)</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-advanced-players-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-advanced-players-2026-11-20</guid>
+    <description>Friday, November 20 2026 5:30pm - 6:30pm 
+ Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess! Official listing: https://egvpl.libnet.info/event/17111688</description>
+    <pubDate>Fri, 20 Nov 2026 17:30:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17111688">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Chess Club (Beginning Players)</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-beginning-players-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-beginning-players-2026-11-20</guid>
+    <description>Friday, November 20 2026 5:30pm - 6:30pm 
+ Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess! Official listing: https://egvpl.libnet.info/event/17111785</description>
+    <pubDate>Fri, 20 Nov 2026 17:30:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17111785">Elk Grove Village Public Library - Events</source>
   </item>
 </channel>
 </rss>

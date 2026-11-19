@@ -852,6 +852,26 @@
   "url": "https://www.ahpd.org/event/holly-jolly-trolly/",
   "venue": null
  },
+ "e/2026-12-12-cookie-walk-also-santa-christmas-treasures/": {
+  "date_iso": "2026-12-12T09:30:00",
+  "detail": "Presbyterian Women’s Annual Cookie Walk – home-baked cookie",
+  "detail_long": "Presbyterian Women’s Annual Cookie Walk – home-baked cookie",
+  "first_seen": "2026-11-19",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261212T093000%0D%0ADTEND%3A20261212T113000%0D%0ASUMMARY%3ACookie%20Walk%20-%20also%20Santa%20%26%20Christmas%20Treasures%0D%0ADESCRIPTION%3APresbyterian%20Women%E2%80%99s%20Annual%20Cookie%20Walk%20%E2%80%93%20home-baked%20cookie%0D%0AURL%3Ahttps%3A//www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx%3Ffeed%3Dcalendar%26catID%3D14%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-12-12-cookie-walk-also-santa-christmas-treasures/",
+  "postal_code": null,
+  "region_id": "palatine-60067",
+  "region_url": "https://withintenmiles.com/palatine-60067/",
+  "source": "Village of Palatine — Calendar",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [],
+  "title": "Cookie Walk - also Santa & Christmas Treasures",
+  "town": "Palatine",
+  "url": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+  "venue": null
+ },
  "e/2026-12-12-des-plaines-youth-commission-holiday-hoopla/": {
   "date_iso": "2026-12-12T13:00:00",
   "detail": "Saturday, December 12 2026 1:00pm - 3:00pm \n Visit with Santa Claus and enjoy crafts, games, cookies, juice and holiday cheer!",

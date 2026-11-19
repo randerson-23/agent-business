@@ -1,4 +1,8 @@
 {
+  "arlington-heights-60005:Arlington Heights Memorial Library \u2014 Events": {
+    "exception_class": "HTTPError",
+    "status_code": 429
+  },
   "arlington-heights-60005:Arlington Heights Park District \u2014 Events": {
     "route": "month_ics"
   },

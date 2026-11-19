@@ -3,26 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 39 of 42 configured sources.</description>
-  <lastBuildDate>Thu, 19 Nov 2026 15:53:28 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: Office Hours with Congressman Brad Schneider's Office</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-11-19</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-11-19</guid>
-    <description>Thursday, November 19 2026 9:30am - 12:30pm 
- A representative is present to engage with the community, share important information relevant to residents and… Official listing: https://indiantrails.libnet.info/event/16326974</description>
-    <pubDate>Thu, 19 Nov 2026 09:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/16326974">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Office Hours IL State Treasurer Michael Frerich's Office</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-office-hours-il-state-treasurer-michael-frerich-s-office-2026-11-19</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-office-hours-il-state-treasurer-michael-frerich-s-office-2026-11-19</guid>
-    <description>Thursday, November 19 2026 9:30am - 12:30pm 
- A representative is present to share information on programs like Bright Start and ICash. The goal is to make… Official listing: https://indiantrails.libnet.info/event/17754827</description>
-    <pubDate>Thu, 19 Nov 2026 09:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17754827">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources. 1 source is shown from its last update, up to 6 hours ago.</description>
+  <lastBuildDate>Thu, 19 Nov 2026 21:59:42 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Tech Assistance</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-2026-11-19</link>
@@ -449,6 +431,23 @@ A Google… Official listing: https://indiantrails.libnet.info/event/17116313</d
  Bring your used, well-loved puzzles (no missing pieces) to trade with other puzzle enthusiasts. Puzzles may be… Official listing: https://indiantrails.libnet.info/event/17100987</description>
     <pubDate>Sat, 05 Dec 2026 11:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17100987">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Winter Bonfire</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-winter-bonfire-2026-12-05</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-winter-bonfire-2026-12-05</guid>
+    <description>Camp Dan Beard (Northbrook) · ≈ 2 mi from Wheeling. Celebrate the start of winter with a giant bonfire. Enjoy s’mores and other snacks, games, and stargazing… Official listing: https://fpdcc.com/event/winter-bonfire-2/</description>
+    <pubDate>Sat, 05 Dec 2026 16:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/winter-bonfire-2/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Wheeling: Community Weaving Project</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-community-weaving-project-2026-12-06</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-community-weaving-project-2026-12-06</guid>
+    <description>Sunday, December 06 2026 12:00am - 11:59pm 
+ Participate in a community weaving activity in the library lobby in conjunction with One Book One Community. NR Official listing: https://indiantrails.libnet.info/event/17482788</description>
+    <pubDate>Sun, 06 Dec 2026 00:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17482788">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

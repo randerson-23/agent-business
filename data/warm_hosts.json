@@ -300,6 +300,12 @@
    {
     "date": "2026-11-25",
     "time": "19:30",
+    "title": "HAIRBANGERS BALL // MIKE & JOE - The Midwest's Most Renowned Cover Band",
+    "venue": "Des Plaines Theatre"
+   },
+   {
+    "date": "2026-11-25",
+    "time": "19:30",
     "title": "BOURBON 'N BRASS SPEAKEASY: BLUES NIGHT EXTRAVAGANZA featuring DOWNTOWN CHARLIE BROWN, SEAN McKEE, MILES MINOR, JEFF BRINKMAN and JOE VALENTINO - THANKSGIVING EVE!",
     "venue": "Des Plaines Theatre"
    },
@@ -539,6 +545,17 @@
   "name": "Holiday Tree Lighting",
   "town": "Palatine"
  },
+ "immanuel palatine": {
+  "events": [
+   {
+    "date": "2026-12-09",
+    "time": "09:00",
+    "title": "Kindergarten Spotlight at Immanuel Palatine"
+   }
+  ],
+  "name": "Immanuel Palatine",
+  "town": "Palatine"
+ },
  "metropolis performing arts centre": {
   "events": [
    {
@@ -569,6 +586,11 @@
    {
     "date": "2026-12-06",
     "title": "Holiday Cabaret: A Joyful Twist",
+    "venue": "Metropolis Performing Arts Centre"
+   },
+   {
+    "date": "2026-12-06",
+    "title": "Winter Camp Showcase",
     "venue": "Metropolis Performing Arts Centre"
    },
    {

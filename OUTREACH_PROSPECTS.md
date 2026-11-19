@@ -12,6 +12,7 @@ Businesses whose own events appeared on a town page in the last 60 days or the n
 |---|---|---|
 | Metropolitan Square | Des Plaines | Holiday Tree Lighting at Metropolitan Square (2026-12-04) |
 | Holiday Tree Lighting | Palatine | Helping Hands Pantry Food Drive at Holiday Tree Lighting (2026-11-21) |
+| Immanuel Palatine | Palatine | Kindergarten Spotlight at Immanuel Palatine (2026-12-09) |
 | Napleton Palatine Hyundai | Palatine | FREE Trunk or Treat at Napleton Palatine Hyundai (2026-10-24) |
 | Napleton's Palatine Mazda | Palatine | FREE Trunk or Treat at Napleton's Palatine Mazda (2026-10-24) |
 | Napleton's Palatine Subaru | Palatine | FREE Trunk or Treat at Napleton's Palatine Subaru (2026-10-24) |
@@ -57,8 +58,8 @@ They may still buy a promo, but the pitch differs: they already reach their own 
 
 | Host | Town | Events |
 |---|---|---|
-| Metropolis Performing Arts Centre | Arlington Heights | The Rock N' Horror Halloween Concert (2026-10-30); The Lightning Thief: The Percy Jackson Musical (2026-11-05); Myths and Mayhem (2026-11-05); +6 more |
-| Des Plaines Theatre | Des Plaines | RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT (2026-10-28); WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29); BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR "ROCKIN THE BLUES" (2026-10-29); +86 more |
+| Metropolis Performing Arts Centre | Arlington Heights | The Rock N' Horror Halloween Concert (2026-10-30); The Lightning Thief: The Percy Jackson Musical (2026-11-05); Myths and Mayhem (2026-11-05); +7 more |
+| Des Plaines Theatre | Des Plaines | RESCHEDULED FOR 2/28/27: ROCKY™ IN CONCERT (2026-10-28); WORLD PREMIERE FILM SCREENING: YAKUZA PLAYS "THE GOLEM" - A CONCERT FILM (2026-10-29); BOURBON 'N BRASS: LIVE BLUES SHOW WITH MILES MINOR "ROCKIN THE BLUES" (2026-10-29); +87 more |
 
 ## Arlington Heights
 
