@@ -21740,7 +21740,7 @@ nearby agencies with nature centres.
 
 #### P2 (new)
 
-522. **Schaumburg Park District's nature centre, probe first.** Build loop.
+522. (🟡 PROBE 2026-11-19: round 48 asks parkfun.com's Events Calendar REST and iCal export) **Schaumburg Park District's nature centre, probe first.** Build loop.
      Probe `parkfun.com/wp-json/tribe/events/v1/events` and
      `parkfun.com/events/?ical=1`. If either answers, add a `tribe_venues`
      source **limited to Spring Valley Nature Center and other venues
@@ -21751,7 +21751,7 @@ nearby agencies with nature centres.
 
 #### P3 (new)
 
-523. **Lake County Forest Preserves' Ryerson Woods, probe only.** Build loop.
+523. (🟡 PROBE 2026-11-19: round 48 asks lcfpd.org/calendar/ for a feed link) **Lake County Forest Preserves' Ryerson Woods, probe only.** Build loop.
      One probe of `lcfpd.org/calendar` for an iCal or RSS export and for
      Ryerson Woods listings. Add a source only if a feed exists; never
      scrape the week views. Tests: none until a feed is confirmed.
@@ -22050,7 +22050,7 @@ doesn't mark yet: **Chanukah** and **GivingTuesday**.
 
 #### P1 (new)
 
-533. (✅ BUILT 2026-11-19, waiting on 2026 listings: config/menorah_lightings.yaml (empty: no 2026 page from Chabad of Arlington Heights or Chabad of Wheeling yet) plus menorah or Chanukah lightings found in the towns' own feeds (AHPD's calendar covers North School Park), Chanukah window by year (2026: Dec 4–12; unknown years give nothing); a "🕎 Menorah lightings · Chanukah, Dec 4–12" card section after the tree lightings, nothing for an unconfirmed town; /holidays/ title and H1 "Holiday Lightings 2026: Tree Lightings and Menorah Lightings in …"; menorah lightings are headliners (item 524); probe round 47 reads wheelingchabad.com. Chabad of Arlington Heights' own site wasn't found) **Menorah lightings on `/holidays/`, Dec 4–12.** Build loop:
+533. (✅ BUILT 2026-11-19, waiting on 2026 listings; round 47: wheelingchabad.com answers the runner 403, so Wheeling's lighting needs item 478's search fallback once posted; config/menorah_lightings.yaml (empty: no 2026 page from Chabad of Arlington Heights or Chabad of Wheeling yet) plus menorah or Chanukah lightings found in the towns' own feeds (AHPD's calendar covers North School Park), Chanukah window by year (2026: Dec 4–12; unknown years give nothing); a "🕎 Menorah lightings · Chanukah, Dec 4–12" card section after the tree lightings, nothing for an unconfirmed town; /holidays/ title and H1 "Holiday Lightings 2026: Tree Lightings and Menorah Lightings in …"; menorah lightings are headliners (item 524); probe round 47 reads wheelingchabad.com. Chabad of Arlington Heights' own site wasn't found) **Menorah lightings on `/holidays/`, Dec 4–12.** Build loop:
 
      - Add a `menorah_lighting:` entry per town in the region YAMLs,
        filled **only from the organiser's own 2026 page**: Chabad of
