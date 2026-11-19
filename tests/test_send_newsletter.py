@@ -562,7 +562,7 @@ def test_test_draft_is_a_draft_to_one_recipient_and_never_a_live_send():
     email_id = st.create_draft("k", "36 things this weekend", '{% if "town:x" in subscriber.tags %}a{% else %}b{% endif %}', post=post)
     path = st.send_draft("k", email_id, "test@example.com", post=post)
     assert calls[0][2]["status"] == "draft" and "subscriber.tags" in calls[0][2]["body"]
-    assert calls[0][2]["subject"].startswith("[Test, per-reader]")
+    assert calls[0][2]["subject"] == "Per-reader email test: does this match /email-preview/<town>?"
     assert path == "send-drafts" and calls[-1][2] == {"recipients": ["test@example.com"]}
     assert all("X-Buttondown-Live-Dangerously" not in (h or {}) for _, h, _ in calls)
     assert all(j.get("status") in (None, "draft") for _, _, j in calls)
@@ -578,3 +578,26 @@ def test_per_reader_body_is_used_only_once_verified(tmp_path):
     assert sn.per_reader_verified(cfg) is True
     assert sn.per_reader_verified(tmp_path / "missing.yaml") is False
     assert sn.per_reader_verified() is False  # the repository's own config starts off
+
+
+def test_test_draft_goes_to_one_certain_subscriber_by_id(capsys):
+    # ROADMAP.md item 532.
+    import send_test_draft as st
+
+    class R:
+        ok, status_code = True, 200
+
+        def __init__(self, results):
+            self._r = results
+
+        def json(self):
+            return {"results": self._r, "count": len(self._r)}
+
+    one = [{"id": "sub_1", "email_address": "someone@example.com", "tags": ["town:mount-prospect-60056"]}]
+    assert st.pick_test_subscriber("k", get=lambda *a, **k: R(one)) == ("sub_1", "the list's only subscriber")
+    two = one + [{"id": "sub_2", "email_address": "reader@example.com", "tags": []}]
+    rid, why = st.pick_test_subscriber("k", get=lambda *a, **k: R(two))
+    assert rid is None and "not sending a test to an unknown reader" in why
+    tagged = [one[0], dict(two[1], tags=["owner"])]
+    assert st.pick_test_subscriber("k", get=lambda *a, **k: R(tagged))[0] == "sub_2"
+    assert "@" not in why

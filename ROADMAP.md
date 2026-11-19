@@ -22007,7 +22007,7 @@ per-reader email's last blocker, which turns out not to need a new secret.
 
      The five steps and item 400's cap are unchanged.
 
-532. **Send the per-reader test draft to the existing subscriber by ID, with
+532. (✅ DONE 2026-11-19: with no BUTTONDOWN_TEST_RECIPIENT, `pick_test_subscriber` lists regular subscribers and sends the draft by subscriber ID only to a single subscriber tagged `owner` or the list's only subscriber; otherwise it stops with a notice. Subject "Per-reader email test: does this match /email-preview/<town>?". No address is logged. test-send.yml runs Tuesdays 16:17 UTC, or by hand; after the owner's "matches", the build loop sets `per_reader_email.verified: true`) 532. **Send the per-reader test draft to the existing subscriber by ID, with
      no new secret.** Build loop, `scripts/send_test_draft.py`:
 
      - When `BUTTONDOWN_TEST_RECIPIENT` is unset, list subscribers
