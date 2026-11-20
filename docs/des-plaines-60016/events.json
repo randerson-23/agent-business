@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-11-20T15:36:16+00:00",
+  "dateModified": "2026-11-20T22:00:14+00:00",
   "numberOfItems": 56,
   "itemListElement": [
     {
@@ -772,9 +772,9 @@
       "position": 25,
       "item": {
         "@type": "Event",
-        "name": "HAIRBANGERS BALL // MIKE & JOE - The Midwest's Most Renowned Cover Band",
+        "name": "MIKE & JOE - The Midwest's Most Renowned Cover Band // HAIRBANGERS BALL",
         "startDate": "2026-11-25T19:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-hairbangers-ball-mike-joe-the-midwest-s-most-renowned-cover-2026-11-25",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mike-joe-the-midwest-s-most-renowned-cover-band-hairbangers-2026-11-25",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -795,7 +795,7 @@
           "url": "https://desplainestheatre.com"
         },
         "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Rolling through the “Decade of Decadence” like a 50-ton freight train, iconic bands such as Guns N’ Roses, Mötley Crüe, Bon Jovi and Poison (to mention only a…"
+        "description": "Mike & Joe is a modern rock cover band widely regarded by its peers and the industry as one of the very best sounding cover bands in the nation. The bulk of…"
       }
     },
     {

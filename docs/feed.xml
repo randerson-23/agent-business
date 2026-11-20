@@ -3,15 +3,15 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 37 of 42 configured sources. 1 source is shown from its last update, up to 2 hours ago.</description>
-  <lastBuildDate>Fri, 20 Nov 2026 15:36:16 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 39 of 42 configured sources.</description>
+  <lastBuildDate>Fri, 20 Nov 2026 22:00:14 +0000</lastBuildDate>
   <item>
-    <title>Arlington Heights: Senior Center: Travelogue</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/233828</description>
+    <title>Arlington Heights: Backing Up Your Data with Google Drive and iCloud</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-backing-up-your-data-with-google-drive-and-icloud-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-backing-up-your-data-with-google-drive-and-icloud-2026-11-20</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/234453</description>
     <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/233828">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/234453">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Elk Grove Village: The Arlington Camera Club</title>
@@ -39,6 +39,22 @@
  Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up… Official listing: https://egvpl.libnet.info/event/17354432</description>
     <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17354432">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Police Department charge person with Kidnapping and Unlawful Restraint</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-police-department-charge-person-with-kidnapping-and-unlawful-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-police-department-charge-person-with-kidnapping-and-unlawful-2026-11-20</guid>
+    <description>Official listing: https://www.mountprospect.org/articles/POLICE-DEPARTMENT-CHARGE-PERSON-WITH-KIDNAPPING-AND-UNLAWFUL-RESTRAINT-212.php</description>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/POLICE-DEPARTMENT-CHARGE-PERSON-WITH-KIDNAPPING-AND-UNLAWFUL-RESTRAINT-212.php">Village of Mount Prospect — News</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Mount Prospect Update - November 20</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-november-20-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-november-20-2026-11-20</guid>
+    <description>The Holiday Season is almost upon us. Catch the latest Mount Prospect Update to find out what is happening in Mount Prospect. Official listing: https://www.mountprospect.org/articles/Mount-Prospect-Update-November-20-214.php</description>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/Mount-Prospect-Update-November-20-214.php">Village of Mount Prospect — News</source>
   </item>
   <item>
     <title>Elk Grove Village: Youth Services Registration for December Programs</title>
@@ -416,22 +432,6 @@
     <description>https://www.wheelingil.gov/calendar.aspx?EID=2207 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sun, 22 Nov 2026 16:30:00 +0000</pubDate>
     <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
-  </item>
-  <item>
-    <title>Des Plaines: POOH: 60th ANNIVERSARY TOUR - FINALE</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22</guid>
-    <description>60 years of music, emotions and successes! In 2026, POOH are ready to return for what will be a highly anticipated year of celebrations and surprises for the… Official listing: https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/</description>
-    <pubDate>Sun, 22 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: Kids' Time</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-23</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-23</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224222</description>
-    <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224222">Arlington Heights Memorial Library — Events</source>
   </item>
 </channel>
 </rss>
