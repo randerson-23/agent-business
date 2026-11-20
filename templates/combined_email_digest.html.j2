@@ -172,8 +172,8 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 {% endif %}
 
-{% if tonight %}
-{# ROADMAP.md item 497: an issue delivered before its weekend says what's on that evening. #}
+{% for tonight in [tonight, new_years_eve] if tonight %}
+{# ROADMAP.md item 497: an issue delivered before its weekend says what's on that evening; item 538: New Year's Eve the same way. #}
 <tr>
 <td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:20px 22px 6px 22px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -202,7 +202,7 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 </td>
 </tr>
 <tr><td style="padding:0 0 14px 0;"></td></tr>
-{% endif %}
+{% endfor %}
 
 {% if thanksgiving %}
 {# ROADMAP.md items 510 and 512: Thanksgiving morning's races and family events. #}

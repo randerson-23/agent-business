@@ -71,8 +71,15 @@ per_reader_email:
 # Thanksgiving: plan the long weekend the day before; evidence mixed
 # (GoDaddy, Martech vs Constant Contact). An entry stops applying once its
 # time has passed; delete it afterwards.
+# Item 538: Christmas Eve and New Year's Eve land on Thursdays in 2026. Opens
+# peak around Dec 22 and dip on Dec 25 (Litmus; evidence mixed, none for local
+# guides), and families plan the break before it starts, so both move to
+# Wednesday: Dec 23 (winter-break edition, item 539) and Dec 30 (its window,
+# Thu Dec 31 - Sun Jan 3, opens with a New Year's Eve block).
 delivery_overrides:
   "2026-11-26": "2026-11-25T07:00"
+  "2026-12-24": "2026-12-23T07:00"
+  "2026-12-31": "2026-12-30T07:00"
 
 send:
   enabled: true

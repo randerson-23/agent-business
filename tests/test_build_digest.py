@@ -7568,7 +7568,7 @@ def test_thanksgiving_window_includes_thursday_and_the_issue_moves_to_wednesday(
     tue_build = datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc)
     assert build_digest.email_delivery_time(tue_build, ov) == datetime(2026, 11, 25, 7, 0)
     assert build_digest.email_edition(tue_build) == "holiday"
-    assert build_digest.load_delivery_overrides() == ov
+    assert build_digest.load_delivery_overrides()[date(2026, 11, 26)] == ov[date(2026, 11, 26)]
 
 
 def test_exhibit_run_is_one_card_one_calendar_link_and_never_a_pick():
@@ -8031,3 +8031,38 @@ def test_sponsor_kit_names_every_live_town():
         assert cfg["region"]["name"] in kit, cfg["region"]["name"]
     words = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
     assert f"{words[len(build_digest.load_regions())]} towns" in kit or f"{words[len(build_digest.load_regions())]}-town" in kit
+
+
+def test_christmas_eve_and_new_years_eve_issues_move_to_wednesday_with_a_new_years_eve_block(monkeypatch):
+    # ROADMAP.md item 538.
+    import send_newsletter
+    local = build_digest.load_delivery_overrides()
+    assert local[date(2026, 12, 24)] == datetime(2026, 12, 23, 7, 0)
+    assert local[date(2026, 12, 31)] == datetime(2026, 12, 30, 7, 0)
+    tz = send_newsletter.SEND_TIMEZONE
+    moved = {d: m.replace(tzinfo=tz) for d, m in local.items()}
+    # The Dec 24 and Dec 31 Thursday slots send nothing: the delivery is the Wednesday before.
+    assert send_newsletter.next_delivery(datetime(2026, 12, 18, 12, 0, tzinfo=tz), moved) == datetime(2026, 12, 23, 7, 0, tzinfo=tz)
+    assert send_newsletter.next_delivery(datetime(2026, 12, 23, 8, 0, tzinfo=tz), moved) == datetime(2026, 12, 30, 7, 0, tzinfo=tz)
+    assert send_newsletter.next_delivery(datetime(2026, 12, 30, 8, 0, tzinfo=tz), moved) == datetime(2027, 1, 7, 7, 0, tzinfo=tz)
+    assert send_newsletter.issue_is_due(datetime(2026, 12, 22, 21, 0, tzinfo=tz), moved)
+    # The Dec 30 issue's window is Thu Dec 31 - Sun Jan 3.
+    assert build_digest.weekend_window(*build_digest.weekend_dates(date(2026, 12, 30))) == [date(2026, 12, 31), date(2027, 1, 1), date(2027, 1, 2), date(2027, 1, 3)]
+    assert build_digest.weekend_window(*build_digest.weekend_dates(date(2026, 12, 9))) == [date(2026, 12, 11), date(2026, 12, 12), date(2026, 12, 13)]
+
+    def ev(title, iso, tags=("kid_friendly", "free"), detail="d"):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "tags": list(tags), "detail": detail, "attendable": True, "google_calendar_url": "https://calendar.google.com/x"}
+    sections = [{"region_name": "Wheeling", "region_url": "https://x/wh/", "weekend_events": [ev("Noon Year's Eve Party", "2026-12-31T11:00:00")],
+                 "upcoming_events": [ev("Family Skate Night", "2026-12-31T18:00:00"), ev("Noon Year's Eve Party", "2026-12-31T11:00:00"),
+                                     ev("New Year's Eve Gala", "2026-12-31T20:00:00", detail="21+ champagne toast"), ev("Morning Storytime", "2026-12-31T10:00:00")]}]
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 12, 31): datetime(2026, 12, 30, 7, 0)})
+    tue = datetime(2026, 12, 29, 22, 37, tzinfo=timezone.utc)
+    block = build_digest.select_new_years_eve(sections, tue)
+    assert block["label"] == "THURSDAY: NEW YEAR'S EVE"
+    assert [e["title"] for e in block["events"]] == ["Noon Year's Eve Party", "Family Skate Night"]
+    assert block["events"][0]["email_emoji"] == "🎉"
+    html = build_digest.render_combined_email_digest(sections, "Dec 31 – Jan 3", tue)
+    assert "THURSDAY: NEW YEAR&#39;S EVE" in html or "THURSDAY: NEW YEAR'S EVE" in html
+    # Any other week has no New Year's Eve block.
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {})
+    assert build_digest.select_new_years_eve(sections, datetime(2026, 12, 9, 22, 0, tzinfo=timezone.utc)) is None
