@@ -7773,7 +7773,7 @@ def _pick_evergreen_highlights(evergreen: list[dict], limit: int) -> list[dict]:
     return (free + rest)[:limit]
 
 
-def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None, on_sale: list[dict] | None = None, new_towns: list[dict] | None = None, reader_town: str | None = None) -> str:
+def render_combined_email_digest(sections: list[dict], weekend_date_range: str, now: datetime, newsletter: dict | None = None, *, preview: bool = False, halloween: dict | None = None, holiday: dict | None = None, weather: list[dict] | None = None, halloween_extras: dict | None = None, give: list[dict] | None = None, on_sale: list[dict] | None = None, new_towns: list[dict] | None = None, reader_town: str | None = None, per_week: int | None = None) -> str:
     """The combined, all-regions email (ROADMAP.md Phase 11 #105) - the
     signup form is on every region page, but the automated send (item
     24/31) only ever mailed Mount Prospect's digest, since Buttondown's
@@ -7802,6 +7802,16 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     once (`collapse` below); a single quiet region reads fine as its
     own ordinary card and loses nothing by staying one.
     """
+    if per_week is None and winter_break_edition(now):
+        # Item 539: a two-week issue must stay under Gmail's clip; cut events
+        # per week (never the standing lines) until it fits.
+        kwargs = dict(newsletter=newsletter, preview=preview, halloween=halloween, holiday=holiday, weather=weather, halloween_extras=halloween_extras, give=give, on_sale=on_sale, new_towns=new_towns, reader_town=reader_town)
+        for n in range(WINTER_BREAK_PER_WEEK, 0, -1):
+            html = render_combined_email_digest(sections, weekend_date_range, now, per_week=n, **kwargs)
+            if len(html.encode("utf-8")) <= EMAIL_CLIP_BYTES:
+                break
+        return html
+    per_week = per_week or WINTER_BREAK_PER_WEEK
     env = get_template_env()
     template = env.get_template("combined_email_digest.html.j2")
     all_blocks = []
@@ -7861,6 +7871,13 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
                 if b is not home:
                     b["one_line"] = town_one_liner(b)
             region_blocks = [home] + [b for b in region_blocks if b is not home]
+    winter_break = winter_break_edition(now)  # item 539
+    if winter_break:
+        by_url = {sec["region_url"]: sec for sec in sections}
+        for b in region_blocks:
+            if not b.get("one_line"):
+                b["week_groups"] = winter_break_week_groups(by_url[b["region_url"]].get("upcoming_events") or [], winter_break["weeks"], per_week)
+        winter_break = dict(winter_break, camps=winter_break_camp_line(sections))
     top_picks = pick_email_top_picks(region_blocks)
     tonight = select_tonight(sections, now)  # item 497
     new_years_eve = select_new_years_eve(sections, now)  # item 538
@@ -7907,7 +7924,8 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         empty_regions_summary=empty_regions_summary,
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
-        subject_line=build_combined_email_subject_line(sections, now, top_picks, on_sale),
+        subject_line=winter_break_subject(region_blocks) if winter_break else build_combined_email_subject_line(sections, now, top_picks, on_sale),
+        winter_break=winter_break,
         preheader=build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},
         preview=preview,
@@ -8472,6 +8490,65 @@ def _thanksgiving(year: int) -> date:
     """The fourth Thursday of November."""
     first = date(year, 11, 1)
     return first + timedelta(days=(3 - first.weekday()) % 7 + 21)
+
+
+WINTER_BREAK_SUBJECT = "Winter break: two weeks of things to do"
+WINTER_BREAK_PER_WEEK = 4
+EMAIL_CLIP_BYTES = 100_000  # Gmail clips a message body over ~102 KB
+
+
+def winter_break_edition(now: datetime) -> dict | None:
+    """ROADMAP.md item 539: the issue delivered in the days before the break
+    starts (Dec 18-25; in 2026 the Wednesday Dec 23 issue, item 538) covers
+    the whole break, split into this week (delivery to Sunday) and next week
+    (Monday to Jan 3). None for every other issue."""
+    delivery = email_delivery_time(now).date()
+    start, end = winter_break_window(now)
+    if not (start - timedelta(days=3) <= delivery <= start + timedelta(days=4)):
+        return None
+    sunday = delivery + timedelta(days=(6 - delivery.weekday()) % 7)
+    monday = sunday + timedelta(days=1)
+
+    def span(a: date, b: date) -> str:
+        return f"{a.strftime('%b')} {a.day}–{b.day}" if a.month == b.month else f"{a.strftime('%b')} {a.day} – {b.strftime('%b')} {b.day}"
+    return {"weeks": [
+        {"label": f"This week ({span(delivery, sunday)})", "start": delivery, "end": sunday},
+        {"label": f"Next week ({span(monday, end)})", "start": monday, "end": end},
+    ], "nye_url": SITE_BASE_URL + "new-years-eve/"}
+
+
+def winter_break_week_groups(events: list[dict], weeks: list[dict], per_week: int = WINTER_BREAK_PER_WEEK) -> list[dict]:
+    """A town's events for each week of the winter-break edition: family-suitable,
+    attendable, up to `per_week` each, soonest first."""
+    groups = []
+    for week in weeks:
+        picked = []
+        for e in events:
+            try:
+                day = datetime.fromisoformat(e.get("date_iso") or "").date()
+            except ValueError:
+                continue
+            if week["start"] <= day <= week["end"] and e.get("attendable", True) and family_relevance(e) >= 0:
+                picked.append(dict(e))
+        groups.append({"label": week["label"], "events": prepare_email_events(picked, limit=per_week)})
+    return groups
+
+
+def winter_break_subject(region_blocks: list[dict]) -> str:
+    n = sum(len(g["events"]) for b in region_blocks for g in b.get("week_groups") or [])
+    return f"{WINTER_BREAK_SUBJECT} \u00b7 {n} ideas" if n else WINTER_BREAK_SUBJECT
+
+
+def winter_break_camp_line(sections: list[dict], limit: int = 6) -> list[dict]:
+    """The edition's standing camps line: each town's park-district camp links
+    (item 438), one per agency, in section order."""
+    links, seen = [], set()
+    for sec in sections:
+        for link in sec.get("camp_links") or []:
+            if link["url"] not in seen:
+                seen.add(link["url"])
+                links.append(link)
+    return links[:limit]
 
 
 def email_edition(now: datetime) -> str | None:
@@ -9274,6 +9351,7 @@ def main() -> None:
                 "days_off": region_days_off,
                 "closures": region_closures,
                 "signups": [dict(e, town=region["name"]) for e in build_signups_opening(blocks, local_today)],
+                "camp_links": winter_break_camp_links(region_cfg, winter_break_catalogues(evergreen)),  # item 539
             }
         )
         views = [
