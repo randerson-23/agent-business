@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
-  <lastBuildDate>Fri, 20 Nov 2026 14:01:30 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 37 of 42 configured sources. 1 source is shown from its last update, up to 2 hours ago.</description>
+  <lastBuildDate>Fri, 20 Nov 2026 15:36:16 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Senior Center: Travelogue</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20</link>
@@ -48,6 +48,14 @@
  Registration for Youth Services December programs, and all One Book, One Village programs, begins Friday, November… Official listing: https://egvpl.libnet.info/event/17487748</description>
     <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17487748">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Palatine: Curbside Leaf Collection Update</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-curbside-leaf-collection-update-2026-11-20</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-curbside-leaf-collection-update-2026-11-20</guid>
+    <description>Official listing: https://www.palatine.il.us/CivicAlerts.aspx?aid=513</description>
+    <pubDate>Fri, 20 Nov 2026 09:20:29 +0000</pubDate>
+    <source url="https://www.palatine.il.us/CivicAlerts.aspx?aid=513">Village of Palatine — News</source>
   </item>
   <item>
     <title>Des Plaines: Baby Book Time</title>
@@ -342,12 +350,12 @@
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-8/">Des Plaines Theatre — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Сторітайм українською | Ukrainian Language Storytime</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/226527</description>
+    <title>Arlington Heights: Makerplace Custom Cricut Tote Bag</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/233406</description>
     <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/226527">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/233406">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Elk Grove Village: The Arlington Camera Club</title>
@@ -424,15 +432,6 @@
     <description>Official listing: https://www.ahml.info/scheduling/reservation/224222</description>
     <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://www.ahml.info/scheduling/reservation/224222">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Teen Take &amp; Make</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-23</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-23</guid>
-    <description>Monday, November 23 2026 12:00am - 11:59pm 
- Take &amp; Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit… Official listing: https://desplaines.libnet.info/event/17635814</description>
-    <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17635814">Des Plaines Public Library — Events</source>
   </item>
 </channel>
 </rss>
