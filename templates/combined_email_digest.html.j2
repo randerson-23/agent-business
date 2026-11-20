@@ -172,6 +172,18 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 {% endif %}
 
+{% if winter_break %}
+{# ROADMAP.md item 539: standing lines for the two-week winter-break edition. #}
+<tr>
+<td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:20px 22px 14px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.5;">
+<div class="wt-accent" style="font-size:12px; font-weight:600; letter-spacing:1.5px; color:{{ accent }}; padding-bottom:10px;">WINTER BREAK, BOTH WEEKS</div>
+{% if winter_break.camps %}<div class="wt-ink" style="color:{{ ink }}; padding:3px 0;">🏕️ Park district camps: {% for c in winter_break.camps %}<a href="{{ c.url }}" class="wt-ink" style="color:{{ ink }}; text-decoration:underline;">{{ c.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</div>{% endif %}
+<div class="wt-ink" style="color:{{ ink }}; padding:3px 0;">🎉 <a href="{{ winter_break.nye_url }}" class="wt-ink" style="color:{{ ink }}; text-decoration:underline;">Noon Year's Eve parties for kids</a> &rarr;</div>
+</td>
+</tr>
+<tr><td style="padding:0 0 14px 0;"></td></tr>
+{% endif %}
+
 {% for tonight in [tonight, new_years_eve] if tonight %}
 {# ROADMAP.md item 497: an issue delivered before its weekend says what's on that evening; item 538: New Year's Eve the same way. #}
 <tr>
@@ -302,8 +314,18 @@ DON'T MISS THIS WEEKEND
 </td>
 </tr>
 
-{% if block.attendable_events %}
-{% for event in block.attendable_events[:(block.show or 4)] %}
+{% if block.week_groups or block.attendable_events %}
+{# ROADMAP.md item 539: the winter-break edition splits a town into this week and next week. #}
+{% for group in (block.week_groups or [{"label": None, "events": block.attendable_events[:(block.show or 4)]}]) %}
+{% if group.label %}
+<tr>
+<td class="wt-accent" style="font-family:{{ sans }}; font-size:12px; font-weight:600; letter-spacing:1.5px; color:{{ accent }}; padding:14px 0 0 0;">{{ group.label|upper }}</td>
+</tr>
+{% if not group.events %}
+<tr><td class="wt-muted" style="font-family:{{ sans }}; font-size:14px; color:{{ muted }}; padding:8px 0;">Nothing dated yet; the town guide has more.</td></tr>
+{% endif %}
+{% endif %}
+{% for event in group.events %}
 <tr>
 <td style="padding:14px 0;{% if not loop.first %} border-top:1px solid {{ rule }};{% endif %}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -342,6 +364,7 @@ DON'T MISS THIS WEEKEND
 </table>
 </td>
 </tr>
+{% endfor %}
 {% endfor %}
 {% elif block.evergreen_highlights %}
 <tr>

@@ -222,7 +222,7 @@ doesn't re-suggest something already shipped.
 Pick from the top unless the owner has flagged something else:
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
 0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
-0. ~~**538**~~ **DONE** (overrides for Dec 24 → Wed Dec 23 and Dec 31 → Wed Dec 30; the Dec 30 window is Dec 31 – Jan 3 and opens with a *Thursday: New Year's Eve* block), then **539** (the two-week winter-break edition for Dec 23; **by Dec 21**).
+0. ~~**538**~~ **DONE** (overrides for Dec 24 → Wed Dec 23 and Dec 31 → Wed Dec 30; the Dec 30 window is Dec 31 – Jan 3 and opens with a *Thursday: New Year's Eve* block), then ~~**539**~~ **DONE** (winter-break edition for the Dec 23 issue).
 0. **532** (per-reader test draft to the existing subscriber by ID, no new secret; unblocks 481, 508, 509).
 0. **529** (`/holidays/` family first, ticketed shows grouped, ALL-CAPS titles in title case site-wide), then **530** ("compiled from N official calendars" line and `isBasedOn` on hub pages).
 0. **528** (headliner emoji: 🎄 for tree lightings, 📸 for photos; quick, before the Nov 19 send if possible), then **527** ("Holiday lights to visit" on `/holidays/`: North School Park free, Willow Hill Lights ticketed, just outside; for the Dec 3 issue).
@@ -22218,7 +22218,7 @@ Year's Eve**, in the middle of a two-week school break.
 
 #### P2 (new)
 
-539. **A winter-break edition for the Dec 23 issue: this week and next.**
+539. **DONE (2026-11-20).** `winter_break_edition` (delivery Dec 18–25) splits each town into *This week (Dec 23–27)* / *Next week (Dec 28 – Jan 3)*, up to 4 family events each (`winter_break_week_groups`); a *Winter break, both weeks* box with each town's park-district camp links (`camp_links` on the email sections, item 438) and the Noon Year's Eve page; holiday lights and closures stay on their existing lines; subject *Winter break: two weeks of things to do · N ideas* (≤50 chars); over `EMAIL_CLIP_BYTES` it re-renders with fewer events per week, never dropping the standing lines. Indoor places (item 492) join the box when that guide ships. **A winter-break edition for the Dec 23 issue: this week and next.**
      Build loop, a template variant chosen when the delivery falls in
      the week before the break (Dec 21–Jan 3, from the days-off data):
 

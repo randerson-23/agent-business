@@ -8066,3 +8066,43 @@ def test_christmas_eve_and_new_years_eve_issues_move_to_wednesday_with_a_new_yea
     # Any other week has no New Year's Eve block.
     monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {})
     assert build_digest.select_new_years_eve(sections, datetime(2026, 12, 9, 22, 0, tzinfo=timezone.utc)) is None
+
+
+def test_winter_break_edition_splits_two_weeks_with_standing_lines(monkeypatch):
+    # ROADMAP.md item 539.
+    def ev(title, iso, tags=("kid_friendly", "free")):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "tags": list(tags), "detail": "d", "attendable": True}
+    upcoming = [ev(f"Winter Craft {i}", f"2026-12-{23 + i:02d}T10:00:00") for i in range(5)] + [ev(f"Break Movie {i}", f"2026-12-{28 + i:02d}T13:00:00") for i in range(4)] + [ev("Jan Gym Day", "2027-01-02T10:00:00")]
+    sections = [{"region_name": "Wheeling", "region_url": "https://x/wheeling-60090/", "weekend_events": [e for e in upcoming if e["date_iso"].startswith("2026-12-2") and e["date_iso"] >= "2026-12-25"],
+                 "upcoming_events": upcoming, "camp_links": [{"name": "Wheeling Park District", "url": "https://wheelingparkdistrict.com/camps"}]}]
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 12, 24): datetime(2026, 12, 23, 7, 0)})
+    tue = datetime(2026, 12, 22, 22, 37, tzinfo=timezone.utc)
+    wb = build_digest.winter_break_edition(tue)
+    assert [w["label"] for w in wb["weeks"]] == ["This week (Dec 23–27)", "Next week (Dec 28 – Jan 3)"]
+    groups = build_digest.winter_break_week_groups(upcoming, wb["weeks"])
+    assert [len(g["events"]) for g in groups] == [4, 4]
+    html = build_digest.render_combined_email_digest(sections, "Dec 23 – Jan 3", tue)
+    assert "THIS WEEK (DEC 23–27)" in html and "NEXT WEEK (DEC 28 – JAN 3)" in html
+    assert "WINTER BREAK, BOTH WEEKS" in html and "https://wheelingparkdistrict.com/camps" in html and "new-years-eve/" in html
+    assert "Winter break: two weeks of things to do · 8 ideas" in html
+    assert len("Winter break: two weeks of things to do · 8 ideas") <= 50
+    assert len(html.encode("utf-8")) <= build_digest.EMAIL_CLIP_BYTES
+    # A normal week (and the Dec 30 New Year's issue) keeps the weekend layout.
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 12, 31): datetime(2026, 12, 30, 7, 0)})
+    assert build_digest.winter_break_edition(datetime(2026, 12, 9, 22, 0, tzinfo=timezone.utc)) is None
+    assert build_digest.winter_break_edition(datetime(2026, 12, 29, 22, 0, tzinfo=timezone.utc)) is None
+    normal = build_digest.render_combined_email_digest(sections, "Dec 11–13", datetime(2026, 12, 9, 22, 0, tzinfo=timezone.utc))
+    assert "WINTER BREAK, BOTH WEEKS" not in normal and "THIS WEEK (" not in normal
+
+
+def test_winter_break_edition_cuts_events_not_standing_lines_to_avoid_clipping(monkeypatch):
+    # ROADMAP.md item 539: over the clip limit, fewer events per week.
+    sections = [{"region_name": "Wheeling", "region_url": "https://x/wheeling-60090/", "weekend_events": [],
+                 "upcoming_events": [{"title": f"Event {i}", "url": f"https://x/{i}", "date_iso": f"2026-12-{23 + i % 5:02d}T10:00:00", "tags": ["kid_friendly"], "detail": "d", "attendable": True} for i in range(10)],
+                 "camp_links": [{"name": "WPD", "url": "https://w/camps"}]}]
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 12, 24): datetime(2026, 12, 23, 7, 0)})
+    tue = datetime(2026, 12, 22, 22, 37, tzinfo=timezone.utc)
+    full = build_digest.render_combined_email_digest(sections, "x", tue)
+    monkeypatch.setattr(build_digest, "EMAIL_CLIP_BYTES", len(full.encode("utf-8")) - 1)
+    cut = build_digest.render_combined_email_digest(sections, "x", tue)
+    assert len(cut) < len(full) and "https://w/camps" in cut and "· 3 ideas" in cut
