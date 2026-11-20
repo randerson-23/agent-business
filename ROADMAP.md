@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **540** with **541** (one-field signup under the hero on the homepage and town pages, tracked as `utm_content=hero`; registration notices out of the weekend card), then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
 0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
 0. ~~**538**~~ **DONE** (overrides for Dec 24 → Wed Dec 23 and Dec 31 → Wed Dec 30; the Dec 30 window is Dec 31 – Jan 3 and opens with a *Thursday: New Year's Eve* block), then ~~**539**~~ **DONE** (winter-break edition for the Dec 23 issue).
@@ -22249,6 +22250,75 @@ research** (Litmus, HubSpot, SendGrid, Neon One, Benchmark; all retail,
 B2B or nonprofit, mixed) to time the Christmas Eve and New Year's Eve
 issues. The design/UX angle is **what a two-week winter-break issue
 should look like**.
+
+#### Research pass 2026-11-20, evening (hundred-and-fifty-sixth pass)
+
+Today the build loop shipped items 538 and 539. The Christmas Eve and New
+Year's Eve issues move to Wednesdays, with a New Year's Eve block and a
+two-week winter-break edition for Dec 23. This pass checks for 2026 menorah
+lightings (item 533 is waiting on them), and reads the **homepage on a
+phone**. It's the page every share, search result and flyer QR code
+lands on, and it hasn't had a phone read since item 434.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The homepage at 390 px (design/UX)** (`docs/index.html`) | It looks good: the green holiday banner with all six towns' tree-lighting dates, the hero (*"Everything worth doing, ten miles out"*), a *This weekend* card with the two tree lightings, then a card per town. But **the signup form is at character 34,972 of 39,559**: after all six town cards, roughly **2,600+ px down** on a phone. Item 9598's check (Oct) found the same on region pages. And the *This weekend* card's third pick is ***"Youth Services Registration for December Programs"*** (Elk Grove library), **a registration notice, not an event** | This is a newsletter business, and the one action that grows it is entering an email. Most phone visitors never scroll 2,600 px. Every share button (item 454), the Brave and Bing submissions, and any ad (step 3) send people to pages where the signup is nearly out of reach. A one-field form under the hero is the highest-leverage change left on the site. A registration notice in the weekend card reads as filler (items 540, 541) |
+| **2026 menorah lightings, re-checked** (Daily Herald coverage of past Arlington Heights lightings at North School Park and Wheeling Town Center lightings; Westfield Old Orchard's 2026 event page *"Chanukah with the Skokie Chabad"*; Chabad.org's 2026 dates) | **No 2026 listing yet** from Chabad of Arlington Heights or Chabad of Wheeling. Past Arlington Heights lightings featured a **gelt drop from a fire-truck ladder**, live music and the "Dreidel man", in the late afternoon. **Westfield Old Orchard (Skokie)** lists **nightly menorah lightings at 5 PM, Dec 6–11, 2026**, with the Skokie Chabad, on its own event page. Old Orchard is ~7–9 miles from Des Plaines and Wheeling | One confirmed 2026 lighting within ten miles, and a nightly one, so any evening of Chanukah works. It belongs in item 533's menorah section as *"just outside"*, with item 479's distance. The two town lightings stay on the weekly probe (item 542) |
+
+#### P1 (new)
+
+540. **A one-field signup under the hero, on the homepage and every town
+     page.** Build loop, `hub.html.j2` and `region.html.j2`:
+
+     - Directly under the hero copy (and under the *This weekend* box on
+       town pages), add a compact form: **one email field** and a
+       ***"Get it Thursdays"*** button, plus a small town select (on the
+       homepage, defaulting to *All towns*; on a town page, preset to
+       that town, so item 252's tag is set). It posts to the same
+       Buttondown endpoint as today's form.
+     - Keep the full form at the bottom.
+     - **Measure it:** the two forms carry different `utm_content`
+       values (`hero` / `footer`), so item 252's tags show which one
+       signups come from.
+     - No JavaScript is needed. It must not push the *This weekend* box
+       below the first screen at 390 px: check with the 390-px
+       screenshot test.
+
+     Tests: the hero form exists on the hub and each town page with the
+     right tag and `utm_content`, the bottom form is unchanged, and the
+     first screen at 390 px still shows the *This weekend* heading.
+
+#### P2 (new)
+
+541. **Registration notices aren't weekend events.** Build loop. Titles
+     like *"… Registration for …"*, *"Registration opens"*, *"Sign up
+     for …"* and *"Registration deadline"*, with no event date of their
+     own, go to the *"📝 Sign-ups opening this week"* block (item 327)
+     and the town page's sign-ups line. They never appear in the
+     homepage's *This weekend* card, *Don't miss*, or a town's weekend
+     list. Tests: Elk Grove's *"Youth Services Registration for December
+     Programs"* moves to sign-ups, and a *"Registration-free storytime"*
+     stays.
+
+542. **The Skokie Chabad's nightly lightings at Old Orchard, "just
+     outside".** Build loop, item 533's menorah section and item 458's
+     `just_outside.yaml`. Add **"Chanukah with the Skokie Chabad"**,
+     **nightly at 5 PM, Dec 6–11, Westfield Old Orchard**, from
+     Westfield's own event page, with item 479's distance line from the
+     nearest town, if within 10 miles. It's shown under the town
+     lightings as ***"Just outside: nightly lightings at Old Orchard"***.
+     Keep probing Chabad of Arlington Heights and Chabad of Wheeling
+     weekly. Tests: the entry renders once with its date range, and
+     beyond 10 miles it's dropped.
+
+Re-rank: **540 goes to the top of the build queue**. It's the change most
+likely to turn the visits the site already gets into subscribers. **541**
+rides with it (the same weekend card). **542** before Dec 4.
+
+Competitors reviewed this pass: **Westfield Old Orchard's 2026 Chanukah
+page** (a confirmed nearby lighting) and **past Daily Herald coverage** of
+the Arlington Heights and Wheeling lightings. The design/UX angle is **the
+homepage on a phone**: a fine page whose signup form sits 2,600 px down.
 
 
 ## Working agreements for autonomous iteration
