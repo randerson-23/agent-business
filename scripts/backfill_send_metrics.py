@@ -33,6 +33,7 @@ runs skip anything that already has a `metrics` key.
 from __future__ import annotations
 
 import json
+import re
 import logging
 import os
 import sys
@@ -103,6 +104,29 @@ def fetch_email_analytics(buttondown_id: str, api_key: str) -> dict:
     return resp.json()
 
 
+BUTTONDOWN_NEWSLETTERS_URL = "https://api.buttondown.com/v1/newsletters"
+TRACKING_STATE_PATH = SEND_HISTORY_PATH.parent / "buttondown_tracking.json"
+_TRACKING_KEY = re.compile(r"track|analytic|click|open", re.IGNORECASE)
+
+
+def fetch_tracking_state(api_key: str, get=requests.get) -> dict | None:
+    """ROADMAP.md item 536: ten issues of 0 clicks suggest click tracking is off
+    (Buttondown's tracking is opt-in). Read-only: record whatever tracking
+    settings the newsletter API exposes, so the owner's one settings visit can
+    be checked. Never changes a setting whose field name isn't documented."""
+    try:
+        resp = get(BUTTONDOWN_NEWSLETTERS_URL, headers={"Authorization": f"{BUTTONDOWN_AUTH_SCHEME} {api_key}"}, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as exc:  # noqa: BLE001 - informational, never blocks the backfill
+        logger.warning("Could not read newsletter settings: %s", exc)
+        return None
+    results = data.get("results") if isinstance(data, dict) else None
+    newsletter = (results or [data])[0] if (results or isinstance(data, dict)) else {}
+    fields = {k: v for k, v in (newsletter or {}).items() if _TRACKING_KEY.search(k) and isinstance(v, (bool, str, int, float, type(None)))}
+    return {"fields": fields, "exposed": bool(fields)}
+
+
 def derive_metrics(analytics: dict) -> dict:
     """The handful of numbers a sponsor conversation or SPONSOR_KIT.md
     actually needs (ROADMAP.md item 187), not the full raw analytics
@@ -135,6 +159,10 @@ def main() -> int:
         return 1
 
     now = datetime.now(timezone.utc)
+    state = fetch_tracking_state(api_key)  # item 536
+    if state is not None:
+        TRACKING_STATE_PATH.write_text(json.dumps(dict(state, as_of=now.date().isoformat()), indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        logger.info("Buttondown tracking settings exposed by the API: %s", state["fields"] or "none")
     # Looked up by name here rather than relying on load_send_history's
     # own default parameter, which is bound once at import time - a
     # test that monkeypatches the module-level SEND_HISTORY_PATH needs

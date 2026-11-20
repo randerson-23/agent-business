@@ -601,3 +601,27 @@ def test_test_draft_goes_to_one_certain_subscriber_by_id(capsys):
     tagged = [one[0], dict(two[1], tags=["owner"])]
     assert st.pick_test_subscriber("k", get=lambda *a, **k: R(tagged))[0] == "sub_2"
     assert "@" not in why
+
+
+def test_tracking_state_records_only_tracking_fields_and_never_fails():
+    # ROADMAP.md item 536.
+    import backfill_send_metrics as b
+
+    class R:
+        def __init__(self, data):
+            self._d = data
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return self._d
+
+    data = {"results": [{"id": "n1", "username": "withinten", "email_address": "x@example.com", "enable_click_tracking": False, "enable_open_tracking": True}]}
+    state = b.fetch_tracking_state("k", get=lambda *a, **k: R(data))
+    assert state == {"fields": {"enable_click_tracking": False, "enable_open_tracking": True}, "exposed": True}
+    assert b.fetch_tracking_state("k", get=lambda *a, **k: R({"results": [{"id": "n1"}]})) == {"fields": {}, "exposed": False}
+
+    def boom(*a, **k):
+        raise RuntimeError("down")
+    assert b.fetch_tracking_state("k", get=boom) is None

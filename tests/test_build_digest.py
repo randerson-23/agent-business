@@ -8021,3 +8021,13 @@ def test_giving_tuesday_date_banner_and_email_line(monkeypatch):
     assert line["text"].startswith("🤝 GivingTuesday is Dec 1")
     assert build_digest.giving_tuesday_email_line(datetime(2026, 11, 18, 22, 37, tzinfo=timezone.utc)) is None  # Nov 19 issue
     assert build_digest.giving_tuesday_email_line(datetime(2026, 12, 2, 22, 37, tzinfo=timezone.utc)) is None
+
+
+def test_sponsor_kit_names_every_live_town():
+    # ROADMAP.md item 537: the kit can't drift from config again.
+    kit = (build_digest.ROOT / "SPONSOR_KIT.md").read_text(encoding="utf-8")
+    assert "five-region" not in kit and "all five of these towns" not in kit
+    for cfg in build_digest.load_regions():
+        assert cfg["region"]["name"] in kit, cfg["region"]["name"]
+    words = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
+    assert f"{words[len(build_digest.load_regions())]} towns" in kit or f"{words[len(build_digest.load_regions())]}-town" in kit

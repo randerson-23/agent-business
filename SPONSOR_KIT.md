@@ -1,9 +1,9 @@
 # Sponsor Media Kit — Within Ten
 
 *A weekly digest of village news, library events, and park district
-programs — currently live for Mount Prospect (60056), Arlington Heights
-(60005), Des Plaines (60016), Palatine (60067), and Wheeling (60090), IL,
-with more ZIPs planned.*
+programs — currently live for six towns: Arlington Heights (60005), Des
+Plaines (60016), Elk Grove Village (60007), Mount Prospect (60056), Palatine
+(60067), and Wheeling (60090), IL, with more ZIPs planned.*
 
 **Live pricing and real-time per-region availability:**
 https://withintenmiles.com/sponsor/
@@ -56,13 +56,19 @@ The newsletter itself is new — the first issue went out September 17,
 2026 — so a subscriber count isn't the number to lead with this early;
 it's honestly the weakest one this business has. But it's also not the
 number every tier depends on. **Weekly Spot and Event Promo are list
-products** — your name in an email, priced on who opens it — and for
-those, audience is the honest gate:
+products** — your name in an email — and for those, audience is the
+honest gate. What we'll report, in order of how much you should trust it
+(ROADMAP.md items 536, 537):
 
-- **Open rate.** 2026 email benchmarks put a typical newsletter at
-  20–30% open, with 40%+ considered excellent. We'll report our actual
-  rate against that scale as soon as there's a real week of data to
-  report.
+- **Clicks on your link.** Every sponsor link is counted per issue, so you
+  see how many readers actually went to your page. This is the number to
+  judge us on.
+- **Visits from the email.** Each email link carries a campaign tag, so
+  the site's own privacy-first analytics show how many readers arrived
+  from the issue and where they went.
+- **Open rate, as a secondary figure.** Typical newsletters open at
+  20–30%. Apple Mail's privacy protection pre-loads emails, which inflates
+  opens for every sender, so we show it but don't sell on it.
 - **Retention.** News-vertical newsletters churn at roughly **5.47% a
   month**, among the lowest of any content category — and readers who
   open most weeks are about **2× as likely to still be subscribed a
@@ -73,7 +79,7 @@ those, audience is the honest gate:
 **Annual Partner and Neighborhood Authority are almost entirely *site*
 products**, and the site's numbers are real today, not "coming soon":
 a permanent directory listing, a seasonal-guide spotlight, and a live
-SEO backlink are all delivered by the indexed, five-region site itself
+SEO backlink are all delivered by the indexed, six-town site itself
 — verified in Google Search Console, sitemap submitted — not by the
 email list. None of that improves much at 10,000 subscribers, and none
 of it is blocked by having zero.
@@ -153,7 +159,7 @@ argument for what the price buys instead of a cheaper, noisier ad slot.
 
 ## Isn't this just Patch?
 
-Fair question — Patch already covers all five of these towns, and
+Fair question — Patch already covers these towns, and
 PatchAM can auto-generate a local newsletter for almost any US ZIP on
 demand. The honest answer isn't "no one else does this," it's "Patch
 doesn't do *this*: PatchAM is built from aggregation, generic automated
@@ -199,8 +205,9 @@ towns — not a case of one replacing the other.
 
 ## Who this is for
 
-Local, independently owned businesses serving families in Mount Prospect,
-Arlington Heights, Des Plaines, Palatine, or Wheeling: pediatric/family
+Local, independently owned businesses serving families in Arlington
+Heights, Des Plaines, Elk Grove Village, Mount Prospect, Palatine, or
+Wheeling: pediatric/family
 dentists, tutoring and enrichment programs, ice cream and bakery shops,
 real estate agents, home services (HVAC, landscaping), pediatricians and
 family medicine, kids' activity providers (gymnastics, swim, martial
