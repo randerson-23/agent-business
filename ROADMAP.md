@@ -297,6 +297,11 @@ reference, *not now*.
    loop sends you, check it against `withintenmiles.com/email-preview/`
    for your town, and reply "matches" (or note what's off). That one word
    turns on each reader's own town first.
+   *And (item 536, 30 seconds):* turn on **click tracking** (Settings →
+   Emails; the October 2026 update moved the toggle there). Ten issues have
+   recorded 0 clicks because Buttondown's click tracking is opt-in; clicks
+   are the number a sponsor will believe. If the sending domain is verified,
+   withintenmiles.com can be the custom tracking domain.
 
 Everything below needs the owner to take an action outside this repo.
 **Cleaned up 2026-10-06 at Ryan's request:** stale and closed entries
@@ -21741,7 +21746,7 @@ nearby agencies with nature centres.
 
 #### P2 (new)
 
-522. (🟡 PROBE 2026-11-19: round 48 asks parkfun.com's Events Calendar REST and iCal export) **Schaumburg Park District's nature centre, probe first.** Build loop.
+522. (⏸ PARKED 2026-11-20: round 48 found no Events Calendar at parkfun.com (REST 404, `?ical=1` returns an HTML page); no feed to read, and its listings aren't scraped) **Schaumburg Park District's nature centre, probe first.** Build loop.
      Probe `parkfun.com/wp-json/tribe/events/v1/events` and
      `parkfun.com/events/?ical=1`. If either answers, add a `tribe_venues`
      source **limited to Spring Valley Nature Center and other venues
@@ -21752,7 +21757,7 @@ nearby agencies with nature centres.
 
 #### P3 (new)
 
-523. (🟡 PROBE 2026-11-19: round 48 asks lcfpd.org/calendar/ for a feed link) **Lake County Forest Preserves' Ryerson Woods, probe only.** Build loop.
+523. (⏸ PARKED 2026-11-20: lcfpd.org answers the runner 403; no feed found, so no source) **Lake County Forest Preserves' Ryerson Woods, probe only.** Build loop.
      One probe of `lcfpd.org/calendar` for an iCal or RSS export and for
      Ryerson Woods listings. Add a source only if a feed exists; never
      scrape the week views. Tests: none until a feed is confirmed.
@@ -22126,7 +22131,7 @@ same: **1 open, 0 clicks**, ten issues running.
 
 #### P1 (new)
 
-536. **Find out whether Buttondown is tracking clicks, and turn it on.** Build
+536. (🟡 2026-11-20: backfill_send_metrics.py now reads the newsletter settings through the API on every weekly run and writes the tracking fields it exposes to data/buttondown_tracking.json (CI-written, read-only: no undocumented field is ever set). Turning click tracking on is a line in Needs Ryan step 5 until that file shows the API exposes the toggle) **Find out whether Buttondown is tracking clicks, and turn it on.** Build
      loop:
 
      - Read the newsletter's settings through the API (Buttondown has
@@ -22150,7 +22155,7 @@ same: **1 open, 0 clicks**, ten issues running.
 
 #### P2 (new)
 
-537. **Bring `SPONSOR_KIT.md` up to date: six towns, and the honest
+537. (✅ DONE 2026-11-20: the kit names all six towns, says six-town, and leads the list-product reach with clicks on the sponsor's link, then visits from the email, with open rate as a secondary figure inflated by Apple Mail's privacy protection; a test fails the build if a live town is missing from the kit or the town-count word is wrong) 537. **Bring `SPONSOR_KIT.md` up to date: six towns, and the honest
      numbers.** Build loop:
 
      - Replace *"five-region"* and similar with the town count from
@@ -22215,7 +22220,8 @@ design/UX angle is **the sponsor kit as a sponsor reads it**.
   this sandbox, never stage any of them. `data/source_last_good/`
   (item 262) is the same: CI writes it, a local sandbox build never does,
   and nothing under it is hand-committed except the `.gitkeep`. Likewise
-  `data/source_failure_window.json` (item 194): CI appends to it, a sandbox
+  `data/buttondown_tracking.json` (item 536, written by backfill-send-metrics.yml) is the
+  same: never hand-commit it. `data/source_failure_window.json` (item 194): CI appends to it, a sandbox
   build would append all-failure outcomes, so `git restore` it after a
   local build and never stage it. `indexnow_log.json` has been
   tracked since CI first committed it on 2026-10-03, so `git restore`
