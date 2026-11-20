@@ -2,105 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-11-19T21:59:42+00:00",
-  "numberOfItems": 36,
+  "dateModified": "2026-11-20T06:01:06+00:00",
+  "numberOfItems": 40,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Tech Assistance",
-        "startDate": "2026-11-19T10:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-tech-assistance-2026-11-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17116010",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Thursday, November 19 2026 10:00am - 10:45am \n Have a basic question about your device\nand thinking of trying Cloud Library,\nHoopla or another library app?…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Memory Cafe",
-        "startDate": "2026-11-19T14:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-memory-cafe-2026-11-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/14656932",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Thursday, November 19 2026 2:00pm - 3:00pm \n If you or a loved one are experiencing memory loss, you are invited to join us for activities and socialization…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Knitting for Beginners",
-        "startDate": "2026-11-19T18:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-knitting-for-beginners-2026-11-19",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17127802",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Thursday, November 19 2026 6:00pm - 8:00pm \n Learn the basic skills needed to start your knitting journey. Materials provided. R"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
       "item": {
         "@type": "Event",
         "name": "River Trail Nightlife: Owl Prowl",
@@ -130,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Super Saturday: Chicago Cossacks - Ukrainian Music and Dance",
@@ -161,7 +68,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Indoor Edible Gardens",
@@ -191,7 +98,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "What’s On The Menu?",
@@ -221,7 +128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Nocturnal Hunters: Owls",
@@ -251,7 +158,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Lights Around Wheeling",
@@ -281,7 +188,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Got Science? Space Exploration",
@@ -312,7 +219,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Introduction to Tinkercad",
@@ -344,7 +251,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Middle School Book Club | Grades 6-8",
@@ -375,7 +282,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Small Serendipity",
@@ -405,7 +312,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Wildlife Connections",
@@ -435,7 +342,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -466,7 +373,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -497,7 +404,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -528,7 +435,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Finger Painting",
@@ -559,7 +466,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "EARLY CLOSING - Thanksgiving Holiday",
@@ -590,7 +497,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Lotería Night | Noche de Lotería | At the Branch",
@@ -621,7 +528,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Cicada Pinning Class",
@@ -651,7 +558,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Reading Fair",
@@ -682,7 +589,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -713,7 +620,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "CSI Book Club",
@@ -744,7 +651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Genealogy Interest Group Meeting",
@@ -775,7 +682,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -806,7 +713,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Alcohol Marker Basics for Coloring",
@@ -837,7 +744,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -868,7 +775,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Writers Workshop",
@@ -899,7 +806,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -930,7 +837,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Waterless Snowglobes",
@@ -961,7 +868,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Jewelry Making Extravaganza",
@@ -992,7 +899,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -1023,7 +930,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -1053,7 +960,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Google Sheets",
@@ -1085,7 +992,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Library Board Workshop",
@@ -1112,6 +1019,222 @@
         },
         "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Wednesday, December 02 2026 7:00pm - 9:00pm \n The Board of Trustees meet for its monthly workshop and planning session. This meeting is open to the public.…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 34,
+      "item": {
+        "@type": "Event",
+        "name": "Office Hours with Congressman Brad Schneider's Office",
+        "startDate": "2026-12-03T09:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-office-hours-with-congressman-brad-schneider-s-office-2026-12-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16326975",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Thursday, December 03 2026 9:30am - 12:30pm \n A representative is present to engage with the community, share important information relevant to residents and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 35,
+      "item": {
+        "@type": "Event",
+        "name": "Social Services | Servicios Sociales",
+        "startDate": "2026-12-03T10:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-social-services-servicios-sociales-2026-12-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17922215",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Thursday, December 03 2026 10:00am - 11:15am \n A resource services coordinator from OMNI will provide resources for the community. Una representante de OMNI…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 36,
+      "item": {
+        "@type": "Event",
+        "name": "Monogrammed Throw Blankets",
+        "startDate": "2026-12-03T12:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-monogrammed-throw-blankets-2026-12-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17067836",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Thursday, December 03 2026 12:00pm - 1:30pm \n Learn to use an embroidery machine to add a monogram to a fleece throw blanket. R"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 37,
+      "item": {
+        "@type": "Event",
+        "name": "Evening Book Discussion",
+        "startDate": "2026-12-03T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-evening-book-discussion-2026-12-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17090943",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Thursday, December 03 2026 6:00pm - 7:00pm \n Registration and book pickup begins November 3. Tales of magic and mayhem on the high seas in this story of…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 38,
+      "item": {
+        "@type": "Event",
+        "name": "Night Owls",
+        "startDate": "2026-12-03T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-night-owls-2026-12-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16927182",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Thursday, December 03 2026 6:00pm - 6:30pm \n Not quite ready for bed? Relax with stories, songs and literacy activities. TR"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 39,
+      "item": {
+        "@type": "Event",
+        "name": "Peer Jury",
+        "startDate": "2026-12-03T19:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-peer-jury-2026-12-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2053"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 40,
+      "item": {
+        "@type": "Event",
+        "name": "High School Book Club | Grades 9-12",
+        "startDate": "2026-12-03T19:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-high-school-book-club-grades-9-12-2026-12-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/16995841",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Thursday, December 03 2026 7:00pm - 8:00pm \n Book pickup begins Oct 29 at the Youth Services Desk. Welcome to Blackwood Academy: the legendary school located…"
       }
     }
   ]

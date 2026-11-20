@@ -1,54 +1,6 @@
 {
- "fetched_at": "2026-11-19T21:59:42+00:00",
+ "fetched_at": "2026-11-20T06:01:06+00:00",
  "items": [
-  {
-   "date": "Thu, 19 Nov 2026 00:00:00 +0000",
-   "detail": "Thursday, November 19 2026 12:00am - 11:59pm \n The library is joining the statewide event, encouraging families to spend quality time reading together with a free special kit including a book and fun activities.",
-   "title": "Family Reading Night",
-   "url": "https://mppl.libnet.info/event/16903460"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 09:30:00 +0000",
-   "detail": "Thursday, November 19 2026 9:30am - 10:00am \n A lifelong love of reading starts at birth! Join us for songs, rhymes, stories, and playtime made specially for infants.",
-   "title": "Baby Storytime",
-   "url": "https://mppl.libnet.info/event/16637939"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 10:30:00 +0000",
-   "detail": "Thursday, November 19 2026 10:30am - 11:00am \n Bring the whole family and join us for an interactive storytime with high-energy stories, songs, and activities.",
-   "title": "Family Storytime",
-   "url": "https://mppl.libnet.info/event/16637958"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 14:00:00 +0000",
-   "detail": "Thursday, November 19 2026 2:00pm - 3:30pm \n A new generation is getting ready to collect Social Security. Are you ready to optimize your retirement benefits?",
-   "title": "Social Security Planning",
-   "url": "https://mppl.libnet.info/event/15933716"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 16:00:00 +0000",
-   "detail": "Thursday, November 19 2026 4:00pm - 5:00pm \n Drop by for cookies and an informal chat with the Executive Director.",
-   "title": "Meet the Executive Director",
-   "url": "https://mppl.libnet.info/event/16621540"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 18:00:00 +0000",
-   "detail": "Thursday, November 19 2026 6:00pm - 9:00pm \n The Board of Library Trustees meets the third Thursday of each month at 6 p.m. at the library.",
-   "title": "Regular Library Board Meeting",
-   "url": "https://mppl.libnet.info/event/15921892"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 18:00:00 +0000",
-   "detail": "Thursday, November 19 2026 6:00pm - 7:00pm \n Be a tech explorer and try out STEAM toys at the library.",
-   "title": "Tech Playground",
-   "url": "https://mppl.libnet.info/event/16393017"
-  },
-  {
-   "date": "Thu, 19 Nov 2026 18:00:00 +0000",
-   "detail": "Thursday, November 19 2026 6:00pm - 7:00pm \n Step into a world of celestial magic, political intrigue, and ancient prophecies with New York Times bestselling author Rebecca Roanhorse as we dive deep into her Between Earth and Sky trilogy.",
-   "title": "Epic Worlds and Celestial Prophecies With Rebecca Roanhorse",
-   "url": "https://mppl.libnet.info/event/17310611"
-  },
   {
    "date": "Fri, 20 Nov 2026 10:00:00 +0000",
    "detail": "Friday, November 20 2026 10:00am - 11:30am \n Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together full of new learning experiences with the flexible arrival time your family needs.",
@@ -360,6 +312,54 @@
    "detail": "Thursday, December 10 2026 3:00pm - 4:00pm \n Local entrepreneurs and small businesses can get one-on-one support by meeting with an experienced mentor from SCORE North Cook and Lake Counties.",
    "title": "SCORE Business Mentoring",
    "url": "https://mppl.libnet.info/event/16031259"
+  },
+  {
+   "date": "Thu, 10 Dec 2026 16:00:00 +0000",
+   "detail": "Thursday, December 10 2026 4:00pm - 5:00pm \n Local entrepreneurs and small businesses can get one-on-one support by meeting with an experienced mentor from SCORE North Cook and Lake Counties.",
+   "title": "SCORE Business Mentoring",
+   "url": "https://mppl.libnet.info/event/16031304"
+  },
+  {
+   "date": "Thu, 10 Dec 2026 17:00:00 +0000",
+   "detail": "Thursday, December 10 2026 5:00pm - 6:00pm \n Local entrepreneurs and small businesses can get one-on-one support by meeting with an experienced mentor from SCORE North Cook and Lake Counties.",
+   "title": "SCORE Business Mentoring",
+   "url": "https://mppl.libnet.info/event/16031372"
+  },
+  {
+   "date": "Thu, 10 Dec 2026 18:00:00 +0000",
+   "detail": "Thursday, December 10 2026 6:00pm - 7:00pm \n Experience the thrill of telling a computer what to do and watching your instructions come to life!",
+   "title": "CodeBuilders",
+   "url": "https://mppl.libnet.info/event/16393032"
+  },
+  {
+   "date": "Fri, 11 Dec 2026 16:30:00 +0000",
+   "detail": "Friday, December 11 2026 4:30pm - 6:00pm \n Love books? Come hang out with us at Khepri Kitchen + Coffee, 106 S. Emerson St. We'll talk about new books, recommend some of our favorites, and treat you to a snack and a drink.",
+   "title": "Teen Book Café",
+   "url": "https://mppl.libnet.info/event/14685614"
+  },
+  {
+   "date": "Fri, 11 Dec 2026 17:00:00 +0000",
+   "detail": "Friday, December 11 2026 5:00pm - 7:00pm \n Enjoy a movie night at the library and have fun building with LEGO bricks and other various toys!",
+   "title": "Build and Watch: The Grinch",
+   "url": "https://mppl.libnet.info/event/17200260"
+  },
+  {
+   "date": "Mon, 14 Dec 2026 14:00:00 +0000",
+   "detail": "Monday, December 14 2026 2:00pm - 3:00pm \n Stop in and bring your questions about technology-related subjects such as smartphones, computers, email, Microsoft Office, e-books, and more!",
+   "title": "Drop-In Tech Help",
+   "url": "https://mppl.libnet.info/event/14756681"
+  },
+  {
+   "date": "Mon, 14 Dec 2026 17:00:00 +0000",
+   "detail": "Monday, December 14 2026 5:00pm - 7:00pm \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.",
+   "title": "Creation Station: Tote-ally Terrific",
+   "url": "https://mppl.libnet.info/event/17096911"
+  },
+  {
+   "date": "Mon, 14 Dec 2026 17:00:00 +0000",
+   "detail": "Monday, December 14 2026 5:00pm - 6:00pm \n Give back to the community and earn volunteer hours at the same time.",
+   "title": "Teen Volunteering",
+   "url": "https://mppl.libnet.info/event/17200160"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

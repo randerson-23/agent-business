@@ -1,17 +1,6 @@
 {
- "fetched_at": "2026-11-19T21:59:42+00:00",
+ "fetched_at": "2026-11-20T06:01:06+00:00",
  "items": [
-  {
-   "date": "20261119T100000",
-   "detail": "Come join us as we create small gardens that are great for indoor spaces as well as outdoors! We will make small planters that incorporate rocks and crystals into the design while exploring the sensory qualities of these gardens. Participants are encouraged to bring collected rocks and crystals and recycled plant containers.",
-   "end_date": "20261119T120000",
-   "lat": 41.998562036604,
-   "lon": -87.785286183849,
-   "title": "Rock and Crystal Gardens",
-   "url": "https://fpdcc.com/event/rock-and-crystal-gardens/",
-   "venue_city": "Chicago",
-   "venue_name": "Caldwell Woods Wellness Center"
-  },
   {
    "date": "20261120T170000",
    "detail": "A guided walk on our trail to search for local owls. Ages 8 & up.",
@@ -198,39 +187,6 @@
    "url": "https://fpdcc.com/event/nature-arts-for-health-2/",
    "venue_city": "Chicago",
    "venue_name": "Caldwell Woods Wellness Center"
-  },
-  {
-   "date": "20261205T110000",
-   "detail": "Explore snowy trails on a guided ¼-mile walk! Discover nature with fellow teens while we explore the trail with or without snow. Snowshoes provided with 4+ inches of snow. Ages 13-19.",
-   "end_date": "20261205T110000",
-   "lat": 41.70896743,
-   "lon": -87.87715272,
-   "title": "Teen Winter Adventure Hike",
-   "url": "https://fpdcc.com/event/teen-winter-adventure-hike/",
-   "venue_city": "Willow Springs",
-   "venue_name": "Little Red Schoolhouse Nature Center"
-  },
-  {
-   "date": "20261205T130000",
-   "detail": "Beyond Our Senses: Bank Swallows follows thousands of swallows as they return to the Lake Michigan bluffs each spring to nest, raise young, and survive using extraordinary perceptions that allow them to capture up to 3,500 insects per day among other incredible feats. Following the screening, filmmaker David Busse shares the behind-the-scenes story of his years-long, often obsessive pursuit of the film from daily check-ins on the colony to collaborations with a PhD researcher, conservationists, and filmmakers spanning from his home in Wisconsin to Ireland and beyond, all while becoming a father for the first time. A 4x Emmy Award-winning filmmaker based in South Milwaukee, Busse calls Beyond Our Senses his most ambitious project yet and is now touring it through festivals and community screenings across the Great Lakes region.",
-   "end_date": "20261205T130000",
-   "lat": 41.68926677,
-   "lon": -87.92571427,
-   "title": "Beyond Our Senses: Bank Swallows",
-   "url": "https://fpdcc.com/event/beyond-our-senses-bank-swallows/",
-   "venue_city": "Lemont",
-   "venue_name": "Sagawau Environmental Learning Center"
-  },
-  {
-   "date": "20261205T133000",
-   "detail": "Venture out on our scenic trails for a 3- to 4-mile guided walk.",
-   "end_date": "20261205T133000",
-   "lat": 41.60593301,
-   "lon": -87.56574946,
-   "title": "Live Healthy, Discover Nature! Walk",
-   "url": "https://fpdcc.com/event/live-healthy-discover-nature-walk-2/",
-   "venue_city": "South Holland",
-   "venue_name": "Sand Ridge Nature Center"
   },
   {
    "date": "20261205T150000",
@@ -659,6 +615,50 @@
    "url": "https://fpdcc.com/event/winter-bird-feeding/",
    "venue_city": "Lemont",
    "venue_name": "Sagawau Environmental Learning Center"
+  },
+  {
+   "date": "20261213T110000",
+   "detail": "Guided instruction & fun drawing exercises featuring the coyote. We’ll provide drawing materials or you are welcome to bring your own. All artistic levels welcome. Led by University of Illinois Extension Master Naturalist volunteers. Ages 16 & up.",
+   "end_date": "20261213T130000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Guided Wildlife Sketching: Coyote",
+   "url": "https://fpdcc.com/event/guided-wildlife-sketching-coyote/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261213T110000",
+   "detail": "Guided instruction & fun drawing exercises featuring the coyote. We’ll provide drawing materials or you are welcome to bring your own. All artistic levels welcome. Led by University of Illinois Extension Master Naturalist volunteers. Ages 16 & up.",
+   "end_date": "20261213T130000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Guided Wildlife Sketching: Coyote",
+   "url": "https://fpdcc.com/event/guided-wildlife-sketching-coyote/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261213T130000",
+   "detail": "Learn techniques for relaxation and meditation practices. Led by a University of Illinois Extension Master Naturalist. Ages 18 & up.",
+   "end_date": "20261213T143000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Forest Therapy Walk",
+   "url": "https://fpdcc.com/event/forest-therapy-walk/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261213T130000",
+   "detail": "Learn about the history and mysteries of oak galls.",
+   "end_date": "20261213T130000",
+   "lat": 42.11563369,
+   "lon": -88.16357511,
+   "title": "Gall on a Winter’s Day",
+   "url": "https://fpdcc.com/event/gall-on-a-winters-day/",
+   "venue_city": "Barrington Hills",
+   "venue_name": "Crabtree Nature Center"
   }
  ],
  "source": "Forest Preserves of Cook County — north"

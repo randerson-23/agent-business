@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-11-19T21:59:42+00:00",
+  "dateModified": "2026-11-20T06:01:06+00:00",
   "numberOfItems": 14,
   "itemListElement": [
     {
@@ -10,9 +10,9 @@
       "position": 1,
       "item": {
         "@type": "Event",
-        "name": "Toddler Time",
-        "startDate": "2026-11-19",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-toddler-time-2026-11-19",
+        "name": "Senior Center: Travelogue",
+        "startDate": "2026-11-20",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-senior-center-travelogue-2026-11-20",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -26,7 +26,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224184",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/233828",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -40,9 +40,9 @@
       "position": 2,
       "item": {
         "@type": "Event",
-        "name": "First-Time Parents' Meetup",
-        "startDate": "2026-11-20",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-first-time-parents-meetup-2026-11-20",
+        "name": "Beginning ESL",
+        "startDate": "2026-11-21",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-11-21",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -56,7 +56,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/230133",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/236749",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -70,39 +70,9 @@
       "position": 3,
       "item": {
         "@type": "Event",
-        "name": "Family Time",
-        "startDate": "2026-11-21",
-        "url": "https://withintenmiles.com/e/2026-11-21-family-time/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL",
-            "streetAddress": "500 N. Dunton Ave."
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224198",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Arlington Heights Memorial Library",
-          "url": "https://www.ahml.info"
-        },
-        "image": "https://withintenmiles.com/og/e/2026-11-21-family-time.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Сторітайм українською | Ukrainian Language Storytime",
+        "name": "Makerplace Custom Cricut Tote Bag",
         "startDate": "2026-11-22",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -116,7 +86,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/226527",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/233406",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -127,7 +97,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Kids' Time",
@@ -157,7 +127,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Social Worker in the Library",
@@ -187,7 +157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "The Christmas Schooner",
@@ -218,7 +188,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Baby Time",
@@ -248,7 +218,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "🦃 Arlington Heights Turkey Trot",
@@ -278,7 +248,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "VIRTUAL Culture & Conversation (level: intermediate)",
@@ -308,7 +278,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting",
@@ -339,12 +309,12 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
-        "name": "Games & Gab",
+        "name": "Family Time",
         "startDate": "2026-11-28",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-11-28",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-28",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -358,7 +328,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/236748",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224199",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",
@@ -369,7 +339,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Dino Party",
@@ -399,7 +369,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Resident Registration",
@@ -425,6 +395,37 @@
         },
         "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
         "description": "Resident registration for Winter and Spring programs opens Tuesday, December 1 at 10AM. Check your household’s online profile in advance to ensure you can…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "item": {
+        "@type": "Event",
+        "name": "A Christmas Carol",
+        "startDate": "2026-12-03",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-a-christmas-carol-2026-12-03",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Metropolis Performing Arts Centre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Arlington Heights",
+            "addressRegion": "IL",
+            "streetAddress": "111 W Campbell Street"
+          }
+        },
+        "sameAs": "https://www.metropolisarts.com/event/christmas-carol-2026/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Metropolis Performing Arts Centre",
+          "url": "https://www.metropolisarts.com"
+        },
+        "image": "https://withintenmiles.com/og/arlington-heights-60005.png",
+        "description": "This year, we have three evening and matinee performances of our Main Stage production. We also have daytime matinees as a part of our Family Series, which…"
       }
     }
   ]
