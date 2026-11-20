@@ -7413,6 +7413,42 @@ def select_tonight(sections: list[dict], now: datetime, limit: int = 3) -> dict 
     return {"label": f"TONIGHT ({day.strftime('%a %b')} {day.day})".upper(), "events": [f[3] for f in found[:limit]]}
 
 
+def select_new_years_eve(sections: list[dict], now: datetime, limit: int = 4) -> dict | None:
+    """ROADMAP.md item 538: an issue whose window opens on a Thursday New Year's
+    Eve (the Dec 30 delivery) leads with that day: Noon Year's Eve parties
+    (item 446's title match, adults-only left out) first, then family events
+    from 3 PM, each with its calendar link. None in any other week."""
+    delivery = email_delivery_time(now).date()
+    window = weekend_window(*weekend_dates(delivery))
+    nye = next((d for d in window if (d.month, d.day) == (12, 31)), None)
+    if nye is None or nye.weekday() != 3:
+        return None
+    seen, found = set(), []
+    for sec in sections:
+        for e in sec.get("upcoming_events") or []:
+            try:
+                start = datetime.fromisoformat(e.get("date_iso") or "")
+            except ValueError:
+                continue
+            if start.tzinfo is not None:
+                start = start.astimezone(LOCAL_TZ).replace(tzinfo=None)
+            if start.date() != nye or e.get("attendable") is False or e.get("sponsored_by") or e.get("event_status"):
+                continue
+            text = f"{e.get('title') or ''} {e.get('detail') or ''}"
+            party = bool(NYE_TITLE.search(e.get("title") or "")) and not NYE_ADULT.search(text)
+            if not party and (start.time() < TONIGHT_FROM or family_relevance(e) < 0 or NYE_ADULT.search(text)):
+                continue
+            key = (sec["region_name"], (e.get("title") or "").strip().lower())
+            if key in seen:
+                continue
+            seen.add(key)
+            found.append((not party, start, -family_relevance(e), dict(e, town=sec["region_name"], tonight_when=event_time_label(start.isoformat()), email_emoji="🎉" if party else email_event_emoji(e))))
+    if not found:
+        return None
+    found.sort(key=lambda f: f[:3])
+    return {"label": "THURSDAY: NEW YEAR'S EVE", "events": [f[3] for f in found[:limit]]}
+
+
 def build_conditional_email_body(by_town: dict[str, str], fallback: str) -> str:
     """ROADMAP.md item 507: Buttondown renders its email body with Django
     templating per subscriber, so one body can carry every town's version:
@@ -7827,6 +7863,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
             region_blocks = [home] + [b for b in region_blocks if b is not home]
     top_picks = pick_email_top_picks(region_blocks)
     tonight = select_tonight(sections, now)  # item 497
+    new_years_eve = select_new_years_eve(sections, now)  # item 538
     thanksgiving = thanksgiving_morning(sections, now)  # items 510, 512
     lights_line = build_lights_email_line(load_light_displays(email_delivery_time(now).date(), TOWN_CENTRES), now)  # item 527
     event_total = sum(len([e for e in s["weekend_events"] if e.get("attendable", True)]) for s in sections)
@@ -7860,6 +7897,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         region_blocks=region_blocks,
         reader_town_name=reader_town_name,
         tonight=tonight,
+        new_years_eve=new_years_eve,
         thanksgiving=thanksgiving,
         lights_line=lights_line,
         top_picks=top_picks,
@@ -8524,9 +8562,12 @@ def weekend_label(local_now: datetime) -> str:
 
 def weekend_window(friday: date, saturday: date, sunday: date) -> list[date]:
     """The days a weekend page and the email cover: Friday to Sunday, plus
-    Thanksgiving itself on the long weekend after it (ROADMAP.md item 491)."""
+    Thanksgiving itself on the long weekend after it (ROADMAP.md item 491),
+    and New Year's Eve when New Year's Day is the Friday (item 538)."""
     days = [friday, saturday, sunday]
     if friday == _thanksgiving(friday.year) + timedelta(days=1):
+        days.insert(0, friday - timedelta(days=1))
+    elif (friday.month, friday.day) == (1, 1):  # item 538: New Year's Eve on the Thursday before
         days.insert(0, friday - timedelta(days=1))
     return days
 

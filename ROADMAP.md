@@ -222,7 +222,7 @@ doesn't re-suggest something already shipped.
 Pick from the top unless the owner has flagged something else:
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
 0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
-0. **538** with **539** (Christmas Eve and New Year's Eve issues moved to Wed Dec 23 and Wed Dec 30; a two-week winter-break edition; **by Dec 21**).
+0. ~~**538**~~ **DONE** (overrides for Dec 24 → Wed Dec 23 and Dec 31 → Wed Dec 30; the Dec 30 window is Dec 31 – Jan 3 and opens with a *Thursday: New Year's Eve* block), then **539** (the two-week winter-break edition for Dec 23; **by Dec 21**).
 0. **532** (per-reader test draft to the existing subscriber by ID, no new secret; unblocks 481, 508, 509).
 0. **529** (`/holidays/` family first, ticketed shows grouped, ALL-CAPS titles in title case site-wide), then **530** ("compiled from N official calendars" line and `isBasedOn` on hub pages).
 0. **528** (headliner emoji: 🎄 for tree lightings, 📸 for photos; quick, before the Nov 19 send if possible), then **527** ("Holiday lights to visit" on `/holidays/`: North School Park free, Willow Hill Lights ticketed, just outside; for the Dec 3 issue).
@@ -22198,7 +22198,7 @@ Year's Eve**, in the middle of a two-week school break.
 
 #### P1 (new)
 
-538. **Move the Christmas Eve and New Year's Eve issues a day earlier.** Build
+538. **DONE (2026-11-20).** `delivery_overrides` gains 2026-12-24 → 12-23 07:00 and 2026-12-31 → 12-30 07:00; `weekend_window` adds Thu Dec 31 when Jan 1 is the Friday; `select_new_years_eve` gives the email a *THURSDAY: NEW YEAR'S EVE* block (Noon Year's parties first with 🎉, adults-only left out, then family events from 3 PM, calendar links), rendered by the Tonight block's markup. **Move the Christmas Eve and New Year's Eve issues a day earlier.** Build
      loop, `config/newsletter.yaml`:
 
      - `delivery_overrides`: **`2026-12-24` → `2026-12-23T07:00`** (Wed)
