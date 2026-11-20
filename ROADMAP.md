@@ -222,6 +222,7 @@ doesn't re-suggest something already shipped.
 Pick from the top unless the owner has flagged something else:
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
 0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
+0. **538** with **539** (Christmas Eve and New Year's Eve issues moved to Wed Dec 23 and Wed Dec 30; a two-week winter-break edition; **by Dec 21**).
 0. **532** (per-reader test draft to the existing subscriber by ID, no new secret; unblocks 481, 508, 509).
 0. **529** (`/holidays/` family first, ticketed shows grouped, ALL-CAPS titles in title case site-wide), then **530** ("compiled from N official calendars" line and `isBasedOn` on hub pages).
 0. **528** (headliner emoji: 🎄 for tree lightings, 📸 for photos; quick, before the Nov 19 send if possible), then **527** ("Holiday lights to visit" on `/holidays/`: North School Park free, Willow Hill Lights ticketed, just outside; for the Dec 3 issue).
@@ -22179,6 +22180,75 @@ the owner. **537** follows.
 Competitors reviewed this pass: none. This pass read **Buttondown's tracking
 documentation and changelog** to explain ten issues of zero clicks. The
 design/UX angle is **the sponsor kit as a sponsor reads it**.
+
+#### Research pass 2026-11-20 (hundred-and-fifty-fifth pass)
+
+Overnight the build loop shipped item 536's first half: `data/buttondown_tracking.json`
+records the tracking fields the API exposes, and turning click tracking on is
+now a line in Needs Ryan step 5. It also shipped item 537 (the sponsor kit says
+six towns and leads with clicks) and parked items 522 and 523 (Schaumburg has no
+Events Calendar feed; Lake County answers 403). This pass looks five weeks
+ahead. **Two of December's Thursday issues land on Christmas Eve and New
+Year's Eve**, in the middle of a two-week school break.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **When the holiday-week issues should land** (Litmus, *"How does email engagement change during the holiday season?"*; HubSpot on holiday send times; SendGrid's 2019 holiday sending metrics; a healthcare-newsletter analysis of Christmas-week opens; Neon One's nonprofit email report; Benchmark's holiday timing guidance) | The evidence is mixed and mostly retail or B2B. One series has opens **peaking around Dec 22, at a low on Dec 25, and recovering around Dec 29**. A newsletter analysis found **little difference in the week before Christmas**. Nonprofit mail does well on **Dec 29–31**. Nothing measures a local weekend guide. The schedule delivers this site's issues **Thu Dec 24, 07:00 (Christmas Eve)** and **Thu Dec 31, 07:00 (New Year's Eve)**. The Dec 24 issue's weekend would be **Dec 25–27**, which is mostly closed, while families plan the whole break from **Dec 19 to Jan 3** | The issue's job is planning. Families plan the break before it starts, and on Christmas Eve morning they aren't planning anything. Item 491's `delivery_overrides` already moves a send cleanly, and item 497's *Tonight* block already handles a send that lands before its weekend. The Dec 31 issue misses the one dated thing that day (Noon Year's Eve, item 446) unless it arrives a day early with a *"Thursday: New Year's Eve"* block (item 538) |
+| **What a winter-break issue looks like (design/UX)** (the per-town winter-break pages, item 259; item 446's Noon Year's Eve block; item 527's holiday lights; item 492's indoor-play guide, due Dec 1; the camp catalogue links, item 438) | Everything a break issue needs exists **on the site**, spread across five pages: camps, lights, Noon Year's Eve, indoor places, library programmes. The email's shape, though, is built for **one weekend**: a three-day window, *Don't miss*, and town sections of 4–6 events | A two-week break issue should be organised the way a parent plans it: **this week / next week**, with camps and indoor places as standing lines and a few headline days (Christmas Eve closures, Noon Year's Eve, the Dec 26–27 weekend). That's a template variant, not a new feature (item 539) |
+
+#### P1 (new)
+
+538. **Move the Christmas Eve and New Year's Eve issues a day earlier.** Build
+     loop, `config/newsletter.yaml`:
+
+     - `delivery_overrides`: **`2026-12-24` → `2026-12-23T07:00`** (Wed)
+       and **`2026-12-31` → `2026-12-30T07:00`** (Wed), each with a
+       comment giving the reason and the mixed evidence above.
+     - The Dec 23 issue is the **winter-break edition** (item 539). The
+       Dec 30 issue's window is **Thu Dec 31 – Sun Jan 3**, opening with
+       a ***"Thursday: New Year's Eve"*** block from item 497's helper:
+       Noon Year's Eve parties (item 446) first, then evening family
+       events, with calendar links.
+     - The cron already runs on Tuesday nights when an issue is due
+       (item 491), so no workflow change.
+
+     Tests: both overrides move the delivery, the Dec 30 build shows the
+     New Year's Eve block with Noon Year's events first, and the Dec 24
+     and Dec 31 Thursday slots send nothing.
+
+#### P2 (new)
+
+539. **A winter-break edition for the Dec 23 issue: this week and next.**
+     Build loop, a template variant chosen when the delivery falls in
+     the week before the break (Dec 21–Jan 3, from the days-off data):
+
+     - **Window: Wed Dec 23 – Sun Jan 3.** Town sections are split into
+       ***"This week (Dec 23–27)"*** and ***"Next week (Dec 28 – Jan 3)"***,
+       with up to 4 events each.
+     - Standing lines at the top:
+       - **camps** (item 438's catalogue links);
+       - **holiday lights** (item 527);
+       - **Noon Year's Eve** (item 446);
+       - **indoor places** (item 492);
+       - **closures** that week (item 307, libraries closed on Dec 24–25).
+     - Subject: ***"Winter break: two weeks of things to do · N ideas"***,
+       within 50 characters.
+     - Keep it under Gmail's clipping limit (the existing check); if it
+       would clip, cut events, never the standing lines.
+
+     Tests: a Dec 23 build uses the variant with both week groups and
+     the standing lines, a normal week doesn't, and the clip check
+     passes.
+
+Re-rank: **538 and 539 go into the build queue after item 535**, with a
+deadline of **Dec 21** (the Dec 23 issue's build is Tue Dec 22). Nothing
+already queued moves.
+
+Competitors reviewed this pass: none. This pass read **holiday send-timing
+research** (Litmus, HubSpot, SendGrid, Neon One, Benchmark; all retail,
+B2B or nonprofit, mixed) to time the Christmas Eve and New Year's Eve
+issues. The design/UX angle is **what a two-week winter-break issue
+should look like**.
 
 
 ## Working agreements for autonomous iteration
