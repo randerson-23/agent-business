@@ -3,15 +3,15 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
-  <lastBuildDate>Sat, 21 Nov 2026 14:46:52 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 42 configured sources. 4 sources are shown from their last update, up to 7 hours ago.</description>
+  <lastBuildDate>Sat, 21 Nov 2026 22:05:25 +0000</lastBuildDate>
   <item>
-    <title>Arlington Heights: Family Time</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-21</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-21</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/224198</description>
+    <title>Arlington Heights: Beginning ESL</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-11-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-11-21</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/236749</description>
     <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/224198">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/236749">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: DIY with DPPL</title>
@@ -57,14 +57,6 @@
  Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it… Official listing: https://egvpl.libnet.info/event/17354433</description>
     <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17354433">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Palatine: New &amp; Used Clothing Sale</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-new-used-clothing-sale-2026-11-21</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-new-used-clothing-sale-2026-11-21</guid>
-    <description>New &amp; used clothing sale, big selection! Corner of Wood and Bo Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
-    <pubDate>Sat, 21 Nov 2026 08:00:00 +0000</pubDate>
-    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
     <title>Palatine: Palatine Winter Farmers' Market</title>
@@ -185,12 +177,12 @@
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-8/">Des Plaines Theatre — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Сторітайм українською | Ukrainian Language Storytime</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/226527</description>
+    <title>Arlington Heights: Makerplace Custom Cricut Tote Bag</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/233406</description>
     <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/226527">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/233406">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Elk Grove Village: The Arlington Camera Club</title>
@@ -434,6 +426,15 @@ Alex 630-673-3987 Official listing: https://desplaines.libnet.info/event/1719061
     <description>Purchase TicketsNovember 24, 2026 – January 3, 2027 American Sign Language interpreted performance: December 10, 2026, 7:30 pm Open Captioned performance:… Official listing: https://www.metropolisarts.com/event/christmas-schooner/</description>
     <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://www.metropolisarts.com/event/christmas-schooner/">Metropolis Performing Arts Centre — Shows</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: The Arlington Camera Club</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-24</guid>
+    <description>Tuesday, November 24 2026 12:00am - 11:59pm 
+ Arlington Camera Club photography exhibit. Official listing: https://egvpl.libnet.info/event/16362692</description>
+    <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/16362692">Elk Grove Village Public Library - Events</source>
   </item>
 </channel>
 </rss>

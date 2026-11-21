@@ -43,6 +43,14 @@ Seasonal attractions near the towns: offer a Weekly Spot at the launch rate for 
 |---|---|---|
 | Willow Hill Lights | Northbrook | Drive-through holiday light show, Nov 13 - Jan 3, timed tickets |
 
+### Downtown business associations
+
+Downtown business associations: send OUTREACH_TEMPLATES.md section 13 (Small Business Saturday) and 13a (holiday listing, $20 through Dec 15); one association speaks for many member shops.
+
+| Host | Town | Event |
+|---|---|---|
+| Downtown Palatine Business Association | Palatine | Shop Small Saturday, Sat Nov 28, 2026 (on its own homepage) |
+
 ### Fair organisers
 
 Booster clubs, PTOs and programmes running a craft fair or holiday market. Send OUTREACH_TEMPLATES.md section 14b two weeks before the fair.
