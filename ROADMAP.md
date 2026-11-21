@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **543** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
 0. ~~**540**~~ **DONE** with ~~**541**~~ **DONE**, then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
 0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
@@ -17906,7 +17907,7 @@ and **Small Business Saturday (Nov 28)**.
 
 #### P2 (new)
 
-377. **Small Business Saturday: one section, one outreach note.** Build
+377. (absorbed into item 543, pass 157) **Small Business Saturday: one section, one outreach note.** Build
      loop plus owner:
 
      - On `/holidays/` and in the Nov 25 issue, a **"Small Business
@@ -22319,6 +22320,73 @@ Competitors reviewed this pass: **Westfield Old Orchard's 2026 Chanukah
 page** (a confirmed nearby lighting) and **past Daily Herald coverage** of
 the Arlington Heights and Wheeling lightings. The design/UX angle is **the
 homepage on a phone**: a fine page whose signup form sits 2,600 px down.
+
+#### Research pass 2026-11-21 (hundred-and-fifty-seventh pass)
+
+Overnight the build loop shipped item 540 (a one-field *"Get it Thursdays"*
+signup under the hero on the homepage and every town page, tagged
+`utm_content=hero`) and item 541 (registration notices go to sign-ups). This
+pass checks the new signup on a phone, and finds that **Small Business
+Saturday (Nov 28)**, one week out, has no section anywhere: item 377 was
+never built, and the Nov 25 issue is the last chance.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Small Business Saturday 2026, Sat Nov 28** (the Downtown Palatine Business Association's site; Patch's past *"Small Business Saturday in Arlington Heights"*; freshcalendars' 2026 note; the Village of Arlington Heights' 2026 business e-news) | The **Downtown Palatine Business Association lists "Shop Small Saturday" on Nov 28, 2026** on its own site, with no further detail yet. Nothing 2026-specific was found for Arlington Heights, Mount Prospect, Des Plaines or Wheeling; Patch's Arlington Heights list is four years old. **Item 377** (a Small Business Saturday block on `/holidays/` and in the **Nov 25 issue**, with downtown links where a town has no event) is **still open**. `/holidays/` has no mention of it, and only `/sponsor/` does | Small Business Saturday is the one day this season about **local shops**, the businesses the sponsor model is built on. A page that helps families shop small that day is the site's best argument to a shop owner: it already sends people your way. The Nov 25 issue is the only issue before it. And a **downtown business association** is a buyer of many sponsor slots at once (item 543) |
+| **The new hero signup on a phone (design/UX)** (`docs/index.html` at 390 px) | The signup works and looks right: a town select and *email · Get it Thursdays*. But it sits at about **y = 870 px**, below the first screen of a 390×844 phone, because the **holiday banner** (green, string lights, six date chips and a big yellow button) takes the first ~550 px. The chips include dates that are **about to pass**: *Palatine Sat Nov 21* and *Wheeling Sun Nov 22* are this weekend, *Mount Prospect Wed Nov 25* is next week, and nothing drops them | Item 540 moved the form up 1,700 px, but not onto the first screen. The banner is useful, but six chips plus a button is more than a phone needs above the hero. A past date on a chip reads as stale (item 544) |
+
+#### P1 (new)
+
+543. **Ship item 377's Small Business Saturday block for the Nov 25 issue,
+     with what's confirmed.** Build loop, by the **Nov 25 build (Tue Nov
+     24)**:
+
+     - On `/holidays/` and in the Nov 25 issue: ***"🛍️ Small Business
+       Saturday · Sat Nov 28"***. List **Downtown Palatine's "Shop Small
+       Saturday"** from the association's own page (probe it, or use
+       item 478's search fallback), plus any feed events that day
+       matching item 377's keywords.
+     - For the other towns, show their **downtown or chamber page** as a
+       link (*"Shop downtown Mount Prospect →"*), from config
+       `downtown_url:` per region, filled from the business
+       association's or village's own page.
+     - Write the **Downtown Palatine Business Association** (and any
+       other association found) to `data/warm_hosts.json` with reason
+       `"business_association"`. One association means many member
+       shops, and item 377's §13b template is the pitch.
+     - Then mark 377 done.
+
+     Tests: the block renders on `/holidays/` and in a Nov 25 build, a town
+     without an event shows its downtown link, and the association
+     becomes a warm host.
+
+#### P2 (new)
+
+544. **A compact holiday banner on phones, and past dates drop off.** Build
+     loop, `hub.html.j2`:
+
+     - Under 600 px, the holiday banner collapses to **two lines**: the
+       kicker and ***"Tree lightings in 6 towns, next: Elk Grove &
+       Arlington Heights, Fri Nov 27 →"***, built from the soonest
+       upcoming dates. The full chip row shows only at ≥600 px.
+     - **Chips for dates already past are removed** at build time (the
+       build runs several times a day), and the button text follows the
+       next date.
+     - Check that the hero signup's top edge sits **inside the first
+       844 px** at 390 px wide, in the screenshot test.
+
+     Tests: past-dated chips are absent after their day, the compact
+     banner renders under 600 px, and the signup is within the first
+     screen.
+
+Re-rank: **543 goes to the top of the build queue** (deadline: the Nov 25
+issue's build on Tue Nov 24). **544** follows (it finishes item 540's
+job). Item 377 is absorbed into 543.
+
+Competitors reviewed this pass: **the Downtown Palatine Business
+Association's own events page** (a confirmed 2026 Shop Small date) and
+**Patch's past Arlington Heights list**. The design/UX angle is **the new
+hero signup on a phone**, still below the first screen.
 
 
 ## Working agreements for autonomous iteration
