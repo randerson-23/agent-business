@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
 0. ~~**543**~~ **DONE** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
 0. ~~**540**~~ **DONE** with ~~**541**~~ **DONE**, then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
@@ -22387,6 +22388,71 @@ Competitors reviewed this pass: **the Downtown Palatine Business
 Association's own events page** (a confirmed 2026 Shop Small date) and
 **Patch's past Arlington Heights list**. The design/UX angle is **the new
 hero signup on a phone**, still below the first screen.
+
+#### Research pass 2026-11-21, evening (hundred-and-fifty-eighth pass)
+
+Today the build loop shipped item 543. Probe round 49 read the Downtown
+Palatine Business Association's homepage (*"Shop Small Saturday – November
+28, 2026"*), the block is on `/holidays/` for the Nov 25 issue, and the
+association is a warm host. This pass prepares **skating season**. Item
+311's winter-outdoors page is due Dec 15, and item 514 already reads
+Arlington Heights' rink status live. So far nothing covers **indoor public
+skating**, the one winter activity that doesn't depend on the weather.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Indoor public skating: Nicholas Sportsplex (Mt. Prospect Ice Arena)** (its own site, nicholassportsplex.com; its Yelp listing; everyrink.com's Chicago public-skate schedule page) | **1501 Feehanville Dr, Mount Prospect**, open daily. Its own page advertised **public skate on Saturday evenings (8:30–10 PM, $12)**, and a listing site shows a **Friday 8:40–10:10 PM** session, from earlier this autumn; times change by season. **everyrink.com** builds a whole site out of *"today's public skate times"* for Chicago rinks. The roadmap has **never mentioned** this rink or any indoor public skate | *"Open skate near me"* is a December–February weekend question, and an indoor session happens whatever the weather. A rink also sells exactly what this site's readers buy on winter weekends, so it's a sponsor prospect with a reason to pay in the slow months (item 545) |
+| **Mount Prospect Park District's outdoor rinks** (mppd.org's *Outdoor Ice Rinks* page) | MPPD runs **two outdoor rinks, the Mt. Prospect Golf Club rink and the Beau Drive rink**, shown now as *closed for the season*. *"Bring your own skates; freezing temperatures required."* No 2026–27 dates yet | Item 311 has Arlington Heights' seven rinks and four sled hills and asks for the other towns *"probe first"*. Mount Prospect's are now confirmed on its own page, so they can go in item 311's data with the page as the live source of their status (item 546) |
+| **A winter "skate this weekend" box (design/UX)** (everyrink's time-sorted *today* list; item 514's AHPD rink-status line; the email's standing-line pattern from item 539) | The pieces exist separately: AHPD's Eastman rink status (item 514), MPPD's rinks (item 546), and an indoor public skate (item 545). In the email they'd appear, if at all, as scattered event cards | One compact ***"⛸ Skate this weekend"*** line in the Dec–Feb issues, with the indoor session times plus *"outdoor rinks: Eastman open ✓ · MPPD rinks closed"*, answers the question in one glance (item 547) |
+
+#### P2 (new)
+
+545. **Public skate times from the Mount Prospect ice arena, probe first.**
+     Build loop:
+
+     1. Probe `nicholassportsplex.com` for a schedule page or feed
+        (public-skate page, an iCal export, or a scheduling platform's
+        public calendar such as DaySmart or Sportngin). Record what
+        answers.
+     2. If a schedule can be read, add a source that keeps only **public
+        skate** sessions (not hockey or lessons), tagged `indoor` and
+        `kid-friendly`, in Mount Prospect with its address. Show the
+        price only as the page states it.
+     3. If not, add one `evergreen` line, *"Public skate at the Mt.
+        Prospect Ice Arena: see this week's times →"*, linking its own
+        page.
+     4. Write the rink to `data/warm_hosts.json` with reason
+        `"winter_attraction"`.
+
+     Tests: only public-skate sessions are kept, the evergreen fallback
+     renders when no schedule is readable, and the warm-host reason is set.
+
+546. **Mount Prospect's outdoor rinks into item 311.** Build loop. Add the
+     **Mt. Prospect Golf Club** and **Beau Drive** rinks to Mount
+     Prospect's `winter_outdoors:` block, with mppd.org's *Outdoor Ice
+     Rinks* page as `source_url`. Show their status **only as that page
+     states it**: *closed for the season* until it says otherwise.
+     Re-probe daily from Dec 1 for *"open"*. Tests: the rinks render
+     with their source and current status, and a status change on the
+     page flips the line.
+
+#### P3 (new)
+
+547. **"⛸ Skate this weekend" in the Dec–Feb issues.** Build loop. One
+     standing line in the email and on `/holidays/` and the
+     winter-outdoors page: indoor public-skate times (item 545), then
+     outdoor rink status from item 514 (AHPD Eastman) and item 546
+     (MPPD), each with its *"checked [time]"* stamp. It's omitted when
+     nothing is known. Tests: the line combines the three sources,
+     carries the timestamps, and is omitted when empty.
+
+Re-rank: **545, 546 and 547 go after item 311** in the build queue (311's Dec
+15 date governs). Item 544 (the compact banner) stays ahead of them.
+
+Competitors reviewed this pass: **everyrink.com** (a public-skate-times
+site; new to the table) and the **Mt. Prospect Ice Arena's own pages** as
+a source. The design/UX angle is **a single winter skate line** instead of
+scattered cards.
 
 
 ## Working agreements for autonomous iteration
