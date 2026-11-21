@@ -9,13 +9,6 @@
   },
   {
    "count": 240,
-   "date": "2026-11-18",
-   "horizon_days": 12,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 240,
    "date": "2026-11-19",
    "horizon_days": 11,
    "route": "html_events",
@@ -60,6 +53,13 @@
    "count": 240,
    "date": "2026-11-20",
    "horizon_days": 10,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 240,
+   "date": "2026-11-21",
+   "horizon_days": 9,
    "route": "html_events",
    "type": "html_events"
   },
@@ -145,13 +145,6 @@
  ],
  "arlington-heights-60005:Forest Preserves of Cook County \u2014 north": [
   {
-   "count": 201,
-   "date": "2026-11-18",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 198,
    "date": "2026-11-19",
    "horizon_days": 60,
@@ -213,16 +206,16 @@
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
+  },
+  {
+   "count": 195,
+   "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
   }
  ],
  "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": [
-  {
-   "count": 20,
-   "date": "2026-11-18",
-   "horizon_days": 187,
-   "route": "ics",
-   "type": "ics"
-  },
   {
    "count": 20,
    "date": "2026-11-19",
@@ -285,16 +278,16 @@
    "horizon_days": 184,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 21,
+   "date": "2026-11-21",
+   "horizon_days": 184,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "arlington-heights-60005:RunSignup \u2014 races in Arlington Heights": [
-  {
-   "count": 1,
-   "date": "2026-11-18",
-   "horizon_days": 17,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
   {
    "count": 1,
    "date": "2026-11-19",
@@ -357,18 +350,18 @@
    "horizon_days": 14,
    "route": "runsignup",
    "type": "runsignup"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-21",
+   "horizon_days": 14,
+   "route": "runsignup",
+   "type": "runsignup"
   }
  ],
  "arlington-heights-60005:Village of Arlington Heights \u2014 News": [
   {
    "count": 10,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 10,
    "date": "2026-11-19",
    "horizon_days": null,
    "route": "html_events",
@@ -419,6 +412,13 @@
   {
    "count": 10,
    "date": "2026-11-20",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-21",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -434,13 +434,6 @@
  "des-plaines-60016:City of Des Plaines \u2014 News": [
   {
    "count": 10,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 10,
    "date": "2026-11-19",
    "horizon_days": null,
    "route": "html_events",
@@ -501,18 +494,18 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "des-plaines-60016:Community Consolidated School District 62 \u2014 Calendar": [
   {
    "count": 4,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 4,
    "date": "2026-11-19",
    "horizon_days": null,
    "route": "html_events",
@@ -563,6 +556,13 @@
   {
    "count": 4,
    "date": "2026-11-20",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 4,
+   "date": "2026-11-21",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -649,13 +649,6 @@
  ],
  "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
   {
-   "count": 415,
-   "date": "2026-11-18",
-   "horizon_days": 409,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
    "count": 407,
    "date": "2026-11-19",
    "horizon_days": 408,
@@ -717,16 +710,16 @@
    "horizon_days": 406,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 400,
+   "date": "2026-11-21",
+   "horizon_days": 406,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
-  {
-   "count": 54,
-   "date": "2026-11-18",
-   "horizon_days": 74,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
   {
    "count": 54,
    "date": "2026-11-19",
@@ -789,17 +782,17 @@
    "horizon_days": 71,
    "route": "month_ics",
    "type": "tribe_events"
+  },
+  {
+   "count": 60,
+   "date": "2026-11-21",
+   "horizon_days": 71,
+   "route": "month_ics",
+   "type": "tribe_events"
   }
  ],
  "des-plaines-60016:Forest Preserves of Cook County \u2014 north": [
   {
-   "count": 201,
-   "date": "2026-11-18",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 198,
    "date": "2026-11-19",
    "horizon_days": 60,
@@ -851,6 +844,13 @@
   {
    "count": 198,
    "date": "2026-11-20",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 195,
+   "date": "2026-11-21",
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
@@ -866,13 +866,6 @@
  "des-plaines-60016:RunSignup \u2014 races in Des Plaines": [
   {
    "count": 0,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 0,
    "date": "2026-11-19",
    "horizon_days": null,
    "route": "runsignup",
@@ -923,6 +916,13 @@
   {
    "count": 0,
    "date": "2026-11-20",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-21",
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
@@ -938,13 +938,6 @@
  "elk-grove-village-60007:Elk Grove Village Public Library - Events": [
   {
    "count": 500,
-   "date": "2026-11-18",
-   "horizon_days": 86,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
-   "count": 500,
    "date": "2026-11-19",
    "horizon_days": 86,
    "route": "rss",
@@ -1005,16 +998,16 @@
    "horizon_days": 85,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 500,
+   "date": "2026-11-21",
+   "horizon_days": 85,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "elk-grove-village-60007:Forest Preserves of Cook County \u2014 north": [
-  {
-   "count": 201,
-   "date": "2026-11-18",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
   {
    "count": 198,
    "date": "2026-11-19",
@@ -1077,16 +1070,16 @@
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
+  },
+  {
+   "count": 195,
+   "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
   }
  ],
  "elk-grove-village-60007:RunSignup \u2014 races in Elk Grove Village": [
-  {
-   "count": 3,
-   "date": "2026-11-18",
-   "horizon_days": 39,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
   {
    "count": 3,
    "date": "2026-11-19",
@@ -1149,6 +1142,13 @@
    "horizon_days": 36,
    "route": "runsignup",
    "type": "runsignup"
+  },
+  {
+   "count": 3,
+   "date": "2026-11-21",
+   "horizon_days": 36,
+   "route": "runsignup",
+   "type": "runsignup"
   }
  ],
  "mount-prospect-60056:Downtown Mount Prospect \u2014 Events": [
@@ -1169,13 +1169,6 @@
  ],
  "mount-prospect-60056:Forest Preserves of Cook County \u2014 north": [
   {
-   "count": 201,
-   "date": "2026-11-18",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 198,
    "date": "2026-11-19",
    "horizon_days": 60,
@@ -1227,6 +1220,13 @@
   {
    "count": 198,
    "date": "2026-11-20",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 195,
+   "date": "2026-11-21",
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
@@ -1313,13 +1313,6 @@
  ],
  "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
   {
-   "count": 194,
-   "date": "2026-11-18",
-   "horizon_days": 381,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
    "count": 190,
    "date": "2026-11-19",
    "horizon_days": 380,
@@ -1381,16 +1374,16 @@
    "horizon_days": 378,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 174,
+   "date": "2026-11-21",
+   "horizon_days": 378,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
-  {
-   "count": 51,
-   "date": "2026-11-18",
-   "horizon_days": 211,
-   "route": "ics",
-   "type": "ics"
-  },
   {
    "count": 51,
    "date": "2026-11-19",
@@ -1453,18 +1446,18 @@
    "horizon_days": 208,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 49,
+   "date": "2026-11-21",
+   "horizon_days": 208,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "mount-prospect-60056:Randhurst Village \u2014 Events": [
   {
    "count": 1,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 1,
    "date": "2026-11-19",
    "horizon_days": null,
    "route": "html_events",
@@ -1515,6 +1508,13 @@
   {
    "count": 1,
    "date": "2026-11-20",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-21",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1530,13 +1530,6 @@
  "mount-prospect-60056:RunSignup \u2014 races in Mount Prospect": [
   {
    "count": 0,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 0,
    "date": "2026-11-19",
    "horizon_days": null,
    "route": "runsignup",
@@ -1587,6 +1580,13 @@
   {
    "count": 0,
    "date": "2026-11-20",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-21",
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
@@ -1601,13 +1601,6 @@
  ],
  "mount-prospect-60056:Village of Mount Prospect \u2014 News": [
   {
-   "count": 39,
-   "date": "2026-11-18",
-   "horizon_days": 0,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
    "count": 40,
    "date": "2026-11-19",
    "horizon_days": -1,
@@ -1669,16 +1662,16 @@
    "horizon_days": -1,
    "route": "revize_news_json",
    "type": "revize_news_json"
+  },
+  {
+   "count": 42,
+   "date": "2026-11-21",
+   "horizon_days": -1,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
   }
  ],
  "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
-  {
-   "count": 41,
-   "date": "2026-11-18",
-   "horizon_days": 203,
-   "route": "ics",
-   "type": "ics"
-  },
   {
    "count": 41,
    "date": "2026-11-19",
@@ -1741,16 +1734,16 @@
    "horizon_days": 200,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 41,
+   "date": "2026-11-21",
+   "horizon_days": 200,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "palatine-60067:Forest Preserves of Cook County \u2014 north": [
-  {
-   "count": 201,
-   "date": "2026-11-18",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
   {
    "count": 198,
    "date": "2026-11-19",
@@ -1813,16 +1806,16 @@
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
+  },
+  {
+   "count": 195,
+   "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
   }
  ],
  "palatine-60067:Harper College \u2014 Public Events": [
-  {
-   "count": 6,
-   "date": "2026-11-18",
-   "horizon_days": 21,
-   "route": "localist",
-   "type": "localist"
-  },
   {
    "count": 6,
    "date": "2026-11-19",
@@ -1885,16 +1878,16 @@
    "horizon_days": 18,
    "route": "localist",
    "type": "localist"
+  },
+  {
+   "count": 6,
+   "date": "2026-11-21",
+   "horizon_days": 18,
+   "route": "localist",
+   "type": "localist"
   }
  ],
  "palatine-60067:Palatine Park District \u2014 Events": [
-  {
-   "count": 13,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
   {
    "count": 13,
    "date": "2026-11-19",
@@ -1957,16 +1950,16 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
-  }
- ],
- "palatine-60067:Palatine Public Library District \u2014 Events": [
+  },
   {
-   "count": 27,
-   "date": "2026-11-18",
+   "count": 13,
+   "date": "2026-11-21",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
-  },
+  }
+ ],
+ "palatine-60067:Palatine Public Library District \u2014 Events": [
   {
    "count": 25,
    "date": "2026-11-18",
@@ -2029,18 +2022,18 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 26,
+   "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "palatine-60067:RunSignup \u2014 races in Palatine": [
   {
    "count": 1,
-   "date": "2026-11-18",
-   "horizon_days": 8,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 1,
    "date": "2026-11-19",
    "horizon_days": 7,
    "route": "runsignup",
@@ -2092,6 +2085,13 @@
    "count": 1,
    "date": "2026-11-20",
    "horizon_days": 6,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-21",
+   "horizon_days": 5,
    "route": "runsignup",
    "type": "runsignup"
   },
@@ -2178,13 +2178,6 @@
  "palatine-60067:Township High School District 211 \u2014 Calendar": [
   {
    "count": 13,
-   "date": "2026-11-18",
-   "horizon_days": 307,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 13,
    "date": "2026-11-19",
    "horizon_days": 306,
    "route": "ics",
@@ -2245,16 +2238,16 @@
    "horizon_days": 304,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 13,
+   "date": "2026-11-21",
+   "horizon_days": 304,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "palatine-60067:Village of Palatine \u2014 Calendar": [
-  {
-   "count": 20,
-   "date": "2026-11-18",
-   "horizon_days": 150,
-   "route": "ics",
-   "type": "ics"
-  },
   {
    "count": 20,
    "date": "2026-11-19",
@@ -2317,16 +2310,16 @@
    "horizon_days": 147,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 28,
+   "date": "2026-11-21",
+   "horizon_days": 147,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "palatine-60067:Village of Palatine \u2014 News": [
-  {
-   "count": 2,
-   "date": "2026-11-18",
-   "horizon_days": -7,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 2,
    "date": "2026-11-19",
@@ -2389,16 +2382,16 @@
    "horizon_days": -1,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 3,
+   "date": "2026-11-21",
+   "horizon_days": -1,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "wheeling-60090:Forest Preserves of Cook County \u2014 north": [
-  {
-   "count": 201,
-   "date": "2026-11-18",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
   {
    "count": 198,
    "date": "2026-11-19",
@@ -2461,16 +2454,16 @@
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
+  },
+  {
+   "count": 195,
+   "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
   }
  ],
  "wheeling-60090:Indian Trails Public Library \u2014 Events": [
-  {
-   "count": 203,
-   "date": "2026-11-18",
-   "horizon_days": 791,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 198,
    "date": "2026-11-19",
@@ -2533,16 +2526,16 @@
    "horizon_days": 788,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 190,
+   "date": "2026-11-21",
+   "horizon_days": 788,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "wheeling-60090:RunSignup \u2014 races in Wheeling": [
-  {
-   "count": 0,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
   {
    "count": 0,
    "date": "2026-11-19",
@@ -2605,17 +2598,17 @@
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
   }
  ],
  "wheeling-60090:Village of Wheeling \u2014 Calendar": [
   {
-   "count": 139,
-   "date": "2026-11-18",
-   "horizon_days": 1146,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
    "count": 138,
    "date": "2026-11-19",
    "horizon_days": 1145,
@@ -2668,6 +2661,13 @@
    "count": 138,
    "date": "2026-11-20",
    "horizon_days": 1144,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 138,
+   "date": "2026-11-21",
+   "horizon_days": 1143,
    "route": "ics",
    "type": "ics"
   },

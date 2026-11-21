@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-21T06:03:25+00:00",
+  "dateModified": "2026-11-21T14:06:40+00:00",
   "numberOfItems": 219,
   "itemListElement": [
     {
@@ -884,7 +884,7 @@
           "url": "https://www.wheelingil.gov"
         },
         "image": "https://withintenmiles.com/og/e/2026-11-22-lights-around-wheeling.png",
-        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2207"
+        "description": "https://www.wheelingil.gov/m/calendar/event/detail/2207"
       }
     },
     {
@@ -5086,7 +5086,7 @@
           "url": "https://www.wheelingil.gov"
         },
         "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "https://www.wheelingil.gov/calendar.aspx?EID=1972"
+        "description": "https://www.wheelingil.gov/m/calendar/event/detail/1972"
       }
     },
     {
@@ -6215,7 +6215,7 @@
           "url": "https://www.wheelingil.gov"
         },
         "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "https://www.wheelingil.gov/calendar.aspx?EID=2053"
+        "description": "https://www.wheelingil.gov/m/calendar/event/detail/2053"
       }
     },
     {
