@@ -178,6 +178,20 @@ INFORMATIONAL_KEYWORDS: tuple[str, ...] = (
 )
 
 
+# ROADMAP.md item 541: a listing that announces registration rather than an
+# outing ("Youth Services Registration for December Programs", "Registration
+# opens", "Sign up for ...", "Registration deadline"). "Registration-free" and
+# "no registration" never match.
+REGISTRATION_NOTICE = _re.compile(
+    r"(?<![-\w])registration(?:\s+(?:for|opens?|begins?|deadline|is\s+open|now\s+open)\b|\s*$)|^\s*sign[- ]?ups?\s+(?:for|opens?|begins?)\b|\bsign[- ]?ups?\s+(?:open|begin)s?\b",
+    _re.IGNORECASE,
+)
+
+
+def is_registration_notice(title: str | None) -> bool:
+    return bool(title) and bool(REGISTRATION_NOTICE.search(title)) and not _re.search(r"registration[- ]free|no registration", title, _re.IGNORECASE)
+
+
 def is_informational(*text_parts: str) -> bool:
     """True for a school-closure/office-closure/no-collection notice - real
     content the D57-style school-calendar feed is deliberately not

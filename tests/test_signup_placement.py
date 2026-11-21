@@ -89,8 +89,8 @@ def test_each_page_headline_matches_what_the_visitor_came_for():
 
 def test_region_main_page_has_two_blocks_with_distinct_ids():
     html = region_page()
-    assert html.count("embed-subscribe") == 2
-    for element_id in ("newsletter-signup", "newsletter-signup-end", "bd-email", "bd-email-end"):
+    assert html.count("embed-subscribe") == 3  # item 540: plus the hero form
+    for element_id in ("newsletter-signup", "newsletter-signup-end", "newsletter-signup-hero", "bd-email", "bd-email-end", "bd-email-hero"):
         assert html.count(f'id="{element_id}"') == 1, element_id
     assert_one_runtime(html)
     # The mid-list block comes just before the first block of events, well before the end.
@@ -104,14 +104,14 @@ def test_region_main_page_has_two_blocks_with_distinct_ids():
 def test_other_region_views_keep_a_single_bottom_form():
     for nav in ("weekend", "today", "free", "guides", "directory", "things-to-do"):
         html = region_page(nav_current=nav)
-        assert html.count("embed-subscribe") == 1, nav
+        assert html.count("embed-subscribe") == 2, nav  # item 540: the hero form plus the bottom one
         assert html.count('id="newsletter-signup"') == 1, nav
         assert 'id="newsletter-signup-end"' not in html, nav
 
 
 def test_a_main_page_with_no_events_still_has_one_form():
     html = region_page(blocks=[{"section": "Library", "events": []}])
-    assert html.count("embed-subscribe") == 1
+    assert html.count("embed-subscribe") == 2  # item 540: hero + bottom
     assert html.count('id="newsletter-signup"') == 1
 
 
@@ -122,10 +122,11 @@ def test_every_signup_names_its_town_and_page():
     main = hidden(region_page())
     assert ("tag", "town:mount-prospect-60056") in main
     assert ("utm_source", "site") in main
-    assert [v for k, v in main if k == "utm_campaign"] == ["region-midlist", "region"]
-    assert [v for k, v in hidden(region_page(nav_current="free")) if k == "utm_campaign"] == ["free"]
-    assert [v for k, v in hidden(region_page(nav_current="weekend")) if k == "utm_campaign"] == ["this-weekend"]
-    assert [v for k, v in hidden(region_page(nav_current="guides")) if k == "utm_campaign"] == ["guide"]
+    # item 540: the hero form comes first, with the page's campaign.
+    assert [v for k, v in main if k == "utm_campaign"] == ["region", "region-midlist", "region"]
+    assert [v for k, v in hidden(region_page(nav_current="free")) if k == "utm_campaign"] == ["free", "free"]
+    assert [v for k, v in hidden(region_page(nav_current="weekend")) if k == "utm_campaign"] == ["this-weekend", "this-weekend"]
+    assert [v for k, v in hidden(region_page(nav_current="guides")) if k == "utm_campaign"] == ["guide", "guide"]
     assert hidden(hub_page("today", "x")) == [("tag", "town:all"), ("utm_source", "site"), ("utm_campaign", "today")]
     assert ("utm_campaign", "trick-or-treat") in hidden(tot_page())
 
@@ -256,3 +257,18 @@ def test_this_weekend_leads_with_picks_and_a_compact_signup_and_one_calendar_lin
     main = html.split("<main", 1)[1]
     assert html.count("Apple / Outlook (.ics)</a>") == 1 and main.count("https://calendar.google.com/x") == 1
     assert "This weekend's picks" not in hub_page("today", "x")
+
+
+def test_hero_signup_sits_under_the_hero_tagged_hero_and_the_bottom_form_footer():
+    # ROADMAP.md item 540.
+    html = region_page()
+    hero = html.index('id="newsletter-signup-hero"')
+    assert html.index('class="hero"') < hero < html.index("</header>") < html.index('id="newsletter-signup"')
+    contents = re.findall(r'name="utm_content" value="([^"]*)"', html)
+    assert contents[0] == "hero" and contents[-1] == "footer" and contents.count("hero") == 1
+    assert "Get it Thursdays" in html
+    block = html[hero:html.index("</form>", hero)]
+    assert '<input type="hidden" name="tag" value="town:mount-prospect-60056">' in block
+    assert html.count('name="bd-hidden-frame"') == 1
+    off = region_page(newsletter=OFF)
+    assert "newsletter-signup-hero" not in off

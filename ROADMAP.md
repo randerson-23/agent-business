@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **540** with **541** (one-field signup under the hero on the homepage and town pages, tracked as `utm_content=hero`; registration notices out of the weekend card), then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
+0. ~~**540**~~ **DONE** with ~~**541**~~ **DONE**, then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
 0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
 0. ~~**538**~~ **DONE** (overrides for Dec 24 → Wed Dec 23 and Dec 31 → Wed Dec 30; the Dec 30 window is Dec 31 – Jan 3 and opens with a *Thursday: New Year's Eve* block), then ~~**539**~~ **DONE** (winter-break edition for the Dec 23 issue).
@@ -22267,7 +22267,7 @@ lands on, and it hasn't had a phone read since item 434.
 
 #### P1 (new)
 
-540. **A one-field signup under the hero, on the homepage and every town
+540. **DONE (2026-11-21).** `signup_hero` in `_signup.html.j2`: email field plus *Get it Thursdays*, under the hero on the hub (town select, default *All towns*) and every town view (hidden `town:<id>` tag), `utm_content=hero`; the full forms now carry `utm_content=footer`. Measured at 390 px: the hub's hero form is at ~850 px (was ~2,600 px). The seasonal holiday banner above the hero already pushed *This weekend* below the first screen before this change (~955 px then, ~1,085 px now); on town pages the form ends at ~390 px with the view nav right under it. **A one-field signup under the hero, on the homepage and every town
      page.** Build loop, `hub.html.j2` and `region.html.j2`:
 
      - Directly under the hero copy (and under the *This weekend* box on
@@ -22290,7 +22290,7 @@ lands on, and it hasn't had a phone read since item 434.
 
 #### P2 (new)
 
-541. **Registration notices aren't weekend events.** Build loop. Titles
+541. **DONE (2026-11-21).** `tagging.is_registration_notice` ("Registration for/opens/deadline", a trailing "Registration", "Sign up for"; never "registration-free" or "registration required") sets `registration_notice`; such listings leave the weekend lists (so the hub card, *Don't miss* and the email's town lists), can't be picks, and appear in the email's sign-ups block with their own date as the opening. Town pages have no sign-ups line yet, so that part of the item doesn't apply. **Registration notices aren't weekend events.** Build loop. Titles
      like *"… Registration for …"*, *"Registration opens"*, *"Sign up
      for …"* and *"Registration deadline"*, with no event date of their
      own, go to the *"📝 Sign-ups opening this week"* block (item 327)

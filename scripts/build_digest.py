@@ -39,7 +39,7 @@ from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0, str(Path(__file__).parent))
 from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_rainoutline, fetch_weather, safe_http_url, submit_bing_urls, submit_indexnow  # noqa: E402
 import warm_prospects  # noqa: E402
-from tagging import SENSORY_FRIENDLY, infer_tags, is_informational, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
+from tagging import SENSORY_FRIENDLY, infer_tags, is_informational, is_registration_notice, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("build_digest")
@@ -1447,6 +1447,8 @@ def fetch_region_sections(
             # ROADMAP.md item 327: only from an explicit phrase in the source's own text.
             reg = parse_registration_opens(f"{item.get('title', '')}. {item.get('detail', '')}", _event_day(event))
             event["registration_opens"] = reg.isoformat() if reg else None
+            if is_registration_notice(event["title"]):  # item 541: a sign-up line, not a weekend event
+                event["registration_notice"] = True
             if item.get("series_count"):  # item 521: a regional series shown once
                 event["recurrence_note"] = f"{item['series_count']} dates coming up; this card shows the next"
             events.append(event)
@@ -5566,20 +5568,22 @@ def build_signups_opening(blocks: list[dict], today: date, days: int = 7, per_to
     groups: dict[tuple, dict] = {}
     for block in blocks:
         for event in block["events"]:
-            opens = event.get("registration_opens")
+            notice = bool(event.get("registration_notice"))  # item 541: the listing is the opening itself
             day = _event_day(event)
+            opens = day.isoformat() if notice and day else event.get("registration_opens")
             if not opens or day is None or not event.get("attendable", True) or event.get("sponsored_by"):
                 continue
             opens_date = date.fromisoformat(opens)
-            if not (today <= opens_date <= today + timedelta(days=days) and day > opens_date):
+            if not (today <= opens_date <= today + timedelta(days=days) and (notice or day > opens_date)):
                 continue
             key = ((event["title"] or "").strip().lower(), event.get("venue") or event.get("source") or "", opens_date)
             group = groups.setdefault(key, {"title": display_title(event["title"]), "url": event.get("url"), "opens": opens_date, "opens_label": opens_date.strftime("%a, %b %-d"), "days": [],
                                             "remind_url": reminder_calendar_url(f"{display_title(event['title'])} sign-up opens", opens_date, event.get("url"))})  # item 476
-            group["days"].append(day)
+            if not notice:
+                group["days"].append(day)
     found = []
     for group in groups.values():
-        group["sessions_label"] = format_session_dates(group["days"])
+        group["sessions_label"] = format_session_dates(group["days"]) if group["days"] else ""
         group["event_label"] = group["sessions_label"]
         found.append(group)
     found.sort(key=lambda e: (e["opens"], e["title"]))
@@ -7228,6 +7232,8 @@ def is_pick_worthy(event: dict) -> bool:
         return False
     if event.get("event_status"):  # item 504: never pick what isn't happening as listed
         return False
+    if event.get("registration_notice") or is_registration_notice(event.get("title")):  # item 541
+        return False
     cfg = load_relevance_config()
     pattern = cfg.get("not_a_pick_pattern")
     if pattern is not None and pattern.search(event.get("title") or ""):
@@ -8528,7 +8534,7 @@ def winter_break_week_groups(events: list[dict], weeks: list[dict], per_week: in
                 day = datetime.fromisoformat(e.get("date_iso") or "").date()
             except ValueError:
                 continue
-            if week["start"] <= day <= week["end"] and e.get("attendable", True) and family_relevance(e) >= 0:
+            if week["start"] <= day <= week["end"] and e.get("attendable", True) and not e.get("registration_notice") and family_relevance(e) >= 0:
                 picked.append(dict(e))
         groups.append({"label": week["label"], "events": prepare_email_events(picked, limit=per_week)})
     return groups
@@ -9278,7 +9284,7 @@ def main() -> None:
         # ROADMAP.md item 268: on Saturday the page is for Saturday and Sunday;
         # Friday's events have passed and leave it.
         window_days = [d for d in weekend_window(friday, saturday, sunday) if d >= local_today]
-        weekend_events = order_weekend_events(filter_events_by_dates(blocks, set(window_days)))
+        weekend_events = order_weekend_events([e for e in filter_events_by_dates(blocks, set(window_days)) if not e.get("registration_notice")])  # item 541
         weekend_event_counts[region_id] = len(weekend_events)
         update_weekend_history(weekend_history, region_id, len(weekend_events))
         # ROADMAP.md item 186: the three-stage funnel a zero-contribution

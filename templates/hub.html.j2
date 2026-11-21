@@ -1,4 +1,4 @@
-{% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
+{% from "_signup.html.j2" import signup_css, signup_form, signup_hero, signup_runtime -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -507,6 +507,8 @@
       </div>
       <h1>Everything worth doing, ten miles out.</h1>
       <div class="sub">From the village, library and park district: events for {{ region_summaries|length }} towns, gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
+      {% set hero_towns = [("town:all", "All towns")] %}{% for r in region_summaries if r.path %}{% set _ = hero_towns.append(("town:" ~ r.path.rstrip("/"), r.name)) %}{% endfor %}
+      {{ signup_hero(newsletter, "bd-email-hero", "town:all", "hub", hero_towns) }}
     </div>
   </header>
 
