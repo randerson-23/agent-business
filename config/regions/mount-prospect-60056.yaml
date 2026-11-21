@@ -78,6 +78,12 @@ region:
   # picks automatically otherwise. Uncomment and set to override:
   # editors_pick_url: "https://mppl.org/"
 
+# ROADMAP.md item 543: the Small Business Saturday block links here when the
+# town has no Shop Small event of its own; the downtown organisation's own site (its /events/ page is a source above).
+downtown:
+  name: "Downtown Mount Prospect"
+  url: "https://mpdowntown.com/"
+
 sources:
   # ROADMAP.md items 519/520: the Forest Preserves of Cook County's north-region programmes (nature
   # centres, story trails, animal encounters; mostly free, all winter). One REST response serves every

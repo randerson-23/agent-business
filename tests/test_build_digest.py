@@ -8120,3 +8120,31 @@ def test_registration_notices_go_to_signups_not_the_weekend():
     signups = build_digest.build_signups_opening([{"events": [notice, craft]}], date(2026, 11, 19))
     assert [s["title"] for s in signups] == ["Youth Services Registration for December Programs"]
     assert signups[0]["opens"] == date(2026, 11, 21) and signups[0]["sessions_label"] == ""
+
+
+def test_small_business_saturday_block_on_holidays_and_in_the_week_before(monkeypatch):
+    # ROADMAP.md items 377/543.
+    assert build_digest.small_business_saturday(2026) == date(2026, 11, 28)
+    sections = [
+        {"region_name": "Palatine", "region_url": "https://x/pal/", "upcoming_events": [
+            {"title": "Shop Small Saturday Holiday Walk", "url": "https://x/walk", "date_iso": "2026-11-28T10:00:00"},
+            {"title": "Shop Small Saturday Holiday Walk", "url": "https://x/walk", "date_iso": "2026-11-28T10:00:00"},
+            {"title": "Family Bingo", "url": "https://x/bingo", "date_iso": "2026-11-28T10:00:00"}]},
+        {"region_name": "Mount Prospect", "region_url": "https://x/mp/", "upcoming_events": [], "downtown": {"name": "Downtown Mount Prospect", "url": "https://mpdowntown.com/"}},
+        {"region_name": "Wheeling", "region_url": "https://x/wh/", "upcoming_events": []},
+    ]
+    block = build_digest.build_shop_small(sections, date(2026, 11, 21))
+    assert block["heading"] == "🛍️ Small Business Saturday · Sat Nov 28"
+    assert [t["town"] for t in block["towns"]] == ["Palatine", "Mount Prospect"]  # Wheeling has neither
+    assert [e["title"] for e in block["towns"][0]["events"]] == ["Shop Small Saturday Holiday Walk"]
+    assert block["towns"][1]["downtown"]["url"] == "https://mpdowntown.com/"
+    assert build_digest.build_shop_small(sections, date(2026, 11, 29)) is None
+    page = build_digest.render_holidays_page([], datetime(2026, 11, 21, 12, tzinfo=timezone.utc), shop_small=block)
+    assert "Small Business Saturday · Sat Nov 28" in page and "Shop Downtown Mount Prospect" in page
+    # In the Nov 25 issue (Wednesday delivery), not the Nov 19 one.
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 11, 26): datetime(2026, 11, 25, 7, 0)})
+    assert build_digest.shop_small_email_block(block, datetime(2026, 11, 24, 22, tzinfo=timezone.utc)) is block
+    assert build_digest.shop_small_email_block(block, datetime(2026, 11, 18, 22, tzinfo=timezone.utc)) is None
+    email_sections = [dict(s, weekend_events=[]) for s in sections]
+    html = build_digest.render_combined_email_digest(email_sections, "Nov 26–29", datetime(2026, 11, 24, 22, tzinfo=timezone.utc))
+    assert "Small Business Saturday · Sat Nov 28" in html and "shop Downtown Mount Prospect" in html

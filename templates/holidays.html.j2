@@ -187,6 +187,15 @@
     </div>
     {% endfor %}
   </div>
+  {% if shop_small %}
+  {# ROADMAP.md items 377/543: Small Business Saturday, from each town's own feed or its downtown organisation's page. #}
+  <h2 class="events-heading" id="small-business-saturday">{{ shop_small.heading }}</h2>
+  <div class="entry-list">
+    {% for t in shop_small.towns %}
+    <div class="entry"><span class="region">{{ t.town }}</span><span class="hours">{% for e in t.events %}<a href="{{ e.url }}" rel="noopener">{{ e.title }}{% if e.time %}, {{ e.time }}{% endif %}</a>{% if e.google_calendar_url %} <a class="cal-g" href="{{ e.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}{% if not loop.last %} &middot; {% endif %}{% endfor %}{% if not t.events and t.downtown %}<a href="{{ t.downtown.url }}" rel="noopener">Shop {{ t.downtown.name }} &rarr;</a>{% endif %}</span></div>
+    {% endfor %}
+  </div>
+  {% endif %}
   {% if menorahs %}
   {# ROADMAP.md item 533: public menorah lightings, each from its organiser's page or the town's own feed; no "TBA". #}
   <h2 class="events-heading" id="menorah">🕎 Menorah lightings{% if chanukah %} · Chanukah, {{ chanukah }}{% endif %}</h2>
