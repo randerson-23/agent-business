@@ -8106,3 +8106,17 @@ def test_winter_break_edition_cuts_events_not_standing_lines_to_avoid_clipping(m
     monkeypatch.setattr(build_digest, "EMAIL_CLIP_BYTES", len(full.encode("utf-8")) - 1)
     cut = build_digest.render_combined_email_digest(sections, "x", tue)
     assert len(cut) < len(full) and "https://w/camps" in cut and "· 3 ideas" in cut
+
+
+def test_registration_notices_go_to_signups_not_the_weekend():
+    # ROADMAP.md item 541.
+    from tagging import is_registration_notice
+    assert is_registration_notice("Youth Services Registration for December Programs")
+    assert not is_registration_notice("Registration-free storytime")
+    assert not is_registration_notice("Holiday Craft (registration required)")
+    notice = {"title": "Youth Services Registration for December Programs", "url": "https://egvpl.org/x", "date_iso": "2026-11-21T09:00:00", "attendable": True, "registration_notice": True, "tags": ["kid_friendly"]}
+    craft = {"title": "Registration-free storytime", "url": "https://x/s", "date_iso": "2026-11-21T10:00:00", "attendable": True, "tags": ["kid_friendly", "free"]}
+    assert not build_digest.is_pick_worthy(notice)
+    signups = build_digest.build_signups_opening([{"events": [notice, craft]}], date(2026, 11, 19))
+    assert [s["title"] for s in signups] == ["Youth Services Registration for December Programs"]
+    assert signups[0]["opens"] == date(2026, 11, 21) and signups[0]["sessions_label"] == ""

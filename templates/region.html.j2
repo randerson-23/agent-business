@@ -1,7 +1,7 @@
 {% from "_cal_row.html.j2" import cal_row -%}
 {% from "_share.html.j2" import share_button -%}
 {% from "_featured.html.j2" import featured_label -%}
-{% from "_signup.html.j2" import signup_css, signup_form, signup_runtime -%}
+{% from "_signup.html.j2" import signup_css, signup_form, signup_hero, signup_runtime -%}
 <!doctype html>
 <html lang="en">
 <head>
@@ -728,6 +728,8 @@
     </div>
     <h1>{{ heading or "What's happening in " ~ region.name }}</h1>
     <div class="sub">{{ subheading or ("Issue for " ~ issue_date ~ " — " ~ region.tagline) }}</div>
+    {# ROADMAP.md item 540: one-field signup under the hero, preset to this town. #}
+    {{ signup_hero(newsletter, "bd-email-hero", "town:" ~ region.id, {"weekend": "this-weekend", "today": "today", "free": "free", "guides": "guide"}.get(nav_current, "region")) }}
   </div>
 </header>
 

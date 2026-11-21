@@ -58,11 +58,18 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 {%- endmacro %}
 
-{% macro signup_form(newsletter, block_id, input_id, tag, campaign, headline=none, tag_options=none) -%}
+{% macro signup_form(newsletter, block_id, input_id, tag, campaign, headline=none, tag_options=none, content="footer") -%}
 {% if newsletter and newsletter.configured -%}
 <div class="newsletter" id="{{ block_id }}">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="bd-hidden-frame">
@@ -76,6 +83,7 @@
     {%- endif %}
     <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="{{ campaign }}">
+    <input type="hidden" name="utm_content" value="{{ content }}">
     <div class="newsletter-copy">
       <strong>{{ headline or newsletter.headline }}</strong>
       <p>{{ newsletter.detail }}</p>
@@ -91,6 +99,41 @@
     <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
     <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
     <p class="newsletter-note">Not there in two minutes? Check Spam or Promotions for a message from Within Ten via Buttondown.</p>
+  </div>
+</div>
+{%- endif %}
+{%- endmacro %}
+
+{#- ROADMAP.md item 540: a one-field signup directly under the hero, so a phone
+    visitor can subscribe without scrolling ~2,600 px to the full form (kept at
+    the bottom). Same endpoint, iframe target and pending message; tagged
+    utm_content=hero so signups show which form they came from. On the hub a
+    small town select (default All towns) sets the town tag; a town page sets
+    its own town. -#}
+{% macro signup_hero(newsletter, input_id, tag, campaign, tag_options=none) -%}
+{% if newsletter and newsletter.configured -%}
+<div class="newsletter-hero" id="newsletter-signup-hero">
+  <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/{{ newsletter.buttondown_username }}" method="post" target="bd-hidden-frame">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_campaign" value="{{ campaign }}">
+    <input type="hidden" name="utm_content" value="hero">
+    <div class="newsletter-form-row">
+      {% if tag_options -%}
+      <label class="sr-only" for="{{ input_id }}-town">Your town</label>
+      <select name="tag" id="{{ input_id }}-town" class="newsletter-town">
+        {% for value, label in tag_options %}<option value="{{ value }}"{% if value == tag %} selected{% endif %}>{{ label }}</option>{% endfor %}
+      </select>
+      {%- else -%}
+      <input type="hidden" name="tag" value="{{ tag }}">
+      {%- endif %}
+      <label class="sr-only" for="{{ input_id }}">Email address</label>
+      <input type="email" name="email" id="{{ input_id }}" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Get it Thursdays</button>
+    </div>
+  </form>
+  <div class="newsletter-done" hidden>
+    <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
+    <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
   </div>
 </div>
 {%- endif %}
