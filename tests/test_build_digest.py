@@ -7722,7 +7722,7 @@ def test_past_hosts_are_warm_leads_with_their_reason_and_no_contacts(tmp_path):
     import warm_prospects as wp
     hosts = wp.load_past_hosts()
     assert {h["name"] for h in hosts} >= {"Berry Yo", "Golden Brunch"}
-    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026", "holiday_attraction") and "@" not in str(h) for h in hosts)
+    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026", "holiday_attraction", "business_association") and "@" not in str(h) for h in hosts)
     assert any(h["reason"] == "fair_organiser_2026" and h["name"] == "Fremd Viking Booster Club" for h in hosts)  # item 526
     bad = tmp_path / "p.yaml"
     bad.write_text('hosts:\n  - name: "Shop"\n    town: "x"\n    reason: r\n    event: "call 847-555-1234"\n', encoding="utf-8")
@@ -8139,6 +8139,16 @@ def test_small_business_saturday_block_on_holidays_and_in_the_week_before(monkey
     assert [e["title"] for e in block["towns"][0]["events"]] == ["Shop Small Saturday Holiday Walk"]
     assert block["towns"][1]["downtown"]["url"] == "https://mpdowntown.com/"
     assert build_digest.build_shop_small(sections, date(2026, 11, 29)) is None
+    # A downtown organisation's own announcement of the day becomes the town's entry.
+    palatine = [{"region_name": "Palatine", "region_url": "https://x/pal/", "upcoming_events": [],
+                 "downtown": {"name": "Downtown Palatine", "url": "https://www.downtownpalatine.org/", "shop_small": {"title": "Shop Small Saturday", "date": "2026-11-28"}}}]
+    own = build_digest.build_shop_small(palatine, date(2026, 11, 21))["towns"][0]
+    assert own["events"] == [{"title": "Shop Small Saturday with Downtown Palatine", "url": "https://www.downtownpalatine.org/", "time": None, "google_calendar_url": None}]
+    stale = [dict(palatine[0], downtown=dict(palatine[0]["downtown"], shop_small={"title": "Shop Small Saturday", "date": "2025-11-29"}))]
+    assert build_digest.build_shop_small(stale, date(2026, 11, 21))["towns"][0]["events"] == []
+    import yaml
+    cfg = yaml.safe_load((build_digest.CONFIG_DIR / "regions" / "palatine-60067.yaml").read_text(encoding="utf-8"))
+    assert cfg["downtown"]["shop_small"]["date"] == "2026-11-28"
     page = build_digest.render_holidays_page([], datetime(2026, 11, 21, 12, tzinfo=timezone.utc), shop_small=block)
     assert "Small Business Saturday · Sat Nov 28" in page and "Shop Downtown Mount Prospect" in page
     # In the Nov 25 issue (Wednesday delivery), not the Nov 19 one.

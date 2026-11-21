@@ -77,6 +77,16 @@ region:
   # picks automatically otherwise. Uncomment and set to override:
   # editors_pick_url: "https://www.palatinelibrary.org/"
 
+# ROADMAP.md item 543: the Downtown Palatine Business Association's own site.
+# Probe round 49 (2026-11-21, data/url_probes.json) read on its homepage:
+# "Shop Small Saturday - November 28, 2026". No time or programme posted yet.
+downtown:
+  name: "Downtown Palatine"
+  url: "https://www.downtownpalatine.org/"
+  shop_small:
+    title: "Shop Small Saturday"
+    date: "2026-11-28"
+
 sources:
   # ROADMAP.md items 519/520: the Forest Preserves of Cook County's north-region programmes (nature
   # centres, story trails, animal encounters; mostly free, all winter). One REST response serves every

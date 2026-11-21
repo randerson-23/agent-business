@@ -448,14 +448,6 @@ probes:
       - '(?i)href="[^"]{0,160}(?:ical|\.ics|rss|feed)[^"]{0,80}"'
       - '(?i)ryerson[^<]{0,120}'
 
-  # Round 49 (item 543): Downtown Palatine Business Association, for its 2026
-  # "Shop Small Saturday" (Sat Nov 28) and its own URL for the Small Business
-  # Saturday block's downtown link. Unreachable from the sandbox and not found
-  # by search; nothing is listed until this answers.
-  - url: https://www.downtownpalatine.org/
-    item: 543
-    purpose: Does the Downtown Palatine Business Association's own site list Shop Small / Small Business Saturday on Nov 28, 2026?
-    patterns:
-      - '(?i)shop small[^<]{0,80}'
-      - '(?i)small business saturday[^<]{0,80}'
-    follow: '(?i)events|calendar'
+  # Round 49 (item 543) answered 2026-11-21 and removed: downtownpalatine.org's homepage
+  # reads "Shop Small Saturday - November 28, 2026" (Palatine's `downtown:` now carries it);
+  # its /calendar page is Squarespace with per-event ?format=ical links.
