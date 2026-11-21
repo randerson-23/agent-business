@@ -3,16 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 39 of 42 configured sources.</description>
-  <lastBuildDate>Fri, 20 Nov 2026 22:00:14 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: River Trail Nightlife: Owl Prowl</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-river-trail-nightlife-owl-prowl-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-river-trail-nightlife-owl-prowl-2026-11-20</guid>
-    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. A guided walk on our trail to search for local owls. Ages 8 &amp; up. Also Fri Nov 20. Official listing: https://fpdcc.com/event/river-trail-nightlife-owl-prowl/</description>
-    <pubDate>Fri, 20 Nov 2026 17:00:00 +0000</pubDate>
-    <source url="https://fpdcc.com/event/river-trail-nightlife-owl-prowl/">Forest Preserves of Cook County — north</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
+  <lastBuildDate>Sat, 21 Nov 2026 06:03:25 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Super Saturday: Chicago Cossacks - Ukrainian Music and Dance</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-super-saturday-chicago-cossacks-ukrainian-music-and-dance-2026-11-21</link>
@@ -446,6 +438,16 @@ A Google… Official listing: https://indiantrails.libnet.info/event/17116313</d
  Are you searching for the perfect gift for someone special? Look no further. Find a variety of unique items,… Official listing: https://indiantrails.libnet.info/event/17207853</description>
     <pubDate>Sun, 06 Dec 2026 12:30:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17207853">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: High School Volunteer Kits</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-high-school-volunteer-kits-2026-12-07</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-high-school-volunteer-kits-2026-12-07</guid>
+    <description>Monday, December 07 2026 9:00am - 9:00pm 
+ Bag pickup: 9 am-9 pm 
+Complete and return a volunteer craft kit by the end of the month to count towards one hour… Official listing: https://indiantrails.libnet.info/event/16988573</description>
+    <pubDate>Mon, 07 Dec 2026 09:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16988573">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

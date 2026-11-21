@@ -91,6 +91,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Fun Factory Saturday", "startDate": "2026-11-14T09:30:00-06:00", "url": "https://withintenmiles.com/e/2026-11-14-fun-factory-saturday/", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Elk Grove Village Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Elk Grove Village", "addressRegion": "IL"}}, "sameAs": "https://egvpl.libnet.info/event/15584326", "organizer": {"@type": "Organization", "name": "Elk Grove Village Public Library - Events", "url": "https://egvpl.libnet.info"}, "image": "https://withintenmiles.com/og/e/2026-11-14-fun-factory-saturday.png", "description": "Drop by the library to make a simple craft on your own or with the help of a parent/caregiver. The craft will be available in Youth Services, while supplies last."}</script>
@@ -119,11 +126,12 @@
 })();
 </script>  <p class="source">Listing published by Elk Grove Village Public Library - Events. Check the official listing for the latest time, place and any cost.</p>
   <h2>More this weekend</h2>
-  <ul class="more"><li><a href="https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-20">The Arlington Camera Club</a></li><li><a href="https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-20">Picture Book Month Challenge</a></li><li><a href="https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-20">Word of the Week</a></li></ul>
+  <ul class="more"><li><a href="https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-21">The Arlington Camera Club</a></li><li><a href="https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-21">Picture Book Month Challenge</a></li><li><a href="https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-21">Word of the Week</a></li></ul>
 <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:elk-grove-village-60007">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="event-page">
+    <input type="hidden" name="utm_content" value="footer">
     <div class="newsletter-copy">
       <strong>Get this list in your inbox every Thursday.</strong>
       <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>

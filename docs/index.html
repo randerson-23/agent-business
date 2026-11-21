@@ -465,6 +465,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 </head>
@@ -502,6 +509,24 @@
       </div>
       <h1>Everything worth doing, ten miles out.</h1>
       <div class="sub">From the village, library and park district: events for 6 towns, gathered automatically, so your weekend takes five minutes to plan instead of an evening.</div>
+      <div class="newsletter-hero" id="newsletter-signup-hero">
+  <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_campaign" value="hub">
+    <input type="hidden" name="utm_content" value="hero">
+    <div class="newsletter-form-row">
+<label class="sr-only" for="bd-email-hero-town">Your town</label>
+      <select name="tag" id="bd-email-hero-town" class="newsletter-town">
+<option value="town:all" selected>All towns</option><option value="town:arlington-heights-60005">Arlington Heights</option><option value="town:des-plaines-60016">Des Plaines</option><option value="town:elk-grove-village-60007">Elk Grove Village</option><option value="town:mount-prospect-60056">Mount Prospect</option><option value="town:palatine-60067">Palatine</option><option value="town:wheeling-60090">Wheeling</option>      </select>      <label class="sr-only" for="bd-email-hero">Email address</label>
+      <input type="email" name="email" id="bd-email-hero" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Get it Thursdays</button>
+    </div>
+  </form>
+  <div class="newsletter-done" hidden>
+    <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
+    <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
+  </div>
+</div>
     </div>
   </header>
 
@@ -512,9 +537,9 @@
   <div class="bento-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 This weekend</span>
-      <h2>Nov 20–22</h2>
-      <p>51 things happening across every region &rarr;</p>
-      <span class="wk-picks" aria-label="This weekend's picks"><span class="wk-pick" style="--town:#be185d"><span class="wk-chip"><b>SAT</b><i>21</i></span><span class="wk-text"><span aria-hidden="true">🎄</span> Holiday Tree Lighting Ceremony<span class="wk-town">Palatine</span></span></span><span class="wk-pick" style="--town:#4d7c0f"><span class="wk-chip"><b>SUN</b><i>22</i></span><span class="wk-text"><span aria-hidden="true">🎄</span> Lights Around Wheeling<span class="wk-town">Wheeling</span></span></span><span class="wk-pick" style="--town:#c2410c"><span class="wk-chip"><b>FRI</b><i>20</i></span><span class="wk-text"><span aria-hidden="true">🧒</span> Youth Services Registration for December Programs<span class="wk-town">Elk Grove Village</span></span></span></span>
+      <h2>Nov 21–22</h2>
+      <p>30 things happening across every region &rarr;</p>
+      <span class="wk-picks" aria-label="This weekend's picks"><span class="wk-pick" style="--town:#be185d"><span class="wk-chip"><b>SAT</b><i>21</i></span><span class="wk-text"><span aria-hidden="true">🎄</span> Holiday Tree Lighting Ceremony<span class="wk-town">Palatine</span></span></span><span class="wk-pick" style="--town:#4d7c0f"><span class="wk-chip"><b>SUN</b><i>22</i></span><span class="wk-text"><span aria-hidden="true">🎄</span> Lights Around Wheeling<span class="wk-town">Wheeling</span></span></span><span class="wk-pick" style="--town:#0f766e"><span class="wk-chip"><b>SAT</b><i>21</i></span><span class="wk-text"><span aria-hidden="true">🧒</span> Family Time<span class="wk-town">Arlington Heights</span></span></span></span>
     </a>
   </div>
 
@@ -529,8 +554,8 @@
     <a class="bento-tile region-card" href="arlington-heights-60005/" style="--town:#0f766e">
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
-      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🧒</span> Kids&#39; Time <span class="pick-when">Mon Nov 23</span></span><span class="pick"><span aria-hidden="true">🧒</span> The Christmas Schooner <span class="pick-when">Tue Nov 24</span></span></span>
-      <span class="count">See what's on in Arlington Heights &rarr;</span>
+      <span class="picks"><span class="pick"><span aria-hidden="true">🧒</span> Family Time <span class="pick-when">Sat Nov 21</span></span><span class="pick"><span aria-hidden="true">📚</span> Сторітайм українською | Ukrainian Language Storytime <span class="pick-when">Sun Nov 22</span></span></span>
+      <span class="count">See all 2 this weekend &rarr;</span>
     </a>
     <a class="bento-tile region-card" href="des-plaines-60016/" style="--town:#6d28d9">
       <span class="zip">60016 · IL</span>
@@ -541,26 +566,26 @@
     <a class="bento-tile region-card" href="elk-grove-village-60007/" style="--town:#c2410c">
       <span class="zip">60007 · IL</span>
       <h2>Elk Grove Village</h2>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🧒</span> Youth Services Registration for December Programs <span class="pick-when">Fri Nov 20 · 9:00 AM</span></span><span class="pick"><span aria-hidden="true">🧒</span> Fun Factory Saturday <span class="pick-when">Sat Nov 21 · 9:30 AM</span></span></span>
-      <span class="count">See all 16 this weekend &rarr;</span>
+      <span class="picks"><span class="pick"><span aria-hidden="true">🧒</span> Fun Factory Saturday <span class="pick-when">Sat Nov 21 · 9:30 AM</span></span></span>
+      <span class="count">See all 9 this weekend &rarr;</span>
     </a>
     <a class="bento-tile region-card" href="mount-prospect-60056/" style="--town:#1d4ed8">
       <span class="zip">60056 · IL</span>
       <h2>Mount Prospect</h2>
-      <span class="picks"><span class="pick"><span aria-hidden="true">📚</span> Storytime Playdate: Hello Helpers <span class="pick-when">Fri Nov 20 · 10:00 AM</span></span><span class="pick"><span aria-hidden="true">📸</span> Family Photos <span class="pick-when">Fri Nov 20 · 11:00 AM</span></span></span>
-      <span class="count">See all 7 this weekend &rarr;</span>
+      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🧒</span> Family Fun: Morris, the Magic Man <span class="pick-when">Mon Nov 23 · 10:00 AM</span></span><span class="pick"><span aria-hidden="true">🍂</span> Creation Station: Celebrate Autumn <span class="pick-when">Mon Nov 23 · 5:00 PM</span></span></span>
+      <span class="count">See what's on in Mount Prospect &rarr;</span>
     </a>
     <a class="bento-tile region-card" href="palatine-60067/" style="--town:#be185d">
       <span class="zip">60067 · IL</span>
       <h2>Palatine</h2>
       <span class="picks"><span class="pick"><span aria-hidden="true">🧺</span> Palatine Winter Farmers&#39; Market <span class="pick-when">Sat Nov 21 · 9:00 AM</span></span></span>
-      <span class="count">See all 8 this weekend &rarr;</span>
+      <span class="count">See all 6 this weekend &rarr;</span>
     </a>
     <a class="bento-tile region-card" href="wheeling-60090/" style="--town:#4d7c0f">
       <span class="zip">60090 · IL</span>
       <h2>Wheeling</h2>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🌳</span> River Trail Nightlife: Owl Prowl <span class="pick-when">Fri Nov 20 · 5:00 PM</span></span><span class="pick"><span aria-hidden="true">🌳</span> Indoor Edible Gardens <span class="pick-when">Sat Nov 21 · 12:00 PM</span></span></span>
-      <span class="count">See all 6 this weekend &rarr;</span>
+      <span class="picks"><span class="pick"><span aria-hidden="true">🌳</span> Indoor Edible Gardens <span class="pick-when">Sat Nov 21 · 12:00 PM</span></span><span class="pick"><span aria-hidden="true">🌳</span> What’s On The Menu? <span class="pick-when">Sat Nov 21 · 3:00 PM</span></span></span>
+      <span class="count">See all 5 this weekend &rarr;</span>
     </a>
   </div>
   <section class="more-links" aria-labelledby="more-links-h">
@@ -579,6 +604,7 @@
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:all">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="hub">
+    <input type="hidden" name="utm_content" value="footer">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
       <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
@@ -622,7 +648,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
 <a href="leaf-pickup/">Leaf pickup</a>.<a href="give/">Toy, coat &amp; food drives</a>.    <a href="sensory-friendly/">Sensory-friendly events</a>.
     <br>See something wrong or missing? <a href="mailto:hello@withintenmiles.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
-    <br>Generated 2026-11-20 22:00 UTC.
+    <br>Generated 2026-11-21 06:03 UTC.
 <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.  </footer>
   </div>
 

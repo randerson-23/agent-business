@@ -91,6 +91,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Frostival", "startDate": "2026-12-12T10:00:00-06:00", "url": "https://withintenmiles.com/e/2026-12-12-frostival/", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Arlington Heights, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Arlington Heights", "addressRegion": "IL"}}, "sameAs": "https://www.ahpd.org/event/frostival-2026/", "organizer": {"@type": "Organization", "name": "Arlington Heights Park District", "url": "https://www.ahpd.org"}, "image": "https://withintenmiles.com/og/e/2026-12-12-frostival.png", "description": "Come celebrate winter Jack Frost style at the Arlington Heights Historical Museum! Mail a letter to the North Pole, meet a real-life Ice Princess, Ice Queen and winter animal ambassadors, enjoy cocoa and cookies, join in on Frosty the Snowman story-time, make a snowman craft, listen to strolling carolers, visit with Santa, and more. It’s free, frosty, family fun from 10AM-12:30PM!"}</script>
@@ -124,6 +131,7 @@
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:arlington-heights-60005">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="event-page">
+    <input type="hidden" name="utm_content" value="footer">
     <div class="newsletter-copy">
       <strong>Get this list in your inbox every Thursday.</strong>
       <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>

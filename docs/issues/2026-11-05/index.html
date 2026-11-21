@@ -80,6 +80,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 </head>
@@ -863,6 +870,7 @@ Within Ten — local events within ten miles, pulled automatically from each vil
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:all">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="archive">
+    <input type="hidden" name="utm_content" value="footer">
     <div class="newsletter-copy">
       <strong>Get this list in your inbox every Thursday.</strong>
       <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>

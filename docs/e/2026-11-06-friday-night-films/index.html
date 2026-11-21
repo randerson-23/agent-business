@@ -91,6 +91,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Friday Night Films", "startDate": "2026-11-06T18:30:00-06:00", "url": "https://withintenmiles.com/e/2026-11-06-friday-night-films/", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Des Plaines Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Des Plaines", "addressRegion": "IL", "streetAddress": "1501 Ellinwood Street", "postalCode": "60016"}}, "sameAs": "https://desplaines.libnet.info/event/16020452", "organizer": {"@type": "Organization", "name": "Des Plaines Public Library", "url": "https://desplaines.libnet.info"}, "image": "https://withintenmiles.com/og/e/2026-11-06-friday-night-films.png", "description": "A free screening of the independent film The Invite.", "isAccessibleForFree": true}</script>

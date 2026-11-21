@@ -91,6 +91,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Friends Holiday Book Sale", "startDate": "2026-11-14T09:00:00-06:00", "url": "https://withintenmiles.com/e/2026-11-14-friends-holiday-book-sale/", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Mount Prospect Public Library", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL", "streetAddress": "125 S Emerson St"}}, "sameAs": "https://mppl.libnet.info/event/13845873", "organizer": {"@type": "Organization", "name": "Mount Prospect Public Library", "url": "https://mppl.libnet.info"}, "image": "https://withintenmiles.com/og/e/2026-11-14-friends-holiday-book-sale.png", "description": "Just in time for the holidays! All items have been specially selected for this sale so you can find the right gift for the adults, teens, and children on your list."}</script>
@@ -119,11 +126,12 @@
 })();
 </script>  <p class="source">Listing published by Mount Prospect Public Library. Check the official listing for the latest time, place and any cost.</p>
   <h2>More this weekend</h2>
-  <ul class="more"><li><a href="https://withintenmiles.com/mount-prospect-60056/#ev-police-department-charge-person-with-kidnapping-and-unlawful-2026-11-20">Police Department charge person with Kidnapping and Unlawful Restraint</a></li><li><a href="https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-november-20-2026-11-20">Mount Prospect Update - November 20</a></li><li><a href="https://withintenmiles.com/mount-prospect-60056/#ev-storytime-playdate-hello-helpers-2026-11-20">Storytime Playdate: Hello Helpers</a></li></ul>
+  <ul class="more"><li><a href="https://withintenmiles.com/mount-prospect-60056/#ev-checkmates-meetup-2026-11-21">CheckMates Meetup</a></li><li><a href="https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-21">Family Time</a> <span class="source">(Arlington Heights)</span></li><li><a href="https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22">Сторітайм українською | Ukrainian Language Storytime</a> <span class="source">(Arlington Heights)</span></li></ul>
 <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:mount-prospect-60056">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="event-page">
+    <input type="hidden" name="utm_content" value="footer">
     <div class="newsletter-copy">
       <strong>Get this list in your inbox every Thursday.</strong>
       <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>

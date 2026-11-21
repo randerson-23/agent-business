@@ -91,6 +91,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Holiday Tree Lighting Ceremony", "startDate": "2026-11-21T16:00:00-06:00", "url": "https://withintenmiles.com/e/2026-11-21-holiday-tree-lighting-ceremony/", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Palatine, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Palatine", "addressRegion": "IL"}}, "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14", "organizer": {"@type": "Organization", "name": "Village of Palatine", "url": "https://www.palatine.il.us"}, "image": "https://withintenmiles.com/og/e/2026-11-21-holiday-tree-lighting-ceremony.png", "description": "Join Mayor Schwantz and Santa for the annual Holiday Tree Light"}</script>
@@ -119,11 +126,12 @@
 })();
 </script>  <p class="source">Listing published by Village of Palatine. Check the official listing for the latest time, place and any cost.</p>
   <h2>More this weekend</h2>
-  <ul class="more"><li><a href="https://withintenmiles.com/palatine-60067/#ev-curbside-leaf-collection-update-2026-11-20">Curbside Leaf Collection Update</a></li><li><a href="https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-20">A Doll&#39;s House by Henrik Ibsen Adapted by Amy Herzog</a></li><li><a href="https://withintenmiles.com/palatine-60067/#ev-new-used-clothing-sale-2026-11-21">New &amp; Used Clothing Sale</a></li></ul>
+  <ul class="more"><li><a href="https://withintenmiles.com/palatine-60067/#ev-new-used-clothing-sale-2026-11-21">New &amp; Used Clothing Sale</a></li><li><a href="https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-11-21">Palatine Winter Farmers&#39; Market</a></li><li><a href="https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-21">A Doll&#39;s House by Henrik Ibsen Adapted by Amy Herzog</a></li></ul>
 <div class="newsletter" id="newsletter-signup">
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:palatine-60067">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="event-page">
+    <input type="hidden" name="utm_content" value="footer">
     <div class="newsletter-copy">
       <strong>Get this list in your inbox every Thursday.</strong>
       <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>

@@ -705,6 +705,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 </head>
@@ -722,6 +729,22 @@
     </div>
     <h1>Fall Family Guide</h1>
     <div class="sub">A living guide to fall in Des Plaines — seasonal park district programs, library fall programming, and where the City posts official trick-or-treat hours. Pulls from the same civic sources as the weekly digest, organized by season instead of by week.</div>
+    <div class="newsletter-hero" id="newsletter-signup-hero">
+  <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_campaign" value="guide">
+    <input type="hidden" name="utm_content" value="hero">
+    <div class="newsletter-form-row">
+<input type="hidden" name="tag" value="town:des-plaines-60016">      <label class="sr-only" for="bd-email-hero">Email address</label>
+      <input type="email" name="email" id="bd-email-hero" placeholder="you@example.com" autocomplete="email" required>
+      <button type="submit">Get it Thursdays</button>
+    </div>
+  </form>
+  <div class="newsletter-done" hidden>
+    <p class="newsletter-pending">Almost there — check your email and click the confirmation link.</p>
+    <p class="newsletter-open-row"><a class="newsletter-open" href="#" target="_blank" rel="noopener" hidden></a></p>
+  </div>
+</div>
   </div>
 </header>
 
@@ -737,7 +760,7 @@
 
 
 
-  <p class="freshness-note">Updated automatically — last checked Friday, November 20.</p>
+  <p class="freshness-note">Updated automatically — last checked Saturday, November 21.</p>
 
 
 
@@ -816,6 +839,7 @@
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:des-plaines-60016">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="guide">
+    <input type="hidden" name="utm_content" value="footer">
     <div class="newsletter-copy">
       <strong>Get it in your inbox</strong>
       <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>
@@ -857,7 +881,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
 <a href="https://withintenmiles.com/leaf-pickup/">Leaf pickup</a>.<a href="https://withintenmiles.com/give/">Toy, coat &amp; food drives</a>.    <a href="https://withintenmiles.com/sensory-friendly/">Sensory-friendly events</a>.
-<a href="https://withintenmiles.com/des-plaines-60016/winter-break/">Winter break camps</a>.<a href="https://withintenmiles.com/des-plaines-60016/holiday/">Holiday events and shopping</a>, <a href="https://withintenmiles.com/holidays/">all towns' tree lightings</a>.    <br>Generated 2026-11-20 22:00 UTC.
+<a href="https://withintenmiles.com/des-plaines-60016/winter-break/">Winter break camps</a>.<a href="https://withintenmiles.com/des-plaines-60016/holiday/">Holiday events and shopping</a>, <a href="https://withintenmiles.com/holidays/">all towns' tree lightings</a>.    <br>Generated 2026-11-21 06:03 UTC.
 <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
@@ -879,7 +903,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
 </div>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Des Plaines this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the \u003ca href=\"https://withintenmiles.com/des-plaines-60016/this-weekend/\">weekend view\u003c/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - \u003ca href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event\u003c/a> and a person reviews it before it goes live, or a business owner can \u003ca href=\"https://withintenmiles.com/sponsor/\">inquire about a listing\u003c/a>."}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/guides/fall-family-guide/", "dateModified": "2026-11-20T22:00:14.604043+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/guides/fall-family-guide/", "dateModified": "2026-11-21T06:03:25.098777+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

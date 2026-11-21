@@ -91,6 +91,13 @@
     padding: 8px 18px;
     cursor: pointer;
   }
+  .newsletter-hero { margin-top: 16px; max-width: 560px; }
+  .newsletter-hero .newsletter-form-row { flex-wrap: nowrap; }
+  .newsletter-hero .newsletter-town { border-right: 0; max-width: 34%; }
+  .newsletter-hero input[type="email"] { min-width: 0; flex: 1 1 0; }
+  .newsletter-hero button { white-space: nowrap; }
+  .newsletter-hero .newsletter-pending { margin: 0; }
+  @media (max-width: 420px) { .newsletter-hero .newsletter-form-row { flex-wrap: wrap; } .newsletter-hero .newsletter-town { max-width: none; flex: 1 1 100%; border-right: 2px solid var(--ink); border-bottom: 0; } }
   .newsletter-form-row button:hover { background: var(--accent-2-text); border-color: var(--accent-2-text); }
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Cookie Walk - also Santa & Christmas Treasures", "startDate": "2026-12-12T09:30:00-06:00", "url": "https://withintenmiles.com/e/2026-12-12-cookie-walk-also-santa-christmas-treasures/", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Palatine, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Palatine", "addressRegion": "IL"}}, "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14", "organizer": {"@type": "Organization", "name": "Village of Palatine", "url": "https://www.palatine.il.us"}, "image": "https://withintenmiles.com/og/e/2026-12-12-cookie-walk-also-santa-christmas-treasures.png", "description": "Presbyterian Women’s Annual Cookie Walk – home-baked cookie"}</script>
@@ -124,6 +131,7 @@
   <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/withinten" method="post" target="bd-hidden-frame">
 <input type="hidden" name="tag" value="town:palatine-60067">    <input type="hidden" name="utm_source" value="site">
     <input type="hidden" name="utm_campaign" value="event-page">
+    <input type="hidden" name="utm_content" value="footer">
     <div class="newsletter-copy">
       <strong>Get this list in your inbox every Thursday.</strong>
       <p>One email, Thursday mornings, covering Arlington Heights, Des Plaines, Mount Prospect, Palatine, and Wheeling. No spam, unsubscribe anytime.</p>

@@ -1,28 +1,6 @@
 {
- "fetched_at": "2026-11-20T22:00:14+00:00",
+ "fetched_at": "2026-11-21T06:03:25+00:00",
  "items": [
-  {
-   "date": "20261120T170000",
-   "detail": "A guided walk on our trail to search for local owls. Ages 8 & up.",
-   "end_date": "20261120T170000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "River Trail Nightlife: Owl Prowl",
-   "url": "https://fpdcc.com/event/river-trail-nightlife-owl-prowl/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261120T190000",
-   "detail": "A guided walk on our trail to search for local owls. Ages 8 & up.",
-   "end_date": "20261120T190000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "River Trail Nightlife: Owl Prowl",
-   "url": "https://fpdcc.com/event/river-trail-nightlife-owl-prowl-2/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
   {
    "date": "20261121T120000",
    "detail": "Learn how to grow your own fresh herbs, salad greens and more. Presented with University of Illinois Extension Master Gardeners. Ages 13 & up.",
@@ -200,17 +178,6 @@
    "venue_name": "River Trail Nature Center"
   },
   {
-   "date": "20261205T150000",
-   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
-   "end_date": "20261205T150000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "What’s On The Menu?",
-   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-05/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
    "date": "20261205T160000",
    "detail": "Celebrate the start of winter with a giant bonfire. Enjoy s’mores and other snacks, games, and stargazing (weather permitting). Park at Potawatomi Woods (E Dundee Rd, east of N Milwaukee Ave, Northbrook). Shuttle to event provided.",
    "end_date": "20261205T200000",
@@ -222,28 +189,6 @@
    "venue_name": "Camp Dan Beard"
   },
   {
-   "date": "20261205T160000",
-   "detail": "Celebrate the start of winter with a giant bonfire. Enjoy s’mores and other snacks, games, and stargazing (weather permitting). Park at Potawatomi Woods (E Dundee Rd, east of N Milwaukee Ave, Northbrook). Shuttle to event provided.",
-   "end_date": "20261205T200000",
-   "lat": 42.1502767,
-   "lon": -87.89777876,
-   "title": "Winter Bonfire",
-   "url": "https://fpdcc.com/event/winter-bonfire-2/",
-   "venue_city": "Northbrook",
-   "venue_name": "Camp Dan Beard"
-  },
-  {
-   "date": "20261206T130000",
-   "detail": "Learn about cross-country skiing, the equipment needed and how to prepare for your first cross-country skiing experience.",
-   "end_date": "20261206T130000",
-   "lat": 41.68926677,
-   "lon": -87.92571427,
-   "title": "Ski Seminar",
-   "url": "https://fpdcc.com/event/ski-seminar/",
-   "venue_city": "Lemont",
-   "venue_name": "Sagawau Environmental Learning Center"
-  },
-  {
    "date": "20261206T150000",
    "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
    "end_date": "20261206T150000",
@@ -253,28 +198,6 @@
    "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-06/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261206T150000",
-   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
-   "end_date": "20261206T150000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "What’s On The Menu?",
-   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-06/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261207T110000",
-   "detail": "Join the Bridgeview Library for a short nature story followed by kids’ yoga activities. Ages 3-6 w/ adult.",
-   "end_date": "20261207T110000",
-   "lat": 41.70896743,
-   "lon": -87.87715272,
-   "title": "Yoga and Storytime",
-   "url": "https://fpdcc.com/event/yoga-and-storytime/",
-   "venue_city": "Willow Springs",
-   "venue_name": "Little Red Schoolhouse Nature Center"
   },
   {
    "date": "20261208T100000",
@@ -286,17 +209,6 @@
    "url": "https://fpdcc.com/event/small-serendipity-6/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261208T100000",
-   "detail": "Explore nature’s soundscape through sensory activities and sound‑making. Ages 2-6 w/ adult. Siblings welcome.",
-   "end_date": "20261208T100000",
-   "lat": 42.11563369,
-   "lon": -88.16357511,
-   "title": "Little Sprouts Sound Lab",
-   "url": "https://fpdcc.com/event/little-sprouts-sound-lab-3/",
-   "venue_city": "Barrington Hills",
-   "venue_name": "Crabtree Nature Center"
   },
   {
    "date": "20261208T100000",
@@ -659,6 +571,94 @@
    "url": "https://fpdcc.com/event/gall-on-a-winters-day/",
    "venue_city": "Barrington Hills",
    "venue_name": "Crabtree Nature Center"
+  },
+  {
+   "date": "20261213T130000",
+   "detail": "Learn techniques for relaxation and meditation practices. Led by a University of Illinois Extension Master Naturalist. Ages 18 & up.",
+   "end_date": "20261213T143000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Forest Therapy Walk",
+   "url": "https://fpdcc.com/event/forest-therapy-walk/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261213T130000",
+   "detail": "Bring your favorite blanket as we build a den with hot drinks, snacks, stories and crafts. Ages 2-5 w/ adult.",
+   "end_date": "20261213T130000",
+   "lat": 41.60593301,
+   "lon": -87.56574946,
+   "title": "Wee Wonders: Hibernation",
+   "url": "https://fpdcc.com/event/wee-wonders-hibernation/",
+   "venue_city": "South Holland",
+   "venue_name": "Sand Ridge Nature Center"
+  },
+  {
+   "date": "20261213T150000",
+   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
+   "end_date": "20261213T150000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "What’s On The Menu?",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-13/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261213T150000",
+   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
+   "end_date": "20261213T150000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "What’s On The Menu?",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-13/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261215T103000",
+   "detail": "Stop by the visitor center to learn about reptiles, mammals and birds from the residents of Misericordia – Heart of Mercy. All ages.",
+   "end_date": "20261215T120000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Wildlife Connections",
+   "url": "https://fpdcc.com/event/wildlife-connections/2026-12-15/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261215T103000",
+   "detail": "Stop by the visitor center to learn about reptiles, mammals and birds from the residents of Misericordia – Heart of Mercy. All ages.",
+   "end_date": "20261215T120000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Wildlife Connections",
+   "url": "https://fpdcc.com/event/wildlife-connections/2026-12-15/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261216T090000",
+   "detail": "Fitness Hikes are for those looking to get some exercise outdoors. Fitness hikes will be faster paced with little to no stopping or interpretation. 1 mile. Led by University of Illinois Master Naturalist Roberta Jannsen. Ages 55 & up.",
+   "end_date": "20261216T090000",
+   "lat": 41.89585788,
+   "lon": -87.83089023,
+   "title": "Senior Fitness Walk",
+   "url": "https://fpdcc.com/event/fitness-hike-3/",
+   "venue_city": "",
+   "venue_name": "Thatcher Woods"
+  },
+  {
+   "date": "20261216T093000",
+   "detail": "Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted .",
+   "end_date": "20261216T104500",
+   "lat": 41.998562036604,
+   "lon": -87.785286183849,
+   "title": "Yoga in the Preserves",
+   "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-12-16/",
+   "venue_city": "Chicago",
+   "venue_name": "Caldwell Woods Wellness Center"
   }
  ],
  "source": "Forest Preserves of Cook County — north"

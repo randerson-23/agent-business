@@ -3,196 +3,15 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 39 of 42 configured sources.</description>
-  <lastBuildDate>Fri, 20 Nov 2026 22:00:14 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
+  <lastBuildDate>Sat, 21 Nov 2026 06:03:25 +0000</lastBuildDate>
   <item>
-    <title>Arlington Heights: Backing Up Your Data with Google Drive and iCloud</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-backing-up-your-data-with-google-drive-and-icloud-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-backing-up-your-data-with-google-drive-and-icloud-2026-11-20</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/234453</description>
-    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/234453">Arlington Heights Memorial Library — Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: The Arlington Camera Club</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-20</guid>
-    <description>Friday, November 20 2026 12:00am - 11:59pm 
- Arlington Camera Club photography exhibit. Official listing: https://egvpl.libnet.info/event/16362688</description>
-    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/16362688">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Picture Book Month Challenge</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-picture-book-month-challenge-2026-11-20</guid>
-    <description>Friday, November 20 2026 12:00am - 11:59pm 
- November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues… Official listing: https://egvpl.libnet.info/event/17074019</description>
-    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/17074019">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Word of the Week</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-20</guid>
-    <description>Friday, November 20 2026 12:00am - 11:59pm 
- Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up… Official listing: https://egvpl.libnet.info/event/17354432</description>
-    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/17354432">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Police Department charge person with Kidnapping and Unlawful Restraint</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-police-department-charge-person-with-kidnapping-and-unlawful-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-police-department-charge-person-with-kidnapping-and-unlawful-2026-11-20</guid>
-    <description>Official listing: https://www.mountprospect.org/articles/POLICE-DEPARTMENT-CHARGE-PERSON-WITH-KIDNAPPING-AND-UNLAWFUL-RESTRAINT-212.php</description>
-    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.mountprospect.org/articles/POLICE-DEPARTMENT-CHARGE-PERSON-WITH-KIDNAPPING-AND-UNLAWFUL-RESTRAINT-212.php">Village of Mount Prospect — News</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Mount Prospect Update - November 20</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-november-20-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-mount-prospect-update-november-20-2026-11-20</guid>
-    <description>The Holiday Season is almost upon us. Catch the latest Mount Prospect Update to find out what is happening in Mount Prospect. Official listing: https://www.mountprospect.org/articles/Mount-Prospect-Update-November-20-214.php</description>
-    <pubDate>Fri, 20 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.mountprospect.org/articles/Mount-Prospect-Update-November-20-214.php">Village of Mount Prospect — News</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Youth Services Registration for December Programs</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-youth-services-registration-for-december-programs-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-youth-services-registration-for-december-programs-2026-11-20</guid>
-    <description>Friday, November 20 2026 9:00am - 9:00am 
- Registration for Youth Services December programs, and all One Book, One Village programs, begins Friday, November… Official listing: https://egvpl.libnet.info/event/17487748</description>
-    <pubDate>Fri, 20 Nov 2026 09:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/17487748">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Palatine: Curbside Leaf Collection Update</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-curbside-leaf-collection-update-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-curbside-leaf-collection-update-2026-11-20</guid>
-    <description>Official listing: https://www.palatine.il.us/CivicAlerts.aspx?aid=513</description>
-    <pubDate>Fri, 20 Nov 2026 09:20:29 +0000</pubDate>
-    <source url="https://www.palatine.il.us/CivicAlerts.aspx?aid=513">Village of Palatine — News</source>
-  </item>
-  <item>
-    <title>Des Plaines: Baby Book Time</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-baby-book-time-2026-11-20</guid>
-    <description>Friday, November 20 2026 10:00am - 11:00am 
- To register, please contact Irene Tripkos at 847-789-5623. Verbal confirmation from Irene Tripkos is needed in… Official listing: https://desplaines.libnet.info/event/16431795</description>
-    <pubDate>Fri, 20 Nov 2026 10:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/16431795">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Storytime Playdate: Hello Helpers</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-storytime-playdate-hello-helpers-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-storytime-playdate-hello-helpers-2026-11-20</guid>
-    <description>Friday, November 20 2026 10:00am - 11:30am 
- Enjoy the magic of storytime plus the joy of hands-on sensory fun! You and your child will enjoy time together… Official listing: https://mppl.libnet.info/event/16638205</description>
-    <pubDate>Fri, 20 Nov 2026 10:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16638205">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Messy Play</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-messy-play-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-messy-play-2026-11-20</guid>
-    <description>Friday, November 20 2026 10:30am - 11:15am 
- Come to the library for hands-on experiences that may include some mess and will always include fun! Official listing: https://egvpl.libnet.info/event/16920156</description>
-    <pubDate>Fri, 20 Nov 2026 10:30:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/16920156">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Family Photos</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-family-photos-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-family-photos-2026-11-20</guid>
-    <description>Friday, November 20 2026 11:00am - 1:30pm 
- Have a fun family photoshoot at South Branch! Official listing: https://mppl.libnet.info/event/16883938</description>
-    <pubDate>Fri, 20 Nov 2026 11:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16883938">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: Q &amp; A One on One Appointment</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-q-a-one-on-one-appointment-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-q-a-one-on-one-appointment-2026-11-20</guid>
-    <description>Friday, November 20 2026 2:00pm - 2:15pm 
- Book a 15 minute appointment to discuss a research of tech appontment Official listing: https://desplaines.libnet.info/event/17523892</description>
-    <pubDate>Fri, 20 Nov 2026 14:00:00 +0000</pubDate>
-    <source url="https://desplaines.libnet.info/event/17523892">Des Plaines Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Pokémon Club</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-pok-mon-club-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-pok-mon-club-2026-11-20</guid>
-    <description>Friday, November 20 2026 4:30pm - 5:30pm 
- Do you wish you could catch 'em all? Meet up with other Pokémon fans for activities, games, and more fun! Official listing: https://mppl.libnet.info/event/16878773</description>
-    <pubDate>Fri, 20 Nov 2026 16:30:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/16878773">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Teen Volunteering</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-teen-volunteering-2026-11-20</guid>
-    <description>Friday, November 20 2026 5:00pm - 6:00pm 
- Give back to the community and earn volunteer hours at the same time. Official listing: https://mppl.libnet.info/event/14039782</description>
-    <pubDate>Fri, 20 Nov 2026 17:00:00 +0000</pubDate>
-    <source url="https://mppl.libnet.info/event/14039782">Mount Prospect Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: River Trail Nightlife: Owl Prowl</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-river-trail-nightlife-owl-prowl-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-river-trail-nightlife-owl-prowl-2026-11-20</guid>
-    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. A guided walk on our trail to search for local owls. Ages 8 &amp; up. Also Fri Nov 20. Official listing: https://fpdcc.com/event/river-trail-nightlife-owl-prowl/</description>
-    <pubDate>Fri, 20 Nov 2026 17:00:00 +0000</pubDate>
-    <source url="https://fpdcc.com/event/river-trail-nightlife-owl-prowl/">Forest Preserves of Cook County — north</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Chess Club (Advanced Players)</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-advanced-players-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-advanced-players-2026-11-20</guid>
-    <description>Friday, November 20 2026 5:30pm - 6:30pm 
- Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess! Official listing: https://egvpl.libnet.info/event/17111688</description>
-    <pubDate>Fri, 20 Nov 2026 17:30:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/17111688">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Chess Club (Beginning Players)</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-beginning-players-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-chess-club-beginning-players-2026-11-20</guid>
-    <description>Friday, November 20 2026 5:30pm - 6:30pm 
- Ready to make your next move? Join us for our Chess Club program with National Chess Masters from Glenview Chess! Official listing: https://egvpl.libnet.info/event/17111785</description>
-    <pubDate>Fri, 20 Nov 2026 17:30:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/17111785">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Palatine: A Doll's House by Henrik Ibsen Adapted by Amy Herzog</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-20</guid>
-    <description>A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly… Official listing: https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog</description>
-    <pubDate>Fri, 20 Nov 2026 19:30:00 +0000</pubDate>
-    <source url="https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog">Harper College — Public Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: THE PHIL COLLINS EXPERIENCE with SPECIAL GUEST THE SATURDAY JUNE BAND</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-the-phil-collins-experience-with-special-guest-the-saturday-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-the-phil-collins-experience-with-special-guest-the-saturday-2026-11-20</guid>
-    <description>The Phil Collins Experience is a dynamic multi-media production that pays tribute to the legendary music of Phil Collins and Genesis. Known as the most… Official listing: https://desplainestheatre.com/event/the-phil-collins-experience-10/</description>
-    <pubDate>Fri, 20 Nov 2026 20:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/the-phil-collins-experience-10/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: BOURBON 'N BRASS SPEAKEASY: LIVE JAZZ with THE BOOTLEGGERS featuring LAURA LOPARDO on VOCALS</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-fea-2026-11-20</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-fea-2026-11-20</guid>
-    <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with The Bootleggers featuring… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-featuring-laura-lopardo-on-vocals-29/</description>
-    <pubDate>Fri, 20 Nov 2026 20:30:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-with-the-bootleggers-featuring-laura-lopardo-on-vocals-29/">Des Plaines Theatre — Events</source>
-  </item>
-  <item>
-    <title>Arlington Heights: Beginning ESL</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-11-21</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-beginning-esl-2026-11-21</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/236749</description>
+    <title>Arlington Heights: Family Time</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-21</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224198</description>
     <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/236749">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/224198">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Des Plaines: DIY with DPPL</title>
@@ -366,12 +185,12 @@
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-8/">Des Plaines Theatre — Events</source>
   </item>
   <item>
-    <title>Arlington Heights: Makerplace Custom Cricut Tote Bag</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-makerplace-custom-cricut-tote-bag-2026-11-22</guid>
-    <description>Official listing: https://www.ahml.info/scheduling/reservation/233406</description>
+    <title>Arlington Heights: Сторітайм українською | Ukrainian Language Storytime</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/226527</description>
     <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://www.ahml.info/scheduling/reservation/233406">Arlington Heights Memorial Library — Events</source>
+    <source url="https://www.ahml.info/scheduling/reservation/226527">Arlington Heights Memorial Library — Events</source>
   </item>
   <item>
     <title>Elk Grove Village: The Arlington Camera Club</title>
@@ -432,6 +251,189 @@
     <description>https://www.wheelingil.gov/calendar.aspx?EID=2207 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sun, 22 Nov 2026 16:30:00 +0000</pubDate>
     <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
+  </item>
+  <item>
+    <title>Des Plaines: POOH: 60th ANNIVERSARY TOUR - FINALE</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22</guid>
+    <description>60 years of music, emotions and successes! In 2026, POOH are ready to return for what will be a highly anticipated year of celebrations and surprises for the… Official listing: https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/</description>
+    <pubDate>Sun, 22 Nov 2026 19:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Kids' Time</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-23</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/224222</description>
+    <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.ahml.info/scheduling/reservation/224222">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Teen Take &amp; Make</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-23</guid>
+    <description>Monday, November 23 2026 12:00am - 11:59pm 
+ Take &amp; Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit… Official listing: https://desplaines.libnet.info/event/17635814</description>
+    <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17635814">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: The Arlington Camera Club</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-23</guid>
+    <description>Monday, November 23 2026 12:00am - 11:59pm 
+ Arlington Camera Club photography exhibit. Official listing: https://egvpl.libnet.info/event/16362691</description>
+    <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/16362691">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Word of the Week</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-23</guid>
+    <description>Monday, November 23 2026 12:00am - 11:59pm 
+ Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up… Official listing: https://egvpl.libnet.info/event/17354435</description>
+    <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17354435">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Full Year Fitness Membership Sale</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-full-year-fitness-membership-sale-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-full-year-fitness-membership-sale-2026-11-23</guid>
+    <description>Full Year Fitness Membership Sale Begins! Beginning November 23, all one-year membership purchases are valid through December 31, 2027 – for the price of 11… Official listing: https://www.mppd.org/event/full-year-fitness-membership-sale/</description>
+    <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mppd.org/event/full-year-fitness-membership-sale/">Mount Prospect Park District — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Family Fun: Morris, the Magic Man</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-family-fun-morris-the-magic-man-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-family-fun-morris-the-magic-man-2026-11-23</guid>
+    <description>Monday, November 23 2026 10:00am - 10:30am 
+ Get ready for extra-special family time at this feel-good show full of laughter and magic! Official listing: https://mppl.libnet.info/event/16288691</description>
+    <pubDate>Mon, 23 Nov 2026 10:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16288691">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Miss Jamie's Fall Sing-along</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-miss-jamie-s-fall-sing-along-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-miss-jamie-s-fall-sing-along-2026-11-23</guid>
+    <description>Monday, November 23 2026 10:30am - 11:15am 
+ Join Terrance the Well-Dressed Turkey, and other funny farm friends, as we harvest the crops and share in the… Official listing: https://egvpl.libnet.info/event/17066295</description>
+    <pubDate>Mon, 23 Nov 2026 10:30:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17066295">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Thanksgiving Showdown Indoor Soccer Tournament - Grades 3 &amp; 4</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-thanksgiving-showdown-indoor-soccer-tournament-grades-3-4-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-thanksgiving-showdown-indoor-soccer-tournament-grades-3-4-2026-11-23</guid>
+    <description>Thanksgiving Showdown Indoor Soccer Tournament – Grades 3 &amp; 4 This fast paced indoor soccer tournament will take place on the CCC Turf. Teams can have a… Official listing: https://www.mppd.org/event/thanksgiving-showdown-indoor-soccer-tournament-grades-3-4-2/</description>
+    <pubDate>Mon, 23 Nov 2026 12:00:00 +0000</pubDate>
+    <source url="https://www.mppd.org/event/thanksgiving-showdown-indoor-soccer-tournament-grades-3-4-2/">Mount Prospect Park District — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Monday Matinee Movie</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-monday-matinee-movie-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-monday-matinee-movie-2026-11-23</guid>
+    <description>Monday, November 23 2026 1:00pm - 3:00pm 
+ Enjoy an afternoon movie in the Lee Maternowski Room.  Popcorn will be served! Official listing: https://egvpl.libnet.info/event/16746077</description>
+    <pubDate>Mon, 23 Nov 2026 13:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/16746077">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Got Science? Space Exploration</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-got-science-space-exploration-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-got-science-space-exploration-2026-11-23</guid>
+    <description>Monday, November 23 2026 1:00pm - 2:00pm 
+ Explore the final frontier. R Official listing: https://indiantrails.libnet.info/event/17138966</description>
+    <pubDate>Mon, 23 Nov 2026 13:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17138966">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Book a Teen Librarian</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-book-a-teen-librarian-2026-11-23</guid>
+    <description>Monday, November 23 2026 5:00pm - 6:00pm 
+ Want some career, college, or scholarship advice? Need some book recommendations? Maybe sit back, relax, and play… Official listing: https://desplaines.libnet.info/event/15509801</description>
+    <pubDate>Mon, 23 Nov 2026 17:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/15509801">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Creation Station: Celebrate Autumn</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-creation-station-celebrate-autumn-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-creation-station-celebrate-autumn-2026-11-23</guid>
+    <description>Monday, November 23 2026 5:00pm - 6:30pm 
+ Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece. Official listing: https://mppl.libnet.info/event/16873375</description>
+    <pubDate>Mon, 23 Nov 2026 17:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/16873375">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Introduction to Tinkercad</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-introduction-to-tinkercad-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-introduction-to-tinkercad-2026-11-23</guid>
+    <description>Monday, November 23 2026 5:30pm - 6:45pm 
+ Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use… Official listing: https://indiantrails.libnet.info/event/17428279</description>
+    <pubDate>Mon, 23 Nov 2026 17:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17428279">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Des Plaines Shambhala Meditation Group</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-shambhala-meditation-group-2026-11-23</guid>
+    <description>Monday, November 23 2026 6:30pm - 8:30pm 
+ For more information, please call 773-743-8147 Official listing: https://desplaines.libnet.info/event/17253018</description>
+    <pubDate>Mon, 23 Nov 2026 18:30:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17253018">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Fall Craft</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-fall-craft-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-fall-craft-2026-11-23</guid>
+    <description>Monday, November 23 2026 6:30pm - 7:30pm 
+ Kids can join crafter Krystyna Jaro? to create a festive fall craft in celebration of the Thanksgiving season. This… Official listing: https://egvpl.libnet.info/event/16995039</description>
+    <pubDate>Mon, 23 Nov 2026 18:30:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/16995039">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Happy Spinsters</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-happy-spinsters-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-happy-spinsters-2026-11-23</guid>
+    <description>Monday, November 23 2026 6:45pm - 8:45pm 
+ Yarn Spinning Group 
+Alex 630-673-3987 Official listing: https://desplaines.libnet.info/event/17190612</description>
+    <pubDate>Mon, 23 Nov 2026 18:45:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17190612">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: $10 SILENT FILM SERIES - "The Passion of Joan of Arc" (1928), Presented by The Silent Film Society of Chicago</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-10-silent-film-series-the-passion-of-joan-of-arc-1928-presen-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-10-silent-film-series-the-passion-of-joan-of-arc-1928-presen-2026-11-23</guid>
+    <description>The Des Plaines Theatre and The Silent Film Society of Chicago are pleased to announce our monthly $10 Silent Film Series. Join us as we visit the 1920s for… Official listing: https://desplainestheatre.com/event/10-silent-film-series-the-passion-of-joan-of-arc-1928-presented-by-the-silent-film-society-of-chicago/</description>
+    <pubDate>Mon, 23 Nov 2026 19:00:00 +0000</pubDate>
+    <source url="https://desplainestheatre.com/event/10-silent-film-series-the-passion-of-joan-of-arc-1928-presented-by-the-silent-film-society-of-chicago/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Middle School Book Club | Grades 6-8</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-middle-school-book-club-grades-6-8-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-middle-school-book-club-grades-6-8-2026-11-23</guid>
+    <description>Monday, November 23 2026 7:00pm - 8:00pm 
+ Book pickup September 28-November 16 at the Youth Services Desk. Mika knows she will struggle to survive the harsh… Official listing: https://indiantrails.libnet.info/event/17103897</description>
+    <pubDate>Mon, 23 Nov 2026 19:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17103897">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: Social Worker in the Library</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-24</guid>
+    <description>Official listing: https://www.ahml.info/scheduling/reservation/218153</description>
+    <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.ahml.info/scheduling/reservation/218153">Arlington Heights Memorial Library — Events</source>
+  </item>
+  <item>
+    <title>Arlington Heights: The Christmas Schooner</title>
+    <link>https://withintenmiles.com/arlington-heights-60005/#ev-the-christmas-schooner-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-the-christmas-schooner-2026-11-24</guid>
+    <description>Purchase TicketsNovember 24, 2026 – January 3, 2027 American Sign Language interpreted performance: December 10, 2026, 7:30 pm Open Captioned performance:… Official listing: https://www.metropolisarts.com/event/christmas-schooner/</description>
+    <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.metropolisarts.com/event/christmas-schooner/">Metropolis Performing Arts Centre — Shows</source>
   </item>
 </channel>
 </rss>
