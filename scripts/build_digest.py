@@ -2563,6 +2563,7 @@ def render_holidays_page(
     contact_email: str | None = None, outside: list[dict] | None = None, launch: bool = False,
     lights: list[dict] | None = None,
     menorahs: list[dict] | None = None,
+    shop_small: dict | None = None,
 ) -> str:
     """The cross-town /holidays/ page (ROADMAP.md item 274): tree lightings
     town by town (a confirmed date with its source, or an honest "not posted
@@ -2583,6 +2584,7 @@ def render_holidays_page(
         santa_listing=santa_listing_offer(contact_email),  # item 501
         lights=lights or [],  # item 527
         menorahs=menorahs or [],  # item 533
+        shop_small=shop_small,  # item 543
         chanukah=(lambda w: f"{w[0].strftime('%b')} {w[0].day}–{w[1].day}" if w and w[0].month == w[1].month else None)(chanukah_dates(now.year)),
         town_names=_join_names([e["region_name"] for e in entries]),
         any_events=any(e.get("events") or e.get("shows") for e in entries),
@@ -3234,6 +3236,51 @@ def select_give_events(blocks: list[dict], today: date) -> tuple[list[dict], lis
 def giving_tuesday(year: int) -> date:
     """ROADMAP.md item 534: the Tuesday after Thanksgiving (the fourth Thursday)."""
     return _thanksgiving(year) + timedelta(days=5)
+
+
+def small_business_saturday(year: int) -> date:
+    """ROADMAP.md item 543: the Saturday after Thanksgiving."""
+    return _thanksgiving(year) + timedelta(days=2)
+
+
+SHOP_SMALL_TITLE = re.compile(r"small business saturday|shop small|holiday walk|sip (?:and|&|n) shop", re.IGNORECASE)
+
+
+def build_shop_small(sections: list[dict], today: date) -> dict | None:
+    """ROADMAP.md items 377/543: the Small Business Saturday block, from Nov 1
+    until the day itself. Each town's own Shop Small events that day (feed
+    titles only), else its downtown organisation's page from config
+    (`downtown: {name, url}`); a town with neither is left out."""
+    sbs = small_business_saturday(today.year)
+    if not (date(today.year, 11, 1) <= today <= sbs):
+        return None
+    towns = []
+    for sec in sections:
+        events, seen = [], set()
+        for e in sec.get("upcoming_events") or []:
+            try:
+                day = datetime.fromisoformat(e.get("date_iso") or "").date()
+            except ValueError:
+                continue
+            key = (e.get("title") or "").strip().lower()
+            if day == sbs and SHOP_SMALL_TITLE.search(e.get("title") or "") and e.get("url") and key not in seen:
+                seen.add(key)
+                events.append({"title": display_title(e["title"]), "url": e["url"], "time": event_time_label(e["date_iso"]), "google_calendar_url": e.get("google_calendar_url")})
+        downtown = sec.get("downtown") or {}
+        link = {"name": downtown["name"], "url": downtown["url"]} if downtown.get("name") and safe_http_url(downtown.get("url")) else None
+        if events or link:
+            towns.append({"town": sec["region_name"], "events": events, "downtown": link})
+    if not towns:
+        return None
+    return {"heading": f"🛍️ Small Business Saturday · Sat {sbs.strftime('%b')} {sbs.day}", "date": sbs, "towns": towns}
+
+
+def shop_small_email_block(shop_small: dict | None, now: datetime) -> dict | None:
+    """Item 543: in the issue delivered in the week before Small Business Saturday."""
+    if not shop_small:
+        return None
+    gap = (shop_small["date"] - email_delivery_time(now).date()).days
+    return shop_small if 0 < gap <= 7 else None
 
 
 def giving_tuesday_email_line(now: datetime) -> dict | None:
@@ -7944,6 +7991,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         closures_line=closures_line,
         give_line=build_give_email_line(give or [], now),
         giving_tuesday_line=giving_tuesday_email_line(now),  # item 534
+        shop_small=shop_small_email_block(build_shop_small(sections, now.astimezone(LOCAL_TZ).date()), now),  # item 543
         on_sale=on_sale or [],
         new_towns=new_towns or [],
         text_friend_url=text_friend_url(),
@@ -9358,6 +9406,7 @@ def main() -> None:
                 "closures": region_closures,
                 "signups": [dict(e, town=region["name"]) for e in build_signups_opening(blocks, local_today)],
                 "camp_links": winter_break_camp_links(region_cfg, winter_break_catalogues(evergreen)),  # item 539
+                "downtown": region_cfg.get("downtown"),  # item 543
             }
         )
         views = [
@@ -9904,7 +9953,7 @@ def main() -> None:
     menorah_lightings = select_menorah_lightings(holidays_entries, holiday_blocks_by_town, now.year)  # item 533
     light_displays = load_light_displays(now.astimezone(LOCAL_TZ).date(), TOWN_CENTRES)  # item 527
     thin_paths: set[str] = set()  # item 516
-    (holidays_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size()), lights=light_displays, menorahs=menorah_lightings), "holidays/", hub_entry_count(holidays_entries) + len(light_displays) + len(menorah_lightings), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "holidays/", now), encoding="utf-8")
+    (holidays_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size()), lights=light_displays, menorahs=menorah_lightings, shop_small=build_shop_small(combined_email_sections, now.astimezone(LOCAL_TZ).date())), "holidays/", hub_entry_count(holidays_entries) + len(light_displays) + len(menorah_lightings), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "holidays/", now), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
         warm_found += warm_prospects.collect_hosts([e for e in tot.get("events") or [] if e.get("also_at")], tot["region_name"])

@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **543** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
+0. **543** (built 2026-11-21 except Palatine: waiting on probe round 49) (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
 0. ~~**540**~~ **DONE** with ~~**541**~~ **DONE**, then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
 0. **533** (menorah lightings on `/holidays/`, Chanukah Dec 4–12; headliner rule), **534** (GivingTuesday Dec 1 on `/give/` and in the Nov 25 issue; **before Tue Nov 24**), then **535**.
@@ -22337,7 +22337,7 @@ never built, and the Nov 25 issue is the last chance.
 
 #### P1 (new)
 
-543. **Ship item 377's Small Business Saturday block for the Nov 25 issue,
+543. **BUILT (2026-11-21), Palatine pending.** `build_shop_small`: from Nov 1 to Sat Nov 28 (`small_business_saturday`), each town's own feed events that day matching *small business saturday / shop small / holiday walk / sip and shop*, else its `downtown: {name, url}` link from the region YAML (Arlington Heights → downtownarlingtonheights.us, Mount Prospect → mpdowntown.com, both already first-party sources in config). Rendered as a section on `/holidays/` and as one line in the issue delivered the week before (`shop_small_email_block`, so the Nov 25 issue). **Not done:** Downtown Palatine's *Shop Small Saturday* could not be confirmed. downtownpalatine.org is unreachable from the sandbox and the web-fetch helper, and search found only past *Holidays on the Town* coverage. Probe round 49 asks; once it answers, add Palatine's `downtown:` (and the event if the page names one) and write the association to warm hosts (`business_association`). Des Plaines, Elk Grove Village and Wheeling have no confirmed downtown page, so they are left out of the block rather than guessed. **Ship item 377's Small Business Saturday block for the Nov 25 issue,
      with what's confirmed.** Build loop, by the **Nov 25 build (Tue Nov
      24)**:
 

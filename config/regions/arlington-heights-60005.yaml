@@ -61,6 +61,12 @@ region:
   # picks automatically otherwise. Uncomment and set to override:
   # editors_pick_url: "https://www.ahml.info/"
 
+# ROADMAP.md item 543: the Small Business Saturday block links here when the
+# town has no Shop Small event of its own; the downtown association's own site, already the evergreen/annual_events source above.
+downtown:
+  name: "Downtown Arlington Heights"
+  url: "https://downtownarlingtonheights.us/"
+
 sources:
   # ROADMAP.md items 519/520: the Forest Preserves of Cook County's north-region programmes (nature
   # centres, story trails, animal encounters; mostly free, all winter). One REST response serves every
