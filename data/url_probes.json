@@ -4,7 +4,7 @@
       "url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "purpose": "IndexNow key file on the live domain - still served and still equal to the key?",
       "item": 224,
-      "probed_at": "2026-11-21T14:06:29+00:00",
+      "probed_at": "2026-11-21T20:31:54+00:00",
       "status": 200,
       "final_url": "https://withintenmiles.com/f3b7799bed06aac4295ec9134d53b014.txt",
       "content_type": "text/plain; charset=utf-8",
@@ -22,14 +22,14 @@
       "url": "https://www.ahpd.org/parks/",
       "purpose": "Arlington Heights Park District - park list; does Pioneer Park's page give its street address?",
       "item": 376,
-      "probed_at": "2026-11-21T14:06:29+00:00",
+      "probed_at": "2026-11-21T20:31:54+00:00",
       "error": "ConnectTimeout"
     },
     {
       "url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "purpose": "Harper College (Localist) - venue ids, venue names and event types in use",
       "item": 286,
-      "probed_at": "2026-11-21T14:06:44+00:00",
+      "probed_at": "2026-11-21T20:32:10+00:00",
       "status": 200,
       "final_url": "https://events.harpercollege.edu/api/2/events?days=60&pp=100",
       "content_type": "application/json; charset=utf-8",
@@ -297,7 +297,7 @@
       "url": "https://www.sd25.org/calendar",
       "purpose": "Arlington Heights District 25 - does the calendar page list no-school dates in the HTML?",
       "item": 300,
-      "probed_at": "2026-11-21T14:06:55+00:00",
+      "probed_at": "2026-11-21T20:32:12+00:00",
       "status": 200,
       "final_url": "https://www.sd25.org/calendar-73",
       "content_type": "text/html; charset=utf-8",
@@ -318,7 +318,7 @@
       "url": "https://ccsd21.org/parent-resources/calendars/",
       "purpose": "Wheeling CCSD 21 - does the calendars page link a 2026-27 calendar and list no-school dates?",
       "item": 300,
-      "probed_at": "2026-11-21T14:06:56+00:00",
+      "probed_at": "2026-11-21T20:32:14+00:00",
       "status": 403,
       "final_url": "https://ccsd21.org/parent-resources/calendars/",
       "content_type": "text/html; charset=UTF-8",
@@ -336,11 +336,11 @@
       "url": "https://www.d62.org/calendars",
       "purpose": "Des Plaines District 62 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-21T14:06:56+00:00",
+      "probed_at": "2026-11-21T20:32:14+00:00",
       "status": 200,
       "final_url": "https://www.d62.org/calendars",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 124794,
+      "bytes": 124792,
       "title": "Calendars - Community Consolidated School District 62",
       "feed_links": [],
       "calendar_links": [],
@@ -474,7 +474,7 @@
         "url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-21T14:07:00+00:00",
+        "probed_at": "2026-11-21T20:32:16+00:00",
         "status": 200,
         "final_url": "https://resources.finalsite.net/images/v1771602096/d62org/huubad2axs3m2rrnnwjm/District62Ten-MonthSchoolsCalendar2026-2027FINAL.pdf",
         "content_type": "application/pdf",
@@ -489,7 +489,7 @@
       "url": "https://www.d214.org/calendar",
       "purpose": "High School District 214 - official 2026-27 calendar",
       "item": 300,
-      "probed_at": "2026-11-21T14:07:00+00:00",
+      "probed_at": "2026-11-21T20:32:16+00:00",
       "status": 404,
       "final_url": "https://www.d214.org/calendar",
       "content_type": "text/html;charset=utf-8",
@@ -532,7 +532,7 @@
       "url": "https://www.mountprospect.org/",
       "purpose": "Village of Mount Prospect - home page; a 2026 tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-21T14:07:01+00:00",
+      "probed_at": "2026-11-21T20:32:17+00:00",
       "status": 200,
       "final_url": "https://www.mountprospect.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -550,7 +550,7 @@
         "url": "https://www.mountprospect.org/services/tree_care.php",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-21T14:07:01+00:00",
+        "probed_at": "2026-11-21T20:32:18+00:00",
         "status": 200,
         "final_url": "https://www.mountprospect.org/services/tree_care.php",
         "content_type": "text/html; charset=UTF-8",
@@ -570,7 +570,7 @@
       "url": "https://mpdowntown.com/events/",
       "purpose": "Downtown Mount Prospect - events page; tree lighting or Christkindlmarket dates",
       "item": 427,
-      "probed_at": "2026-11-21T14:07:02+00:00",
+      "probed_at": "2026-11-21T20:32:18+00:00",
       "status": 200,
       "final_url": "https://mpdowntown.com/events/",
       "content_type": "text/html; charset=UTF-8",
@@ -612,44 +612,18 @@
       "url": "https://www.wheelingil.gov/",
       "purpose": "Village of Wheeling - home page; Lights Around Wheeling or a tree-lighting notice",
       "item": 427,
-      "probed_at": "2026-11-21T14:07:06+00:00",
-      "status": 200,
-      "final_url": "https://www.wheelingil.gov/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 140543,
-      "title": "Wheeling, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.wheelingil.gov/civicalerts.aspx",
-        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=267",
-        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=265",
-        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=252",
-        "https://www.wheelingil.gov/CivicAlerts.aspx?CID=1",
-        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=239",
-        "https://www.wheelingil.gov/CivicAlerts.aspx?AID=238",
-        "https://www.wheelingil.gov/CivicAlerts.aspx?CID=10",
-        "https://www.wheelingil.gov/2348/Feedback-Form"
-      ],
-      "pattern_matches": {
-        "(?i)(?:lights around wheeling|friendship park|tree[- ]lighting)[^<]{0,160}": [
-          {
-            "match": "Lights Around Wheeling",
-            "context": "<h4><a href=\"/m/calendar/event/detail/2207\"><span>Lights Around Wheeling</span></a></h4> </div> </li> </ol> </div>"
-          }
-        ],
-        "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": []
-      },
-      "followed": null
+      "probed_at": "2026-11-21T20:32:22+00:00",
+      "error": "ConnectTimeout"
     },
     {
       "url": "https://www.desplainesil.gov/",
       "purpose": "City of Des Plaines - home page; a 2026 tree-lighting or holiday-event notice (also item 367)",
       "item": 427,
-      "probed_at": "2026-11-21T14:07:07+00:00",
+      "probed_at": "2026-11-21T20:32:37+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Home",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 280751,
+      "bytes": 280752,
       "title": "Home | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -729,11 +703,11 @@
         "url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-21T14:07:09+00:00",
+        "probed_at": "2026-11-21T20:32:39+00:00",
         "status": 200,
         "final_url": "https://www.desplainesil.gov/Departments/Public-Works-and-Engineering/Street-Maintenance",
         "content_type": "text/html; charset=utf-8",
-        "bytes": 77440,
+        "bytes": 77441,
         "title": "Street Maintenance | City of Des Plaines, IL",
         "feed_links": [],
         "calendar_links": [
@@ -749,11 +723,11 @@
       "url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "purpose": "City of Des Plaines - Holiday Tree Lighting and Winter Fair page, the 2026 date, time and place",
       "item": 427,
-      "probed_at": "2026-11-21T14:07:10+00:00",
+      "probed_at": "2026-11-21T20:32:39+00:00",
       "status": 200,
       "final_url": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 88023,
+      "bytes": 88024,
       "title": "Holiday Tree Lighting and Winter Fair | City of Des Plaines, IL",
       "feed_links": [],
       "calendar_links": [
@@ -800,7 +774,7 @@
       "url": "https://www.rtpd.org/",
       "purpose": "River Trails Park District - home page; an events calendar, a camp page, an ICS/webcal feed",
       "item": 439,
-      "probed_at": "2026-11-21T14:07:10+00:00",
+      "probed_at": "2026-11-21T20:32:39+00:00",
       "status": 200,
       "final_url": "https://www.rtpd.org/",
       "content_type": "text/html; charset=UTF-8",
@@ -877,7 +851,7 @@
         "url": "https://www.rtpd.org/programs/athletics/youth-leagues-classes/sports-camps/",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-21T14:07:12+00:00",
+        "probed_at": "2026-11-21T20:32:40+00:00",
         "status": 200,
         "final_url": "https://www.rtpd.org/programs/athletics/youth-leagues-classes/sports-camps/",
         "content_type": "text/html; charset=UTF-8",
@@ -1012,28 +986,28 @@
       "url": "https://www.mppd.org/",
       "purpose": "Mount Prospect Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-21T14:07:12+00:00",
+      "probed_at": "2026-11-21T20:32:42+00:00",
       "error": "ConnectTimeout"
     },
     {
       "url": "https://www.ahpd.org/",
       "purpose": "Arlington Heights Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-21T14:07:28+00:00",
+      "probed_at": "2026-11-21T20:32:57+00:00",
       "error": "ConnectTimeout"
     },
     {
       "url": "https://www.dpparks.org/",
       "purpose": "Des Plaines Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-21T14:07:43+00:00",
+      "probed_at": "2026-11-21T20:33:12+00:00",
       "error": "ConnectTimeout"
     },
     {
       "url": "https://www.wheelingparkdistrict.com/",
       "purpose": "Wheeling Park District - home page; its camps or winter-break programme page",
       "item": 438,
-      "probed_at": "2026-11-21T14:07:58+00:00",
+      "probed_at": "2026-11-21T20:33:27+00:00",
       "status": 403,
       "final_url": "https://www.wheelingparkdistrict.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -1051,11 +1025,11 @@
       "url": "https://www.palatineparks.org/",
       "purpose": "Palatine Park District - the href behind the home page's Winter Break Programming link",
       "item": 438,
-      "probed_at": "2026-11-21T14:07:58+00:00",
+      "probed_at": "2026-11-21T20:33:27+00:00",
       "status": 200,
       "final_url": "https://www.palatineparks.org/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 354655,
+      "bytes": 354656,
       "title": "Home - Palatine Park District",
       "feed_links": [
         {
@@ -1112,7 +1086,7 @@
       "url": "https://www.vah.com/",
       "purpose": "Village of Arlington Heights - home page; a 2026 toy, coat or food drive notice",
       "item": 441,
-      "probed_at": "2026-11-21T14:07:58+00:00",
+      "probed_at": "2026-11-21T20:33:28+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -1168,36 +1142,14 @@
       "url": "https://www.palatine.il.us/",
       "purpose": "Village of Palatine - home page; a 2026 toy, coat or food drive notice",
       "item": 441,
-      "probed_at": "2026-11-21T14:07:58+00:00",
-      "status": 200,
-      "final_url": "https://www.palatine.il.us/",
-      "content_type": "text/html; charset=utf-8",
-      "bytes": 163872,
-      "title": "Palatine, IL | Official WebsiteArrow LeftArrow RightSlideshow Left ArrowSlideshow Right Arrow",
-      "feed_links": [],
-      "calendar_links": [
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=513",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=511",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=510",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=501",
-        "https://www.palatine.il.us/CivicAlerts.aspx?AID=502",
-        "https://www.palatine.il.us/CivicAlerts.aspx?CID=9,1,8,10,14"
-      ],
-      "pattern_matches": {
-        "(?i)(?:toy|coat|food|donation|giving tree|toys for tots)[^<]{0,40}(?:drive|collection|tree)[^<]{0,120}": [
-          {
-            "match": "Food Drive at Holiday Tree Lighting",
-            "context": "rong><a href=\"/Calendar.aspx?EID=2237\">Helping Hands Pantry Food Drive at Holiday Tree Lighting</a></strong> </div> </li> <li"
-          }
-        ]
-      },
-      "followed": null
+      "probed_at": "2026-11-21T20:33:28+00:00",
+      "error": "ConnectTimeout"
     },
     {
       "url": "https://chicago-il.toysfortots.org/",
       "purpose": "Toys for Tots Chicago campaign - home page; 2026 drop-off locations, last day, and the local drop form",
       "item": 447,
-      "probed_at": "2026-11-21T14:07:59+00:00",
+      "probed_at": "2026-11-21T20:33:43+00:00",
       "status": 200,
       "final_url": "https://chicago-il.toysfortots.org/local-coordinator-sites/lco-sites/default.aspx?nPageID=0&nPreviewInd=0&nRedirectInd=3",
       "content_type": "text/html; charset=utf-8",
@@ -1213,7 +1165,7 @@
         "url": "https://secure.toysfortots.org/a/donatelocal?campaign_code=ILCHIC&campaign_name=Chicago IL",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-21T14:08:00+00:00",
+        "probed_at": "2026-11-21T20:33:43+00:00",
         "status": 200,
         "final_url": "https://secure.toysfortots.org/a/donatelocal?campaign_code=ILCHIC&campaign_name=Chicago%20IL",
         "content_type": "text/html; charset=utf-8",
@@ -1231,7 +1183,7 @@
       "url": "https://www.chicagolandtft.org/",
       "purpose": "Chicagoland Toys for Tots - drop box locations across the region (2026)",
       "item": 447,
-      "probed_at": "2026-11-21T14:08:00+00:00",
+      "probed_at": "2026-11-21T20:33:44+00:00",
       "status": 200,
       "final_url": "https://chicagolandtft.org/",
       "content_type": "text/html;charset=utf-8",
@@ -1270,7 +1222,7 @@
       "url": "https://www.vah.com/news_detail_T13_R609.php",
       "purpose": "Village of Arlington Heights - Community Food Drive Nov 9-18 news item (organiser, drop-off sites, last day)",
       "item": 441,
-      "probed_at": "2026-11-21T14:08:01+00:00",
+      "probed_at": "2026-11-21T20:33:44+00:00",
       "status": 200,
       "final_url": "https://www.vah.com/news_detail_T13_R609.php",
       "content_type": "text/html; charset=UTF-8",
@@ -1471,14 +1423,14 @@
       "url": "https://www.dpparks.org/how-to-register/",
       "purpose": "Des Plaines Park District - how to register page; the registration platform and catalogue link",
       "item": 456,
-      "probed_at": "2026-11-21T14:08:01+00:00",
+      "probed_at": "2026-11-21T20:33:44+00:00",
       "error": "ConnectTimeout"
     },
     {
       "url": "https://www.wheelingparkdistrict.com/registration/",
       "purpose": "Wheeling Park District - registration page; the registration platform and catalogue link",
       "item": 456,
-      "probed_at": "2026-11-21T14:08:16+00:00",
+      "probed_at": "2026-11-21T20:34:00+00:00",
       "status": 403,
       "final_url": "https://www.wheelingparkdistrict.com/registration/",
       "content_type": "text/html; charset=UTF-8",
@@ -1494,7 +1446,7 @@
       "url": "https://register.desplainesparks.org/webtrac/web/search.html?Action=Start&keyword=santa&keywordoption=Match+One&search=yes",
       "purpose": "Des Plaines Park District WebTrac - keyword search for Santa programmes (names, dates, registration links)",
       "item": 456,
-      "probed_at": "2026-11-21T14:08:16+00:00",
+      "probed_at": "2026-11-21T20:34:00+00:00",
       "status": 403,
       "final_url": "https://register.desplainesparks.org/webtrac/web/search.html?Action=Start&keyword=santa&keywordoption=Match+One&search=yes",
       "content_type": "text/html; charset=UTF-8",
@@ -1505,12 +1457,12 @@
       "pattern_matches": {
         "(?is)santa.{0,300}": [
           {
-            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=1s..nUy2CSUZALNAF7M_9_GoPNxPyr75ExRI6hSlhuw-1795270096-1.0.1.1-CWt6SmyUIgT4x0_n441Pw2oEU7LpETIISWva3idU8sE\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=M",
-            "context": "cUPMDTk:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=1s..nUy2CSUZALNAF7M_9_GoPNxPyr75ExRI6hSlhuw-1795270096-1.0.1.1-CWt6SmyUIgT4x0_n441Pw2oEU7LpETIISWva3idU8sE\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_f_tk=1s..nUy2CSUZALNA"
+            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=92ju9mmxrvnuwT9LEWamDMT1O1H1s8CCouF3cl_rh5o-1795293240-1.0.1.1-tQoeePiAUUbmwf7K2_1hP9AkHt4rHzTFr.YR8SMDQp4\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=M",
+            "context": "cUPMDTk:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_tk=92ju9mmxrvnuwT9LEWamDMT1O1H1s8CCouF3cl_rh5o-1795293240-1.0.1.1-tQoeePiAUUbmwf7K2_1hP9AkHt4rHzTFr.YR8SMDQp4\",cvId: '3',cZone: 'register.desplainesparks.org',fa:\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_f_tk=92ju9mmxrvnuwT9L"
           },
           {
-            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=1s..nUy2CSUZALNAF7M_9_GoPNxPyr75ExRI6hSlhuw-1795270096-1.0.1.1-CWt6SmyUIgT4x0_n441Pw2oEU7LpETIISWva3idU8sE\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('he",
-            "context": "l, null,\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=1s..nUy2CSUZALNAF7M_9_GoPNxPyr75ExRI6hSlhuw-1795270096-1.0.1.1-CWt6SmyUIgT4x0_n441Pw2oEU7LpETIISWva3idU8sE\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>"
+            "match": "santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=92ju9mmxrvnuwT9LEWamDMT1O1H1s8CCouF3cl_rh5o-1795293240-1.0.1.1-tQoeePiAUUbmwf7K2_1hP9AkHt4rHzTFr.YR8SMDQp4\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('he",
+            "context": "l, null,\"/webtrac/web/search.html?Action=Start\\u0026keyword=santa\\u0026keywordoption=Match+One\\u0026search=yes\\u0026__cf_chl_rt_tk=92ju9mmxrvnuwT9LEWamDMT1O1H1s8CCouF3cl_rh5o-1795293240-1.0.1.1-tQoeePiAUUbmwf7K2_1hP9AkHt4rHzTFr.YR8SMDQp4\"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());</script></body></html>"
           }
         ],
         "(?i)(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\\.? \\d{1,2}[^<]{0,80}": [],
@@ -1521,7 +1473,7 @@
       "url": "https://www.skokieparks.org/events/breakfast-with-santa/26/",
       "purpose": "Skokie Park District - Breakfast with Santa 2026 page (date, time, place, registration)",
       "item": 458,
-      "probed_at": "2026-11-21T14:08:16+00:00",
+      "probed_at": "2026-11-21T20:34:00+00:00",
       "status": 200,
       "final_url": "https://www.skokieparks.org/events/breakfast-with-santa/26/",
       "content_type": "text/html; charset=utf-8",
@@ -1556,7 +1508,7 @@
       "url": "https://niles-parks.org/calendar-list/event/7-breakfast-with-santa",
       "purpose": "Niles Park District - Breakfast with Santa page (is there a 2026 date?)",
       "item": 458,
-      "probed_at": "2026-11-21T14:08:17+00:00",
+      "probed_at": "2026-11-21T20:34:00+00:00",
       "status": 404,
       "final_url": "https://niles-parks.org/calendar-list/event/7-breakfast-with-santa",
       "content_type": "text/html; charset=utf-8",
@@ -1573,7 +1525,7 @@
       "url": "https://www.palatineparks.org/wp-json/tribe/events/v1/events?per_page=3",
       "purpose": "Palatine Park District - The Events Calendar REST route (JSON with an \"events\" list?)",
       "item": 465,
-      "probed_at": "2026-11-21T14:08:18+00:00",
+      "probed_at": "2026-11-21T20:34:01+00:00",
       "status": 404,
       "final_url": "https://www.palatineparks.org/wp-json/tribe/events/v1/events?per_page=3",
       "content_type": "application/json; charset=UTF-8",
@@ -1588,7 +1540,7 @@
       "url": "https://www.palatineparks.org/events/?ical=1",
       "purpose": "Palatine Park District - The Events Calendar iCal export (BEGIN:VCALENDAR?)",
       "item": 465,
-      "probed_at": "2026-11-21T14:08:19+00:00",
+      "probed_at": "2026-11-21T20:34:02+00:00",
       "status": 200,
       "final_url": "https://www.palatineparks.org/events/?ical=1",
       "content_type": "text/html; charset=UTF-8",
@@ -1616,7 +1568,7 @@
       "url": "https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun",
       "purpose": "Arlington Heights Rotary Santa Run Walk & Reindeer Dash - registration page (2026 date, start times, place)",
       "item": 466,
-      "probed_at": "2026-11-21T14:08:21+00:00",
+      "probed_at": "2026-11-21T20:34:04+00:00",
       "status": 200,
       "final_url": "https://runsignup.com/Race/IL/ArlingtonHeights/RotaryClubSantaRun",
       "content_type": "text/html; charset=utf-8",
@@ -1689,8 +1641,8 @@
             "context": "vents/IL/ArlingtonHeights/RotaryClubSantaRun#event-1147714\">Reindeer Dash (10 and under)</a> </h2> <div class=\"rsuEventTile__information\">"
           },
           {
-            "match": "Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1795270101,\"recaptchaSi",
-            "context": "ace\\/Contact\\/48627\",\"contactName\":\"Rotary Santa Run Walk & Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1795270101,\"recaptchaSiteKey\":\"6LcdnRATAAAAAA4C48ibTO2oi9ikfu_Avc1VfsZP\",\"contactPr"
+            "match": "Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1795293244,\"recaptchaSi",
+            "context": "ace\\/Contact\\/48627\",\"contactName\":\"Rotary Santa Run Walk & Reindeer Dash\",\"contactNameWithArticle\":\"the Rotary Santa Run Walk & Reindeer Dash\",\"spamCheckMd5\":\"ddf5fde965847a9f9dfc26ba57654ad1\",\"spamCheckTime\":1795293244,\"recaptchaSiteKey\":\"6LcdnRATAAAAAA4C48ibTO2oi9ikfu_Avc1VfsZP\",\"contactPr"
           },
           {
             "match": "Reindeer Dash\",\"location\":{\"@type\":\"Place\",\"name\":\"Arlington Heights\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"220 West Campbell\",\"addressLocality\":\"Arlington Hei",
@@ -1741,11 +1693,11 @@
       "url": "https://www.palatinelibrary.org/events",
       "purpose": "Palatine Public Library - events page head and links; LibraryCalendar export paths (rss, ical, json, webcal)",
       "item": 471,
-      "probed_at": "2026-11-21T14:08:21+00:00",
+      "probed_at": "2026-11-21T20:34:05+00:00",
       "status": 200,
       "final_url": "https://www.palatinelibrary.org/events/month",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 176100,
+      "bytes": 176096,
       "title": "Month Calendar | Palatine Library District",
       "feed_links": [],
       "calendar_links": [
@@ -1876,11 +1828,11 @@
       "url": "https://www.palatinelibrary.org/events/feed",
       "purpose": "Palatine Public Library - LibraryCalendar feed path (RSS/XML?)",
       "item": 471,
-      "probed_at": "2026-11-21T14:08:22+00:00",
+      "probed_at": "2026-11-21T20:34:06+00:00",
       "status": 404,
       "final_url": "https://www.palatinelibrary.org/events/feed",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 71983,
+      "bytes": 71979,
       "title": "Page not found | Palatine Library District",
       "feed_links": [],
       "calendar_links": [],
@@ -1893,11 +1845,11 @@
       "url": "https://www.ahml.info/events",
       "purpose": "Arlington Heights Memorial Library - events page; same export patterns (238 events, 22-day horizon)",
       "item": 471,
-      "probed_at": "2026-11-21T14:08:22+00:00",
+      "probed_at": "2026-11-21T20:34:07+00:00",
       "status": 200,
       "final_url": "https://www.ahml.info/attend/events",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 304300,
+      "bytes": 304661,
       "title": "Program Calendar | Arlington Heights Memorial Library",
       "feed_links": [],
       "calendar_links": [],
@@ -1910,7 +1862,7 @@
       "url": "https://metra.com/HolidayTrains",
       "purpose": "Metra Holiday Trains 2026 - UP Northwest date, ticket sale date and time, price",
       "item": 474,
-      "probed_at": "2026-11-21T14:08:23+00:00",
+      "probed_at": "2026-11-21T20:34:09+00:00",
       "status": 403,
       "final_url": "https://metra.com/HolidayTrains",
       "content_type": "text/html",
@@ -1930,7 +1882,7 @@
       "url": "https://metra.com/newsroom/nita-holiday-trains-and-buses",
       "purpose": "Metra newsroom - NITA holiday trains and buses (Holiday Train dates, ticket sale date and time)",
       "item": 474,
-      "probed_at": "2026-11-21T14:08:23+00:00",
+      "probed_at": "2026-11-21T20:34:09+00:00",
       "status": 403,
       "final_url": "https://metra.com/newsroom/nita-holiday-trains-and-buses",
       "content_type": "text/html",
@@ -1947,7 +1899,7 @@
       "url": "https://www.metra.com/holidaytrains",
       "purpose": "Metra Holiday Trains 2026 page via the www host (UP-NW date, sale time, price)",
       "item": 474,
-      "probed_at": "2026-11-21T14:08:23+00:00",
+      "probed_at": "2026-11-21T20:34:09+00:00",
       "status": 403,
       "final_url": "https://www.metra.com/holidaytrains",
       "content_type": "text/html",
@@ -1965,7 +1917,7 @@
       "url": "https://assets.metra.com/s3fs-public/2026-10/2026.12.12_Holiday_UPNW.pdf?VersionId=qtLgWz3HYWGhD0ojhIgFiPHLk7Rx.lY6",
       "purpose": "Metra's own UP-NW Dec 12, 2026 Holiday Train timetable (PDF) - does it exist and name train 7902?",
       "item": 474,
-      "probed_at": "2026-11-21T14:08:23+00:00",
+      "probed_at": "2026-11-21T20:34:09+00:00",
       "status": 403,
       "final_url": "https://assets.metra.com/s3fs-public/2026-10/2026.12.12_Holiday_UPNW.pdf?VersionId=qtLgWz3HYWGhD0ojhIgFiPHLk7Rx.lY6",
       "content_type": "text/html",
@@ -1982,11 +1934,11 @@
       "url": "https://www.cpkcr.com/",
       "purpose": "CPKC home page - link to the Holiday Train schedule page; Franklin Park stop date, time and place",
       "item": 475,
-      "probed_at": "2026-11-21T14:08:24+00:00",
+      "probed_at": "2026-11-21T20:34:09+00:00",
       "status": 200,
       "final_url": "https://www.cpkcr.com/en",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 253524,
+      "bytes": 251708,
       "title": "",
       "feed_links": [],
       "calendar_links": [],
@@ -2000,7 +1952,7 @@
       "url": "https://www.elkgrove.org/Home/Components/Calendar/Event/8782/17",
       "purpose": "Village of Elk Grove Village - Holiday Tree Lighting Ceremony 2026 (date, time, place)",
       "item": 482,
-      "probed_at": "2026-11-21T14:08:24+00:00",
+      "probed_at": "2026-11-21T20:34:10+00:00",
       "status": 403,
       "final_url": "https://www.elkgrove.org/Home/Components/Calendar/Event/8782/17",
       "content_type": "text/html",
@@ -2017,7 +1969,7 @@
       "url": "https://rainoutline.com/search/dnis/8475742233",
       "purpose": "AHPD Rainout Line organisation page - list of programmes/facilities and their statuses",
       "item": 505,
-      "probed_at": "2026-11-21T14:08:24+00:00",
+      "probed_at": "2026-11-21T20:34:10+00:00",
       "status": 200,
       "final_url": "https://rainoutline.com/search/dnis/8475742233",
       "content_type": "text/html",
@@ -2117,11 +2069,11 @@
       "url": "https://rainoutline.com/search/extension/8475742233/31",
       "purpose": "AHPD Rainout Line extension 31 - one programme's status and note as served",
       "item": 505,
-      "probed_at": "2026-11-21T14:08:24+00:00",
+      "probed_at": "2026-11-21T20:34:10+00:00",
       "status": 200,
       "final_url": "https://rainoutline.com/search/extension/8475742233/31",
       "content_type": "text/html",
-      "bytes": 14333,
+      "bytes": 14330,
       "title": "Camelot Pool",
       "feed_links": [],
       "calendar_links": [],
@@ -2138,8 +2090,8 @@
         ],
         "(?i)(?:updated|last update)[^<]{0,80}": [
           {
-            "match": "Updated 20 hours ago",
-            "context": "</div> <strong>Updated 20 hours ago</strong> <span style=\"margin-left:"
+            "match": "Updated yesterday",
+            "context": "</div> <strong>Updated yesterday</strong> <span style=\"margin-left:"
           },
           {
             "match": "Last updated at 11/20/26 1:03 pm\r\n                                                         ",
@@ -2152,7 +2104,7 @@
       "url": "https://rainoutline.com/search/extension/8475742233/5",
       "purpose": "AHPD Rainout Line extension 5 - one programme's status and note as served",
       "item": 505,
-      "probed_at": "2026-11-21T14:08:25+00:00",
+      "probed_at": "2026-11-21T20:34:10+00:00",
       "status": 200,
       "final_url": "https://rainoutline.com/search/extension/8475742233/5",
       "content_type": "text/html",
@@ -2168,11 +2120,11 @@
       "url": "https://rainoutline.com/search/dnis_refresh/8475742233",
       "purpose": "AHPD Rainout Line extension list as loaded by the organisation page's script (names, extensions, statuses)",
       "item": 505,
-      "probed_at": "2026-11-21T14:08:25+00:00",
+      "probed_at": "2026-11-21T20:34:10+00:00",
       "status": 200,
       "final_url": "https://rainoutline.com/search/dnis_refresh/8475742233",
       "content_type": "text/html",
-      "bytes": 10917,
+      "bytes": 10914,
       "title": "",
       "feed_links": [],
       "calendar_links": [],
@@ -2227,7 +2179,7 @@
       "url": "https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&events=T&results_per_page=50",
       "purpose": "RunSignup races within 10 miles of 60056, no API key (name, next_date, address.city, url, events)",
       "item": 511,
-      "probed_at": "2026-11-21T14:08:25+00:00",
+      "probed_at": "2026-11-21T20:34:11+00:00",
       "status": 200,
       "final_url": "https://runsignup.com/Rest/races?format=json&zipcode=60056&radius=10&events=T&results_per_page=50",
       "content_type": "application/json; charset=utf-8",
@@ -2396,7 +2348,7 @@
       "url": "https://fpdcc.com/wp-json/tribe/events/v1/events?per_page=50&categories=north",
       "purpose": "FPCC Events Calendar REST, north category - titles, dates, venue name/city/lat-lng",
       "item": 519,
-      "probed_at": "2026-11-21T14:08:26+00:00",
+      "probed_at": "2026-11-21T20:34:11+00:00",
       "status": 200,
       "final_url": "https://fpdcc.com/wp-json/tribe/events/v1/events?per_page=50&categories=north",
       "content_type": "application/json; charset=UTF-8",
@@ -2514,11 +2466,11 @@
       "url": "https://fpdcc.com/events/?ical=1",
       "purpose": "FPCC iCal export (all categories) - VEVENTs with LOCATION and GEO",
       "item": 519,
-      "probed_at": "2026-11-21T14:08:27+00:00",
+      "probed_at": "2026-11-21T20:34:12+00:00",
       "status": 200,
       "final_url": "https://fpdcc.com/events/?ical=1",
       "content_type": "text/calendar; charset=UTF-8",
-      "bytes": 30820,
+      "bytes": 30747,
       "ics_event_count": 30,
       "pattern_matches": {
         "BEGIN:VEVENT": [
@@ -2533,28 +2485,20 @@
             "context": "ernment. URL:https://fpdcc.com/event/nation-of-nations-2/ LOCATION:Trailside Museum of Natural History\\, 738 Thatcher Avenue\\, River Forest\\, IL\\, 60305\\, United States CATEGORIES:Central Cook County,Education,History & Culture"
           },
           {
-            "match": "LOCATION:Little Red Schoolhouse Nature Center\\, 9800 Willow Springs Rd\\, Willow Springs\\, IL\\, 60480\\, United States",
-            "context": "/towel. Ages 18 & up. URL:https://fpdcc.com/event/yoga-8/ LOCATION:Little Red Schoolhouse Nature Center\\, 9800 Willow Springs Rd\\, Willow Springs\\, IL\\, 60480\\, United States CATEGORIES:Fitness,Southwest Cook County,Wellness in the W"
-          },
-          {
-            "match": "LOCATION:Crabtree Nature Center\\, 3 Stover Road\\, Barrington Hills\\, IL\\, 60010",
-            "context": "n. URL:https://fpdcc.com/event/buckthorn-dyeing-workshop/ LOCATION:Crabtree Nature Center\\, 3 Stover Road\\, Barrington Hills\\, IL\\, 60010 CATEGORIES:Arts & Crafts,Education,Northwest Cook County,S"
-          },
-          {
-            "match": "LOCATION:Swallow Cliff Woods-North\\, IL",
-            "context": ":https://fpdcc.com/event/america-250-americana-folk-art-2/ LOCATION:Swallow Cliff Woods-North\\, IL CATEGORIES:Arts & Crafts,History & Culture,Southwest Cook"
-          },
-          {
             "match": "LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States",
-            "context": "& up. URL:https://fpdcc.com/event/indoor-edible-gardens/ LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Education,Gardening,North Cook County,Sustainab"
-          },
-          {
-            "match": "LOCATION:Sand Ridge Nature Center\\, 15891 S Paxton Ave\\, South Holland\\, IL\\, 60473\\, United States",
-            "context": "accessible. URL:https://fpdcc.com/event/forest-therapy-4/ LOCATION:Sand Ridge Nature Center\\, 15891 S Paxton Ave\\, South Holland\\, IL\\, 60473\\, United States CATEGORIES:Education,Hiking & Walking,South Cook County,We"
+            "context": "URL:https://fpdcc.com/event/whats-on-the-menu/2026-11-21/ LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Animal Ambassador,Education,North Cook County"
           },
           {
             "match": "LOCATION:Sagawau Environmental Learning Center\\, 12545 W 111th St\\, Lemont\\, IL\\, 60439\\, United States",
             "context": "provided. URL:https://fpdcc.com/event/clear-the-trails-2/ LOCATION:Sagawau Environmental Learning Center\\, 12545 W 111th St\\, Lemont\\, IL\\, 60439\\, United States CATEGORIES:Southwest Cook County,Volunteer ATTACH;FMTTYPE"
+          },
+          {
+            "match": "LOCATION:Crabtree Nature Center\\, 3 Stover Road\\, Barrington Hills\\, IL\\, 60010",
+            "context": "bath. URL:https://fpdcc.com/event/beaver-moon-sound-bath/ LOCATION:Crabtree Nature Center\\, 3 Stover Road\\, Barrington Hills\\, IL\\, 60010 CATEGORIES:Astronomy,Hiking & Walking,Northwest Cook Count"
+          },
+          {
+            "match": "LOCATION:Little Red Schoolhouse Nature Center\\, 9800 Willow Springs Rd\\, Willow Springs\\, IL\\, 60480\\, United States",
+            "context": "/adult. URL:https://fpdcc.com/event/yoga-and-storytime-6/ LOCATION:Little Red Schoolhouse Nature Center\\, 9800 Willow Springs Rd\\, Willow Springs\\, IL\\, 60480\\, United States CATEGORIES:Nature Play,Southwest Cook County,Storytelling,"
           },
           {
             "match": "LOCATION:Spears Woods\\, IL",
@@ -2563,6 +2507,14 @@
           {
             "match": "LOCATION:Caldwell Woods Wellness Center\\, 6350 West Devon Avenue\\, Chicago\\, IL\\, 60646\\, United States",
             "context": ":https://fpdcc.com/event/yoga-in-the-preserves/2026-11-25/ LOCATION:Caldwell Woods Wellness Center\\, 6350 West Devon Avenue\\, Chicago\\, IL\\, 60646\\, United States CATEGORIES:Fitness,North Cook County,Wellness in the Woods"
+          },
+          {
+            "match": "LOCATION:Sand Ridge Nature Center\\, 15891 S Paxton Ave\\, South Holland\\, IL\\, 60473\\, United States",
+            "context": "2-mi. URL:https://fpdcc.com/event/welcoming-winter-walk/ LOCATION:Sand Ridge Nature Center\\, 15891 S Paxton Ave\\, South Holland\\, IL\\, 60473\\, United States CATEGORIES:Education,Hiking & Walking,South Cook County A"
+          },
+          {
+            "match": "LOCATION:Thatcher Woods",
+            "context": "Ages 55 & up. URL:https://fpdcc.com/event/fitness-hike-2/ LOCATION:Thatcher Woods CATEGORIES:Central Cook County,Education,Fitness,Hiking &"
           }
         ],
         "GEO:[^\\r\\n]{0,40}": [
@@ -2571,28 +2523,20 @@
             "context": "tent/uploads/2025/11/nation-of-nations-trailside-nov25.jpg GEO:41.89324535;-87.82630546 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Trailside"
           },
           {
-            "match": "GEO:41.70896743;-87.87715272",
-            "context": "c.com/wp-content/uploads/2019/03/wellness-woods-banner.jpg GEO:41.70896743;-87.87715272 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Little Red"
-          },
-          {
-            "match": "GEO:42.11563369;-88.16357511",
-            "context": "t/uploads/2025/11/buckthorn-natural-dye-workshop-oct25.jpg GEO:42.11563369;-88.16357511 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Crabtree N"
-          },
-          {
-            "match": "GEO:41.6807903;-87.86088567",
-            "context": "Southwest Zone)\":MAILTO:experience.nature@cookcountyil.gov GEO:41.6807903;-87.86088567 END:VEVENT BEGIN:VEVENT DTSTART;TZID=America/Chicago:202"
-          },
-          {
             "match": "GEO:42.09501105;-87.88484528",
-            "context": "ontent/uploads/2018/09/river-trail-nature-center-nov16.jpg GEO:42.09501105;-87.88484528 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=River Trai"
-          },
-          {
-            "match": "GEO:41.60593301;-87.56574946",
-            "context": "dge Campus\":MAILTO:sandridge.naturecenter@cookcountyil.gov GEO:41.60593301;-87.56574946 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Sand Ridge"
+            "context": "/whats-on-the-menu-river-trail-group-children-03-apr25.jpg GEO:42.09501105;-87.88484528 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=River Trai"
           },
           {
             "match": "GEO:41.68926677;-87.92571427",
             "context": "ds/2018/09/sagawau-environmental-learning-center-dec16.jpg GEO:41.68926677;-87.92571427 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Sagawau En"
+          },
+          {
+            "match": "GEO:42.11563369;-88.16357511",
+            "context": "5/02/bartel-grassland-landscape-moon-by-tina-ray-oct22.jpg GEO:42.11563369;-88.16357511 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Crabtree N"
+          },
+          {
+            "match": "GEO:41.70896743;-87.87715272",
+            "context": "nt/uploads/2025/11/trailside-children-storytime-nov25.jpeg GEO:41.70896743;-87.87715272 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Little Red"
           },
           {
             "match": "GEO:41.72661602;-87.85297377",
@@ -2601,6 +2545,14 @@
           {
             "match": "GEO:41.998562036604;-87.785286183849",
             "context": "ing (North Zone)\":MAILTO:northzoneprogram@cookcountyil.gov GEO:41.998562036604;-87.785286183849 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Caldwell W"
+          },
+          {
+            "match": "GEO:41.60593301;-87.56574946",
+            "context": "dge Campus\":MAILTO:sandridge.naturecenter@cookcountyil.gov GEO:41.60593301;-87.56574946 X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS=Sand Ridge"
+          },
+          {
+            "match": "GEO:41.89585788;-87.83089023",
+            "context": "6/11/senior-fitness-walk-thatcher-woods-group-01-feb26.jpg GEO:41.89585788;-87.83089023 END:VEVENT BEGIN:VEVENT DTSTART;TZID=America/Chicago:202"
           }
         ]
       }
@@ -2609,23 +2561,23 @@
       "url": "https://fpdcc.com/events/category/north/?ical=1",
       "purpose": "FPCC iCal export, north category",
       "item": 519,
-      "probed_at": "2026-11-21T14:08:27+00:00",
+      "probed_at": "2026-11-21T20:34:13+00:00",
       "status": 200,
       "final_url": "https://fpdcc.com/events/category/north/?ical=1",
       "content_type": "text/calendar; charset=UTF-8",
-      "bytes": 31323,
+      "bytes": 31283,
       "ics_event_count": 30,
       "pattern_matches": {
         "BEGIN:VEVENT": [
           {
             "match": "BEGIN:VEVENT",
-            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;TZID=America/Chicago:20261121T120000 DTEND;TZID=A"
+            "context": ":CST DTSTART:20271107T070000 END:STANDARD END:VTIMEZONE BEGIN:VEVENT DTSTART;TZID=America/Chicago:20261121T150000 DTEND;TZID=A"
           }
         ],
         "LOCATION:[^\\r\\n]{0,120}": [
           {
             "match": "LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States",
-            "context": "& up. URL:https://fpdcc.com/event/indoor-edible-gardens/ LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Education,Gardening,North Cook County,Sustainab"
+            "context": "URL:https://fpdcc.com/event/whats-on-the-menu/2026-11-21/ LOCATION:River Trail Nature Center\\, 3120 Milwaukee Ave\\, Northbrook\\, IL\\, 60062\\, United States CATEGORIES:Animal Ambassador,Education,North Cook County"
           },
           {
             "match": "LOCATION:Caldwell Woods Wellness Center\\, 6350 West Devon Avenue\\, Chicago\\, IL\\, 60646\\, United States",
@@ -2642,7 +2594,7 @@
       "url": "https://www.amctheatres.com/programs/sensory-friendly-films",
       "purpose": "AMC Sensory Friendly Films - how often, which theatres, Randhurst named?",
       "item": 518,
-      "probed_at": "2026-11-21T14:08:27+00:00",
+      "probed_at": "2026-11-21T20:34:13+00:00",
       "status": 403,
       "final_url": "https://www.amctheatres.com/programs/sensory-friendly-films",
       "content_type": "text/html; charset=UTF-8",
@@ -2659,7 +2611,7 @@
       "url": "https://www.wheelingchabad.com/",
       "purpose": "Chabad of Wheeling - 2026 public menorah lighting (date, time, place)",
       "item": 533,
-      "probed_at": "2026-11-21T14:08:27+00:00",
+      "probed_at": "2026-11-21T20:34:13+00:00",
       "status": 403,
       "final_url": "https://www.wheelingchabad.com/",
       "content_type": "text/html; charset=UTF-8",
@@ -2676,7 +2628,7 @@
       "url": "https://www.parkfun.com/wp-json/tribe/events/v1/events?per_page=50",
       "purpose": "Schaumburg Park District Events Calendar REST - venues (Spring Valley Nature Center?) and geo",
       "item": 522,
-      "probed_at": "2026-11-21T14:08:28+00:00",
+      "probed_at": "2026-11-21T20:34:13+00:00",
       "status": 404,
       "final_url": "https://www.parkfun.com/wp-json/tribe/events/v1/events?per_page=50",
       "content_type": "text/html; charset=utf-8",
@@ -2693,7 +2645,7 @@
       "url": "https://www.parkfun.com/events/?ical=1",
       "purpose": "Schaumburg Park District iCal export - LOCATION lines",
       "item": 522,
-      "probed_at": "2026-11-21T14:08:28+00:00",
+      "probed_at": "2026-11-21T20:34:14+00:00",
       "status": 200,
       "final_url": "https://www.parkfun.com/programs-events/calendar",
       "content_type": "text/html; charset=utf-8",
@@ -2710,7 +2662,7 @@
       "url": "https://www.lcfpd.org/calendar/",
       "purpose": "Lake County Forest Preserves calendar - an iCal/RSS export link, Ryerson Woods listings",
       "item": 523,
-      "probed_at": "2026-11-21T14:08:28+00:00",
+      "probed_at": "2026-11-21T20:34:14+00:00",
       "status": 403,
       "final_url": "https://www.lcfpd.org/calendar/",
       "content_type": "text/html; charset=UTF-8",
@@ -2727,11 +2679,11 @@
       "url": "https://www.downtownpalatine.org/",
       "purpose": "Does the Downtown Palatine Business Association's own site list Shop Small / Small Business Saturday on Nov 28, 2026?",
       "item": 543,
-      "probed_at": "2026-11-21T14:08:28+00:00",
+      "probed_at": "2026-11-21T20:34:15+00:00",
       "status": 200,
       "final_url": "https://www.downtownpalatine.org/",
       "content_type": "text/html;charset=utf-8",
-      "bytes": 899186,
+      "bytes": 565636,
       "title": "Downtown Palatine Business Association",
       "feed_links": [],
       "calendar_links": [],
@@ -2748,11 +2700,11 @@
         "url": "https://www.downtownpalatine.org/calendar",
         "purpose": "",
         "item": null,
-        "probed_at": "2026-11-21T14:08:29+00:00",
+        "probed_at": "2026-11-21T20:34:15+00:00",
         "status": 200,
         "final_url": "https://www.downtownpalatine.org/calendar",
         "content_type": "text/html;charset=utf-8",
-        "bytes": 253266,
+        "bytes": 778564,
         "title": "Calendar — Downtown Palatine Business Association",
         "feed_links": [],
         "calendar_links": [
