@@ -3268,6 +3268,10 @@ def build_shop_small(sections: list[dict], today: date) -> dict | None:
                 events.append({"title": display_title(e["title"]), "url": e["url"], "time": event_time_label(e["date_iso"]), "google_calendar_url": e.get("google_calendar_url")})
         downtown = sec.get("downtown") or {}
         link = {"name": downtown["name"], "url": downtown["url"]} if downtown.get("name") and safe_http_url(downtown.get("url")) else None
+        own = downtown.get("shop_small") or {}
+        if not events and link and own.get("title") and str(own.get("date")) == sbs.isoformat():
+            # The downtown organisation's own announcement of the day (item 543), no time unless posted.
+            events.append({"title": f"{own['title']} with {downtown['name']}", "url": link["url"], "time": own.get("time"), "google_calendar_url": None})
         if events or link:
             towns.append({"town": sec["region_name"], "events": events, "downtown": link})
     if not towns:
