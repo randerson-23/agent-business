@@ -783,6 +783,29 @@
   "url": "https://www.ahml.info/scheduling/reservation/226527",
   "venue": "Arlington Heights Memorial Library"
  },
+ "e/2026-11-26-palatine-park-district-turkey-trot/": {
+  "date_iso": "2026-11-26T08:00:00",
+  "detail": "The 46th annual Thanksgiving Day Turkey Trot at Harper College's Health and Recreation Center: 2-mile run/walk at 8:00 AM, 5-mile at 8:30 AM ($35 through Nov…",
+  "detail_long": null,
+  "first_seen": "2026-11-22",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261126T080000%0D%0ADTEND%3A20261126T090000%0D%0ASUMMARY%3A%F0%9F%A6%83%20Palatine%20Park%20District%20Turkey%20Trot%0D%0ADESCRIPTION%3AThe%2046th%20annual%20Thanksgiving%20Day%20Turkey%20Trot%20at%20Harper%20College%27s%20Health%20and%20Recreation%20Center%3A%202-mile%20run/walk%20at%208%3A00%20AM%5C%2C%205-mile%20at%208%3A30%20AM%20%28%2435%20through%20Nov%E2%80%A6%0D%0AURL%3Ahttps%3A//jobs.palatineparks.org/event/turkey-trot/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-26-palatine-park-district-turkey-trot/",
+  "postal_code": null,
+  "region_id": "palatine-60067",
+  "region_url": "https://withintenmiles.com/palatine-60067/",
+  "source": null,
+  "sponsored_by": null,
+  "state": null,
+  "street_address": null,
+  "tags": [
+   "kid_friendly",
+   "outdoor"
+  ],
+  "title": "🦃 Palatine Park District Turkey Trot",
+  "town": null,
+  "url": "https://jobs.palatineparks.org/event/turkey-trot/",
+  "venue": null
+ },
  "e/2026-11-27-holiday-tree-lighting-ceremony/": {
   "date_iso": "2026-11-27T16:00:00",
   "detail": "Storytime with the Village Board at 4 PM in Village Hall, the lighting of the Village Green at 5:30 PM, then fireworks and free photos with Santa. Free.",
@@ -805,6 +828,32 @@
   "title": "Holiday Tree Lighting Ceremony",
   "town": "Elk Grove Village",
   "url": "https://www.elkgrove.org/Home/Components/Calendar/Event/8782/17",
+  "venue": null
+ },
+ "e/2026-11-27-holiday-tree-lighting/": {
+  "date_iso": "2026-11-27T16:30:00",
+  "detail": "Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School…",
+  "detail_long": "Kick off the holiday season with the Arlington Heights Park District and the Village of Arlington Heights Special Events Commission at our annual North School Park tree lighting ceremony! Enjoy holiday-inspired music and dance performances, buy a hot cocoa or tasty treat, visit the AHML Bookmobile, and join the countdown as we flip the switch on over 100,000 tiny lights. Pre-performances in the North School Park amphitheater begin at 4:30PM followed by remarks at 5PM and the lighting ceremony at 5:15PM.",
+  "first_seen": "2026-11-22",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261127T163000%0D%0ADTEND%3A20261127T183000%0D%0ASUMMARY%3AHoliday%20Tree%20Lighting%0D%0ADESCRIPTION%3AKick%20off%20the%20holiday%20season%20with%20the%20Arlington%20Heights%20Park%20District%20and%20the%20Village%20of%20Arlington%20Heights%20Special%20Events%20Commission%20at%20our%20annual%20North%20School%E2%80%A6%0D%0AURL%3Ahttps%3A//www.ahpd.org/event/holiday-tree-lighting-2026/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-27-holiday-tree-lighting/",
+  "postal_code": null,
+  "region_id": "arlington-heights-60005",
+  "region_url": "https://withintenmiles.com/arlington-heights-60005/",
+  "source": "Arlington Heights Park District — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "art_culture",
+   "free",
+   "indoor",
+   "kid_friendly",
+   "outdoor"
+  ],
+  "title": "Holiday Tree Lighting",
+  "town": "Arlington Heights",
+  "url": "https://www.ahpd.org/event/holiday-tree-lighting-2026/",
   "venue": null
  },
  "e/2026-12-04-holiday-tree-lighting-at-metropolitan-square/": {
