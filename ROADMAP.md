@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **544** (compact holiday banner on phones, past dates dropped) first, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
+0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
 0. ~~**543**~~ **DONE** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
 0. ~~**540**~~ **DONE** with ~~**541**~~ **DONE**, then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
 0. **536** (is Buttondown tracking clicks? read the setting via API, enable it or add one line to step 5; ten issues show 0 clicks), then **537** (sponsor kit: six towns, clicks and visits before opens).
@@ -22363,7 +22363,7 @@ never built, and the Nov 25 issue is the last chance.
 
 #### P2 (new)
 
-544. **A compact holiday banner on phones, and past dates drop off.** Build
+544. **DONE (2026-11-22).** `build_holiday_banner` drops a town once its lighting date has passed and adds `next` (soonest date, towns sharing it, "Today" on the day) and `compact` (*"Tree lightings in 6 towns, next: Elk Grove Village and Arlington Heights, Fri Nov 27"*; *"Holiday events in all 6 towns"* once none are left). Under 600 px the banner is the kicker plus that one line (heading, chips, button and offer links hidden); from 600 px the button reads *"Next lighting: <date> · see tree lightings & holiday events"*. Measured at 390×844 in headless Chromium: the hero signup's top edge is at **506 px** (was ~870), no horizontal scroll. The test suite has no browser, so the first-screen check is this measurement, not a test. **A compact holiday banner on phones, and past dates drop off.** Build
      loop, `hub.html.j2`:
 
      - Under 600 px, the holiday banner collapses to **two lines**: the

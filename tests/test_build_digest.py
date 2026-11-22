@@ -8158,3 +8158,24 @@ def test_small_business_saturday_block_on_holidays_and_in_the_week_before(monkey
     email_sections = [dict(s, weekend_events=[]) for s in sections]
     html = build_digest.render_combined_email_digest(email_sections, "Nov 26–29", datetime(2026, 11, 24, 22, tzinfo=timezone.utc))
     assert "Small Business Saturday · Sat Nov 28" in html and "shop Downtown Mount Prospect" in html
+
+
+def test_holiday_banner_drops_past_lightings_and_has_a_compact_line():
+    # ROADMAP.md item 544.
+    entries = [
+        {"region_name": "Palatine", "tree": {"date_iso": "2026-11-21"}},
+        {"region_name": "Elk Grove Village", "tree": {"date_iso": "2026-11-27"}},
+        {"region_name": "Arlington Heights", "tree": {"date_iso": "2026-11-27"}},
+        {"region_name": "Wheeling", "tree": {"date_iso": None}},
+    ]
+    b = build_digest.build_holiday_banner(entries, datetime(2026, 11, 22, 18, tzinfo=timezone.utc))
+    assert [t["name"] for t in b["towns"]] == ["Elk Grove Village", "Arlington Heights", "Wheeling"]
+    assert b["compact"] == "Tree lightings in 4 towns, next: Elk Grove Village and Arlington Heights, Fri Nov 27"
+    same_day = build_digest.build_holiday_banner(entries, datetime(2026, 11, 21, 18, tzinfo=timezone.utc))
+    assert same_day["towns"][0]["name"] == "Palatine" and same_day["next"]["date"] == "Today"
+    after = build_digest.build_holiday_banner(entries, datetime(2026, 12, 2, 18, tzinfo=timezone.utc))
+    assert after["next"] is None and after["compact"] == "Holiday events in all 4 towns"
+    summaries = [{**REGION, "event_count": 3, "path": "mount-prospect-60056/"}]
+    html = build_digest.render_hub_page([], summaries, datetime(2026, 11, 22, 18, tzinfo=timezone.utc), holiday=b)
+    assert 'class="holiday-compact"' in html and "Next lighting: Fri Nov 27" in html
+    assert "@media (max-width: 599px)" in html and "Palatine <strong>" not in html

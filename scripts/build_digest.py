@@ -4862,11 +4862,26 @@ def build_holiday_banner(entries: list[dict], now: datetime) -> dict | None:
     today = now.astimezone(LOCAL_TZ).date()
     if not entries or not (date(today.year, 11, 1) <= today <= date(today.year, 12, 24)):
         return None
-    towns = []
+    towns, upcoming = [], []
     for e in entries:
         day = _parse_promo_day((e.get("tree") or {}).get("date_iso"))
+        if day and day < today:  # item 544: a lighting that has happened leaves the banner
+            continue
         towns.append({"name": e["region_name"], "date": day.strftime("%a %b ") + str(day.day) if day else "date TBA"})
-    return {"towns": towns, "offer": today <= date(today.year, 11, 15)}
+        if day:
+            upcoming.append((day, e["region_name"]))
+    # Item 544: the phone banner's one line, from the soonest upcoming lighting(s).
+    nxt = None
+    if upcoming:
+        first = min(d for d, _ in upcoming)
+        names = [n for d, n in upcoming if d == first]
+        when = "Today" if first == today else first.strftime("%a %b ") + str(first.day)
+        nxt = {"names": _join_names(names), "date": when}
+    if nxt:
+        compact = f"Tree lightings in {len(entries)} towns, next: {nxt['names']}, {nxt['date']}"
+    else:
+        compact = f"Holiday events in all {len(entries)} towns"
+    return {"towns": towns, "offer": today <= date(today.year, 11, 15), "next": nxt, "compact": compact}
 
 
 _NOTICE_TITLE = re.compile(
