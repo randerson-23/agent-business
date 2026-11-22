@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **549** (Weekly Spot priced at about $28 per 1,000 readers per issue, $25–$75, replacing the jump at 100), then **548** (winter reading challenges; probes from Dec 1).
 0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
 0. ~~**543**~~ **DONE** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
 0. ~~**540**~~ **DONE** with ~~**541**~~ **DONE**, then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
@@ -22453,6 +22454,67 @@ Competitors reviewed this pass: **everyrink.com** (a public-skate-times
 site; new to the table) and the **Mt. Prospect Ice Arena's own pages** as
 a source. The design/UX angle is **a single winter skate line** instead of
 scattered cards.
+
+#### Research pass 2026-11-22 (hundred-and-fifty-ninth pass)
+
+Overnight the build loop shipped item 544: on phones the holiday banner is two
+lines (*"Tree lightings in 6 towns, next: …"*), past dates drop off, and the
+hero signup now sits on the first screen. This pass looks at a January
+reason to keep opening the email, and at what other family newsletters in
+and near Chicago actually charge, which bears on item 487's launch price.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Library winter reading challenges** (AHML's news and newsletter pages; Palatine library's *Winter Reading Challenge 2025–2026* page; Patch Arlington Heights and the Daily Herald on past challenges) | **Arlington Heights Memorial Library:** *Winter Reading* runs **mid-December to Jan 31** for babies through teens: track 20 days of reading, earn play-to-win prizes and **a prize book**, sign up at Kids' World, the Hub or **ahml.beanstack.org**. **Palatine:** the 2025–26 challenge ran **Dec 15 – Jan 31** on **Beanstack**. No 2026–27 dates yet; last year's started mid-December. Nothing found for Mount Prospect, Des Plaines, Indian Trails or Elk Grove | January is the thinnest month for events (items 492 and 494 are built around that). A six-week reading challenge with weekly prizes is a reason for a family to act **every week of the break and January**, and it starts right when the issues need it. These are dated, sourced and free, and the same library pages may name prize sponsors (item 469's warm leads) (item 548) |
+| **What family and local newsletters charge** (NPN Parents' *Advertise* page; Chicago Journal's ad page; Block Club Chicago's 2026 media kit; Ann Arbor with Kids' sponsorship page; Macaroni KID Schaumburg, pass 136) | **Ann Arbor with Kids** (a family events newsletter, **~2,700 subscribers**): a **$75 per issue** sponsorship and a **$25 per issue** ad (page from April 2025). **NPN Parents** (Chicago families): email blasts **from $100**. **Chicago Journal:** a newsletter sponsor line at **$150 per send**. **Block Club Chicago:** neighbourhood newsletter ad at **$400**. **Macaroni KID Schaumburg** (1,150+ parents): from **$75/month** | The benchmarks run around **$25–$30 per issue per 1,000 family subscribers** for a small family list. Item 487's launch rate ($25/week under 100 readers) is fair. But its next step, **$50/week the moment the list reaches 100**, would charge more than Ann Arbor with Kids does at 2,700. A price that rises **smoothly with readers** is easier to defend to a shop owner and stays inside BUSINESS_PLAN.md's $25–$75 range (item 549) |
+| **How the sponsor page explains price (design/UX)** (`/sponsor/` with item 487's launch rate) | It shows *"Launch rate: $25/week while we grow; $50/week from 100 readers"*, a promise to double at a threshold. Nothing tells a sponsor **why** the price is what it is | One honest line (*"Our price follows our readership: about $28 per 1,000 readers per issue, never below $25"*) turns the price into a reason to buy early (item 549) |
+
+#### P2 (new)
+
+548. **Winter reading challenges in the December and January issues.** Build
+     loop:
+
+     - Probe AHML's and Palatine library's winter-reading pages (and the
+       other four libraries' sites, for *winter reading*) weekly from
+       Dec 1. When a 2026–27 page gives dates, add an `evergreen` line per
+       library: ***"📚 Winter Reading at AHML: read 20 days, win prizes and
+       a book, Dec [x] – Jan 31 · sign up →"***, using the page's own
+       wording and link.
+     - Show it on the town page, the winter-break edition (item 539) and
+       the Jan issues while it runs. It counts as a thin-weekend idea
+       (item 494).
+     - Record any named prize sponsor via item 469.
+
+     Tests: no line without a 2026–27 page, the line runs only between
+     the challenge's dates, and a prize sponsor becomes a warm lead.
+
+549. **Price the Weekly Spot by readers, smoothly, not in one jump.** Build
+     loop, `config/sponsors.yaml` and `/sponsor/`:
+
+     - Replace item 487's threshold (*$25 under 100, $50 from 100*) with a
+       rate: **about $28 per 1,000 subscribers per issue**, rounded up to
+       the nearest $5, **never below $25 or above $75** (BUSINESS_PLAN.md's
+       range). The monthly price is 3.5× the weekly.
+     - Show the basis on `/sponsor/`: ***"Our price follows our readership:
+       about $28 per 1,000 readers per issue, never below $25. Book now and
+       your price holds for the weeks you book."***
+     - Item 499's Holiday listing and the Event Promo are unchanged. The
+       owner can override with a fixed `weekly_spot_price:`.
+
+     Tests: the price at 1, 100, 900 and 3,000 subscribers is $25, $25,
+     $25 and $75 (capped), the booking-locks-price line renders, and an
+     override wins.
+
+Re-rank: **549 goes before item 420/421** (sponsor products): it fixes the
+price every sponsor conversation starts from. **548** goes with item 492's
+winter-guide work (**by Dec 1** for the probes; lines appear when pages
+post).
+
+Competitors reviewed this pass: **Ann Arbor with Kids, NPN Parents,
+Chicago Journal and Block Club Chicago** (published newsletter ad rates),
+plus **AHML's and Palatine library's winter reading challenges** as
+January content. The design/UX angle is **how `/sponsor/` explains its
+price**.
 
 
 ## Working agreements for autonomous iteration
