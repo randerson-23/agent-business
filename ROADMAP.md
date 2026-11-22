@@ -22502,7 +22502,7 @@ and near Chicago actually charge, which bears on item 487's launch price.
        owner can override with a fixed `weekly_spot_price:`.
 
      Tests: the price at 1, 100, 900 and 3,000 subscribers is $25, $25,
-     $25 and $75 (capped), the booking-locks-price line renders, and an
+     $30 and $75 (capped; $84 uncapped), the booking-locks-price line renders, and an
      override wins.
 
 Re-rank: **549 goes before item 420/421** (sponsor products): it fixes the
