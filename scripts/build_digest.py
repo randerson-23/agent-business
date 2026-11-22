@@ -3791,6 +3791,44 @@ def apply_launch_rate(tiers: list[dict], launch: dict | None, list_size: int | N
     return str(launch.get("line") or "")
 
 
+def reader_rate_weekly(rate: dict | None, list_size: int | None, override=None) -> int | None:
+    """ROADMAP.md item 549: the Weekly Spot's price in whole dollars: an owner
+    override if set, else `per_thousand` per 1,000 readers rounded up to
+    `round_to`, clamped to [floor, cap]; the floor when the size is unknown."""
+    if override not in (None, ""):
+        return int(override)
+    if not rate:
+        return None
+    step, floor, cap = int(rate.get("round_to") or 5), int(rate.get("floor") or 25), int(rate.get("cap") or 75)
+    raw = float(rate.get("per_thousand") or 0) * (list_size or 0) / 1000
+    rounded = math.ceil(raw / step) * step if raw > 0 else 0
+    return max(floor, min(cap, rounded))
+
+
+def reader_rate_prices(rate: dict | None, list_size: int | None, override=None) -> dict | None:
+    """Item 549: the Weekly Spot and Starter price strings for `/sponsor/` and the
+    preview page. Month = `monthly_multiple` x week rounded up to $5; Starter =
+    three weeks at 10% off, rounded down to $5."""
+    weekly = reader_rate_weekly(rate, list_size, override)
+    if weekly is None:
+        return None
+    monthly = math.ceil(weekly * float((rate or {}).get("monthly_multiple") or 3.5) / 5) * 5
+    starter = int(weekly * 3 * 0.9 // 5 * 5)
+    return {"weekly": weekly, "weekly_spot": f"${weekly}/week or ${monthly}/month", "starter": f"${starter} for 3 weeks",
+            "line": str((rate or {}).get("line") or "")}
+
+
+def apply_reader_rate(tiers: list[dict], prices: dict | None) -> None:
+    if not prices:
+        return
+    for tier in tiers:
+        key = tier.get("payment_key")
+        if key in ("weekly_spot", "starter"):
+            tier["price"] = prices[key]
+            if key == "weekly_spot" and prices["line"]:
+                tier["rate_line"] = prices["line"]
+
+
 def render_sponsor_page(
     availability: list[dict],
     now: datetime,
@@ -3802,6 +3840,8 @@ def render_sponsor_page(
     founding_promos_used: int = 0,
     launch_rate: dict | None = None,
     list_size: int | None = None,
+    reader_rate: dict | None = None,
+    weekly_spot_price=None,
 ) -> str:
     env = get_template_env()
     template = env.get_template("sponsor.html.j2")
@@ -3816,6 +3856,7 @@ def render_sponsor_page(
         for t in SPONSOR_TIERS
         if holiday_tier_visible(t, today)
     ]
+    apply_reader_rate(tiers, reader_rate_prices(reader_rate, list_size, weekly_spot_price))  # item 549
     launch_line = apply_launch_rate(tiers, launch_rate, list_size)  # item 487
     return template.render(
         launch_line=launch_line,
@@ -3893,7 +3934,7 @@ def render_promo_receipt(receipt: dict) -> str:
     return get_template_env().get_template("sponsor_receipt.html.j2").render(r=receipt, hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "sponsor/", og_image_url=SITE_BASE_URL + "og/default.png")
 
 
-def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None, today: date | None = None, founding_promos_used: int = 0, launch_rate: dict | None = None, list_size: int | None = None) -> str:
+def render_sponsor_preview(sections: list[dict], payment_links: dict | None, contact_email: str | None, today: date | None = None, founding_promos_used: int = 0, launch_rate: dict | None = None, list_size: int | None = None, reader_rate: dict | None = None, weekly_spot_price=None) -> str:
     """ROADMAP.md items 313 and 419: the `/sponsor/preview/` page. The template
     fills in the business, town, event, venue and kind from the address in the
     visitor's browser (textContent only); the build supplies each town's colour,
@@ -3914,8 +3955,10 @@ def render_sponsor_preview(sections: list[dict], payment_links: dict | None, con
     links = dict(payment_links or {})
     spot_price = "$50/week or $175/month"
     spot_tier = [{"payment_key": "weekly_spot", "price": spot_price, "buy_url": links.get("weekly_spot")}]
-    if apply_launch_rate(spot_tier, launch_rate, list_size) is not None:  # item 487: the same price as /sponsor/
-        spot_price, links["weekly_spot"] = spot_tier[0]["price"], spot_tier[0]["buy_url"]
+    apply_reader_rate(spot_tier, reader_rate_prices(reader_rate, list_size, weekly_spot_price))  # item 549: the same price as /sponsor/
+    if apply_launch_rate(spot_tier, launch_rate, list_size) is not None:  # item 487
+        links["weekly_spot"] = spot_tier[0]["buy_url"]
+    spot_price = spot_tier[0]["price"]
     offer = founding_offer(founding_promos_used, today)
     mailto = build_contact_mailto_url(contact_email, "Sponsor preview", SPONSOR_INQUIRY_FIELDS) if contact_email else SITE_BASE_URL + "sponsor/"
     return get_template_env().get_template("sponsor_preview.html.j2").render(
@@ -9908,6 +9951,8 @@ def main() -> None:
         audience=load_audience_line(),
         launch_rate=sponsors_cfg.get("launch_rate"),
         list_size=current_list_size(),
+        reader_rate=sponsors_cfg.get("reader_rate"),  # item 549
+        weekly_spot_price=sponsors_cfg.get("weekly_spot_price"),
     )
     sponsor_dir = OUTPUT_DIR / "sponsor"
     sponsor_dir.mkdir(parents=True, exist_ok=True)
@@ -9926,7 +9971,7 @@ def main() -> None:
         (receipt_dir / "index.html").write_text(render_promo_receipt(receipt), encoding="utf-8")
     preview_dir = sponsor_dir / "preview"  # item 313: noindex, out of the sitemap, linked from nowhere
     preview_dir.mkdir(parents=True, exist_ok=True)
-    (preview_dir / "index.html").write_text(render_sponsor_preview(combined_email_sections, sponsors_cfg.get("payment_links"), contact_email, now.astimezone(LOCAL_TZ).date(), sponsors_cfg.get("founding_promos_used") or 0, sponsors_cfg.get("launch_rate"), current_list_size()), encoding="utf-8")
+    (preview_dir / "index.html").write_text(render_sponsor_preview(combined_email_sections, sponsors_cfg.get("payment_links"), contact_email, now.astimezone(LOCAL_TZ).date(), sponsors_cfg.get("founding_promos_used") or 0, sponsors_cfg.get("launch_rate"), current_list_size(), sponsors_cfg.get("reader_rate"), sponsors_cfg.get("weekly_spot_price")), encoding="utf-8")
     logger.info("Wrote %s", sponsor_dir / "index.html")
 
     about_html = render_about_page(now, analytics, contact_email=contact_email, source_completeness=source_completeness)
