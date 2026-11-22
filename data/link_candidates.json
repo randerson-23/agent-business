@@ -22,7 +22,7 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/233406"
+   "url": "https://www.ahml.info/scheduling/reservation/226527"
   },
   {
    "region": "arlington-heights-60005",
@@ -34,11 +34,11 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/236749"
+   "url": "https://www.ahpd.org/event/holiday-tree-lighting-2026/"
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahpd.org/event/holiday-tree-lighting-2026/"
+   "url": "https://www.ahpd.org/event/holly-jolly-trolly/"
   },
   {
    "region": "arlington-heights-60005",
@@ -51,6 +51,14 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.metropolisarts.com/event/christmas-schooner/"
+  },
+  {
+   "region": "arlington-heights-60005",
+   "url": "https://www.metropolisarts.com/event/holiday-cabaret-a-joyful-twist/"
+  },
+  {
+   "region": "arlington-heights-60005",
+   "url": "https://www.metropolisarts.com/event/winter-camp-showcase-2026/"
   },
   {
    "region": "des-plaines-60016",
@@ -71,10 +79,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15509802"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/15665657"
   },
   {
    "region": "des-plaines-60016",
@@ -118,14 +122,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17004639"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17004649"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17047445"
   },
   {
@@ -163,10 +159,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17253045"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17274961"
   },
   {
    "region": "des-plaines-60016",
@@ -211,6 +203,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17727499"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17735218"
   },
   {
    "region": "des-plaines-60016",
@@ -266,10 +262,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-8/"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-9/"
   },
   {
@@ -283,6 +275,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-the-bourbon-n-brass-trio-with-jazz-saxophonist-eric-schneider-thanksgiving-eve-jazz/"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplainestheatre.com/event/christmas-wizards-a-night-of-trans-siberian-orchestra-and-more-starring-infinity-7/"
   },
   {
    "region": "des-plaines-60016",
@@ -301,16 +297,8 @@
    "url": "https://desplainestheatre.com/event/say-anything-an-intimate-screening-and-evening-with-john-cusack/"
   },
   {
-   "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/snap-shot-classic-rock-experience-with-special-guest-class-of-68/"
-  },
-  {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/15064011"
-  },
-  {
-   "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/15584327"
   },
   {
    "region": "elk-grove-village-60007",
@@ -323,10 +311,6 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/16167279"
-  },
-  {
-   "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/16362689"
   },
   {
    "region": "elk-grove-village-60007",
@@ -382,10 +366,6 @@
   },
   {
    "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/17020701"
-  },
-  {
-   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17050132"
   },
   {
@@ -407,10 +387,6 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17069393"
-  },
-  {
-   "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/17074020"
   },
   {
    "region": "elk-grove-village-60007",
@@ -442,7 +418,7 @@
   },
   {
    "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/17354433"
+   "url": "https://egvpl.libnet.info/event/17256446"
   },
   {
    "region": "elk-grove-village-60007",
@@ -498,11 +474,19 @@
   },
   {
    "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17354447"
+  },
+  {
+   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17441878"
   },
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17537546"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17569716"
   },
   {
    "region": "elk-grove-village-60007",
@@ -543,6 +527,10 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17731394"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17731395"
   },
   {
    "region": "elk-grove-village-60007",
@@ -662,10 +650,6 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16641061"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16734580"
   },
   {
@@ -766,6 +750,10 @@
   },
   {
    "region": "palatine-60067",
+   "url": "https://events.harpercollege.edu/event/the-festival-chorus-christmas-concert-2026"
+  },
+  {
+   "region": "palatine-60067",
    "url": "https://runsignup.com/Race/IL/Palatine/PalatineParkDistrictTurkeyTrot"
   },
   {
@@ -778,10 +766,6 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://fpdcc.com/event/indoor-edible-gardens/"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://fpdcc.com/event/nocturnal-hunters-owls-2/"
   },
   {
@@ -790,7 +774,7 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-11-21/"
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-11-22/"
   },
   {
    "region": "wheeling-60090",
@@ -898,11 +882,23 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17101964"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17101987"
   },
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17102000"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17102140"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17102147"
   },
   {
    "region": "wheeling-60090",
@@ -926,15 +922,15 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/17109214"
-  },
-  {
-   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17114828"
   },
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17116313"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17117288"
   },
   {
    "region": "wheeling-60090",
@@ -946,7 +942,15 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17207853"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17428279"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17482788"
   },
   {
    "region": "wheeling-60090",

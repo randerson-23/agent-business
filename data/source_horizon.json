@@ -9,13 +9,6 @@
   },
   {
    "count": 240,
-   "date": "2026-11-19",
-   "horizon_days": 11,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 240,
    "date": "2026-11-20",
    "horizon_days": 10,
    "route": "html_events",
@@ -67,6 +60,13 @@
    "count": 240,
    "date": "2026-11-21",
    "horizon_days": 9,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 240,
+   "date": "2026-11-22",
+   "horizon_days": 8,
    "route": "html_events",
    "type": "html_events"
   }
@@ -81,13 +81,6 @@
   },
   {
    "count": 7,
-   "date": "2026-11-18",
-   "horizon_days": 31,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 7,
    "date": "2026-11-19",
    "horizon_days": 30,
    "route": "month_ics",
@@ -139,6 +132,13 @@
    "count": 7,
    "date": "2026-11-21",
    "horizon_days": 28,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 7,
+   "date": "2026-11-22",
+   "horizon_days": 27,
    "route": "month_ics",
    "type": "tribe_events"
   }
@@ -153,13 +153,6 @@
   },
   {
    "count": 198,
-   "date": "2026-11-19",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
-   "count": 198,
    "date": "2026-11-20",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -210,6 +203,13 @@
   {
    "count": 195,
    "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 192,
+   "date": "2026-11-22",
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
@@ -217,13 +217,6 @@
  ],
  "arlington-heights-60005:Metropolis Performing Arts Centre \u2014 Shows": [
   {
-   "count": 20,
-   "date": "2026-11-19",
-   "horizon_days": 186,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
    "count": 21,
    "date": "2026-11-19",
    "horizon_days": 186,
@@ -283,6 +276,13 @@
    "count": 21,
    "date": "2026-11-21",
    "horizon_days": 184,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 21,
+   "date": "2026-11-22",
+   "horizon_days": 183,
    "route": "ics",
    "type": "ics"
   }
@@ -297,13 +297,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-19",
-   "horizon_days": 16,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 1,
    "date": "2026-11-20",
    "horizon_days": 15,
    "route": "runsignup",
@@ -355,6 +348,13 @@
    "count": 1,
    "date": "2026-11-21",
    "horizon_days": 14,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-22",
+   "horizon_days": 13,
    "route": "runsignup",
    "type": "runsignup"
   }
@@ -369,13 +369,6 @@
   },
   {
    "count": 10,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 10,
    "date": "2026-11-20",
    "horizon_days": null,
    "route": "html_events",
@@ -426,6 +419,13 @@
   {
    "count": 10,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -441,13 +441,6 @@
   },
   {
    "count": 10,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 10,
    "date": "2026-11-20",
    "horizon_days": null,
    "route": "html_events",
@@ -498,6 +491,13 @@
   {
    "count": 10,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -513,13 +513,6 @@
   },
   {
    "count": 4,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 4,
    "date": "2026-11-20",
    "horizon_days": null,
    "route": "html_events",
@@ -570,6 +563,13 @@
   {
    "count": 4,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 4,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -585,13 +585,6 @@
   },
   {
    "count": 21,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 21,
    "date": "2026-11-19",
    "horizon_days": null,
    "route": "html_events",
@@ -642,19 +635,19 @@
   {
    "count": 21,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 21,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
   }
  ],
  "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
-  {
-   "count": 408,
-   "date": "2026-11-19",
-   "horizon_days": 408,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 411,
    "date": "2026-11-19",
@@ -717,16 +710,16 @@
    "horizon_days": 406,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 399,
+   "date": "2026-11-22",
+   "horizon_days": 405,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
-  {
-   "count": 54,
-   "date": "2026-11-19",
-   "horizon_days": 73,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
   {
    "count": 58,
    "date": "2026-11-19",
@@ -789,6 +782,13 @@
    "horizon_days": 71,
    "route": "month_ics",
    "type": "tribe_events"
+  },
+  {
+   "count": 58,
+   "date": "2026-11-22",
+   "horizon_days": 70,
+   "route": "month_ics",
+   "type": "tribe_events"
   }
  ],
  "des-plaines-60016:Forest Preserves of Cook County \u2014 north": [
@@ -801,13 +801,6 @@
   },
   {
    "count": 198,
-   "date": "2026-11-19",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
-   "count": 198,
    "date": "2026-11-20",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -858,6 +851,13 @@
   {
    "count": 195,
    "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 192,
+   "date": "2026-11-22",
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
@@ -873,13 +873,6 @@
   },
   {
    "count": 0,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 0,
    "date": "2026-11-20",
    "horizon_days": null,
    "route": "runsignup",
@@ -930,6 +923,13 @@
   {
    "count": 0,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
@@ -945,13 +945,6 @@
   },
   {
    "count": 500,
-   "date": "2026-11-19",
-   "horizon_days": 86,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
-   "count": 500,
    "date": "2026-11-20",
    "horizon_days": 85,
    "route": "rss",
@@ -1002,6 +995,13 @@
   {
    "count": 500,
    "date": "2026-11-21",
+   "horizon_days": 85,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 500,
+   "date": "2026-11-22",
    "horizon_days": 85,
    "route": "rss",
    "type": "rss"
@@ -1017,13 +1017,6 @@
   },
   {
    "count": 198,
-   "date": "2026-11-19",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
-   "count": 198,
    "date": "2026-11-20",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -1074,6 +1067,13 @@
   {
    "count": 195,
    "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 192,
+   "date": "2026-11-22",
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
@@ -1089,13 +1089,6 @@
   },
   {
    "count": 3,
-   "date": "2026-11-19",
-   "horizon_days": 38,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 3,
    "date": "2026-11-20",
    "horizon_days": 37,
    "route": "runsignup",
@@ -1147,6 +1140,13 @@
    "count": 3,
    "date": "2026-11-21",
    "horizon_days": 36,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 3,
+   "date": "2026-11-22",
+   "horizon_days": 35,
    "route": "runsignup",
    "type": "runsignup"
   }
@@ -1177,13 +1177,6 @@
   },
   {
    "count": 198,
-   "date": "2026-11-19",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
-   "count": 198,
    "date": "2026-11-20",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -1234,6 +1227,13 @@
   {
    "count": 195,
    "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 192,
+   "date": "2026-11-22",
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
@@ -1248,13 +1248,6 @@
    "type": "tribe_events"
   },
   {
-   "count": 30,
-   "date": "2026-11-18",
-   "horizon_days": 73,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
    "count": 28,
    "date": "2026-11-19",
    "horizon_days": 72,
@@ -1307,18 +1300,18 @@
    "count": 28,
    "date": "2026-11-21",
    "horizon_days": 70,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 28,
+   "date": "2026-11-22",
+   "horizon_days": 69,
    "route": "month_ics",
    "type": "tribe_events"
   }
  ],
  "mount-prospect-60056:Mount Prospect Public Library \u2014 Events": [
-  {
-   "count": 188,
-   "date": "2026-11-19",
-   "horizon_days": 380,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 188,
    "date": "2026-11-19",
@@ -1381,6 +1374,13 @@
    "horizon_days": 378,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 173,
+   "date": "2026-11-22",
+   "horizon_days": 377,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "mount-prospect-60056:Mount Prospect School District 57 \u2014 Calendar": [
@@ -1392,13 +1392,6 @@
    "type": "ics"
   },
   {
-   "count": 51,
-   "date": "2026-11-19",
-   "horizon_days": 210,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
    "count": 50,
    "date": "2026-11-20",
    "horizon_days": 209,
@@ -1451,6 +1444,13 @@
    "count": 49,
    "date": "2026-11-21",
    "horizon_days": 208,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 49,
+   "date": "2026-11-22",
+   "horizon_days": 207,
    "route": "ics",
    "type": "ics"
   }
@@ -1465,13 +1465,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 1,
    "date": "2026-11-20",
    "horizon_days": null,
    "route": "html_events",
@@ -1522,6 +1515,13 @@
   {
    "count": 1,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1537,13 +1537,6 @@
   },
   {
    "count": 0,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 0,
    "date": "2026-11-20",
    "horizon_days": null,
    "route": "runsignup",
@@ -1594,19 +1587,19 @@
   {
    "count": 0,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
   }
  ],
  "mount-prospect-60056:Village of Mount Prospect \u2014 News": [
-  {
-   "count": 40,
-   "date": "2026-11-19",
-   "horizon_days": -1,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
   {
    "count": 40,
    "date": "2026-11-19",
@@ -1669,6 +1662,13 @@
    "horizon_days": -1,
    "route": "revize_news_json",
    "type": "revize_news_json"
+  },
+  {
+   "count": 42,
+   "date": "2026-11-22",
+   "horizon_days": -2,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
   }
  ],
  "palatine-60067:Community Consolidated School District 15 \u2014 Calendar": [
@@ -1681,13 +1681,6 @@
   },
   {
    "count": 41,
-   "date": "2026-11-19",
-   "horizon_days": 202,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 41,
    "date": "2026-11-20",
    "horizon_days": 201,
    "route": "ics",
@@ -1739,6 +1732,13 @@
    "count": 41,
    "date": "2026-11-21",
    "horizon_days": 200,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 41,
+   "date": "2026-11-22",
+   "horizon_days": 199,
    "route": "ics",
    "type": "ics"
   }
@@ -1753,13 +1753,6 @@
   },
   {
    "count": 198,
-   "date": "2026-11-19",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
-   "count": 198,
    "date": "2026-11-20",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -1810,19 +1803,19 @@
   {
    "count": 195,
    "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 192,
+   "date": "2026-11-22",
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
   }
  ],
  "palatine-60067:Harper College \u2014 Public Events": [
-  {
-   "count": 6,
-   "date": "2026-11-19",
-   "horizon_days": 20,
-   "route": "localist",
-   "type": "localist"
-  },
   {
    "count": 6,
    "date": "2026-11-19",
@@ -1885,6 +1878,13 @@
    "horizon_days": 18,
    "route": "localist",
    "type": "localist"
+  },
+  {
+   "count": 4,
+   "date": "2026-11-22",
+   "horizon_days": 17,
+   "route": "localist",
+   "type": "localist"
   }
  ],
  "palatine-60067:Palatine Park District \u2014 Events": [
@@ -1897,13 +1897,6 @@
   },
   {
    "count": 13,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 13,
    "date": "2026-11-20",
    "horizon_days": null,
    "route": "html_events",
@@ -1954,19 +1947,19 @@
   {
    "count": 13,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 13,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
   }
  ],
  "palatine-60067:Palatine Public Library District \u2014 Events": [
-  {
-   "count": 26,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
   {
    "count": 26,
    "date": "2026-11-19",
@@ -2029,6 +2022,13 @@
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
+  },
+  {
+   "count": 25,
+   "date": "2026-11-22",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
   }
  ],
  "palatine-60067:RunSignup \u2014 races in Palatine": [
@@ -2041,13 +2041,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-19",
-   "horizon_days": 7,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 1,
    "date": "2026-11-20",
    "horizon_days": 6,
    "route": "runsignup",
@@ -2099,6 +2092,13 @@
    "count": 1,
    "date": "2026-11-21",
    "horizon_days": 5,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-22",
+   "horizon_days": 4,
    "route": "runsignup",
    "type": "runsignup"
   }
@@ -2113,13 +2113,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-18",
-   "horizon_days": 30,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
-   "count": 1,
    "date": "2026-11-19",
    "horizon_days": 29,
    "route": "month_ics",
@@ -2171,6 +2164,13 @@
    "count": 1,
    "date": "2026-11-21",
    "horizon_days": 27,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-22",
+   "horizon_days": 26,
    "route": "month_ics",
    "type": "tribe_events"
   }
@@ -2185,13 +2185,6 @@
   },
   {
    "count": 13,
-   "date": "2026-11-19",
-   "horizon_days": 306,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 13,
    "date": "2026-11-20",
    "horizon_days": 305,
    "route": "ics",
@@ -2243,18 +2236,18 @@
    "count": 13,
    "date": "2026-11-21",
    "horizon_days": 304,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 13,
+   "date": "2026-11-22",
+   "horizon_days": 303,
    "route": "ics",
    "type": "ics"
   }
  ],
  "palatine-60067:Village of Palatine \u2014 Calendar": [
-  {
-   "count": 20,
-   "date": "2026-11-19",
-   "horizon_days": 149,
-   "route": "ics",
-   "type": "ics"
-  },
   {
    "count": 28,
    "date": "2026-11-19",
@@ -2317,6 +2310,13 @@
    "horizon_days": 147,
    "route": "ics",
    "type": "ics"
+  },
+  {
+   "count": 24,
+   "date": "2026-11-22",
+   "horizon_days": 146,
+   "route": "ics",
+   "type": "ics"
   }
  ],
  "palatine-60067:Village of Palatine \u2014 News": [
@@ -2329,13 +2329,6 @@
   },
   {
    "count": 2,
-   "date": "2026-11-19",
-   "horizon_days": -8,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
-   "count": 2,
    "date": "2026-11-20",
    "horizon_days": -9,
    "route": "rss",
@@ -2387,6 +2380,13 @@
    "count": 3,
    "date": "2026-11-21",
    "horizon_days": -1,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 2,
+   "date": "2026-11-22",
+   "horizon_days": -2,
    "route": "rss",
    "type": "rss"
   }
@@ -2401,13 +2401,6 @@
   },
   {
    "count": 198,
-   "date": "2026-11-19",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
-   "count": 198,
    "date": "2026-11-20",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -2458,19 +2451,19 @@
   {
    "count": 195,
    "date": "2026-11-21",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 192,
+   "date": "2026-11-22",
    "horizon_days": 60,
    "route": "tribe_venues",
    "type": "tribe_venues"
   }
  ],
  "wheeling-60090:Indian Trails Public Library \u2014 Events": [
-  {
-   "count": 198,
-   "date": "2026-11-19",
-   "horizon_days": 790,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 196,
    "date": "2026-11-19",
@@ -2533,6 +2526,13 @@
    "horizon_days": 788,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 189,
+   "date": "2026-11-22",
+   "horizon_days": 787,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "wheeling-60090:RunSignup \u2014 races in Wheeling": [
@@ -2545,13 +2545,6 @@
   },
   {
    "count": 0,
-   "date": "2026-11-19",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 0,
    "date": "2026-11-20",
    "horizon_days": null,
    "route": "runsignup",
@@ -2602,6 +2595,13 @@
   {
    "count": 0,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
@@ -2617,13 +2617,6 @@
   },
   {
    "count": 138,
-   "date": "2026-11-19",
-   "horizon_days": 1145,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 138,
    "date": "2026-11-20",
    "horizon_days": 1144,
    "route": "ics",
@@ -2675,6 +2668,13 @@
    "count": 138,
    "date": "2026-11-21",
    "horizon_days": 1143,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 138,
+   "date": "2026-11-22",
+   "horizon_days": 1142,
    "route": "ics",
    "type": "ics"
   }
@@ -2726,13 +2726,6 @@
   },
   {
    "count": 0,
-   "date": "2026-11-18",
-   "horizon_days": null,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 0,
    "date": "2026-11-19",
    "horizon_days": null,
    "route": "ics",
@@ -2783,6 +2776,13 @@
   {
    "count": 0,
    "date": "2026-11-21",
+   "horizon_days": null,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-22",
    "horizon_days": null,
    "route": "ics",
    "type": "ics"

@@ -2,132 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-11-21T22:05:25+00:00",
-  "numberOfItems": 14,
+  "dateModified": "2026-11-22T06:00:39+00:00",
+  "numberOfItems": 12,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Palatine Winter Farmers' Market",
-        "startDate": "2026-11-21T09:00:00-06:00",
-        "url": "https://withintenmiles.com/e/2026-11-21-palatine-winter-farmers-market/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine Train Station parking lot",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/217/Farmers-Market",
-        "organizer": {
-          "@type": "Organization",
-          "name": "the organiser",
-          "url": "https://www.palatine.il.us"
-        },
-        "image": "https://withintenmiles.com/og/e/2026-11-21-palatine-winter-farmers-market.png",
-        "description": "1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
-        "startDate": "2026-11-21T14:00:00-06:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-a-doll-s-house-by-henrik-ibsen-adapted-by-amy-herzog-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Harper College",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Harper College",
-          "url": "https://events.harpercollege.edu"
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "A DOLL'S HOUSE by Henrik Ibsen Adapted by Amy Herzog Ibsen’s celebrated play thrust drama firmly into the modern age when it premiered in 1879. Now, nearly…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Holiday Tree Lighting Ceremony",
-        "startDate": "2026-11-21T16:00:00-06:00",
-        "url": "https://withintenmiles.com/e/2026-11-21-holiday-tree-lighting-ceremony/",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "image": "https://withintenmiles.com/og/e/2026-11-21-holiday-tree-lighting-ceremony.png",
-        "description": "Join Mayor Schwantz and Santa for the annual Holiday Tree Light"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Helping Hands Pantry Food Drive at Holiday Tree Lighting",
-        "startDate": "2026-11-21T16:00:00-06:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-helping-hands-pantry-food-drive-at-holiday-tree-lighting-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "People Helping People presents Helping Hands Pantry https://www"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
       "item": {
         "@type": "Event",
         "name": "A Doll's House by Henrik Ibsen Adapted by Amy Herzog",
@@ -157,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "🦃 Palatine Park District Turkey Trot",
@@ -187,7 +67,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "St. Nectarios Thanksgiving Community Meal",
@@ -218,7 +98,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "MPAC English 2027 ACCESS Information Session",
@@ -242,7 +122,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -266,7 +146,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "MPAC Spanish 2027 ACCESS Information Session",
@@ -290,7 +170,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Poetry Open Mic",
@@ -320,7 +200,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "MPAC Tamil 2027 ACCESS Information Session",
@@ -344,7 +224,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "MPAC Telugu 2027 ACCESS Information Session",
@@ -368,7 +248,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Tales for Tots",
@@ -395,6 +275,66 @@
         "image": "https://withintenmiles.com/og/palatine-60067.png",
         "description": "FREE interactive story time for tots and grown-ups https://www.",
         "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Event",
+        "name": "Palatine Winter Farmers' Market",
+        "startDate": "2026-12-05T09:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-palatine-winter-farmers-market-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine Train Station parking lot",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/217/Farmers-Market",
+        "organizer": {
+          "@type": "Organization",
+          "name": "the organiser",
+          "url": "https://www.palatine.il.us"
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Event",
+        "name": "One Starry Night - Christmas Bible School",
+        "startDate": "2026-12-05T09:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-one-starry-night-christmas-bible-school-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "🎄Give Your Child the Gift of Christmas! 🎄Join St. Tho"
       }
     }
   ]

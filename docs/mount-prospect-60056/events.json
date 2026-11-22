@@ -2,43 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-11-21T22:05:25+00:00",
-  "numberOfItems": 33,
+  "dateModified": "2026-11-22T06:00:39+00:00",
+  "numberOfItems": 36,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "CheckMates Meetup",
-        "startDate": "2026-11-21T14:00:00-06:00",
-        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-checkmates-meetup-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Mount Prospect Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Mount Prospect",
-            "addressRegion": "IL",
-            "streetAddress": "125 S Emerson St"
-          }
-        },
-        "sameAs": "https://mppl.libnet.info/event/16641061",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Mount Prospect Public Library",
-          "url": "https://mppl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
-        "description": "Saturday, November 21 2026 2:00pm - 3:30pm \n Join other chess fans for a mini lesson and guided instruction to sharpen your skills, or just stop by for a match!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Full Year Fitness Membership Sale",
@@ -68,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Family Fun: Morris, the Magic Man",
@@ -99,7 +68,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 3 & 4",
@@ -129,7 +98,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -160,7 +129,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Celebrate Autumn",
@@ -191,7 +160,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Movies @ MPPL: Misconduct",
@@ -222,7 +191,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Play and Learn",
@@ -253,7 +222,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 5 & 6",
@@ -283,7 +252,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -314,7 +283,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Thanksgiving Showdown Indoor Soccer Tournament - Grades 7 & 8",
@@ -344,7 +313,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Christkindlmarket",
@@ -374,7 +343,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Village Tree Lighting Ceremony",
@@ -405,7 +374,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Free! Triple Turkey Burner",
@@ -435,7 +404,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Hooked on Books!",
@@ -467,7 +436,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "A Club for Kids Who Like Books",
@@ -499,7 +468,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -530,7 +499,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "3D Printing for Kids: Intermediate Tinkercad",
@@ -561,7 +530,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Adult Craft: Incredible Giftables",
@@ -592,7 +561,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Drop-In Tech Help",
@@ -623,7 +592,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Wednesday Morning Book Group",
@@ -654,7 +623,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "$1 Bingo Bonanza",
@@ -684,7 +653,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Growing Into Graphic Novels",
@@ -715,7 +684,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Design a 3D Printed Ornament",
@@ -746,7 +715,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Dungeons & Dragons",
@@ -777,7 +746,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Resources for Illinois Residents",
@@ -808,7 +777,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Conservatory Kids Storytime",
@@ -839,7 +808,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Elected Officials Office Hours",
@@ -870,7 +839,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Spinning Snowflake Workshop",
@@ -901,7 +870,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Career Coaching Appointment",
@@ -932,7 +901,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Sparks, Shadows, and Epic Romantasy With Helen Scheuerer",
@@ -963,7 +932,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Drop-In Crochet and Knit Group",
@@ -994,7 +963,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Minute to Win It",
@@ -1021,6 +990,128 @@
         },
         "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Friday, December 04 2026 5:00pm - 6:15pm \n Join us for a laugh a minute playing this popular party activity. The games are challenging enough for older kids…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 33,
+      "item": {
+        "@type": "Event",
+        "name": "Teddy Bear Walk",
+        "startDate": "2026-12-05T09:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-teddy-bear-walk-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14808872",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Saturday, December 05 2026 9:30am - 12:00pm \n Bring the whole family and your favorite stuffed pal to enjoy seasonal music, activities, and special guests at…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 34,
+      "item": {
+        "@type": "Event",
+        "name": "Family Photos with Santa",
+        "startDate": "2026-12-05T10:00:00-06:00",
+        "url": "https://withintenmiles.com/e/2026-12-05-family-photos-with-santa/",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/family-photos-with-santa-4/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Park District",
+          "url": "https://www.mppd.org"
+        },
+        "image": "https://withintenmiles.com/og/e/2026-12-05-family-photos-with-santa.png",
+        "description": "Family Photos with Santa Bring your camera and smiles to your private photo session with Santa. Our atrium is a glorious wonderland and a festive backdrop for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 35,
+      "item": {
+        "@type": "Event",
+        "name": "Winter Makers Market",
+        "startDate": "2026-12-05T10:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-winter-makers-market-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/winter-makers-market-3/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Park District",
+          "url": "https://www.mppd.org"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Winter Makers Market Discover unique handmade items for everyone on your list! Each piece carries the maker’s personal touch and creativity. Sip cocoa while…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 36,
+      "item": {
+        "@type": "Event",
+        "name": "MPCB The Joy of Christmas",
+        "startDate": "2026-12-05T16:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-mpcb-the-joy-of-christmas-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/mpcb-the-joy-of-christmas/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Park District",
+          "url": "https://www.mppd.org"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Mt. Prospect Community Band Holiday Concert “The Joy of Christmas” Free Admission Location Trinity United Methodist Church (605 W. Golf Rd, Mount Prospect)",
+        "isAccessibleForFree": true
       }
     }
   ]

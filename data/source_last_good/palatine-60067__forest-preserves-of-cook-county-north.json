@@ -1,28 +1,6 @@
 {
- "fetched_at": "2026-11-21T22:05:25+00:00",
+ "fetched_at": "2026-11-22T06:00:39+00:00",
  "items": [
-  {
-   "date": "20261121T120000",
-   "detail": "Learn how to grow your own fresh herbs, salad greens and more. Presented with University of Illinois Extension Master Gardeners. Ages 13 & up.",
-   "end_date": "20261121T120000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Indoor Edible Gardens",
-   "url": "https://fpdcc.com/event/indoor-edible-gardens/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261121T150000",
-   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
-   "end_date": "20261121T150000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "What’s On The Menu?",
-   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-11-21/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
   {
    "date": "20261122T133000",
    "detail": "Learn what makes owls unique and fascinating.",
@@ -211,17 +189,6 @@
    "venue_name": "River Trail Nature Center"
   },
   {
-   "date": "20261208T100000",
-   "detail": "Nature stories, crafts, and activities. Children ages 3-6 w/ adult.",
-   "end_date": "20261208T100000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Small Serendipity",
-   "url": "https://fpdcc.com/event/small-serendipity-6/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
    "date": "20261208T103000",
    "detail": "Stop by the visitor center to learn about reptiles, mammals and birds from the residents of Misericordia – Heart of Mercy. All ages.",
    "end_date": "20261208T120000",
@@ -231,28 +198,6 @@
    "url": "https://fpdcc.com/event/wildlife-connections/2026-12-08/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261208T103000",
-   "detail": "Stop by the visitor center to learn about reptiles, mammals and birds from the residents of Misericordia – Heart of Mercy. All ages.",
-   "end_date": "20261208T120000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Wildlife Connections",
-   "url": "https://fpdcc.com/event/wildlife-connections/2026-12-08/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261208T170000",
-   "detail": "Hike 2 miles under the darkest night of the month within the tranquil expanse of the world’s largest Urban Night Sky Place. Subject to trail conditions. Ages 10 & up.",
-   "end_date": "20261208T170000",
-   "lat": 41.70896743,
-   "lon": -87.87715272,
-   "title": "Serenity Hike Under a New Moon",
-   "url": "https://fpdcc.com/event/serenity-hike-under-a-new-moon/",
-   "venue_city": "Willow Springs",
-   "venue_name": "Little Red Schoolhouse Nature Center"
   },
   {
    "date": "20261209T093000",
@@ -266,28 +211,6 @@
    "venue_name": "Caldwell Woods Wellness Center"
   },
   {
-   "date": "20261209T093000",
-   "detail": "Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted .",
-   "end_date": "20261209T104500",
-   "lat": 41.998562036604,
-   "lon": -87.785286183849,
-   "title": "Yoga in the Preserves",
-   "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-12-09/",
-   "venue_city": "Chicago",
-   "venue_name": "Caldwell Woods Wellness Center"
-  },
-  {
-   "date": "20261209T093000",
-   "detail": "Listen to a nature-themed children’s book read aloud, followed by an activity where a story will be shared both orally and in American Sign Language (ASL).",
-   "end_date": "20261209T093000",
-   "lat": 41.89585788,
-   "lon": -87.83089023,
-   "title": "Children’s Storytime",
-   "url": "https://fpdcc.com/event/childrens-storytime-2/",
-   "venue_city": "River Forest",
-   "venue_name": "Thatcher Woods Pavilion"
-  },
-  {
    "date": "20261210T100000",
    "detail": "Experience the benefits of nature with forest meditation. Presented by Gayle Byck of InTune with Nature. Ages 18 & up.",
    "end_date": "20261210T120000",
@@ -297,38 +220,6 @@
    "url": "https://fpdcc.com/event/forest-bathing-celebrate-the-season/",
    "venue_city": "Chicago",
    "venue_name": "Caldwell Woods Wellness Center"
-  },
-  {
-   "date": "20261210T100000",
-   "detail": "Discover the natural world with a themed activity. Ages 55 & up.",
-   "end_date": "20261210T100000",
-   "lat": 42.11563369,
-   "lon": -88.16357511,
-   "title": "Senior Nature Club",
-   "url": "https://fpdcc.com/event/senior-nature-club-4/",
-   "venue_city": "Barrington Hills",
-   "venue_name": "Crabtree Nature Center"
-  },
-  {
-   "date": "20261210T100000",
-   "detail": "Experience the benefits of nature with forest meditation. Presented by Gayle Byck of InTune with Nature. Ages 18 & up.",
-   "end_date": "20261210T120000",
-   "lat": 41.998562036604,
-   "lon": -87.785286183849,
-   "title": "Forest Bathing: Celebrate the Season",
-   "url": "https://fpdcc.com/event/forest-bathing-celebrate-the-season/",
-   "venue_city": "Chicago",
-   "venue_name": "Caldwell Woods Wellness Center"
-  },
-  {
-   "date": "20261211",
-   "detail": "Drop in and take a walk on a short trail near Trailside Museum and read the posted children’s story along the way. Afterwards, pick up a craft and activity bag at the Museum to start your own adventures. Drop-in.",
-   "lat": 41.89324535,
-   "lon": -87.82630546,
-   "title": "Story Trail–“The Snowy Day”",
-   "url": "https://fpdcc.com/event/story-trail-the-snowy-day/",
-   "venue_city": "River Forest",
-   "venue_name": "Trailside Museum of Natural History"
   },
   {
    "date": "20261211T190000",
@@ -659,6 +550,116 @@
    "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-12-16/",
    "venue_city": "Chicago",
    "venue_name": "Caldwell Woods Wellness Center"
+  },
+  {
+   "date": "20261216T093000",
+   "detail": "Weekly yoga class for all ages and skill levels. Led by Kim Weber of Be Lightfooted .",
+   "end_date": "20261216T104500",
+   "lat": 41.998562036604,
+   "lon": -87.785286183849,
+   "title": "Yoga in the Preserves",
+   "url": "https://fpdcc.com/event/yoga-in-the-preserves/2026-12-16/",
+   "venue_city": "Chicago",
+   "venue_name": "Caldwell Woods Wellness Center"
+  },
+  {
+   "date": "20261216T140000",
+   "detail": "Join us for a hike. Ages 18 & up.",
+   "end_date": "20261216T140000",
+   "lat": 42.11563369,
+   "lon": -88.16357511,
+   "title": "2 miles at 2",
+   "url": "https://fpdcc.com/event/2-miles-at-2/",
+   "venue_city": "Barrington Hills",
+   "venue_name": "Crabtree Nature Center"
+  },
+  {
+   "date": "20261217T093000",
+   "detail": "Join us for nature-themed interactive songs and stories. Ages 0-23 months w/ adult. Tickets on a first-come, first-serve basis.",
+   "end_date": "20261217T093000",
+   "lat": 42.11563369,
+   "lon": -88.16357511,
+   "title": "Baby Buds",
+   "url": "https://fpdcc.com/event/baby-buds-4/",
+   "venue_city": "Barrington Hills",
+   "venue_name": "Crabtree Nature Center"
+  },
+  {
+   "date": "20261217T100000",
+   "detail": "S eniors E njoying N ature I nside/ O utside R ain or S hine! Seniors can deepen their connection to the outdoors with fresh, engaging nature programs offered each month. Ages 55 & up.",
+   "end_date": "20261217T100000",
+   "lat": 41.70896743,
+   "lon": -87.87715272,
+   "title": "S.E.N.I.O.R.S.",
+   "url": "https://fpdcc.com/event/s-e-n-i-o-r-s/",
+   "venue_city": "Willow Springs",
+   "venue_name": "Little Red Schoolhouse Nature Center"
+  },
+  {
+   "date": "20261217T100000",
+   "detail": "Take a guided walk to photograph nature. For all levels and camera types.",
+   "end_date": "20261217T100000",
+   "lat": 41.680335,
+   "lon": -87.9139462,
+   "title": "Photography Walk",
+   "url": "https://fpdcc.com/event/photography-walk-4/",
+   "venue_city": "",
+   "venue_name": "Palos Park Woods-North"
+  },
+  {
+   "date": "20261217T160000",
+   "detail": "Scale the indoor climbing wall! Participants must be over 40lbs. Adult supervision and waivers required. Accessible climbing equipment available. Open 4 to 8 pm.",
+   "end_date": "20261217T200000",
+   "lat": 41.62547112,
+   "lon": -87.7875399,
+   "title": "Winter Open Climb",
+   "url": "https://fpdcc.com/event/winter-open-climb/",
+   "venue_city": "Oak Forest",
+   "venue_name": "Camp Sullivan"
+  },
+  {
+   "date": "20261217T190000",
+   "detail": "Enjoy a book discussion on “A World Appears” by Michael Pollan. Presented with the Forest Park Public Library. Ages 18 & up.",
+   "end_date": "20261217T203000",
+   "lat": 41.89324535,
+   "lon": -87.82630546,
+   "title": "Nature Book Club",
+   "url": "https://fpdcc.com/event/nature-book-club/",
+   "venue_city": "River Forest",
+   "venue_name": "Trailside Museum of Natural History"
+  },
+  {
+   "date": "20261218T180000",
+   "detail": "Celebrate the solstice with a campfire and self-guided walk along our candlelit paths.",
+   "end_date": "20261218T210000",
+   "lat": 42.11563369,
+   "lon": -88.16357511,
+   "title": "Winter Solstice Night of Lights",
+   "url": "https://fpdcc.com/event/winter-solstice-night-of-lights/",
+   "venue_city": "Barrington Hills",
+   "venue_name": "Crabtree Nature Center"
+  },
+  {
+   "date": "20261219T100000",
+   "detail": "Fitness Hikes are for those looking to get some exercise outdoors. Fitness hikes will be faster paced with little to no stopping or interpretation. 1.6 miles.",
+   "end_date": "20261219T100000",
+   "lat": 41.56119318,
+   "lon": -87.86618206,
+   "title": "Fitness Hike",
+   "url": "https://fpdcc.com/event/fitness-hike-10/",
+   "venue_city": "",
+   "venue_name": "Orland Grassland South"
+  },
+  {
+   "date": "20261219T100000",
+   "detail": "Celebrate the winter solstice with a bonfire and fun indoor/outdoor activities. Presented with the American Indian Center. Paper Snowflake Making Workshop: 10 am to 12 pm Indigenous Storytelling & Reflection: 12 pm to 2 pm",
+   "end_date": "20261219T140000",
+   "lat": 41.89585788,
+   "lon": -87.83089023,
+   "title": "Winter Solstice Day",
+   "url": "https://fpdcc.com/event/winter-solstice-day/",
+   "venue_city": "River Forest",
+   "venue_name": "Thatcher Woods Pavilion"
   }
  ],
  "source": "Forest Preserves of Cook County — north"

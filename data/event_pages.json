@@ -738,6 +738,51 @@
   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
   "venue": null
  },
+ "e/2026-11-22-nocturnal-hunters-owls/": {
+  "date_iso": "2026-11-22T13:30:00",
+  "detail": "River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Learn what makes owls unique and fascinating.",
+  "detail_long": "River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Learn what makes owls unique and fascinating.",
+  "first_seen": "2026-11-22",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3A20261122T133000%0D%0ADTEND%3A20261122T143000%0D%0ASUMMARY%3ANocturnal%20Hunters%3A%20Owls%0D%0ADESCRIPTION%3ARiver%20Trail%20Nature%20Center%20%28Northbrook%29%20%C2%B7%20%E2%89%88%203%20mi%20from%20Wheeling.%20Learn%20what%20makes%20owls%20unique%20and%20fascinating.%0D%0AURL%3Ahttps%3A//fpdcc.com/event/nocturnal-hunters-owls-2/%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-22-nocturnal-hunters-owls/",
+  "postal_code": null,
+  "region_id": "wheeling-60090",
+  "region_url": "https://withintenmiles.com/wheeling-60090/",
+  "source": "Forest Preserves of Cook County — north",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": null,
+  "tags": [
+   "outdoor"
+  ],
+  "title": "Nocturnal Hunters: Owls",
+  "town": "Wheeling",
+  "url": "https://fpdcc.com/event/nocturnal-hunters-owls-2/",
+  "venue": null
+ },
+ "e/2026-11-22-ukrainian-language-storytime/": {
+  "date_iso": "2026-11-22T00:00:00",
+  "detail": "",
+  "detail_long": "",
+  "first_seen": "2026-11-22",
+  "ics_href": "data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0D%0AVERSION%3A2.0%0D%0APRODID%3A-//Within%20Ten//EN%0D%0ABEGIN%3AVEVENT%0D%0ADTSTART%3BVALUE%3DDATE%3A20261122%0D%0ADTEND%3BVALUE%3DDATE%3A20261123%0D%0ASUMMARY%3A%D0%A1%D1%82%D0%BE%D1%80%D1%96%D1%82%D0%B0%D0%B9%D0%BC%20%D1%83%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D1%8E%20%7C%20Ukrainian%20Language%20Storytime%0D%0ALOCATION%3AArlington%20Heights%20Memorial%20Library%5C%2C%20500%20N.%20Dunton%20Ave.%5C%2C%20Arlington%20Heights%0D%0AURL%3Ahttps%3A//www.ahml.info/scheduling/reservation/226527%0D%0AEND%3AVEVENT%0D%0AEND%3AVCALENDAR%0D%0A",
+  "path": "e/2026-11-22-ukrainian-language-storytime/",
+  "postal_code": null,
+  "region_id": "arlington-heights-60005",
+  "region_url": "https://withintenmiles.com/arlington-heights-60005/",
+  "source": "Arlington Heights Memorial Library — Events",
+  "sponsored_by": null,
+  "state": "IL",
+  "street_address": "500 N. Dunton Ave.",
+  "tags": [
+   "indoor",
+   "kid_friendly"
+  ],
+  "title": "Сторітайм українською | Ukrainian Language Storytime",
+  "town": "Arlington Heights",
+  "url": "https://www.ahml.info/scheduling/reservation/226527",
+  "venue": "Arlington Heights Memorial Library"
+ },
  "e/2026-11-27-holiday-tree-lighting-ceremony/": {
   "date_iso": "2026-11-27T16:00:00",
   "detail": "Storytime with the Village Board at 4 PM in Village Hall, the lighting of the Village Green at 5:30 PM, then fireworks and free photos with Santa. Free.",

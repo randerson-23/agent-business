@@ -2,202 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-11-21T22:05:25+00:00",
-  "numberOfItems": 56,
+  "dateModified": "2026-11-22T06:00:39+00:00",
+  "numberOfItems": 55,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "DIY with DPPL",
-        "startDate": "2026-11-21",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-diy-with-dppl-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17004639",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Saturday, November 21 2026 12:00am - 11:59pm \n Grades 1-6. Pick up a kit at the YS desk and use the materials to do the project we show you step-by-step in…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Play Packs",
-        "startDate": "2026-11-21",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-play-packs-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17004649",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Saturday, November 21 2026 12:00am - 11:59pm \n Toddlers - Kindergarten, pick up a pack at the Youth Services desk for a hands-on activity to encourage…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Cafecito Y Libritos",
-        "startDate": "2026-11-21T10:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-cafecito-y-libritos-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/15665657",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Saturday, November 21 2026 10:30am - 12:30pm \n Ven y participa con nosotros en nuestro club de lectura en Español!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Cat Toy Workshop",
-        "startDate": "2026-11-21T12:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-cat-toy-workshop-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1501 Ellinwood Street",
-            "postalCode": "60016"
-          }
-        },
-        "sameAs": "https://desplaines.libnet.info/event/17274961",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Public Library",
-          "url": "https://desplaines.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Saturday, November 21 2026 12:00pm - 2:00pm \n Learn how to make your own cat toys with Tiny Tails Kitten Rescue."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Snap Shot Classic Rock Experience with Special Guest Class of 68",
-        "startDate": "2026-11-21T20:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-snap-shot-classic-rock-experience-with-special-guest-class-o-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1476 Miner Street"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/snap-shot-classic-rock-experience-with-special-guest-class-of-68/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Theatre",
-          "url": "https://desplainestheatre.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Snap Shot is the Chicago suburbs ultimate classic rock experience. Band members are James O’Connell (Lead Vocals), Don Agler (Guitars, Vox), Rick Schlegel…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Event",
-        "name": "Bourbon 'N Brass Speakeasy: Live Blues with the Downtown Charlie Brown Band",
-        "startDate": "2026-11-21T20:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charl-2026-11-21",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1476 Miner Street"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-blues-with-the-downtown-charlie-brown-band-8/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Theatre",
-          "url": "https://desplainestheatre.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Downtown Charlie Brown…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Pooh: 60Th Anniversary Tour - Finale",
@@ -228,7 +38,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -260,7 +70,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -292,7 +102,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -324,7 +134,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Happy Spinsters",
@@ -356,7 +166,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "$10 SILENT FILM SERIES - \"The Passion of Joan of Arc\" (1928), Presented by The Silent Film Society of Chicago",
@@ -387,7 +197,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -419,7 +229,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -451,7 +261,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "School's Out Drop-in Craft",
@@ -483,7 +293,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Design a Stanley in the Canvas",
@@ -515,7 +325,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -547,7 +357,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -579,7 +389,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -611,7 +421,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Bridges of Meaning",
@@ -643,7 +453,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "MIKE & JOE - The Midwest's Most Renowned Cover Band // HAIRBANGERS BALL",
@@ -674,7 +484,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Blues Night Extravaganza Featuring Downtown Charlie Brown, Sean Mckee, Miles Minor, Jeff Brinkman and Joe Valentino - Thanksgiving Eve!",
@@ -705,7 +515,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Kashmir: The Music of Led Zeppelin",
@@ -736,7 +546,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Jazz with Donny Demarco & Tune Town",
@@ -767,7 +577,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "$1 CHRISTMAS CLASSIC FILM SERIES: \"How The Grinch Stole Christmas\" (2000)",
@@ -798,7 +608,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "The Financial Aid Process for College",
@@ -830,7 +640,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Tween Movie",
@@ -862,7 +672,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "An Evening with Deacon Blues: Steely Dan Tribute",
@@ -893,7 +703,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass: Live Jazz with the Bourbon 'N Brass Brian Patti Prohibition Dance Band - 20S & 30S Dance Hits",
@@ -924,7 +734,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Tech en el Forum (Spanish)",
@@ -956,7 +766,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -988,7 +798,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1020,7 +830,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -1052,7 +862,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Horror Book Club",
@@ -1084,7 +894,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Teen Book Bags",
@@ -1116,7 +926,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1148,7 +958,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1180,7 +990,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Sock Monkey Workshop",
@@ -1212,7 +1022,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Make Holiday Cards with the Des Plaines Lions Club",
@@ -1244,7 +1054,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Meet Mary Cassatt, an American Artist",
@@ -1276,7 +1086,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "The Physics Dimension",
@@ -1309,7 +1119,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1341,7 +1151,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1373,7 +1183,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -1405,7 +1215,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Holiday Wrap & Write Workshop",
@@ -1437,7 +1247,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Happy Notes",
@@ -1469,7 +1279,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1501,7 +1311,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Monthly Writing Meet Up",
@@ -1533,7 +1343,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Google: Google Drive and Gmail",
@@ -1565,7 +1375,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Mont Clare Condo Assoc.",
@@ -1597,7 +1407,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Say Anything: An Intimate Movie Screening and Evening with John Cusack",
@@ -1628,7 +1438,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Blues with the Downtown Charlie Brown Band",
@@ -1659,7 +1469,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Cook County Clerk's Office - Resource Table",
@@ -1691,7 +1501,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting at Metropolitan Square",
@@ -1722,7 +1532,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Paint & Sip: Portrait Edition",
@@ -1754,7 +1564,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Jazz, Pop and R&B with Michael Ross Band",
@@ -1781,6 +1591,161 @@
         },
         "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Michael Ross Band! Food…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 51,
+      "item": {
+        "@type": "Event",
+        "name": "Des Plaines Winter Fair",
+        "startDate": "2026-12-05T11:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-winter-fair-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair",
+        "organizer": {
+          "@type": "Organization",
+          "name": "the organiser",
+          "url": "https://www.desplainesil.gov"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "The City's Winter Fair, the day after the tree lighting. Saturday 11 a.m.-3 p.m.; trolley-tour registration opens Nov 2, 2026 at 8 a.m. on the City's page."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 52,
+      "item": {
+        "@type": "Event",
+        "name": "$1 Christmas Classic Film Series: \"Elf\" (2003)",
+        "startDate": "2026-12-05T11:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-1-christmas-classic-film-series-elf-2003-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/1-christmas-classic-film-series-elf-2003/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Join us for some family fun as we feature “Elf” on our huge video wall. Concessions will be available for purchase. Doors will open at 10AM | Movie will begin…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 53,
+      "item": {
+        "@type": "Event",
+        "name": "Postponed: Aly & Aj - Places to Run Tour 2026",
+        "startDate": "2026-12-05T20:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-postponed-aly-aj-places-to-run-tour-2026-2026-12-05",
+        "eventStatus": "https://schema.org/EventPostponed",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/aly-aj-places-to-run-tour-2026-2/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Due to Aly Michalka joining the cast of & Juliet on Broadway this fall, Aly & AJ’s upcoming performance on December 5th has unfortunately been canceled.…",
+        "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 54,
+      "item": {
+        "@type": "Event",
+        "name": "A Motown Christmas Featuring Salutes to Martha Reeves & the Vandellas, Stevie Wonder, the Temptations, the 4 Tops, and the Supremes",
+        "startDate": "2026-12-05T20:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-a-motown-christmas-featuring-salutes-to-martha-reeves-the-va-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/a-motown-christmas-featuring-salutes-to-martha-reeves-the-vandellas-stevie-wonder-the-temptations-the-4-tops-and-the-supremes/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "It’s a Motown Christmas featuring tributes to Martha Reeves & The Vandellas, Stevie Wonder, The Temptations, The 4 Tops, and The Supremes. Hear your favorite…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 55,
+      "item": {
+        "@type": "Event",
+        "name": "Bourbon 'N Brass: Live Blues with Dave Weld & the Imperial Flames",
+        "startDate": "2026-12-05T20:30:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flame-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Theatre",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1476 Miner Street"
+          }
+        },
+        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-live-blues-with-dave-weld-the-imperial-flames-10/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Theatre",
+          "url": "https://desplainestheatre.com"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Blues with Dave Weld & The Imperial…"
       }
     }
   ]

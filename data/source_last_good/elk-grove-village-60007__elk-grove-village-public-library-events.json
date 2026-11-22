@@ -1,36 +1,6 @@
 {
- "fetched_at": "2026-11-21T22:05:25+00:00",
+ "fetched_at": "2026-11-22T06:00:39+00:00",
  "items": [
-  {
-   "date": "Sat, 21 Nov 2026 00:00:00 +0000",
-   "detail": "Saturday, November 21 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
-   "title": "The Arlington Camera Club",
-   "url": "https://egvpl.libnet.info/event/16362689"
-  },
-  {
-   "date": "Sat, 21 Nov 2026 00:00:00 +0000",
-   "detail": "Saturday, November 21 2026 12:00am - 11:59pm \n November is Picture Book Month! Put on your thinking cap and see if you can guess which picture book our clues belong to.",
-   "title": "Picture Book Month Challenge",
-   "url": "https://egvpl.libnet.info/event/17074020"
-  },
-  {
-   "date": "Sat, 21 Nov 2026 00:00:00 +0000",
-   "detail": "Saturday, November 21 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
-   "title": "Word of the Week",
-   "url": "https://egvpl.libnet.info/event/17354433"
-  },
-  {
-   "date": "Sat, 21 Nov 2026 09:30:00 +0000",
-   "detail": "Saturday, November 21 2026 9:30am - 4:30pm \n Drop by the library to make a simple craft on your own or with the help of a parent/caregiver. The craft will be available in Youth Services, while supplies last.",
-   "title": "Fun Factory Saturday",
-   "url": "https://egvpl.libnet.info/event/15584327"
-  },
-  {
-   "date": "Sat, 21 Nov 2026 14:00:00 +0000",
-   "detail": "Saturday, November 21 2026 2:00pm - 3:00pm \n Step 1: Research using library books to learn about your animal. Step 2: Write and create a mini zine filled with fascinating facts. Step 3: Become an artist and transform your zine into your animal.",
-   "title": "Animal Zines",
-   "url": "https://egvpl.libnet.info/event/17020701"
-  },
   {
    "date": "Sun, 22 Nov 2026 00:00:00 +0000",
    "detail": "Sunday, November 22 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
@@ -327,15 +297,15 @@
   },
   {
    "date": "Thu, 03 Dec 2026 18:00:00 +0000",
-   "detail": "Thursday, December 03 2026 6:00pm - 7:30pm \n Join us for an evening drop-in session where you can get one-on-one assistance with your technology-related questions. Perfect for those who need tech support after work hours!",
-   "title": "Thursday Evening Tech Help",
-   "url": "https://egvpl.libnet.info/event/17955276"
-  },
-  {
-   "date": "Thu, 03 Dec 2026 18:00:00 +0000",
    "detail": "Thursday, December 03 2026 6:00pm - 6:30pm \n Put a photo on a mug and ornament through a sublimation process. A perfect gift for the holidays!",
    "title": "Sublimation Mug & Ornament",
    "url": "https://egvpl.libnet.info/event/17927343"
+  },
+  {
+   "date": "Thu, 03 Dec 2026 18:00:00 +0000",
+   "detail": "Thursday, December 03 2026 6:00pm - 7:30pm \n Join us for an evening drop-in session where you can get one-on-one assistance with your technology-related questions. Perfect for those who need tech support after work hours!",
+   "title": "Thursday Evening Tech Help",
+   "url": "https://egvpl.libnet.info/event/17955276"
   },
   {
    "date": "Thu, 03 Dec 2026 18:30:00 +0000",
@@ -360,6 +330,36 @@
    "detail": "Thursday, December 03 2026 7:00pm - 7:30pm \n Put a photo on a mug and ornament through a sublimation process. A perfect gift for the holidays!",
    "title": "Sublimation Mug & Ornament",
    "url": "https://egvpl.libnet.info/event/17927638"
+  },
+  {
+   "date": "Thu, 03 Dec 2026 19:30:00 +0000",
+   "detail": "Thursday, December 03 2026 7:30pm - 8:00pm \n Put a photo on a mug and ornament through a sublimation process. A perfect gift for the holidays!",
+   "title": "Sublimation Mug & Ornament",
+   "url": "https://egvpl.libnet.info/event/17927669"
+  },
+  {
+   "date": "Fri, 04 Dec 2026 00:00:00 +0000",
+   "detail": "Friday, December 04 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
+   "title": "Word of the Week",
+   "url": "https://egvpl.libnet.info/event/17354445"
+  },
+  {
+   "date": "Fri, 04 Dec 2026 00:00:00 +0000",
+   "detail": "Friday, December 04 2026 12:00am - 11:59pm \n Calling all Santas Helpers! Need a secret spot to wrap a special gift? Visit our Wrapping Station in Adult Services!",
+   "title": "Gift-Wrapping Station",
+   "url": "https://egvpl.libnet.info/event/17731393"
+  },
+  {
+   "date": "Fri, 04 Dec 2026 17:00:00 +0000",
+   "detail": "Friday, December 04 2026 5:00pm - 6:30pm \n Play and create with friends during Minecraft Club. Pick either Friday (Session A), Saturday (Session B), or Saturday (Session C) to attend in December.",
+   "title": "Minecraft Club (Session A)",
+   "url": "https://egvpl.libnet.info/event/17638173"
+  },
+  {
+   "date": "Sat, 05 Dec 2026 00:00:00 +0000",
+   "detail": "Saturday, December 05 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
+   "title": "Word of the Week",
+   "url": "https://egvpl.libnet.info/event/17354446"
   }
  ],
  "source": "Elk Grove Village Public Library - Events"

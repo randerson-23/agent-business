@@ -1,4 +1,16 @@
 {
+ "christmas": {
+  "events": [
+   {
+    "date": "2026-12-22",
+    "time": "14:00",
+    "title": "Leslie Goddard presents Marshall Field's at Christmas",
+    "venue": "Indian Trails Public Library"
+   }
+  ],
+  "name": "Christmas",
+  "town": "Wheeling"
+ },
  "des plaines theatre": {
   "events": [
    {

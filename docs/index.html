@@ -404,6 +404,13 @@
   .holiday-cta:hover, .holiday-cta:focus-visible { background: #ffd966; }
   .holiday-offer { display: inline-block; color: #fdf6e3; font-weight: 700; font-size: 14px; text-decoration: underline; margin-bottom: 8px; }
   .holiday-offer:hover, .holiday-offer:focus-visible { color: #f5c542; }
+  .holiday-compact { display: none; color: #ffffff; font-weight: 700; font-size: 16px; line-height: 1.35; text-decoration: none; margin-top: 4px; }
+  .holiday-compact:hover, .holiday-compact:focus-visible { color: #f5c542; text-decoration: underline; }
+  @media (max-width: 599px) {
+    .holiday h2, .holiday-dates, .holiday-cta, .holiday-offer { display: none; }
+    .holiday-compact { display: block; }
+    .holiday-inner { padding: 4px 18px 14px; }
+  }
   @media (prefers-reduced-motion: no-preference) {
     .holiday-lights circle { animation: holiday-twinkle 2.6s ease-in-out infinite; }
     .holiday-lights circle:nth-child(3n+2) { animation-delay: .9s; }
@@ -492,8 +499,9 @@
       <div class="holiday-kicker">🎄 The holidays &middot; November &amp; December</div>
       <h2 id="holiday-heading">Tree lightings &amp; holiday events in every town we cover, <span class="gold">in one place</span></h2>
       <ul class="holiday-dates">
-<li>Arlington Heights <strong>Fri Nov 27</strong></li><li>Des Plaines <strong>Fri Dec 4</strong></li><li>Elk Grove Village <strong>Fri Nov 27</strong></li><li>Mount Prospect <strong>Wed Nov 25</strong></li><li>Palatine <strong>Sat Nov 21</strong></li><li>Wheeling <strong>Sun Nov 22</strong></li>      </ul>
-      <a class="holiday-cta" href="holidays/">See tree lightings &amp; holiday events &rarr;</a>
+<li>Arlington Heights <strong>Fri Nov 27</strong></li><li>Des Plaines <strong>Fri Dec 4</strong></li><li>Elk Grove Village <strong>Fri Nov 27</strong></li><li>Mount Prospect <strong>Wed Nov 25</strong></li><li>Wheeling <strong>Sun Nov 22</strong></li>      </ul>
+      <a class="holiday-compact" href="holidays/">Tree lightings in 6 towns, next: Wheeling, Today &rarr;</a>
+      <a class="holiday-cta" href="holidays/">Next lighting: Today &middot; see tree lightings &amp; holiday events &rarr;</a>
       <a class="holiday-offer" style="margin-right:14px;" href="santa/">Santa near you &rarr;</a>
     </div>
   </section>
@@ -537,14 +545,14 @@
   <div class="bento-grid">
     <a class="bento-tile bento-weekend" href="this-weekend/">
       <span class="bento-kicker">📅 This weekend</span>
-      <h2>Nov 21–22</h2>
-      <p>29 things happening across every region &rarr;</p>
-      <span class="wk-picks" aria-label="This weekend's picks"><span class="wk-pick" style="--town:#be185d"><span class="wk-chip"><b>SAT</b><i>21</i></span><span class="wk-text"><span aria-hidden="true">🎄</span> Holiday Tree Lighting Ceremony<span class="wk-town">Palatine</span></span></span><span class="wk-pick" style="--town:#4d7c0f"><span class="wk-chip"><b>SUN</b><i>22</i></span><span class="wk-text"><span aria-hidden="true">🎄</span> Lights Around Wheeling<span class="wk-town">Wheeling</span></span></span><span class="wk-pick" style="--town:#c2410c"><span class="wk-chip"><b>SAT</b><i>21</i></span><span class="wk-text"><span aria-hidden="true">🧒</span> Fun Factory Saturday<span class="wk-town">Elk Grove Village</span></span></span></span>
+      <h2>Nov 22</h2>
+      <p>10 things happening across every region &rarr;</p>
+      <span class="wk-picks" aria-label="This weekend's picks"><span class="wk-pick" style="--town:#4d7c0f"><span class="wk-chip"><b>SUN</b><i>22</i></span><span class="wk-text"><span aria-hidden="true">🎄</span> Lights Around Wheeling<span class="wk-town">Wheeling</span></span></span><span class="wk-pick" style="--town:#0f766e"><span class="wk-chip"><b>SUN</b><i>22</i></span><span class="wk-text"><span aria-hidden="true">📚</span> Сторітайм українською | Ukrainian Language Storytime<span class="wk-town">Arlington Heights</span></span></span><span class="wk-pick" style="--town:#4d7c0f"><span class="wk-chip"><b>SUN</b><i>22</i></span><span class="wk-text"><span aria-hidden="true">🌳</span> Nocturnal Hunters: Owls<span class="wk-town">Wheeling</span></span></span></span>
     </a>
   </div>
 
   <div class="hub-secondary-links">
-    <a href="today/">📍 Today (20) &rarr;</a>
+    <a href="today/">📍 Today (10) &rarr;</a>
     <a href="free/">🎟️ Free things to do (42) &rarr;</a>
   </div>
 <a class="season-tile" href="santa/">🎅 Santa near you &amp; holiday events &rarr;<span>Tree lightings, Santa visits and markets, town by town</span></a>
@@ -554,8 +562,8 @@
     <a class="bento-tile region-card" href="arlington-heights-60005/" style="--town:#0f766e">
       <span class="zip">60005 · IL</span>
       <h2>Arlington Heights</h2>
-      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🧒</span> Kids&#39; Time <span class="pick-when">Mon Nov 23</span></span><span class="pick"><span aria-hidden="true">🧒</span> The Christmas Schooner <span class="pick-when">Tue Nov 24</span></span></span>
-      <span class="count">See what's on in Arlington Heights &rarr;</span>
+      <span class="picks"><span class="pick"><span aria-hidden="true">📚</span> Сторітайм українською | Ukrainian Language Storytime <span class="pick-when">Sun Nov 22</span></span></span>
+      <span class="count">See the 1 event this weekend &rarr;</span>
     </a>
     <a class="bento-tile region-card" href="des-plaines-60016/" style="--town:#6d28d9">
       <span class="zip">60016 · IL</span>
@@ -566,8 +574,8 @@
     <a class="bento-tile region-card" href="elk-grove-village-60007/" style="--town:#c2410c">
       <span class="zip">60007 · IL</span>
       <h2>Elk Grove Village</h2>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🧒</span> Fun Factory Saturday <span class="pick-when">Sat Nov 21 · 9:30 AM</span></span></span>
-      <span class="count">See all 9 this weekend &rarr;</span>
+      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🎨</span> Fall Craft <span class="pick-when">Mon Nov 23 · 6:30 PM</span></span><span class="pick"><span aria-hidden="true">🧒</span> Mark Hayward Yo-yo and Comedy Show <span class="pick-when">Tue Nov 24 · 1:30 PM</span></span></span>
+      <span class="count">See what's on in Elk Grove Village &rarr;</span>
     </a>
     <a class="bento-tile region-card" href="mount-prospect-60056/" style="--town:#1d4ed8">
       <span class="zip">60056 · IL</span>
@@ -578,14 +586,14 @@
     <a class="bento-tile region-card" href="palatine-60067/" style="--town:#be185d">
       <span class="zip">60067 · IL</span>
       <h2>Palatine</h2>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🧺</span> Palatine Winter Farmers&#39; Market <span class="pick-when">Sat Nov 21 · 9:00 AM</span></span></span>
-      <span class="count">See all 5 this weekend &rarr;</span>
+      <span class="picks"><span class="pick-head">Next up</span><span class="pick"><span aria-hidden="true">🧒</span> 🦃 Palatine Park District Turkey Trot <span class="pick-when">Thu Nov 26 · 8:00 AM</span></span><span class="pick"><span aria-hidden="true">💵</span> St. Nectarios Thanksgiving Community Meal <span class="pick-when">Thu Nov 26 · 10:30 AM</span></span></span>
+      <span class="count">See what's on in Palatine &rarr;</span>
     </a>
     <a class="bento-tile region-card" href="wheeling-60090/" style="--town:#4d7c0f">
       <span class="zip">60090 · IL</span>
       <h2>Wheeling</h2>
-      <span class="picks"><span class="pick"><span aria-hidden="true">🌳</span> Indoor Edible Gardens <span class="pick-when">Sat Nov 21 · 12:00 PM</span></span><span class="pick"><span aria-hidden="true">🌳</span> What’s On The Menu? <span class="pick-when">Sat Nov 21 · 3:00 PM</span></span></span>
-      <span class="count">See all 5 this weekend &rarr;</span>
+      <span class="picks"><span class="pick"><span aria-hidden="true">🌳</span> Nocturnal Hunters: Owls <span class="pick-when">Sun Nov 22 · 1:30 PM</span></span><span class="pick"><span aria-hidden="true">🌳</span> What’s On The Menu? <span class="pick-when">Sun Nov 22 · 3:00 PM</span></span></span>
+      <span class="count">See all 3 this weekend &rarr;</span>
     </a>
   </div>
   <section class="more-links" aria-labelledby="more-links-h">
@@ -648,7 +656,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
 <a href="leaf-pickup/">Leaf pickup</a>.<a href="give/">Toy, coat &amp; food drives</a>.    <a href="sensory-friendly/">Sensory-friendly events</a>.
     <br>See something wrong or missing? <a href="mailto:hello@withintenmiles.com?subject=Correction&amp;body=What%27s%20wrong%20or%20missing%2C%20and%20which%20region%2Fevent%3A%20">Email us</a> — corrections get made the same week.
-    <br>Generated 2026-11-21 22:05 UTC.
+    <br>Generated 2026-11-22 06:00 UTC.
 <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.  </footer>
   </div>
 
