@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. ~~**549**~~ **DONE**, then **548** (winter reading challenges; probes from Dec 1).
+0. ~~**549**~~ **DONE**, then **548** (wired 2026-11-22; waiting on probe round 50 for 2026–27 dates) (winter reading challenges; probes from Dec 1).
 0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
 0. ~~**543**~~ **DONE** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
 0. ~~**540**~~ **DONE** with ~~**541**~~ **DONE**, then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
@@ -22471,7 +22471,7 @@ and near Chicago actually charge, which bears on item 487's launch price.
 
 #### P2 (new)
 
-548. **Winter reading challenges in the December and January issues.** Build
+548. **WIRED (2026-11-22), waiting on dates.** `config/winter_reading.yaml` (`challenges: []`); `load_winter_reading` shows an entry only between its own `starts` and `ends` (both required, first-party link); it becomes an evergreen card on its town page (so it also feeds the thin-week indoor ideas) and one email line while running. Probe round 50 asks all six libraries' sites for a 2026–27 *winter reading* page (AHML's past-season page says "December 13–January 31" with no year, so nothing is listed yet). When probes answer, fill the YAML from the page's own wording. Prize sponsor: the `prize_sponsor` field is stored but not yet routed to warm hosts; add it to `config/past_hosts.yaml` by hand when one is named. Round 50 also probes nicholassportsplex.com for item 545's step 1, and drops the parked parkfun iCal and lcfpd probes (items 522/523). **Winter reading challenges in the December and January issues.** Build
      loop:
 
      - Probe AHML's and Palatine library's winter-reading pages (and the

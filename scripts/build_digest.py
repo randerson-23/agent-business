@@ -2919,6 +2919,42 @@ def lights_in_season(today: date) -> bool:
     return (today.month == 11 and today.day >= 27) or today.month == 12 or (today.month == 1 and today.day <= 3)
 
 
+def load_winter_reading(today: date, path: Path | None = None) -> list[dict]:
+    """ROADMAP.md item 548: library winter reading challenges from
+    config/winter_reading.yaml that are running today. An entry needs a town,
+    library, its own line and link, and both dates; it is shown from `starts`
+    to `ends` only, never from a past season's dates."""
+    cfg = load_yaml(path or CONFIG_DIR / "winter_reading.yaml") if (path or CONFIG_DIR / "winter_reading.yaml").exists() else {}
+    out = []
+    for c in cfg.get("challenges") or []:
+        starts, ends = _parse_promo_day(c.get("starts")), _parse_promo_day(c.get("ends"))
+        url = safe_http_url(c.get("url"))
+        if not (c.get("town") and c.get("library") and c.get("line") and url and starts and ends) or is_roundup_url(url):
+            continue
+        if starts <= today <= ends:
+            span = f"{starts.strftime('%b')} {starts.day} \u2013 {ends.strftime('%b')} {ends.day}"
+            out.append({"town": str(c["town"]), "library": str(c["library"]), "url": url, "span": span,
+                        "prize_sponsor": c.get("prize_sponsor") or None,
+                        "text": f"\U0001F4DA Winter Reading at {c['library']}: {str(c['line']).strip()}, {span}"})
+    return out
+
+
+def winter_reading_evergreen(entries: list[dict], region_id: str) -> list[dict]:
+    """Item 548: a town's running challenge as an evergreen card (so it also
+    counts as a thin-weekend indoor idea)."""
+    return [{"title": f"Winter Reading at {e['library']}", "detail": f"{e['text'].split(': ', 1)[1]}. Sign up on the library's page.",
+             "url": e["url"], "tags": ["indoor", "free", "kid_friendly"], "tag_badges": [{"id": t, **tag_display(t)} for t in ("indoor", "free", "kid_friendly")]}
+            for e in entries if e["town"] == region_id]
+
+
+def build_winter_reading_email_line(entries: list[dict]) -> dict | None:
+    if not entries:
+        return None
+    first = entries[0]
+    more = f" (and {len(entries) - 1} more librar{'y' if len(entries) == 2 else 'ies'})" if len(entries) > 1 else ""
+    return {"text": first["text"] + more, "url": first["url"]}
+
+
 def load_light_displays(today: date, towns: list[dict] | None = None) -> list[dict]:
     """ROADMAP.md item 527: holiday light displays from config/light_displays.yaml,
     in season only (Nov 27 - Jan 3), each from an organiser's page (never a
@@ -8032,6 +8068,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         new_years_eve=new_years_eve,
         thanksgiving=thanksgiving,
         lights_line=lights_line,
+        winter_reading_line=build_winter_reading_email_line(load_winter_reading(email_delivery_time(now).date())),  # item 548
         top_picks=top_picks,
         poll=poll_links(now.astimezone(LOCAL_TZ).date()),
         event_total=event_total,
@@ -9289,6 +9326,7 @@ def main() -> None:
             live_promos.append((region_id, promo_event))
         blocks = apply_promotion(blocks, promo_event)
         evergreen = prepare_evergreen(region_cfg)
+        evergreen = winter_reading_evergreen(load_winter_reading(now.astimezone(LOCAL_TZ).date()), region_cfg["region"]["id"]) + evergreen  # item 548
         guides = prepare_guides(region_cfg)
         directory = build_business_directory(sponsors_cfg, region_id)
         sponsor = resolve_sponsor(sponsors_cfg, region_id)

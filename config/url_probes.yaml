@@ -435,19 +435,58 @@ probes:
     patterns:
       - '(?i)spring valley[^"]{0,80}'
       - '(?i)"(?:geo_lat|geo_lng)":\s*"?-?\d'
-  - url: https://www.parkfun.com/events/?ical=1
-    item: 522
-    purpose: Schaumburg Park District iCal export - LOCATION lines
-    patterns:
-      - 'BEGIN:VEVENT'
-      - 'LOCATION:[^\r\n]{0,120}'
-  - url: https://www.lcfpd.org/calendar/
-    item: 523
-    purpose: Lake County Forest Preserves calendar - an iCal/RSS export link, Ryerson Woods listings
-    patterns:
-      - '(?i)href="[^"]{0,160}(?:ical|\.ics|rss|feed)[^"]{0,80}"'
-      - '(?i)ryerson[^<]{0,120}'
-
   # Round 49 (item 543) answered 2026-11-21 and removed: downtownpalatine.org's homepage
   # reads "Shop Small Saturday - November 28, 2026" (Palatine's `downtown:` now carries it);
   # its /calendar page is Squarespace with per-event ?format=ical links.
+
+  # Round 50 (items 548 and 545). Winter reading: does each library's own site post a
+  # 2026-27 winter reading challenge with dates? AHML's page from a past season reads
+  # "Winter Reading: December 13-January 31" with no year, so nothing is listed until a
+  # page names 2026 or 2027.
+  - url: https://www.ahml.info/youth-reading-programs
+    item: 548
+    purpose: AHML winter reading 2026-27 - dates and wording
+    patterns:
+      - '(?i)winter reading[^<]{0,160}'
+      - '(?i)(?:dec(?:ember)?\.? \d{1,2})[^<]{0,40}(?:jan(?:uary)?\.? \d{1,2})[^<]{0,20}'
+      - '(?i)20(?:26|27)'
+    follow: '(?i)winter'
+  - url: https://www.palatinelibrary.org/
+    item: 548
+    purpose: Palatine library winter reading 2026-27 - dates and wording
+    patterns:
+      - '(?i)winter reading[^<]{0,160}'
+    follow: '(?i)winter'
+  - url: https://mppl.org/
+    item: 548
+    purpose: Mount Prospect library winter reading 2026-27
+    patterns:
+      - '(?i)winter reading[^<]{0,160}'
+    follow: '(?i)winter'
+  - url: https://www.dppl.org/
+    item: 548
+    purpose: Des Plaines library winter reading 2026-27
+    patterns:
+      - '(?i)winter reading[^<]{0,160}'
+    follow: '(?i)winter'
+  - url: https://www.indiantrailslibrary.org/
+    item: 548
+    purpose: Indian Trails (Wheeling) library winter reading 2026-27
+    patterns:
+      - '(?i)winter reading[^<]{0,160}'
+    follow: '(?i)winter'
+  - url: https://www.egvpl.org/
+    item: 548
+    purpose: Elk Grove Village library winter reading 2026-27
+    patterns:
+      - '(?i)winter reading[^<]{0,160}'
+    follow: '(?i)winter'
+  # Item 545: Mt. Prospect Ice Arena (Nicholas Sportsplex, 1501 Feehanville Dr) - is there a
+  # readable public-skate schedule (iCal, DaySmart, Sportngin) or only a page?
+  - url: https://www.nicholassportsplex.com/
+    item: 545
+    purpose: Mt. Prospect Ice Arena - public skate schedule page or feed
+    patterns:
+      - '(?i)public skat[^<]{0,160}'
+      - '(?i)(?:daysmart|dash\.platform|sportngin|ical|\.ics|google\.com/calendar)[^"<]{0,120}'
+    follow: '(?i)public|skate|schedule'

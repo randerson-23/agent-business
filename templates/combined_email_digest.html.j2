@@ -118,11 +118,12 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <tr><td style="padding:0 0 14px 0;"></td></tr>
 {% endfor %}
 
-{% if weather_line or election_line or closures_line or days_off_line or give_line or new_towns or lights_line or giving_tuesday_line or shop_small %}
+{% if weather_line or election_line or closures_line or days_off_line or give_line or new_towns or lights_line or giving_tuesday_line or shop_small or winter_reading_line %}
 {# ROADMAP.md items 291, 296, 307: the week's short notices, as plain lines in one card. #}
 <tr>
 <td bgcolor="#ffffff" class="wt-paper" style="background-color:#ffffff; border-radius:12px; padding:14px 22px; font-family:{{ sans }}; font-size:15px; line-height:1.5;">
 {% if weather_line %}<div class="wt-ink" style="color:{{ ink }}; padding:3px 0;">{{ weather_line }}</div>{% endif %}
+{% if winter_reading_line %}<div class="wt-ink" style="color:{{ ink }}; padding:3px 0;"><a href="{{ winter_reading_line.url }}" class="wt-ink" style="color:{{ ink }}; text-decoration:underline;">{{ winter_reading_line.text }}</a> &rarr;</div>{% endif %}
 {% if lights_line %}<div class="wt-ink" style="color:{{ ink }}; padding:3px 0;"><a href="{{ lights_line.url }}" class="wt-ink" style="color:{{ ink }}; text-decoration:underline;">{{ lights_line.text }}</a> &rarr;</div>{% endif %}
 {% if snow_line %}<div class="wt-ink" style="color:{{ ink }}; padding:3px 0;">{{ snow_line }}</div>{% endif %}
 {% if election_line %}<div style="padding:3px 0;"><a href="{{ election_line.url }}" class="wt-brand" style="color:{{ accent }}; text-decoration:none;">{{ election_line.text }} &rarr;</a></div>{% endif %}
