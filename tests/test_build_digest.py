@@ -8196,3 +8196,24 @@ def test_weekly_spot_priced_by_readers_with_floor_cap_and_override():
     assert "$30/week" not in build_digest.render_sponsor_page([], now, list_size=900, reader_rate=rate, weekly_spot_price=50)
     preview = build_digest.render_sponsor_preview([], {}, "hello@x.org", now.date(), 0, cfg["launch_rate"], 900, rate)
     assert "$30/week" in preview
+
+
+def test_winter_reading_runs_only_between_its_dates_from_its_own_page(tmp_path):
+    # ROADMAP.md item 548.
+    assert build_digest.load_winter_reading(date(2026, 12, 20)) == []  # nothing until a 2026-27 page is confirmed
+    cfg = tmp_path / "wr.yaml"
+    cfg.write_text(
+        "challenges:\n"
+        "  - {town: arlington-heights-60005, library: AHML, line: 'read 20 days, win prizes and a book', starts: 2026-12-13, ends: 2027-01-31, url: 'https://www.ahml.info/winter', prize_sponsor: null}\n"
+        "  - {town: palatine-60067, library: Palatine Library, line: 'log 10 books', starts: null, ends: 2027-01-31, url: 'https://www.palatinelibrary.org/w'}\n",
+        encoding="utf-8")
+    assert build_digest.load_winter_reading(date(2026, 12, 12), cfg) == []
+    running = build_digest.load_winter_reading(date(2027, 1, 5), cfg)
+    assert [e["library"] for e in running] == ["AHML"]  # the undated entry never shows
+    assert running[0]["text"] == "📚 Winter Reading at AHML: read 20 days, win prizes and a book, Dec 13 – Jan 31"
+    assert build_digest.load_winter_reading(date(2027, 2, 1), cfg) == []
+    cards = build_digest.winter_reading_evergreen(running, "arlington-heights-60005")
+    assert cards[0]["title"] == "Winter Reading at AHML" and "indoor" in cards[0]["tags"]
+    assert build_digest.winter_reading_evergreen(running, "palatine-60067") == []
+    assert build_digest.build_winter_reading_email_line(running)["url"] == "https://www.ahml.info/winter"
+    assert build_digest.build_winter_reading_email_line([]) is None

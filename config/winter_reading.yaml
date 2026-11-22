@@ -1,0 +1,12 @@
+# ROADMAP.md item 548: library winter reading challenges, one entry per library,
+# filled only from the library's own 2026-27 page (probe round 50 asks). Nothing
+# is listed until an entry has both dates; it shows from `starts` to `ends`.
+#
+#   - town: arlington-heights-60005      # region id
+#     library: "AHML"
+#     line: "read 20 days, win prizes and a book"   # the page's own wording
+#     starts: 2026-12-13
+#     ends: 2027-01-31
+#     url: "https://www.ahml.info/..."
+#     prize_sponsor: null                 # a business named on the page -> warm lead
+challenges: []
