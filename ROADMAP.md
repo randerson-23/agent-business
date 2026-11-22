@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then **552** (jump chips on `/santa/`).
 0. ~~**549**~~ **DONE**, then **548** (wired 2026-11-22; waiting on probe round 50 for 2026–27 dates) (winter reading challenges; probes from Dec 1).
 0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
 0. ~~**543**~~ **DONE** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
@@ -22515,6 +22516,71 @@ Chicago Journal and Block Club Chicago** (published newsletter ad rates),
 plus **AHML's and Palatine library's winter reading challenges** as
 January content. The design/UX angle is **how `/sponsor/` explains its
 price**.
+
+#### Research pass 2026-11-22, evening (hundred-and-sixtieth pass)
+
+Today the build loop shipped item 549. The Weekly Spot is now priced by
+readership (about $28 per 1,000 readers per issue, $25–$75), and
+BUSINESS_PLAN.md's tier table was updated to match in the same merge. It also
+wired item 548 (winter reading, waiting on 2026–27 dates). This pass fills
+one more December family question on `/santa/` and re-checks the two Santa
+events still unconfirmed. It also records a note about the loop itself.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Letters to Santa** (USPS newsroom, *"Operation Santa program now accepting letters"*, Sept 14, 2026; Wheeling Park District's special-events page; Macaroni KID Barrington's and Schaumburg's guides; Niles, Hinsdale, Rolling Meadows and other park districts' *Santa's mailbox* pages) | **USPS Operation Santa** is accepting letters for 2026, from its own newsroom, so it's confirmed. Locally: **Wheeling Park District** puts a **Santa's mailbox at the Community Recreation Center entrance** (11/29–12/13 on its page, year not stated). **Barrington Park District's mailbox at Rose Park (Palatine)** takes letters Dec 1–15, from an undated listing, with replies if a return address is included. **Elk Grove** has had an *"EG-Santa letter drop-off"* (2024). Many nearby park districts run the same thing with a **reply-by deadline** | *"Santa mailbox near me"* is the small-child version of the Santa search, and a mailbox has a **deadline** to send by (for a reply in time), which fits the site's reminder pattern (item 476). `/santa/` lists visits and breakfasts but **not how to write to him** (item 550) |
+| **Wheeling's Holiday Hoopla, re-checked** (open-communities.org's listing of the 2025 edition; Daily Herald notices; mykidlist) | **2025: Sun Dec 7, 1–3 PM, Community Recreation Center (100 Community Blvd)**: free, all ages, face painting, crafts, **photos with Santa**. The 2026 date isn't on any page that can be read (wheelingparkdistrict.com blocks the runner), and **Sun Dec 6, 2026** is likely but unconfirmed | Wheeling is still the one town with no Santa on `/santa/`. The event shouldn't be listed from a pattern, but it should be found the day its page is indexed. That's item 535's discovery file plus item 478's search fallback, with Wheeling as the first named target (item 551) |
+| **`/santa/` as it grows (design/UX)** | The page now holds Santa visits by date, tree lightings with Santa, ticketed chips, a free-listing box for businesses, *"Just outside"*, and soon mailboxes (item 550). It's a long single scroll on a phone, with no way to jump to *breakfasts* or *mailboxes* | A row of jump chips at the top (*Visits · Breakfasts · Write to Santa · Just outside*) with `#` anchors and no JavaScript lets a parent go straight to what they came for (item 552) |
+
+**Loop note (for the owner).** After 160 passes, new external angles are
+getting thin. Recent passes mostly read the site's own pages and its
+probe results, which still find real problems, rather than finding new
+competitors. **One research pass a day would likely lose little.**
+Changing the schedule is the owner's call: the scheduled task runs at
+11:33 and 23:33 UTC.
+
+#### P2 (new)
+
+550. **"Write to Santa" on `/santa/`.** Build loop:
+
+     - A section listing **USPS Operation Santa** (2026, from the USPS
+       newsroom: how to send and the deadline it states).
+     - Plus **local mailboxes**, each from its **own 2026 page** (or item
+       478's search fallback): Wheeling Park District's mailbox at the
+       Community Recreation Center, Barrington Park District's at Rose
+       Park in Palatine (just outside, with item 479's distance), and
+       Elk Grove's if its 2026 page says so.
+     - Each shows its **last day for a reply** with a ⏰ *Remind me*
+       (item 476).
+     - Undated listings are never shown.
+
+     Tests: USPS renders with its source, a local mailbox without a 2026
+     page doesn't render, and the reminder uses the deadline.
+
+#### P3 (new)
+
+551. **Wheeling's Holiday Hoopla: the first named target for the discovery
+     file.** Build loop. Add *"Holiday Hoopla, Wheeling Park District"* to
+     item 535's `seasonal_candidates.json` (category *santa*). When a 2026
+     first-party page is indexed, add it with `confirmed_via: search`
+     (item 478) to Wheeling's annual events and `/santa/`. Never list it
+     from last year's pattern. Tests: the candidate doesn't render, and a
+     confirmed fixture does.
+
+552. **Jump chips at the top of `/santa/`.** Build loop. Under the hero, add
+     a row of anchor chips (*Visits · Breakfasts · Write to Santa · Just
+     outside*), shown only for sections with entries, linking `#visits`,
+     `#breakfasts`, `#mailboxes` and `#outside`. Plain HTML, no
+     JavaScript. Tests: chips appear only for non-empty sections, and the
+     anchors exist.
+
+Re-rank: **550** goes with item 535 in the build queue (mailbox deadlines run
+mid-December). **551** rides with 535. **552** follows.
+
+Competitors reviewed this pass: **USPS Operation Santa** and **neighbouring
+park districts' Santa mailbox pages**, plus a re-check of **Wheeling's
+Holiday Hoopla** listings. The design/UX angle is **`/santa/` as a long
+scroll** that needs jump links.
 
 
 ## Working agreements for autonomous iteration
