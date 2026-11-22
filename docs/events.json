@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-22T06:00:39+00:00",
+  "dateModified": "2026-11-22T14:05:51+00:00",
   "numberOfItems": 220,
   "itemListElement": [
     {
@@ -12,7 +12,7 @@
         "@type": "Event",
         "name": "Сторітайм українською | Ukrainian Language Storytime",
         "startDate": "2026-11-22",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-ukrainian-language-storytime-2026-11-22",
+        "url": "https://withintenmiles.com/e/2026-11-22-ukrainian-language-storytime/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -32,7 +32,7 @@
           "name": "Arlington Heights Memorial Library",
           "url": "https://www.ahml.info"
         },
-        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
+        "image": "https://withintenmiles.com/og/e/2026-11-22-ukrainian-language-storytime.png"
       }
     },
     {
@@ -132,7 +132,7 @@
         "@type": "Event",
         "name": "Nocturnal Hunters: Owls",
         "startDate": "2026-11-22T13:30:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-nocturnal-hunters-owls-2026-11-22",
+        "url": "https://withintenmiles.com/e/2026-11-22-nocturnal-hunters-owls/",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -151,7 +151,7 @@
           "name": "Forest Preserves of Cook County",
           "url": "https://fpdcc.com"
         },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "image": "https://withintenmiles.com/og/e/2026-11-22-nocturnal-hunters-owls.png",
         "description": "River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Learn what makes owls unique and fascinating."
       }
     },
