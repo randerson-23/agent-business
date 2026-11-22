@@ -78,14 +78,26 @@ payment_links:
 launch_rate:
   until_subscribers: 100
   prices:
-    weekly_spot: "$25/week or $75/month"
-    starter: "$65 for 3 weeks"
+    # Item 549: the Weekly Spot and Starter follow `reader_rate` below instead.
     holiday: "$20 through Dec 15"  # item 499: no Nov 15 price jump while the list is small
-  line: "Launch rate: $25/week while we grow; $50/week from 100 readers"
+  line: "Launch price while we grow"
   payment_links:
-    weekly_spot: null
-    starter: null
     holiday: null
+
+# ROADMAP.md item 549: the Weekly Spot priced by readership instead of one jump
+# at 100 readers: `per_thousand` dollars per 1,000 subscribers per issue (from
+# Buttondown's count at the latest send), rounded up to `round_to`, never below
+# `floor` or above `cap` (BUSINESS_PLAN.md's $25-$75/week). The month is
+# `monthly_multiple` x the week; Starter is three weeks at 10% off. Set
+# `weekly_spot_price:` to a number to fix the weekly price by hand.
+reader_rate:
+  per_thousand: 28
+  round_to: 5
+  floor: 25
+  cap: 75
+  monthly_multiple: 3.5
+  line: "Our price follows our readership: about $28 per 1,000 readers per issue, never below $25. Book now and your price holds for the weeks you book."
+weekly_spot_price: null
 
 # ROADMAP.md item 388: the founding offer, "your first Event Promo is free" for
 # the first five local businesses, through Dec 31. Raise this number by one each

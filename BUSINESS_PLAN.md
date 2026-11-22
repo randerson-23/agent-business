@@ -113,7 +113,7 @@ minutes/month budget below as this scales past one sponsor.
 |---|---|---|
 | Annual Partner | $1,200/year | Permanent directory listing + a seasonal-guide spotlight + a live SEO backlink + priority Editor's Pick consideration |
 | Neighborhood Authority (1/region) | $5,000/year | Everything in Annual Partner, held exclusively for the region year-round — priced for the real-estate "neighborhood farming" budget category ($500-1,500/month) |
-| Weekly Spot (1 slot/region) | $50/week or $175/month | Top banner + 2-sentence blurb + link, week-to-week |
+| Weekly Spot (1 slot/region) | About $28 per 1,000 readers per issue, $25–$75/week; month = 3.5× week (item 549, config/sponsors.yaml `reader_rate`) | Top banner + 2-sentence blurb + link, week-to-week |
 | Event Promo | $20 one-time | A single event/announcement boosted to the top of "This Week" |
 
 Break-even is trivial: hosting is free (GitHub Pages), the only cost is time.

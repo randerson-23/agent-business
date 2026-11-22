@@ -7646,13 +7646,9 @@ def test_launch_rate_below_100_readers_and_regular_price_above(tmp_path):
     launch = build_digest.load_yaml(build_digest.CONFIG_DIR / "sponsors.yaml")["launch_rate"]
     now = datetime(2026, 11, 20, tzinfo=timezone.utc)
     low = build_digest.render_sponsor_page([], now, launch_rate=launch, list_size=1)
-    assert "$25/week or $75/month" in low and '<s class="regular-price">$50/week or $175/month</s>' in low
-    assert "$65 for 3 weeks" in low and "Launch rate: $25/week while we grow" in low
-    assert '<span class="tier-badge">Recommended</span>' not in low
+    assert '<span class="tier-badge">Recommended</span>' not in low and "$20 through Dec 15" in low
     high = build_digest.render_sponsor_page([], now, launch_rate=launch, list_size=150)
-    assert "$25/week" not in high and '<span class="tier-badge">Recommended</span>' in high
-    off = build_digest.render_sponsor_page([], now, launch_rate=None, list_size=1)
-    assert "$25/week" not in off
+    assert '<span class="tier-badge">Recommended</span>' in high
     # The list size comes from Buttondown's count at the latest send when there is no snapshot.
     hist = tmp_path / "h.json"
     hist.write_text('[{"pre_send_subscriber_count": 1}, {"pre_send_subscriber_count": 3}]', encoding="utf-8")
@@ -8179,3 +8175,24 @@ def test_holiday_banner_drops_past_lightings_and_has_a_compact_line():
     html = build_digest.render_hub_page([], summaries, datetime(2026, 11, 22, 18, tzinfo=timezone.utc), holiday=b)
     assert 'class="holiday-compact"' in html and "Next lighting: Fri Nov 27" in html
     assert "@media (max-width: 599px)" in html and "Palatine <strong>" not in html
+
+
+def test_weekly_spot_priced_by_readers_with_floor_cap_and_override():
+    # ROADMAP.md item 549.
+    cfg = build_digest.load_yaml(build_digest.CONFIG_DIR / "sponsors.yaml")
+    rate = cfg["reader_rate"]
+    weekly = lambda n, o=None: build_digest.reader_rate_weekly(rate, n, o)
+    assert [weekly(n) for n in (1, 100, 900, 3000)] == [25, 25, 30, 75]
+    assert weekly(None) == 25 and weekly(3000, 40) == 40
+    uncapped = dict(rate, cap=1000)
+    assert build_digest.reader_rate_weekly(uncapped, 3000) == 85  # $84 rounded up to $5
+    prices = build_digest.reader_rate_prices(rate, 900)
+    assert prices["weekly_spot"] == "$30/week or $105/month" and prices["starter"] == "$80 for 3 weeks"
+    assert build_digest.reader_rate_prices(rate, 1)["starter"] == "$65 for 3 weeks"
+    now = datetime(2026, 11, 22, tzinfo=timezone.utc)
+    html = build_digest.render_sponsor_page([], now, launch_rate=cfg["launch_rate"], list_size=900, reader_rate=rate)
+    assert "$30/week or $105/month" in html and "$80 for 3 weeks" in html
+    assert "Book now and your price holds for the weeks you book." in html
+    assert "$30/week" not in build_digest.render_sponsor_page([], now, list_size=900, reader_rate=rate, weekly_spot_price=50)
+    preview = build_digest.render_sponsor_preview([], {}, "hello@x.org", now.date(), 0, cfg["launch_rate"], 900, rate)
+    assert "$30/week" in preview

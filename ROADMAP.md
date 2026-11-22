@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **549** (Weekly Spot priced at about $28 per 1,000 readers per issue, $25–$75, replacing the jump at 100), then **548** (winter reading challenges; probes from Dec 1).
+0. ~~**549**~~ **DONE**, then **548** (winter reading challenges; probes from Dec 1).
 0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
 0. ~~**543**~~ **DONE** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
 0. ~~**540**~~ **DONE** with ~~**541**~~ **DONE**, then **542** (Old Orchard nightly menorah lightings, just outside; before Dec 4).
@@ -22488,7 +22488,7 @@ and near Chicago actually charge, which bears on item 487's launch price.
      Tests: no line without a 2026–27 page, the line runs only between
      the challenge's dates, and a prize sponsor becomes a warm lead.
 
-549. **Price the Weekly Spot by readers, smoothly, not in one jump.** Build
+549. **DONE (2026-11-22).** `config/sponsors.yaml` `reader_rate` (per_thousand 28, round_to 5, floor 25, cap 75, monthly_multiple 3.5, the booking line) and `weekly_spot_price:` (owner override). `reader_rate_weekly` / `reader_rate_prices` / `apply_reader_rate` set the Weekly Spot on `/sponsor/` and `/sponsor/preview/`; Starter is three weeks at 10% off, rounded down to $5 ($65 at $25/week, as before). `launch_rate` now carries only the Holiday listing's $20. At 1/100/900/3,000 readers: $25/$25/$30/$75. **Note for the owner:** at $25/week the month is now **$90** (3.5×), up from the launch rate's $75/month. BUSINESS_PLAN.md's tier table updated. **Price the Weekly Spot by readers, smoothly, not in one jump.** Build
      loop, `config/sponsors.yaml` and `/sponsor/`:
 
      - Replace item 487's threshold (*$25 under 100, $50 from 100*) with a
