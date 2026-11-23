@@ -340,6 +340,12 @@ evergreen:
     detail: "125 S Emerson St. Story times, teen programs, and free museum passes."
     url: "https://mppl.org/"
     tags: ["indoor", "kid_friendly", "free"]
+  # ROADMAP.md item 545: probe round 50 (2026-11-22) found the arena's own
+  # public-skate page but no readable schedule feed, so this links to it.
+  - title: "Public skate at the Mt. Prospect Ice Arena (Nicholas Sportsplex)"
+    detail: "Indoor public skating whatever the weather; rental skates and beginner skate aids available. Times change by season: see this week's times on the arena's own page."
+    url: "https://www.nicholassportsplex.com/public-skate"
+    tags: ["indoor", "kid_friendly"]
   - title: "Mount Prospect Park District"
     detail: "Rec programs, pools, and parks across the village."
     url: "https://www.mppd.org/"

@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then **552** (jump chips on `/santa/`).
+0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
 0. ~~**549**~~ **DONE**, then **548** (wired 2026-11-22; waiting on probe round 50 for 2026–27 dates) (winter reading challenges; probes from Dec 1).
 0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
 0. ~~**543**~~ **DONE** (Small Business Saturday block on `/holidays/` and in the Nov 25 issue, Downtown Palatine's Shop Small Saturday, downtown links; absorbs item 377; **by Tue Nov 24**), then **544** (compact holiday banner on phones, past dates dropped, signup on the first screen).
@@ -22409,7 +22409,7 @@ skating**, the one winter activity that doesn't depend on the weather.
 
 #### P2 (new)
 
-545. **Public skate times from the Mount Prospect ice arena, probe first.**
+545. **DONE via the fallback (2026-11-23).** Probe round 50: nicholassportsplex.com has a `/public-skate` page but no readable schedule feed (its "ical" hits are Squarespace CSS classes). So step 3: a Mount Prospect `evergreen` card linking that page (indoor, kid-friendly; no times or prices copied), and the rink in `config/past_hosts.yaml` as `winter_attraction`. Item 547 can link the same page. Remove the probe once 547 is built. **Public skate times from the Mount Prospect ice arena, probe first.**
      Build loop:
 
      1. Probe `nicholassportsplex.com` for a schedule page or feed
@@ -22567,7 +22567,7 @@ Changing the schedule is the owner's call: the scheduled task runs at
      from last year's pattern. Tests: the candidate doesn't render, and a
      confirmed fixture does.
 
-552. **Jump chips at the top of `/santa/`.** Build loop. Under the hero, add
+552. **DONE (2026-11-23).** `/santa/` gets a chip row (*Visits & breakfasts* → `#visits`, *Just outside* → `#outside`) when both sections have entries. Breakfasts sit inside the dated visits list, so they share one chip. *Write to Santa* → `#mailboxes` joins when item 550 ships. Also fixed the stale "not the five this site covers" note. **Jump chips at the top of `/santa/`.** Build loop. Under the hero, add
      a row of anchor chips (*Visits · Breakfasts · Write to Santa · Just
      outside*), shown only for sections with entries, linking `#visits`,
      `#breakfasts`, `#mailboxes` and `#outside`. Plain HTML, no

@@ -7718,7 +7718,7 @@ def test_past_hosts_are_warm_leads_with_their_reason_and_no_contacts(tmp_path):
     import warm_prospects as wp
     hosts = wp.load_past_hosts()
     assert {h["name"] for h in hosts} >= {"Berry Yo", "Golden Brunch"}
-    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026", "holiday_attraction", "business_association") and "@" not in str(h) for h in hosts)
+    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026", "holiday_attraction", "business_association", "winter_attraction") and "@" not in str(h) for h in hosts)
     assert any(h["reason"] == "fair_organiser_2026" and h["name"] == "Fremd Viking Booster Club" for h in hosts)  # item 526
     bad = tmp_path / "p.yaml"
     bad.write_text('hosts:\n  - name: "Shop"\n    town: "x"\n    reason: r\n    event: "call 847-555-1234"\n', encoding="utf-8")
@@ -8217,3 +8217,25 @@ def test_winter_reading_runs_only_between_its_dates_from_its_own_page(tmp_path):
     assert build_digest.winter_reading_evergreen(running, "palatine-60067") == []
     assert build_digest.build_winter_reading_email_line(running)["url"] == "https://www.ahml.info/winter"
     assert build_digest.build_winter_reading_email_line([]) is None
+
+
+def test_santa_jump_chips_only_for_sections_with_entries():
+    # ROADMAP.md item 552.
+    entries = [{"region_name": "Arlington Heights", "region_url": "https://x/ah/", "events": [
+        {"title": "Breakfast with Santa", "url": "https://x/b", "date_iso": "2026-12-05T10:00:00", "detail": "Pancakes with Santa.", "anchor_id": "a"}]}]
+    now = datetime(2026, 11, 23, tzinfo=timezone.utc)
+    outside = [{"town": "Barrington", "date_label": "Sat Dec 5", "title": "Santa visit", "source_url": "https://x/o"}]
+    both = build_digest.render_santa_page(entries, now, outside=outside)
+    assert 'class="jump-chips"' in both and 'href="#visits"' in both and 'id="visits"' in both and 'id="outside"' in both
+    only = build_digest.render_santa_page(entries, now)
+    assert 'class="jump-chips"' not in only
+
+
+def test_mount_prospect_links_public_skate_and_the_rink_is_a_winter_lead():
+    # ROADMAP.md item 545 (no readable schedule, so the page itself).
+    import yaml
+    cfg = yaml.safe_load((build_digest.CONFIG_DIR / "regions" / "mount-prospect-60056.yaml").read_text(encoding="utf-8"))
+    skate = [e for e in cfg["evergreen"] if "Ice Arena" in e["title"]]
+    assert skate and skate[0]["url"] == "https://www.nicholassportsplex.com/public-skate" and "indoor" in skate[0]["tags"]
+    from warm_prospects import load_past_hosts
+    assert any(h["reason"] == "winter_attraction" and h["note"] for h in load_past_hosts())
