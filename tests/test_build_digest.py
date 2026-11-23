@@ -7626,7 +7626,8 @@ def test_tonight_block_only_when_the_issue_lands_before_its_weekend(monkeypatch)
     sections = [{"region_name": "Mount Prospect", "region_url": "https://x/mp/", "weekend_events": [ev("Turkey Trot", "2026-11-26T08:00:00")],
                  "upcoming_events": [ev("Christkindlmarket", "2026-11-25T16:00:00", ("indoor",)), ev("Village Tree Lighting Ceremony", "2026-11-25T17:00:00"),
                                      ev("Morning Storytime", "2026-11-25T10:00:00"), ev("Turkey Trot", "2026-11-26T08:00:00"),
-                                     ev("EARLY CLOSING - Thanksgiving Holiday", "2026-11-25T17:00:00")]}]
+                                     ev("EARLY CLOSING - Thanksgiving Holiday", "2026-11-25T17:00:00"),
+                                     dict(ev("MIKE & JOE Cover Band", "2026-11-25T19:30:00", ()), url="https://www.desplainestheatre.com/events/mike")]}]
     monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 11, 26): datetime(2026, 11, 25, 7, 0)})
     tue = datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc)
     tonight = build_digest.select_tonight(sections, tue)
@@ -8247,3 +8248,19 @@ def test_mount_prospect_links_public_skate_and_the_rink_is_a_winter_lead():
     assert skate and skate[0]["url"] == "https://www.nicholassportsplex.com/public-skate" and "indoor" in skate[0]["tags"]
     from warm_prospects import load_past_hosts
     assert any(h["reason"] == "winter_attraction" and h["note"] for h in load_past_hosts())
+
+
+def test_weekend_page_groups_by_day_with_sticky_headings_on_phones():
+    # ROADMAP.md item 555.
+    def ev(t, iso):
+        return {"title": t, "url": "https://x/" + t, "date_iso": iso}
+    items = [ev("Fri thing", "2026-11-27T18:00:00"), ev("Sat a", "2026-11-28T10:00:00"), ev("Sat b", "2026-11-28T14:00:00"), ev("Sun thing", "2026-11-29T09:00:00")]
+    blocks = build_digest.group_weekend_by_day(items, "This weekend in Wheeling")
+    assert [b["section"] for b in blocks] == ["Friday, Nov 27", "Saturday, Nov 28", "Sunday, Nov 29"]
+    assert [e["title"] for e in blocks[1]["events"]] == ["Sat a", "Sat b"]
+    no_friday = build_digest.group_weekend_by_day(items[1:], "x")
+    assert [b["section"] for b in no_friday] == ["Saturday, Nov 28", "Sunday, Nov 29"]
+    assert build_digest.group_weekend_by_day([], "This weekend in Wheeling") == [{"section": "This weekend in Wheeling", "events": []}]
+    css = (build_digest.ROOT / "templates" / "region.html.j2").read_text(encoding="utf-8")
+    block = css[css.index("@media (max-width: 599px) {\n    .day-heading"):]
+    assert "position: sticky" in block[:200]

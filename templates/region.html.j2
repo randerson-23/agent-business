@@ -666,6 +666,10 @@
   /* ROADMAP.md item 504: a cancelled or postponed event stays listed, struck through, with its source link. */
   .struck { text-decoration: line-through; }
   .status-chip { display: inline-block; border: 1px solid var(--ink); color: var(--ink); font-size: 12px; font-weight: 700; padding: 0 6px; vertical-align: middle; text-transform: uppercase; letter-spacing: .5px; }
+  /* ROADMAP.md item 555: the weekend page's day headings stay in view on phones while the cards scroll beneath. */
+  @media (max-width: 599px) {
+    .day-heading { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 8px 0; margin: 0; }
+  }
 </style>
 {{ signup_css() }}
 </head>
@@ -946,7 +950,7 @@
     {% endif %}
     {% if block.events or nav_current != "all" %}
     <section class="block">
-      <h2>{{ block.section }}</h2>
+      <h2{% if block.day_heading %} class="day-heading"{% endif %}>{{ block.section }}</h2>
       {% if block.events %}
         <div class="card-grid">
         {% for item in block.events if not item.merged_away %}
