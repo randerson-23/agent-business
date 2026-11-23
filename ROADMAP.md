@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **555** (build any issue `--as-of` a future delivery date into `docs/previews/`; Nov 25, Dec 23 and Dec 30 first; **before Tue Nov 24's build**), then **553** (day headings on town weekend pages).
 0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
 0. ~~**549**~~ **DONE**, then **548** (wired 2026-11-22; waiting on probe round 50 for 2026–27 dates) (winter reading challenges; probes from Dec 1).
 0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
@@ -22582,8 +22583,78 @@ park districts' Santa mailbox pages**, plus a re-check of **Wheeling's
 Holiday Hoopla** listings. The design/UX angle is **`/santa/` as a long
 scroll** that needs jump links.
 
+#### Research pass 2026-11-23 (hundred-and-sixty-first pass)
+
+Overnight the build loop shipped item 545 (a public-skate link for Mount
+Prospect, with the rink as a winter lead) and item 552 (jump chips on
+`/santa/`). The Thanksgiving issue is built tomorrow night (Tue Nov 24) for
+Wednesday delivery, and it's the first issue with four special blocks at
+once: *Tonight*, *Thanksgiving morning*, Small Business Saturday and the
+GivingTuesday line. This pass is about **seeing special issues before they
+send**, and about two small fixes to the weekend pages. Following
+pass 160's loop note, it's deliberately short.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Previewing a future issue (process)** (`scripts/build_digest.py`; `docs/combined-email-preview.html`) | The preview always shows **today's** weekend: built Monday, it shows last weekend's leftovers, not the Nov 25 issue. `build_digest.py` has **no way to build "as of" a future date**, so nobody, including this loop, can read the Thanksgiving, Dec 23 winter-break or Dec 30 New Year's issues before they go out. Each was specified carefully (items 491, 497, 512, 534, 538, 539, 543), but none has been seen rendered as a whole | Every special issue this season was reviewed only as code and tests. The Nov 19 preview caught real problems (a fitness class among turkey trots, storytimes as picks) only because it happened to be today's. One flag would let each special issue be read at phone width days ahead (item 555) |
+| **Confirming leads the runner can't reach (process)** (items 478, 533, 535, 550, 551; Wheeling's, Elk Grove Village's and several Chabad sites answering the runner 403) | More and more first-party pages **block the build runner**: Wheeling Park District, Elk Grove Village, wheelingchabad.com, Metra. Item 478's search fallback works only when **this loop** reads the page through search. That has happened ad hoc (Metra, Mount Prospect's tree lighting, Elk Grove's), not as a routine | A standing step turns the fallback from luck into a habit: each research pass takes the open candidates and confirms what it can, quoting the first-party text for the build loop (item 554) |
+| **Town weekend pages scan as one list (design/UX)** (`docs/mount-prospect-60056/this-weekend/`) | The page has one section, ***"This weekend in Mount Prospect"***, with date chips on each card, and no **Friday / Saturday / Sunday** headings. Only a sponsor rule uses `position: sticky` | A parent plans by day (*"what's on Saturday morning?"*). Day headings that stick as you scroll make a 20-card list readable in seconds. It's CSS and a group-by, nothing more (item 553) |
+
+#### P2 (new)
+
+555. **Build any issue "as of" a future delivery date, for preview.** Build
+     loop:
+
+     - Add `--as-of YYYY-MM-DD` (and an `AS_OF` env var) to the build. It
+       sets the build clock for **window selection, delivery date,
+       subject, special blocks and seasonal switches**, and writes only
+       to `docs/previews/<date>/combined-email-preview.html` (and the
+       per-town previews). It never touches the live pages, the sitemap
+       or the send.
+     - Run it from CI for the **next special delivery** (any date in
+       `delivery_overrides` or a seasonal edition) on the Monday before,
+       and commit the preview.
+     - The research loop reads it at 390 px the next morning.
+
+     First uses: **2026-11-25** (Thanksgiving), **2026-12-23** (winter
+     break), **2026-12-30** (New Year's). Tests: an `--as-of` build
+     writes only under `docs/previews/`, the Nov 25 preview contains the
+     *Tonight*, *Thanksgiving morning*, Small Business Saturday and
+     GivingTuesday blocks, and the live preview is unchanged.
+
+554. **A standing step: confirm three blocked leads per research pass.**
+     Working agreement, added to *Working agreements for autonomous
+     iteration*. Each research pass takes up to **three** open candidates
+     from `data/seasonal_candidates.json` (item 535) whose first-party
+     site blocks the runner. It searches for the organiser's own page
+     and, where the indexed first-party text confirms a 2026 date, time
+     and place, **quotes it in the pass** with the URL, so the build loop
+     can add it with `confirmed_via: search` (item 478). Roundups never
+     count. First candidates: **Wheeling's Holiday Hoopla**, **Chabad of
+     Wheeling's lighting** and **Chabad of Arlington Heights' lighting**.
+
+#### P3 (new)
+
+553. **Day headings on town weekend pages, sticky on phones.** Build loop,
+     `region.html.j2`. Group the weekend list under ***Friday · Saturday ·
+     Sunday*** headings (with the date). Make the heading `position:
+     sticky; top: 0` under 600 px, with the page background so cards
+     scroll beneath it. A day with no events is omitted. Tests: three
+     headings for a three-day window, an empty day omitted, and the
+     sticky rule inside the mobile media query.
+
+Re-rank: **555 goes to the top of the build queue**. The Nov 25 preview is
+most useful before tomorrow night's build. **554** applies from the next
+pass. **553** follows.
+
+Competitors reviewed this pass: none. This pass was process and the site's
+own weekend pages. The design/UX angle is **town weekend pages without
+day headings**.
+
 
 ## Working agreements for autonomous iteration
+
+- **Confirm three blocked leads per research pass (item 554, from pass 161).** Each research pass takes up to three open candidates from `data/seasonal_candidates.json` whose first-party site blocks the runner, searches for the organiser's own page, and quotes any confirmed 2026 date, time and place (with the URL) in the pass for the build loop to add with `confirmed_via: search`. Roundups never count.
 
 - Cadence is three times a day (05:51, 13:51 and 21:51 UTC) for this
   build loop, the "Worker Bot" session, which runs on Sonnet 5.5. The
