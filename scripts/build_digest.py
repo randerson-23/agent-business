@@ -7550,6 +7550,8 @@ def select_tonight(sections: list[dict], now: datetime, limit: int = 3) -> dict 
                 start = start.astimezone(LOCAL_TZ).replace(tzinfo=None)
             if start.date() != day or start.time() < TONIGHT_FROM or e.get("attendable") is False or e.get("sponsored_by") or e.get("event_status"):
                 continue
+            if is_notice_title(e.get("title") or ""):  # item 553's first preview: "EARLY CLOSING - Thanksgiving Holiday" is not an outing
+                continue
             tree = bool(TREE_LIGHTING_TITLE.search(e.get("title") or ""))
             if not tree and family_relevance(e) < 0:
                 continue
@@ -7583,7 +7585,7 @@ def select_new_years_eve(sections: list[dict], now: datetime, limit: int = 4) ->
                 continue
             if start.tzinfo is not None:
                 start = start.astimezone(LOCAL_TZ).replace(tzinfo=None)
-            if start.date() != nye or e.get("attendable") is False or e.get("sponsored_by") or e.get("event_status"):
+            if start.date() != nye or e.get("attendable") is False or e.get("sponsored_by") or e.get("event_status") or is_notice_title(e.get("title") or ""):
                 continue
             text = f"{e.get('title') or ''} {e.get('detail') or ''}"
             party = bool(NYE_TITLE.search(e.get("title") or "")) and not NYE_ADULT.search(text)
@@ -7968,6 +7970,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     all_blocks = []
     empty_candidates = []
     house_ad = None
+    winter_break = winter_break_edition(now)  # item 539; item 553's Dec 23 preview: decided before towns collapse
     for s in sections:
         weekend_events = s["weekend_events"]
         attendable_events = [e for e in weekend_events if e.get("attendable", True)]
@@ -7986,8 +7989,11 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
             "evergreen_highlights": _pick_evergreen_highlights(s.get("evergreen", []), limit=2),
             "sponsor": sponsor,
         }
+        if winter_break:
+            block["week_groups"] = winter_break_week_groups(s.get("upcoming_events") or [], winter_break["weeks"], per_week)
         all_blocks.append(block)
-        if not attendable_events and not informational_events and not is_sponsored:
+        has_break_events = any(g["events"] for g in block.get("week_groups") or [])
+        if not attendable_events and not informational_events and not is_sponsored and not has_break_events:
             empty_candidates.append(block)
         # ROADMAP.md item 169: house ads are inventory notices and
         # appear at most once per artifact, not once per region - a
@@ -8022,13 +8028,13 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
                 if b is not home:
                     b["one_line"] = town_one_liner(b)
             region_blocks = [home] + [b for b in region_blocks if b is not home]
-    winter_break = winter_break_edition(now)  # item 539
-    if winter_break:
-        by_url = {sec["region_url"]: sec for sec in sections}
+    if winter_break:  # item 539: week groups were set per town above
         for b in region_blocks:
-            if not b.get("one_line"):
-                b["week_groups"] = winter_break_week_groups(by_url[b["region_url"]].get("upcoming_events") or [], winter_break["weeks"], per_week)
-        winter_break = dict(winter_break, camps=winter_break_camp_line(sections))
+            if b.get("one_line"):
+                b.pop("week_groups", None)
+        weeks = winter_break["weeks"]
+        span = f"{weeks[0]['start'].strftime('%b')} {weeks[0]['start'].day} \u2013 {weeks[-1]['end'].strftime('%b')} {weeks[-1]['end'].day}"
+        winter_break = dict(winter_break, camps=winter_break_camp_line(sections), span=span)
     top_picks = pick_email_top_picks(region_blocks)
     tonight = select_tonight(sections, now)  # item 497
     new_years_eve = select_new_years_eve(sections, now)  # item 538
@@ -8036,6 +8042,9 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
     lights_line = build_lights_email_line(load_light_displays(email_delivery_time(now).date(), TOWN_CENTRES), now)  # item 527
     event_total = sum(len([e for e in s["weekend_events"] if e.get("attendable", True)]) for s in sections)
     town_total = sum(1 for s in sections if any(e.get("attendable", True) for e in s["weekend_events"]))
+    if winter_break:  # item 553: the hero counts the two weeks, not one weekend
+        event_total = sum(len(g["events"]) for b in all_blocks for g in b.get("week_groups") or [])
+        town_total = sum(1 for b in all_blocks if any(g["events"] for g in b.get("week_groups") or []))
     empty_regions_summary = None
     if collapse:
         empty_regions_summary = {
@@ -8078,7 +8087,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         weekend_date_range=weekend_date_range,
         subject_line=winter_break_subject(region_blocks) if winter_break else build_combined_email_subject_line(sections, now, top_picks, on_sale),
         winter_break=winter_break,
-        preheader=build_combined_email_preheader(sections),
+        preheader=truncate(f"Two weeks of things to do across {_join_names([sec['region_name'] for sec in sections])}", PREHEADER_MAX_LEN) if winter_break else build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},
         preview=preview,
         seasonal_link=None if edition_block else seasonal_email_link(now),
@@ -8689,7 +8698,7 @@ def winter_break_week_groups(events: list[dict], weeks: list[dict], per_week: in
 
 def winter_break_subject(region_blocks: list[dict]) -> str:
     n = sum(len(g["events"]) for b in region_blocks for g in b.get("week_groups") or [])
-    return f"{WINTER_BREAK_SUBJECT} \u00b7 {n} ideas" if n else WINTER_BREAK_SUBJECT
+    return f"{WINTER_BREAK_SUBJECT} \u00b7 {n} idea{'' if n == 1 else 's'}" if n else WINTER_BREAK_SUBJECT
 
 
 def winter_break_camp_line(sections: list[dict], limit: int = 6) -> list[dict]:
@@ -9158,6 +9167,18 @@ def record_indexnow_outcome(path: Path, now: datetime, url_count: int, ok: bool,
     return history
 
 
+AS_OF_ENV = "AS_OF"
+
+
+def as_of_clock(delivery: str) -> datetime:
+    """ROADMAP.md item 553: the build clock for previewing the issue delivered on
+    `delivery` (YYYY-MM-DD): 8 PM Central the evening before, when the real
+    build for that delivery runs. Every date-driven choice (window, delivery
+    time, subject, special blocks, seasonal switches) follows from it."""
+    day = date.fromisoformat(delivery.strip())
+    return datetime.combine(day - timedelta(days=1), time(20, 0), tzinfo=LOCAL_TZ).astimezone(timezone.utc)
+
+
 def main() -> None:
     sponsors_cfg = load_yaml(CONFIG_DIR / "sponsors.yaml")
     contact_email = (sponsors_cfg.get("contact_email") or "").strip() or None
@@ -9165,7 +9186,10 @@ def main() -> None:
     analytics = load_analytics_config(load_yaml(CONFIG_DIR / "analytics.yaml"))
     maps = load_maps_config(load_yaml(CONFIG_DIR / "maps.yaml"))
     regions = load_regions()
-    now = datetime.now(timezone.utc)
+    as_of = os.environ.get(AS_OF_ENV, "").strip()
+    now = as_of_clock(as_of) if as_of else datetime.now(timezone.utc)  # item 553: preview builds only (scripts/build_preview.py)
+    if as_of:
+        logger.info("AS_OF=%s: building as of %s for a preview; nothing is submitted.", as_of, now.isoformat())
     ANSWERED_SOURCES.clear()  # item 530: this build's answers only
     HEADLINER_NAMES[:] = [str(m) for c in regions for m in ((c.get("tree_lighting") or {}).get("match") or [])]  # item 524
     TOWN_CENTRES[:] = [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions]  # item 520
@@ -10143,6 +10167,9 @@ def main() -> None:
             (OUTPUT_DIR / f"{old_key}.txt").write_text(old_key, encoding="utf-8")
     (OUTPUT_DIR / "feed.xml").write_text(build_feed_xml(feed_items, now, source_completeness), encoding="utf-8")
     logger.info("Wrote sitemap.xml, robots.txt, llms.txt, CNAME, feed.xml, and IndexNow key file")
+    if as_of:  # item 553: a preview build never pings IndexNow or Bing, and stops here
+        logger.info("AS_OF preview build: skipping IndexNow, Bing and health bookkeeping.")
+        return
     og_dir = OUTPUT_DIR / "og"
     og_dir.mkdir(parents=True, exist_ok=True)
     og_images = build_og_images(region_summaries)

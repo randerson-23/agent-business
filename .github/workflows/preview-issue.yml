@@ -1,0 +1,73 @@
+name: Preview special issues
+
+# ROADMAP.md item 553: build the next special issue (a moved delivery in
+# config/newsletter.yaml's delivery_overrides: Thanksgiving, winter break,
+# New Year's) "as of" its delivery date into docs/previews/<date>/, so it can
+# be read days before it sends. Never touches the live pages or the send.
+on:
+  schedule:
+    # Monday and Friday 15:17 UTC: the Monday before each moved delivery, and a
+    # Friday refresh for one that is still more than a few days out.
+    - cron: "17 15 * * 1,5"
+  workflow_dispatch:
+    inputs:
+      as_of:
+        description: "Delivery date to preview (YYYY-MM-DD); blank = next special delivery"
+        required: false
+        default: ""
+  push:
+    branches: [main]
+    paths:
+      - "scripts/build_preview.py"
+      - ".github/workflows/preview-issue.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: preview-issue
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build preview
+        env:
+          AS_OF_INPUT: ${{ github.event.inputs.as_of }}
+        run: |
+          if [ -n "$AS_OF_INPUT" ]; then
+            python scripts/build_preview.py --as-of "$AS_OF_INPUT"
+          else
+            python scripts/build_preview.py --next-special
+          fi
+
+      - name: Commit preview
+        run: |
+          git config user.name "local-planner-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/previews/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No preview to commit."
+            exit 0
+          fi
+          git commit -m "Preview special issue [skip ci]"
+          attempt=1
+          until git push; do
+            if [ "$attempt" -ge 5 ]; then
+              echo "::error::Failed to push after $attempt attempts."
+              exit 1
+            fi
+            git fetch origin main
+            git rebase origin/main
+            attempt=$((attempt + 1))
+          done
