@@ -37,8 +37,16 @@ hosts:
     event: "Shop Small Saturday, Sat Nov 28, 2026 (on its own homepage)"
     source: "https://www.downtownpalatine.org/"
 
+  # ROADMAP.md item 545: an indoor rink selling to families on winter weekends.
+  - name: "Nicholas Sportsplex (Mt. Prospect Ice Arena)"
+    town: "Mount Prospect"
+    reason: winter_attraction
+    event: "Public skate sessions, linked from the Mount Prospect page"
+    source: "https://www.nicholassportsplex.com/public-skate"
+
 notes:
   santa_host_2025: "Hosted Santa in 2025: offer the free founding Event Promo for 2026."
   holiday_attraction: "Seasonal attractions near the towns: offer a Weekly Spot at the launch rate for the December issues."
   fair_organiser_2026: "Holiday fair organisers: send OUTREACH_TEMPLATES.md section 14b two weeks before the fair, with the free founding Event Promo."
   business_association: "Downtown business associations: send OUTREACH_TEMPLATES.md section 13 (Small Business Saturday) and 13a (holiday listing, $20 through Dec 15); one association speaks for many member shops."
+  winter_attraction: "Winter attractions (rinks, indoor play): offer a Weekly Spot for the December-February issues, when outdoor plans fall through."
