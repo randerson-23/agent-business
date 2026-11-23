@@ -658,6 +658,10 @@
   /* ROADMAP.md item 504: a cancelled or postponed event stays listed, struck through, with its source link. */
   .struck { text-decoration: line-through; }
   .status-chip { display: inline-block; border: 1px solid var(--ink); color: var(--ink); font-size: 12px; font-weight: 700; padding: 0 6px; vertical-align: middle; text-transform: uppercase; letter-spacing: .5px; }
+  /* ROADMAP.md item 555: the weekend page's day headings stay in view on phones while the cards scroll beneath. */
+  @media (max-width: 599px) {
+    .day-heading { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 8px 0; margin: 0; }
+  }
 </style>
 <style>
   .newsletter {
@@ -768,19 +772,19 @@
       <span class="wx-emoji" aria-hidden="true">🌦️</span>
       <span class="wx-name">Friday</span>
       <span class="wx-temp">49&deg; / 38&deg;</span>
-      <span class="wx-label">Drizzle &middot; 76% precip</span>
+      <span class="wx-label">Drizzle &middot; 80% precip</span>
     </div>
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">🌦️</span>
       <span class="wx-name">Saturday</span>
       <span class="wx-temp">48&deg; / 39&deg;</span>
-      <span class="wx-label">Light drizzle &middot; 11% precip</span>
+      <span class="wx-label">Light drizzle &middot; 10% precip</span>
     </div>
     <div class="weather-day">
       <span class="wx-emoji" aria-hidden="true">☁️</span>
       <span class="wx-name">Sunday</span>
       <span class="wx-temp">46&deg; / 36&deg;</span>
-      <span class="wx-label">Overcast &middot; 11% precip</span>
+      <span class="wx-label">Overcast &middot; 16% precip</span>
     </div>
     <div class="wx-note">Rain (or worse) in the forecast — the Indoor filter below can help plan around it.</div>
   </div>
@@ -807,7 +811,7 @@
 
 
     <section class="block">
-      <h2>This weekend in Mount Prospect</h2>
+      <h2 class="day-heading">Thursday, Nov 26</h2>
         <div class="card-grid">
         <article class="card" id="ev-free-triple-turkey-burner-2026-11-26" data-tags="" data-date-iso="2026-11-26T08:00:00">
           <button type="button" class="tray-star" data-item='{"date": "Nov 26", "date_iso": "2026-11-26T08:00:00", "detail": "Free! Triple Turkey Burner Prepare for that Thanksgiving feast with a fun mix of group fitness classes! This event consists of three fitness classes, each 25\u2026", "id": "https://www.mppd.org/event/free-triple-turkey-burner-2/|2026-11-26T08:00:00", "region_name": "Mount Prospect", "region_url": "https://withintenmiles.com/mount-prospect-60056/", "title": "Free! Triple Turkey Burner", "url": "https://www.mppd.org/event/free-triple-turkey-burner-2/"}' aria-pressed="false" aria-label="Add Free! Triple Turkey Burner to My Weekend">☆</button>
@@ -878,7 +882,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
 <a href="https://withintenmiles.com/leaf-pickup/">Leaf pickup</a>.<a href="https://withintenmiles.com/give/">Toy, coat &amp; food drives</a>.    <a href="https://withintenmiles.com/sensory-friendly/">Sensory-friendly events</a>.
-<a href="https://withintenmiles.com/mount-prospect-60056/winter-break/">Winter break camps</a>.<a href="https://withintenmiles.com/mount-prospect-60056/holiday/">Holiday events and shopping</a>, <a href="https://withintenmiles.com/holidays/">all towns' tree lightings</a>.    <br>Generated 2026-11-23 20:16 UTC.
+<a href="https://withintenmiles.com/mount-prospect-60056/winter-break/">Winter break camps</a>.<a href="https://withintenmiles.com/mount-prospect-60056/holiday/">Holiday events and shopping</a>, <a href="https://withintenmiles.com/holidays/">all towns' tree lightings</a>.    <br>Generated 2026-11-23 22:01 UTC.
 <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/mount-prospect-60056/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
@@ -900,7 +904,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
 </div>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Free! Triple Turkey Burner", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/#ev-free-triple-turkey-burner-2026-11-26", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "sameAs": "https://www.mppd.org/event/free-triple-turkey-burner-2/", "description": "Free! Triple Turkey Burner Prepare for that Thanksgiving feast with a fun mix of group fitness classes! This event consists of three fitness classes, each 25…", "startDate": "2026-11-26T08:00:00-06:00", "location": {"@type": "Place", "name": "Mount Prospect, IL", "address": {"@type": "PostalAddress", "addressCountry": "US", "addressLocality": "Mount Prospect", "addressRegion": "IL"}}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-11-23T20:16:48.338452+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Mount Prospect — Within Ten", "url": "https://withintenmiles.com/mount-prospect-60056/this-weekend/", "dateModified": "2026-11-23T22:01:41.870285+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();

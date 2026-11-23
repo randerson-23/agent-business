@@ -658,6 +658,10 @@
   /* ROADMAP.md item 504: a cancelled or postponed event stays listed, struck through, with its source link. */
   .struck { text-decoration: line-through; }
   .status-chip { display: inline-block; border: 1px solid var(--ink); color: var(--ink); font-size: 12px; font-weight: 700; padding: 0 6px; vertical-align: middle; text-transform: uppercase; letter-spacing: .5px; }
+  /* ROADMAP.md item 555: the weekend page's day headings stay in view on phones while the cards scroll beneath. */
+  @media (max-width: 599px) {
+    .day-heading { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 8px 0; margin: 0; }
+  }
 </style>
 <style>
   .newsletter {
@@ -881,7 +885,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
     <a href="https://withintenmiles.com/about/">About</a>.
     <a href="https://google.com/preferences/source?q=withintenmiles.com" rel="noopener">Add us as a preferred source on Google</a>.
 <a href="https://withintenmiles.com/leaf-pickup/">Leaf pickup</a>.<a href="https://withintenmiles.com/give/">Toy, coat &amp; food drives</a>.    <a href="https://withintenmiles.com/sensory-friendly/">Sensory-friendly events</a>.
-<a href="https://withintenmiles.com/des-plaines-60016/winter-break/">Winter break camps</a>.<a href="https://withintenmiles.com/des-plaines-60016/holiday/">Holiday events and shopping</a>, <a href="https://withintenmiles.com/holidays/">all towns' tree lightings</a>.    <br>Generated 2026-11-23 20:16 UTC.
+<a href="https://withintenmiles.com/des-plaines-60016/winter-break/">Winter break camps</a>.<a href="https://withintenmiles.com/des-plaines-60016/holiday/">Holiday events and shopping</a>, <a href="https://withintenmiles.com/holidays/">all towns' tree lightings</a>.    <br>Generated 2026-11-23 22:01 UTC.
 <br>Visits counted with privacy-first, cookie-free analytics — no personal data collected.    <br><a href="https://withintenmiles.com/des-plaines-60016/weekly-summary.txt">Copy this week's summary</a> — a plain-text block ready to paste into a local group.
   </footer>
 </div>
@@ -903,7 +907,7 @@ document.querySelectorAll(".newsletter-form").forEach(function (f) {
 </div>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How current is this guide?", "acceptedAnswer": {"@type": "Answer", "text": "It's regenerated automatically from the village, library, and park district's own listings, typically several times a week - not a one-time write-up that goes stale."}}, {"@type": "Question", "name": "Is this every event or business, or just what's listed here?", "acceptedAnswer": {"@type": "Answer", "text": "Only what the linked public sources publish. For full details, hours, or anything not listed here, check the official page each item links to."}}, {"@type": "Question", "name": "How do I see what's happening in Des Plaines this specific weekend?", "acceptedAnswer": {"@type": "Answer", "text": "See the \u003ca href=\"https://withintenmiles.com/des-plaines-60016/this-weekend/\">weekend view\u003c/a>, which only shows items with a known date in the coming Friday-Sunday."}}, {"@type": "Question", "name": "Can I add an event, or suggest a business for the directory?", "acceptedAnswer": {"@type": "Answer", "text": "Yes - \u003ca href=\"https://github.com/randerson-23/agent-business/issues/new?template=event-submission.yml\">submit an event\u003c/a> and a person reviews it before it goes live, or a business owner can \u003ca href=\"https://withintenmiles.com/sponsor/\">inquire about a listing\u003c/a>."}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/guides/seasonal-circuit-guide/", "dateModified": "2026-11-23T20:16:48.338452+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Des Plaines — Within Ten", "url": "https://withintenmiles.com/des-plaines-60016/guides/seasonal-circuit-guide/", "dateModified": "2026-11-23T22:01:41.870285+00:00", "isPartOf": {"@type": "WebSite", "name": "Within Ten", "url": "https://withintenmiles.com/", "publisher": {"@id": "https://withintenmiles.com/about/#organization"}}}</script>
 <script>
 (function () {
   var activeTags = new Set();
