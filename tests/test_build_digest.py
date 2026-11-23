@@ -7625,7 +7625,8 @@ def test_tonight_block_only_when_the_issue_lands_before_its_weekend(monkeypatch)
         return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "tags": list(tags), "detail": "d", "attendable": True, "google_calendar_url": "https://calendar.google.com/x"}
     sections = [{"region_name": "Mount Prospect", "region_url": "https://x/mp/", "weekend_events": [ev("Turkey Trot", "2026-11-26T08:00:00")],
                  "upcoming_events": [ev("Christkindlmarket", "2026-11-25T16:00:00", ("indoor",)), ev("Village Tree Lighting Ceremony", "2026-11-25T17:00:00"),
-                                     ev("Morning Storytime", "2026-11-25T10:00:00"), ev("Turkey Trot", "2026-11-26T08:00:00")]}]
+                                     ev("Morning Storytime", "2026-11-25T10:00:00"), ev("Turkey Trot", "2026-11-26T08:00:00"),
+                                     ev("EARLY CLOSING - Thanksgiving Holiday", "2026-11-25T17:00:00")]}]
     monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 11, 26): datetime(2026, 11, 25, 7, 0)})
     tue = datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc)
     tonight = build_digest.select_tonight(sections, tue)
@@ -8080,8 +8081,15 @@ def test_winter_break_edition_splits_two_weeks_with_standing_lines(monkeypatch):
     html = build_digest.render_combined_email_digest(sections, "Dec 23 – Jan 3", tue)
     assert "THIS WEEK (DEC 23–27)" in html and "NEXT WEEK (DEC 28 – JAN 3)" in html
     assert "WINTER BREAK, BOTH WEEKS" in html and "https://wheelingparkdistrict.com/camps" in html and "new-years-eve/" in html
+    # Item 553's Dec 23 preview: a town with nothing on the weekend itself but
+    # events later in the break keeps its section, and the hero covers the break.
+    quiet_weekend = [dict(sections[0], weekend_events=[]), dict(sections[0], region_name="Palatine", region_url="https://x/palatine-60067/", weekend_events=[], upcoming_events=[])]
+    q = build_digest.render_combined_email_digest(quiet_weekend, "Dec 25–27", tue)
+    assert "THIS WEEK (DEC 23–27)" in q and "Nothing dated yet in Wheeling" not in q
+    assert "Winter break, across the northwest suburbs" in q and "Dec 23 – Jan 3" in q and "THE WINTER BREAK ISSUE" in q
     assert "Winter break: two weeks of things to do · 8 ideas" in html
     assert len("Winter break: two weeks of things to do · 8 ideas") <= 50
+    assert build_digest.winter_break_subject([{"week_groups": [{"events": [1]}]}]).endswith("· 1 idea")
     assert len(html.encode("utf-8")) <= build_digest.EMAIL_CLIP_BYTES
     # A normal week (and the Dec 30 New Year's issue) keeps the weekend layout.
     monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 12, 31): datetime(2026, 12, 30, 7, 0)})

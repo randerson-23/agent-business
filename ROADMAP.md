@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **553** (build any issue `--as-of` a future delivery date into `docs/previews/`; Nov 25, Dec 23 and Dec 30 first; **before Tue Nov 24's build**), then **555** (day headings on town weekend pages).
+0. ~~**553**~~ **DONE**, then **555** (day headings on town weekend pages).
 0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
 0. ~~**549**~~ **DONE**, then **548** (wired 2026-11-22; waiting on probe round 50 for 2026–27 dates) (winter reading challenges; probes from Dec 1).
 0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
@@ -22602,7 +22602,7 @@ pass 160's loop note, it's deliberately short.
 
 #### P2 (new)
 
-553. **Build any issue "as of" a future delivery date, for preview.** Build
+553. **DONE (2026-11-23).** `scripts/build_preview.py --as-of YYYY-MM-DD` (or `--next-special`, the soonest `delivery_overrides` date within 10 days) builds the whole site in a temp copy with `AS_OF` set (`build_digest.as_of_clock`: 8 PM Central the evening before delivery; `main` skips IndexNow, Bing and health bookkeeping and returns after the sitemap), then copies only `combined-email-preview.html` and `email-preview/*.html` to `docs/previews/<date>/`, each with `noindex`. `.github/workflows/preview-issue.yml` runs it Mon and Fri 15:17 UTC, on dispatch (`as_of` input) and on changes to the script, and commits `docs/previews/` (generated: never hand-commit). **What the first local previews found and this PR fixed:** (1) Nov 25: the *Tonight* block listed *"EARLY CLOSING - Thanksgiving Holiday"* (Wheeling); `select_tonight` and `select_new_years_eve` now skip `is_notice_title`. (2) Dec 23: towns with nothing on Dec 25–27 collapsed into *"Nothing dated yet"* even with events later in the break; week groups are now set before the collapse check. The hero said *"This weekend … Dec 25–27"*; it now reads *"❄️ The winter break issue · Winter break, across the northwest suburbs · Dec 23 – Jan 3"* and counts both weeks. (3) The subject said *"1 ideas"*. The Dec 23 preview is thin today only because feeds don't reach late December yet. The rest of the Nov 25 preview read correctly: Tonight (tree lighting, Christkindlmarket), Thanksgiving morning (two trots), Small Business Saturday (3 towns), GivingTuesday, 79.6 KB. **Build any issue "as of" a future delivery date, for preview.** Build
      loop:
 
      - Add `--as-of YYYY-MM-DD` (and an `AS_OF` env var) to the build. It

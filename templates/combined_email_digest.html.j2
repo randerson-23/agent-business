@@ -80,17 +80,17 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 <td class="wt-accent" style="font-family:{{ sans }}; font-size:12px; font-weight:600; letter-spacing:1.5px; color:{{ accent }}; padding-bottom:10px;">
-{% if edition == 'halloween' %}🎃 THE HALLOWEEN WEEKEND ISSUE{% elif edition == 'holiday' %}🎄 HOLIDAY KICKOFF{% else %}WITHIN TEN &nbsp;·&nbsp; WEEKEND GUIDE{% endif %}
+{% if winter_break %}❄️ THE WINTER BREAK ISSUE{% elif edition == 'halloween' %}🎃 THE HALLOWEEN WEEKEND ISSUE{% elif edition == 'holiday' %}🎄 HOLIDAY KICKOFF{% else %}WITHIN TEN &nbsp;·&nbsp; WEEKEND GUIDE{% endif %}
 </td>
 </tr>
 <tr>
 <td class="wt-ink" style="font-family:{{ serif }}; font-size:28px; font-weight:bold; line-height:1.2; color:{{ ink }}; padding-bottom:10px;">
-{% if reader_town_name %}This weekend in {{ reader_town_name }} &amp; nearby{% else %}This weekend, across the northwest suburbs{% endif %}
+{% if winter_break %}Winter break{% if reader_town_name %} in {{ reader_town_name }} &amp; nearby{% else %}, across the northwest suburbs{% endif %}{% elif reader_town_name %}This weekend in {{ reader_town_name }} &amp; nearby{% else %}This weekend, across the northwest suburbs{% endif %}
 </td>
 </tr>
 <tr>
 <td class="wt-muted" style="font-family:{{ sans }}; font-size:15px; line-height:1.5; color:{{ muted }};">
-<strong class="wt-ink" style="color:{{ ink }};">{{ weekend_date_range }}</strong>{% if event_total %} &nbsp;·&nbsp; {{ event_total }} thing{{ 's' if event_total != 1 else '' }} to do{% if town_total > 1 %} in {{ town_total }} towns{% endif %}{% endif %}
+<strong class="wt-ink" style="color:{{ ink }};">{{ winter_break.span if winter_break else weekend_date_range }}</strong>{% if event_total %} &nbsp;·&nbsp; {{ event_total }} thing{{ 's' if event_total != 1 else '' }} to do{% if town_total > 1 %} in {{ town_total }} towns{% endif %}{% endif %}
 </td>
 </tr>
 <tr>
