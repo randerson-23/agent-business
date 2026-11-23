@@ -22,10 +22,6 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/226527"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/236736"
   },
   {
@@ -43,6 +39,10 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.ahpd.org/event/resident-registration/"
+  },
+  {
+   "region": "arlington-heights-60005",
+   "url": "https://www.metropolisarts.com/event/12-dames-of-christmas/"
   },
   {
    "region": "arlington-heights-60005",
@@ -82,6 +82,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15509803"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15801734"
   },
   {
@@ -115,6 +119,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/16339452"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16411332"
   },
   {
    "region": "des-plaines-60016",
@@ -159,6 +167,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17253045"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17253046"
   },
   {
    "region": "des-plaines-60016",
@@ -458,6 +470,10 @@
   },
   {
    "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17354448"
+  },
+  {
+   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17441878"
   },
   {
@@ -479,6 +495,10 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17638279"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17653211"
   },
   {
    "region": "elk-grove-village-60007",
@@ -514,6 +534,10 @@
   },
   {
    "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17731396"
+  },
+  {
+   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17756283"
   },
   {
@@ -523,6 +547,10 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17872670"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17873209"
   },
   {
    "region": "elk-grove-village-60007",
@@ -618,6 +646,10 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16393027"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16519409"
   },
   {
@@ -631,6 +663,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16734580"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16760834"
   },
   {
    "region": "mount-prospect-60056",
@@ -655,6 +691,10 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16882809"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16995073"
   },
   {
    "region": "mount-prospect-60056",
@@ -702,6 +742,10 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://www.mppd.org/event/indoor-soccer-league-registration-deadline-3/"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://www.mppd.org/event/mpcb-the-joy-of-christmas/"
   },
   {
@@ -719,10 +763,6 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://www.mppd.org/event/winter-makers-market-3/"
-  },
-  {
-   "region": "palatine-60067",
-   "url": "https://events.harpercollege.edu/event/a-dolls-house-by-henrik-ibsen-adapted-by-amy-herzog"
   },
   {
    "region": "palatine-60067",
@@ -802,11 +842,23 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/16988054"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/16988573"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16995841"
   },
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17045693"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17045752"
   },
   {
    "region": "wheeling-60090",
@@ -902,6 +954,14 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17115985"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17115986"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17116313"
   },
   {
@@ -910,7 +970,15 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17138246"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17138966"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17139127"
   },
   {
    "region": "wheeling-60090",
@@ -919,6 +987,10 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17207853"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17211777"
   },
   {
    "region": "wheeling-60090",

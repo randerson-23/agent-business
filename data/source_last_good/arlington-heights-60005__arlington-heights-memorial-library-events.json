@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-23T05:59:21+00:00",
+ "fetched_at": "2026-11-23T14:02:30+00:00",
  "items": [
-  {
-   "date": "2026-11-22",
-   "detail": "",
-   "title": "Сторітайм українською | Ukrainian Language Storytime",
-   "url": "https://www.ahml.info/scheduling/reservation/226527"
-  },
   {
    "date": "2026-11-23",
    "detail": "",
@@ -64,6 +58,12 @@
   {
    "date": null,
    "detail": "",
+   "title": "Genealogy Gumshoes: Family History Discussion Group",
+   "url": "https://www.ahml.info/scheduling/reservation/201133"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Clases de Computación Básica",
    "url": "https://www.ahml.info/scheduling/reservation/236331"
   },
@@ -72,12 +72,6 @@
    "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/234200"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "Genealogy Gumshoes: Family History Discussion Group",
-   "url": "https://www.ahml.info/scheduling/reservation/201133"
   },
   {
    "date": null,
@@ -142,14 +136,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/236751"
+   "title": "Silent Book Club",
+   "url": "https://www.ahml.info/scheduling/reservation/224375"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Silent Book Club",
-   "url": "https://www.ahml.info/scheduling/reservation/224375"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/236751"
   },
   {
    "date": null,
@@ -196,14 +190,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Resume Review",
-   "url": "https://www.ahml.info/scheduling/reservation/209846"
+   "title": "Makerplace Wire Wrapped Jewelry: Artisan Ring",
+   "url": "https://www.ahml.info/scheduling/reservation/210090"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Makerplace Wire Wrapped Jewelry: Artisan Ring",
-   "url": "https://www.ahml.info/scheduling/reservation/210090"
+   "title": "Resume Review",
+   "url": "https://www.ahml.info/scheduling/reservation/209846"
   },
   {
    "date": null,
@@ -360,6 +354,12 @@
    "detail": "",
    "title": "Senior Center: Windows 11 Essentials",
    "url": "https://www.ahml.info/scheduling/reservation/234309"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Read to Learn (District 214)",
+   "url": "https://www.ahml.info/scheduling/reservation/194371"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

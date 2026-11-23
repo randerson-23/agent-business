@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-11-23T05:59:21+00:00",
-  "numberOfItems": 41,
+  "dateModified": "2026-11-23T14:02:30+00:00",
+  "numberOfItems": 45,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -1269,6 +1269,130 @@
         },
         "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Camp Dan Beard (Northbrook) · ≈ 2 mi from Wheeling. Celebrate the start of winter with a giant bonfire. Enjoy s’mores and other snacks, games, and stargazing…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 42,
+      "item": {
+        "@type": "Event",
+        "name": "Community Weaving Project",
+        "startDate": "2026-12-06",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-community-weaving-project-2026-12-06",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17482788",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Sunday, December 06 2026 12:00am - 11:59pm \n Participate in a community weaving activity in the library lobby in conjunction with One Book One Community. NR"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 43,
+      "item": {
+        "@type": "Event",
+        "name": "One Book One Community Open House",
+        "startDate": "2026-12-06T12:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-one-book-one-community-open-house-2026-12-06",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17117288",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Sunday, December 06 2026 12:00pm - 2:00pm \n Kick off this year's One Book, One Community by receiving your copy of \"The Orchard\" by Peter Heller, register for…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 44,
+      "item": {
+        "@type": "Event",
+        "name": "Resume Review & Career Coaching Appointments",
+        "startDate": "2026-12-06T12:15:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-resume-review-career-coaching-appointments-2026-12-06",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17101964",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Sunday, December 06 2026 12:15pm - 1:15pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 45,
+      "item": {
+        "@type": "Event",
+        "name": "Foundation Pop Up Shop",
+        "startDate": "2026-12-06T12:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-foundation-pop-up-shop-2026-12-06",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17207853",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Sunday, December 06 2026 12:30pm - 3:00pm \n Are you searching for the perfect gift for someone special? Look no further. Find a variety of unique items,…"
       }
     }
   ]
