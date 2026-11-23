@@ -1,11 +1,17 @@
 {
- "fetched_at": "2026-11-23T14:02:30+00:00",
+ "fetched_at": "2026-11-23T20:16:48+00:00",
  "items": [
   {
    "date": "Mon, 23 Nov 2026 00:00:00 +0000",
    "detail": "Monday, November 23 2026 12:00am - 11:59pm \n Take & Make Kits are fun crafts you can take home and make on your own time. Drop in to pick up your kit throughout the month! Available while supplies last. For teens in grades 7-12.",
    "title": "Teen Take & Make",
    "url": "https://desplaines.libnet.info/event/17635814"
+  },
+  {
+   "date": "Mon, 23 Nov 2026 13:00:00 +0000",
+   "detail": "Monday, November 23 2026 1:00pm - 4:00pm \n Career & Job Counseling @ the library-One-on-one in-person appointments\n\nMeet with a career expert for resume help, cover letter writing, interviewing skills, job searching or LinkedIn profile review.",
+   "title": "Career & Job Counseling @ the library",
+   "url": "https://desplaines.libnet.info/event/17995658"
   },
   {
    "date": "Mon, 23 Nov 2026 17:00:00 +0000",
@@ -354,12 +360,6 @@
    "detail": "Thursday, December 10 2026 9:00am - 11:00am \n The library will open 2 hours later at 11:00 AM for staff training.",
    "title": "All-Staff Training",
    "url": "https://desplaines.libnet.info/event/14797768"
-  },
-  {
-   "date": "Thu, 10 Dec 2026 14:00:00 +0000",
-   "detail": "Thursday, December 10 2026 2:00pm - 3:00pm \n Pick up the special ingredient and join the program to share your cooking experience.",
-   "title": "Foodies Unite!",
-   "url": "https://desplaines.libnet.info/event/17625285"
   }
  ],
  "source": "Des Plaines Public Library — Events"

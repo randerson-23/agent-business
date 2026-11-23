@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
-  <lastBuildDate>Mon, 23 Nov 2026 18:27:25 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 42 configured sources. 4 sources are shown from their last update, up to 2 hours ago.</description>
+  <lastBuildDate>Mon, 23 Nov 2026 20:16:48 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Kids' Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-kids-time-2026-11-23</link>
@@ -73,6 +73,17 @@
     <description>Thanksgiving Showdown Indoor Soccer Tournament – Grades 3 &amp; 4 This fast paced indoor soccer tournament will take place on the CCC Turf. Teams can have a… Official listing: https://www.mppd.org/event/thanksgiving-showdown-indoor-soccer-tournament-grades-3-4-2/</description>
     <pubDate>Mon, 23 Nov 2026 12:00:00 +0000</pubDate>
     <source url="https://www.mppd.org/event/thanksgiving-showdown-indoor-soccer-tournament-grades-3-4-2/">Mount Prospect Park District — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Career &amp; Job Counseling @ the library</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-career-job-counseling-the-library-2026-11-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-career-job-counseling-the-library-2026-11-23</guid>
+    <description>Monday, November 23 2026 1:00pm - 4:00pm 
+ Career &amp; Job Counseling @ the library-One-on-one in-person appointments
+
+Meet with a career expert for resume help,… Official listing: https://desplaines.libnet.info/event/17995658</description>
+    <pubDate>Mon, 23 Nov 2026 13:00:00 +0000</pubDate>
+    <source url="https://desplaines.libnet.info/event/17995658">Des Plaines Public Library — Events</source>
   </item>
   <item>
     <title>Elk Grove Village: Monday Matinee Movie</title>
@@ -442,14 +453,6 @@ A virtual… Official listing: https://mppl.libnet.info/event/17476746</descript
  Create a masterpiece-- without the brushes. Dress to get messy. R Official listing: https://indiantrails.libnet.info/event/17114828</description>
     <pubDate>Wed, 25 Nov 2026 11:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17114828">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Thanksgiving Showdown Indoor Soccer Tournament - Grades 7 &amp; 8</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-thanksgiving-showdown-indoor-soccer-tournament-grades-7-8-2026-11-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-thanksgiving-showdown-indoor-soccer-tournament-grades-7-8-2026-11-25</guid>
-    <description>Thanksgiving Showdown Indoor Soccer Tournament – Grades 7 &amp; 8 This fast paced indoor soccer tournament will take place on the CCC Turf. Teams can have a… Official listing: https://www.mppd.org/event/thanksgiving-showdown-indoor-soccer-tournament-grades-7-8-2/</description>
-    <pubDate>Wed, 25 Nov 2026 12:00:00 +0000</pubDate>
-    <source url="https://www.mppd.org/event/thanksgiving-showdown-indoor-soccer-tournament-grades-7-8-2/">Mount Prospect Park District — Events</source>
   </item>
 </channel>
 </rss>
