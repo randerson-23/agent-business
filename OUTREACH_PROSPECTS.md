@@ -52,6 +52,14 @@ Downtown business associations: send OUTREACH_TEMPLATES.md section 13 (Small Bus
 |---|---|---|
 | Downtown Palatine Business Association | Palatine | Shop Small Saturday, Sat Nov 28, 2026 (on its own homepage) |
 
+### Winter attractions (rinks, indoor play)
+
+Winter attractions (rinks, indoor play): offer a Weekly Spot for the December-February issues, when outdoor plans fall through.
+
+| Host | Town | Event |
+|---|---|---|
+| Nicholas Sportsplex (Mt. Prospect Ice Arena) | Mount Prospect | Public skate sessions, linked from the Mount Prospect page |
+
 ### Fair organisers
 
 Booster clubs, PTOs and programmes running a craft fair or holiday market. Send OUTREACH_TEMPLATES.md section 14b two weeks before the fair.

@@ -3,16 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Des Plaines</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 13 of 14 configured sources.</description>
-  <lastBuildDate>Sun, 22 Nov 2026 22:01:07 +0000</lastBuildDate>
-  <item>
-    <title>Des Plaines: POOH: 60th ANNIVERSARY TOUR - FINALE</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-pooh-60th-anniversary-tour-finale-2026-11-22</guid>
-    <description>60 years of music, emotions and successes! In 2026, POOH are ready to return for what will be a highly anticipated year of celebrations and surprises for the… Official listing: https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/</description>
-    <pubDate>Sun, 22 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/pooh-60th-anniversary-tour-finale/">Des Plaines Theatre — Events</source>
-  </item>
+  <description>Upcoming events in Des Plaines, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 11 of 14 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Mon, 23 Nov 2026 05:59:21 +0000</lastBuildDate>
   <item>
     <title>Des Plaines: Teen Take &amp; Make</title>
     <link>https://withintenmiles.com/des-plaines-60016/#ev-teen-take-make-2026-11-23</link>
@@ -451,6 +443,14 @@ Ages 9-12. Official listing: https://desplaines.libnet.info/event/17195479</desc
     <description>Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for an evening of Jazz with Michael Ross Band! Food… Official listing: https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-pop-and-rb-with-michael-ross-band-2/</description>
     <pubDate>Fri, 04 Dec 2026 20:30:00 +0000</pubDate>
     <source url="https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-live-jazz-pop-and-rb-with-michael-ross-band-2/">Des Plaines Theatre — Events</source>
+  </item>
+  <item>
+    <title>Des Plaines: Des Plaines Winter Fair</title>
+    <link>https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-winter-fair-2026-12-05</link>
+    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-des-plaines-winter-fair-2026-12-05</guid>
+    <description>The City's Winter Fair, the day after the tree lighting. Saturday 11 a.m.-3 p.m.; trolley-tour registration opens Nov 2, 2026 at 8 a.m. on the City's page. Official listing: https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair</description>
+    <pubDate>Sat, 05 Dec 2026 11:00:00 +0000</pubDate>
+    <source url="https://www.desplainesil.gov/Departments/Media-Services/Events/Tree-Lighting-and-Winter-Fair">Des Plaines</source>
   </item>
 </channel>
 </rss>

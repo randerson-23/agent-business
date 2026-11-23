@@ -1,28 +1,6 @@
 {
- "fetched_at": "2026-11-22T22:01:07+00:00",
+ "fetched_at": "2026-11-23T05:59:21+00:00",
  "items": [
-  {
-   "date": "20261122T133000",
-   "detail": "Learn what makes owls unique and fascinating.",
-   "end_date": "20261122T133000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Nocturnal Hunters: Owls",
-   "url": "https://fpdcc.com/event/nocturnal-hunters-owls-2/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261122T150000",
-   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
-   "end_date": "20261122T150000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "What’s On The Menu?",
-   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-11-22/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
   {
    "date": "20261123T093000",
    "detail": "Fight the Monday blues and join us for a walk in the woods. Ages 18 & up.",
@@ -233,50 +211,6 @@
    "venue_name": "River Trail Nature Center"
   },
   {
-   "date": "20261211T190000",
-   "detail": "Join a naturalist as we look for local birds. A limited supply of binoculars available for loan at select events. Ages 8 & up.",
-   "end_date": "20261211T190000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Evening Owl Prowl",
-   "url": "https://fpdcc.com/event/evening-owl-prowl/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261212T080000",
-   "detail": "Bundle up and experience a brisk 3.4-mile hike and the health benefits nature provides.",
-   "end_date": "20261212T080000",
-   "lat": 41.48722079,
-   "lon": -87.65304546,
-   "title": "Winter Wellness Hike",
-   "url": "https://fpdcc.com/event/winter-wellness-hike/",
-   "venue_city": "",
-   "venue_name": "Sauk Trail Woods-Central"
-  },
-  {
-   "date": "20261212T093000",
-   "detail": "Remove invasive species. Tools provided. Ages 8 & up w/ adult. High schoolers may earn service hours.",
-   "end_date": "20261212T120000",
-   "lat": 42.11563369,
-   "lon": -88.16357511,
-   "title": "Restoration Workday",
-   "url": "https://fpdcc.com/event/restoration-workday-9/",
-   "venue_city": "Barrington Hills",
-   "venue_name": "Crabtree Nature Center"
-  },
-  {
-   "date": "20261212T093000",
-   "detail": "Families can enjoy our indoor space while helping your little ones connect with nature. S’mores provided outdoors.",
-   "end_date": "20261212T123000",
-   "lat": 41.6807903,
-   "lon": -87.86088567,
-   "title": "Sensory Play & S’mores",
-   "url": "https://fpdcc.com/event/sensory-play-smores/",
-   "venue_city": "",
-   "venue_name": "Swallow Cliff Woods-North"
-  },
-  {
    "date": "20261212T100000",
    "detail": "Help us work to make River Trail even better. Ages 10 & up. Children under 15 w/ adult.",
    "end_date": "20261212T120000",
@@ -286,17 +220,6 @@
    "url": "https://fpdcc.com/event/volunteer-workday-3/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261212T100000",
-   "detail": "Join us outdoors and learn how to build, start and tend to a campfire. Equipment, instructions provided.",
-   "end_date": "20261212T120000",
-   "lat": 42.03603048,
-   "lon": -88.2307714,
-   "title": "Winter Workshop: Fire Building 101",
-   "url": "https://fpdcc.com/event/winter-workshop-fire-building-101/",
-   "venue_city": "Elgin",
-   "venue_name": "Rolling Knolls"
   },
   {
    "date": "20261212T100000",
@@ -660,6 +583,83 @@
    "url": "https://fpdcc.com/event/winter-solstice-day/",
    "venue_city": "River Forest",
    "venue_name": "Thatcher Woods Pavilion"
+  },
+  {
+   "date": "20261219T130000",
+   "detail": "Discover the fascinating story of our national bird before searching for it outdoors.",
+   "end_date": "20261219T130000",
+   "lat": 41.70896743,
+   "lon": -87.87715272,
+   "title": "Bald Eagle Watch",
+   "url": "https://fpdcc.com/event/bald-eagle-watch/",
+   "venue_city": "Willow Springs",
+   "venue_name": "Little Red Schoolhouse Nature Center"
+  },
+  {
+   "date": "20261219T140000",
+   "detail": "Join us during feeding time to learn about Trailside’s ambassador animals.",
+   "end_date": "20261219T140000",
+   "lat": 41.89324535,
+   "lon": -87.82630546,
+   "title": "Bone Appétit",
+   "url": "https://fpdcc.com/event/bone-appetit-4/",
+   "venue_city": "River Forest",
+   "venue_name": "Trailside Museum of Natural History"
+  },
+  {
+   "date": "20261219T150000",
+   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
+   "end_date": "20261219T150000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "What’s On The Menu?",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-19/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261219T150000",
+   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
+   "end_date": "20261219T150000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "What’s On The Menu?",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-19/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261220T090000",
+   "detail": "Restore local habitat and control invasive species. Equipment provided. Ages 12 & up. Ages 12-17 w/ adult.",
+   "end_date": "20261220T120000",
+   "lat": 41.89324535,
+   "lon": -87.82630546,
+   "title": "Restoration Workday",
+   "url": "https://fpdcc.com/event/restoration-workday-14/",
+   "venue_city": "River Forest",
+   "venue_name": "Trailside Museum of Natural History"
+  },
+  {
+   "date": "20261220T093000",
+   "detail": "Join a naturalist and clear the trails in preparation for ski season.",
+   "end_date": "20261220T113000",
+   "lat": 41.68926677,
+   "lon": -87.92571427,
+   "title": "Clear the Trails",
+   "url": "https://fpdcc.com/event/clear-the-trails/",
+   "venue_city": "Lemont",
+   "venue_name": "Sagawau Environmental Learning Center"
+  },
+  {
+   "date": "20261220T133000",
+   "detail": "Join a guided walk to learn about wildlife while looking for tracks and evidence of animals.",
+   "end_date": "20261220T133000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Winter Wildlife Walk",
+   "url": "https://fpdcc.com/event/winter-wildlife-walk/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
   }
  ],
  "source": "Forest Preserves of Cook County — north"

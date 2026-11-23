@@ -1,13 +1,6 @@
 {
- "fetched_at": "2026-11-22T22:01:07+00:00",
+ "fetched_at": "2026-11-23T05:59:21+00:00",
  "items": [
-  {
-   "date": "20261122T163000",
-   "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2207",
-   "end_date": "20261122T235900",
-   "title": "Lights Around Wheeling",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
   {
    "date": "20261126T080000",
    "detail": "https://www.wheelingil.gov/m/calendar/event/detail/1953",
@@ -419,6 +412,13 @@
    "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2170",
    "end_date": "20270920T235900",
    "title": "Village Board Regular Meeting",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20270920T183000",
+   "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2222",
+   "end_date": "20270920T235959",
+   "title": "Village Board Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],
