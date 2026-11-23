@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. ~~**553**~~ **DONE**, then **555** (day headings on town weekend pages).
+0. ~~**553**~~ **DONE**, then ~~**555**~~ **DONE** (day headings on town weekend pages).
 0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
 0. ~~**549**~~ **DONE**, then **548** (wired 2026-11-22; waiting on probe round 50 for 2026–27 dates) (winter reading challenges; probes from Dec 1).
 0. ~~**544**~~ **DONE**, then **311** (winter outdoors, by Dec 15) with **545, 546, 547** (Mt. Prospect Ice Arena public skate, probe first; MPPD's two outdoor rinks; a "Skate this weekend" line).
@@ -22635,7 +22635,7 @@ pass 160's loop note, it's deliberately short.
 
 #### P3 (new)
 
-555. **Day headings on town weekend pages, sticky on phones.** Build loop,
+555. **DONE (2026-11-23).** `group_weekend_by_day` splits a town's `/this-weekend/` into one `<h2 class="day-heading">` per day with events ("Friday, Nov 27"; Thursday too on Thanksgiving weekend), undated items last under *Any time this weekend*, and the old single heading when nothing is dated. Under 600 px the heading is `position: sticky; top: 0` on the page background. Checked at 390 px: Arlington Heights shows Thu/Fri/Sat, no horizontal scroll. Also from the CI-built Nov 25 preview: the *Tonight* block had a cover-band concert at the Des Plaines Theatre; `select_tonight` now skips `is_ticketed_show` (item 529's venue rule). **Day headings on town weekend pages, sticky on phones.** Build loop,
      `region.html.j2`. Group the weekend list under ***Friday · Saturday ·
      Sunday*** headings (with the date). Make the heading `position:
      sticky; top: 0` under 600 px, with the page background so cards

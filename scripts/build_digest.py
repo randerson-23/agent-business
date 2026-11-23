@@ -7397,6 +7397,25 @@ def order_weekend_events(events: list[dict]) -> list[dict]:
     return sorted(events, key=weekend_display_key)
 
 
+def group_weekend_by_day(events: list[dict], fallback_heading: str) -> list[dict]:
+    """ROADMAP.md item 555: the town weekend page grouped under one heading per
+    day ("Friday, Nov 27"), in date order, keeping each day's existing order.
+    A day with nothing is omitted; undated items close the page under
+    "Any time this weekend". With nothing dated, one block under the page's
+    own heading, as before."""
+    days: dict[date, list[dict]] = {}
+    undated = []
+    for e in events:
+        day = _event_day(e)
+        (days.setdefault(day, []) if day else undated).append(e)
+    if not days:
+        return [{"section": fallback_heading, "events": events}]
+    blocks = [{"section": f"{d.strftime('%A, %b')} {d.day}", "events": days[d], "day_heading": True} for d in sorted(days)]
+    if undated:
+        blocks.append({"section": "Any time this weekend", "events": undated, "day_heading": True})
+    return blocks
+
+
 # The weekly email's visual layer: an emoji per event, a day/date chip and up
 # to two badges. Emoji are chosen from the title first (what the event *is*),
 # then from its tags, so a "Spooky Scary Studio" reads as Halloween rather
@@ -7551,6 +7570,8 @@ def select_tonight(sections: list[dict], now: datetime, limit: int = 3) -> dict 
             if start.date() != day or start.time() < TONIGHT_FROM or e.get("attendable") is False or e.get("sponsored_by") or e.get("event_status"):
                 continue
             if is_notice_title(e.get("title") or ""):  # item 553's first preview: "EARLY CLOSING - Thanksgiving Holiday" is not an outing
+                continue
+            if is_ticketed_show(e):  # the CI preview: a cover-band concert at a theatre is not a family "Tonight"
                 continue
             tree = bool(TREE_LIGHTING_TITLE.search(e.get("title") or ""))
             if not tree and family_relevance(e) < 0:
@@ -9585,7 +9606,7 @@ def main() -> None:
                 if slug == "this-weekend"
                 else None
             )
-            view_blocks = [{"section": heading, "events": items}]
+            view_blocks = group_weekend_by_day(items, heading) if slug == "this-weekend" else [{"section": heading, "events": items}]  # item 555
             if slug == "this-weekend":
                 ideas = thin_week_ideas(evergreen, sum(1 for e in items if e.get("attendable", True)))
                 if ideas:
