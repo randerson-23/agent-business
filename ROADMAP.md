@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **556, 557, 558** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
 0. ~~**553**~~ **DONE**, then ~~**555**~~ **DONE** (day headings on town weekend pages).
 0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
 0. ~~**549**~~ **DONE**, then **548** (wired 2026-11-22; waiting on probe round 50 for 2026–27 dates) (winter reading challenges; probes from Dec 1).
@@ -22650,6 +22651,65 @@ pass. **555** follows.
 Competitors reviewed this pass: none. This pass was process and the site's
 own weekend pages. The design/UX angle is **town weekend pages without
 day headings**.
+
+#### Research pass 2026-11-23, evening (hundred-and-sixty-second pass)
+
+Today the build loop shipped item 553 (**previews "as of" a future delivery
+date**; `docs/previews/2026-11-25/` exists) and item 555 (day headings, plus
+*"no ticketed concerts in Tonight"*). This pass does what item 553 was built
+for: it **reads the Thanksgiving issue at 400 px before it sends**
+(Wed Nov 25, 07:00). It also runs the first round of item 554's standing
+step.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Thanksgiving issue, previewed (design/UX)** (`docs/previews/2026-11-25/combined-email-preview.html`, built Mon Nov 23 14:03 UTC) | Subject ***"Thanksgiving weekend: lights, shops & more"***. The **holiday-kickoff** layout works, and the blocks all appear: lightings and Small Business Saturday chips, **Tonight** (Mount Prospect's lighting at 5 PM and Christkindlmarket at 4 PM), **Thanksgiving morning** (both turkey trots), *Don't miss* (AH lighting, the Palatine trot, a Lotería night), sign-ups, and town sections with day dates. Flaws:<br>**(a)** The lighting chips show ***"Wheeling date TBA"***. Wheeling's lighting was **Sun Nov 22**, so once its date passed it fell back to *TBA* instead of dropping off (item 544 fixed this on the homepage banner, not in the email's chip block).<br>**(b)** The closures line reads ***"Des Plaines: Library Closed · Des Plaines: Library Closed · Mount Prospect: Library Closed at 5 p.m."***: a duplicate, and **no days**, in the one week when *which day* is the whole question.<br>**(c)** Tonight included ***"MIKE & JOE – … // HAIRBANGERS BALL"***, a ticketed cover-band show in capitals. This preview predates the build loop's *"no ticketed concerts in Tonight"* commit (16:01 CT), so it should already be gone; **the preview needs a rebuild to confirm**.<br>**(d)** Arlington Heights lists ***"VIRTUAL Culture & Conversation (level: intermediate)"***, an online adult class, as a weekend thing to do | This is the issue with the most families reading on a holiday morning. The first three flaws are visible in the first screen of the email. Each is small, and **the preview made them findable a day ahead**, which is the point of item 553 (items 556, 557, 558) |
+| **Item 554's first round: blocked leads, via search** | **Wheeling's Holiday Hoopla:** still no 2026 first-party page indexed; the newest is the 2025 edition (Sun Dec 7, 1–3 PM). **Chabad of Arlington Heights / Chabad of Wheeling menorah lightings:** no 2026 page indexed (pass 156). **Nothing confirmed this round.** The candidates stay open | Recorded so the next pass starts from here rather than re-searching blind |
+
+#### P1 (new)
+
+556. **The email's lighting chips: a past date drops off, never turns to
+     "TBA".** Build loop. Use item 544's rule (drop a town once its
+     lighting date has passed) in the email's *Tree lightings and Small
+     Business Saturday* chip block and on `/holidays/`. *TBA* only for a
+     town whose 2026 date has never been confirmed. Tests: with today
+     after Wheeling's Nov 22 lighting, the Nov 25 build shows no Wheeling
+     chip, and an unconfirmed town still shows *TBA*.
+
+557. **Closures line: one entry per place, with the days.** Build loop, item
+     307's `build_closures` output in the email and on town pages:
+
+     - De-duplicate by **town + place** (*Des Plaines Public Library*
+       appearing twice becomes one).
+     - Show the **days** from the events' dates: *"Des Plaines library:
+       closed Thu–Fri · Mount Prospect library: closes 5 PM Wed"*.
+     - Keep the source link.
+
+     Tests: two identical closures merge into one with a day range, and a
+     *"closes at 5 p.m."* entry shows its day.
+
+#### P2 (new)
+
+558. **Virtual and online events out of weekend lists.** Build loop. Events
+     whose title or description starts with or contains *VIRTUAL*,
+     *Online*, *Zoom*, *Webinar* or *(virtual)*, or whose source marks
+     them online (`eventAttendanceMode` Online), leave the weekend lists,
+     picks and email town sections. They stay on the town's *All events*
+     page with a *"🖥 Online"* badge. Tests: *"VIRTUAL Culture &
+     Conversation"* leaves the weekend list and keeps its badge on the
+     town page, and an in-person event mentioning *online registration*
+     stays.
+
+Also for the build loop: **re-run `build_preview.py --as-of 2026-11-25` after
+today's commits** and confirm (c) is gone, before Tuesday night's build.
+
+Re-rank: **556, 557 and 558 go to the top of the build queue**, with a hard
+deadline of **Tue Nov 24's build**, for the Thanksgiving issue.
+
+Competitors reviewed this pass: none. This pass read **the Thanksgiving
+issue's preview** (item 553's first use) and ran **item 554's first
+search round** (nothing confirmed). The design/UX angle is **the
+Thanksgiving issue at 400 px**.
 
 
 ## Working agreements for autonomous iteration
