@@ -2,7 +2,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-23T14:02:30+00:00",
+  "dateModified": "2026-11-23T18:27:25+00:00",
   "numberOfItems": 225,
   "itemListElement": [
     {
@@ -2160,9 +2160,9 @@
       "position": 71,
       "item": {
         "@type": "Event",
-        "name": "Games & Gab",
+        "name": "Family Time",
         "startDate": "2026-11-28",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-games-gab-2026-11-28",
+        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-family-time-2026-11-28",
         "eventStatus": "https://schema.org/EventScheduled",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
         "location": {
@@ -2176,7 +2176,7 @@
             "streetAddress": "500 N. Dunton Ave."
           }
         },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/236748",
+        "sameAs": "https://www.ahml.info/scheduling/reservation/224199",
         "organizer": {
           "@type": "Organization",
           "name": "Arlington Heights Memorial Library",

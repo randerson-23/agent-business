@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-23T14:02:30+00:00",
+ "fetched_at": "2026-11-23T18:27:25+00:00",
  "items": [
   {
    "date": "Mon, 23 Nov 2026 10:00:00 +0000",
@@ -338,12 +338,6 @@
    "url": "https://mppl.libnet.info/event/17096912"
   },
   {
-   "date": "Tue, 15 Dec 2026 11:00:00 +0000",
-   "detail": "Tuesday, December 15 2026 11:00am - 12:00pm \n Join us for a gentle seated yoga practice incorporating breath awareness and meditation.",
-   "title": "Mindful Chair Yoga",
-   "url": "https://mppl.libnet.info/event/15069174"
-  },
-  {
    "date": "Tue, 15 Dec 2026 16:00:00 +0000",
    "detail": "Tuesday, December 15 2026 4:00pm - 5:00pm \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.",
    "title": "Creation Station: Tote-ally Terrific",
@@ -360,6 +354,12 @@
    "detail": "Tuesday, December 15 2026 7:00pm - 8:00pm \n Join The Saddle Shoe Sisters for a night of jolly holiday music.",
    "title": "Holiday Concert: The Saddle Shoe Sisters",
    "url": "https://mppl.libnet.info/event/15646004"
+  },
+  {
+   "date": "Wed, 16 Dec 2026 18:00:00 +0000",
+   "detail": "Wednesday, December 16 2026 6:00pm - 7:00pm \n Get your pickaxe ready! Build unique structures that solve various design challenges. Then share your digital handiwork with new friends.",
+   "title": "Minecraft Engineers",
+   "url": "https://mppl.libnet.info/event/16995035"
   }
  ],
  "source": "Mount Prospect Public Library — Events"
