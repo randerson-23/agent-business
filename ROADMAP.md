@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **560** (days-off line counts from the delivery date: no past days, "this week", merged ranges; for Nov 25, Dec 23, Dec 30), then **559** (Wildbird Shack as Santa-host candidate and warm lead), then **561** (information box capped at four lines).
+0. ~~**560**~~ **DONE**, then **559** (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
 0. ~~**556, 557, 558**~~ **DONE 2026-11-24, Nov 25 preview re-run locally and clean** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
 0. ~~**553**~~ **DONE**, then ~~**555**~~ **DONE** (day headings on town weekend pages).
 0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
@@ -22743,7 +22743,7 @@ second round.
      Tests: no listing without a first-party 2026 page, and the warm host
      carries no contact details.
 
-560. **The days-off line follows the delivery date.** Build loop, item 296's
+560. **DONE (2026-11-24).** `build_days_off_email_line` counts from `email_delivery_time`: past days dropped, weekdays only, per district consecutive school days merged, grouped *this week* (the delivery's Mon–Sun) and *next week*: *"📚 No school this week: D15 Wed Nov 25 – Fri Nov 27 · D211 Wed Nov 25"*. **The days-off line follows the delivery date.** Build loop, item 296's
      days-off box in the email:
 
      - Count from the **delivery date** (item 486's
@@ -22760,7 +22760,7 @@ second round.
 
 #### P3 (new)
 
-561. **Cap the email's information box at four lines, by priority.** Build
+561. **DONE (2026-11-24).** `INFO_BOX_PRIORITY` (closures, drives closing, Small Business Saturday, GivingTuesday, election, days off, snow, winter reading, lights, new towns) and `info_box_keys`: the first four show, weather stays on top, the rest fold into *More this week →* (`/this-weekend/`). On-sale lines live in their own block, so they are not in this list. The Nov 25 preview shows closures, drives, Small Business Saturday, GivingTuesday, then *More this week*. **Cap the email's information box at four lines, by priority.** Build
      loop:
 
      - Order the box by **time-criticality**: an on-sale line (item 483),

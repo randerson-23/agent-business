@@ -5176,8 +5176,10 @@ def test_days_off_email_line_only_within_seven_days():
     ]}]
     now = datetime(2026, 11, 2, 18, tzinfo=timezone.utc)
     line = build_digest.build_days_off_email_line(sections, now)
-    assert line == {"text": "📚 No school next week: D57 Thu Nov 5", "url": "https://x/mp/#days-off"}
-    assert build_digest.build_days_off_email_line(sections, datetime(2026, 11, 8, 18, tzinfo=timezone.utc)) is None
+    # Item 560: counted from the Thursday delivery, Nov 5 is that issue's own week.
+    assert line == {"text": "📚 No school this week: D57 Thu Nov 5", "url": "https://x/mp/#days-off"}
+    assert build_digest.build_days_off_email_line(sections, datetime(2026, 11, 8, 18, tzinfo=timezone.utc))["text"] == "📚 No school next week: D57 Fri Nov 20"
+    assert build_digest.build_days_off_email_line(sections, datetime(2026, 11, 21, 18, tzinfo=timezone.utc)) is None
 
 
 def test_region_page_shows_the_days_off_box_with_honesty_line():
@@ -8305,3 +8307,22 @@ def test_online_events_leave_weekend_lists_but_keep_a_badge():
     assert not is_online_event("Craft Night", "Online registration required.")
     assert not is_online_event("Virtual Reality Gaming for Teens")
     assert not build_digest.is_pick_worthy({"title": "VIRTUAL Culture & Conversation", "tags": ["free"], "online": True})
+
+
+def test_days_off_line_follows_the_delivery_date_and_merges_ranges(monkeypatch):
+    # ROADMAP.md item 560.
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 11, 26): datetime(2026, 11, 25, 7, 0)})
+    sections = [{"region_url": "https://x/dp/", "days_off": [
+        {"date": date(2026, 11, 24), "end": date(2026, 11, 24), "reasons": [{"district": "D15", "reason": "No School"}]},
+        {"date": date(2026, 11, 25), "end": date(2026, 11, 25), "reasons": [{"district": "D15", "reason": "No School"}, {"district": "D211", "reason": "No School"}]},
+        {"date": date(2026, 11, 26), "end": date(2026, 11, 27), "reasons": [{"district": "D15", "reason": "Thanksgiving"}]},
+    ]}]
+    line = build_digest.build_days_off_email_line(sections, datetime(2026, 11, 24, 22, tzinfo=timezone.utc))
+    assert line["text"] == "📚 No school this week: D15 Wed Nov 25 – Fri Nov 27 · D211 Wed Nov 25"
+
+
+def test_info_box_shows_four_lines_by_priority_and_folds_the_rest():
+    # ROADMAP.md item 561.
+    keys = build_digest.info_box_keys({"lights": 1, "new_towns": [1], "days_off": 1, "closures": 1, "give": 1, "giving_tuesday": 1, "shop_small": 1})
+    assert keys == {"show": ["closures", "give", "shop_small", "giving_tuesday"], "more": True}
+    assert build_digest.info_box_keys({"lights": 1, "days_off": 1}) == {"show": ["days_off", "lights"], "more": False}
