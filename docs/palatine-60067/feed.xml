@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 32 of 36 configured sources. 1 source is shown from its last update, up to 2 hours ago.</description>
-  <lastBuildDate>Mon, 23 Nov 2026 22:01:41 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 36 configured sources.</description>
+  <lastBuildDate>Tue, 24 Nov 2026 06:07:23 +0000</lastBuildDate>
   <item>
     <title>Palatine: 🦃 Palatine Park District Turkey Trot</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-palatine-park-district-turkey-trot-2026-11-26</link>
@@ -252,6 +252,14 @@
     <description>Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine. An afternoon book club for adults at beautiful Crabtree Nature Center. Join Barrington Area… Official listing: https://fpdcc.com/event/prairie-pages-book-club/</description>
     <pubDate>Tue, 19 Jan 2027 13:00:00 +0000</pubDate>
     <source url="https://fpdcc.com/event/prairie-pages-book-club/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Palatine: Seasonal Science</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-seasonal-science-2027-01-23</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-seasonal-science-2027-01-23</guid>
+    <description>Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine. Explore the wonders of winter weather through hands-on activities and experiments. Official listing: https://fpdcc.com/event/seasonal-science/</description>
+    <pubDate>Sat, 23 Jan 2027 13:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/seasonal-science/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Palatine: Palatine Winter Farmers' Market</title>

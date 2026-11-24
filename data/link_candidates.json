@@ -14,10 +14,6 @@
   },
   {
    "region": "arlington-heights-60005",
-   "url": "https://www.ahml.info/scheduling/reservation/224222"
-  },
-  {
-   "region": "arlington-heights-60005",
    "url": "https://www.ahml.info/scheduling/reservation/226523"
   },
   {
@@ -35,6 +31,10 @@
   {
    "region": "arlington-heights-60005",
    "url": "https://www.ahpd.org/event/holly-jolly-trolly/"
+  },
+  {
+   "region": "arlington-heights-60005",
+   "url": "https://www.ahpd.org/event/non-resident-registration/"
   },
   {
    "region": "arlington-heights-60005",
@@ -70,11 +70,15 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/15463271"
+   "url": "https://desplaines.libnet.info/event/15110109"
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/15509801"
+   "url": "https://desplaines.libnet.info/event/15202446"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15463271"
   },
   {
    "region": "des-plaines-60016",
@@ -98,6 +102,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15801737"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15803245"
   },
   {
@@ -110,7 +118,15 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15803248"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/15906264"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/15981573"
   },
   {
    "region": "des-plaines-60016",
@@ -130,6 +146,10 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/16739503"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17047445"
   },
   {
@@ -146,10 +166,6 @@
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17190612"
-  },
-  {
-   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17190857"
   },
   {
@@ -159,10 +175,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17241859"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17253018"
   },
   {
    "region": "des-plaines-60016",
@@ -186,15 +198,15 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17449901"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17623532"
   },
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17623538"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17635814"
   },
   {
    "region": "des-plaines-60016",
@@ -211,6 +223,10 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17690351"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17713270"
   },
   {
    "region": "des-plaines-60016",
@@ -238,11 +254,19 @@
   },
   {
    "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17867459"
+  },
+  {
+   "region": "des-plaines-60016",
    "url": "https://desplaines.libnet.info/event/17888175"
   },
   {
    "region": "des-plaines-60016",
-   "url": "https://desplaines.libnet.info/event/17995658"
+   "url": "https://desplaines.libnet.info/event/17888182"
+  },
+  {
+   "region": "des-plaines-60016",
+   "url": "https://desplaines.libnet.info/event/17932569"
   },
   {
    "region": "des-plaines-60016",
@@ -251,10 +275,6 @@
   {
    "region": "des-plaines-60016",
    "url": "https://desplainestheatre.com/event/1-christmas-classic-film-series-how-the-grinch-stole-christmas-2000/"
-  },
-  {
-   "region": "des-plaines-60016",
-   "url": "https://desplainestheatre.com/event/10-silent-film-series-the-passion-of-joan-of-arc-1928-presented-by-the-silent-film-society-of-chicago/"
   },
   {
    "region": "des-plaines-60016",
@@ -326,10 +346,6 @@
   },
   {
    "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/16362691"
-  },
-  {
-   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/16362692"
   },
   {
@@ -358,10 +374,6 @@
   },
   {
    "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/16746077"
-  },
-  {
-   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/16760852"
   },
   {
@@ -370,19 +382,11 @@
   },
   {
    "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/16995039"
-  },
-  {
-   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17050132"
   },
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17060256"
-  },
-  {
-   "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/17066295"
   },
   {
    "region": "elk-grove-village-60007",
@@ -419,10 +423,6 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17256446"
-  },
-  {
-   "region": "elk-grove-village-60007",
-   "url": "https://egvpl.libnet.info/event/17354435"
   },
   {
    "region": "elk-grove-village-60007",
@@ -478,7 +478,19 @@
   },
   {
    "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17354449"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17395157"
+  },
+  {
+   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17441878"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17532138"
   },
   {
    "region": "elk-grove-village-60007",
@@ -499,6 +511,10 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17638279"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17653171"
   },
   {
    "region": "elk-grove-village-60007",
@@ -542,6 +558,10 @@
   },
   {
    "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17731397"
+  },
+  {
+   "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17756283"
   },
   {
@@ -555,6 +575,10 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17873209"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17925073"
   },
   {
    "region": "elk-grove-village-60007",
@@ -583,6 +607,10 @@
   {
    "region": "elk-grove-village-60007",
    "url": "https://egvpl.libnet.info/event/17937281"
+  },
+  {
+   "region": "elk-grove-village-60007",
+   "url": "https://egvpl.libnet.info/event/17955202"
   },
   {
    "region": "elk-grove-village-60007",
@@ -634,14 +662,6 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16288691"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16288693"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16392183"
   },
   {
@@ -682,10 +702,6 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://mppl.libnet.info/event/16873375"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16873376"
   },
   {
@@ -698,6 +714,10 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/16918077"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/16995073"
   },
   {
@@ -707,6 +727,14 @@
   {
    "region": "mount-prospect-60056",
    "url": "https://mppl.libnet.info/event/17095149"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/17096923"
+  },
+  {
+   "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/17096924"
   },
   {
    "region": "mount-prospect-60056",
@@ -726,6 +754,10 @@
   },
   {
    "region": "mount-prospect-60056",
+   "url": "https://mppl.libnet.info/event/17521975"
+  },
+  {
+   "region": "mount-prospect-60056",
    "url": "https://www.mppd.org/event/1-bingo-bonanza-18/"
   },
   {
@@ -742,19 +774,11 @@
   },
   {
    "region": "mount-prospect-60056",
-   "url": "https://www.mppd.org/event/full-year-fitness-membership-sale/"
-  },
-  {
-   "region": "mount-prospect-60056",
    "url": "https://www.mppd.org/event/indoor-soccer-league-registration-deadline-3/"
   },
   {
    "region": "mount-prospect-60056",
    "url": "https://www.mppd.org/event/mpcb-the-joy-of-christmas/"
-  },
-  {
-   "region": "mount-prospect-60056",
-   "url": "https://www.mppd.org/event/thanksgiving-showdown-indoor-soccer-tournament-grades-3-4-2/"
   },
   {
    "region": "mount-prospect-60056",
@@ -810,6 +834,10 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/14170889"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/14284495"
   },
   {
@@ -819,6 +847,14 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/16826778"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/16927080"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/16927092"
   },
   {
    "region": "wheeling-60090",
@@ -850,6 +886,14 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17011657"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17044550"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17045693"
   },
   {
@@ -875,6 +919,10 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17092616"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17092617"
   },
   {
    "region": "wheeling-60090",
@@ -918,6 +966,14 @@
   },
   {
    "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17102018"
+  },
+  {
+   "region": "wheeling-60090",
+   "url": "https://indiantrails.libnet.info/event/17102025"
+  },
+  {
+   "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17102140"
   },
   {
@@ -926,11 +982,11 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/17103897"
+   "url": "https://indiantrails.libnet.info/event/17104217"
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/17104217"
+   "url": "https://indiantrails.libnet.info/event/17104222"
   },
   {
    "region": "wheeling-60090",
@@ -966,11 +1022,11 @@
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/17138246"
+   "url": "https://indiantrails.libnet.info/event/17132486"
   },
   {
    "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/17138966"
+   "url": "https://indiantrails.libnet.info/event/17138246"
   },
   {
    "region": "wheeling-60090",
@@ -987,10 +1043,6 @@
   {
    "region": "wheeling-60090",
    "url": "https://indiantrails.libnet.info/event/17211777"
-  },
-  {
-   "region": "wheeling-60090",
-   "url": "https://indiantrails.libnet.info/event/17428279"
   },
   {
    "region": "wheeling-60090",

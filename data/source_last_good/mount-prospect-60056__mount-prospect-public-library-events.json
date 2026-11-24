@@ -1,24 +1,6 @@
 {
- "fetched_at": "2026-11-23T18:27:25+00:00",
+ "fetched_at": "2026-11-24T06:07:23+00:00",
  "items": [
-  {
-   "date": "Mon, 23 Nov 2026 10:00:00 +0000",
-   "detail": "Monday, November 23 2026 10:00am - 10:30am \n Get ready for extra-special family time at this feel-good show full of laughter and magic!",
-   "title": "Family Fun: Morris, the Magic Man",
-   "url": "https://mppl.libnet.info/event/16288691"
-  },
-  {
-   "date": "Mon, 23 Nov 2026 13:00:00 +0000",
-   "detail": "Monday, November 23 2026 1:00pm - 1:30pm \n Get ready for extra-special family time at this feel-good show full of laughter and magic!",
-   "title": "Family Fun: Morris, the Magic Man",
-   "url": "https://mppl.libnet.info/event/16288693"
-  },
-  {
-   "date": "Mon, 23 Nov 2026 17:00:00 +0000",
-   "detail": "Monday, November 23 2026 5:00pm - 6:30pm \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.",
-   "title": "Creation Station: Celebrate Autumn",
-   "url": "https://mppl.libnet.info/event/16873375"
-  },
   {
    "date": "Tue, 24 Nov 2026 10:00:00 +0000",
    "detail": "Tuesday, November 24 2026 10:00am - 11:00am \n Craft and create with us! We'll provide an idea and supplies; you create your own masterpiece.",
@@ -360,6 +342,24 @@
    "detail": "Wednesday, December 16 2026 6:00pm - 7:00pm \n Get your pickaxe ready! Build unique structures that solve various design challenges. Then share your digital handiwork with new friends.",
    "title": "Minecraft Engineers",
    "url": "https://mppl.libnet.info/event/16995035"
+  },
+  {
+   "date": "Thu, 17 Dec 2026 10:00:00 +0000",
+   "detail": "Thursday, December 17 2026 10:00am - 10:30am \n Cozy up at storytime to celebrate the warmth, sparkle, and togetherness that makes this time of year so special.",
+   "title": "Happy Holidays Storytime",
+   "url": "https://mppl.libnet.info/event/17096954"
+  },
+  {
+   "date": "Thu, 17 Dec 2026 13:00:00 +0000",
+   "detail": "Thursday, December 17 2026 1:00pm - 1:30pm \n Cozy up at storytime to celebrate the warmth, sparkle, and togetherness that makes this time of year so special.",
+   "title": "Happy Holidays Storytime",
+   "url": "https://mppl.libnet.info/event/17096955"
+  },
+  {
+   "date": "Thu, 17 Dec 2026 18:00:00 +0000",
+   "detail": "Thursday, December 17 2026 6:00pm - 7:00pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach.",
+   "title": "Career Coaching Appointment",
+   "url": "https://mppl.libnet.info/event/16519452"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

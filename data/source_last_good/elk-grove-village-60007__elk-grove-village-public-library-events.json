@@ -1,36 +1,6 @@
 {
- "fetched_at": "2026-11-23T20:16:48+00:00",
+ "fetched_at": "2026-11-24T06:07:23+00:00",
  "items": [
-  {
-   "date": "Mon, 23 Nov 2026 00:00:00 +0000",
-   "detail": "Monday, November 23 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
-   "title": "The Arlington Camera Club",
-   "url": "https://egvpl.libnet.info/event/16362691"
-  },
-  {
-   "date": "Mon, 23 Nov 2026 00:00:00 +0000",
-   "detail": "Monday, November 23 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
-   "title": "Word of the Week",
-   "url": "https://egvpl.libnet.info/event/17354435"
-  },
-  {
-   "date": "Mon, 23 Nov 2026 10:30:00 +0000",
-   "detail": "Monday, November 23 2026 10:30am - 11:15am \n Join Terrance the Well-Dressed Turkey, and other funny farm friends, as we harvest the crops and share in the bounty of friendship through song during this interactive musical show.",
-   "title": "Miss Jamie's Fall Sing-along",
-   "url": "https://egvpl.libnet.info/event/17066295"
-  },
-  {
-   "date": "Mon, 23 Nov 2026 13:00:00 +0000",
-   "detail": "Monday, November 23 2026 1:00pm - 3:00pm \n Enjoy an afternoon movie in the Lee Maternowski Room.  Popcorn will be served!",
-   "title": "Monday Matinee Movie",
-   "url": "https://egvpl.libnet.info/event/16746077"
-  },
-  {
-   "date": "Mon, 23 Nov 2026 18:30:00 +0000",
-   "detail": "Monday, November 23 2026 6:30pm - 7:30pm \n Kids can join crafter Krystyna Jaro? to create a festive fall craft in celebration of the Thanksgiving season. This craft session is limited to registered participants.",
-   "title": "Fall Craft",
-   "url": "https://egvpl.libnet.info/event/16995039"
-  },
   {
    "date": "Tue, 24 Nov 2026 00:00:00 +0000",
    "detail": "Tuesday, November 24 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
@@ -273,15 +243,15 @@
   },
   {
    "date": "Thu, 03 Dec 2026 18:00:00 +0000",
-   "detail": "Thursday, December 03 2026 6:00pm - 7:30pm \n Join us for an evening drop-in session where you can get one-on-one assistance with your technology-related questions. Perfect for those who need tech support after work hours!",
-   "title": "Thursday Evening Tech Help",
-   "url": "https://egvpl.libnet.info/event/17955276"
-  },
-  {
-   "date": "Thu, 03 Dec 2026 18:00:00 +0000",
    "detail": "Thursday, December 03 2026 6:00pm - 6:30pm \n Put a photo on a mug and ornament through a sublimation process. A perfect gift for the holidays!",
    "title": "Sublimation Mug & Ornament",
    "url": "https://egvpl.libnet.info/event/17927343"
+  },
+  {
+   "date": "Thu, 03 Dec 2026 18:00:00 +0000",
+   "detail": "Thursday, December 03 2026 6:00pm - 7:30pm \n Join us for an evening drop-in session where you can get one-on-one assistance with your technology-related questions. Perfect for those who need tech support after work hours!",
+   "title": "Thursday Evening Tech Help",
+   "url": "https://egvpl.libnet.info/event/17955276"
   },
   {
    "date": "Thu, 03 Dec 2026 18:30:00 +0000",
@@ -360,6 +330,36 @@
    "detail": "Saturday, December 05 2026 10:00am - 11:30am \n Gather your family and visit the library for a fun, seasonal photo! Upon arrival, you can choose from a variety of festive backgrounds, and your photos will be emailed to you after the session.",
    "title": "Winter Whimsy Family Photo",
    "url": "https://egvpl.libnet.info/event/17242112"
+  },
+  {
+   "date": "Sat, 05 Dec 2026 12:00:00 +0000",
+   "detail": "Saturday, December 05 2026 12:00pm - 1:30pm \n Play and create with friends during Minecraft Club. Pick either Friday (Session A), Saturday (Session B), or Saturday (Session C) to attend in December.",
+   "title": "Minecraft Club (Session B)",
+   "url": "https://egvpl.libnet.info/event/17638187"
+  },
+  {
+   "date": "Sat, 05 Dec 2026 14:30:00 +0000",
+   "detail": "Saturday, December 05 2026 2:30pm - 4:00pm \n Gather your family and visit the library for a fun, seasonal photo! Upon arrival, you can choose from a variety of festive backgrounds, and your photos will be emailed to you after the session.",
+   "title": "Winter Whimsy Family Photo",
+   "url": "https://egvpl.libnet.info/event/17242113"
+  },
+  {
+   "date": "Sat, 05 Dec 2026 14:30:00 +0000",
+   "detail": "Saturday, December 05 2026 2:30pm - 4:00pm \n Play and create with friends during Minecraft Club. Pick either Friday (Session A), Saturday (Session B), or Saturday (Session C) to attend in December.",
+   "title": "Minecraft Club (SessionC )",
+   "url": "https://egvpl.libnet.info/event/17638279"
+  },
+  {
+   "date": "Sun, 06 Dec 2026 00:00:00 +0000",
+   "detail": "Sunday, December 06 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
+   "title": "Word of the Week",
+   "url": "https://egvpl.libnet.info/event/17354447"
+  },
+  {
+   "date": "Sun, 06 Dec 2026 00:00:00 +0000",
+   "detail": "Sunday, December 06 2026 12:00am - 11:59pm \n Calling all Santas Helpers! Need a secret spot to wrap a special gift? Visit our Wrapping Station in Adult Services!",
+   "title": "Gift-Wrapping Station",
+   "url": "https://egvpl.libnet.info/event/17731395"
   }
  ],
  "source": "Elk Grove Village Public Library - Events"

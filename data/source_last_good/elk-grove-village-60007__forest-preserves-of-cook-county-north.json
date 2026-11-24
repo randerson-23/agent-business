@@ -1,17 +1,6 @@
 {
- "fetched_at": "2026-11-23T20:16:48+00:00",
+ "fetched_at": "2026-11-24T06:07:23+00:00",
  "items": [
-  {
-   "date": "20261123T093000",
-   "detail": "Fight the Monday blues and join us for a walk in the woods. Ages 18 & up.",
-   "end_date": "20261123T093000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Monday Morning Mood Booster",
-   "url": "https://fpdcc.com/event/monday-morning-mood-booster-7/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
   {
    "date": "20261124T100000",
    "detail": "Nature stories, crafts, and activities. Children ages 3-6 w/ adult.",
@@ -220,28 +209,6 @@
    "url": "https://fpdcc.com/event/volunteer-workday-3/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261212T100000",
-   "detail": "Help us work to make River Trail even better. Ages 10 & up. Children under 15 w/ adult.",
-   "end_date": "20261212T120000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Volunteer Workday",
-   "url": "https://fpdcc.com/event/volunteer-workday-3/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261212T100000",
-   "detail": "Help us restore native habitats— R emove I nvasive P lants with bow saws or loppers. Tools, gloves & snack provided. Closed toed shoes & long pants encouraged. Ages 15 & under w/ adult.",
-   "end_date": "20261212T120000",
-   "lat": 41.70896743,
-   "lon": -87.87715272,
-   "title": "R.I.P. Stewardship",
-   "url": "https://fpdcc.com/event/r-i-p-stewardship/",
-   "venue_city": "Willow Springs",
-   "venue_name": "Little Red Schoolhouse Nature Center"
   },
   {
    "date": "20261212T110000",
@@ -658,6 +625,39 @@
    "lon": -87.88484528,
    "title": "Winter Wildlife Walk",
    "url": "https://fpdcc.com/event/winter-wildlife-walk/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261220T133000",
+   "detail": "Join a guided walk to learn about wildlife while looking for tracks and evidence of animals.",
+   "end_date": "20261220T133000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Winter Wildlife Walk",
+   "url": "https://fpdcc.com/event/winter-wildlife-walk/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261220T150000",
+   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
+   "end_date": "20261220T150000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "What’s On The Menu?",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-20/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261220T150000",
+   "detail": "Join us at feeding time to learn about our outdoor ambassador animals and their habits.",
+   "end_date": "20261220T150000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "What’s On The Menu?",
+   "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-20/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
   }

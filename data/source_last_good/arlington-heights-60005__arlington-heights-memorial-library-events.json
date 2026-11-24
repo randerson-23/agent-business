@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-23T22:01:41+00:00",
+ "fetched_at": "2026-11-24T06:07:23+00:00",
  "items": [
-  {
-   "date": "2026-11-23",
-   "detail": "",
-   "title": "Kids' Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224222"
-  },
   {
    "date": "2026-11-24",
    "detail": "",
@@ -220,14 +214,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/232404"
+   "title": "Swedish Roots in Chicagoland",
+   "url": "https://www.ahml.info/scheduling/reservation/219657"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Swedish Roots in Chicagoland",
-   "url": "https://www.ahml.info/scheduling/reservation/219657"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/232404"
   },
   {
    "date": null,
@@ -360,6 +354,12 @@
    "detail": "",
    "title": "Read to Learn (District 214)",
    "url": "https://www.ahml.info/scheduling/reservation/194371"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Page Turners Book Discussion: Culpability",
+   "url": "https://www.ahml.info/scheduling/reservation/193783"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"

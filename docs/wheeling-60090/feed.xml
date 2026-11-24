@@ -3,35 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 37 of 42 configured sources. 1 source is shown from its last update, up to 2 hours ago.</description>
-  <lastBuildDate>Mon, 23 Nov 2026 22:01:41 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: Got Science? Space Exploration</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-got-science-space-exploration-2026-11-23</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-got-science-space-exploration-2026-11-23</guid>
-    <description>Monday, November 23 2026 1:00pm - 2:00pm 
- Explore the final frontier. R Official listing: https://indiantrails.libnet.info/event/17138966</description>
-    <pubDate>Mon, 23 Nov 2026 13:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17138966">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Introduction to Tinkercad</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-introduction-to-tinkercad-2026-11-23</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-introduction-to-tinkercad-2026-11-23</guid>
-    <description>Monday, November 23 2026 5:30pm - 6:45pm 
- Get started with TinkerCAD, a free 3D modeling program. Learn the basics of building with this easy-to-use… Official listing: https://indiantrails.libnet.info/event/17428279</description>
-    <pubDate>Mon, 23 Nov 2026 17:30:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17428279">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: Middle School Book Club | Grades 6-8</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-middle-school-book-club-grades-6-8-2026-11-23</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-middle-school-book-club-grades-6-8-2026-11-23</guid>
-    <description>Monday, November 23 2026 7:00pm - 8:00pm 
- Book pickup September 28-November 16 at the Youth Services Desk. Mika knows she will struggle to survive the harsh… Official listing: https://indiantrails.libnet.info/event/17103897</description>
-    <pubDate>Mon, 23 Nov 2026 19:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17103897">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
+  <lastBuildDate>Tue, 24 Nov 2026 06:07:23 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Small Serendipity</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-small-serendipity-2026-11-24</link>
@@ -451,6 +424,33 @@ Complete and return a volunteer craft kit by the end of the month to count towar
     <description>https://www.wheelingil.gov/m/calendar/event/detail/2006 Official listing: https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Mon, 07 Dec 2026 18:30:00 +0000</pubDate>
     <source url="https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Wheeling — Calendar</source>
+  </item>
+  <item>
+    <title>Wheeling: Dungeons And Dragons</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-dungeons-and-dragons-2026-12-07</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-dungeons-and-dragons-2026-12-07</guid>
+    <description>Monday, December 07 2026 7:00pm - 8:00pm 
+ If youre an expert or just starting out, join us for some D&amp;D. Bring your own character sheet or pick up a… Official listing: https://indiantrails.libnet.info/event/16988054</description>
+    <pubDate>Mon, 07 Dec 2026 19:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16988054">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Tenant Rights</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-tenant-rights-2026-12-07</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-tenant-rights-2026-12-07</guid>
+    <description>Monday, December 07 2026 7:00pm - 8:00pm 
+ Allison Keller, Housing Outreach Coordinator from North Suburban Legal Aid Clinic, presents on tenant rights, the… Official listing: https://indiantrails.libnet.info/event/17211777</description>
+    <pubDate>Mon, 07 Dec 2026 19:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17211777">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Noisy Time</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-12-08</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-noisy-time-2026-12-08</guid>
+    <description>Tuesday, December 08 2026 10:00am - 10:30am 
+ Explore the world around us with stories, rhymes and lots of music and movement. TR Official listing: https://indiantrails.libnet.info/event/16927080</description>
+    <pubDate>Tue, 08 Dec 2026 10:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/16927080">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>
