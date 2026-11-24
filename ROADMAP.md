@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **563** (no unconfirmed prices; Willow Hill first), then **562** (preview Dec 23 and Dec 30 now), then **564** (previews index).
 0. ~~**560**~~ **DONE**, then ~~**559**~~ **DONE** with 535's candidate list (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
 0. ~~**556, 557, 558**~~ **DONE 2026-11-24, Nov 25 preview re-run locally and clean** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
 0. ~~**553**~~ **DONE**, then ~~**555**~~ **DONE** (day headings on town weekend pages).
@@ -22781,6 +22782,54 @@ Competitors reviewed this pass: none new. This pass ran **item 554's second
 search round** (Chabad of Arlington Heights, Chabad of Wheeling, Wheeling's
 Holiday Hoopla: none confirmed; one new past Santa host). The design/UX
 angle is **the rebuilt Thanksgiving preview's information box**.
+
+
+#### Research pass 2026-11-24, evening (hundred-and-sixty-fourth pass)
+
+The Thanksgiving issue goes out tomorrow (Wed Nov 25, 07:00 CT) and its
+preview is clean. This pass looks past it: the two other special
+deliveries (Dec 23, Dec 30), one config price that has no 2026 source, and
+item 554's third round.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Special-delivery previews come too late (design/UX)** (`docs/previews/`; `delivery_overrides` for Dec 23 and Dec 30) | Only the Nov 25 preview exists. `--next-special` builds the next override only once it is within 10 days, so Dec 23 (winter break) and Dec 30 (New Year's Eve) get a first look about a week out, in the busiest stretch of the year. Thanksgiving's preview turned up three fixes (556–558); those took a day. | Earlier previews give room to fix layout and source gaps before the holiday rush, at no cost. |
+| **Willow Hill's price has no 2026 source** (`config/light_displays.yaml`; 2025 Patch article; search for willowhilllights.com 2026 pricing) | The entry says *"$40 per car online, $50 at the gate"*, but no indexed first-party 2026 page states either figure. 2025 coverage gives $40 a car (no gate price). The dates (Nov 13 – Jan 3) are confirmed. | A wrong price on a paid event is the fastest way to lose a reader's trust, and it breaks item 478's first-party rule. |
+| **Item 554, round 3: blocked leads via search** (Wheeling Holiday Hoopla 2026; Chabad of Arlington Heights / Palatine 2026 lightings) | Nothing new indexed for 2026. Chanukah 2026 starts the evening of Fri Dec 4, so a lighting page should appear soon. | No listing yet. Round 4 is next pass. |
+
+#### P1 (new)
+
+562. **Preview every known special delivery now.** Build loop:
+
+     - `build_preview.py --all-specials` builds one preview per future
+       `delivery_overrides` date (today: Dec 23, Dec 30), whatever the
+       distance, writing to `docs/previews/<date>/` as now.
+     - Run it in the daily build so the previews refresh with new data.
+     - Each preview header says *"Preview built <date>; data may change
+       before <delivery date>"*.
+
+     Tests: with overrides on Dec 23 and Dec 30 and today Nov 25, both
+     previews are written; a past override is skipped.
+
+563. **Never show an unconfirmed price.** For Willow Hill, find the 2026
+     price on willowhilllights.com (or its ticketing page). If it isn't
+     there, drop the `price` line and say *"Ticketed; see site for
+     prices"*. Build loop: a `price` field needs its own
+     `price_confirmed_via` (first-party page and date) or it is not shown,
+     for every entry in `config/light_displays.yaml`.
+
+     Tests: an entry with `price` and no `price_confirmed_via` renders the
+     "see site" line; one with both renders the price.
+
+#### P2 (new)
+
+564. **A previews index page** at `docs/previews/index.html` (noindex,
+     linked from nowhere public): one line per preview with delivery date,
+     build time and a link. Lets the owner check all upcoming issues from
+     one bookmark.
+
+     Test: the index lists each `docs/previews/<date>/` folder, newest
+     delivery first.
 
 
 ## Working agreements for autonomous iteration
