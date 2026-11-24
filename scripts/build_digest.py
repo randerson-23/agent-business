@@ -2725,6 +2725,29 @@ def santa_in_season(today: date) -> bool:
     return date(today.year, 11, 1) <= today <= date(today.year, 12, 24)
 
 
+def load_seasonal_candidates(path: Path | None = None) -> list[dict]:
+    path = path or CONFIG_DIR / "seasonal_candidates.yaml"
+    return [c for c in ((load_yaml(path) if path.exists() else {}).get("candidates") or []) if isinstance(c, dict)]
+
+
+def confirmed_candidate_events(candidates: list[dict], region_id: str, category: str, today: date) -> list[dict]:
+    """ROADMAP.md item 535: a candidate becomes a listing only when `confirmed`
+    names a date (today or later, this season), a place and the organiser's own
+    link: never a roundup's. Returns event dicts for one town and category."""
+    out = []
+    for c in candidates:
+        conf = c.get("confirmed") or {}
+        if c.get("town") != region_id or c.get("category") != category or not isinstance(conf, dict):
+            continue
+        day, url = _parse_promo_day(conf.get("date")), safe_http_url(conf.get("url"))
+        if not (day and url and conf.get("place")) or is_roundup_url(url) or day < today or day.year != today.year:
+            continue
+        out.append({"title": str(c["name"]), "url": url, "date_iso": day.isoformat(), "date": day.strftime("%a, %b ") + str(day.day),
+                    "detail": f"{conf.get('time') or ''} {conf['place']}".strip(), "source": str(c.get("organiser") or ""),
+                    "confirmed_via": conf.get("confirmed_via") or "probe"})
+    return out
+
+
 def select_santa_events(blocks: list[dict], today: date, tree_names: list[str] | tuple = ()) -> list[dict]:
     """A town's dated Santa events from today through Dec 24 of the season's
     year (never before Nov 1), soonest first."""
@@ -9832,7 +9855,7 @@ def main() -> None:
         warm_found += warm_prospects.collect_hosts([e for b in blocks for e in b.get("events", [])], region["name"])
         nye_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": select_nye_events(blocks, local_today)})
         sensory_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "events": select_sensory_events(blocks, local_today)})
-        santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "tree": tree_lighting, "links": santa_look_links(region_cfg), "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today, (region_cfg.get("tree_lighting") or {}).get("match") or ())]})
+        santa_entries.append({"region_name": region["name"], "region_url": SITE_BASE_URL + region_id + "/", "tree": tree_lighting, "links": santa_look_links(region_cfg), "events": [dict(e, town=e.get("town") or region["name"], state=e.get("state") or region.get("state")) for e in select_santa_events(blocks, local_today, (region_cfg.get("tree_lighting") or {}).get("match") or ()) + confirmed_candidate_events(load_seasonal_candidates(), region_id, "santa", local_today)]})  # item 535
         # ROADMAP.md item 258: the town's holiday page - free events from its
         # own feeds plus any paid, labelled listings.
         holiday_listings = build_holiday_listings(sponsors_cfg, region_id, local_today)

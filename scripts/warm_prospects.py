@@ -231,6 +231,27 @@ PAST_HOSTS_PATH = ROOT / "config" / "past_hosts.yaml"
 _CONTACT_LIKE = re.compile(r"@|\+?\d[\d ().-]{6,}\d")
 
 
+def load_candidate_hosts(path: Path | None = None) -> list[dict]:
+    """ROADMAP.md item 535: seasonal candidates with a `warm_reason` are warm
+    leads by business name (the organiser) and town only."""
+    import yaml
+
+    path = path or PAST_HOSTS_PATH.parent / "seasonal_candidates.yaml"
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return []
+    towns = {"arlington-heights-60005": "Arlington Heights", "des-plaines-60016": "Des Plaines", "elk-grove-village-60007": "Elk Grove Village",
+             "mount-prospect-60056": "Mount Prospect", "palatine-60067": "Palatine", "wheeling-60090": "Wheeling"}
+    out = []
+    for c in data.get("candidates") or []:
+        if isinstance(c, dict) and c.get("warm_reason") and c.get("organiser"):
+            fields = {"name": str(c["organiser"]), "town": towns.get(str(c.get("town")), str(c.get("town") or "")), "reason": str(c["warm_reason"]), "event": str(c.get("name") or "")}
+            if not any(_CONTACT_LIKE.search(v) for v in fields.values()):
+                out.append(fields)
+    return out
+
+
 def load_past_hosts(path: Path = PAST_HOSTS_PATH) -> list[dict]:
     """ROADMAP.md item 501: last season's business hosts from config/past_hosts.yaml,
     each with its reason's note. An entry carrying anything that looks like an
@@ -250,6 +271,9 @@ def load_past_hosts(path: Path = PAST_HOSTS_PATH) -> list[dict]:
         if any(_CONTACT_LIKE.search(v) for v in fields.values()):
             continue
         out.append(dict(fields, note=str(notes.get(fields["reason"]) or "")))
+    if path == PAST_HOSTS_PATH:  # item 535: candidates' organisers with a warm_reason
+        known = {h["name"] for h in out}
+        out += [dict(h, note=str(notes.get(h["reason"]) or "")) for h in load_candidate_hosts() if h["name"] not in known]
     return out
 
 

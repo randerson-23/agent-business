@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. ~~**560**~~ **DONE**, then **559** (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
+0. ~~**560**~~ **DONE**, then ~~**559**~~ **DONE** with 535's candidate list (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
 0. ~~**556, 557, 558**~~ **DONE 2026-11-24, Nov 25 preview re-run locally and clean** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
 0. ~~**553**~~ **DONE**, then ~~**555**~~ **DONE** (day headings on town weekend pages).
 0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
@@ -22104,7 +22104,7 @@ doesn't mark yet: **Chanukah** and **GivingTuesday**.
 
 #### P3 (new)
 
-535. **One discovery file for seasonal roundups.** Build loop. Generalise
+535. **BUILT (2026-11-24) as `config/seasonal_candidates.yaml`** (hand-kept config rather than a CI-written data file, so loops can add candidates and confirmations in a PR): each candidate has `category`, `organiser_url`, `found_in` (the roundup, never shown) and `confirmed` (null until the organiser's own page names date, place and link; `confirmed_via: probe|search`). `confirmed_candidate_events` adds confirmed *santa* candidates to their town on `/santa/`; a roundup URL never confirms. A `warm_reason` makes the organiser a warm lead (`warm_prospects.load_candidate_hosts`, merged into `load_past_hosts`). First entries: Wheeling's Holiday Hoopla (item 551) and Santa at the Wildbird Shack (item 559). Other categories (lights, menorah, fair, drive) are not yet routed to their pages; menorah stays in `config/menorah_lightings.yaml`. **One discovery file for seasonal roundups.** Build loop. Generalise
      item 526's `data/fair_candidates.json` into
      `data/seasonal_candidates.json`, with a `category` per entry
      (*santa*, *lights*, *menorah*, *fair*, *drive*). Weekly probes read
@@ -22729,7 +22729,7 @@ second round.
 
 #### P2 (new)
 
-559. **The Wildbird Shack (Mount Prospect) as a Santa-host candidate and warm
+559. **DONE (2026-11-24).** In `config/seasonal_candidates.yaml` (found in a past Daily Herald list; no 2026 dates on its own site yet), with `warm_reason: santa_host_past` (note in `config/past_hosts.yaml`), so it is in OUTREACH_PROSPECTS.md's warm list by business name only. Probe round 51 asks wildbirdshack.com for 2026 Santa dates. Item 551 (Holiday Hoopla) is in the same file, unconfirmed: search found only undated listings. **The Wildbird Shack (Mount Prospect) as a Santa-host candidate and warm
      lead.** Build loop:
 
      - Add it to `data/seasonal_candidates.json` (item 535, category

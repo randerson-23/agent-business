@@ -490,3 +490,11 @@ probes:
       - '(?i)public skat[^<]{0,160}'
       - '(?i)(?:daysmart|dash\.platform|sportngin|ical|\.ics|google\.com/calendar)[^"<]{0,120}'
     follow: '(?i)public|skate|schedule'
+
+  # Round 51 (items 535/559): The Wildbird Shack's own site, for 2026 Santa dates.
+  - url: https://wildbirdshack.com/
+    item: 559
+    purpose: Wildbird Shack (Mount Prospect) - 2026 Santa visit dates on its own site?
+    patterns:
+      - '(?i)santa[^<]{0,160}'
+    follow: '(?i)santa|event|calendar|news'

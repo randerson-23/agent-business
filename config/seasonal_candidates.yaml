@@ -1,0 +1,40 @@
+# ROADMAP.md item 535: one list of seasonal leads found in roundups (Daily Herald,
+# Journal & Topics, Patch, kids' calendars). A candidate is NEVER listed from the
+# roundup. It renders only once `confirmed` holds a date, a place and a link on
+# the organiser's own site (item 478: `confirmed_via: search` when the indexed
+# first-party text was read through search because the site blocks the runner).
+# `warm_reason`, if set, also makes the organiser a warm lead (business name only).
+#
+#   - name: "Holiday Hoopla"
+#     organiser: "Wheeling Park District"
+#     town: wheeling-60090
+#     category: santa          # santa | lights | menorah | fair | drive
+#     organiser_url: "https://..."
+#     found_in: "https://..."  # the roundup; never shown, never a source
+#     confirmed:               # null until the organiser's own 2026 page says so
+#       date: 2026-12-06
+#       time: "1-3 PM"
+#       place: "Community Recreation Center"
+#       url: "https://..."     # the organiser's own page
+#       confirmed_via: probe   # probe | search
+candidates:
+  # Item 551: 2025 was Sun Dec 7, 1-3 PM, Community Recreation Center, with photos
+  # with Santa (open-communities.org listing); the park district's site blocks the
+  # runner, so the 2026 date needs the search fallback.
+  - name: "Holiday Hoopla"
+    organiser: "Wheeling Park District"
+    town: wheeling-60090
+    category: santa
+    organiser_url: "https://wheelingparkdistrict.com/events/holiday-hoopla/"
+    found_in: "https://mykidlist.com/?p=172030"
+    confirmed: null
+  # Item 559: past seasons' free Santa Saturdays at the shop (Daily Herald, Patch);
+  # no 2026 dates on wildbirdshack.com yet (probe round 51 asks).
+  - name: "Santa at the Wildbird Shack"
+    organiser: "The Wildbird Shack"
+    town: mount-prospect-60056
+    category: santa
+    organiser_url: "https://wildbirdshack.com/"
+    found_in: "https://www.dailyherald.com/?p=211861"
+    warm_reason: santa_host_past
+    confirmed: null
