@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **560** (days-off line counts from the delivery date: no past days, "this week", merged ranges; for Nov 25, Dec 23, Dec 30), then **559** (Wildbird Shack as Santa-host candidate and warm lead), then **561** (information box capped at four lines).
 0. ~~**556, 557, 558**~~ **DONE 2026-11-24, Nov 25 preview re-run locally and clean** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
 0. ~~**553**~~ **DONE**, then ~~**555**~~ **DONE** (day headings on town weekend pages).
 0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
@@ -22710,6 +22711,76 @@ Competitors reviewed this pass: none. This pass read **the Thanksgiving
 issue's preview** (item 553's first use) and ran **item 554's first
 search round** (nothing confirmed). The design/UX angle is **the
 Thanksgiving issue at 400 px**.
+
+#### Research pass 2026-11-24 (hundred-and-sixty-third pass)
+
+Overnight the build loop shipped items 556–558, and the Thanksgiving preview
+was rebuilt at 06:08 UTC. Wheeling's chip is gone, closures now read
+*"Des Plaines: Library Closed Thu–Fri · Mount Prospect: Library Closed at 5
+p.m. Wed · Mount Prospect: Library Closed Thu"*, and **Tonight** holds only
+Mount Prospect's tree lighting and Christkindlmarket (the cover-band show is
+gone). This pass re-reads the rebuilt preview's top and runs item 554's
+second round.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The rebuilt Thanksgiving preview's information box (design/UX)** (`docs/previews/2026-11-25/combined-email-preview.html`, 06:08 UTC) | Above *Tree lightings*, the box now carries **six lines**: weather, closures, *New: Elk Grove Village*, drives closing, Small Business Saturday, GivingTuesday, and ***"📚 No school next week: D15 Tue Nov 24 · D15 Wed Nov 25 · D211 Wed Nov 25 · D15 Thu Nov 26 – Fri Nov 27"***. That last line is wrong in two ways for a **Wednesday Nov 25** delivery: it lists **Tue Nov 24, already past**, and calls the days ***"next week"*** when they're **this** week. It also splits D15's run into three pieces | The days-off line was written for a Thursday delivery looking ahead. The Wednesday override (item 491) shifts *today*, and the line didn't follow. Six lines before the first event is also a lot on a phone: each line is right, but together they push *Tonight* and the tree lightings down (items 560, 561) |
+| **Item 554, round 2: blocked leads via search** (Chabad.org's 2026 dates; Daily Herald coverage of past Arlington Heights lightings, 2023 and 2024; a past Daily Herald holiday list) | **Chabad of Arlington Heights:** still no 2026 page indexed. Past lightings were the **first Sunday of Chanukah at North School Park**, and the first Sunday of Chanukah 2026 is **Dec 6**. That's an inference, so it is **not** listable. **Chabad of Wheeling:** nothing new. **Wheeling's Holiday Hoopla:** nothing new. **New lead from a past Daily Herald list:** ***Santa visits at The Wildbird Shack in Mount Prospect***, on several late-November and December Saturdays in a past year | Still no confirmations. The Wildbird Shack is the kind of business-hosted Santa item 501 was built for: a local shop that has paid for a family event before. It goes in as a candidate and a warm lead, not a listing (item 559) |
+
+#### P2 (new)
+
+559. **The Wildbird Shack (Mount Prospect) as a Santa-host candidate and warm
+     lead.** Build loop:
+
+     - Add it to `data/seasonal_candidates.json` (item 535, category
+       *santa*, source: a past Daily Herald list). Probe its own site and
+       social page for 2026 Santa dates. List it on `/santa/` only from
+       its own page.
+     - Write it to `data/warm_hosts.json` with reason `"santa_host_past"`
+       (business name only), so the outreach batch can offer the free
+       founding Event Promo for its 2026 Santa Saturdays.
+
+     Tests: no listing without a first-party 2026 page, and the warm host
+     carries no contact details.
+
+560. **The days-off line follows the delivery date.** Build loop, item 296's
+     days-off box in the email:
+
+     - Count from the **delivery date** (item 486's
+       `email_delivery_time`), not the build date.
+     - Drop days already past.
+     - Say ***"No school this week"*** for days in the delivery's own week
+       and ***"next week"*** only for the following one.
+     - Merge each district's consecutive days into one range (*"D15 Wed
+       Nov 25 – Fri Nov 27"*).
+
+     Tests: a Nov 25 delivery shows no Nov 24 and says *this week*, D15's
+     three entries merge into one range, and a normal Thursday delivery
+     is unchanged.
+
+#### P3 (new)
+
+561. **Cap the email's information box at four lines, by priority.** Build
+     loop:
+
+     - Order the box by **time-criticality**: an on-sale line (item 483),
+       closures this week, drives closing, a one-day event line (Small
+       Business Saturday, GivingTuesday), days off, then *New: Elk Grove*
+       and weather.
+     - Show the **first four**, and fold the rest into one ***"More this
+       week →"*** link to the web version.
+     - Weather stays as a compact prefix on the first line.
+
+     Tests: a seven-line box renders four lines plus the link, and the
+     order follows the priority.
+
+Re-rank: **560 first** (it affects every holiday-week delivery: Nov 25, Dec 23
+and Dec 30), then **559**, then **561**.
+
+Competitors reviewed this pass: none new. This pass ran **item 554's second
+search round** (Chabad of Arlington Heights, Chabad of Wheeling, Wheeling's
+Holiday Hoopla: none confirmed; one new past Santa host). The design/UX
+angle is **the rebuilt Thanksgiving preview's information box**.
 
 
 ## Working agreements for autonomous iteration
