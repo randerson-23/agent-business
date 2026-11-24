@@ -8125,6 +8125,13 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         snow_line=weather_line.get("snow") if weather_line else None,  # item 506
         days_off_line=days_off_line,
         closures_line=closures_line,
+        info_keys=info_box_keys({
+            "closures": closures_line, "give": build_give_email_line(give or [], now), "shop_small": shop_small_email_block(build_shop_small(sections, now.astimezone(LOCAL_TZ).date()), now),
+            "giving_tuesday": giving_tuesday_email_line(now), "election": election_day_line(now, email=True), "days_off": days_off_line,
+            "snow": weather_line.get("snow") if weather_line else None, "winter_reading": build_winter_reading_email_line(load_winter_reading(email_delivery_time(now).date())),
+            "lights": lights_line, "new_towns": new_towns,
+        }),
+        more_url=SITE_BASE_URL + "this-weekend/?utm_source=email&utm_campaign=more",
         give_line=build_give_email_line(give or [], now),
         giving_tuesday_line=giving_tuesday_email_line(now),  # item 534
         shop_small=shop_small_email_block(build_shop_small(sections, now.astimezone(LOCAL_TZ).date()), now),  # item 543
@@ -8594,22 +8601,63 @@ def build_closures_email_line(sections: list[dict], now: datetime) -> dict | Non
     return {"text": "🔒 " + " · ".join(parts[:3]), "url": url}
 
 
+# ROADMAP.md item 561: the information box, most time-critical first; four lines
+# show (weather rides on top as a prefix), the rest fold into "More this week".
+INFO_BOX_PRIORITY = ("closures", "give", "shop_small", "giving_tuesday", "election", "days_off", "snow", "winter_reading", "lights", "new_towns")
+INFO_BOX_MAX = 4
+
+
+def info_box_keys(lines: dict) -> dict:
+    present = [k for k in INFO_BOX_PRIORITY if lines.get(k)]
+    return {"show": present[:INFO_BOX_MAX], "more": len(present) > INFO_BOX_MAX}
+
+
 def build_days_off_email_line(sections: list[dict], now: datetime) -> dict | None:
-    """One email line when any town has a day off in the next 7 days (item
-    296): "📚 No school next week: D57 Wed Nov 11 · CCSD 15 Tue Nov 3"."""
-    today = now.astimezone(LOCAL_TZ).date()
-    parts, first_url = [], None
+    """One email line for days off school (item 296), counted from the issue's
+    delivery date (item 560): days already past are dropped, days in the
+    delivery's own Mon-Sun week read "this week" and the following week's
+    "next week", and each district's consecutive school days merge into one
+    range: "📚 No school this week: D15 Wed Nov 25 – Fri Nov 27 · D211 Wed Nov 25"."""
+    ref = email_delivery_time(now).date()
+    week_end = ref + timedelta(days=6 - ref.weekday())
+    next_end = week_end + timedelta(days=7)
+    by_district: dict[str, set] = {}
+    first_url = None
     for s in sections:
-        for day in s.get("days_off") or []:
-            if today <= day["date"] <= today + timedelta(days=7):
-                for r in day["reasons"]:
-                    part = f"{r['district']} {day['label']}"
-                    if part not in parts:
-                        parts.append(part)
+        for row in s.get("days_off") or []:
+            day = row["date"]
+            while day <= row.get("end", row["date"]):
+                if ref <= day <= next_end and day.weekday() < 5:
+                    for r in row["reasons"]:
+                        by_district.setdefault(r["district"], set()).add(day)
                         first_url = first_url or s["region_url"] + "#days-off"
-    if not parts:
+                day += timedelta(days=1)
+    if not by_district:
         return None
-    return {"text": "📚 No school next week: " + " · ".join(parts[:4]), "url": first_url}
+
+    def label(d: date) -> str:
+        return d.strftime("%a %b ") + str(d.day)
+    groups = {"this": [], "next": []}
+    for district, days in by_district.items():
+        run: list[date] = []
+        for d in sorted(days):
+            if run and _next_school_day(run[-1]) == d and (d <= week_end) == (run[0] <= week_end):
+                run.append(d)
+                continue
+            if run:
+                groups["this" if run[0] <= week_end else "next"].append((run[0], district, run[-1]))
+            run = [d]
+        if run:
+            groups["this" if run[0] <= week_end else "next"].append((run[0], district, run[-1]))
+    parts = []
+    for key, heading in (("this", "this week"), ("next", "next week")):
+        items = sorted(groups[key])
+        if items:
+            text = " · ".join(f"{dist} {label(a)}" + (f" – {label(b)}" if b != a else "") for a, dist, b in items[:4])
+            parts.append((heading, text))
+    first = f"📚 No school {parts[0][0]}: {parts[0][1]}"
+    rest = f" · {parts[1][0]}: {parts[1][1]}" if len(parts) > 1 else ""
+    return {"text": first + rest, "url": first_url}
 
 
 THIN_WEEK_THRESHOLD = 4
