@@ -205,8 +205,13 @@ leaf_pickup:
 # ROADMAP.md item 496: the date comes from the Village's own calendar feed while `date` is empty;
 # "Lights Around Wheeling" is what the Village calls its lighting at Friendship Park.
 tree_lighting:
-  url: "https://www.wheelingil.gov/"
-  date: null
+  # ROADMAP.md item 556: recorded from the Village's own calendar feed, which
+  # listed "Lights Around Wheeling" on Sun Nov 22, 2026 at 4:30 PM (event 2207)
+  # in builds up to that day; once past, the feed drops it and the town would
+  # otherwise read "TBA" again. Set `date: null` again for 2027.
+  url: "https://www.wheelingil.gov/m/calendar/event/detail/2207"
+  date: "2026-11-22"
+  time: "4:30 PM"
   match: ["Lights Around Wheeling"]
 
 # Seasonal/evergreen guides (ROADMAP.md Phase 11 #5) - same civic-

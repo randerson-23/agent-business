@@ -179,7 +179,9 @@
     {% for entry in entries %}
     <div class="entry" style="--town:{{ entry.color }}">
       <span class="region"><a href="{{ entry.holiday_url }}">{{ entry.region_name }}</a></span>
-      {% if entry.tree.label %}
+      {% if entry.tree.label and entry.tree.past %}
+      <span class="hours"><a href="{{ entry.tree.url }}">Lit {{ entry.tree.label }}</a></span>
+      {% elif entry.tree.label %}
       <span class="hours"><a href="{{ entry.tree.url }}">{{ entry.tree.label }}</a>{% if entry.tree.google_calendar_url %} <a class="cal-g" href="{{ entry.tree.google_calendar_url }}" target="_blank" rel="noopener">📅 Google Calendar</a>{% endif %}</span>
       {% else %}
       <span class="not-posted">Not yet posted for {{ year }} — <a href="{{ entry.tree.url }}">check the town's page</a></span>

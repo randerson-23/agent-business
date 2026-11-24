@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **556, 557, 558** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
+0. ~~**556, 557, 558**~~ **DONE 2026-11-24, Nov 25 preview re-run locally and clean** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
 0. ~~**553**~~ **DONE**, then ~~**555**~~ **DONE** (day headings on town weekend pages).
 0. **535** with **550, 551** (discovery file; "Write to Santa" on `/santa/` with USPS Operation Santa and dated local mailboxes; Wheeling's Holiday Hoopla as the first named candidate), then ~~**552**~~ **DONE** (jump chips on `/santa/`).
 0. ~~**549**~~ **DONE**, then **548** (wired 2026-11-22; waiting on probe round 50 for 2026–27 dates) (winter reading challenges; probes from Dec 1).
@@ -22668,7 +22668,7 @@ step.
 
 #### P1 (new)
 
-556. **The email's lighting chips: a past date drops off, never turns to
+556. **DONE (2026-11-24).** Wheeling's lighting recorded in its YAML from the Village's own feed (Sun Nov 22, 4:30 PM, event 2207; reset to null for 2027), so item 544's rule drops its chip instead of showing *TBA*; `/holidays/` shows a past lighting as *"Lit Sunday, November 22, 4:30 PM"* without a calendar link. TBA stays only for never-confirmed towns. **The email's lighting chips: a past date drops off, never turns to
      "TBA".** Build loop. Use item 544's rule (drop a town once its
      lighting date has passed) in the email's *Tree lightings and Small
      Business Saturday* chip block and on `/holidays/`. *TBA* only for a
@@ -22676,7 +22676,7 @@ step.
      after Wheeling's Nov 22 lighting, the Nov 25 build shows no Wheeling
      chip, and an unconfirmed town still shows *TBA*.
 
-557. **Closures line: one entry per place, with the days.** Build loop, item
+557. **DONE (2026-11-24).** `merge_closures` (in both `build_closures` paths): one entry per closure title with its days (`_day_span`: *Thu–Fri*, or *Thu, Sat*); the email line reads *"Des Plaines: Library Closed Thu–Fri · Mount Prospect: Library Closed at 5 p.m. Wed"*; the town page label shows the span. **Closures line: one entry per place, with the days.** Build loop, item
      307's `build_closures` output in the email and on town pages:
 
      - De-duplicate by **town + place** (*Des Plaines Public Library*
@@ -22690,7 +22690,7 @@ step.
 
 #### P2 (new)
 
-558. **Virtual and online events out of weekend lists.** Build loop. Events
+558. **DONE (2026-11-24).** `tagging.is_online_event`: title *virtual / zoom / webinar / (virtual) / (online)* or starting *Online*, or a description saying it is *held/takes place online / on Zoom*; never *online registration* or *virtual reality*. Sets `online`; such events leave the weekend lists (so hub, email town sections, picks), Tonight and the winter-break groups, and keep a *🖥 Online* line on the town's All events cards. **Virtual and online events out of weekend lists.** Build loop. Events
      whose title or description starts with or contains *VIRTUAL*,
      *Online*, *Zoom*, *Webinar* or *(virtual)*, or whose source marks
      them online (`eventAttendanceMode` Online), leave the weekend lists,
