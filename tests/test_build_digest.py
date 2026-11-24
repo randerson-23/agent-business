@@ -7722,7 +7722,7 @@ def test_past_hosts_are_warm_leads_with_their_reason_and_no_contacts(tmp_path):
     import warm_prospects as wp
     hosts = wp.load_past_hosts()
     assert {h["name"] for h in hosts} >= {"Berry Yo", "Golden Brunch"}
-    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026", "holiday_attraction", "business_association", "winter_attraction") and "@" not in str(h) for h in hosts)
+    assert all(h["reason"] in ("santa_host_2025", "fair_organiser_2026", "holiday_attraction", "business_association", "winter_attraction", "santa_host_past") and "@" not in str(h) for h in hosts)
     assert any(h["reason"] == "fair_organiser_2026" and h["name"] == "Fremd Viking Booster Club" for h in hosts)  # item 526
     bad = tmp_path / "p.yaml"
     bad.write_text('hosts:\n  - name: "Shop"\n    town: "x"\n    reason: r\n    event: "call 847-555-1234"\n', encoding="utf-8")
@@ -8326,3 +8326,20 @@ def test_info_box_shows_four_lines_by_priority_and_folds_the_rest():
     keys = build_digest.info_box_keys({"lights": 1, "new_towns": [1], "days_off": 1, "closures": 1, "give": 1, "giving_tuesday": 1, "shop_small": 1})
     assert keys == {"show": ["closures", "give", "shop_small", "giving_tuesday"], "more": True}
     assert build_digest.info_box_keys({"lights": 1, "days_off": 1}) == {"show": ["days_off", "lights"], "more": False}
+
+
+def test_seasonal_candidates_render_only_when_the_organiser_confirms(tmp_path):
+    # ROADMAP.md items 535, 551 and 559.
+    real = build_digest.load_seasonal_candidates()
+    assert {c["name"] for c in real} >= {"Holiday Hoopla", "Santa at the Wildbird Shack"}
+    today = date(2026, 11, 24)
+    assert build_digest.confirmed_candidate_events(real, "wheeling-60090", "santa", today) == []  # unconfirmed: nothing renders
+    confirmed = [{"name": "Holiday Hoopla", "organiser": "Wheeling Park District", "town": "wheeling-60090", "category": "santa",
+                  "confirmed": {"date": "2026-12-06", "time": "1-3 PM", "place": "Community Recreation Center", "url": "https://wheelingparkdistrict.com/events/holiday-hoopla/", "confirmed_via": "search"}}]
+    ev = build_digest.confirmed_candidate_events(confirmed, "wheeling-60090", "santa", today)
+    assert ev[0]["date_iso"] == "2026-12-06" and ev[0]["confirmed_via"] == "search" and "Community Recreation Center" in ev[0]["detail"]
+    roundup = [dict(confirmed[0], confirmed=dict(confirmed[0]["confirmed"], url="https://patch.com/illinois/x"))]
+    assert build_digest.confirmed_candidate_events(roundup, "wheeling-60090", "santa", today) == []  # a roundup never confirms
+    from warm_prospects import load_past_hosts
+    hosts = [h for h in load_past_hosts() if h["name"] == "The Wildbird Shack"]
+    assert hosts and hosts[0]["reason"] == "santa_host_past" and hosts[0]["note"] and "@" not in str(hosts[0])
