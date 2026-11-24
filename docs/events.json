@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-24T17:56:06+00:00",
-  "numberOfItems": 225,
+  "dateModified": "2026-11-24T22:01:15+00:00",
+  "numberOfItems": 226,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -530,6 +530,35 @@
       "position": 18,
       "item": {
         "@type": "Event",
+        "name": "Additional Curbside Leaf Collection Begins November 30",
+        "startDate": "2026-11-24T14:34:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-additional-curbside-leaf-collection-begins-november-30-2026-11-24",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/CivicAlerts.aspx?aid=513",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "item": {
+        "@type": "Event",
         "name": "Design a Stanley in the Canvas",
         "startDate": "2026-11-24T16:00:00-06:00",
         "url": "https://withintenmiles.com/des-plaines-60016/#ev-design-a-stanley-in-the-canvas-2026-11-24",
@@ -559,7 +588,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -591,7 +620,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -623,7 +652,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -654,7 +683,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -685,7 +714,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Career & Job Counseling @ the library",
@@ -717,7 +746,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Bridges of Meaning",
@@ -749,7 +778,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Baby Time",
@@ -779,7 +808,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -809,7 +838,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -839,7 +868,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Incredible Indy Racers",
@@ -869,7 +898,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -899,7 +928,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -930,7 +959,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Finger Painting",
@@ -961,7 +990,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Sphero Strike Zone",
@@ -991,7 +1020,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Christkindlmarket",
@@ -1021,7 +1050,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Village Tree Lighting Ceremony",
@@ -1052,7 +1081,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "EARLY CLOSING - Thanksgiving Holiday",
@@ -1083,7 +1112,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "MIKE & JOE - The Midwest's Most Renowned Cover Band // HAIRBANGERS BALL",
@@ -1114,7 +1143,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Blues Night Extravaganza Featuring Downtown Charlie Brown, Sean Mckee, Miles Minor, Jeff Brinkman and Joe Valentino - Thanksgiving Eve!",
@@ -1145,7 +1174,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1175,7 +1204,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Free! Triple Turkey Burner",
@@ -1205,7 +1234,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "🦃 Palatine Park District Turkey Trot",
@@ -1235,7 +1264,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "🦃 Arlington Heights Turkey Trot",
@@ -1265,7 +1294,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "St. Nectarios Thanksgiving Community Meal",
@@ -1296,7 +1325,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "VIRTUAL Culture & Conversation (level: intermediate)",
@@ -1326,7 +1355,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1356,7 +1385,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1386,7 +1415,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -1416,7 +1445,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting Ceremony",
@@ -1447,7 +1476,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting",
@@ -1478,7 +1507,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Lotería Night | Noche de Lotería | At the Branch",
@@ -1509,7 +1538,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Kashmir: The Music of Led Zeppelin",
@@ -1540,7 +1569,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Jazz with Donny Demarco & Tune Town",
@@ -1571,7 +1600,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Games & Gab",
@@ -1601,7 +1630,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1631,7 +1660,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1661,7 +1690,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Schaumburg Turkey Trot Half Marathon & 5K",
@@ -1691,7 +1720,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -1721,7 +1750,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "$1 CHRISTMAS CLASSIC FILM SERIES: \"How The Grinch Stole Christmas\" (2000)",
@@ -1752,7 +1781,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "The Financial Aid Process for College",
@@ -1784,7 +1813,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Tween Movie",
@@ -1816,7 +1845,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Picture Book Bingo",
@@ -1846,7 +1875,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 62,
       "item": {
         "@type": "Event",
         "name": "What’s On The Menu?",
@@ -1876,7 +1905,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 63,
       "item": {
         "@type": "Event",
         "name": "An Evening with Deacon Blues: Steely Dan Tribute",
@@ -1907,7 +1936,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 64,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass: Live Jazz with the Bourbon 'N Brass Brian Patti Prohibition Dance Band - 20S & 30S Dance Hits",
@@ -1938,7 +1967,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 65,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1968,7 +1997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 66,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1998,7 +2027,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 67,
       "item": {
         "@type": "Event",
         "name": "Cicada Pinning Class",
@@ -2028,7 +2057,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 68,
       "item": {
         "@type": "Event",
         "name": "Reading Fair",
@@ -2059,7 +2088,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 69,
       "item": {
         "@type": "Event",
         "name": "Tech en el Forum (Spanish)",
@@ -2091,7 +2120,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 70,
       "item": {
         "@type": "Event",
         "name": "Dino Party",
@@ -2121,7 +2150,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 71,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -2153,7 +2182,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 72,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -2183,7 +2212,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 73,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -2213,7 +2242,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 74,
       "item": {
         "@type": "Event",
         "name": "Middle Grade -Drop In Coloring",
@@ -2243,7 +2272,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 75,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -2274,7 +2303,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 76,
       "item": {
         "@type": "Event",
         "name": "Hooked on Books!",
@@ -2306,7 +2335,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 77,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -2338,7 +2367,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 78,
       "item": {
         "@type": "Event",
         "name": "Session 1-A: Sewing Machine Basics - Holiday Gift Bags",
@@ -2368,7 +2397,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 79,
       "item": {
         "@type": "Event",
         "name": "A Club for Kids Who Like Books",
@@ -2400,7 +2429,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 80,
       "item": {
         "@type": "Event",
         "name": "CSI Book Club",
@@ -2431,7 +2460,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 81,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -2463,7 +2492,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 82,
       "item": {
         "@type": "Event",
         "name": "Horror Book Club",
@@ -2491,37 +2520,6 @@
         },
         "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Monday, November 30 2026 6:30pm - 8:30pm \n dphorrorclub@gmail.com"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 82,
-      "item": {
-        "@type": "Event",
-        "name": "Genealogy Interest Group Meeting",
-        "startDate": "2026-11-30T19:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-genealogy-interest-group-meeting-2026-11-30",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17101476",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Monday, November 30 2026 7:00pm - 8:30pm \n Join this informal group in a collaborative setting to explore library databases, research your family tree and…"
       }
     },
     {
@@ -6870,6 +6868,37 @@
     {
       "@type": "ListItem",
       "position": 225,
+      "item": {
+        "@type": "Event",
+        "name": "Genealogy Interest Group Meeting",
+        "startDate": "2026-12-07T19:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-genealogy-interest-group-meeting-2026-12-07",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/18006782",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Monday, December 07 2026 7:00pm - 8:30pm \n Join this informal group in a collaborative setting to explore library databases, research your family tree and…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 226,
       "item": {
         "@type": "Event",
         "name": "Tenant Rights",

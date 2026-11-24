@@ -60,6 +60,14 @@ Winter attractions (rinks, indoor play): offer a Weekly Spot for the December-Fe
 |---|---|---|
 | Nicholas Sportsplex (Mt. Prospect Ice Arena) | Mount Prospect | Public skate sessions, linked from the Mount Prospect page |
 
+### Hosted Santa in past seasons (from config/seasonal_candidates.yaml)
+
+Hosted Santa in past seasons (from config/seasonal_candidates.yaml): offer the free founding Event Promo for 2026 Santa dates, and ask for the dates so the site can list them.
+
+| Host | Town | Event |
+|---|---|---|
+| The Wildbird Shack | Mount Prospect | Santa at the Wildbird Shack |
+
 ### Fair organisers
 
 Booster clubs, PTOs and programmes running a craft fair or holiday market. Send OUTREACH_TEMPLATES.md section 14b two weeks before the fair.

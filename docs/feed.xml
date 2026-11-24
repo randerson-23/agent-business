@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 37 of 42 configured sources. 1 source is shown from its last update, up to 4 hours ago.</description>
-  <lastBuildDate>Tue, 24 Nov 2026 17:56:06 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
+  <lastBuildDate>Tue, 24 Nov 2026 22:01:15 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Social Worker in the Library</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-social-worker-in-the-library-2026-11-24</link>
@@ -154,6 +154,14 @@
  Get ready for a string-tastic show full of laughs, amazing yo-yo tricks, and family fun! Official listing: https://egvpl.libnet.info/event/17066796</description>
     <pubDate>Tue, 24 Nov 2026 13:30:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17066796">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Palatine: Additional Curbside Leaf Collection Begins November 30</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-additional-curbside-leaf-collection-begins-november-30-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-additional-curbside-leaf-collection-begins-november-30-2026-11-24</guid>
+    <description>Official listing: https://www.palatine.il.us/CivicAlerts.aspx?aid=513</description>
+    <pubDate>Tue, 24 Nov 2026 14:34:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/CivicAlerts.aspx?aid=513">Village of Palatine — News</source>
   </item>
   <item>
     <title>Des Plaines: Design a Stanley in the Canvas</title>
@@ -435,14 +443,6 @@ The library will close at 5 pm. Official listing: https://indiantrails.libnet.in
  Join us for a family night of Lotería, a traditional Mexican board game, similar to bingo.  Practice your Spanish… Official listing: https://indiantrails.libnet.info/event/17092640</description>
     <pubDate>Fri, 27 Nov 2026 17:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/17092640">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Des Plaines: KASHMIR: THE MUSIC OF LED ZEPPELIN</title>
-    <link>https://withintenmiles.com/des-plaines-60016/#ev-kashmir-the-music-of-led-zeppelin-2026-11-27</link>
-    <guid isPermaLink="true">https://withintenmiles.com/des-plaines-60016/#ev-kashmir-the-music-of-led-zeppelin-2026-11-27</guid>
-    <description>KASHMIR is a very entertaining show bringing only the best of LED ZEPPELIN to their fans. KASHMIR seeks to re-create the experience of a 70’s Zeppelin show… Official listing: https://desplainestheatre.com/event/kashmir-the-music-of-led-zeppelin/</description>
-    <pubDate>Fri, 27 Nov 2026 20:00:00 +0000</pubDate>
-    <source url="https://desplainestheatre.com/event/kashmir-the-music-of-led-zeppelin/">Des Plaines Theatre — Events</source>
   </item>
 </channel>
 </rss>
