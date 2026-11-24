@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-24T14:05:48+00:00",
+ "fetched_at": "2026-11-24T17:56:06+00:00",
  "items": [
   {
    "date": "Tue, 24 Nov 2026 10:00:00 +0000",
@@ -42,6 +42,12 @@
    "detail": "Thursday, November 26 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime.",
    "title": "Library Closed",
    "url": "https://mppl.libnet.info/event/13705771"
+  },
+  {
+   "date": "Fri, 27 Nov 2026 00:00:00 +0000",
+   "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime.",
+   "title": "Main Library Closed",
+   "url": "https://mppl.libnet.info/event/18003233"
   },
   {
    "date": "Mon, 30 Nov 2026 16:30:00 +0000",
@@ -354,12 +360,6 @@
    "detail": "Thursday, December 17 2026 1:00pm - 1:30pm \n Cozy up at storytime to celebrate the warmth, sparkle, and togetherness that makes this time of year so special.",
    "title": "Happy Holidays Storytime",
    "url": "https://mppl.libnet.info/event/17096955"
-  },
-  {
-   "date": "Thu, 17 Dec 2026 18:00:00 +0000",
-   "detail": "Thursday, December 17 2026 6:00pm - 7:00pm \n Jumpstart your job search with a virtual one-hour session with an experienced career coach.",
-   "title": "Career Coaching Appointment",
-   "url": "https://mppl.libnet.info/event/16519452"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

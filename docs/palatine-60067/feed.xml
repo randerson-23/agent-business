@@ -3,8 +3,16 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 36 configured sources.</description>
-  <lastBuildDate>Tue, 24 Nov 2026 14:05:48 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 32 of 36 configured sources. 1 source is shown from its last update, up to 4 hours ago.</description>
+  <lastBuildDate>Tue, 24 Nov 2026 17:56:06 +0000</lastBuildDate>
+  <item>
+    <title>Palatine: Toys for Tots</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-toys-for-tots-2026-11-24</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-toys-for-tots-2026-11-24</guid>
+    <description>Official listing: https://www.palatine.il.us/CivicAlerts.aspx?aid=514</description>
+    <pubDate>Tue, 24 Nov 2026 09:51:44 +0000</pubDate>
+    <source url="https://www.palatine.il.us/CivicAlerts.aspx?aid=514">Village of Palatine — News</source>
+  </item>
   <item>
     <title>Palatine: 🦃 Palatine Park District Turkey Trot</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-palatine-park-district-turkey-trot-2026-11-26</link>
@@ -108,6 +116,14 @@
     <description>Presbyterian Women’s Annual Cookie Walk – home-baked cookie Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sat, 12 Dec 2026 09:30:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Palatine: The Harper Piano Ensemble Concert</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-the-harper-piano-ensemble-concert-2026-12-12</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-the-harper-piano-ensemble-concert-2026-12-12</guid>
+    <description>Join the Harper College Department of Music for The Piano Ensemble in Concert: Shall We Dance? on Saturday, December 12, 2026, at 7:30 pm in the Performing… Official listing: https://events.harpercollege.edu/event/the-harper-piano-ensemble-concert</description>
+    <pubDate>Sat, 12 Dec 2026 19:30:00 +0000</pubDate>
+    <source url="https://events.harpercollege.edu/event/the-harper-piano-ensemble-concert">Harper College — Public Events</source>
   </item>
   <item>
     <title>Palatine: Gall on a Winter’s Day</title>
