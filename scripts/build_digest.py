@@ -39,7 +39,7 @@ from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0, str(Path(__file__).parent))
 from fetchers import FETCHERS, MAX_ITEMS_PER_SOURCE, fetch_night_forecast, fetch_rainoutline, fetch_weather, safe_http_url, submit_bing_urls, submit_indexnow  # noqa: E402
 import warm_prospects  # noqa: E402
-from tagging import SENSORY_FRIENDLY, infer_tags, is_informational, is_registration_notice, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
+from tagging import SENSORY_FRIENDLY, infer_tags, is_informational, is_online_event, is_registration_notice, merge_default_tags, parse_registration_opens, tag_display  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("build_digest")
@@ -1449,6 +1449,8 @@ def fetch_region_sections(
             event["registration_opens"] = reg.isoformat() if reg else None
             if is_registration_notice(event["title"]):  # item 541: a sign-up line, not a weekend event
                 event["registration_notice"] = True
+            if is_online_event(event["title"], item.get("detail")) or str(item.get("attendance_mode") or "").lower().endswith("onlineeventattendancemode"):
+                event["online"] = True  # item 558: stays on the town page with a badge, leaves weekend lists
             if item.get("series_count"):  # item 521: a regional series shown once
                 event["recurrence_note"] = f"{item['series_count']} dates coming up; this card shows the next"
             events.append(event)
@@ -2573,6 +2575,9 @@ def render_holidays_page(
     # ROADMAP.md item 294: each town keeps its email colour, events get emoji.
     entries = [{**e, "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0]} for i, e in enumerate(entries)]
     entries = [{**e, "events": [{**ev, "emoji": email_event_emoji(ev)} for ev in e.get("events") or []]} for e in entries]
+    today = now.astimezone(LOCAL_TZ).date()
+    # Item 556: a lighting that has happened reads "Lit Sun, Nov 22", without a calendar link.
+    entries = [{**e, "tree": {**e["tree"], "past": True}} if (e.get("tree") or {}).get("date_iso") and _parse_promo_day(e["tree"]["date_iso"]) and _parse_promo_day(e["tree"]["date_iso"]) < today else e for e in entries]
     # ROADMAP.md item 529: family events first; a venue's ticketed shows in their own group.
     entries = [{**e, "events": [ev for ev in e["events"] if not is_ticketed_show(ev)], "shows": [ev for ev in e["events"] if is_ticketed_show(ev)]} for e in entries]
     return template.render(
@@ -7379,6 +7384,8 @@ def is_pick_worthy(event: dict) -> bool:
         return False
     if event.get("registration_notice") or is_registration_notice(event.get("title")):  # item 541
         return False
+    if event.get("online") or is_online_event(event.get("title"), event.get("detail")):  # item 558
+        return False
     cfg = load_relevance_config()
     pattern = cfg.get("not_a_pick_pattern")
     if pattern is not None and pattern.search(event.get("title") or ""):
@@ -7571,7 +7578,7 @@ def select_tonight(sections: list[dict], now: datetime, limit: int = 3) -> dict 
                 continue
             if is_notice_title(e.get("title") or ""):  # item 553's first preview: "EARLY CLOSING - Thanksgiving Holiday" is not an outing
                 continue
-            if is_ticketed_show(e):  # the CI preview: a cover-band concert at a theatre is not a family "Tonight"
+            if is_ticketed_show(e) or e.get("online"):  # the CI preview: a cover-band concert at a theatre is not a family "Tonight"
                 continue
             tree = bool(TREE_LIGHTING_TITLE.search(e.get("title") or ""))
             if not tree and family_relevance(e) < 0:
@@ -8519,7 +8526,7 @@ def build_closures(blocks: list[dict], local_today: date, removed: list[dict] | 
             found.append({"title": e["title"].strip(), "url": e["url"], "date": day, "label": day.strftime("%a %b ") + str(day.day)})
     if not window:
         found.sort(key=lambda c: c["date"])
-        return found[:CLOSURE_MAX_ITEMS]
+        return merge_closures(found)[:CLOSURE_MAX_ITEMS]
     start, end = window
     for block in blocks:
         if "school" in (block.get("section") or "").lower():
@@ -8536,7 +8543,34 @@ def build_closures(blocks: list[dict], local_today: date, removed: list[dict] | 
             seen.add((e["title"], day))
             found.append({"title": e["title"].strip(), "url": e["url"], "date": day, "label": day.strftime("%a %b ") + str(day.day)})
     found.sort(key=lambda c: c["date"])
-    return found[:CLOSURE_MAX_ITEMS]
+    return merge_closures(found)[:CLOSURE_MAX_ITEMS]
+
+
+def _day_span(days: list[date]) -> str:
+    """"Thu", "Thu–Fri" for consecutive days, else "Thu, Sat"."""
+    days = sorted(set(days))
+    if len(days) > 1 and all((b - a).days == 1 for a, b in zip(days, days[1:])):
+        return f"{days[0].strftime('%a')}\u2013{days[-1].strftime('%a')}"
+    return ", ".join(d.strftime("%a") for d in days)
+
+
+def merge_closures(found: list[dict]) -> list[dict]:
+    """ROADMAP.md item 557: one entry per place (the same closure title), with
+    its days: two "Library Closed" items on Thu and Fri become one,
+    labelled "Thu–Fri". The first item's link is kept."""
+    groups: dict[str, dict] = {}
+    for c in found:
+        key = re.sub(r"\s+", " ", c["title"].strip().lower())
+        g = groups.setdefault(key, {**c, "days": []})
+        g["days"].append(c["date"])
+    out = []
+    for g in groups.values():
+        g["date"] = min(g["days"])
+        g["label"] = _day_span(g["days"]) if len(set(g["days"])) > 1 else g["label"]
+        g["day_span"] = _day_span(g["days"])
+        out.append(g)
+    out.sort(key=lambda c: c["date"])
+    return out
 
 
 def text_friend_url() -> str:
@@ -8551,7 +8585,9 @@ def build_closures_email_line(sections: list[dict], now: datetime) -> dict | Non
     parts, url = [], None
     for s in sections:
         for c in s.get("closures") or []:
-            parts.append(f"{s['region_name']}: {c['title'][:60]}")
+            part = f"{s['region_name']}: {c['title'][:60]} {c.get('day_span') or c['date'].strftime('%a')}"  # item 557
+            if part not in parts:
+                parts.append(part)
             url = url or s["region_url"] + "#closures"
     if not parts:
         return None
@@ -8711,7 +8747,7 @@ def winter_break_week_groups(events: list[dict], weeks: list[dict], per_week: in
                 day = datetime.fromisoformat(e.get("date_iso") or "").date()
             except ValueError:
                 continue
-            if week["start"] <= day <= week["end"] and e.get("attendable", True) and not e.get("registration_notice") and family_relevance(e) >= 0:
+            if week["start"] <= day <= week["end"] and e.get("attendable", True) and not e.get("registration_notice") and not e.get("online") and family_relevance(e) >= 0:
                 picked.append(dict(e))
         groups.append({"label": week["label"], "events": prepare_email_events(picked, limit=per_week)})
     return groups
@@ -9477,7 +9513,7 @@ def main() -> None:
         # ROADMAP.md item 268: on Saturday the page is for Saturday and Sunday;
         # Friday's events have passed and leave it.
         window_days = [d for d in weekend_window(friday, saturday, sunday) if d >= local_today]
-        weekend_events = order_weekend_events([e for e in filter_events_by_dates(blocks, set(window_days)) if not e.get("registration_notice")])  # item 541
+        weekend_events = order_weekend_events([e for e in filter_events_by_dates(blocks, set(window_days)) if not e.get("registration_notice") and not e.get("online")])  # items 541, 558
         weekend_event_counts[region_id] = len(weekend_events)
         update_weekend_history(weekend_history, region_id, len(weekend_events))
         # ROADMAP.md item 186: the three-stage funnel a zero-contribution

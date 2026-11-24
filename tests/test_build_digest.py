@@ -8264,3 +8264,44 @@ def test_weekend_page_groups_by_day_with_sticky_headings_on_phones():
     css = (build_digest.ROOT / "templates" / "region.html.j2").read_text(encoding="utf-8")
     block = css[css.index("@media (max-width: 599px) {\n    .day-heading"):]
     assert "position: sticky" in block[:200]
+
+
+def test_past_lightings_drop_from_the_email_and_read_lit_on_holidays():
+    # ROADMAP.md item 556.
+    entries = [{"region_name": "Wheeling", "tree": {"date_iso": "2026-11-22", "label": "Sunday, November 22, 4:30 PM", "url": "https://www.wheelingil.gov/m/calendar/event/detail/2207"}},
+               {"region_name": "Arlington Heights", "tree": {"date_iso": "2026-11-27", "label": "Friday, November 27", "url": "https://x/ah"}},
+               {"region_name": "Nowhere", "tree": {"date_iso": None, "label": None, "url": "https://x/n"}}]
+    nov24 = datetime(2026, 11, 24, 22, tzinfo=timezone.utc)
+    banner = build_digest.build_holiday_banner(entries, nov24)
+    block = build_digest.build_email_edition_block("holiday", None, banner, nov24)
+    assert not any(p.startswith("Wheeling") for p in block["pills"])
+    assert "Nowhere date TBA" in block["pills"]  # never confirmed: still TBA
+    import yaml
+    wheeling = yaml.safe_load((build_digest.CONFIG_DIR / "regions" / "wheeling-60090.yaml").read_text(encoding="utf-8"))["tree_lighting"]
+    assert wheeling["date"] == "2026-11-22"
+    page = build_digest.render_holidays_page([dict(e, region_url="https://x/", events=[]) for e in entries], nov24)
+    assert "Lit Sunday, November 22, 4:30 PM" in page and "Lit Friday" not in page
+
+
+def test_closures_merge_by_place_with_their_days():
+    # ROADMAP.md item 557.
+    found = [{"title": "Library Closed", "url": "https://dppl/1", "date": date(2026, 11, 26), "label": "Thu Nov 26"},
+             {"title": "Library Closed", "url": "https://dppl/2", "date": date(2026, 11, 27), "label": "Fri Nov 27"},
+             {"title": "Library Closed at 5 p.m.", "url": "https://mppl/1", "date": date(2026, 11, 25), "label": "Wed Nov 25"}]
+    merged = build_digest.merge_closures(found)
+    assert [(c["title"], c["day_span"]) for c in merged] == [("Library Closed at 5 p.m.", "Wed"), ("Library Closed", "Thu–Fri")]
+    assert merged[1]["url"] == "https://dppl/1" and merged[1]["label"] == "Thu–Fri"
+    line = build_digest.build_closures_email_line([{"region_name": "Des Plaines", "region_url": "https://x/dp/", "closures": merged[1:]},
+                                                   {"region_name": "Mount Prospect", "region_url": "https://x/mp/", "closures": merged[:1]}], datetime(2026, 11, 24, tzinfo=timezone.utc))
+    assert line["text"] == "🔒 Des Plaines: Library Closed Thu–Fri · Mount Prospect: Library Closed at 5 p.m. Wed"
+
+
+def test_online_events_leave_weekend_lists_but_keep_a_badge():
+    # ROADMAP.md item 558.
+    from tagging import is_online_event
+    assert is_online_event("VIRTUAL Culture & Conversation (level: intermediate)")
+    assert is_online_event("Author Talk (virtual)") and is_online_event("Online Chess Club")
+    assert is_online_event("Book Talk", "This program takes place online.")
+    assert not is_online_event("Craft Night", "Online registration required.")
+    assert not is_online_event("Virtual Reality Gaming for Teens")
+    assert not build_digest.is_pick_worthy({"title": "VIRTUAL Culture & Conversation", "tags": ["free"], "online": True})

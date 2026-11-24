@@ -192,6 +192,19 @@ def is_registration_notice(title: str | None) -> bool:
     return bool(title) and bool(REGISTRATION_NOTICE.search(title)) and not _re.search(r"registration[- ]free|no registration", title, _re.IGNORECASE)
 
 
+# ROADMAP.md item 558: an event held online, not a place to go. The title says
+# VIRTUAL, Zoom, Webinar or "(virtual)/(online)", or starts with "Online"; or the
+# description says it is held online or on Zoom. "Online registration" never counts.
+_ONLINE_TITLE = _re.compile(r"\b(?:virtual|zoom|webinar)\b|\((?:virtual|online)\)|^\s*online\b", _re.IGNORECASE)
+_ONLINE_DETAIL = _re.compile(r"\b(?:held|takes place|meets|hosted|presented)\s+(?:online|virtually|on zoom|via zoom)\b|\b(?:join|attend)\s+(?:us\s+)?(?:on|via)\s+zoom\b|^\s*(?:virtual|online) (?:event|program|class)\b", _re.IGNORECASE)
+
+
+def is_online_event(title: str | None, detail: str | None = "") -> bool:
+    if _ONLINE_TITLE.search(title or ""):
+        return not _re.search(r"virtual reality|\bvr\b", title or "", _re.IGNORECASE)
+    return bool(_ONLINE_DETAIL.search(detail or ""))
+
+
 def is_informational(*text_parts: str) -> bool:
     """True for a school-closure/office-closure/no-collection notice - real
     content the D57-style school-calendar feed is deliberately not
