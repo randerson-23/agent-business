@@ -3002,6 +3002,8 @@ def load_light_displays(today: date, towns: list[dict] | None = None) -> list[di
             continue
         entry = {k: str(raw.get(k) or "").strip() for k in ("name", "town", "where", "line", "price")}
         entry.update(url=url, ticketed=bool(raw.get("ticketed")), distance=None)
+        if not str(raw.get("price_confirmed_via") or "").strip():  # item 563: never an unconfirmed price
+            entry["price"] = "Ticketed; see site for prices" if entry["ticketed"] else ""
         if entry["town"] not in town_names and raw.get("lat") is not None and towns:
             near = nearest_town(float(raw["lat"]), float(raw["lon"]), towns)
             if near:

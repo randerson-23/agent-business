@@ -38,3 +38,28 @@ def test_previews_are_noindex_and_only_email_files_are_copied(tmp_path):
     (docs / "index.html").write_text("live page")
     names = [n for _, n in build_preview.preview_files(docs)]
     assert names == ["combined-email-preview.html", "email-preview/palatine-60067.html"]
+
+
+def test_all_specials_skips_past_overrides():
+    # ROADMAP.md item 562.
+    overrides = {"2026-11-26": "2026-11-25T07:00", "2026-12-24": "2026-12-23T07:00", "2026-12-31": "2026-12-30T07:00"}
+    assert build_preview.future_specials(date(2026, 11, 26), overrides) == [date(2026, 12, 23), date(2026, 12, 30)]
+    assert build_preview.future_specials(date(2027, 1, 1), overrides) == []
+
+
+def test_preview_header_names_build_and_delivery_dates():
+    html = build_preview.add_preview_header("<html><body><p>x</p></body></html>", date(2026, 11, 25), date(2026, 12, 23))
+    assert "Preview built Nov 25; data may change before Wed Dec 23." in html
+    assert 'name="preview-built" content="2026-11-25"' in html and html.index("<body>") < html.index("Preview built")
+
+
+def test_previews_index_lists_each_folder_newest_delivery_first(tmp_path):
+    # ROADMAP.md item 564.
+    for day, built in (("2026-12-23", "2026-11-25"), ("2026-12-30", "2026-11-25")):
+        d = tmp_path / day / "email-preview"
+        d.mkdir(parents=True)
+        (tmp_path / day / "combined-email-preview.html").write_text(build_preview.add_preview_header("<body></body>", date.fromisoformat(built), date.fromisoformat(day)))
+        (d / "palatine-60067.html").write_text("x")
+    out = build_preview.write_index(tmp_path).read_text()
+    assert out.index("Wed Dec 30, 2026") < out.index("Wed Dec 23, 2026")
+    assert build_preview.NOINDEX in out and "built 2026-11-25" in out and "2026-12-23/email-preview/palatine-60067.html" in out

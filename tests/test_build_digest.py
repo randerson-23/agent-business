@@ -8343,3 +8343,20 @@ def test_seasonal_candidates_render_only_when_the_organiser_confirms(tmp_path):
     from warm_prospects import load_past_hosts
     hosts = [h for h in load_past_hosts() if h["name"] == "The Wildbird Shack"]
     assert hosts and hosts[0]["reason"] == "santa_host_past" and hosts[0]["note"] and "@" not in str(hosts[0])
+
+
+def test_light_display_prices_need_their_own_confirmation(tmp_path, monkeypatch):
+    # ROADMAP.md item 563.
+    cfg = tmp_path / "config"
+    cfg.mkdir()
+    (cfg / "light_displays.yaml").write_text(
+        "displays:\n"
+        "  - {name: A, town: Northbrook, where: x, line: y, price: '$40 per car', ticketed: true, source_url: 'https://a.example/'}\n"
+        "  - {name: B, town: Northbrook, where: x, line: y, price: '$30 per car', price_confirmed_via: 'b.example, 2026-11-25', ticketed: true, source_url: 'https://b.example/'}\n",
+        encoding="utf-8")
+    monkeypatch.setattr(build_digest, "CONFIG_DIR", cfg)
+    got = {d["name"]: d["price"] for d in build_digest.load_light_displays(date(2026, 12, 1))}
+    assert got == {"A": "Ticketed; see site for prices", "B": "$30 per car"}
+    monkeypatch.undo()
+    real = {d["name"]: d["price"] for d in build_digest.load_light_displays(date(2026, 12, 1))}
+    assert real["Willow Hill Lights"] == "Ticketed; see site for prices" and real["North School Park lights"] == "Free"
