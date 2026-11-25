@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **565** (no "test" or closed-day events; one is in the Dec 23 preview), then **566** (title-cased closures, no ticket boilerplate or stray codes in blurbs), then **567** (no kid-friendly tag on evening comedy).
+0. ~~**565**~~, ~~**566**~~, ~~**567**~~ **DONE** (2026-11-25).
 0. ~~**563**~~ **DONE**, ~~**562**~~ **DONE**, ~~**564**~~ **DONE** (2026-11-25).
 0. ~~**560**~~ **DONE**, then ~~**559**~~ **DONE** with 535's candidate list (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
 0. ~~**556, 557, 558**~~ **DONE 2026-11-24, Nov 25 preview re-run locally and clean** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
@@ -22849,7 +22849,7 @@ search, and runs item 554's fourth round.
 
 #### P1 (new)
 
-565. **No test or placeholder events, and none on a closed day.** Build
+565. **DONE (2026-11-25).** `is_placeholder_title` (whole title *test/testing/tbd/tba/placeholder/do not use/delete* or one character) drops the item at fetch, logged; `drop_closed_day_events` drops an event whose own source posts an all-day *Closed* (no time, *early*, *until*…) that day, logged. *Test Kitchen Cooking Class* stays. **No test or placeholder events, and none on a closed day.** Build
      loop, in the shared event filter (all pages and the email):
 
      - Drop events whose title, after trimming, is a placeholder: *test*,
@@ -22863,7 +22863,7 @@ search, and runs item 554's fourth round.
      from `/des-plaines-60016/`; *"Test Kitchen Cooking Class"* is kept; a
      closed-day event is logged and dropped.
 
-566. **Clean the text in closures and blurbs.** Build loop:
+566. **DONE (2026-11-25).** Closure titles go through `display_title` (email line and town page); `clean_blurb` strips a leading *Purchase/Buy/Get Tickets* with the date-and-time run, *Tickets: $…* and *ABOUT THE SHOW:* after it, and a trailing one-/two-letter capital code; `single_time_in_text` gives an untimed email card its own single time (*7:30 PM*), none when the text has several. **Clean the text in closures and blurbs.** Build loop:
 
      - Title-case closure labels the way item 529 title-cases event
        titles (*"Closed for the Christmas Holiday"*).
@@ -22881,7 +22881,7 @@ search, and runs item 554's fourth round.
 
 #### P2 (new)
 
-567. **Evening ticketed comedy isn't kid-friendly by default.** Build
+567. **DONE (2026-11-25).** The revue's tag came from a keyword match in its Metropolis listing. `theatre_show_without_family_signal`: an event from a ticketed venue (`TICKETED_VENUE_DOMAINS`) keeps `kid_friendly` only when its own text says *family-friendly / for the family / all ages / kids' show / children's show / child ticket / ages N*. That applies at any hour, since the revue's listing is untimed with 5 and 7:30 PM shows. **Evening ticketed comedy isn't kid-friendly by default.** Build
      loop: find which rule tags *The Second City's Nut-Cracking Holiday
      Revue* as `kid_friendly`. If it is a keyword match (*holiday*,
      *nutcracker*), don't apply `kid_friendly` to a theatre event that
