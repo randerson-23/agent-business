@@ -1406,11 +1406,16 @@ def fetch_region_sections(
             raw_items = keep_nearest_town(raw_items, region_cfg["region"]["name"], TOWN_CENTRES)
         events = []
         for item in raw_items:
+            if is_placeholder_title(item.get("title")):  # item 565: "test", "TBD"... never an event
+                logger.info("Dropped placeholder event %r from %s", item.get("title"), source["name"])
+                continue
             tags = infer_tags(item.get("title", ""), item.get("detail", ""), section=source["section"])
             tags = merge_default_tags(source.get("default_tags"), tags)
             # ROADMAP.md item 354: a venue-type override (theatres and libraries are indoors).
             veto = set(source.get("veto_tags") or [])
             tags = [t for t in tags if t not in veto]
+            if "kid_friendly" in tags and theatre_show_without_family_signal(item, source):  # item 567
+                tags = [t for t in tags if t != "kid_friendly"]
             # ROADMAP.md Phase 11 #90: a source-level `informational: true`
             # (for a feed like D57's that's mostly closures/half-days, not
             # events) forces every item non-attendable regardless of
@@ -1468,6 +1473,29 @@ def fetch_region_sections(
                 e["regional"] = True
         blocks.append({"section": source["section"], "events": events, "source_page": source_page, "regional": bool(source.get("nearest_town_only"))})
     return cap_regional_events(blocks)
+
+
+# ROADMAP.md item 565: a feed's placeholder entries ("test", "TBD") are never events.
+_PLACEHOLDER_TITLE = re.compile(r"^(?:test(?:ing)?|tbd|tba|placeholder|do not use|delete|.)$", re.IGNORECASE)
+
+
+def is_placeholder_title(title: str | None) -> bool:
+    return bool(_PLACEHOLDER_TITLE.match((title or "").strip().strip(".!-")))
+
+
+# ROADMAP.md item 567: a show at a ticketed venue (theatre, performing-arts centre)
+# is kid-friendly only when its own text says so, not from a keyword match.
+_FAMILY_SIGNAL = re.compile(r"family[- ]friendly|for (?:the )?(?:whole )?family|families|all ages|for kids|kids'? (?:show|price|tickets?)|children'?s (?:show|theatre|theater|price|tickets?)|child(?:ren)? (?:tickets?|price)|ages \d", re.IGNORECASE)
+
+
+def theatre_show_without_family_signal(item: dict, source: dict) -> bool:
+    url = str(item.get("url") or "")
+    host = (urlparse(url).hostname or "").lower()
+    theatre = any(host == d or host.endswith("." + d) for d in TICKETED_VENUE_DOMAINS)
+    if not theatre:
+        return False
+    text = f"{item.get('title') or ''} {item.get('detail') or ''}"
+    return not _FAMILY_SIGNAL.search(text)
 
 
 def prepare_evergreen(region_cfg: dict) -> list[dict]:
@@ -7272,12 +7300,43 @@ def strip_description_header(detail: str | None) -> str:
     return _LEADING_CONTACT_TOKEN.sub("", text)
 
 
+# ROADMAP.md item 566: a blurb never opens with ticket boilerplate and the
+# run of dates and times after it, and never ends on a stray staff code ("TR").
+_TICKET_LEAD = re.compile(r"^\s*(?:purchase|buy|get)\s+tickets\b[\s:.-]*", re.IGNORECASE)
+_DATE_RUN = re.compile(r"^(?:\s*(?:mon|tues?|wed(?:nes)?|thu(?:rs)?|fri|sat(?:ur)?|sun)[a-z]*,?\s+[a-z]+\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s*(?:\d{4})?\s*(?:\|\s*)?(?:\d{1,2}(?::\d{2})?\s*[ap]\.?m\.?(?:\s*&\s*\d{1,2}(?::\d{2})?\s*[ap]\.?m\.?)*)?\s*)+", re.IGNORECASE)
+_TRAILING_CODE = re.compile(r"([.!?])\s+[A-Z]{1,2}\s*$")
+
+
+def clean_blurb(text: str | None) -> str | None:
+    if not text:
+        return text
+    if _TICKET_LEAD.match(text):
+        text = _DATE_RUN.sub("", _TICKET_LEAD.sub("", text, count=1), count=1)
+        text = re.sub(r"^\s*tickets?:\s*[^A-Za-z]*(?:\|[^A-Za-z]*)*(?:for\s+\w+\s*)?", "", text, flags=re.IGNORECASE)
+        text = re.sub(r"^\s*about the show:\s*", "", text, flags=re.IGNORECASE)
+    text = _TRAILING_CODE.sub(r"\1", text.strip())
+    return text.strip() or None
+
+
+_ONE_TIME = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*([ap])\.?m\.?", re.IGNORECASE)
+
+
+def single_time_in_text(text: str | None) -> str | None:
+    """Item 566: the event's own single start time from its text ("7:30pm"), or
+    None when there is none or more than one distinct time."""
+    found = {(int(h) % 12 + (12 if ap.lower() == "p" else 0), int(m or 0)) for h, m, ap in _ONE_TIME.findall(text or "")}
+    if len(found) != 1:
+        return None
+    h, m = found.pop()
+    return time(h, m).strftime("%-I:%M %p")
+
+
 def email_blurb(detail: str | None, title: str = "", max_len: int = EMAIL_BLURB_MAX_LEN) -> str | None:
     """One line of description for an email entry: whitespace collapsed, a
     leading Communico date/time header removed, trimmed to `max_len` at a
     word boundary. None when nothing useful is left, or the text only
     repeats the title - never a placeholder."""
-    text = strip_description_header(detail)
+    text = clean_blurb(strip_description_header(detail))
     if not text or text.lower().rstrip(".…") == (title or "").strip().lower():
         return None
     if len(text) <= max_len:
@@ -7928,6 +7987,10 @@ def prepare_email_events(events: list[dict], limit: int | None = None) -> list[d
                 **email_visuals(e),
             )
         )
+        if not prepared[-1].get("email_clock") and not e.get("run_label") and not e.get("sessions"):
+            own = single_time_in_text(e.get("detail"))  # item 566: the event's own single time
+            if own:
+                prepared[-1]["email_clock"] = own
     if limit is not None and len(prepared) > limit:
         # Which entries make the cap: Featured, then the most family-relevant,
         # then the soonest. They are then shown in date order like the rest.
@@ -8517,6 +8580,35 @@ def drop_school_admin(blocks: list[dict]) -> list[dict]:
     return out
 
 
+_ALL_DAY_CLOSED = re.compile(r"\bclosed\b", re.IGNORECASE)
+_PART_DAY = re.compile(r"\d|\bearly\b|\buntil\b|\bat\b|\bfrom\b|\bafter\b|\bnoon\b", re.IGNORECASE)
+
+
+def drop_closed_day_events(blocks: list[dict], closures: list[dict]) -> list[dict]:
+    """ROADMAP.md item 565: an event from a source on a day that the same
+    source says it is closed all day ("Library Closed", not "closes at 5
+    p.m.") is dropped and logged: a feed's leftover or test entry."""
+    closed = set()
+    for c in closures:
+        title = c.get("title") or ""
+        if _ALL_DAY_CLOSED.search(title) and not _PART_DAY.search(title) and c.get("source"):
+            day = _event_day(c)
+            if day:
+                closed.add((c["source"], day))
+    if not closed:
+        return blocks
+    out = []
+    for block in blocks:
+        keep = []
+        for e in block.get("events", []):
+            if (e.get("source"), _event_day(e)) in closed:
+                logger.info("Dropped %r: %s is closed all day on %s", e.get("title"), e.get("source"), _event_day(e))
+                continue
+            keep.append(e)
+        out.append(dict(block, events=keep) if len(keep) != len(block.get("events", [])) else block)
+    return out
+
+
 def split_closures(blocks: list[dict]) -> tuple[list[dict], list[dict]]:
     """Take closure notices out of every block (item 444) so they never reach the
     sections, picks, events.json, Event markup, feeds or /e/ pages. School-district
@@ -8617,7 +8709,7 @@ def build_closures_email_line(sections: list[dict], now: datetime) -> dict | Non
     parts, url = [], None
     for s in sections:
         for c in s.get("closures") or []:
-            part = f"{s['region_name']}: {c['title'][:60]} {c.get('day_span') or c['date'].strftime('%a')}"  # item 557
+            part = f"{s['region_name']}: {display_title(c['title'])[:60]} {c.get('day_span') or c['date'].strftime('%a')}"  # items 557, 566
             if part not in parts:
                 parts.append(part)
             url = url or s["region_url"] + "#closures"
@@ -9451,6 +9543,7 @@ def main() -> None:
         blocks, _partisan_excluded = filter_partisan_events(blocks)
         blocks = filter_past_events(blocks, local_today)
         blocks, removed_closures = split_closures(blocks)  # item 444
+        blocks = drop_closed_day_events(blocks, removed_closures)  # item 565
         blocks = drop_school_admin(blocks)  # item 485
         clear_suspect_times(blocks)  # item 485
         rainout_cfg = region_cfg.get("rainout_line") or {}

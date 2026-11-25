@@ -8360,3 +8360,42 @@ def test_light_display_prices_need_their_own_confirmation(tmp_path, monkeypatch)
     monkeypatch.undo()
     real = {d["name"]: d["price"] for d in build_digest.load_light_displays(date(2026, 12, 1))}
     assert real["Willow Hill Lights"] == "Ticketed; see site for prices" and real["North School Park lights"] == "Free"
+
+
+def test_placeholder_and_closed_day_events_are_dropped():
+    # ROADMAP.md item 565.
+    assert build_digest.is_placeholder_title("test") and build_digest.is_placeholder_title(" TBD ") and build_digest.is_placeholder_title("x")
+    assert not build_digest.is_placeholder_title("Test Kitchen Cooking Class")
+    blocks = [{"section": "Library", "events": [
+        {"title": "Holiday Movie", "source": "DPPL — Events", "date_iso": "2026-12-25T13:00:00"},
+        {"title": "Holiday Movie", "source": "DPPL — Events", "date_iso": "2026-12-26T13:00:00"},
+        {"title": "Craft", "source": "Park — Events", "date_iso": "2026-12-25T13:00:00"}]}]
+    closures = [{"title": "Library Closed", "source": "DPPL — Events", "date_iso": "2026-12-25"},
+                {"title": "Library closes at 5 p.m.", "source": "DPPL — Events", "date_iso": "2026-12-26"}]
+    kept = build_digest.drop_closed_day_events(blocks, closures)[0]["events"]
+    assert [(e["title"], e["date_iso"][:10], e["source"][:4]) for e in kept] == [("Holiday Movie", "2026-12-26", "DPPL"), ("Craft", "2026-12-25", "Park")]
+
+
+def test_blurbs_and_closures_read_clean():
+    # ROADMAP.md item 566.
+    raw = ("Purchase Tickets Sunday, December 27th, 2026 | 7:30pmMonday, December 28th, 2026 | 5:00pm & 7:30pm "
+           "Tickets: $40 | $50 for NYE ABOUT THE SHOW: Need something better than old reruns?")
+    assert build_digest.clean_blurb(raw) == "Need something better than old reruns?"
+    assert build_digest.clean_blurb("Bring your imagination and create with Legos. TR") == "Bring your imagination and create with Legos."
+    assert build_digest.clean_blurb("Stories and songs for little ones.") == "Stories and songs for little ones."
+    assert build_digest.single_time_in_text("The show starts at 7:30pm.") == "7:30 PM"
+    assert build_digest.single_time_in_text("5:00pm & 7:30pm") is None
+    line = build_digest.build_closures_email_line([{"region_name": "Wheeling", "region_url": "https://x/w/", "closures": [
+        {"title": "CLOSED FOR THE CHRISTMAS HOLIDAY", "date": date(2026, 12, 24), "day_span": "Thu–Fri", "url": "https://x"}]}], datetime(2026, 12, 22, tzinfo=timezone.utc))
+    assert "Closed for the Christmas Holiday Thu–Fri" in line["text"]
+
+
+def test_theatre_shows_need_their_own_family_signal_for_kid_friendly():
+    # ROADMAP.md item 567.
+    src = {"name": "Metropolis"}
+    revue = {"title": "The Second City's Nut-Cracking Holiday Revue", "detail": "Want to see some real nutcrackers? Tickets: $40.", "url": "https://www.metropolisarts.com/event/the-second-city-nut-cracking-holiday-revue/"}
+    family = {"title": "Frosty Family Matinee", "detail": "A family-friendly show for all ages, 2 PM.", "url": "https://www.metropolisarts.com/event/frosty/"}
+    library = {"title": "Kids Craft", "detail": "", "url": "https://www.ahml.info/x"}
+    assert build_digest.theatre_show_without_family_signal(revue, src)
+    assert not build_digest.theatre_show_without_family_signal(family, src)
+    assert not build_digest.theatre_show_without_family_signal(library, src)
