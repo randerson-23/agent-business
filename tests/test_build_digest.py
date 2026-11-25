@@ -7570,7 +7570,7 @@ def test_thanksgiving_window_includes_thursday_and_the_issue_moves_to_wednesday(
     tue_build = datetime(2026, 11, 24, 22, 37, tzinfo=timezone.utc)
     assert build_digest.email_delivery_time(tue_build, ov) == datetime(2026, 11, 25, 7, 0)
     assert build_digest.email_edition(tue_build) == "holiday"
-    assert build_digest.load_delivery_overrides()[date(2026, 11, 26)] == ov[date(2026, 11, 26)]
+    assert date(2026, 11, 26) not in build_digest.load_delivery_overrides()  # delivered Nov 25; the one-off override was then removed
 
 
 def test_exhibit_run_is_one_card_one_calendar_link_and_never_a_pick():
@@ -8233,9 +8233,9 @@ def test_winter_reading_runs_only_between_its_dates_from_its_own_page(tmp_path):
 def test_santa_jump_chips_only_for_sections_with_entries():
     # ROADMAP.md item 552.
     entries = [{"region_name": "Arlington Heights", "region_url": "https://x/ah/", "events": [
-        {"title": "Breakfast with Santa", "url": "https://x/b", "date_iso": "2026-12-05T10:00:00", "detail": "Pancakes with Santa.", "anchor_id": "a"}]}]
-    now = datetime(2026, 11, 23, tzinfo=timezone.utc)
-    outside = [{"town": "Barrington", "date_label": "Sat Dec 5", "title": "Santa visit", "source_url": "https://x/o"}]
+        {"title": "Breakfast with Santa", "url": "https://x/b", "date_iso": "2026-12-12T10:00:00", "detail": "Pancakes with Santa.", "anchor_id": "a"}]}]
+    now = datetime(2026, 12, 7, tzinfo=timezone.utc)  # after USPS's Dec 5 deadline, so no Write to Santa section
+    outside = [{"town": "Barrington", "date_label": "Sat Dec 12", "title": "Santa visit", "source_url": "https://x/o"}]
     both = build_digest.render_santa_page(entries, now, outside=outside)
     assert 'class="jump-chips"' in both and 'href="#visits"' in both and 'id="visits"' in both and 'id="outside"' in both
     only = build_digest.render_santa_page(entries, now)
@@ -8399,3 +8399,18 @@ def test_theatre_shows_need_their_own_family_signal_for_kid_friendly():
     assert build_digest.theatre_show_without_family_signal(revue, src)
     assert not build_digest.theatre_show_without_family_signal(family, src)
     assert not build_digest.theatre_show_without_family_signal(library, src)
+
+
+def test_write_to_santa_lists_usps_with_its_deadline_and_reminder(tmp_path):
+    # ROADMAP.md item 550.
+    mail = build_digest.load_santa_mail(date(2026, 11, 25))
+    usps = mail[0]
+    assert usps["name"] == "USPS Operation Santa" and usps["deadline"] == "postmarked by Sat Dec 5"
+    assert "about.usps.com" in usps["url"] and usps["remind_url"].startswith("https://calendar.google.com/")
+    assert build_digest.load_santa_mail(date(2026, 12, 6)) == []  # past its day
+    undated = tmp_path / "m.yaml"
+    undated.write_text("mail:\n  - {name: Mailbox, how: Drop it in, last_day: null, url: 'https://x.example/'}\n", encoding="utf-8")
+    assert build_digest.load_santa_mail(date(2026, 11, 25), undated) == []
+    entries = [{"region_name": "Wheeling", "region_url": "https://x/", "events": [{"title": "Breakfast with Santa", "url": "https://x/b", "date_iso": "2026-12-05T10:00:00", "detail": "Pancakes with Santa.", "anchor_id": "a"}]}]
+    html = build_digest.render_santa_page(entries, datetime(2026, 11, 25, tzinfo=timezone.utc))
+    assert 'id="mailboxes"' in html and "123 Elf Road" in html and 'href="#mailboxes"' in html and "⏰ Remind me" in html

@@ -22546,7 +22546,7 @@ Changing the schedule is the owner's call: the scheduled task runs at
 
 #### P2 (new)
 
-550. **"Write to Santa" on `/santa/`.** Build loop:
+550. **DONE (2026-11-25).** `config/santa_mail.yaml` + `load_santa_mail`: a *✉️ Write to Santa* section on `/santa/` (`#mailboxes`, with its jump chip) until each entry's own `last_day`, with ⏰ *Remind me* the day before. USPS Operation Santa from USPS's own newsroom release (Sept 14, 2026) and FAQ, read through search (item 478; about.usps.com and uspsoperationsanta.com don't resolve from the sandbox): *123 Elf Road, North Pole, 88888*, return address required, **postmarked by Sat Dec 5**. Wheeling's and Barrington's mailboxes stay out: their pages show no year. Also removed the Nov 26 → Nov 25 delivery override now that the Thanksgiving issue has gone out. **"Write to Santa" on `/santa/`.** Build loop:
 
      - A section listing **USPS Operation Santa** (2026, from the USPS
        newsroom: how to send and the deadline it states).
