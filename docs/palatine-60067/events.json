@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Palatine — Within Ten",
-  "dateModified": "2026-11-25T06:00:30+00:00",
-  "numberOfItems": 12,
+  "dateModified": "2026-11-25T14:07:16+00:00",
+  "numberOfItems": 11,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -40,37 +40,6 @@
       "position": 2,
       "item": {
         "@type": "Event",
-        "name": "St. Nectarios Thanksgiving Community Meal",
-        "startDate": "2026-11-26T10:30:00-06:00",
-        "url": "https://withintenmiles.com/palatine-60067/#ev-st-nectarios-thanksgiving-community-meal-2026-11-26",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Palatine, IL",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Palatine",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Village of Palatine",
-          "url": "https://www.palatine.il.us"
-        },
-        "image": "https://withintenmiles.com/og/palatine-60067.png",
-        "description": "Free hot Thanksgiving meal. Safe, welcoming space for individu",
-        "isAccessibleForFree": true
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
         "name": "MPAC English 2027 ACCESS Information Session",
         "startDate": "2026-12-01T18:30:00-06:00",
         "url": "https://withintenmiles.com/palatine-60067/#ev-mpac-english-2027-access-information-session-2026-12-01",
@@ -92,7 +61,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "D15 Job Fair",
@@ -116,7 +85,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "MPAC Spanish 2027 ACCESS Information Session",
@@ -140,7 +109,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Poetry Open Mic",
@@ -170,7 +139,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "MPAC Tamil 2027 ACCESS Information Session",
@@ -194,7 +163,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "MPAC Telugu 2027 ACCESS Information Session",
@@ -218,7 +187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Tales for Tots",
@@ -249,7 +218,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -279,7 +248,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "One Starry Night - Christmas Bible School",
@@ -309,7 +278,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "The Festival Chorus Christmas Concert 2026",
