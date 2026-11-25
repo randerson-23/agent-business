@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **565** (no "test" or closed-day events; one is in the Dec 23 preview), then **566** (title-cased closures, no ticket boilerplate or stray codes in blurbs), then **567** (no kid-friendly tag on evening comedy).
 0. ~~**563**~~ **DONE**, ~~**562**~~ **DONE**, ~~**564**~~ **DONE** (2026-11-25).
 0. ~~**560**~~ **DONE**, then ~~**559**~~ **DONE** with 535's candidate list (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
 0. ~~**556, 557, 558**~~ **DONE 2026-11-24, Nov 25 preview re-run locally and clean** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
@@ -22830,6 +22831,66 @@ item 554's third round.
 
      Test: the index lists each `docs/previews/<date>/` folder, newest
      delivery first.
+
+
+#### Research pass 2026-11-25 (hundred-and-sixty-fifth pass)
+
+Overnight the build loop shipped 562–564, and the Thanksgiving issue was
+scheduled at 05:06 UTC for 07:00 CT (send 11; no metrics yet). So the
+**Dec 23 winter-break preview** now exists four weeks early, which is what
+562 was for. This pass reads that preview's text, re-checks the target
+search, and runs item 554's fourth round.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Dec 23 winter-break preview (design/UX)** (`docs/previews/2026-12-23/combined-email-preview.html`, built Nov 25) | The structure works: subject *"Winter break: two weeks of things to do · 17 ideas"*, camps and Noon Year's Eve lines, this week / next week per town. Four text faults show: (1) a Des Plaines Public Library event titled **"test"**, Fri Dec 25 9:00 AM, on a day the same issue's closure line says that library is **closed**; (2) the closure line reads *"Des Plaines: **CLOSED FOR THE CHRISTMAS HOLIDAY** Thu"*, ALL CAPS, which item 529 fixed for titles only; (3) the Second City revue's blurb starts *"Purchase Tickets Sunday, December 27th, 2026 \| 7:30pmMonday, December 28th…"*, ticket boilerplate with run-together dates, while its **Don't miss** card shows no time; (4) two Indian Trails Library blurbs end in a stray **"TR"** code. The Second City revue is also tagged and shown as 🧒 kid-friendly (a 7:30 PM comedy revue). | A staff test entry in the year's most-read issue is the one fault every reader notices. All four are cheap rules, and the preview gives four weeks to fix them. |
+| **Who ranks for *"things to do in Mount Prospect IL this weekend"*, re-check** (web search, Nov 25) | **All 20 results are Eventbrite**, mostly its foreign-domain copies (.ca, .co.uk, .com.au, .at, .fi, .dk, .se, .cl) with stale or out-of-area events. No village, park district, Patch or Within Ten result. `site:withintenmiles.com` returned **no pages** in the same engine. | The query is open: no local page answers it. But the site is not in this engine's index at all, so items 516–517 and Needs Ryan's Bing step stay the findability blockers. No new item; this is evidence for the existing ones. |
+| **Item 554, round 4: blocked leads via search** (Chabad of Arlington Heights 2026; Mount Prospect's tree lighting and Christkindlmarket) | Chabad: still no 2026 page. Chabad.org confirms Chanukah **Fri Dec 4 – Sat Dec 12, 2026**. Past Arlington Heights lightings were on a Sunday at North School Park, so Sun Dec 6 is likely but **not confirmed**; don't list it. Mount Prospect's lighting is already listed from the village's own feed. | No listing. Round 5 is next pass; after Dec 6 the Chabad lead lapses for 2026. |
+
+#### P1 (new)
+
+565. **No test or placeholder events, and none on a closed day.** Build
+     loop, in the shared event filter (all pages and the email):
+
+     - Drop events whose title, after trimming, is a placeholder: *test*,
+       *testing*, *tbd*, *placeholder*, *do not use*, *delete*, or one
+       character (case-insensitive, whole title only).
+     - Drop an event at a library or park source on a date that the
+       source's own closure feed marks as closed all day (the same data
+       as the closures line), and log it in the build output.
+
+     Tests: the Dec 25 "test" event is gone from the Dec 23 preview and
+     from `/des-plaines-60016/`; *"Test Kitchen Cooking Class"* is kept; a
+     closed-day event is logged and dropped.
+
+566. **Clean the text in closures and blurbs.** Build loop:
+
+     - Title-case closure labels the way item 529 title-cases event
+       titles (*"Closed for the Christmas Holiday"*).
+     - Strip a blurb's opening ticket boilerplate (*"Purchase Tickets"*,
+       *"Buy Tickets"*, *"Get Tickets"*) and any run of dates and times
+       that follows it, then truncate as now.
+     - Strip a trailing one- or two-letter capitalised code from a blurb
+       (*"… create with Legos. TR"*).
+     - When a **Don't miss** card has no time but the event has a single
+       time in its own text (*"7:30pm"*), show it; otherwise leave the
+       time off.
+
+     Tests: the three examples above render clean in the Dec 23 preview,
+     and an ordinary blurb is unchanged.
+
+#### P2 (new)
+
+567. **Evening ticketed comedy isn't kid-friendly by default.** Build
+     loop: find which rule tags *The Second City's Nut-Cracking Holiday
+     Revue* as `kid_friendly`. If it is a keyword match (*holiday*,
+     *nutcracker*), don't apply `kid_friendly` to a theatre event that
+     starts at 7 PM or later unless its own text says *family*, *kids*,
+     *all ages* or gives a child price. Check the Dec 23 preview's other
+     🧒 cards against the same rule.
+
+     Test: the revue loses the tag; the Metropolis's afternoon family show
+     keeps it.
 
 
 ## Working agreements for autonomous iteration
