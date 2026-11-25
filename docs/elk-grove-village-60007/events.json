@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Elk Grove Village — Within Ten",
-  "dateModified": "2026-11-25T17:23:56+00:00",
-  "numberOfItems": 62,
+  "dateModified": "2026-11-25T22:05:48+00:00",
+  "numberOfItems": 61,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -581,36 +581,6 @@
       "position": 20,
       "item": {
         "@type": "Event",
-        "name": "Middle Grade -Drop In Coloring",
-        "startDate": "2026-11-30T09:00:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-middle-grade-drop-in-coloring-2026-11-30",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17974840",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Monday, November 30 2026 9:00am - 9:00pm \n DIY Coloring"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 21,
-      "item": {
-        "@type": "Event",
         "name": "Session 1-A: Sewing Machine Basics - Holiday Gift Bags",
         "startDate": "2026-11-30T18:00:00-06:00",
         "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-session-1-a-sewing-machine-basics-holiday-gift-bags-2026-11-30",
@@ -638,7 +608,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -668,7 +638,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Get Cozy with Your Comfort Reads!",
@@ -698,7 +668,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -728,7 +698,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Mittens, Marshmallow and Magic Storytime",
@@ -758,7 +728,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "EGVPL Board of Trustees Meeting",
@@ -788,7 +758,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -818,7 +788,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -848,7 +818,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Cupcake Challenge",
@@ -878,7 +848,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Mittens, Marshmallow and Magic Storytime",
@@ -908,7 +878,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Home for the Holidays Concert",
@@ -938,7 +908,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -968,7 +938,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -998,7 +968,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Sublimation Mug & Ornament",
@@ -1028,7 +998,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Tech Help",
@@ -1058,7 +1028,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Between Two Comets: The Life of Mark Twain",
@@ -1088,7 +1058,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "The Iroquois Theatre Fire",
@@ -1118,7 +1088,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1148,7 +1118,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1178,7 +1148,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Minecraft Club (Session A)",
@@ -1208,7 +1178,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1238,7 +1208,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1268,7 +1238,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -1298,7 +1268,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Sketchbook Saturdays",
@@ -1328,7 +1298,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -1358,7 +1328,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Minecraft Club (Session B)",
@@ -1388,7 +1358,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Minecraft Club (SessionC )",
@@ -1418,7 +1388,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1448,7 +1418,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1478,7 +1448,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Storybook Cinema",
@@ -1508,7 +1478,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Crochet Corner",
@@ -1538,7 +1508,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1568,7 +1538,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1598,7 +1568,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Babys 1st Art",
@@ -1628,7 +1598,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Session 2 - Holiday Gift Bags",
@@ -1658,7 +1628,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1688,7 +1658,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 56,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1718,7 +1688,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 57,
       "item": {
         "@type": "Event",
         "name": "Adult Book Discussion",
@@ -1748,7 +1718,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 58,
       "item": {
         "@type": "Event",
         "name": "Tuesday Tech Help",
@@ -1778,7 +1748,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 59,
       "item": {
         "@type": "Event",
         "name": "Pop in and Create: Holiday Painting",
@@ -1808,7 +1778,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 60,
       "item": {
         "@type": "Event",
         "name": "Relaxation Station",
@@ -1838,7 +1808,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 61,
       "item": {
         "@type": "Event",
         "name": "Uke Jam Holiday Tunes",

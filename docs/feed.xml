@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 38 of 42 configured sources.</description>
-  <lastBuildDate>Wed, 25 Nov 2026 17:23:56 +0000</lastBuildDate>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 42 configured sources. 4 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Wed, 25 Nov 2026 22:05:48 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: Baby Time</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-11-25</link>
@@ -30,6 +30,14 @@
  Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it… Official listing: https://egvpl.libnet.info/event/17354437</description>
     <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17354437">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Notice on Proposed Car Wash, 1 E. Rand Road</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-notice-on-proposed-car-wash-1-e-rand-road-2026-11-25</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-notice-on-proposed-car-wash-1-e-rand-road-2026-11-25</guid>
+    <description>Official listing: https://www.mountprospect.org/articles/Notice-on-Proposed-Car-Wash-1-E-Rand-Road-217.php</description>
+    <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+    <source url="https://www.mountprospect.org/articles/Notice-on-Proposed-Car-Wash-1-E-Rand-Road-217.php">Village of Mount Prospect — News</source>
   </item>
   <item>
     <title>Elk Grove Village: Incredible Indy Racers</title>
@@ -410,15 +418,6 @@ Ages 9-12. Official listing: https://desplaines.libnet.info/event/17195479</desc
  Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up… Official listing: https://egvpl.libnet.info/event/17354441</description>
     <pubDate>Mon, 30 Nov 2026 00:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17354441">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Elk Grove Village: Middle Grade -Drop In Coloring</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-middle-grade-drop-in-coloring-2026-11-30</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-middle-grade-drop-in-coloring-2026-11-30</guid>
-    <description>Monday, November 30 2026 9:00am - 9:00pm 
- DIY Coloring Official listing: https://egvpl.libnet.info/event/17974840</description>
-    <pubDate>Mon, 30 Nov 2026 09:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/17974840">Elk Grove Village Public Library - Events</source>
   </item>
   <item>
     <title>Wheeling: Discovery Play with The Leaf Thief</title>

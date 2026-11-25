@@ -16,13 +16,6 @@
   },
   {
    "count": 240,
-   "date": "2026-11-23",
-   "horizon_days": 7,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 240,
    "date": "2026-11-24",
    "horizon_days": 6,
    "route": "html_events",
@@ -46,6 +39,13 @@
    "count": 239,
    "date": "2026-11-24",
    "horizon_days": 6,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 239,
+   "date": "2026-11-25",
+   "horizon_days": 5,
    "route": "html_events",
    "type": "html_events"
   },
@@ -159,13 +159,6 @@
    "type": "tribe_venues"
   },
   {
-   "count": 189,
-   "date": "2026-11-23",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 196,
    "date": "2026-11-24",
    "horizon_days": 60,
@@ -209,6 +202,13 @@
   },
   {
    "count": 197,
+   "date": "2026-11-25",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 201,
    "date": "2026-11-25",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -232,13 +232,6 @@
   },
   {
    "count": 21,
-   "date": "2026-11-23",
-   "horizon_days": 182,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 21,
    "date": "2026-11-24",
    "horizon_days": 181,
    "route": "ics",
@@ -262,6 +255,13 @@
    "count": 21,
    "date": "2026-11-24",
    "horizon_days": 181,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 20,
+   "date": "2026-11-25",
+   "horizon_days": 180,
    "route": "ics",
    "type": "ics"
   },
@@ -304,13 +304,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-23",
-   "horizon_days": 12,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 1,
    "date": "2026-11-24",
    "horizon_days": 11,
    "route": "runsignup",
@@ -334,6 +327,13 @@
    "count": 1,
    "date": "2026-11-24",
    "horizon_days": 11,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-25",
+   "horizon_days": 10,
    "route": "runsignup",
    "type": "runsignup"
   },
@@ -376,13 +376,6 @@
   },
   {
    "count": 10,
-   "date": "2026-11-23",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 10,
    "date": "2026-11-24",
    "horizon_days": null,
    "route": "html_events",
@@ -405,6 +398,13 @@
   {
    "count": 10,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -448,13 +448,6 @@
   },
   {
    "count": 10,
-   "date": "2026-11-23",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 10,
    "date": "2026-11-24",
    "horizon_days": null,
    "route": "html_events",
@@ -477,6 +470,13 @@
   {
    "count": 10,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 10,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -520,13 +520,6 @@
   },
   {
    "count": 4,
-   "date": "2026-11-23",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 4,
    "date": "2026-11-24",
    "horizon_days": null,
    "route": "html_events",
@@ -549,6 +542,13 @@
   {
    "count": 4,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 4,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -649,13 +649,6 @@
  ],
  "des-plaines-60016:Des Plaines Public Library \u2014 Events": [
   {
-   "count": 443,
-   "date": "2026-11-23",
-   "horizon_days": 404,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
    "count": 450,
    "date": "2026-11-23",
    "horizon_days": 404,
@@ -717,6 +710,13 @@
    "horizon_days": 402,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 441,
+   "date": "2026-11-25",
+   "horizon_days": 402,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "des-plaines-60016:Des Plaines Theatre \u2014 Events": [
@@ -735,13 +735,6 @@
    "type": "tribe_events"
   },
   {
-   "count": 57,
-   "date": "2026-11-23",
-   "horizon_days": 69,
-   "route": "month_ics",
-   "type": "tribe_events"
-  },
-  {
    "count": 56,
    "date": "2026-11-24",
    "horizon_days": 68,
@@ -766,6 +759,13 @@
    "count": 56,
    "date": "2026-11-24",
    "horizon_days": 68,
+   "route": "month_ics",
+   "type": "tribe_events"
+  },
+  {
+   "count": 56,
+   "date": "2026-11-25",
+   "horizon_days": 67,
    "route": "month_ics",
    "type": "tribe_events"
   },
@@ -807,13 +807,6 @@
    "type": "tribe_venues"
   },
   {
-   "count": 189,
-   "date": "2026-11-23",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 196,
    "date": "2026-11-24",
    "horizon_days": 60,
@@ -857,6 +850,13 @@
   },
   {
    "count": 197,
+   "date": "2026-11-25",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 201,
    "date": "2026-11-25",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -880,13 +880,6 @@
   },
   {
    "count": 0,
-   "date": "2026-11-23",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 0,
    "date": "2026-11-24",
    "horizon_days": null,
    "route": "runsignup",
@@ -909,6 +902,13 @@
   {
    "count": 0,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
@@ -952,13 +952,6 @@
   },
   {
    "count": 500,
-   "date": "2026-11-23",
-   "horizon_days": 84,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
-   "count": 500,
    "date": "2026-11-24",
    "horizon_days": 84,
    "route": "rss",
@@ -982,6 +975,13 @@
    "count": 500,
    "date": "2026-11-24",
    "horizon_days": 84,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 500,
+   "date": "2026-11-25",
+   "horizon_days": 83,
    "route": "rss",
    "type": "rss"
   },
@@ -1023,13 +1023,6 @@
    "type": "tribe_venues"
   },
   {
-   "count": 189,
-   "date": "2026-11-23",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 196,
    "date": "2026-11-24",
    "horizon_days": 60,
@@ -1073,6 +1066,13 @@
   },
   {
    "count": 197,
+   "date": "2026-11-25",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 201,
    "date": "2026-11-25",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -1096,13 +1096,6 @@
   },
   {
    "count": 3,
-   "date": "2026-11-23",
-   "horizon_days": 34,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 3,
    "date": "2026-11-24",
    "horizon_days": 33,
    "route": "runsignup",
@@ -1126,6 +1119,13 @@
    "count": 3,
    "date": "2026-11-24",
    "horizon_days": 33,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 3,
+   "date": "2026-11-25",
+   "horizon_days": 32,
    "route": "runsignup",
    "type": "runsignup"
   },
@@ -1183,13 +1183,6 @@
    "type": "tribe_venues"
   },
   {
-   "count": 189,
-   "date": "2026-11-23",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 196,
    "date": "2026-11-24",
    "horizon_days": 60,
@@ -1233,6 +1226,13 @@
   },
   {
    "count": 197,
+   "date": "2026-11-25",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 201,
    "date": "2026-11-25",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -1327,13 +1327,6 @@
    "type": "rss"
   },
   {
-   "count": 172,
-   "date": "2026-11-23",
-   "horizon_days": 376,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
    "count": 169,
    "date": "2026-11-24",
    "horizon_days": 375,
@@ -1379,6 +1372,13 @@
    "count": 166,
    "date": "2026-11-25",
    "horizon_days": 374,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 165,
+   "date": "2026-11-25",
+   "horizon_days": 66,
    "route": "rss",
    "type": "rss"
   }
@@ -1399,13 +1399,6 @@
    "type": "ics"
   },
   {
-   "count": 49,
-   "date": "2026-11-23",
-   "horizon_days": 206,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
    "count": 48,
    "date": "2026-11-24",
    "horizon_days": 205,
@@ -1430,6 +1423,13 @@
    "count": 48,
    "date": "2026-11-24",
    "horizon_days": 205,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 48,
+   "date": "2026-11-25",
+   "horizon_days": 204,
    "route": "ics",
    "type": "ics"
   },
@@ -1472,13 +1472,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-23",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 1,
    "date": "2026-11-24",
    "horizon_days": null,
    "route": "html_events",
@@ -1501,6 +1494,13 @@
   {
    "count": 1,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1544,13 +1544,6 @@
   },
   {
    "count": 0,
-   "date": "2026-11-23",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 0,
    "date": "2026-11-24",
    "horizon_days": null,
    "route": "runsignup",
@@ -1573,6 +1566,13 @@
   {
    "count": 0,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
@@ -1616,13 +1616,6 @@
   },
   {
    "count": 42,
-   "date": "2026-11-23",
-   "horizon_days": -3,
-   "route": "revize_news_json",
-   "type": "revize_news_json"
-  },
-  {
-   "count": 42,
    "date": "2026-11-24",
    "horizon_days": -4,
    "route": "revize_news_json",
@@ -1667,6 +1660,13 @@
    "count": 42,
    "date": "2026-11-25",
    "horizon_days": -5,
+   "route": "revize_news_json",
+   "type": "revize_news_json"
+  },
+  {
+   "count": 43,
+   "date": "2026-11-25",
+   "horizon_days": 0,
    "route": "revize_news_json",
    "type": "revize_news_json"
   }
@@ -1687,13 +1687,6 @@
    "type": "ics"
   },
   {
-   "count": 41,
-   "date": "2026-11-23",
-   "horizon_days": 198,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
    "count": 40,
    "date": "2026-11-24",
    "horizon_days": 197,
@@ -1718,6 +1711,13 @@
    "count": 40,
    "date": "2026-11-24",
    "horizon_days": 197,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 39,
+   "date": "2026-11-25",
+   "horizon_days": 196,
    "route": "ics",
    "type": "ics"
   },
@@ -1759,13 +1759,6 @@
    "type": "tribe_venues"
   },
   {
-   "count": 189,
-   "date": "2026-11-23",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 196,
    "date": "2026-11-24",
    "horizon_days": 60,
@@ -1809,6 +1802,13 @@
   },
   {
    "count": 197,
+   "date": "2026-11-25",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 201,
    "date": "2026-11-25",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -1832,13 +1832,6 @@
   },
   {
    "count": 3,
-   "date": "2026-11-23",
-   "horizon_days": 16,
-   "route": "localist",
-   "type": "localist"
-  },
-  {
-   "count": 3,
    "date": "2026-11-24",
    "horizon_days": 15,
    "route": "localist",
@@ -1862,6 +1855,13 @@
    "count": 4,
    "date": "2026-11-24",
    "horizon_days": 18,
+   "route": "localist",
+   "type": "localist"
+  },
+  {
+   "count": 4,
+   "date": "2026-11-25",
+   "horizon_days": 17,
    "route": "localist",
    "type": "localist"
   },
@@ -1904,13 +1904,6 @@
   },
   {
    "count": 13,
-   "date": "2026-11-23",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 13,
    "date": "2026-11-24",
    "horizon_days": null,
    "route": "html_events",
@@ -1933,6 +1926,13 @@
   {
    "count": 13,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 13,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -1962,13 +1962,6 @@
  "palatine-60067:Palatine Public Library District \u2014 Events": [
   {
    "count": 25,
-   "date": "2026-11-22",
-   "horizon_days": null,
-   "route": "html_events",
-   "type": "html_events"
-  },
-  {
-   "count": 25,
    "date": "2026-11-23",
    "horizon_days": null,
    "route": "html_events",
@@ -2005,6 +1998,13 @@
   {
    "count": 26,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "html_events",
+   "type": "html_events"
+  },
+  {
+   "count": 26,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "html_events",
    "type": "html_events"
@@ -2048,13 +2048,6 @@
   },
   {
    "count": 1,
-   "date": "2026-11-23",
-   "horizon_days": 3,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 1,
    "date": "2026-11-24",
    "horizon_days": 2,
    "route": "runsignup",
@@ -2078,6 +2071,13 @@
    "count": 1,
    "date": "2026-11-24",
    "horizon_days": 2,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 1,
+   "date": "2026-11-25",
+   "horizon_days": 1,
    "route": "runsignup",
    "type": "runsignup"
   },
@@ -2192,13 +2192,6 @@
   },
   {
    "count": 13,
-   "date": "2026-11-23",
-   "horizon_days": 302,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 13,
    "date": "2026-11-24",
    "horizon_days": 301,
    "route": "ics",
@@ -2222,6 +2215,13 @@
    "count": 13,
    "date": "2026-11-24",
    "horizon_days": 301,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 13,
+   "date": "2026-11-25",
+   "horizon_days": 300,
    "route": "ics",
    "type": "ics"
   },
@@ -2264,13 +2264,6 @@
   },
   {
    "count": 24,
-   "date": "2026-11-23",
-   "horizon_days": 145,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 24,
    "date": "2026-11-24",
    "horizon_days": 144,
    "route": "ics",
@@ -2313,6 +2306,13 @@
   },
   {
    "count": 24,
+   "date": "2026-11-25",
+   "horizon_days": 143,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 25,
    "date": "2026-11-25",
    "horizon_days": 143,
    "route": "ics",
@@ -2336,13 +2336,6 @@
   },
   {
    "count": 2,
-   "date": "2026-11-23",
-   "horizon_days": -3,
-   "route": "rss",
-   "type": "rss"
-  },
-  {
-   "count": 2,
    "date": "2026-11-24",
    "horizon_days": -4,
    "route": "rss",
@@ -2366,6 +2359,13 @@
    "count": 3,
    "date": "2026-11-24",
    "horizon_days": 0,
+   "route": "rss",
+   "type": "rss"
+  },
+  {
+   "count": 3,
+   "date": "2026-11-25",
+   "horizon_days": -1,
    "route": "rss",
    "type": "rss"
   },
@@ -2407,13 +2407,6 @@
    "type": "tribe_venues"
   },
   {
-   "count": 189,
-   "date": "2026-11-23",
-   "horizon_days": 60,
-   "route": "tribe_venues",
-   "type": "tribe_venues"
-  },
-  {
    "count": 196,
    "date": "2026-11-24",
    "horizon_days": 60,
@@ -2457,6 +2450,13 @@
   },
   {
    "count": 197,
+   "date": "2026-11-25",
+   "horizon_days": 60,
+   "route": "tribe_venues",
+   "type": "tribe_venues"
+  },
+  {
+   "count": 201,
    "date": "2026-11-25",
    "horizon_days": 60,
    "route": "tribe_venues",
@@ -2464,13 +2464,6 @@
   }
  ],
  "wheeling-60090:Indian Trails Public Library \u2014 Events": [
-  {
-   "count": 189,
-   "date": "2026-11-23",
-   "horizon_days": 786,
-   "route": "rss",
-   "type": "rss"
-  },
   {
    "count": 189,
    "date": "2026-11-23",
@@ -2533,6 +2526,13 @@
    "horizon_days": 784,
    "route": "rss",
    "type": "rss"
+  },
+  {
+   "count": 182,
+   "date": "2026-11-25",
+   "horizon_days": 784,
+   "route": "rss",
+   "type": "rss"
   }
  ],
  "wheeling-60090:RunSignup \u2014 races in Wheeling": [
@@ -2552,13 +2552,6 @@
   },
   {
    "count": 0,
-   "date": "2026-11-23",
-   "horizon_days": null,
-   "route": "runsignup",
-   "type": "runsignup"
-  },
-  {
-   "count": 0,
    "date": "2026-11-24",
    "horizon_days": null,
    "route": "runsignup",
@@ -2581,6 +2574,13 @@
   {
    "count": 0,
    "date": "2026-11-24",
+   "horizon_days": null,
+   "route": "runsignup",
+   "type": "runsignup"
+  },
+  {
+   "count": 0,
+   "date": "2026-11-25",
    "horizon_days": null,
    "route": "runsignup",
    "type": "runsignup"
@@ -2624,13 +2624,6 @@
   },
   {
    "count": 137,
-   "date": "2026-11-23",
-   "horizon_days": 1141,
-   "route": "ics",
-   "type": "ics"
-  },
-  {
-   "count": 137,
    "date": "2026-11-24",
    "horizon_days": 1140,
    "route": "ics",
@@ -2673,6 +2666,13 @@
   },
   {
    "count": 137,
+   "date": "2026-11-25",
+   "horizon_days": 1139,
+   "route": "ics",
+   "type": "ics"
+  },
+  {
+   "count": 140,
    "date": "2026-11-25",
    "horizon_days": 1139,
    "route": "ics",

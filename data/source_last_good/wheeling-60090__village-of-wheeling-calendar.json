@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-25T14:07:16+00:00",
+ "fetched_at": "2026-11-25T22:05:48+00:00",
  "items": [
   {
    "date": "20261126T080000",
@@ -27,6 +27,27 @@
    "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2053",
    "end_date": "20261203T235900",
    "title": "Peer Jury",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20261204T180000",
+   "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2239",
+   "end_date": "20261204T200000",
+   "title": "Lollipop Lane",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20261205T140000",
+   "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2240",
+   "end_date": "20261205T170000",
+   "title": "Lolliop Lane",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20261206T140000",
+   "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2241",
+   "end_date": "20261206T170000",
+   "title": "Lollipop Lane",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   },
   {
@@ -398,27 +419,6 @@
    "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2015",
    "end_date": "20270906T235900",
    "title": "Village Board Regular Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
-  {
-   "date": "20270908T183000",
-   "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2146",
-   "end_date": "20270908T235900",
-   "title": "Plan Commission Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
-  {
-   "date": "20270920T183000",
-   "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2170",
-   "end_date": "20270920T235900",
-   "title": "Village Board Regular Meeting",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
-  {
-   "date": "20270920T183000",
-   "detail": "https://www.wheelingil.gov/m/calendar/event/detail/2222",
-   "end_date": "20270920T235959",
-   "title": "Village Board Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],

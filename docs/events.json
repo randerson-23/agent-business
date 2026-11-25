@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events across every region — Within Ten",
-  "dateModified": "2026-11-25T17:23:56+00:00",
-  "numberOfItems": 232,
+  "dateModified": "2026-11-25T22:05:48+00:00",
+  "numberOfItems": 236,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -100,6 +100,35 @@
       "position": 4,
       "item": {
         "@type": "Event",
+        "name": "Notice on Proposed Car Wash, 1 E. Rand Road",
+        "startDate": "2026-11-25",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-notice-on-proposed-car-wash-1-e-rand-road-2026-11-25",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mountprospect.org/articles/Notice-on-Proposed-Car-Wash-1-E-Rand-Road-217.php",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Mount Prospect",
+          "url": "https://www.mountprospect.org"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Event",
         "name": "Incredible Indy Racers",
         "startDate": "2026-11-25T10:00:00-06:00",
         "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-incredible-indy-racers-2026-11-25",
@@ -127,7 +156,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -157,7 +186,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Inglés para Hispanohablantes",
@@ -188,7 +217,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Finger Painting",
@@ -219,7 +248,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Sphero Strike Zone",
@@ -249,7 +278,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Christkindlmarket",
@@ -279,7 +308,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Village Tree Lighting Ceremony",
@@ -310,7 +339,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "EARLY CLOSING - Thanksgiving Holiday",
@@ -341,7 +370,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "MIKE & JOE - The Midwest's Most Renowned Cover Band // HAIRBANGERS BALL",
@@ -372,7 +401,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Blues Night Extravaganza Featuring Downtown Charlie Brown, Sean Mckee, Miles Minor, Jeff Brinkman and Joe Valentino - Thanksgiving Eve!",
@@ -403,7 +432,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -433,7 +462,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Free! Triple Turkey Burner",
@@ -463,7 +492,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "🦃 Palatine Park District Turkey Trot",
@@ -493,7 +522,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "🦃 Arlington Heights Turkey Trot",
@@ -523,7 +552,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "VIRTUAL Culture & Conversation (level: intermediate)",
@@ -553,7 +582,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -583,7 +612,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -613,7 +642,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -643,7 +672,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting Ceremony",
@@ -674,7 +703,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting",
@@ -705,7 +734,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Lotería Night | Noche de Lotería | At the Branch",
@@ -736,7 +765,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Kashmir: The Music of Led Zeppelin",
@@ -767,7 +796,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Jazz with Donny Demarco & Tune Town",
@@ -798,7 +827,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Games & Gab",
@@ -828,7 +857,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -858,7 +887,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -888,7 +917,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Schaumburg Turkey Trot Half Marathon & 5K",
@@ -918,7 +947,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -948,7 +977,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "$1 CHRISTMAS CLASSIC FILM SERIES: \"How The Grinch Stole Christmas\" (2000)",
@@ -979,7 +1008,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "The Financial Aid Process for College",
@@ -1011,7 +1040,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Tween Movie",
@@ -1043,7 +1072,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Picture Book Bingo",
@@ -1073,7 +1102,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "What’s On The Menu?",
@@ -1103,7 +1132,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "An Evening with Deacon Blues: Steely Dan Tribute",
@@ -1134,7 +1163,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass: Live Jazz with the Bourbon 'N Brass Brian Patti Prohibition Dance Band - 20S & 30S Dance Hits",
@@ -1165,7 +1194,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1195,7 +1224,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1225,7 +1254,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Cicada Pinning Class",
@@ -1255,7 +1284,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Reading Fair",
@@ -1286,7 +1315,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Tech en el Forum (Spanish)",
@@ -1318,7 +1347,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Dino Party",
@@ -1348,7 +1377,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -1380,7 +1409,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -1410,7 +1439,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1436,36 +1465,6 @@
         },
         "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
         "description": "Monday, November 30 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 48,
-      "item": {
-        "@type": "Event",
-        "name": "Middle Grade -Drop In Coloring",
-        "startDate": "2026-11-30T09:00:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-middle-grade-drop-in-coloring-2026-11-30",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17974840",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Monday, November 30 2026 9:00am - 9:00pm \n DIY Coloring"
       }
     },
     {
@@ -4351,6 +4350,36 @@
       "position": 143,
       "item": {
         "@type": "Event",
+        "name": "Lollipop Lane",
+        "startDate": "2026-12-04T18:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-lollipop-lane-2026-12-04",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "https://www.wheelingil.gov/m/calendar/event/detail/2239"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 144,
+      "item": {
+        "@type": "Event",
         "name": "ESL Tea & Talk",
         "startDate": "2026-12-04T18:00:00-06:00",
         "url": "https://withintenmiles.com/wheeling-60090/#ev-esl-tea-talk-2026-12-04",
@@ -4379,7 +4408,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 144,
+      "position": 145,
       "item": {
         "@type": "Event",
         "name": "Family Movie: Minions and Monsters",
@@ -4410,7 +4439,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 145,
+      "position": 146,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Jazz, Pop and R&B with Michael Ross Band",
@@ -4441,7 +4470,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 146,
+      "position": 147,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -4471,7 +4500,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 147,
+      "position": 148,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -4501,7 +4530,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 148,
+      "position": 149,
       "item": {
         "@type": "Event",
         "name": "Palatine Winter Farmers' Market",
@@ -4531,7 +4560,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 149,
+      "position": 150,
       "item": {
         "@type": "Event",
         "name": "One Starry Night - Christmas Bible School",
@@ -4561,7 +4590,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 150,
+      "position": 151,
       "item": {
         "@type": "Event",
         "name": "Rotary Santa Run Walk & Reindeer Dash",
@@ -4591,7 +4620,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 151,
+      "position": 152,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -4621,7 +4650,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 152,
+      "position": 153,
       "item": {
         "@type": "Event",
         "name": "Sketchbook Saturdays",
@@ -4651,7 +4680,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 153,
+      "position": 154,
       "item": {
         "@type": "Event",
         "name": "Teddy Bear Walk",
@@ -4682,7 +4711,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 154,
+      "position": 155,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -4712,7 +4741,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 155,
+      "position": 156,
       "item": {
         "@type": "Event",
         "name": "Family Photos with Santa",
@@ -4742,7 +4771,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 156,
+      "position": 157,
       "item": {
         "@type": "Event",
         "name": "Winter Makers Market",
@@ -4772,7 +4801,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 157,
+      "position": 158,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Winter Fair",
@@ -4802,7 +4831,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 158,
+      "position": 159,
       "item": {
         "@type": "Event",
         "name": "$1 Christmas Classic Film Series: \"Elf\" (2003)",
@@ -4833,7 +4862,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 159,
+      "position": 160,
       "item": {
         "@type": "Event",
         "name": "Puzzle Exchange",
@@ -4864,7 +4893,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 160,
+      "position": 161,
       "item": {
         "@type": "Event",
         "name": "Minecraft Club (Session B)",
@@ -4894,7 +4923,67 @@
     },
     {
       "@type": "ListItem",
-      "position": 161,
+      "position": 162,
+      "item": {
+        "@type": "Event",
+        "name": "Jingle Mingle",
+        "startDate": "2026-12-05T14:00:00-06:00",
+        "url": "https://withintenmiles.com/palatine-60067/#ev-jingle-mingle-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Palatine, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Palatine",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Palatine",
+          "url": "https://www.palatine.il.us"
+        },
+        "image": "https://withintenmiles.com/og/palatine-60067.png",
+        "description": "Join us for a festive afternoon filled with holiday music, war"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 163,
+      "item": {
+        "@type": "Event",
+        "name": "Lolliop Lane",
+        "startDate": "2026-12-05T14:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-lolliop-lane-2026-12-05",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "https://www.wheelingil.gov/m/calendar/event/detail/2240"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 164,
       "item": {
         "@type": "Event",
         "name": "Minecraft Club (SessionC )",
@@ -4924,7 +5013,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 162,
+      "position": 165,
       "item": {
         "@type": "Event",
         "name": "MPCB The Joy of Christmas",
@@ -4955,7 +5044,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 163,
+      "position": 166,
       "item": {
         "@type": "Event",
         "name": "Winter Bonfire",
@@ -4985,7 +5074,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 164,
+      "position": 167,
       "item": {
         "@type": "Event",
         "name": "Postponed: Aly & Aj - Places to Run Tour 2026",
@@ -5017,7 +5106,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 165,
+      "position": 168,
       "item": {
         "@type": "Event",
         "name": "A Motown Christmas Featuring Salutes to Martha Reeves & the Vandellas, Stevie Wonder, the Temptations, the 4 Tops, and the Supremes",
@@ -5048,7 +5137,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 166,
+      "position": 169,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass: Live Blues with Dave Weld & the Imperial Flames",
@@ -5079,7 +5168,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 167,
+      "position": 170,
       "item": {
         "@type": "Event",
         "name": "Holiday Cabaret: A Joyful Twist",
@@ -5110,7 +5199,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 168,
+      "position": 171,
       "item": {
         "@type": "Event",
         "name": "Winter Camp Showcase",
@@ -5141,7 +5230,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 169,
+      "position": 172,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -5171,7 +5260,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 170,
+      "position": 173,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -5201,7 +5290,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 171,
+      "position": 174,
       "item": {
         "@type": "Event",
         "name": "Community Weaving Project",
@@ -5232,7 +5321,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 172,
+      "position": 175,
       "item": {
         "@type": "Event",
         "name": "One Book One Community Open House",
@@ -5263,7 +5352,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 173,
+      "position": 176,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -5294,7 +5383,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 174,
+      "position": 177,
       "item": {
         "@type": "Event",
         "name": "Storybook Cinema",
@@ -5324,7 +5413,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 175,
+      "position": 178,
       "item": {
         "@type": "Event",
         "name": "Foundation Pop Up Shop",
@@ -5355,7 +5444,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 176,
+      "position": 179,
       "item": {
         "@type": "Event",
         "name": "Film Screening",
@@ -5388,7 +5477,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 177,
+      "position": 180,
       "item": {
         "@type": "Event",
         "name": "Crochet Corner",
@@ -5418,7 +5507,37 @@
     },
     {
       "@type": "ListItem",
-      "position": 178,
+      "position": 181,
+      "item": {
+        "@type": "Event",
+        "name": "Lollipop Lane",
+        "startDate": "2026-12-06T14:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-lollipop-lane-2026-12-06",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wheeling, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Village of Wheeling",
+          "url": "https://www.wheelingil.gov"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "https://www.wheelingil.gov/m/calendar/event/detail/2241"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 182,
       "item": {
         "@type": "Event",
         "name": "The Festival Chorus Christmas Concert 2026",
@@ -5448,7 +5567,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 179,
+      "position": 183,
       "item": {
         "@type": "Event",
         "name": "Holly Jolly Trolly - SOLD OUT",
@@ -5478,7 +5597,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 180,
+      "position": 184,
       "item": {
         "@type": "Event",
         "name": "Christmas Wizards...a Night of Trans-Siberian Orchestra and More Starring Infinity",
@@ -5509,7 +5628,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 181,
+      "position": 185,
       "item": {
         "@type": "Event",
         "name": "The 12 Dames of Christmas with Angela Ingersoll",
@@ -5540,7 +5659,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 182,
+      "position": 186,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -5570,7 +5689,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 183,
+      "position": 187,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -5600,7 +5719,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 184,
+      "position": 188,
       "item": {
         "@type": "Event",
         "name": "Indoor Soccer League Registration Deadline",
@@ -5630,7 +5749,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 185,
+      "position": 189,
       "item": {
         "@type": "Event",
         "name": "High School Volunteer Kits",
@@ -5661,7 +5780,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 186,
+      "position": 190,
       "item": {
         "@type": "Event",
         "name": "Babys 1st Art",
@@ -5691,7 +5810,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 187,
+      "position": 191,
       "item": {
         "@type": "Event",
         "name": "Creation Station: Winter Luminaries",
@@ -5722,7 +5841,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 188,
+      "position": 192,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -5753,7 +5872,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 189,
+      "position": 193,
       "item": {
         "@type": "Event",
         "name": "Genealogy Chat",
@@ -5784,7 +5903,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 190,
+      "position": 194,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance / Assistencia de Tech",
@@ -5815,7 +5934,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 191,
+      "position": 195,
       "item": {
         "@type": "Event",
         "name": "DIY Ugly Sweater",
@@ -5847,7 +5966,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 192,
+      "position": 196,
       "item": {
         "@type": "Event",
         "name": "K9 Reading Buddies",
@@ -5878,7 +5997,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 193,
+      "position": 197,
       "item": {
         "@type": "Event",
         "name": "3D Printing for Families: Learn Thingiverse",
@@ -5909,7 +6028,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 194,
+      "position": 198,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -5941,7 +6060,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 195,
+      "position": 199,
       "item": {
         "@type": "Event",
         "name": "Holiday Napkins",
@@ -5972,7 +6091,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 196,
+      "position": 200,
       "item": {
         "@type": "Event",
         "name": "Session 2 - Holiday Gift Bags",
@@ -6002,7 +6121,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 197,
+      "position": 201,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -6034,7 +6153,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 198,
+      "position": 202,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -6064,7 +6183,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 199,
+      "position": 203,
       "item": {
         "@type": "Event",
         "name": "Dungeons And Dragons",
@@ -6095,7 +6214,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 200,
+      "position": 204,
       "item": {
         "@type": "Event",
         "name": "Genealogy Interest Group Meeting",
@@ -6126,7 +6245,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 201,
+      "position": 205,
       "item": {
         "@type": "Event",
         "name": "Tenant Rights",
@@ -6157,7 +6276,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 202,
+      "position": 206,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -6187,7 +6306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 203,
+      "position": 207,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -6217,7 +6336,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 204,
+      "position": 208,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -6249,7 +6368,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 205,
+      "position": 209,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -6281,7 +6400,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 206,
+      "position": 210,
       "item": {
         "@type": "Event",
         "name": "Meet with Your Government Representatives",
@@ -6313,7 +6432,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 207,
+      "position": 211,
       "item": {
         "@type": "Event",
         "name": "Non-Resident Registration",
@@ -6343,7 +6462,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 208,
+      "position": 212,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: On-Zoom 2026-2027",
@@ -6375,7 +6494,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 209,
+      "position": 213,
       "item": {
         "@type": "Event",
         "name": "Tuesday Morning Book Discussion: Holiday Party",
@@ -6407,7 +6526,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 210,
+      "position": 214,
       "item": {
         "@type": "Event",
         "name": "Messy Makers Storytime: Magical Creatures",
@@ -6438,7 +6557,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 211,
+      "position": 215,
       "item": {
         "@type": "Event",
         "name": "Small Serendipity",
@@ -6468,7 +6587,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 212,
+      "position": 216,
       "item": {
         "@type": "Event",
         "name": "Noisy Time",
@@ -6499,7 +6618,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 213,
+      "position": 217,
       "item": {
         "@type": "Event",
         "name": "Adult Book Discussion",
@@ -6529,7 +6648,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 214,
+      "position": 218,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -6560,7 +6679,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 215,
+      "position": 219,
       "item": {
         "@type": "Event",
         "name": "Tuesday Tech Help",
@@ -6590,7 +6709,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 216,
+      "position": 220,
       "item": {
         "@type": "Event",
         "name": "Exile, Memory, and the Meaning of Home",
@@ -6621,7 +6740,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 217,
+      "position": 221,
       "item": {
         "@type": "Event",
         "name": "Christmas in a Cup",
@@ -6653,7 +6772,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 218,
+      "position": 222,
       "item": {
         "@type": "Event",
         "name": "Pop in and Create: Holiday Painting",
@@ -6683,7 +6802,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 219,
+      "position": 223,
       "item": {
         "@type": "Event",
         "name": "Eastern European Dessert",
@@ -6714,7 +6833,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 220,
+      "position": 224,
       "item": {
         "@type": "Event",
         "name": "Relaxation Station",
@@ -6744,7 +6863,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 221,
+      "position": 225,
       "item": {
         "@type": "Event",
         "name": "Paper Craft Happy Hour",
@@ -6775,7 +6894,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 222,
+      "position": 226,
       "item": {
         "@type": "Event",
         "name": "Cooking 101: Mug Pizza",
@@ -6806,7 +6925,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 223,
+      "position": 227,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -6838,7 +6957,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 224,
+      "position": 228,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -6870,7 +6989,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 225,
+      "position": 229,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -6901,7 +7020,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 226,
+      "position": 230,
       "item": {
         "@type": "Event",
         "name": "Adult Board Game Night",
@@ -6933,7 +7052,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 227,
+      "position": 231,
       "item": {
         "@type": "Event",
         "name": "'Tis the Season",
@@ -6964,7 +7083,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 228,
+      "position": 232,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -6995,7 +7114,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 229,
+      "position": 233,
       "item": {
         "@type": "Event",
         "name": "Friends of the Library Meeting",
@@ -7027,7 +7146,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 230,
+      "position": 234,
       "item": {
         "@type": "Event",
         "name": "Uke Jam Holiday Tunes",
@@ -7057,7 +7176,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 231,
+      "position": 235,
       "item": {
         "@type": "Event",
         "name": "Stone Gate Condo Assoc.",
@@ -7089,7 +7208,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 232,
+      "position": 236,
       "item": {
         "@type": "Event",
         "name": "Pop Art Pet Portraits",

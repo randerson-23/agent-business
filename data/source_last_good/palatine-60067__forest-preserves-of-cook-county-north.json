@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-25T14:07:16+00:00",
+ "fetched_at": "2026-11-25T22:05:48+00:00",
  "items": [
   {
    "date": "20261125T093000",
@@ -187,6 +187,17 @@
    "url": "https://fpdcc.com/event/volunteer-workday-3/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261212T130000",
+   "detail": "Learn simple care and maintenance for your cross-country skis. Bring your own to work on!",
+   "end_date": "20261212T130000",
+   "lat": 41.68926677,
+   "lon": -87.92571427,
+   "title": "Wax Clinic",
+   "url": "https://fpdcc.com/event/wax-clinic/",
+   "venue_city": "Lemont",
+   "venue_name": "Sagawau Environmental Learning Center"
   },
   {
    "date": "20261212T150000",
@@ -618,6 +629,17 @@
    "venue_name": "Crabtree Nature Center"
   },
   {
+   "date": "20261221T070000",
+   "detail": "Join us to explore the grounds before or after hours to capture nature. Meet at exhibit building.",
+   "end_date": "20261221T070000",
+   "lat": 42.11563369,
+   "lon": -88.16357511,
+   "title": "Crabtree Photography",
+   "url": "https://fpdcc.com/event/crabtree-photography/",
+   "venue_city": "Barrington Hills",
+   "venue_name": "Crabtree Nature Center"
+  },
+  {
    "date": "20261221T100000",
    "detail": "Create a junk journal by documenting your observations within nature and using sustainable art materials. Supplies provided, or BYO.",
    "end_date": "20261221T120000",
@@ -638,28 +660,6 @@
    "url": "https://fpdcc.com/event/winter-solstice-celebration/",
    "venue_city": "Willow Springs",
    "venue_name": "Little Red Schoolhouse Nature Center"
-  },
-  {
-   "date": "20261222T100000",
-   "detail": "Nature stories, crafts, and activities. Children ages 3-6 w/ adult.",
-   "end_date": "20261222T100000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Small Serendipity",
-   "url": "https://fpdcc.com/event/small-serendipity/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261222T100000",
-   "detail": "Nature stories, crafts, and activities. Children ages 3-6 w/ adult.",
-   "end_date": "20261222T100000",
-   "lat": 42.09501105,
-   "lon": -87.88484528,
-   "title": "Small Serendipity",
-   "url": "https://fpdcc.com/event/small-serendipity/",
-   "venue_city": "Northbrook",
-   "venue_name": "River Trail Nature Center"
   }
  ],
  "source": "Forest Preserves of Cook County — north"

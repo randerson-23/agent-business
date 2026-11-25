@@ -3,8 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Palatine</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 36 configured sources.</description>
-  <lastBuildDate>Wed, 25 Nov 2026 17:23:56 +0000</lastBuildDate>
+  <description>Upcoming events in Palatine, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 29 of 36 configured sources. 4 sources are shown from their last update, up to 8 hours ago.</description>
+  <lastBuildDate>Wed, 25 Nov 2026 22:05:48 +0000</lastBuildDate>
   <item>
     <title>Palatine: 🦃 Palatine Park District Turkey Trot</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-palatine-park-district-turkey-trot-2026-11-26</link>
@@ -43,6 +43,14 @@
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-one-starry-night-christmas-bible-school-2026-12-05</guid>
     <description>🎄Give Your Child the Gift of Christmas! 🎄Join St. Tho Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
     <pubDate>Sat, 05 Dec 2026 09:00:00 +0000</pubDate>
+    <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
+  </item>
+  <item>
+    <title>Palatine: Jingle Mingle</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-jingle-mingle-2026-12-05</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-jingle-mingle-2026-12-05</guid>
+    <description>Join us for a festive afternoon filled with holiday music, war Official listing: https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14</description>
+    <pubDate>Sat, 05 Dec 2026 14:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
@@ -182,6 +190,14 @@
     <source url="https://www.palatine.il.us/common/modules/iCalendar/iCalendar.aspx?feed=calendar&amp;catID=14">Village of Palatine — Calendar</source>
   </item>
   <item>
+    <title>Palatine: Crabtree Photography</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-crabtree-photography-2026-12-21</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-crabtree-photography-2026-12-21</guid>
+    <description>Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine. Join us to explore the grounds before or after hours to capture nature. Meet at exhibit… Official listing: https://fpdcc.com/event/crabtree-photography/</description>
+    <pubDate>Mon, 21 Dec 2026 07:00:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/crabtree-photography/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
     <title>Palatine: Winter Play Date</title>
     <link>https://withintenmiles.com/palatine-60067/#ev-winter-play-date-2026-12-28</link>
     <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-winter-play-date-2026-12-28</guid>
@@ -196,6 +212,14 @@
     <description>1st and 3rd Saturdays, 9 a.m. to noon, at the Palatine Train Station parking lot, November through April. Official listing: https://www.palatine.il.us/217/Farmers-Market</description>
     <pubDate>Sat, 02 Jan 2027 09:00:00 +0000</pubDate>
     <source url="https://www.palatine.il.us/217/Farmers-Market">Palatine</source>
+  </item>
+  <item>
+    <title>Palatine: Crabtree Photography Meetups</title>
+    <link>https://withintenmiles.com/palatine-60067/#ev-crabtree-photography-meetups-2027-01-03</link>
+    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-crabtree-photography-meetups-2027-01-03</guid>
+    <description>Crabtree Nature Center (Barrington Hills) · ≈ 7 mi from Palatine. Drop in to join the Crabtree Nature Photographers’ Meetup Group to explore the grounds and… Official listing: https://fpdcc.com/event/crabtree-photography-meetups-2/</description>
+    <pubDate>Sun, 03 Jan 2027 08:30:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/crabtree-photography-meetups-2/">Forest Preserves of Cook County — north</source>
   </item>
   <item>
     <title>Palatine: Wee Wanderer Wednesday</title>
