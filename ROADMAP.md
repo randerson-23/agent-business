@@ -220,7 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
-0. **563** (no unconfirmed prices; Willow Hill first), then **562** (preview Dec 23 and Dec 30 now), then **564** (previews index).
+0. ~~**563**~~ **DONE**, ~~**562**~~ **DONE**, ~~**564**~~ **DONE** (2026-11-25).
 0. ~~**560**~~ **DONE**, then ~~**559**~~ **DONE** with 535's candidate list (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
 0. ~~**556, 557, 558**~~ **DONE 2026-11-24, Nov 25 preview re-run locally and clean** (Thanksgiving issue fixes from its preview: past lighting chips drop off, closures de-duplicated with days, virtual events out of weekend lists; then re-run the Nov 25 preview; **before Tue Nov 24's build**).
 0. ~~**553**~~ **DONE**, then ~~**555**~~ **DONE** (day headings on town weekend pages).
@@ -22799,7 +22799,7 @@ item 554's third round.
 
 #### P1 (new)
 
-562. **Preview every known special delivery now.** Build loop:
+562. **DONE (2026-11-25).** `build_preview.py --all-specials` (every `delivery_overrides` date from today on; past ones skipped); preview-issue.yml now runs it daily at 15:17 UTC (and on push/dispatch), so Dec 23 and Dec 30 previews exist now and refresh with the feeds. Each preview opens with *"Preview built <date>; data may change before <delivery>"* plus a `preview-built` meta. **Preview every known special delivery now.** Build loop:
 
      - `build_preview.py --all-specials` builds one preview per future
        `delivery_overrides` date (today: Dec 23, Dec 30), whatever the
@@ -22811,7 +22811,7 @@ item 554's third round.
      Tests: with overrides on Dec 23 and Dec 30 and today Nov 25, both
      previews are written; a past override is skipped.
 
-563. **Never show an unconfirmed price.** For Willow Hill, find the 2026
+563. **DONE (2026-11-25).** `load_light_displays` shows a `price` only with its own `price_confirmed_via`; otherwise a ticketed display reads *"Ticketed; see site for prices"*. Willow Hill's price removed: search found only Patch's 2025 *$40 per car* and nothing 2026 on willowhilllights.com. North School Park's *Free* carries the AHPD page as its confirmation. **Never show an unconfirmed price.** For Willow Hill, find the 2026
      price on willowhilllights.com (or its ticketing page). If it isn't
      there, drop the `price` line and say *"Ticketed; see site for
      prices"*. Build loop: a `price` field needs its own
@@ -22823,7 +22823,7 @@ item 554's third round.
 
 #### P2 (new)
 
-564. **A previews index page** at `docs/previews/index.html` (noindex,
+564. **DONE (2026-11-25).** `build_preview.write_index` rewrites `docs/previews/index.html` (noindex, unlinked) after every preview: one line per folder, newest delivery first, with the build date and links to each town's version. Bookmark `withintenmiles.com/previews/`. **A previews index page** at `docs/previews/index.html` (noindex,
      linked from nowhere public): one line per preview with delivery date,
      build time and a link. Lets the owner check all upcoming issues from
      one bookmark.

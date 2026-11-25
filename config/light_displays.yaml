@@ -2,12 +2,15 @@
 # and one line in the Dec 3 - Dec 24 issues. Each entry ONLY from the organiser's own page (or item 478's
 # search fallback with confirmed_via), never a roundup. Say only what that page says: no hours or end date
 # the page doesn't give. `lat`/`lon` give the "≈ N mi from <town>" line for a display outside the towns.
+# Item 563: a `price` shows only with its own `price_confirmed_via` (the first-party page and the date
+# it was read); without one a ticketed display reads "Ticketed; see site for prices".
 displays:
   - name: "North School Park lights"
     town: "Arlington Heights"
     where: "North School Park, 307 N. Evergreen Ave."
     line: "Over 100,000 lights, switched on at the Holiday Tree Lighting on Fri Nov 27 (4:30-6:30 PM)."
     price: "Free"
+    price_confirmed_via: "ahpd.org event page via search, 2026-11-18 (free community event)"
     ticketed: false
     from: "2026-11-27"
     source_url: "https://www.ahpd.org/event/holiday-tree-lighting-2026/"
@@ -18,7 +21,9 @@ displays:
     lat: 42.1069
     lon: -87.8566
     line: "A 2.5-mile drive-through show of over a million lights, nightly from 5 PM, Nov 13 - Jan 3."
-    price: "$40 per car online, $50 at the gate"
+    # Item 563: no 2026 price found on willowhilllights.com (search 2026-11-25 found only Patch's
+    # 2025 "$40 per car"), so no price is shown until the site's own 2026 price is read.
+    price: null
     ticketed: true
     from: "2026-11-13"
     until: "2027-01-03"

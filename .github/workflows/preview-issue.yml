@@ -6,9 +6,9 @@ name: Preview special issues
 # be read days before it sends. Never touches the live pages or the send.
 on:
   schedule:
-    # Monday and Friday 15:17 UTC: the Monday before each moved delivery, and a
-    # Friday refresh for one that is still more than a few days out.
-    - cron: "17 15 * * 1,5"
+    # Daily 15:17 UTC (item 562): every future special delivery is rebuilt, so
+    # each preview refreshes with the feeds' newest data.
+    - cron: "17 15 * * *"
   workflow_dispatch:
     inputs:
       as_of:
@@ -48,7 +48,7 @@ jobs:
           if [ -n "$AS_OF_INPUT" ]; then
             python scripts/build_preview.py --as-of "$AS_OF_INPUT"
           else
-            python scripts/build_preview.py --next-special
+            python scripts/build_preview.py --all-specials
           fi
 
       - name: Commit preview
