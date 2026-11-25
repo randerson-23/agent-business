@@ -1,60 +1,6 @@
 {
- "fetched_at": "2026-11-24T22:01:15+00:00",
+ "fetched_at": "2026-11-25T06:00:30+00:00",
  "items": [
-  {
-   "date": "Tue, 24 Nov 2026 09:15:00 +0000",
-   "detail": "Tuesday, November 24 2026 9:15am - 12:15pm \n For more information, please contact Oakton College at 847-635-1426",
-   "title": "Reading/Literacy Class",
-   "url": "https://desplaines.libnet.info/event/15801734"
-  },
-  {
-   "date": "Tue, 24 Nov 2026 09:15:00 +0000",
-   "detail": "Tuesday, November 24 2026 9:15am - 12:15pm \n ESL (English as a Second Language) Class - Oakton College\n\n Teaches listening, speaking, reading, writing, and conversation skills",
-   "title": "ESL (English as a Second Language) Class - Oakton College",
-   "url": "https://desplaines.libnet.info/event/15803245"
-  },
-  {
-   "date": "Tue, 24 Nov 2026 10:30:00 +0000",
-   "detail": "Tuesday, November 24 2026 10:30am - 11:30am \n Need something to do on your day off from school? Stop by the Program Room for a fun craft! All ages. No registration required.",
-   "title": "School's Out Drop-in Craft",
-   "url": "https://desplaines.libnet.info/event/17057208"
-  },
-  {
-   "date": "Tue, 24 Nov 2026 16:00:00 +0000",
-   "detail": "Tuesday, November 24 2026 4:00pm - 6:00pm \n Join us to design a Stanley tumbler in the Canvas! We will have Stanley cups to choose from!",
-   "title": "Design a Stanley in the Canvas",
-   "url": "https://desplaines.libnet.info/event/17690351"
-  },
-  {
-   "date": "Tue, 24 Nov 2026 16:00:00 +0000",
-   "detail": "Tuesday, November 24 2026 4:00pm - 5:00pm \n Need something to do on your day off from school? Stop by the Program Room for a fun craft! All ages. No registration required.",
-   "title": "School's Out Drop-in Craft",
-   "url": "https://desplaines.libnet.info/event/17057209"
-  },
-  {
-   "date": "Tue, 24 Nov 2026 17:00:00 +0000",
-   "detail": "Tuesday, November 24 2026 5:00pm - 6:00pm \n Come in and get to know your teen librarians!",
-   "title": "Book a Teen Librarian",
-   "url": "https://desplaines.libnet.info/event/17867458"
-  },
-  {
-   "date": "Tue, 24 Nov 2026 17:30:00 +0000",
-   "detail": "Tuesday, November 24 2026 5:30pm - 7:30pm \n Do you have a question about technology or how to use the library's services? Assistance is provided on a first-come, first-served basis and limited to 20 minutes.",
-   "title": "Tech in the Forum",
-   "url": "https://desplaines.libnet.info/event/17623538"
-  },
-  {
-   "date": "Tue, 24 Nov 2026 18:30:00 +0000",
-   "detail": "Tuesday, November 24 2026 6:30pm - 8:30pm \n Career & Job Counseling @ the library - One-on-one appointment on Zoom\n\nMeet with a career expert for resume help, cover letter writing, interviewing skills, job searching or LinkedIn profile review.",
-   "title": "Career & Job Counseling @ the library",
-   "url": "https://desplaines.libnet.info/event/16717145"
-  },
-  {
-   "date": "Tue, 24 Nov 2026 19:00:00 +0000",
-   "detail": "Tuesday, November 24 2026 7:00pm - 8:30pm \n Jeffrey 872-206-0333",
-   "title": "Bridges of Meaning",
-   "url": "https://desplaines.libnet.info/event/17190857"
-  },
   {
    "date": "Thu, 26 Nov 2026 00:00:00 +0000",
    "detail": "Thursday, November 26 2026 12:00am - 11:59pm \n Library Closed",
@@ -360,6 +306,60 @@
    "detail": "Thursday, December 10 2026 6:30pm - 7:30pm \n Descubre lo que Google Drive ofrece. Aprende como navegar Google Drive, crear carpetas, organizar documentos, y compartir tus archivos. Crear una cuenta de Gmail, aprenderás como usar y navegar Gmail.",
    "title": "Google: Drive y Gmail Principiantes (Spanish)",
    "url": "https://desplaines.libnet.info/event/17888193"
+  },
+  {
+   "date": "Fri, 11 Dec 2026 10:00:00 +0000",
+   "detail": "Friday, December 11 2026 10:00am - 12:00pm \n Come join us for fun, good company, and bowling on the Wii U in The Commons on the 3rd Floor.",
+   "title": "Ain't Wii Got Fun!",
+   "url": "https://desplaines.libnet.info/event/16742531"
+  },
+  {
+   "date": "Fri, 11 Dec 2026 10:00:00 +0000",
+   "detail": "Friday, December 11 2026 10:00am - 12:00pm \n Muna Center of Concern 847-823-0453",
+   "title": "Center of Concern Chore Training",
+   "url": "https://desplaines.libnet.info/event/17115605"
+  },
+  {
+   "date": "Fri, 11 Dec 2026 14:00:00 +0000",
+   "detail": "Friday, December 11 2026 2:00pm - 3:00pm \n Design a dazzling, shimmering holiday masterpiece featuring a snowy winter cottage glowing with Christmas cheer.",
+   "title": "Sparkle & Shine",
+   "url": "https://desplaines.libnet.info/event/17515667"
+  },
+  {
+   "date": "Fri, 11 Dec 2026 19:00:00 +0000",
+   "detail": "Friday, December 11 2026 7:00pm - 8:00pm \n Listen to the beautiful sound of handbells in a special holiday concert. Performance by the Random Ringers.",
+   "title": "Holiday Bell Concert",
+   "url": "https://desplaines.libnet.info/event/16909841"
+  },
+  {
+   "date": "Sat, 12 Dec 2026 00:00:00 +0000",
+   "detail": "Saturday, December 12 2026 12:00am - 11:59pm \n Need some service hours? Join us in The Commons where we will have different service options once a month. For teens in grades 7-12.",
+   "title": "Service Hour Drop In",
+   "url": "https://desplaines.libnet.info/event/16341089"
+  },
+  {
+   "date": "Sat, 12 Dec 2026 10:00:00 +0000",
+   "detail": "Saturday, December 12 2026 10:00am - 12:00pm \n Learn to draw the human body with a clothed model, located in The Canvas on the 4th floor. Drop in with no registration required; open to adults, seniors, and teens.",
+   "title": "Life Drawing at the Library 2026",
+   "url": "https://desplaines.libnet.info/event/17105572"
+  },
+  {
+   "date": "Sat, 12 Dec 2026 10:30:00 +0000",
+   "detail": "Saturday, December 12 2026 10:30am - 11:30am \n Design a dazzling, shimmering holiday masterpiece featuring a snowy winter cottage glowing with Christmas cheer.",
+   "title": "Sparkle & Shine",
+   "url": "https://desplaines.libnet.info/event/17515687"
+  },
+  {
+   "date": "Sat, 12 Dec 2026 13:00:00 +0000",
+   "detail": "Saturday, December 12 2026 1:00pm - 3:00pm \n Visit with Santa Claus and enjoy crafts, games, cookies, juice and holiday cheer!",
+   "title": "Des Plaines Youth Commission Holiday Hoopla",
+   "url": "https://desplaines.libnet.info/event/14848386"
+  },
+  {
+   "date": "Sat, 12 Dec 2026 14:00:00 +0000",
+   "detail": "Saturday, December 12 2026 2:00pm - 3:00pm \n Crows are some of the most intelligent and fascinating birds in the world. In certain scientific studies, their problem solving skills have been compared to those of a seven year old child.",
+   "title": "The Evil Crow or BIRDORABLE?",
+   "url": "https://desplaines.libnet.info/event/17679841"
   }
  ],
  "source": "Des Plaines Public Library — Events"

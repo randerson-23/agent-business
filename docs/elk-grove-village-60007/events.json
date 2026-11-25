@@ -2,162 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Elk Grove Village — Within Ten",
-  "dateModified": "2026-11-24T22:01:15+00:00",
-  "numberOfItems": 60,
+  "dateModified": "2026-11-25T06:00:30+00:00",
+  "numberOfItems": 62,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "The Arlington Camera Club",
-        "startDate": "2026-11-24",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/16362692",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 24 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Word of the Week",
-        "startDate": "2026-11-24",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-11-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17354436",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 24 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Event",
-        "name": "Coffee, Cake & Coloring",
-        "startDate": "2026-11-24T10:30:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-coffee-cake-coloring-2026-11-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/16167279",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 24 2026 10:30am - 11:30am \n Join us for adult coloring while enjoying a cup of coffee or tea, and coffee cake!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Event",
-        "name": "Tuesday Tech Help",
-        "startDate": "2026-11-24T11:00:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-tuesday-tech-help-2026-11-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17238827",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 24 2026 11:00am - 1:00pm \n Got a technology question? Were here to help! Bring your device and question."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Event",
-        "name": "Mark Hayward Yo-yo and Comedy Show",
-        "startDate": "2026-11-24T13:30:00-06:00",
-        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-mark-hayward-yo-yo-and-comedy-show-2026-11-24",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Elk Grove Village Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Elk Grove Village",
-            "addressRegion": "IL"
-          }
-        },
-        "sameAs": "https://egvpl.libnet.info/event/17066796",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Elk Grove Village Public Library - Events",
-          "url": "https://egvpl.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
-        "description": "Tuesday, November 24 2026 1:30pm - 2:30pm \n Get ready for a string-tastic show full of laughs, amazing yo-yo tricks, and family fun!"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -187,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -217,7 +67,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Incredible Indy Racers",
@@ -247,7 +97,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -277,7 +127,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Sphero Strike Zone",
@@ -307,7 +157,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -337,7 +187,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -367,7 +217,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -397,7 +247,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -427,7 +277,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting Ceremony",
@@ -458,7 +308,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -488,7 +338,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -518,7 +368,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Schaumburg Turkey Trot Half Marathon & 5K",
@@ -548,7 +398,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -578,7 +428,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Picture Book Bingo",
@@ -608,7 +458,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -638,7 +488,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -668,7 +518,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "The Arlington Camera Club",
@@ -698,7 +548,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -728,7 +578,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Middle Grade -Drop In Coloring",
@@ -758,7 +608,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Session 1-A: Sewing Machine Basics - Holiday Gift Bags",
@@ -788,7 +638,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -818,7 +668,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Get Cozy with Your Comfort Reads!",
@@ -848,7 +698,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -878,7 +728,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Mittens, Marshmallow and Magic Storytime",
@@ -908,7 +758,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "EGVPL Board of Trustees Meeting",
@@ -938,7 +788,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -968,7 +818,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -998,7 +848,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Cupcake Challenge",
@@ -1028,7 +878,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Mittens, Marshmallow and Magic Storytime",
@@ -1058,7 +908,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Home for the Holidays Concert",
@@ -1088,7 +938,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1118,7 +968,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1148,7 +998,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Sublimation Mug & Ornament",
@@ -1178,7 +1028,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Thursday Evening Tech Help",
@@ -1208,7 +1058,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Between Two Comets: The Life of Mark Twain",
@@ -1238,7 +1088,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "The Iroquois Theatre Fire",
@@ -1268,7 +1118,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1298,7 +1148,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1328,7 +1178,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Minecraft Club (Session A)",
@@ -1358,7 +1208,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1388,7 +1238,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1418,7 +1268,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Fun Factory Saturday",
@@ -1448,7 +1298,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Sketchbook Saturdays",
@@ -1478,7 +1328,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Winter Whimsy Family Photo",
@@ -1508,7 +1358,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Minecraft Club (Session B)",
@@ -1538,7 +1388,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Minecraft Club (SessionC )",
@@ -1568,7 +1418,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1598,7 +1448,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1628,7 +1478,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Storybook Cinema",
@@ -1658,7 +1508,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Crochet Corner",
@@ -1688,7 +1538,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Word of the Week",
@@ -1718,7 +1568,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Gift-Wrapping Station",
@@ -1748,7 +1598,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Babys 1st Art",
@@ -1778,7 +1628,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Session 2 - Holiday Gift Bags",
@@ -1804,6 +1654,216 @@
         },
         "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
         "description": "Monday, December 07 2026 6:00pm - 8:00pm \n After Session One, put your skills to use and make reusable fabric gift bags for holiday gift-giving. Instructors…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 56,
+      "item": {
+        "@type": "Event",
+        "name": "Word of the Week",
+        "startDate": "2026-12-08",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-word-of-the-week-2026-12-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17354449",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, December 08 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 57,
+      "item": {
+        "@type": "Event",
+        "name": "Gift-Wrapping Station",
+        "startDate": "2026-12-08",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-gift-wrapping-station-2026-12-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17731397",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, December 08 2026 12:00am - 11:59pm \n Calling all Santas Helpers! Need a secret spot to wrap a special gift? Visit our Wrapping Station in Adult…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 58,
+      "item": {
+        "@type": "Event",
+        "name": "Adult Book Discussion",
+        "startDate": "2026-12-08T10:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-adult-book-discussion-2026-12-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17395157",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, December 08 2026 10:30am - 11:30am \n ************************************************************************"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 59,
+      "item": {
+        "@type": "Event",
+        "name": "Tuesday Tech Help",
+        "startDate": "2026-12-08T11:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-tuesday-tech-help-2026-12-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17955202",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, December 08 2026 11:00am - 1:00pm \n Got a technology question? Were here to help! Bring your device and question."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 60,
+      "item": {
+        "@type": "Event",
+        "name": "Pop in and Create: Holiday Painting",
+        "startDate": "2026-12-08T15:00:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-pop-in-and-create-holiday-painting-2026-12-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17925073",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, December 08 2026 3:00pm - 7:00pm \n Paint a small wooden gingerbread house or gingerbread."
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 61,
+      "item": {
+        "@type": "Event",
+        "name": "Relaxation Station",
+        "startDate": "2026-12-08T15:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-relaxation-station-2026-12-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17532138",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, December 08 2026 3:30pm - 9:00pm \n Come to the High School Hub to enjoy a relaxation station before finals. Special crafts, coloring, and more!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 62,
+      "item": {
+        "@type": "Event",
+        "name": "Uke Jam Holiday Tunes",
+        "startDate": "2026-12-08T18:30:00-06:00",
+        "url": "https://withintenmiles.com/elk-grove-village-60007/#ev-uke-jam-holiday-tunes-2026-12-08",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Elk Grove Village Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Elk Grove Village",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://egvpl.libnet.info/event/17653171",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Elk Grove Village Public Library - Events",
+          "url": "https://egvpl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/elk-grove-village-60007.png",
+        "description": "Tuesday, December 08 2026 6:30pm - 7:00pm \n Hang out and learn a song on the ukulele. All experience levels are welcome! Ukuleles are provided by the library."
       }
     }
   ]

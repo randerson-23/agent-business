@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-24T22:01:15+00:00",
+ "fetched_at": "2026-11-25T06:00:30+00:00",
  "items": [
-  {
-   "date": "2026-11-24",
-   "detail": "",
-   "title": "Social Worker in the Library",
-   "url": "https://www.ahml.info/scheduling/reservation/218153"
-  },
   {
    "date": "2026-11-25",
    "detail": "",
@@ -160,14 +154,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/236746"
+   "title": "Culture & Conversation (intermediate +)",
+   "url": "https://www.ahml.info/scheduling/reservation/236759"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Culture & Conversation (intermediate +)",
-   "url": "https://www.ahml.info/scheduling/reservation/236759"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/236746"
   },
   {
    "date": null,
@@ -184,20 +178,26 @@
   {
    "date": null,
    "detail": "",
-   "title": "Makerplace Wire Wrapped Jewelry: Artisan Ring",
-   "url": "https://www.ahml.info/scheduling/reservation/210090"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Resume Review",
    "url": "https://www.ahml.info/scheduling/reservation/209846"
   },
   {
    "date": null,
    "detail": "",
+   "title": "Makerplace Wire Wrapped Jewelry: Artisan Ring",
+   "url": "https://www.ahml.info/scheduling/reservation/210090"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Culpability Discussion: A 20s & 30s Event",
    "url": "https://www.ahml.info/scheduling/reservation/229118"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "VIRTUAL: AI and Publishing",
+   "url": "https://www.ahml.info/scheduling/reservation/226938"
   },
   {
    "date": null,
@@ -216,12 +216,6 @@
    "detail": "",
    "title": "Culture & Conversation (intermediate +)",
    "url": "https://www.ahml.info/scheduling/reservation/232404"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "VIRTUAL: AI and Publishing",
-   "url": "https://www.ahml.info/scheduling/reservation/226938"
   },
   {
    "date": null,
@@ -298,6 +292,12 @@
   {
    "date": null,
    "detail": "",
+   "title": "Veterans Affairs (VA) Resource Hour",
+   "url": "https://www.ahml.info/scheduling/reservation/227194"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Play Time",
    "url": "https://www.ahml.info/scheduling/reservation/224270"
   },
@@ -306,12 +306,6 @@
    "detail": "",
    "title": "Senior Center: Tech Support",
    "url": "https://www.ahml.info/scheduling/reservation/224984"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "Veterans Affairs (VA) Resource Hour",
-   "url": "https://www.ahml.info/scheduling/reservation/227194"
   },
   {
    "date": null,
@@ -360,6 +354,12 @@
    "detail": "",
    "title": "Read to Learn (District 214)",
    "url": "https://www.ahml.info/scheduling/reservation/194371"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Social Worker in the Library",
+   "url": "https://www.ahml.info/scheduling/reservation/218152"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"
