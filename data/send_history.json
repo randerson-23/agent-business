@@ -145,5 +145,13 @@
       "open_rate": 1.0,
       "click_rate": 0.0
     }
+  },
+  {
+    "timestamp": "2026-11-25T05:06:59.832800+00:00",
+    "subject": "Thanksgiving weekend: lights, shops & more",
+    "buttondown_id": "em_391d3a42ek85vsxpj9vzd76g88",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
