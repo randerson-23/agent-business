@@ -220,6 +220,7 @@ doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 Pick from the top unless the owner has flagged something else:
+0. **569** (previews refresh after every site build; the Nov 25 cron never fired), then **568** (the Dec 30 issue gets its New Year's subject, header and block even with no listings), then **570** (hyphenated closure labels).
 0. ~~**565**~~, ~~**566**~~, ~~**567**~~ **DONE** (2026-11-25).
 0. ~~**563**~~ **DONE**, ~~**562**~~ **DONE**, ~~**564**~~ **DONE** (2026-11-25).
 0. ~~**560**~~ **DONE**, then ~~**559**~~ **DONE** with 535's candidate list (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
@@ -22891,6 +22892,67 @@ search, and runs item 554's fourth round.
 
      Test: the revue loses the tag; the Metropolis's afternoon family show
      keeps it.
+
+
+#### Research pass 2026-11-25, evening (hundred-and-sixty-sixth pass)
+
+The build loop shipped 565–567 today, and the Thanksgiving issue went out
+(send 11, 1 recipient, metrics pending). This pass reads the **Dec 30 New
+Year's preview**, the one special issue not yet looked at, then checks
+whether the previews actually refresh, and who ranks for the Noon Year's
+Eve and winter-break searches.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The Dec 30 preview is an ordinary weekend issue (design/UX)** (`docs/previews/2026-12-30/combined-email-preview.html`, built Nov 25 06:19 UTC) | Item 538 promised this issue *"opens with a Thursday: New Year's Eve block"*. The preview has **no New Year's block, no Noon Year's Eve line and no link to `/new-years-eve/`**. Its subject is *"Community Weaving Project and 5 more this weekend"*, its header reads *"WEEKEND GUIDE"*, and it lists 6 events in 4 towns. The block is empty because no town has posted a Dec 31 event yet: `/new-years-eve/` holds one listing, Elk Grove Village's on Wed Dec 30, and that town is `email: false`. The closure line still reads *"Wheeling: **CLOSED-New Year's Eve** Thu"*, a form item 566 may not cover. | This is the year's last issue. A generic subject wastes the one week readers do look for "what's on for New Year's". The fix is a fallback, not more data. |
+| **The previews stopped refreshing** (Actions runs for `preview-issue.yml`) | Run 5 (06:00 UTC, on item 562's push) was the last. **The 15:17 UTC daily cron never fired on Nov 25**, so both previews predate 565–567 and still show the "test" event and the ALL-CAPS closures those items fixed. The workflow's push trigger watches only `scripts/build_preview.py` and the workflow file, so a fix in `build_digest.py` or a template doesn't rebuild the preview either. | A preview that shows already-fixed bugs sends the next research pass after ghosts, and one that silently stops misses new ones before Dec 23. |
+| **Who ranks for Noon Year's Eve and winter break near here** (searches *"Noon Year's Eve 2026 kids Arlington Heights Palatine Des Plaines"* and *"Tinybeans Chicago winter break things to do with kids 2026"*) | Mommy Poppins' Chicago NYE and holiday-break roundups, mykidlist's date pages (2024 and 2025 copies), Patch and the Daily Herald. **No 2026 suburban page**, and no library or park district page for 2026 is indexed. Tinybeans (formerly Red Tricycle) has no 2026 winter-break guide indexed, only old tag pages. Mommy Poppins covers the city, not these towns. | The suburban Noon Year's Eve query is open, as `/new-years-eve/` hoped. It only wins if the page has listings by mid-December, so it depends on the libraries posting and on 516–517's indexing. No new item; this is evidence for the existing hub. |
+
+#### P1 (new)
+
+568. **Give the Dec 30 issue its New Year's identity, even with no
+     listings yet.** Build loop, for the delivery whose window contains
+     Dec 31 (item 538's override):
+
+     - Subject: *"New Year's Eve & the long weekend: N ideas"*, the way
+       item 539's `winter_break_subject` does it, falling back to
+       *"New Year's Eve & the long weekend"* when N is 0.
+     - Header *"🎉 THE NEW YEAR'S ISSUE"* instead of *"WEEKEND GUIDE"*.
+     - Always render the *"Thursday: New Year's Eve"* block. With
+       listings, show them. With none, show one line, *"Noon Year's Eve
+       parties for kids: we'll list each one as the libraries and park
+       districts post them"*, linking to `/new-years-eve/`.
+     - Show Noon Year's Eve events on the delivery day itself (Wed Dec 30)
+       in the block, labelled *"Today"*, for towns that are in the email.
+
+     Tests: a Dec 30 preview with no Dec 31 events still has the subject,
+     header, block and hub link; with one Dec 31 event, it is listed; a
+     normal Thursday issue is unchanged.
+
+569. **Keep the previews fresh.** Build loop, in `preview-issue.yml`:
+
+     - Add a `workflow_run` trigger on the site-build workflow's completion
+       (on main), so every rebuild refreshes the previews. Keep the cron as
+       a backstop.
+     - Add `scripts/build_digest.py`, `templates/**` and
+       `config/newsletter.yaml` to the push paths.
+     - Add `preview-issue.yml` to the watchdog for non-build workflows
+       (item 406's `workflow_watchdog.py`): alert if no preview commit in 36 hours while a
+       future `delivery_overrides` date exists.
+
+     Tests: the workflow YAML parses, and the watchdog flags a preview
+     older than 36 hours.
+
+#### P2 (new)
+
+570. **Normalise hyphenated closure labels.** Check that item 566's
+     `display_title` handles *"CLOSED-New Year's Eve"* (an ALL-CAPS word
+     glued to a mixed-case name with a hyphen). If not, split the leading
+     ALL-CAPS word on a hyphen or colon and title-case it: *"Closed: New
+     Year's Eve"*.
+
+     Test: *"CLOSED-New Year's Eve"* → *"Closed: New Year's Eve"*;
+     *"Closed for the Christmas Holiday"* is unchanged.
 
 
 ## Working agreements for autonomous iteration
