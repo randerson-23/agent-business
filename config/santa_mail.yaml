@@ -1,0 +1,15 @@
+# ROADMAP.md item 550: "Write to Santa" on /santa/. Each entry only from its own
+# 2026 page (or item 478's search fallback, recorded in `confirmed_via`); an
+# entry without a dated `last_day` is never shown. `last_day` is the day to send
+# by (or the mailbox's last day); it drives the "Remind me" link.
+mail:
+  - name: "USPS Operation Santa"
+    town: null        # nationwide
+    how: "Write to Santa Claus, 123 Elf Road, North Pole, 88888, with a stamp, the child's first and last name and a full return address. Volunteers may adopt letters and send gifts; adoption isn't guaranteed."
+    last_day: 2026-12-05
+    last_day_label: "postmarked by"
+    url: "https://about.usps.com/newsroom/national-releases/2026/0914-usps-operation-santa-program-now-accepting-letters.htm"
+    confirmed_via: "search, 2026-11-25 (USPS newsroom release of Sept 14, 2026 and uspsoperationsanta.com/faqs)"
+  # Wheeling Park District's mailbox at the Community Recreation Center and
+  # Barrington Park District's at Rose Park (Palatine) are candidates: their pages
+  # seen so far carry no year, so they stay out until a 2026 page confirms them.

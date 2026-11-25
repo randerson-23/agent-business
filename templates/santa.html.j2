@@ -171,7 +171,7 @@
   .jump-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 4px; }
   .jump-chips a { border: 1px solid var(--ink); padding: 4px 12px; font-size: 14px; font-weight: 600; text-decoration: none; color: var(--ink); border-radius: 999px; }
   .jump-chips a:hover, .jump-chips a:focus-visible { background: var(--ink); color: var(--bg); }
-  #visits, #outside { scroll-margin-top: 12px; }
+  #visits, #outside, #mailboxes { scroll-margin-top: 12px; }
   .chip-sold-out { display: inline-block; border: 1px solid var(--muted); color: var(--muted); font-size: 12px; font-weight: 600; padding: 0 6px; margin-left: 4px; }
 </style>
 {{ signup_css() }}
@@ -190,10 +190,11 @@
 <div class="wrap">
   <main>
   {# ROADMAP.md item 552: jump chips, only for sections that have entries; plain anchors, no JavaScript. #}
-  {% if (days and outside) %}
+  {% if [days, mail, outside]|select|list|length >= 2 %}
   <nav class="jump-chips" aria-label="Jump to">
-    <a href="#visits">🎅 Visits &amp; breakfasts</a>
-    <a href="#outside">📍 Just outside</a>
+    {% if days %}<a href="#visits">🎅 Visits &amp; breakfasts</a>{% endif %}
+    {% if mail %}<a href="#mailboxes">✉️ Write to Santa</a>{% endif %}
+    {% if outside %}<a href="#outside">📍 Just outside</a>{% endif %}
   </nav>
   {% endif %}
   {% if on_sale %}
@@ -214,6 +215,15 @@
   {% else %}
   <p class="note">{{ empty_message }}</p>
   {{ look_meanwhile(places, hub_url) }}
+  {% endif %}
+  {% if mail %}
+  {# ROADMAP.md item 550: how to write to Santa, each from its own page, with the day to send by. #}
+  <h2 class="events-heading" id="mailboxes">✉️ Write to Santa</h2>
+  <ul class="events">
+    {% for m in mail %}
+    <li><span class="emoji" aria-hidden="true">✉️</span><strong>{{ m.name }}</strong> &middot; <span class="hours-note">{{ m.deadline }}</span> {{ m.how }} <a href="{{ m.url }}" rel="noopener">Official page &rarr;</a>{% if m.remind_url %} &middot; <a href="{{ m.remind_url }}" target="_blank" rel="noopener">⏰ Remind me</a>{% endif %}</li>
+    {% endfor %}
+  </ul>
   {% endif %}
   {% if outside %}
   <h2 class="events-heading" id="outside">Just outside our towns (within ten miles)</h2>

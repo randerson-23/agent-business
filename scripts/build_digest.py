@@ -3207,6 +3207,25 @@ def santa_listing_offer(contact_email: str | None) -> dict | None:
     return {"text": "Hosting Santa at your shop or restaurant? Listing it is free", "url": build_contact_mailto_url(contact_email, "Santa event listing", SANTA_LISTING_FIELDS)}
 
 
+def load_santa_mail(today: date, path: Path | None = None) -> list[dict]:
+    """ROADMAP.md item 550: ways to write to Santa from config/santa_mail.yaml,
+    each with a dated `last_day` from its own page; shown until that day,
+    soonest first, with a Google Calendar reminder for the deadline."""
+    path = path or CONFIG_DIR / "santa_mail.yaml"
+    cfg = load_yaml(path) if path.exists() else {}
+    out = []
+    for m in cfg.get("mail") or []:
+        last = _parse_promo_day(m.get("last_day"))
+        url = safe_http_url(m.get("url"))
+        if not (m.get("name") and m.get("how") and last and url) or is_roundup_url(url) or last < today:
+            continue
+        label = f"{str(m.get('last_day_label') or 'by').strip()} {last.strftime('%a %b')} {last.day}"
+        out.append({"name": str(m["name"]), "town": m.get("town"), "how": str(m["how"]).strip(), "url": url, "last_day": last, "deadline": label,
+                    "remind_url": reminder_calendar_url(f"Send Santa letters ({m['name']})", last - timedelta(days=1), url)})
+    out.sort(key=lambda m: m["last_day"])
+    return out
+
+
 def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None = None, newsletter: dict | None = None, event_page_paths: set[str] | None = None, outside: list[dict] | None = None, on_sale: list[dict] | None = None, contact_email: str | None = None) -> str:
     """The /santa/ page. `entries` is [{region_name, region_url, events}]."""
     today = now.astimezone(LOCAL_TZ).date()
@@ -3248,6 +3267,7 @@ def render_santa_page(entries: list[dict], now: datetime, analytics: dict | None
         places=[{"name": e["region_name"], "color": EMAIL_TOWN_COLORS[i % len(EMAIL_TOWN_COLORS)][0], "links": e.get("links") or [], "tree": (e.get("tree") or {}).get("label") if e.get("tree") else None} for i, e in enumerate(entries)],
         empty_message="Park districts usually post Santa events in early November; they appear here as soon as they do." if year == today.year else f"Santa events for {year} are usually posted in early November. Sign up below and we'll email you when they appear.",
         outside=outside or [],
+        mail=load_santa_mail(today) if in_season else [],  # item 550
         on_sale=on_sale if on_sale is not None else load_on_sale(now),  # item 474
         santa_listing=santa_listing_offer(contact_email),  # item 501
         reminder_tag=None if in_season else f"remind:santa-{year}",
