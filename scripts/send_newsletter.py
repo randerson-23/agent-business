@@ -390,7 +390,7 @@ REPEAT_WINDOW = timedelta(days=4)
 def recent_delivery(history: list[dict], now: datetime, window: timedelta = REPEAT_WINDOW) -> dict | None:
     """The newest send or schedule recorded within `window` before `now`, or None."""
     for entry in reversed(history or []):
-        if entry.get("mode") not in ("send", "schedule"):
+        if entry.get("mode") not in ("send", "schedule") or entry.get("cancelled"):  # item 571: an unscheduled email is no delivery
             continue
         try:
             when = datetime.fromisoformat(entry["timestamp"])
@@ -400,6 +400,31 @@ def recent_delivery(history: list[dict], now: datetime, window: timedelta = REPE
             when = when.replace(tzinfo=timezone.utc)
         if timedelta(0) <= now - when <= window:
             return entry
+    return None
+
+
+def buttondown_conflict(api_key: str, delivery: datetime, window: timedelta = REPEAT_WINDOW, get=None) -> dict | None:
+    """ROADMAP.md item 572: Buttondown is the source of truth for what reaches
+    readers. Any email it holds as scheduled or sent whose publish date falls
+    within `window` of `delivery` is a conflict. Raises requests.RequestException
+    on a transport/API error so the caller can fall back to the local history."""
+    get = get or requests.get
+    headers = {"Authorization": f"{BUTTONDOWN_AUTH_SCHEME} {api_key}"}
+    for status in ("scheduled", "sent"):
+        resp = get(BUTTONDOWN_API_URL, headers=headers, params={"status": status, "ordering": "-publish_date"}, timeout=30)
+        resp.raise_for_status()
+        for email in (resp.json() or {}).get("results") or []:
+            raw = email.get("publish_date")
+            if not raw:
+                continue
+            try:
+                when = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if when.tzinfo is None:
+                when = when.replace(tzinfo=timezone.utc)
+            if abs(when - delivery) <= window:
+                return {"id": email.get("id"), "subject": email.get("subject"), "status": email.get("status") or status, "publish_date": raw}
     return None
 
 
@@ -693,6 +718,19 @@ def main(argv: list[str] | None = None) -> int:
                 return 1
 
     # A repeat guard: never send or schedule twice for one weekend.
+    if cfg["mode"] in DELIVERY_MODES and not args.dry_run and not args.force_repeat:
+        key = os.environ.get(API_KEY_ENV, "").strip()
+        if key:  # item 572: ask Buttondown first; the local log is the fallback
+            delivery_at = now if cfg["mode"] == "send" else next_delivery(now, overrides)
+            try:
+                clash = buttondown_conflict(key, delivery_at)
+            except requests.RequestException as exc:
+                logger.warning("Could not list Buttondown's emails (%s); checking the local send history instead.", exc)
+                clash = None
+            if clash:
+                logger.error("Not sending: Buttondown already has %s email %s (%r, %s) within %d days of this delivery. Use --force-repeat only for a deliberate second issue.",
+                             clash["status"], clash["id"], clash.get("subject"), clash["publish_date"], REPEAT_WINDOW.days)
+                return 1
     if cfg["mode"] in DELIVERY_MODES:
         previous = recent_delivery(load_send_history(), now)
         if previous and not args.force_repeat:

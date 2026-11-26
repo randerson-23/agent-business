@@ -47,9 +47,38 @@ def latest_delivery(history: list[dict]) -> dict | None:
     return max(deliveries, key=lambda r: r["timestamp"])
 
 
+DUPLICATE_WINDOW = timedelta(days=4)
+
+
+ALARM_FOR = timedelta(days=3)
+
+
+def find_duplicate_deliveries(history: list[dict], window: timedelta = DUPLICATE_WINDOW, now: datetime | None = None, alarm_for: timedelta = ALARM_FOR) -> list[tuple[dict, dict]]:
+    """ROADMAP.md item 573: pairs of uncancelled deliveries within `window`,
+    for `alarm_for` after the later one (so an old pair stops failing the run)."""
+    live = []
+    for e in history:
+        if e.get("mode") in DELIVERY_MODES and e.get("mode") != "draft" and not e.get("cancelled"):
+            try:
+                live.append((datetime.fromisoformat(e["timestamp"]), e))
+            except (KeyError, ValueError, TypeError):
+                continue
+    live.sort(key=lambda pair: pair[0])
+    now = now or datetime.now(timezone.utc)
+    return [(a, b) for (ta, a), (tb, b) in zip(live, live[1:]) if tb - ta <= window and now - tb <= alarm_for]
+
+
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(message)s")
     history = load_send_history()
+    for a, b in find_duplicate_deliveries(history):
+        logger.error(
+            "Two deliveries within %d days: %s (%r, %s) and %s (%r, %s). If the second is still "
+            "scheduled, take it back with: gh workflow run unschedule-email.yml -f email_id=%s",
+            DUPLICATE_WINDOW.days, a.get("buttondown_id"), a.get("subject"), a.get("timestamp"),
+            b.get("buttondown_id"), b.get("subject"), b.get("timestamp"), b.get("buttondown_id"),
+        )
+        return 1
     latest = latest_delivery(history)
     if latest is None:
         logger.error(

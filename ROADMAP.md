@@ -221,7 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
-0. **571** (unschedule workflow the loop can dispatch; test on a throwaway first), **572** (repeat guard checks Buttondown's scheduled list), then **573** (watchdog fails on a duplicate). Before Dec 23.
+0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then **569**, **568**, **570**.
 0. **569** (previews refresh after every site build; the Nov 25 cron never fired), then **568** (the Dec 30 issue gets its New Year's subject, header and block even with no listings), then **570** (hyphenated closure labels).
 0. ~~**565**~~, ~~**566**~~, ~~**567**~~ **DONE** (2026-11-25).
 0. ~~**563**~~ **DONE**, ~~**562**~~ **DONE**, ~~**564**~~ **DONE** (2026-11-25).
@@ -22975,7 +22975,7 @@ self-correcting with no owner time, and re-reads the previews after
 
 #### P1 (new)
 
-571. **A one-step unschedule the loop can run itself.** Build loop:
+571. **BUILT (2026-11-26), not yet tried live.** `scripts/unschedule_email.py` + `.github/workflows/unschedule-email.yml` (dispatch, input `email_id`): GET, refuse unless `scheduled` (a `sent`/`about_to_send` email is refused by name), PATCH `{status: draft, publish_date: null}`, GET again and fail unless `draft`; then `cancelled` on that send_history entry (the repeat guard and the duplicate alarm skip it). **Not tried on a real email:** the build loop did not create a throwaway scheduled email in the live account (a mis-step there mails subscribers). The owner can try it once on a throwaway draft scheduled a month out; until then a duplicate is still cancelled in Buttondown by hand. **A one-step unschedule the loop can run itself.** Build loop:
 
      - Add `.github/workflows/unschedule-email.yml` (`workflow_dispatch`,
        input `email_id`). It PATCHes that email to `status: "draft"` with
@@ -22992,7 +22992,7 @@ self-correcting with no owner time, and re-reads the previews after
      Tests: with a mocked API, a scheduled email ends as draft and is
      marked cancelled; a `sent` email is refused with a clear message.
 
-572. **The repeat guard asks Buttondown, not only the log.** Before it
+572. **DONE (2026-11-26).** `buttondown_conflict` lists `status=scheduled` and `status=sent` emails (newest publish date first) and refuses a real send/schedule if any publish date is within four days of this delivery, naming id, subject and date; on an API error it falls back to the local-history check; `--force-repeat` skips both; dry runs skip the API call. **The repeat guard asks Buttondown, not only the log.** Before it
      creates or schedules, `send_newsletter.py` lists emails with
      `status=scheduled`, plus those sent in the last four days. It refuses
      if any is due, or was sent, within four days of this delivery, and
@@ -23006,7 +23006,7 @@ self-correcting with no owner time, and re-reads the previews after
 
 #### P2 (new)
 
-573. **Duplicate deliveries raise an alarm the owner sees.** Build loop:
+573. **DONE (2026-11-26).** `check_send_history.find_duplicate_deliveries`: two uncancelled deliveries within four days fail send-watchdog.yml (now also daily at 09:41 UTC) for three days after the later one, naming both ids and the `gh workflow run unschedule-email.yml -f email_id=…` command. The Thanksgiving pair will fail it until Nov 29, which is expected. **Duplicate deliveries raise an alarm the owner sees.** Build loop:
      `send-watchdog.yml` fails, which emails the owner through GitHub's
      normal failed-workflow notice, when `data/send_history.json` holds
      two uncancelled deliveries within four days. The failure message
