@@ -2,74 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Wheeling — Within Ten",
-  "dateModified": "2026-11-25T22:05:48+00:00",
-  "numberOfItems": 57,
+  "dateModified": "2026-11-26T06:05:17+00:00",
+  "numberOfItems": 60,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Finger Painting",
-        "startDate": "2026-11-25T11:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-finger-painting-2026-11-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/17114828",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Wednesday, November 25 2026 11:00am - 12:00pm \n Create a masterpiece-- without the brushes. Dress to get messy. R"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "EARLY CLOSING - Thanksgiving Holiday",
-        "startDate": "2026-11-25T17:00:00-06:00",
-        "url": "https://withintenmiles.com/wheeling-60090/#ev-early-closing-thanksgiving-holiday-2026-11-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Indian Trails Public Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Wheeling",
-            "addressRegion": "IL",
-            "streetAddress": "355 Schoenbeck Rd."
-          }
-        },
-        "sameAs": "https://indiantrails.libnet.info/event/12825590",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Indian Trails Public Library",
-          "url": "https://indiantrails.libnet.info"
-        },
-        "image": "https://withintenmiles.com/og/wheeling-60090.png",
-        "description": "Wednesday, November 25 2026 5:00pm - 9:00pm \n EARLY CLOSING - Thanksgiving Holiday\nThe library will close at 5 pm."
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Lotería Night | Noche de Lotería | At the Branch",
@@ -100,7 +38,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "What’s On The Menu?",
@@ -130,7 +68,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Cicada Pinning Class",
@@ -160,7 +98,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Reading Fair",
@@ -191,7 +129,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Discovery Play with The Leaf Thief",
@@ -222,7 +160,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "CSI Book Club",
@@ -253,7 +191,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Wildlife Connections",
@@ -283,7 +221,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -314,7 +252,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Alcohol Marker Basics for Coloring",
@@ -345,7 +283,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -376,7 +314,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Writers Workshop",
@@ -407,7 +345,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Coloring Club",
@@ -438,7 +376,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Waterless Snowglobes",
@@ -469,7 +407,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Jewelry Making Extravaganza",
@@ -500,7 +438,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "Paint and Steep Tea",
@@ -531,7 +469,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Plan Commission Meeting",
@@ -561,7 +499,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Google Sheets",
@@ -593,7 +531,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Office Hours with Congressman Brad Schneider's Office",
@@ -624,7 +562,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "Social Services | Servicios Sociales",
@@ -655,7 +593,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Monogrammed Throw Blankets",
@@ -686,7 +624,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "Evening Book Discussion",
@@ -717,7 +655,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Night Owls",
@@ -748,7 +686,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Peer Jury",
@@ -778,7 +716,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "High School Book Club | Grades 9-12",
@@ -809,7 +747,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Babytime!",
@@ -840,7 +778,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Wonderful Walkers",
@@ -871,7 +809,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Lollipop Lane",
@@ -901,7 +839,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "ESL Tea & Talk",
@@ -932,7 +870,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Family Movie: Minions and Monsters",
@@ -963,7 +901,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Puzzle Exchange",
@@ -994,7 +932,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Lolliop Lane",
@@ -1024,7 +962,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Winter Bonfire",
@@ -1054,7 +992,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Community Weaving Project",
@@ -1085,7 +1023,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "One Book One Community Open House",
@@ -1116,7 +1054,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -1147,7 +1085,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "Foundation Pop Up Shop",
@@ -1178,7 +1116,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Lollipop Lane",
@@ -1208,7 +1146,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "High School Volunteer Kits",
@@ -1239,7 +1177,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Stitch Together Meet-Up",
@@ -1270,7 +1208,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Tech Assistance / Assistencia de Tech",
@@ -1301,7 +1239,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "K9 Reading Buddies",
@@ -1332,7 +1270,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "Holiday Napkins",
@@ -1363,7 +1301,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Village Board Regular Meeting",
@@ -1393,7 +1331,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Dungeons And Dragons",
@@ -1424,7 +1362,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Genealogy Interest Group Meeting",
@@ -1455,7 +1393,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "Tenant Rights",
@@ -1486,7 +1424,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Small Serendipity",
@@ -1516,7 +1454,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Noisy Time",
@@ -1547,7 +1485,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Rise & Read Morning Book Discussion",
@@ -1578,7 +1516,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Eastern European Dessert",
@@ -1609,7 +1547,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Paper Craft Happy Hour",
@@ -1640,7 +1578,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Cooking 101: Mug Pizza",
@@ -1671,7 +1609,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Spanish Conversation Practice | At the Branch",
@@ -1702,7 +1640,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "'Tis the Season",
@@ -1733,7 +1671,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Resume Review & Career Coaching Appointments",
@@ -1760,6 +1698,162 @@
         },
         "image": "https://withintenmiles.com/og/wheeling-60090.png",
         "description": "Tuesday, December 08 2026 6:00pm - 7:00pm \n Kickstart your career with a one-hour resume review with a career specialist. Resume Review and Career Coaching…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 56,
+      "item": {
+        "@type": "Event",
+        "name": "Knitting for Beginners",
+        "startDate": "2026-12-09T13:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-knitting-for-beginners-2026-12-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17127807",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Wednesday, December 09 2026 1:00pm - 3:00pm \n Learn the basic skills needed to start your knitting journey. Materials provided. R"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 57,
+      "item": {
+        "@type": "Event",
+        "name": "Office Hours w/ Cook County Clerk's Office",
+        "startDate": "2026-12-09T14:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-office-hours-w-cook-county-clerk-s-office-2026-12-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17826126",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Wednesday, December 09 2026 2:00pm - 4:00pm \n Learn about voting registration, vital records, real estate/tax sevices as well as veterans services. Visitors…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 58,
+      "item": {
+        "@type": "Event",
+        "name": "Watercolor Secret Techniques",
+        "startDate": "2026-12-09T16:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-watercolor-secret-techniques-2026-12-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17041678",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Wednesday, December 09 2026 4:00pm - 5:00pm \n Learn about new ways to paint using unusual materials and techniques. Dress to get messy. R"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 59,
+      "item": {
+        "@type": "Event",
+        "name": "Chess Club",
+        "startDate": "2026-12-09T17:30:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-chess-club-2026-12-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/15977126",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Wednesday, December 09 2026 5:30pm - 6:15pm \n Discover chess moves, strategies, and checkmate techniques with international Chess Master Arjun Vishnuvardhan…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 60,
+      "item": {
+        "@type": "Event",
+        "name": "Google Docs",
+        "startDate": "2026-12-09T19:00:00-06:00",
+        "url": "https://withintenmiles.com/wheeling-60090/#ev-google-docs-2026-12-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Indian Trails Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Wheeling",
+            "addressRegion": "IL",
+            "streetAddress": "355 Schoenbeck Rd."
+          }
+        },
+        "sameAs": "https://indiantrails.libnet.info/event/17116432",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Indian Trails Public Library",
+          "url": "https://indiantrails.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/wheeling-60090.png",
+        "description": "Wednesday, December 09 2026 7:00pm - 8:00pm \n Explore the free cloud-based Microsoft Word alternative available to all who sign up with Gmail. \nA Google…",
+        "isAccessibleForFree": true
       }
     }
   ]

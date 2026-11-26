@@ -2,42 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Arlington Heights — Within Ten",
-  "dateModified": "2026-11-25T22:05:48+00:00",
-  "numberOfItems": 14,
+  "dateModified": "2026-11-26T06:05:17+00:00",
+  "numberOfItems": 13,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "Baby Time",
-        "startDate": "2026-11-25",
-        "url": "https://withintenmiles.com/arlington-heights-60005/#ev-baby-time-2026-11-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Arlington Heights Memorial Library",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Arlington Heights",
-            "addressRegion": "IL",
-            "streetAddress": "500 N. Dunton Ave."
-          }
-        },
-        "sameAs": "https://www.ahml.info/scheduling/reservation/224158",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Arlington Heights Memorial Library",
-          "url": "https://www.ahml.info"
-        },
-        "image": "https://withintenmiles.com/og/arlington-heights-60005.png"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
       "item": {
         "@type": "Event",
         "name": "🦃 Arlington Heights Turkey Trot",
@@ -67,7 +37,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "VIRTUAL Culture & Conversation (level: intermediate)",
@@ -97,7 +67,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting",
@@ -128,7 +98,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "Games & Gab",
@@ -158,7 +128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Dino Party",
@@ -188,7 +158,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "Resident Registration",
@@ -218,7 +188,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "A Christmas Carol",
@@ -249,7 +219,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Rotary Santa Run Walk & Reindeer Dash",
@@ -279,7 +249,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Holiday Cabaret: A Joyful Twist",
@@ -310,7 +280,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Winter Camp Showcase",
@@ -341,7 +311,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Holly Jolly Trolly - SOLD OUT",
@@ -371,7 +341,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "The 12 Dames of Christmas with Angela Ingersoll",
@@ -402,7 +372,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Non-Resident Registration",

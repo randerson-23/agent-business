@@ -2,74 +2,12 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Des Plaines — Within Ten",
-  "dateModified": "2026-11-25T22:05:48+00:00",
+  "dateModified": "2026-11-26T06:05:17+00:00",
   "numberOfItems": 57,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Event",
-        "name": "MIKE & JOE - The Midwest's Most Renowned Cover Band // HAIRBANGERS BALL",
-        "startDate": "2026-11-25T19:30:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-mike-joe-the-midwest-s-most-renowned-cover-band-hairbangers-2026-11-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1476 Miner Street"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/hairbangers-ball-2/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Theatre",
-          "url": "https://desplainestheatre.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Mike & Joe is a modern rock cover band widely regarded by its peers and the industry as one of the very best sounding cover bands in the nation. The bulk of…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Event",
-        "name": "Bourbon 'N Brass Speakeasy: Blues Night Extravaganza Featuring Downtown Charlie Brown, Sean Mckee, Miles Minor, Jeff Brinkman and Joe Valentino - Thanksgiving Eve!",
-        "startDate": "2026-11-25T20:00:00-06:00",
-        "url": "https://withintenmiles.com/des-plaines-60016/#ev-bourbon-n-brass-speakeasy-blues-night-extravaganza-featuring-2026-11-25",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-          "@type": "Place",
-          "name": "Des Plaines Theatre",
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "US",
-            "addressLocality": "Des Plaines",
-            "addressRegion": "IL",
-            "streetAddress": "1476 Miner Street"
-          }
-        },
-        "sameAs": "https://desplainestheatre.com/event/bourbon-n-brass-speakeasy-the-bourbon-n-brass-trio-with-jazz-saxophonist-eric-schneider-thanksgiving-eve-jazz/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "Des Plaines Theatre",
-          "url": "https://desplainestheatre.com"
-        },
-        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
-        "description": "Join us in our intimate Bourbon ‘N Brass Speakeasy, located on the 2nd floor of the Des Plaines Theatre, for our Thanksgiving Eve Blues Extravaganza featuring…"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
       "item": {
         "@type": "Event",
         "name": "Kashmir: The Music of Led Zeppelin",
@@ -100,7 +38,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 2,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Jazz with Donny Demarco & Tune Town",
@@ -131,7 +69,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 3,
       "item": {
         "@type": "Event",
         "name": "$1 CHRISTMAS CLASSIC FILM SERIES: \"How The Grinch Stole Christmas\" (2000)",
@@ -162,7 +100,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 4,
       "item": {
         "@type": "Event",
         "name": "The Financial Aid Process for College",
@@ -194,7 +132,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 5,
       "item": {
         "@type": "Event",
         "name": "Tween Movie",
@@ -226,7 +164,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 6,
       "item": {
         "@type": "Event",
         "name": "An Evening with Deacon Blues: Steely Dan Tribute",
@@ -257,7 +195,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 7,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass: Live Jazz with the Bourbon 'N Brass Brian Patti Prohibition Dance Band - 20S & 30S Dance Hits",
@@ -288,7 +226,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 8,
       "item": {
         "@type": "Event",
         "name": "Tech en el Forum (Spanish)",
@@ -320,7 +258,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 9,
       "item": {
         "@type": "Event",
         "name": "Teen Take & Make",
@@ -352,7 +290,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 10,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -384,7 +322,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 11,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -416,7 +354,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 12,
       "item": {
         "@type": "Event",
         "name": "Horror Book Club",
@@ -448,7 +386,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 13,
       "item": {
         "@type": "Event",
         "name": "Teen Book Bags",
@@ -480,7 +418,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 14,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -512,7 +450,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 15,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -544,7 +482,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 16,
       "item": {
         "@type": "Event",
         "name": "Sock Monkey Workshop",
@@ -576,7 +514,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 17,
       "item": {
         "@type": "Event",
         "name": "Make Holiday Cards with the Des Plaines Lions Club",
@@ -608,7 +546,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 18,
       "item": {
         "@type": "Event",
         "name": "Meet Mary Cassatt, an American Artist",
@@ -640,7 +578,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 19,
       "item": {
         "@type": "Event",
         "name": "The Physics Dimension",
@@ -673,7 +611,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 20,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -705,7 +643,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 21,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -737,7 +675,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 22,
       "item": {
         "@type": "Event",
         "name": "Playgroup for Language Development",
@@ -769,7 +707,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 23,
       "item": {
         "@type": "Event",
         "name": "Holiday Wrap & Write Workshop",
@@ -801,7 +739,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 24,
       "item": {
         "@type": "Event",
         "name": "Happy Notes",
@@ -833,7 +771,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 25,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -865,7 +803,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 26,
       "item": {
         "@type": "Event",
         "name": "Monthly Writing Meet Up",
@@ -897,7 +835,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 27,
       "item": {
         "@type": "Event",
         "name": "Google: Google Drive and Gmail",
@@ -929,7 +867,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 28,
       "item": {
         "@type": "Event",
         "name": "Mont Clare Condo Assoc.",
@@ -961,7 +899,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 29,
       "item": {
         "@type": "Event",
         "name": "Say Anything: An Intimate Movie Screening and Evening with John Cusack",
@@ -992,7 +930,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 30,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Blues with the Downtown Charlie Brown Band",
@@ -1023,7 +961,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 31,
       "item": {
         "@type": "Event",
         "name": "Cook County Clerk's Office - Resource Table",
@@ -1055,7 +993,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 32,
       "item": {
         "@type": "Event",
         "name": "Holiday Tree Lighting at Metropolitan Square",
@@ -1086,7 +1024,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 33,
       "item": {
         "@type": "Event",
         "name": "Paint & Sip: Portrait Edition",
@@ -1118,7 +1056,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 34,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass Speakeasy: Live Jazz, Pop and R&B with Michael Ross Band",
@@ -1149,7 +1087,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 35,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Winter Fair",
@@ -1179,7 +1117,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 36,
       "item": {
         "@type": "Event",
         "name": "$1 Christmas Classic Film Series: \"Elf\" (2003)",
@@ -1210,7 +1148,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 37,
       "item": {
         "@type": "Event",
         "name": "Postponed: Aly & Aj - Places to Run Tour 2026",
@@ -1242,7 +1180,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 38,
       "item": {
         "@type": "Event",
         "name": "A Motown Christmas Featuring Salutes to Martha Reeves & the Vandellas, Stevie Wonder, the Temptations, the 4 Tops, and the Supremes",
@@ -1273,7 +1211,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 39,
       "item": {
         "@type": "Event",
         "name": "Bourbon 'N Brass: Live Blues with Dave Weld & the Imperial Flames",
@@ -1304,7 +1242,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 40,
       "item": {
         "@type": "Event",
         "name": "Film Screening",
@@ -1337,7 +1275,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 41,
       "item": {
         "@type": "Event",
         "name": "Christmas Wizards...a Night of Trans-Siberian Orchestra and More Starring Infinity",
@@ -1368,7 +1306,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 42,
       "item": {
         "@type": "Event",
         "name": "DIY Ugly Sweater",
@@ -1400,7 +1338,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 43,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1432,7 +1370,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 44,
       "item": {
         "@type": "Event",
         "name": "Des Plaines Shambhala Meditation Group",
@@ -1464,7 +1402,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 45,
       "item": {
         "@type": "Event",
         "name": "Reading/Literacy Class",
@@ -1496,7 +1434,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 46,
       "item": {
         "@type": "Event",
         "name": "ESL (English as a Second Language) Class - Oakton College",
@@ -1528,7 +1466,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 47,
       "item": {
         "@type": "Event",
         "name": "Meet with Your Government Representatives",
@@ -1560,7 +1498,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 48,
       "item": {
         "@type": "Event",
         "name": "Makerspace Orientations: On-Zoom 2026-2027",
@@ -1592,7 +1530,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 49,
       "item": {
         "@type": "Event",
         "name": "Tuesday Morning Book Discussion: Holiday Party",
@@ -1624,7 +1562,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 50,
       "item": {
         "@type": "Event",
         "name": "Christmas in a Cup",
@@ -1656,7 +1594,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 51,
       "item": {
         "@type": "Event",
         "name": "Book a Teen Librarian",
@@ -1688,7 +1626,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 52,
       "item": {
         "@type": "Event",
         "name": "Tech in the Forum",
@@ -1720,7 +1658,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 53,
       "item": {
         "@type": "Event",
         "name": "Adult Board Game Night",
@@ -1752,7 +1690,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 54,
       "item": {
         "@type": "Event",
         "name": "Friends of the Library Meeting",
@@ -1784,7 +1722,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 55,
       "item": {
         "@type": "Event",
         "name": "Stone Gate Condo Assoc.",
@@ -1812,6 +1750,70 @@
         },
         "image": "https://withintenmiles.com/og/des-plaines-60016.png",
         "description": "Tuesday, December 08 2026 7:00pm - 8:30pm \n Donna 847-217-0567"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 56,
+      "item": {
+        "@type": "Event",
+        "name": "Diabetes: Managing Stress, Sleep, and Mental Health",
+        "startDate": "2026-12-09T11:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-diabetes-managing-stress-sleep-and-mental-health-2026-12-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/16537587",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Wednesday, December 09 2026 11:00am - 12:00pm \n Learn how stress and sleep affect blood sugar, some coping strategies, and how to recognize diabetes distress.…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 57,
+      "item": {
+        "@type": "Event",
+        "name": "The Queer Canvas: LGBTQIA+ Art Club",
+        "startDate": "2026-12-09T17:00:00-06:00",
+        "url": "https://withintenmiles.com/des-plaines-60016/#ev-the-queer-canvas-lgbtqia-art-club-2026-12-09",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Des Plaines Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Des Plaines",
+            "addressRegion": "IL",
+            "streetAddress": "1501 Ellinwood Street",
+            "postalCode": "60016"
+          }
+        },
+        "sameAs": "https://desplaines.libnet.info/event/15980661",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Des Plaines Public Library",
+          "url": "https://desplaines.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/des-plaines-60016.png",
+        "description": "Wednesday, December 09 2026 5:00pm - 7:00pm \n Looking for a place for LGBTQ+ adults to hang out, create art, and connect? Bring your sketchbook or any art…"
       }
     }
   ]

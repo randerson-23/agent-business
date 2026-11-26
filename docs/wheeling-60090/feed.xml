@@ -3,27 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Wheeling</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 42 configured sources. 4 sources are shown from their last update, up to 8 hours ago.</description>
-  <lastBuildDate>Wed, 25 Nov 2026 22:05:48 +0000</lastBuildDate>
-  <item>
-    <title>Wheeling: Finger Painting</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-finger-painting-2026-11-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-finger-painting-2026-11-25</guid>
-    <description>Wednesday, November 25 2026 11:00am - 12:00pm 
- Create a masterpiece-- without the brushes. Dress to get messy. R Official listing: https://indiantrails.libnet.info/event/17114828</description>
-    <pubDate>Wed, 25 Nov 2026 11:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/17114828">Indian Trails Public Library — Events</source>
-  </item>
-  <item>
-    <title>Wheeling: EARLY CLOSING - Thanksgiving Holiday</title>
-    <link>https://withintenmiles.com/wheeling-60090/#ev-early-closing-thanksgiving-holiday-2026-11-25</link>
-    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-early-closing-thanksgiving-holiday-2026-11-25</guid>
-    <description>Wednesday, November 25 2026 5:00pm - 9:00pm 
- EARLY CLOSING - Thanksgiving Holiday
-The library will close at 5 pm. Official listing: https://indiantrails.libnet.info/event/12825590</description>
-    <pubDate>Wed, 25 Nov 2026 17:00:00 +0000</pubDate>
-    <source url="https://indiantrails.libnet.info/event/12825590">Indian Trails Public Library — Events</source>
-  </item>
+  <description>Upcoming events in Wheeling, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 37 of 42 configured sources. 1 source is shown from its last update, up to 8 hours ago.</description>
+  <lastBuildDate>Thu, 26 Nov 2026 06:05:17 +0000</lastBuildDate>
   <item>
     <title>Wheeling: Lotería Night | Noche de Lotería | At the Branch</title>
     <link>https://withintenmiles.com/wheeling-60090/#ev-loter-a-night-noche-de-loter-a-at-the-branch-2026-11-27</link>
@@ -448,6 +429,24 @@ Complete and return a volunteer craft kit by the end of the month to count towar
  Explore the world around us with stories, rhymes and lots of music and movement. TR Official listing: https://indiantrails.libnet.info/event/16927080</description>
     <pubDate>Tue, 08 Dec 2026 10:00:00 +0000</pubDate>
     <source url="https://indiantrails.libnet.info/event/16927080">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Rise &amp; Read Morning Book Discussion</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-12-08</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-rise-read-morning-book-discussion-2026-12-08</guid>
+    <description>Tuesday, December 08 2026 10:30am - 11:30am 
+ Registration and book pickup begins November 10. A story centered around the intersection of humans, AI and… Official listing: https://indiantrails.libnet.info/event/14170889</description>
+    <pubDate>Tue, 08 Dec 2026 10:30:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/14170889">Indian Trails Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Eastern European Dessert</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-eastern-european-dessert-2026-12-08</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-eastern-european-dessert-2026-12-08</guid>
+    <description>Tuesday, December 08 2026 3:00pm - 4:00pm 
+ Learn about Eastern European desserts and sample some with Lana from Lana's Dazzling Desserts. R Official listing: https://indiantrails.libnet.info/event/17132486</description>
+    <pubDate>Tue, 08 Dec 2026 15:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17132486">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>
