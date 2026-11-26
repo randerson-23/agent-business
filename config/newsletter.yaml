@@ -69,8 +69,11 @@ per_reader_email:
 # local Central time). Read by send_newsletter.py (the Tuesday cron run sends
 # when one is due) and by build_digest.py (the on-sale subject window).
 # Thanksgiving: plan the long weekend the day before; evidence mixed
-# (GoDaddy, Martech vs Constant Contact). An entry stops applying once its
-# time has passed; delete it afterwards.
+# (GoDaddy, Martech vs Constant Contact). Delete an entry only after its
+# ORIGINAL Thursday (the key) has passed: the entry is also what stops that
+# Thursday's regular send. Removing Thanksgiving's on Wed Nov 25 let the Thu
+# Nov 26 run schedule the issue a second time (send_newsletter.py now refuses
+# a second delivery within four days).
 # Item 538: Christmas Eve and New Year's Eve land on Thursdays in 2026. Opens
 # peak around Dec 22 and dip on Dec 25 (Litmus; evidence mixed, none for local
 # guides), and families plan the break before it starts, so both move to

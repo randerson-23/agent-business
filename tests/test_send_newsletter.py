@@ -625,3 +625,14 @@ def test_tracking_state_records_only_tracking_fields_and_never_fails():
     def boom(*a, **k):
         raise RuntimeError("down")
     assert b.fetch_tracking_state("k", get=boom) is None
+
+
+def test_a_second_delivery_within_four_days_is_refused():
+    # 2026-11-26: the Thanksgiving issue was scheduled Wed and again Thu.
+    import send_newsletter
+    history = [{"timestamp": "2026-11-25T05:06:59+00:00", "subject": "Thanksgiving weekend", "mode": "schedule"},
+               {"timestamp": "2026-11-24T05:06:59+00:00", "subject": "draft", "mode": "draft"}]
+    thu = datetime(2026, 11, 26, 4, 22, tzinfo=timezone.utc)
+    assert send_newsletter.recent_delivery(history, thu)["subject"] == "Thanksgiving weekend"
+    assert send_newsletter.recent_delivery(history, datetime(2026, 12, 2, 4, 0, tzinfo=timezone.utc)) is None  # next week's issue
+    assert send_newsletter.recent_delivery([h for h in history if h["mode"] == "draft"], thu) is None  # a draft is not a delivery
