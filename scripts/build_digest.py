@@ -5705,6 +5705,11 @@ def display_title(title: str | None) -> str:
     """Title case for a shouting title: more than 70% of its letters are
     capitals and it is longer than 12 characters. Known acronyms stay."""
     title = title or ""
+    # ROADMAP.md item 570: a shouted leading word glued to a mixed-case name
+    # ("CLOSED-New Year's Eve", "CLOSED - Thanksgiving") reads "Closed: ...".
+    glued = re.match(r"^([A-Z]{5,})\s*(?:-|–|—|:)\s*(?=\S)(.+)$", title)
+    if glued and not glued.group(2).isupper() and glued.group(1) not in _KEEP_UPPER:
+        return f"{glued.group(1).capitalize()}: {glued.group(2)}"
     letters = [c for c in title if c.isalpha()]
     if len(title) <= 12 or not letters or sum(c.isupper() for c in letters) / len(letters) <= 0.7:
         return title
@@ -7704,9 +7709,8 @@ def select_new_years_eve(sections: list[dict], now: datetime, limit: int = 4) ->
     (item 446's title match, adults-only left out) first, then family events
     from 3 PM, each with its calendar link. None in any other week."""
     delivery = email_delivery_time(now).date()
-    window = weekend_window(*weekend_dates(delivery))
-    nye = next((d for d in window if (d.month, d.day) == (12, 31)), None)
-    if nye is None or nye.weekday() != 3:
+    nye = new_years_eve_in_window(now)
+    if nye is None:
         return None
     seen, found = set(), []
     for sec in sections:
@@ -7717,21 +7721,44 @@ def select_new_years_eve(sections: list[dict], now: datetime, limit: int = 4) ->
                 continue
             if start.tzinfo is not None:
                 start = start.astimezone(LOCAL_TZ).replace(tzinfo=None)
-            if start.date() != nye or e.get("attendable") is False or e.get("sponsored_by") or e.get("event_status") or is_notice_title(e.get("title") or ""):
+            if start.date() not in (nye, delivery) or e.get("attendable") is False or e.get("sponsored_by") or e.get("event_status") or is_notice_title(e.get("title") or ""):
                 continue
             text = f"{e.get('title') or ''} {e.get('detail') or ''}"
             party = bool(NYE_TITLE.search(e.get("title") or "")) and not NYE_ADULT.search(text)
+            if start.date() == delivery and start.date() != nye:  # item 568: the delivery day's own Noon Year's parties, "Today"
+                if not party:
+                    continue
             if not party and (start.time() < TONIGHT_FROM or family_relevance(e) < 0 or NYE_ADULT.search(text)):
                 continue
             key = (sec["region_name"], (e.get("title") or "").strip().lower())
             if key in seen:
                 continue
             seen.add(key)
-            found.append((not party, start, -family_relevance(e), dict(e, town=sec["region_name"], tonight_when=event_time_label(start.isoformat()), email_emoji="🎉" if party else email_event_emoji(e))))
-    if not found:
-        return None
-    found.sort(key=lambda f: f[:3])
-    return {"label": "THURSDAY: NEW YEAR'S EVE", "events": [f[3] for f in found[:limit]]}
+            when = event_time_label(start.isoformat())
+            if start.date() == delivery and start.date() != nye:
+                when = "Today" + (f" · {when}" if when else "")
+            found.append((start.date() != delivery, not party, start, -family_relevance(e), dict(e, town=sec["region_name"], tonight_when=when, email_emoji="🎉" if party else email_event_emoji(e))))
+    found.sort(key=lambda f: f[:4])
+    # Item 568: the block always shows in the New Year's issue; with nothing
+    # listed yet it says so and links /new-years-eve/.
+    empty = None if found else {"text": "Noon Year's Eve parties for kids: we'll list each one as the libraries and park districts post them",
+                                "url": SITE_BASE_URL + "new-years-eve/?utm_source=email&utm_campaign=nye"}
+    return {"label": "THURSDAY: NEW YEAR'S EVE", "events": [f[4] for f in found[:limit]], "empty_line": empty}
+
+
+def new_years_eve_in_window(now: datetime) -> date | None:
+    """Item 538/568: Dec 31 when it is a Thursday inside the issue's window (the
+    moved Dec 30 delivery), else None."""
+    delivery = email_delivery_time(now).date()
+    nye = next((d for d in weekend_window(*weekend_dates(delivery)) if (d.month, d.day) == (12, 31)), None)
+    return nye if nye is not None and nye.weekday() == 3 else None
+
+
+NEW_YEARS_SUBJECT = "New Year's Eve & the long weekend"
+
+
+def new_years_subject(event_total: int) -> str:
+    return f"{NEW_YEARS_SUBJECT}: {event_total} idea{'' if event_total == 1 else 's'}" if event_total else NEW_YEARS_SUBJECT
 
 
 def build_conditional_email_body(by_town: dict[str, str], fallback: str) -> str:
@@ -8221,7 +8248,7 @@ def render_combined_email_digest(sections: list[dict], weekend_date_range: str, 
         empty_regions_summary=empty_regions_summary,
         house_ad=house_ad,
         weekend_date_range=weekend_date_range,
-        subject_line=winter_break_subject(region_blocks) if winter_break else build_combined_email_subject_line(sections, now, top_picks, on_sale),
+        subject_line=winter_break_subject(region_blocks) if winter_break else new_years_subject(event_total) if new_years_eve else build_combined_email_subject_line(sections, now, top_picks, on_sale),
         winter_break=winter_break,
         preheader=truncate(f"Two weeks of things to do across {_join_names([sec['region_name'] for sec in sections])}", PREHEADER_MAX_LEN) if winter_break else build_combined_email_preheader(sections),
         newsletter=newsletter or {"configured": False},

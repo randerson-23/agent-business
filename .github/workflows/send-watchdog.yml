@@ -52,3 +52,9 @@ jobs:
 
       - name: Check the newsletter has actually gone out recently
         run: python scripts/check_send_history.py
+
+      # ROADMAP.md item 569: each future special delivery has a preview built
+      # within the last 36 hours.
+      - name: Check the special-issue previews are fresh
+        if: always()
+        run: python scripts/check_preview_freshness.py
