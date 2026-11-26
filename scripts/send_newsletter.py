@@ -380,6 +380,29 @@ def next_delivery(now: datetime, overrides: dict[date, datetime] | None = None) 
 DUE_WITHIN = timedelta(hours=24)
 
 
+# A second delivery within this window is refused (2026-11-26: removing the
+# Thanksgiving override the day after its Wednesday send let the regular
+# Thursday run schedule the same issue again). Weekly issues are 7+ days apart,
+# moved ones at least 6.
+REPEAT_WINDOW = timedelta(days=4)
+
+
+def recent_delivery(history: list[dict], now: datetime, window: timedelta = REPEAT_WINDOW) -> dict | None:
+    """The newest send or schedule recorded within `window` before `now`, or None."""
+    for entry in reversed(history or []):
+        if entry.get("mode") not in ("send", "schedule"):
+            continue
+        try:
+            when = datetime.fromisoformat(entry["timestamp"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=timezone.utc)
+        if timedelta(0) <= now - when <= window:
+            return entry
+    return None
+
+
 def issue_is_due(now: datetime, overrides: dict[date, datetime] | None = None) -> bool:
     return next_delivery(now, overrides) - now <= DUE_WITHIN
 
@@ -596,6 +619,12 @@ def main(argv: list[str] | None = None) -> int:
         "double-opt-in problem.",
     )
     parser.add_argument(
+        "--force-repeat",
+        action="store_true",
+        help="Send/schedule even though another issue was sent or scheduled in "
+        "the last four days - only for a deliberate second issue.",
+    )
+    parser.add_argument(
         "--check-due",
         action="store_true",
         help="Print due=true/false (and append it to $GITHUB_OUTPUT) for the "
@@ -662,6 +691,18 @@ def main(argv: list[str] | None = None) -> int:
             except SendError as exc:
                 logger.error("%s", exc)
                 return 1
+
+    # A repeat guard: never send or schedule twice for one weekend.
+    if cfg["mode"] in DELIVERY_MODES:
+        previous = recent_delivery(load_send_history(), now)
+        if previous and not args.force_repeat:
+            logger.error(
+                "Not sending: %r was already %s at %s (within %d days). Use --force-repeat "
+                "only for a deliberate second issue.",
+                previous.get("subject"), "scheduled" if previous.get("mode") == "schedule" else "sent",
+                previous.get("timestamp"), REPEAT_WINDOW.days,
+            )
+            return 1
 
     # The banner comes first and names the outcome, not the setting. An
     # earlier version printed "Mode: send" directly above "Dry run - no

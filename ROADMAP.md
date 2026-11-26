@@ -219,6 +219,7 @@ have nothing pressing, pick the highest unclaimed `P1` item below. Mark items
 doesn't re-suggest something already shipped.
 
 **Build queue (by deadline; refreshed by the research loop, item 346).**
+> **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
 0. **569** (previews refresh after every site build; the Nov 25 cron never fired), then **568** (the Dec 30 issue gets its New Year's subject, header and block even with no listings), then **570** (hyphenated closure labels).
 0. ~~**565**~~, ~~**566**~~, ~~**567**~~ **DONE** (2026-11-25).
