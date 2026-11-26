@@ -221,6 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
+0. **571** (unschedule workflow the loop can dispatch; test on a throwaway first), **572** (repeat guard checks Buttondown's scheduled list), then **573** (watchdog fails on a duplicate). Before Dec 23.
 0. **569** (previews refresh after every site build; the Nov 25 cron never fired), then **568** (the Dec 30 issue gets its New Year's subject, header and block even with no listings), then **570** (hyphenated closure labels).
 0. ~~**565**~~, ~~**566**~~, ~~**567**~~ **DONE** (2026-11-25).
 0. ~~**563**~~ **DONE**, ~~**562**~~ **DONE**, ~~**564**~~ **DONE** (2026-11-25).
@@ -22954,6 +22955,65 @@ Eve and winter-break searches.
 
      Test: *"CLOSED-New Year's Eve"* → *"Closed: New Year's Eve"*;
      *"Closed for the Christmas Holiday"* is unchanged.
+
+
+#### Research pass 2026-11-26 (hundred-and-sixty-seventh pass)
+
+Overnight the build loop found that the Thanksgiving issue was **scheduled
+twice**: once for Wed Nov 25 (sent, send 11) and again for Thu Nov 26 07:00
+CT (`em_26e79gznn393gttj97k082d9a4`, recorded 04:22 UTC). It shipped a guard
+(PR #497) and left the cancellation to the owner, because the loop has no
+Buttondown access. This pass looks at how to make the next such slip
+self-correcting with no owner time, and re-reads the previews after
+565–567.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **Buttondown's API can take an email back** (docs.buttondown.com *"Updating an email"* `api-emails-update`, *"Scheduling emails via the API"*, *"Drafting emails via the API"*; the Mar 2026 *"Safer defaults for the email creation API"* changelog) | `PATCH /v1/emails/{id}` accepts `status` (`draft`, `scheduled`, `about_to_send`, `sent`), and `publish_date` can be cleared. The drafting guide says a send that is about to go out is undone by setting it back to **Draft**. No page says outright that *scheduled → draft* works, and DELETE on a scheduled email isn't documented. | The repo's workflows already hold the Buttondown key; the build loop can dispatch workflows. A dispatchable "unschedule" step turns *"owner must cancel in Buttondown before 7 AM"* into something the loop does itself. |
+| **The new guard trusts only the local log** (`scripts/send_newsletter.py` `recent_delivery`, PR #497) | It refuses a send when `data/send_history.json` has a delivery in the last four days. It never asks Buttondown. If the history commit fails, or an email is scheduled by hand or by a test run, the guard can't see it. | Buttondown is the source of truth for what will reach readers. A guard that checks it closes the gap for good. |
+| **The previews after 565–567 (design/UX)** (`docs/previews/2026-12-23/` and `2026-12-30/`, rebuilt Nov 25 23:38 UTC) | The rebuild landed about 8 hours after the 15:17 cron time (569 stays open). Both previews are clean of the *"test"* event and *"Purchase Tickets"* boilerplate, so 565 and 566 hold. The Dec 30 preview still reads *"Wheeling: **CLOSED-New Year's Eve** Thu"*, so 570 is needed. Its subject is now *"6 things to do this weekend in 3 towns"*, still with no New Year's identity (568). | The previews earn their keep: two fixes confirmed, two open items confirmed. |
+
+#### P1 (new)
+
+571. **A one-step unschedule the loop can run itself.** Build loop:
+
+     - Add `.github/workflows/unschedule-email.yml` (`workflow_dispatch`,
+       input `email_id`). It PATCHes that email to `status: "draft"` with
+       `publish_date` cleared, then GETs it and fails unless the status
+       now reads `draft`.
+     - Record the result in `data/send_history.json` on that entry
+       (`"cancelled": "<UTC time>"`), so the four-day guard ignores it.
+     - First use: try it on a throwaway draft scheduled a month out, since
+       *scheduled → draft* isn't stated in Buttondown's docs. Only then
+       document it in the incident note as the fix.
+     - The build loop runs it by dispatch when it finds a duplicate. The
+       owner never needs Buttondown for this.
+
+     Tests: with a mocked API, a scheduled email ends as draft and is
+     marked cancelled; a `sent` email is refused with a clear message.
+
+572. **The repeat guard asks Buttondown, not only the log.** Before it
+     creates or schedules, `send_newsletter.py` lists emails with
+     `status=scheduled`, plus those sent in the last four days. It refuses
+     if any is due, or was sent, within four days of this delivery, and
+     names the email's id and subject. The local-history check stays as
+     the fallback if the API call fails, and `--force-repeat` still
+     overrides both.
+
+     Tests: a mocked scheduled email for tomorrow blocks the run; an
+     empty list with an empty history passes; an API error falls back to
+     history.
+
+#### P2 (new)
+
+573. **Duplicate deliveries raise an alarm the owner sees.** Build loop:
+     `send-watchdog.yml` fails, which emails the owner through GitHub's
+     normal failed-workflow notice, when `data/send_history.json` holds
+     two uncancelled deliveries within four days. The failure message
+     names both ids and the dispatch command for item 571.
+
+     Test: two entries 22 hours apart fail the check, and one marked
+     `cancelled` passes.
 
 
 ## Working agreements for autonomous iteration
