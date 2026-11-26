@@ -221,6 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
+0. **577** (New Year's hero headline; quick), then **574** (`/summer-camps/` live by Jan 15, dates from the districts' own pages), **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
 0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then ~~569, 568, 570~~ (done).
 0. ~~**569**~~, ~~**568**~~, ~~**570**~~ **DONE** (2026-11-26).
 0. ~~**565**~~, ~~**566**~~, ~~**567**~~ **DONE** (2026-11-25).
@@ -23014,6 +23015,83 @@ self-correcting with no owner time, and re-reads the previews after
 
      Test: two entries 22 hours apart fail the check, and one marked
      `cancelled` passes.
+
+
+#### Research pass 2026-11-26, evening (hundred-and-sixty-eighth pass)
+
+The build loop cleared everything queued today: 568–570, plus 571–573 (571
+built, not yet tried live). The backlog is empty, so this pass looks past
+December, at the next season families spend money on and local businesses
+pay to reach: **summer camp**. It also re-reads the Dec 30 preview.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **What family publishers charge camps** (NPN's *"Summer Camp Directory registration"* page; Macaroni KID Chicago Loop and North Side 2026 Summer Camp Guides; Chicago Kids' 2026 camp guide; Ann Arbor with Kids' camp listings; summer-camp-planner.com's Chicago directory) | Every family publisher runs a camp guide as a seasonal product. **NPN** (about 18K list): a business page, a camp email mention and rotating logo, **Feb – Jul**, price not public. **Macaroni KID Chicago**: early camp partners get featured guide placement plus a year in the directory, *"valued at $100+"*. **Ann Arbor with Kids**: gold listing **$200**, with 2027 listings *"updated starting late 2026"*. Chicago Kids and summer-camp-planner.com cover the city, not these towns. | This is a product that sells itself at the business plan's price points ($20–$175), and it comes with a season (Feb – Jun) and a buyer category (private sports, STEM, art and swim camps) that already pays for this elsewhere. Nobody runs a guide for these six towns. |
+| **When the park districts open summer registration** (AHPD's Summer 2026 playbook and program guide on issuu; ahpd.org camps and CAP registration pages; past years' guides) | No 2027 date is posted yet. AHPD's 2026 sources disagree: the playbook says **resident registration Tue Mar 3, 10 AM**, the program guide says **Apr 7**; 2024's was Apr 2. Non-residents follow a week later. | Families' first camp search starts in **January – February**, before registration. A camp page has to be live and indexed by mid-January to be found then, and its registration dates must come from the districts' own pages (item 478). |
+| **The Dec 30 preview, after 568 (design/UX)** (`docs/previews/2026-12-30/`, built Nov 26) | 568 and 570 hold: subject *"New Year's Eve & the long weekend: 6 ideas"*, header *"🎉 THE NEW YEAR'S ISSUE"*, a *"THURSDAY: NEW YEAR'S EVE"* block with the Noon Year's Eve fallback line, and *"Wheeling: Closed: New Year's Eve Thu"*. The hero headline under the new header still says ***"This weekend, across the northwest suburbs"***. | A small mismatch in the year's last issue, and a one-line fix. |
+
+#### P1 (new)
+
+574. **A 2027 summer camps page, live by Jan 15.** Build loop:
+
+     - Add `/summer-camps/`. Per town, list each park district's (and
+       library's, where it runs camps) **registration-open date** for
+       residents and non-residents, linking to the district's own camp
+       page. Each date comes from that district's own page or guide, with
+       `confirmed_via` (item 478). Until a district posts 2027 dates, say
+       *"2027 dates not posted yet; last year registration opened in
+       March"*, with no date.
+     - Reuse `camp_catalogues` (item 438) for the camp page links. Add
+       Mount Prospect, Des Plaines, Wheeling and Elk Grove Village entries
+       from their own sites.
+     - Each confirmed date gets an *"Add a reminder"* Google Calendar link
+       (items 462–463) and a line in the email's *"Sign-ups opening this
+       week"* block (item 327) the week it opens.
+     - Probe rounds from Dec 15 for the districts' winter/spring guides,
+       which usually carry the summer registration date.
+     - Follow item 516: noindex until three towns have a confirmed date or
+       a catalogue link. Submit through IndexNow when it flips.
+
+     Tests: a town with no 2027 date shows the fallback with no date; a
+     confirmed date renders with its calendar link; the page is noindex
+     below three entries.
+
+575. **A "Featured camp" spot, sold Feb 1 – Jun 30.** Build loop:
+
+     - Support `kind: camp_feature` in `config/sponsors.yaml`: business
+       name, one line, link, town and season dates. It renders as a
+       labelled *"Sponsored"* card at the top of that town's section of
+       `/summer-camps/`. At most three per town, shown in the order they
+       were booked.
+     - Mention each featured camp once in the email, in the first issue
+       after it starts, labelled *"Sponsored"*.
+     - Add it to the sponsor page and `SPONSOR_KIT.md`: **$100 for the
+       season** (founding price, between Macaroni KID's *"$100+"* bundle
+       and Ann Arbor with Kids' $200 gold listing), cheaper than a month of
+       Weekly Spots. Add it as a row in BUSINESS_PLAN.md's tier table.
+     - The owner's only task is invoicing, inside item 400's cap.
+
+     Tests: a camp_feature entry renders labelled on its town only within
+     its dates, a fourth entry for one town is refused at build, and the
+     email mention appears once.
+
+#### P2 (new)
+
+576. **Camp providers into the warm prospect list.** Build loop: in
+     `scripts/warm_prospects.py` (item 387), give non-agency hosts whose
+     listed events include *camp*, *clinic* or *break program* the reason
+     `"camp_provider"`, by business name only. OUTREACH_PROSPECTS.md then
+     lists them under *"Pitch the Featured camp spot (from Jan)"*.
+
+     Test: a non-agency venue hosting a "Winter Break Hockey Camp" lands
+     with `camp_provider`; a park district or library never does.
+
+577. **The New Year's hero headline.** In the issue 568 marks as New
+     Year's, the hero headline reads *"New Year's weekend, across the
+     northwest suburbs"* instead of *"This weekend…"*.
+
+     Test: the Dec 30 preview shows the new headline; a normal issue is
+     unchanged.
 
 
 ## Working agreements for autonomous iteration
