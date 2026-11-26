@@ -25,6 +25,9 @@ on:
     # about a week of margin before the next one is due, not silently
     # carried for a full cycle.
     - cron: "13 15 * * 0"
+    # ROADMAP.md item 573: daily too, so a duplicate delivery fails a run (and
+    # emails the owner) within a day, not by Sunday.
+    - cron: "41 9 * * *"
   workflow_dispatch: {}
 
 permissions:

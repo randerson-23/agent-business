@@ -1,0 +1,58 @@
+name: Unschedule an email
+
+# ROADMAP.md item 571: take a scheduled Buttondown email back to draft (never
+# sends, deletes or edits content). Dispatched with the email id, e.g. when a
+# duplicate is scheduled; records "cancelled" on that send_history entry.
+on:
+  workflow_dispatch:
+    inputs:
+      email_id:
+        description: "Buttondown email id (em_...)"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: send-history
+  cancel-in-progress: false
+
+jobs:
+  unschedule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Unschedule
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          EMAIL_ID: ${{ github.event.inputs.email_id }}
+        run: python scripts/unschedule_email.py "$EMAIL_ID"
+
+      - name: Record it
+        run: |
+          git config user.name "local-planner-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/send_history.json
+          if git diff --cached --quiet; then
+            echo "No history entry for that id."
+            exit 0
+          fi
+          git commit -m "Record unscheduled email [skip ci]"
+          attempt=1
+          until git push; do
+            if [ "$attempt" -ge 5 ]; then
+              echo "::error::Failed to push after $attempt attempts."
+              exit 1
+            fi
+            git fetch origin main
+            git rebase origin/main
+            attempt=$((attempt + 1))
+          done
