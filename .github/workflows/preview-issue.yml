@@ -15,10 +15,19 @@ on:
         description: "Delivery date to preview (YYYY-MM-DD); blank = next special delivery"
         required: false
         default: ""
+  # Item 569: refresh after every site build on main (the cron is the backstop;
+  # GitHub ran the Nov 25 15:17 cron about eight hours late).
+  workflow_run:
+    workflows: ["Build region digests"]
+    types: [completed]
+    branches: [main]
   push:
     branches: [main]
     paths:
       - "scripts/build_preview.py"
+      - "scripts/build_digest.py"
+      - "templates/**"
+      - "config/newsletter.yaml"
       - ".github/workflows/preview-issue.yml"
 
 permissions:

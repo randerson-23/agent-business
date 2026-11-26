@@ -8414,3 +8414,32 @@ def test_write_to_santa_lists_usps_with_its_deadline_and_reminder(tmp_path):
     entries = [{"region_name": "Wheeling", "region_url": "https://x/", "events": [{"title": "Breakfast with Santa", "url": "https://x/b", "date_iso": "2026-12-05T10:00:00", "detail": "Pancakes with Santa.", "anchor_id": "a"}]}]
     html = build_digest.render_santa_page(entries, datetime(2026, 11, 25, tzinfo=timezone.utc))
     assert 'id="mailboxes"' in html and "123 Elf Road" in html and 'href="#mailboxes"' in html and "⏰ Remind me" in html
+
+
+def test_new_years_issue_has_its_identity_even_with_no_listings(monkeypatch):
+    # ROADMAP.md item 568.
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {date(2026, 12, 31): datetime(2026, 12, 30, 7, 0)})
+    tue = datetime(2026, 12, 29, 22, 37, tzinfo=timezone.utc)
+    empty = [{"region_name": "Wheeling", "region_url": "https://x/wheeling-60090/", "weekend_events": [], "upcoming_events": []}]
+    html = build_digest.render_combined_email_digest(empty, "Dec 31 – Jan 3", tue)
+    assert "New Year&#39;s Eve &amp; the long weekend" in html or "New Year's Eve & the long weekend" in html
+    assert "THE NEW YEAR" in html and "THURSDAY: NEW YEAR" in html and "new-years-eve/?utm_source=email" in html
+    def ev(title, iso):
+        return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "tags": ["kid_friendly", "free"], "detail": "d", "attendable": True}
+    one = [dict(empty[0], weekend_events=[ev("Noon Year's Eve Party", "2026-12-31T11:00:00")],
+                upcoming_events=[ev("Noon Year's Eve Party", "2026-12-31T11:00:00"), ev("Noon Year's Eve Bash", "2026-12-30T11:00:00")])]
+    block = build_digest.select_new_years_eve(one, tue)
+    assert [e["title"] for e in block["events"]] == ["Noon Year's Eve Bash", "Noon Year's Eve Party"]
+    assert block["events"][0]["tonight_when"].startswith("Today") and block["empty_line"] is None
+    assert build_digest.new_years_subject(1) == "New Year's Eve & the long weekend: 1 idea"
+    # A normal Thursday issue is unchanged.
+    monkeypatch.setattr(build_digest, "load_delivery_overrides", lambda: {})
+    normal = build_digest.render_combined_email_digest(empty, "Dec 11–13", datetime(2026, 12, 9, 22, tzinfo=timezone.utc))
+    assert "THE NEW YEAR" not in normal and "THURSDAY: NEW YEAR" not in normal
+
+
+def test_glued_all_caps_closure_labels_read_cleanly():
+    # ROADMAP.md item 570.
+    assert build_digest.display_title("CLOSED-New Year's Eve") == "Closed: New Year's Eve"
+    assert build_digest.display_title("Closed for the Christmas Holiday") == "Closed for the Christmas Holiday"
+    assert build_digest.display_title("YMCA - Family Swim") == "YMCA - Family Swim"

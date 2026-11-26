@@ -221,8 +221,8 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
-0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then **569**, **568**, **570**.
-0. **569** (previews refresh after every site build; the Nov 25 cron never fired), then **568** (the Dec 30 issue gets its New Year's subject, header and block even with no listings), then **570** (hyphenated closure labels).
+0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then ~~569, 568, 570~~ (done).
+0. ~~**569**~~, ~~**568**~~, ~~**570**~~ **DONE** (2026-11-26).
 0. ~~**565**~~, ~~**566**~~, ~~**567**~~ **DONE** (2026-11-25).
 0. ~~**563**~~ **DONE**, ~~**562**~~ **DONE**, ~~**564**~~ **DONE** (2026-11-25).
 0. ~~**560**~~ **DONE**, then ~~**559**~~ **DONE** with 535's candidate list (Wildbird Shack as Santa-host candidate and warm lead), then ~~**561**~~ **DONE** (information box capped at four lines).
@@ -22912,7 +22912,7 @@ Eve and winter-break searches.
 
 #### P1 (new)
 
-568. **Give the Dec 30 issue its New Year's identity, even with no
+568. **DONE (2026-11-26).** `new_years_eve_in_window`; subject *"New Year's Eve & the long weekend: N ideas"* (no count at 0); kicker *🎉 The New Year's issue*; the *Thursday: New Year's Eve* block always renders, with a line linking `/new-years-eve/` when nothing is listed; Noon Year's parties on the delivery day itself lead it, labelled *Today*. **Give the Dec 30 issue its New Year's identity, even with no
      listings yet.** Build loop, for the delivery whose window contains
      Dec 31 (item 538's override):
 
@@ -22931,7 +22931,7 @@ Eve and winter-break searches.
      header, block and hub link; with one Dec 31 event, it is listed; a
      normal Thursday issue is unchanged.
 
-569. **Keep the previews fresh.** Build loop, in `preview-issue.yml`:
+569. **DONE (2026-11-26).** preview-issue.yml also runs on `workflow_run` of *Build region digests* (completed, main) and on pushes to `scripts/build_digest.py`, `templates/**` and `config/newsletter.yaml`; the daily cron stays as a backstop. `scripts/check_preview_freshness.py`, a step in send-watchdog.yml (daily), fails when a future override date has no preview or one built before yesterday (the preview carries its build date only, so "36 hours" is read as that). **Keep the previews fresh.** Build loop, in `preview-issue.yml`:
 
      - Add a `workflow_run` trigger on the site-build workflow's completion
        (on main), so every rebuild refreshes the previews. Keep the cron as
@@ -22947,7 +22947,7 @@ Eve and winter-break searches.
 
 #### P2 (new)
 
-570. **Normalise hyphenated closure labels.** Check that item 566's
+570. **DONE (2026-11-26).** `display_title`: a leading all-caps word of 5+ letters joined by `-`, `–`, `—` or `:` to mixed-case text reads *"Closed: New Year's Eve"*; shorter leading words (YMCA, NASA) and known acronyms are left alone. **Normalise hyphenated closure labels.** Check that item 566's
      `display_title` handles *"CLOSED-New Year's Eve"* (an ALL-CAPS word
      glued to a mixed-case name with a hyphen). If not, split the leading
      ALL-CAPS word on a hyphen or colon and title-case it: *"Closed: New

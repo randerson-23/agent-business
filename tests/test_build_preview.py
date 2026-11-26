@@ -63,3 +63,14 @@ def test_previews_index_lists_each_folder_newest_delivery_first(tmp_path):
     out = build_preview.write_index(tmp_path).read_text()
     assert out.index("Wed Dec 30, 2026") < out.index("Wed Dec 23, 2026")
     assert build_preview.NOINDEX in out and "built 2026-11-25" in out and "2026-12-23/email-preview/palatine-60067.html" in out
+
+
+def test_preview_freshness_flags_missing_and_old_previews(tmp_path):
+    # ROADMAP.md item 569.
+    import check_preview_freshness as c
+    overrides = {"2026-12-24": "2026-12-23T07:00", "2026-12-31": "2026-12-30T07:00", "2026-11-26": "2026-11-25T07:00"}
+    (tmp_path / "2026-12-23").mkdir()
+    (tmp_path / "2026-12-23" / "combined-email-preview.html").write_text(build_preview.add_preview_header("<body></body>", date(2026, 11, 26), date(2026, 12, 23)))
+    problems = c.stale_previews(date(2026, 11, 27), overrides, tmp_path)
+    assert problems == ["2026-12-30: no preview"]  # Dec 23's is from yesterday: fine; Nov 25 is past
+    assert c.stale_previews(date(2026, 11, 29), {"2026-12-24": "2026-12-23T07:00"}, tmp_path)[0].startswith("2026-12-23: preview built 2026-11-26")

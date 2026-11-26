@@ -80,7 +80,7 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 <td class="wt-accent" style="font-family:{{ sans }}; font-size:12px; font-weight:600; letter-spacing:1.5px; color:{{ accent }}; padding-bottom:10px;">
-{% if winter_break %}❄️ THE WINTER BREAK ISSUE{% elif edition == 'halloween' %}🎃 THE HALLOWEEN WEEKEND ISSUE{% elif edition == 'holiday' %}🎄 HOLIDAY KICKOFF{% else %}WITHIN TEN &nbsp;·&nbsp; WEEKEND GUIDE{% endif %}
+{% if winter_break %}❄️ THE WINTER BREAK ISSUE{% elif new_years_eve %}🎉 THE NEW YEAR'S ISSUE{% elif edition == 'halloween' %}🎃 THE HALLOWEEN WEEKEND ISSUE{% elif edition == 'holiday' %}🎄 HOLIDAY KICKOFF{% else %}WITHIN TEN &nbsp;·&nbsp; WEEKEND GUIDE{% endif %}
 </td>
 </tr>
 <tr>
@@ -213,6 +213,9 @@ PREVIEW ONLY, NOT PART OF THE EMAIL — SUBJECT LINE: {{ subject_line }}
 </td>
 </tr>
 {% endfor %}
+{% if tonight.empty_line %}
+<tr><td style="padding:0 0 14px 0; font-family:{{ sans }}; font-size:15px; line-height:1.5;"><a href="{{ tonight.empty_line.url }}" class="wt-ink" style="color:{{ ink }}; text-decoration:underline;">🎉 {{ tonight.empty_line.text }}</a> &rarr;</td></tr>
+{% endif %}
 </table>
 </td>
 </tr>
