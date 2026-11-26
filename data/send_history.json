@@ -153,5 +153,13 @@
     "region": "combined",
     "mode": "schedule",
     "pre_send_subscriber_count": 1
+  },
+  {
+    "timestamp": "2026-11-26T04:22:43.464808+00:00",
+    "subject": "Thanksgiving weekend: lights, shops & more",
+    "buttondown_id": "em_26e79gznn393gttj97k082d9a4",
+    "region": "combined",
+    "mode": "schedule",
+    "pre_send_subscriber_count": 1
   }
 ]
