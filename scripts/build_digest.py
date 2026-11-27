@@ -3199,6 +3199,71 @@ def render_nye_page(entries: list[dict], now: datetime, analytics: dict | None =
     )
 
 
+SUMMER_CAMPS_PATH = CONFIG_DIR / "summer_camps.yaml"
+
+
+def build_summer_camps(regions: list[dict], today: date, path: Path | None = None) -> dict:
+    """ROADMAP.md item 574: per town, the camp catalogue link and the 2027
+    resident / non-resident registration dates, each only from the agency's
+    own page (`confirmed_via`). A date needs its confirmation; without one the
+    town reads "2027 dates not posted yet". Confirmed dates carry a Google
+    Calendar reminder; `count` is towns with a date or a catalogue link."""
+    path = path or SUMMER_CAMPS_PATH
+    cfg = load_yaml(path) if path.exists() else {}
+    season = int(cfg.get("season") or today.year + (1 if today.month >= 8 else 0))
+    towns_cfg = cfg.get("towns") or {}
+    towns, count = [], 0
+    for rc in regions:
+        rid, name = rc["region"]["id"], rc["region"]["name"]
+        t = towns_cfg.get(rid) or {}
+        catalogues = [{"name": str(c.get("name") or "").strip(), "url": safe_http_url(c.get("url"))} for c in (rc.get("camp_catalogues") or []) if isinstance(c, dict)]
+        url = safe_http_url(t.get("camp_url")) or next((c["url"] for c in catalogues if c["url"]), None)
+        agency = str(t.get("agency") or next((c["name"] for c in catalogues if c["name"]), "") or "").strip()
+        confirmed = str(t.get("confirmed_via") or "").strip()
+        dates = []
+        for key, label in (("resident_opens", "Residents"), ("nonresident_opens", "Non-residents")):
+            day = _parse_promo_day(t.get(key))
+            if day and confirmed and day.year == season:
+                dates.append({"label": label, "date": day, "date_label": f"{day.strftime('%a %b')} {day.day}, {day.year}",
+                              "remind_url": reminder_calendar_url(f"{agency or name} summer camp registration opens ({label.lower()})", day, url) if day >= today else None})
+        last_year = str(t.get("last_year") or "").strip() if safe_http_url(t.get("last_year_source")) else ""
+        if dates or url:
+            count += 1
+        towns.append({"town": name, "region_url": SITE_BASE_URL + rid + "/", "agency": agency, "url": url, "dates": dates, "last_year": last_year})
+    return {"season": season, "towns": towns, "count": count}
+
+
+def camp_signups_opening(camps: dict, town: str, today: date, days: int = 7) -> list[dict]:
+    """Item 574: a confirmed camp registration date opening within `days`, as a
+    line in the email's "Sign-ups opening this week" block."""
+    out = []
+    for t in camps.get("towns") or []:
+        if t["town"] != town:
+            continue
+        for d in t["dates"]:
+            if today <= d["date"] <= today + timedelta(days=days):
+                out.append({"title": f"{t['agency'] or town} summer camps ({d['label'].lower()})", "url": t["url"] or SITE_BASE_URL + "summer-camps/",
+                            "opens": d["date"], "opens_label": d["date"].strftime("%a, %b ") + str(d["date"].day), "days": [], "sessions_label": "",
+                            "event_label": "", "remind_url": d["remind_url"]})
+    return out
+
+
+def render_summer_camps_page(camps: dict, now: datetime, analytics: dict | None = None, newsletter: dict | None = None) -> str:
+    town_names = _join_names([t["town"] for t in camps["towns"]])
+    season = camps["season"]
+    return get_template_env().get_template("summer_camps.html.j2").render(
+        page_title=f"Summer Camps {season}: Registration Dates in {town_names} | Within Ten",
+        og_title=short_og_title("Summer camp sign-up dates", len(camps["towns"]), season),
+        description=f"When {season} summer camp registration opens at the park districts in {town_names}, from each district's own page, with a reminder link.",
+        heading=f"Summer camps {season}: when sign-ups open",
+        subheading=f"Park district camp registration dates in {town_names}, from each district's own page. Residents usually get a head start.",
+        towns=camps["towns"], season=season,
+        newsletter=newsletter or {"configured": False},
+        hub_url=SITE_BASE_URL, canonical_url=SITE_BASE_URL + "summer-camps/",
+        generated_at=now.strftime("%Y-%m-%d %H:%M UTC"), analytics=analytics, og_image_url=SITE_BASE_URL + "og/holidays.png",
+    )
+
+
 def santa_listing_offer(contact_email: str | None) -> dict | None:
     """ROADMAP.md item 501: "Hosting Santa at your shop or restaurant? Listing
     it is free", a mailto with the fields a curated entry needs."""
@@ -9798,7 +9863,7 @@ def main() -> None:
                 "sponsor": sponsor,
                 "days_off": region_days_off,
                 "closures": region_closures,
-                "signups": [dict(e, town=region["name"]) for e in build_signups_opening(blocks, local_today)],
+                "signups": [dict(e, town=region["name"]) for e in camp_signups_opening(build_summer_camps(regions, local_today), region["name"], local_today) + build_signups_opening(blocks, local_today)],  # item 574: camp registration first
                 "camp_links": winter_break_camp_links(region_cfg, winter_break_catalogues(evergreen)),  # item 539
                 "downtown": region_cfg.get("downtown"),  # item 543
             }
@@ -10379,6 +10444,10 @@ def main() -> None:
     give_dir = OUTPUT_DIR / "give"
     give_dir.mkdir(parents=True, exist_ok=True)
     (give_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_give_page(give_entries, now, analytics, newsletter, [o for o in outside_entries if o.get("give_note")]), "give/", hub_entry_count(give_entries, "events", "drives", "volunteer"), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "give/", now), encoding="utf-8")
+    camps = build_summer_camps(regions, now.astimezone(LOCAL_TZ).date())  # item 574
+    camps_dir = OUTPUT_DIR / "summer-camps"
+    camps_dir.mkdir(parents=True, exist_ok=True)
+    (camps_dir / "index.html").write_text(apply_thin_page(render_summer_camps_page(camps, now, analytics, newsletter), "summer-camps/", camps["count"], thin_paths), encoding="utf-8")
     nye_dir = OUTPUT_DIR / "new-years-eve"  # item 446
     nye_dir.mkdir(parents=True, exist_ok=True)
     (nye_dir / "index.html").write_text(apply_thin_page(render_nye_page(nye_entries, now, analytics, newsletter), "new-years-eve/", hub_entry_count(nye_entries), thin_paths), encoding="utf-8")

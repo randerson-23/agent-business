@@ -1,0 +1,16 @@
+# ROADMAP.md item 574: /summer-camps/, 2027 registration dates per town, each
+# from the agency's own page or guide (`confirmed_via`, item 478). A town's camp
+# page link comes from its region YAML's `camp_catalogues` (item 438) unless set
+# here. Until an agency posts 2027 dates, its line says they aren't posted yet;
+# `last_year` (with `last_year_source`) is shown only when sourced.
+#
+#   arlington-heights-60005:
+#     agency: "Arlington Heights Park District"
+#     camp_url: "https://..."            # optional; else camp_catalogues
+#     resident_opens: 2027-02-01         # optional, needs confirmed_via
+#     nonresident_opens: 2027-02-15      # optional, needs confirmed_via
+#     confirmed_via: "probe, 2027-01-05 (ahpd.org winter/spring guide)"
+#     last_year: "March"                 # optional, needs last_year_source
+#     last_year_source: "https://..."
+season: 2027
+towns: {}
