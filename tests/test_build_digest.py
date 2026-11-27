@@ -8484,3 +8484,21 @@ def test_every_town_on_summer_camps_names_an_agency_or_coming_soon():
     assert not re.search(r"</a></strong>\s*:", html)
     assert camps["count"] == 6 and not any(t["agencies"] == [] for t in camps["towns"])
     assert by_town["Palatine"]["agencies"][0]["url"] == "https://www.palatineparks.org/summer-camps/"
+
+
+def test_league_registration_dates_parse_and_show_a_week_ahead():
+    # ROADMAP.md items 328 and 460.
+    today = date(2027, 1, 2)
+    got = build_digest.parse_registration_dates("2027 Spring Soccer. REGISTRATION DEADLINE – February 20. Registration opens Tuesday, January 5", {2027}, today)
+    assert got == {"opens": date(2027, 1, 5), "deadline": date(2027, 2, 20)}
+    old = build_digest.parse_registration_dates("2025 Fall Baseball. REGISTRATION DEADLINE – July 14, 2025", {2026, 2027}, today)
+    assert old["deadline"] is None  # a past season's page is ignored
+    cfg = {"registration_days": [{"agency": "MPPD", "program": "spring youth soccer", "opens": "2027-01-05", "deadline": "2027-02-20",
+                                  "url": "https://www.teamsideline.com/sites/mppd/content/154/Soccer-Registration", "confirmed_via": "probe"},
+                                 {"agency": "MPPD", "program": "unconfirmed", "opens": "2027-01-04", "url": "https://x.example/"}]}
+    lines = build_digest.registration_lines_for(cfg, today)
+    assert [l["text"] for l in lines] == ["MPPD spring youth soccer: registration opens Tue Jan 5"]
+    assert build_digest.registration_lines_for(cfg, date(2027, 1, 5))[0]["text"] == "MPPD spring youth soccer: Registration opens today"
+    assert build_digest.registration_lines_for(cfg, date(2026, 12, 20)) == []  # more than seven days out
+    assert build_digest.registration_signups(cfg, today)[0]["title"] == "MPPD spring youth soccer (registration opens)"
+    assert build_digest.registration_lines_for({}, today) == []

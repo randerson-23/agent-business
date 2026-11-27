@@ -221,7 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
-0. ~~**578**~~ **DONE** (2026-11-27), then **460** (re-ranked: MPPD TeamSideline league deadlines, probe from Dec 1), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
+0. ~~**578**~~ **DONE** (2026-11-27), then ~~**460**~~ **BUILT, waiting on 2027 pages** (MPPD TeamSideline league deadlines), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
 0. ~~**577**~~ **DONE**, ~~**574**~~ **BUILT, waiting on dates** (2026-11-27), then **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
 0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then ~~569, 568, 570~~ (done).
 0. ~~**569**~~, ~~**568**~~, ~~**570**~~ **DONE** (2026-11-26).
@@ -20089,7 +20089,7 @@ changes.
 
 #### P3 (new)
 
-460. **Mount Prospect's league registration windows from TeamSideline.**
+460. **BUILT (2026-11-27), waiting on 2027 pages; also builds item 328's rendering.** `registration_days:` per region YAML (Mount Prospect's empty), each entry with `agency`, `program`, `opens` and/or `deadline`, `url` and `confirmed_via` (no confirmation, no line). From seven days before, the town page shows *"📝 MPPD spring youth soccer: registration opens Tue Jan 5 →"* with ⏰ *Remind me* (*"Registration opens today"* on the day), and the email's sign-ups block gets the same line (`registration_signups`). `parse_registration_dates` reads *"REGISTRATION DEADLINE – Feb 20"* / *"registration opens Jan 5"* and ignores a date outside the season years given. Probe round 53 reads MPPD's soccer, baseball and girls-softball TeamSideline pages; the indexed copies are 2025 fall, so nothing is written until a 2026–27 page appears. **Mount Prospect's league registration windows from TeamSideline.**
      Build loop. Add MPPD's TeamSideline registration pages (soccer,
      baseball, softball) to a probe round. Parse *"REGISTRATION
      DEADLINE – <date>"* and *"registration opens <date>"*, and write

@@ -84,6 +84,14 @@ downtown:
   name: "Downtown Mount Prospect"
   url: "https://mpdowntown.com/"
 
+# ROADMAP.md items 328/460: league registration days from MPPD's own
+# TeamSideline pages (probe round 53), dated only from the season the page
+# names. Empty until a 2026-27 page is read. Each entry:
+#   - {agency: "MPPD", program: "spring youth soccer", opens: 2027-01-05,
+#      deadline: 2027-02-20, url: "https://www.teamsideline.com/sites/mppd/...",
+#      confirmed_via: "probe, 2026-12-01"}
+registration_days: []
+
 sources:
   # ROADMAP.md items 519/520: the Forest Preserves of Cook County's north-region programmes (nature
   # centres, story trails, animal encounters; mostly free, all winter). One REST response serves every
