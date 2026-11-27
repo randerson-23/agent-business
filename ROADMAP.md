@@ -221,7 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
-0. **578** (every town on `/summer-camps/` names its agency; River Trails for Mount Prospect), then **460** (re-ranked: MPPD TeamSideline league deadlines, probe from Dec 1), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
+0. ~~**578**~~ **DONE** (2026-11-27), then **460** (re-ranked: MPPD TeamSideline league deadlines, probe from Dec 1), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
 0. ~~**577**~~ **DONE**, ~~**574**~~ **BUILT, waiting on dates** (2026-11-27), then **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
 0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then ~~569, 568, 570~~ (done).
 0. ~~**569**~~, ~~**568**~~, ~~**570**~~ **DONE** (2026-11-26).
@@ -23114,7 +23114,7 @@ they post).
 
 #### P1 (new)
 
-578. **Every town on `/summer-camps/` names its agency and links its
+578. **DONE (2026-11-27).** `config/summer_camps.yaml` now holds a list of agencies per town, each camp page read from the agency's own domain through search: [MPPD](https://www.mppd.org/summer-camp/) and [River Trails](https://www.rtpd.org/programs/camp/summer-camps/) for Mount Prospect, [Wheeling](https://www.wheelingparkdistrict.com/summer-camp/), [Elk Grove](https://www.elkgroveparks.org/camps/youth-camps/), [Des Plaines](https://www.dpparks.org/summer-camps/) (dpparks.org, not dppd.org) and [Palatine's summer page](https://www.palatineparks.org/summer-camps/) (its `camp_catalogues` link is the winter-break page). A town with no agency reads *Camp page coming soon*; no bare "Town :". **No `last_year` dates recorded:** the search summaries disagreed (River Trails Feb 3/17 vs pass 169's Apr 21/May 5; MPPD May 4/11 vs CCSD 59's Mar 4), so none is sourced well enough. A later pass should quote each agency's own 2026 guide text. With six towns linked, `/summer-camps/` passes item 516 and becomes indexable and in the sitemap. **Every town on `/summer-camps/` names its agency and links its
      camp page.** Build loop, in `config/summer_camps.yaml`:
 
      - Add the agency and camp page for Des Plaines (Des Plaines Park

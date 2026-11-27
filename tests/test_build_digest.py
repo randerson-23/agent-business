@@ -8458,14 +8458,29 @@ def test_summer_camps_page_shows_only_confirmed_dates(tmp_path):
         "  palatine-60067: {agency: Palatine Park District, resident_opens: 2027-02-03}\n", encoding="utf-8")
     camps = build_digest.build_summer_camps(regions, date(2027, 1, 10), cfg)
     ah, wh, pal = camps["towns"]
+    assert wh["agencies"] == []  # item 578: no agency yet
     assert [d["label"] for d in ah["dates"]] == ["Residents", "Non-residents"] and ah["dates"][0]["remind_url"]
     assert wh["dates"] == [] and wh["url"] is None
     assert pal["dates"] == []  # a date without confirmed_via is never shown
     assert camps["count"] == 1  # only Arlington Heights has a date or link: below the thin-page minimum
     html = build_digest.render_summer_camps_page(camps, datetime(2027, 1, 10, tzinfo=timezone.utc))
     assert "Residents from <time" in html and "2027 dates not posted yet" in html and "Add a reminder" in html
+    assert "Wheeling</a></strong> &middot; Camp page coming soon." in html and "Wheeling</a></strong>:" not in html
     thin = set()
     build_digest.apply_thin_page(html, "summer-camps/", camps["count"], thin)
     assert thin == {"summer-camps/"}
     signups = build_digest.camp_signups_opening(camps, "Arlington Heights", date(2027, 1, 28))
     assert signups and signups[0]["title"] == "Arlington Heights Park District summer camps (residents)"
+
+
+def test_every_town_on_summer_camps_names_an_agency_or_coming_soon():
+    # ROADMAP.md item 578.
+    camps = build_digest.build_summer_camps(build_digest.load_regions(), date(2026, 11, 27))
+    by_town = {t["town"]: t for t in camps["towns"]}
+    assert [a["agency"] for a in by_town["Mount Prospect"]["agencies"]] == ["Mt. Prospect Park District", "River Trails Park District"]
+    assert all(a["url"] for t in camps["towns"] for a in t["agencies"])
+    html = build_digest.render_summer_camps_page(camps, datetime(2026, 11, 27, tzinfo=timezone.utc))
+    import re
+    assert not re.search(r"</a></strong>\s*:", html)
+    assert camps["count"] == 6 and not any(t["agencies"] == [] for t in camps["towns"])
+    assert by_town["Palatine"]["agencies"][0]["url"] == "https://www.palatineparks.org/summer-camps/"

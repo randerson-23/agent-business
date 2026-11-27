@@ -13,4 +13,25 @@
 #     last_year: "March"                 # optional, needs last_year_source
 #     last_year_source: "https://..."
 season: 2027
-towns: {}
+# Item 578: a town may list several agencies (a list). Camp pages below were
+# read from each agency's own domain through search (item 554), 2026-11-27;
+# no last-year dates recorded: the search summaries disagreed with each other
+# and with the pass-169 note, so none is sourced well enough to show.
+towns:
+  mount-prospect-60056:
+    - agency: "Mt. Prospect Park District"
+      camp_url: "https://www.mppd.org/summer-camp/"
+    - agency: "River Trails Park District"
+      camp_url: "https://www.rtpd.org/programs/camp/summer-camps/"
+  wheeling-60090:
+    - agency: "Wheeling Park District"
+      camp_url: "https://www.wheelingparkdistrict.com/summer-camp/"
+  elk-grove-village-60007:
+    - agency: "Elk Grove Park District"
+      camp_url: "https://www.elkgroveparks.org/camps/youth-camps/"
+  des-plaines-60016:
+    - agency: "Des Plaines Park District"
+      camp_url: "https://www.dpparks.org/summer-camps/"
+  palatine-60067:   # its camp_catalogues link is the winter-break page; this is summer's
+    - agency: "Palatine Park District"
+      camp_url: "https://www.palatineparks.org/summer-camps/"
