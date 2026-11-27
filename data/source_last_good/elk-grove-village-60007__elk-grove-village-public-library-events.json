@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-26T17:04:23+00:00",
+ "fetched_at": "2026-11-27T06:06:57+00:00",
  "items": [
-  {
-   "date": "Thu, 26 Nov 2026 00:00:00 +0000",
-   "detail": "Thursday, November 26 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
-   "title": "The Arlington Camera Club",
-   "url": "https://egvpl.libnet.info/event/16362694"
-  },
   {
    "date": "Fri, 27 Nov 2026 00:00:00 +0000",
    "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
@@ -360,6 +354,12 @@
    "detail": "Tuesday, December 08 2026 3:00pm - 7:00pm \n Paint a small wooden gingerbread house or gingerbread.",
    "title": "Pop in and Create: Holiday Painting",
    "url": "https://egvpl.libnet.info/event/17925073"
+  },
+  {
+   "date": "Tue, 08 Dec 2026 15:30:00 +0000",
+   "detail": "Tuesday, December 08 2026 3:30pm - 9:00pm \n Come to the High School Hub to enjoy a relaxation station before finals. Special crafts, coloring, and more!",
+   "title": "Relaxation Station",
+   "url": "https://egvpl.libnet.info/event/17532138"
   }
  ],
  "source": "Elk Grove Village Public Library - Events"

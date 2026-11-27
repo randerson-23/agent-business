@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-26T22:01:24+00:00",
+ "fetched_at": "2026-11-27T06:06:57+00:00",
  "items": [
-  {
-   "date": "Thu, 26 Nov 2026 09:00:00 +0000",
-   "detail": "Thursday, November 26 2026 9:00am - 9:00pm \n CLOSED - Thanksgiving Holiday",
-   "title": "CLOSED - Thanksgiving Holiday",
-   "url": "https://indiantrails.libnet.info/event/12825566"
-  },
   {
    "date": "Fri, 27 Nov 2026 17:00:00 +0000",
    "detail": "Friday, November 27 2026 5:00pm - 6:00pm \n Join us for a family night of Lotería, a traditional Mexican board game, similar to bingo.  Practice your Spanish vocabulary, enjoy snacks and win prizes. \nPlease attend only one of two sessions. \nTRB",
@@ -360,6 +354,12 @@
    "detail": "Wednesday, December 09 2026 6:30pm - 7:30pm \n Discover chess moves, strategies, and checkmate techniques with international Chess Master Arjun Vishnuvardhan of Glenview Chess. All experience levels welcome. R",
    "title": "Chess Club",
    "url": "https://indiantrails.libnet.info/event/16913746"
+  },
+  {
+   "date": "Wed, 09 Dec 2026 19:00:00 +0000",
+   "detail": "Wednesday, December 09 2026 7:00pm - 8:00pm \n Explore the free cloud-based Microsoft Word alternative available to all who sign up with Gmail. \nA Google account and password are required. R",
+   "title": "Google Docs",
+   "url": "https://indiantrails.libnet.info/event/17116432"
   }
  ],
  "source": "Indian Trails Public Library — Events"

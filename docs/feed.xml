@@ -3,41 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming Local Events</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 42 configured sources. 4 sources are shown from their last update, up to 8 hours ago.</description>
-  <lastBuildDate>Thu, 26 Nov 2026 22:01:24 +0000</lastBuildDate>
-  <item>
-    <title>Elk Grove Village: The Arlington Camera Club</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-26</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-26</guid>
-    <description>Thursday, November 26 2026 12:00am - 11:59pm 
- Arlington Camera Club photography exhibit. Official listing: https://egvpl.libnet.info/event/16362694</description>
-    <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/16362694">Elk Grove Village Public Library - Events</source>
-  </item>
-  <item>
-    <title>Mount Prospect: Free! Triple Turkey Burner</title>
-    <link>https://withintenmiles.com/mount-prospect-60056/#ev-free-triple-turkey-burner-2026-11-26</link>
-    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-free-triple-turkey-burner-2026-11-26</guid>
-    <description>Free! Triple Turkey Burner Prepare for that Thanksgiving feast with a fun mix of group fitness classes! This event consists of three fitness classes, each 25… Official listing: https://www.mppd.org/event/free-triple-turkey-burner-2/</description>
-    <pubDate>Thu, 26 Nov 2026 08:00:00 +0000</pubDate>
-    <source url="https://www.mppd.org/event/free-triple-turkey-burner-2/">Mount Prospect Park District — Events</source>
-  </item>
-  <item>
-    <title>Palatine: 🦃 Palatine Park District Turkey Trot</title>
-    <link>https://withintenmiles.com/palatine-60067/#ev-palatine-park-district-turkey-trot-2026-11-26</link>
-    <guid isPermaLink="true">https://withintenmiles.com/palatine-60067/#ev-palatine-park-district-turkey-trot-2026-11-26</guid>
-    <description>The 46th annual Thanksgiving Day Turkey Trot at Harper College's Health and Recreation Center: 2-mile run/walk at 8:00 AM, 5-mile at 8:30 AM ($35 through Nov… Official listing: https://jobs.palatineparks.org/event/turkey-trot/</description>
-    <pubDate>Thu, 26 Nov 2026 08:00:00 +0000</pubDate>
-    <source url="https://jobs.palatineparks.org/event/turkey-trot/">Palatine</source>
-  </item>
-  <item>
-    <title>Arlington Heights: 🦃 Arlington Heights Turkey Trot</title>
-    <link>https://withintenmiles.com/arlington-heights-60005/#ev-arlington-heights-turkey-trot-2026-11-26</link>
-    <guid isPermaLink="true">https://withintenmiles.com/arlington-heights-60005/#ev-arlington-heights-turkey-trot-2026-11-26</guid>
-    <description>The 2nd annual Thanksgiving morning 5K run/walk at South Middle School (400 S. Highland Ave.), 9:00 AM, with a Kids Fun Run. Entry $20; entry fees and… Official listing: https://runsignup.com/Race/IL/ArlingtonHeights/ArlingtonHeightsTurkeyTrot</description>
-    <pubDate>Thu, 26 Nov 2026 09:00:00 +0000</pubDate>
-    <source url="https://runsignup.com/Race/IL/ArlingtonHeights/ArlingtonHeightsTurkeyTrot">Arlington Heights</source>
-  </item>
+  <description>Upcoming events across every Within Ten region, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 33 of 42 configured sources. 4 sources are shown from their last update, up to 16 hours ago.</description>
+  <lastBuildDate>Fri, 27 Nov 2026 06:06:57 +0000</lastBuildDate>
   <item>
     <title>Arlington Heights: VIRTUAL Culture &amp; Conversation (level: intermediate)</title>
     <link>https://withintenmiles.com/arlington-heights-60005/#ev-virtual-culture-conversation-level-intermediate-2026-11-27</link>
@@ -441,6 +408,41 @@ Ages 14 and older.  A jaw-dropping exposé of how the… Official listing: https
  Need a cuddly friend for the cold nights ahead? Or maybe a plush present to gift for the holidays? Join us to… Official listing: https://desplaines.libnet.info/event/17727499</description>
     <pubDate>Tue, 01 Dec 2026 10:00:00 +0000</pubDate>
     <source url="https://desplaines.libnet.info/event/17727499">Des Plaines Public Library — Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Mittens, Marshmallow and Magic Storytime</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-mittens-marshmallow-and-magic-storytime-2026-12-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-mittens-marshmallow-and-magic-storytime-2026-12-01</guid>
+    <description>Tuesday, December 01 2026 10:00am - 10:45am 
+ Heartwarming holiday stories and a sprinkle of winter wonder. We will enjoy cozy stories, flannel board fun,… Official listing: https://egvpl.libnet.info/event/17711192</description>
+    <pubDate>Tue, 01 Dec 2026 10:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17711192">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Mount Prospect: Playgroup for Language Development</title>
+    <link>https://withintenmiles.com/mount-prospect-60056/#ev-playgroup-for-language-development-2026-12-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/mount-prospect-60056/#ev-playgroup-for-language-development-2026-12-01</guid>
+    <description>Tuesday, December 01 2026 10:00am - 11:00am 
+ Enjoy playtime, storytime, fingerplays, music, and more! Led by a licensed speech therapist from Assential… Official listing: https://mppl.libnet.info/event/17068684</description>
+    <pubDate>Tue, 01 Dec 2026 10:00:00 +0000</pubDate>
+    <source url="https://mppl.libnet.info/event/17068684">Mount Prospect Public Library — Events</source>
+  </item>
+  <item>
+    <title>Wheeling: Wildlife Connections</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-12-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-wildlife-connections-2026-12-01</guid>
+    <description>River Trail Nature Center (Northbrook) · ≈ 3 mi from Wheeling. Stop by the visitor center to learn about reptiles, mammals and birds from the residents of… Official listing: https://fpdcc.com/event/wildlife-connections/2026-12-01/</description>
+    <pubDate>Tue, 01 Dec 2026 10:30:00 +0000</pubDate>
+    <source url="https://fpdcc.com/event/wildlife-connections/2026-12-01/">Forest Preserves of Cook County — north</source>
+  </item>
+  <item>
+    <title>Wheeling: Paint and Steep Tea</title>
+    <link>https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-12-01</link>
+    <guid isPermaLink="true">https://withintenmiles.com/wheeling-60090/#ev-paint-and-steep-tea-2026-12-01</guid>
+    <description>Tuesday, December 01 2026 2:00pm - 4:00pm 
+ Reserved for Adult Indian Trails Library cardholders only. Join us for a monthly painting program with teaching… Official listing: https://indiantrails.libnet.info/event/17101420</description>
+    <pubDate>Tue, 01 Dec 2026 14:00:00 +0000</pubDate>
+    <source url="https://indiantrails.libnet.info/event/17101420">Indian Trails Public Library — Events</source>
   </item>
 </channel>
 </rss>

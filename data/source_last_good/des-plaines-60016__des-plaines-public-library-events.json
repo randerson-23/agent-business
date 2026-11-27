@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-26T22:01:24+00:00",
+ "fetched_at": "2026-11-27T06:06:57+00:00",
  "items": [
-  {
-   "date": "Thu, 26 Nov 2026 00:00:00 +0000",
-   "detail": "Thursday, November 26 2026 12:00am - 11:59pm \n Library Closed",
-   "title": "Library Closed",
-   "url": "https://desplaines.libnet.info/event/14793248"
-  },
   {
    "date": "Fri, 27 Nov 2026 00:00:00 +0000",
    "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Library Closed",
@@ -360,6 +354,12 @@
    "detail": "Saturday, December 12 2026 2:00pm - 3:00pm \n Crows are some of the most intelligent and fascinating birds in the world. In certain scientific studies, their problem solving skills have been compared to those of a seven year old child.",
    "title": "The Evil Crow or BIRDORABLE?",
    "url": "https://desplaines.libnet.info/event/17679841"
+  },
+  {
+   "date": "Sun, 13 Dec 2026 14:30:00 +0000",
+   "detail": "Sunday, December 13 2026 2:30pm - 3:30pm \n Get started with your iPhone by exploring helpful tips. Learn how to customize your homescreen, add widgets, create app folders, and change text size. Please bring your own iPhone to class.",
+   "title": "iPhone Basics",
+   "url": "https://desplaines.libnet.info/event/17888185"
   }
  ],
  "source": "Des Plaines Public Library — Events"

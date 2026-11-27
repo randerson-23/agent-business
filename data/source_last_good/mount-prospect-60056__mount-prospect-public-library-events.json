@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-26T22:01:24+00:00",
+ "fetched_at": "2026-11-27T06:06:57+00:00",
  "items": [
-  {
-   "date": "Thu, 26 Nov 2026 00:00:00 +0000",
-   "detail": "Thursday, November 26 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime.",
-   "title": "Library Closed",
-   "url": "https://mppl.libnet.info/event/13705771"
-  },
   {
    "date": "Fri, 27 Nov 2026 00:00:00 +0000",
    "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime.",
@@ -360,6 +354,12 @@
    "detail": "Tuesday, December 22 2026 10:30am - 12:30pm \n Join us for a screening of The Devil Wears Prada.",
    "title": "Movies @ MPPL: The Devil Wears Prada",
    "url": "https://mppl.libnet.info/event/14038419"
+  },
+  {
+   "date": "Thu, 24 Dec 2026 00:00:00 +0000",
+   "detail": "Thursday, December 24 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime.",
+   "title": "Library Closed",
+   "url": "https://mppl.libnet.info/event/13706009"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

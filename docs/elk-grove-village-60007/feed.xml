@@ -3,17 +3,8 @@
 <channel>
   <title>Within Ten — Upcoming events in Elk Grove Village</title>
   <link>https://withintenmiles.com/</link>
-  <description>Upcoming events in Elk Grove Village, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 17 configured sources. 2 sources are shown from their last update, up to 8 hours ago.</description>
-  <lastBuildDate>Thu, 26 Nov 2026 22:01:24 +0000</lastBuildDate>
-  <item>
-    <title>Elk Grove Village: The Arlington Camera Club</title>
-    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-26</link>
-    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-26</guid>
-    <description>Thursday, November 26 2026 12:00am - 11:59pm 
- Arlington Camera Club photography exhibit. Official listing: https://egvpl.libnet.info/event/16362694</description>
-    <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
-    <source url="https://egvpl.libnet.info/event/16362694">Elk Grove Village Public Library - Events</source>
-  </item>
+  <description>Upcoming events in Elk Grove Village, soonest first - aggregated automatically from village, library, park district and school-district calendars. This build reached 14 of 17 configured sources. 2 sources are shown from their last update, up to 16 hours ago.</description>
+  <lastBuildDate>Fri, 27 Nov 2026 06:06:57 +0000</lastBuildDate>
   <item>
     <title>Elk Grove Village: The Arlington Camera Club</title>
     <link>https://withintenmiles.com/elk-grove-village-60007/#ev-the-arlington-camera-club-2026-11-27</link>
@@ -452,6 +443,15 @@
  Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it… Official listing: https://egvpl.libnet.info/event/17354449</description>
     <pubDate>Tue, 08 Dec 2026 00:00:00 +0000</pubDate>
     <source url="https://egvpl.libnet.info/event/17354449">Elk Grove Village Public Library - Events</source>
+  </item>
+  <item>
+    <title>Elk Grove Village: Gift-Wrapping Station</title>
+    <link>https://withintenmiles.com/elk-grove-village-60007/#ev-gift-wrapping-station-2026-12-08</link>
+    <guid isPermaLink="true">https://withintenmiles.com/elk-grove-village-60007/#ev-gift-wrapping-station-2026-12-08</guid>
+    <description>Tuesday, December 08 2026 12:00am - 11:59pm 
+ Calling all Santas Helpers! Need a secret spot to wrap a special gift? Visit our Wrapping Station in Adult… Official listing: https://egvpl.libnet.info/event/17731397</description>
+    <pubDate>Tue, 08 Dec 2026 00:00:00 +0000</pubDate>
+    <source url="https://egvpl.libnet.info/event/17731397">Elk Grove Village Public Library - Events</source>
   </item>
 </channel>
 </rss>
