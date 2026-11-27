@@ -3203,11 +3203,10 @@ SUMMER_CAMPS_PATH = CONFIG_DIR / "summer_camps.yaml"
 
 
 def build_summer_camps(regions: list[dict], today: date, path: Path | None = None) -> dict:
-    """ROADMAP.md item 574: per town, the camp catalogue link and the 2027
-    resident / non-resident registration dates, each only from the agency's
-    own page (`confirmed_via`). A date needs its confirmation; without one the
-    town reads "2027 dates not posted yet". Confirmed dates carry a Google
-    Calendar reminder; `count` is towns with a date or a catalogue link."""
+    """ROADMAP.md items 574/578: per town, one or more agencies, each with its
+    camp page and 2027 resident / non-resident registration dates, a date only
+    from the agency's own page (`confirmed_via`). A town with no agency reads
+    "Camp page coming soon"; `count` is towns with a date or a camp link."""
     path = path or SUMMER_CAMPS_PATH
     cfg = load_yaml(path) if path.exists() else {}
     season = int(cfg.get("season") or today.year + (1 if today.month >= 8 else 0))
@@ -3215,21 +3214,31 @@ def build_summer_camps(regions: list[dict], today: date, path: Path | None = Non
     towns, count = [], 0
     for rc in regions:
         rid, name = rc["region"]["id"], rc["region"]["name"]
-        t = towns_cfg.get(rid) or {}
+        raw = towns_cfg.get(rid) or []
+        entries = raw if isinstance(raw, list) else [raw]
         catalogues = [{"name": str(c.get("name") or "").strip(), "url": safe_http_url(c.get("url"))} for c in (rc.get("camp_catalogues") or []) if isinstance(c, dict)]
-        url = safe_http_url(t.get("camp_url")) or next((c["url"] for c in catalogues if c["url"]), None)
-        agency = str(t.get("agency") or next((c["name"] for c in catalogues if c["name"]), "") or "").strip()
-        confirmed = str(t.get("confirmed_via") or "").strip()
-        dates = []
-        for key, label in (("resident_opens", "Residents"), ("nonresident_opens", "Non-residents")):
-            day = _parse_promo_day(t.get(key))
-            if day and confirmed and day.year == season:
-                dates.append({"label": label, "date": day, "date_label": f"{day.strftime('%a %b')} {day.day}, {day.year}",
-                              "remind_url": reminder_calendar_url(f"{agency or name} summer camp registration opens ({label.lower()})", day, url) if day >= today else None})
-        last_year = str(t.get("last_year") or "").strip() if safe_http_url(t.get("last_year_source")) else ""
-        if dates or url:
+        if not entries and catalogues:
+            entries = [{"agency": catalogues[0]["name"], "camp_url": catalogues[0]["url"]}]
+        agencies = []
+        for t in entries:
+            if not isinstance(t, dict):
+                continue
+            url = safe_http_url(t.get("camp_url")) or next((c["url"] for c in catalogues if c["url"]), None)
+            agency = str(t.get("agency") or next((c["name"] for c in catalogues if c["name"]), "") or "").strip()
+            confirmed = str(t.get("confirmed_via") or "").strip()
+            dates = []
+            for key, label in (("resident_opens", "Residents"), ("nonresident_opens", "Non-residents")):
+                day = _parse_promo_day(t.get(key))
+                if day and confirmed and day.year == season:
+                    dates.append({"label": label, "date": day, "date_label": f"{day.strftime('%a %b')} {day.day}, {day.year}",
+                                  "remind_url": reminder_calendar_url(f"{agency or name} summer camp registration opens ({label.lower()})", day, url) if day >= today else None})
+            last_year = str(t.get("last_year") or "").strip() if safe_http_url(t.get("last_year_source")) else ""
+            if agency or url:
+                agencies.append({"agency": agency, "url": url, "dates": dates, "last_year": last_year})
+        if any(a["dates"] or a["url"] for a in agencies):
             count += 1
-        towns.append({"town": name, "region_url": SITE_BASE_URL + rid + "/", "agency": agency, "url": url, "dates": dates, "last_year": last_year})
+        first = agencies[0] if agencies else {"agency": "", "url": None, "dates": [], "last_year": ""}
+        towns.append({"town": name, "region_url": SITE_BASE_URL + rid + "/", "agencies": agencies, **first})
     return {"season": season, "towns": towns, "count": count}
 
 
@@ -3237,10 +3246,11 @@ def camp_signups_opening(camps: dict, town: str, today: date, days: int = 7) -> 
     """Item 574: a confirmed camp registration date opening within `days`, as a
     line in the email's "Sign-ups opening this week" block."""
     out = []
-    for t in camps.get("towns") or []:
-        if t["town"] != town:
+    for town_entry in camps.get("towns") or []:
+        if town_entry["town"] != town:
             continue
-        for d in t["dates"]:
+        for t in town_entry.get("agencies") or []:
+          for d in t["dates"]:
             if today <= d["date"] <= today + timedelta(days=days):
                 out.append({"title": f"{t['agency'] or town} summer camps ({d['label'].lower()})", "url": t["url"] or SITE_BASE_URL + "summer-camps/",
                             "opens": d["date"], "opens_label": d["date"].strftime("%a, %b ") + str(d["date"].day), "days": [], "sessions_label": "",

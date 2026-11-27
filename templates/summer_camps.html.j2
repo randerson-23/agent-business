@@ -173,11 +173,17 @@
   <main>
   {# ROADMAP.md item 574: each date only from the district's own page; no date shown until one is posted. #}
   <ul class="events">
-    {% for t in towns %}
-    <li><span class="emoji" aria-hidden="true">☀️</span><strong><a href="{{ t.region_url }}">{{ t.town }}</a></strong>{% if t.agency %} &middot; {{ t.agency }}{% endif %}:
+    {% for town in towns %}
+    {% if town.agencies %}
+    {% for t in town.agencies %}
+    <li><span class="emoji" aria-hidden="true">☀️</span><strong><a href="{{ town.region_url }}">{{ town.town }}</a></strong> &middot; {{ t.agency or "Park district" }}:
       {% if t.dates %}{% for d in t.dates %}{{ d.label }} from <time datetime="{{ d.date.isoformat() }}">{{ d.date_label }}</time>{% if d.remind_url %} <a class="cal-g" href="{{ d.remind_url }}" target="_blank" rel="noopener">⏰ Add a reminder</a>{% endif %}{% if not loop.last %} &middot; {% endif %}{% endfor %}
       {% else %}{{ season }} dates not posted yet{% if t.last_year %}; last year registration opened in {{ t.last_year }}{% endif %}.{% endif %}
       {% if t.url %} <a href="{{ t.url }}" rel="noopener">Camp page &rarr;</a>{% endif %}</li>
+    {% endfor %}
+    {% else %}
+    <li><span class="emoji" aria-hidden="true">☀️</span><strong><a href="{{ town.region_url }}">{{ town.town }}</a></strong> &middot; Camp page coming soon.</li>
+    {% endif %}
     {% endfor %}
   </ul>
   <p class="note">Dates come only from each park district's own camp page or program guide; a town shows a date once its {{ season }} guide is out. Sign up below and the Thursday email flags each one the week it opens.</p>
