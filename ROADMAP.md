@@ -221,7 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
-0. **577** (New Year's hero headline; quick), then **574** (`/summer-camps/` live by Jan 15, dates from the districts' own pages), **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
+0. ~~**577**~~ **DONE**, ~~**574**~~ **BUILT, waiting on dates** (2026-11-27), then **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
 0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then ~~569, 568, 570~~ (done).
 0. ~~**569**~~, ~~**568**~~, ~~**570**~~ **DONE** (2026-11-26).
 0. ~~**565**~~, ~~**566**~~, ~~**567**~~ **DONE** (2026-11-25).
@@ -23032,7 +23032,7 @@ pay to reach: **summer camp**. It also re-reads the Dec 30 preview.
 
 #### P1 (new)
 
-574. **A 2027 summer camps page, live by Jan 15.** Build loop:
+574. **BUILT (2026-11-27), waiting on 2027 dates.** `/summer-camps/` (`config/summer_camps.yaml`, `build_summer_camps`, `summer_camps.html.j2`): per town the agency, its camp page (from `camp_catalogues` or the YAML) and resident / non-resident registration dates, shown only with `confirmed_via`; otherwise *"2027 dates not posted yet"* (*"last year … in March"* only with a `last_year_source`). Confirmed dates get ⏰ *Add a reminder* and, the week they open, a line in the email's sign-ups block (`camp_signups_opening`). Item 516's thin-page rule keeps it noindex and out of the sitemap below three towns (today: one, Arlington Heights' catalogue). Probe round 52 asks dppd.org, elkgroveparks.org and ahpd.org's camp page for camp links and 2027 dates (mppd.org, wheelingparkdistrict.com and palatineparks.org homepages were already probed, so the next pass reads their answers for camp links). Not yet linked from the hub; link it once it is indexable. **A 2027 summer camps page, live by Jan 15.** Build loop:
 
      - Add `/summer-camps/`. Per town, list each park district's (and
        library's, where it runs camps) **registration-open date** for
@@ -23086,7 +23086,7 @@ pay to reach: **summer camp**. It also re-reads the Dec 30 preview.
      Test: a non-agency venue hosting a "Winter Break Hockey Camp" lands
      with `camp_provider`; a park district or library never does.
 
-577. **The New Year's hero headline.** In the issue 568 marks as New
+577. **DONE (2026-11-27).** The New Year's issue's hero reads *"New Year's weekend, across the northwest suburbs"* (or *"in <town> & nearby"* in per-reader previews). **The New Year's hero headline.** In the issue 568 marks as New
      Year's, the hero headline reads *"New Year's weekend, across the
      northwest suburbs"* instead of *"This weekend…"*.
 

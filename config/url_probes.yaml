@@ -498,3 +498,27 @@ probes:
     patterns:
       - '(?i)santa[^<]{0,160}'
     follow: '(?i)santa|event|calendar|news'
+
+  # Round 52 (item 574): each park district's camp page and any 2027 summer
+  # registration date, for /summer-camps/ (Arlington Heights is in camp_catalogues).
+  - url: https://www.dppd.org/
+    item: 574
+    purpose: Summer camp page and 2027 registration dates (resident / non-resident)
+    patterns:
+      - '(?i)summer camp[^<]{0,120}'
+      - '(?i)registration (?:begins|opens|starts)[^<]{0,80}'
+    follow: '(?i)camp'
+  - url: https://www.elkgroveparks.org/
+    item: 574
+    purpose: Summer camp page and 2027 registration dates (resident / non-resident)
+    patterns:
+      - '(?i)summer camp[^<]{0,120}'
+      - '(?i)registration (?:begins|opens|starts)[^<]{0,80}'
+    follow: '(?i)camp'
+  - url: https://www.ahpd.org/programs/camps/
+    item: 574
+    purpose: Summer camp page and 2027 registration dates (resident / non-resident)
+    patterns:
+      - '(?i)summer camp[^<]{0,120}'
+      - '(?i)registration (?:begins|opens|starts)[^<]{0,80}'
+    follow: '(?i)camp'

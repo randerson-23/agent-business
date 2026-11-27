@@ -8424,6 +8424,7 @@ def test_new_years_issue_has_its_identity_even_with_no_listings(monkeypatch):
     html = build_digest.render_combined_email_digest(empty, "Dec 31 – Jan 3", tue)
     assert "New Year&#39;s Eve &amp; the long weekend" in html or "New Year's Eve & the long weekend" in html
     assert "THE NEW YEAR" in html and "THURSDAY: NEW YEAR" in html and "new-years-eve/?utm_source=email" in html
+    assert "New Year&#39;s weekend, across the northwest suburbs" in html or "New Year's weekend, across the northwest suburbs" in html  # item 577
     def ev(title, iso):
         return {"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "tags": ["kid_friendly", "free"], "detail": "d", "attendable": True}
     one = [dict(empty[0], weekend_events=[ev("Noon Year's Eve Party", "2026-12-31T11:00:00")],
@@ -8443,3 +8444,28 @@ def test_glued_all_caps_closure_labels_read_cleanly():
     assert build_digest.display_title("CLOSED-New Year's Eve") == "Closed: New Year's Eve"
     assert build_digest.display_title("Closed for the Christmas Holiday") == "Closed for the Christmas Holiday"
     assert build_digest.display_title("YMCA - Family Swim") == "YMCA - Family Swim"
+
+
+def test_summer_camps_page_shows_only_confirmed_dates(tmp_path):
+    # ROADMAP.md item 574.
+    regions = [{"region": {"id": "arlington-heights-60005", "name": "Arlington Heights"}, "camp_catalogues": [{"name": "Arlington Heights Park District", "url": "https://www.ahpd.org/programs/camps/"}]},
+               {"region": {"id": "wheeling-60090", "name": "Wheeling"}},
+               {"region": {"id": "palatine-60067", "name": "Palatine"}}]
+    cfg = tmp_path / "camps.yaml"
+    cfg.write_text(
+        "season: 2027\ntowns:\n"
+        "  arlington-heights-60005: {resident_opens: 2027-02-01, nonresident_opens: 2027-02-15, confirmed_via: 'probe, ahpd.org guide'}\n"
+        "  palatine-60067: {agency: Palatine Park District, resident_opens: 2027-02-03}\n", encoding="utf-8")
+    camps = build_digest.build_summer_camps(regions, date(2027, 1, 10), cfg)
+    ah, wh, pal = camps["towns"]
+    assert [d["label"] for d in ah["dates"]] == ["Residents", "Non-residents"] and ah["dates"][0]["remind_url"]
+    assert wh["dates"] == [] and wh["url"] is None
+    assert pal["dates"] == []  # a date without confirmed_via is never shown
+    assert camps["count"] == 1  # only Arlington Heights has a date or link: below the thin-page minimum
+    html = build_digest.render_summer_camps_page(camps, datetime(2027, 1, 10, tzinfo=timezone.utc))
+    assert "Residents from <time" in html and "2027 dates not posted yet" in html and "Add a reminder" in html
+    thin = set()
+    build_digest.apply_thin_page(html, "summer-camps/", camps["count"], thin)
+    assert thin == {"summer-camps/"}
+    signups = build_digest.camp_signups_opening(camps, "Arlington Heights", date(2027, 1, 28))
+    assert signups and signups[0]["title"] == "Arlington Heights Park District summer camps (residents)"
