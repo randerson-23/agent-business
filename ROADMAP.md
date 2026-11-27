@@ -221,6 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
+0. **578** (every town on `/summer-camps/` names its agency; River Trails for Mount Prospect), then **460** (re-ranked: MPPD TeamSideline league deadlines, probe from Dec 1), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
 0. ~~**577**~~ **DONE**, ~~**574**~~ **BUILT, waiting on dates** (2026-11-27), then **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
 0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then ~~569, 568, 570~~ (done).
 0. ~~**569**~~, ~~**568**~~, ~~**570**~~ **DONE** (2026-11-26).
@@ -23092,6 +23093,72 @@ pay to reach: **summer camp**. It also re-reads the Dec 30 preview.
 
      Test: the Dec 30 preview shows the new headline; a normal issue is
      unchanged.
+
+
+#### Research pass 2026-11-27 (hundred-and-sixty-ninth pass)
+
+Yesterday the build loop shipped `/summer-camps/` (574, built and waiting
+on 2027 dates) and the New Year's headline (577). 575 and 576 stay queued.
+This pass reads the new page as a parent would, then looks for what feeds
+it, and for the other spring sign-up parents miss: youth sports.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **`/summer-camps/`, read as a parent (design/UX)** (`docs/summer-camps/index.html`, built Nov 27 06:06 UTC; noindex) | Six towns, all *"2027 dates not posted yet"*. Only Arlington Heights and Palatine name their park district and link a camp page. **Des Plaines, Elk Grove Village, Mount Prospect and Wheeling** print a bare *"Des Plaines :"* with no agency and no link, so the page gives a parent nothing to click for two-thirds of its towns. No town shows a *"last year"* date, though the YAML supports one. | Until January the page's only value is its links and last year's timing. Without them it can't earn the three entries item 516 needs to be indexed. |
+| **Who else runs camps for these towns** (CCSD 59's 2024 and **April 2026** camp-guide flyers; River Trails Park District's 2026 summer brochure on issuu; a Daily Herald MPPD camp piece) | **River Trails Park District** serves part of Mount Prospect and posted 2026 dates in its own brochure: **resident registration Tue Apr 21, open registration Tue May 5**. **MPPD's** camp page is `mppd.org/summer-camp`; its 2024 registration began **Mon Mar 4** (per CCSD 59's flyer, not MPPD's own page). **CCSD 59** (Elk Grove Village, Arlington Heights, Mount Prospect, Des Plaines) publishes a yearly **camp guide flyer** each spring that collects outside camp providers. | River Trails is a missing agency for Mount Prospect. The CCSD 59 flyer is a ready list of exactly the camps item 575 would sell to. |
+| **Spring youth sports sign-ups** (MPPD's TeamSideline pages: 2026 spring youth baseball, girls' softball, soccer, the Patriots travel program's **2027 tryouts**; AHPD athletics; Palatine Community Baseball and Softball, a Palatine Park District affiliate) | MPPD's instructional baseball and softball deadlines were **Feb 13–14** in 2026. The Patriots page already has a **2027** tryout section, so 2027 pages are going up now. Item 460 (TeamSideline deadlines for Mount Prospect) is still **open**. Nothing for Arlington Heights spring baseball is indexed. Palatine's is run through palatineparks.org. | February deadlines are the most-missed sign-up for school-age families, and they fall right when the email needs a reason to be opened. 460 should move up before the 2027 pages fill in. |
+
+**Re-ranked:** item **460** moves into the build queue now (probe the
+TeamSideline pages from Dec 1, so the 2027 deadlines are caught as soon as
+they post).
+
+#### P1 (new)
+
+578. **Every town on `/summer-camps/` names its agency and links its
+     camp page.** Build loop, in `config/summer_camps.yaml`:
+
+     - Add the agency and camp page for Des Plaines (Des Plaines Park
+       District), Elk Grove Village (Elk Grove Park District), Mount
+       Prospect (MPPD, `mppd.org/summer-camp`) and Wheeling (Wheeling
+       Park District), each probed on the agency's own site first, or
+       confirmed from its indexed text (`confirmed_via: search`, item
+       554).
+     - Add **River Trails Park District** as Mount Prospect's second
+       agency (a town can list more than one). Its `last_year` is
+       *"residents Apr 21, open May 5, 2026"*, sourced to its own 2026
+       brochure.
+     - Show `last_year` only when sourced from the agency's own page or
+       guide. CCSD 59's flyer doesn't count for MPPD's Mar 4.
+     - Never render a bare *"Town :"*. A town with no agency yet reads
+       *"Camp page coming soon"*.
+
+     Tests: every town has an agency or the coming-soon line; Mount
+     Prospect lists two agencies; no colon follows a bare town name.
+
+#### P2 (new)
+
+579. **School-district camp flyers as a source of camp prospects.** Build
+     loop: add CCSD 59's yearly camp-guide flyer page (and any similar
+     page for D25, D57, D15 or D62, probe first) to a probe round from
+     **Feb 1**. Pull provider **business names** into item 576's warm
+     list with reason `"camp_provider"`, source *"CCSD 59 camp guide
+     2027"*. Never copy contact details, and list nothing on the site
+     from a flyer (item 478: a camp is listed only from its own page).
+
+     Test: a fixture flyer yields business names only, all tagged
+     `camp_provider`, none on public pages.
+
+#### P3 (new)
+
+580. **Extend 460 past Mount Prospect.** After 460 ships, add Arlington
+     Heights Park District's athletics page and Palatine Community
+     Baseball and Softball's registration page to the same probe, with
+     the same rule: dated only from the 2026–27 season's own page.
+     Elk Grove Village, Des Plaines and Wheeling follow once their
+     league pages are found.
+
+     Test: a 2026 page's deadline is ignored; a 2027 page's is written to
+     `registration_days:`.
 
 
 ## Working agreements for autonomous iteration
