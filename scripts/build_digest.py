@@ -3202,6 +3202,75 @@ def render_nye_page(entries: list[dict], now: datetime, analytics: dict | None =
 SUMMER_CAMPS_PATH = CONFIG_DIR / "summer_camps.yaml"
 
 
+# ROADMAP.md items 328/460: park-district registration days per region YAML
+# (`registration_days:`), each from the agency's own page for the season it
+# names. A line shows from seven days before; nothing past ever renders.
+REGISTRATION_WINDOW_DAYS = 7
+_REG_DEADLINE = re.compile(r"registration\s+deadline\s*[-–—:]?\s*([A-Za-z]+\.?\s+\d{1,2}(?:st|nd|rd|th)?(?:,?\s*\d{4})?)", re.IGNORECASE)
+_REG_OPENS = re.compile(r"registration\s+(?:opens|begins|starts)\s*(?:on\s+)?(?:[A-Za-z]+day,?\s+)?([A-Za-z]+\.?\s+\d{1,2}(?:st|nd|rd|th)?(?:,?\s*\d{4})?)", re.IGNORECASE)
+
+
+def parse_registration_dates(text: str, season_years: set[int], today: date) -> dict:
+    """Item 460: "REGISTRATION DEADLINE – Feb 20" / "registration opens Jan 5"
+    from a league page. A date with no year takes the next occurrence after
+    `today`; one whose year is outside `season_years` (a past season's page)
+    is ignored. Returns {"opens": date|None, "deadline": date|None}."""
+    out = {"opens": None, "deadline": None}
+    for key, rx in (("opens", _REG_OPENS), ("deadline", _REG_DEADLINE)):
+        m = rx.search(text or "")
+        if not m:
+            continue
+        raw = re.sub(r"(\d)(st|nd|rd|th)", r"\1", m.group(1).replace(".", "")).strip()
+        parsed = None
+        for fmt in ("%B %d, %Y", "%B %d %Y", "%b %d, %Y", "%b %d %Y"):
+            try:
+                parsed = datetime.strptime(raw, fmt).date()
+                break
+            except ValueError:
+                continue
+        if parsed is None:
+            for fmt in ("%B %d", "%b %d"):
+                try:
+                    md = datetime.strptime(raw, fmt)
+                    parsed = date(today.year, md.month, md.day)
+                    if parsed < today:
+                        parsed = date(today.year + 1, md.month, md.day)
+                    break
+                except ValueError:
+                    continue
+        if parsed and parsed.year in season_years:
+            out[key] = parsed
+    return out
+
+
+def _registration_entries(region_cfg: dict, today: date) -> list[dict]:
+    out = []
+    for r in region_cfg.get("registration_days") or []:
+        if not isinstance(r, dict) or not str(r.get("confirmed_via") or "").strip():
+            continue
+        url = safe_http_url(r.get("url"))
+        for kind, verb in (("opens", "registration opens"), ("deadline", "registration deadline")):
+            day = _parse_promo_day(r.get(kind))
+            if day and url and today <= day <= today + timedelta(days=REGISTRATION_WINDOW_DAYS):
+                label = f"{day.strftime('%a %b')} {day.day}"
+                what = f"{r.get('agency') or 'Park district'} {r.get('program') or ''}".strip()
+                out.append({"what": what, "kind": kind, "verb": verb, "day": day, "label": label, "url": url,
+                            "today": day == today, "remind_url": reminder_calendar_url(f"{what}: {verb}", day, url) if day > today else None})
+    out.sort(key=lambda e: e["day"])
+    return out
+
+
+def registration_lines_for(region_cfg: dict, today: date) -> list[dict]:
+    """Item 328: the town page's line(s), from seven days before."""
+    return [dict(e, text=f"{e['what']}: {'Registration opens today' if e['today'] and e['kind'] == 'opens' else ('Registration closes today' if e['today'] else e['verb'] + ' ' + e['label'])}") for e in _registration_entries(region_cfg, today)]
+
+
+def registration_signups(region_cfg: dict, today: date) -> list[dict]:
+    """Item 460: the same dates as lines in the email's "Sign-ups opening this week" block."""
+    return [{"title": f"{e['what']} ({e['verb']})", "url": e["url"], "opens": e["day"], "opens_label": e["day"].strftime("%a, %b ") + str(e["day"].day),
+             "days": [], "sessions_label": "", "event_label": "", "remind_url": e["remind_url"]} for e in _registration_entries(region_cfg, today)]
+
+
 def build_summer_camps(regions: list[dict], today: date, path: Path | None = None) -> dict:
     """ROADMAP.md items 574/578: per town, one or more agencies, each with its
     camp page and 2027 resident / non-resident registration dates, a date only
@@ -4842,6 +4911,7 @@ def render_region_page(
     nye_events: list[dict] | None = None,
     closures: list[dict] | None = None,
     live_status: list[dict] | None = None,
+    registration_lines: list[dict] | None = None,
     build_scope_end_iso: str | None = None,
     stale_empty_message: str | None = None,
     empty_follow_url: str | None = None,
@@ -4898,6 +4968,7 @@ def render_region_page(
         now_year=nye_season_year(now.astimezone(LOCAL_TZ).date()),
         og_title=og_title,
         closures=closures,
+        registration_lines=registration_lines or [],  # items 328/460
         live_status=live_status or [],
         election_line=election_day_line(now),
         faq=faq,
@@ -9740,6 +9811,7 @@ def main() -> None:
             days_off_sponsor=build_days_off_sponsor(sponsors_cfg, region_id, local_today),
             closures=region_closures,
             live_status=live_status,  # item 514
+            registration_lines=registration_lines_for(region_cfg, local_today),  # items 328/460
         )
 
         region_dir = OUTPUT_DIR / region_id
@@ -9873,7 +9945,7 @@ def main() -> None:
                 "sponsor": sponsor,
                 "days_off": region_days_off,
                 "closures": region_closures,
-                "signups": [dict(e, town=region["name"]) for e in camp_signups_opening(build_summer_camps(regions, local_today), region["name"], local_today) + build_signups_opening(blocks, local_today)],  # item 574: camp registration first
+                "signups": [dict(e, town=region["name"]) for e in camp_signups_opening(build_summer_camps(regions, local_today), region["name"], local_today) + registration_signups(region_cfg, local_today) + build_signups_opening(blocks, local_today)],  # item 574: camp registration first
                 "camp_links": winter_break_camp_links(region_cfg, winter_break_catalogues(evergreen)),  # item 539
                 "downtown": region_cfg.get("downtown"),  # item 543
             }

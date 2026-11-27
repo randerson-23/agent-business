@@ -782,6 +782,10 @@
     <p class="note">{{ live_status[0].source }}.</p>
   </section>
   {% endif %}
+  {% if registration_lines %}
+  {# ROADMAP.md items 328/460: park-district registration from seven days before, from the agency's own page. #}
+  <p class="election-line">{% for r in registration_lines %}📝 <a href="{{ r.url }}" rel="noopener">{{ r.text }} &rarr;</a>{% if r.remind_url %} <a class="cal-g" href="{{ r.remind_url }}" target="_blank" rel="noopener">⏰ Remind me</a>{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
+  {% endif %}
   {% if closures %}
   {# ROADMAP.md items 307/444: closures the town's own feeds post, shown whenever one is dated in the next seven days. #}
   <section class="days-off" id="closures" aria-labelledby="closures-heading">

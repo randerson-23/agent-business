@@ -522,3 +522,28 @@ probes:
       - '(?i)summer camp[^<]{0,120}'
       - '(?i)registration (?:begins|opens|starts)[^<]{0,80}'
     follow: '(?i)camp'
+
+  # Round 53 (item 460): MPPD's TeamSideline league registration pages (soccer,
+  # baseball, girls softball) for 2027 spring "registration opens" / "REGISTRATION
+  # DEADLINE" lines. Pages seen so far are for 2025 fall; only a 2026-27 season counts.
+  - url: https://www.teamsideline.com/sites/mppd/content/154/Soccer-Registration
+    item: 460
+    purpose: MPPD league registration - season, opening and deadline dates
+    patterns:
+      - '(?i)20(?:26|27)\s+(?:spring|summer|fall|winter)[^<]{0,80}'
+      - '(?i)registration\s+deadline[^<]{0,80}'
+      - '(?i)registration\s+(?:opens|begins|starts)[^<]{0,80}'
+  - url: https://www.teamsideline.com/sites/mppd/content/14840/Baseball-Registration-Information
+    item: 460
+    purpose: MPPD league registration - season, opening and deadline dates
+    patterns:
+      - '(?i)20(?:26|27)\s+(?:spring|summer|fall|winter)[^<]{0,80}'
+      - '(?i)registration\s+deadline[^<]{0,80}'
+      - '(?i)registration\s+(?:opens|begins|starts)[^<]{0,80}'
+  - url: https://www.teamsideline.com/sites/mppd/content/14841/Girls-Softball-Registration-Information
+    item: 460
+    purpose: MPPD league registration - season, opening and deadline dates
+    patterns:
+      - '(?i)20(?:26|27)\s+(?:spring|summer|fall|winter)[^<]{0,80}'
+      - '(?i)registration\s+deadline[^<]{0,80}'
+      - '(?i)registration\s+(?:opens|begins|starts)[^<]{0,80}'
