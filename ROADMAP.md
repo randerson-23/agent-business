@@ -221,6 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
+0. **581** (empty weekend/today pages fill from within ten miles; Mount Prospect and Palatine were empty on Thanksgiving weekend), then **582** (free credited share block), **583** (agents' pitch line).
 0. ~~**578**~~ **DONE** (2026-11-27), then ~~**460**~~ **BUILT, waiting on 2027 pages** (MPPD TeamSideline league deadlines), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
 0. ~~**577**~~ **DONE**, ~~**574**~~ **BUILT, waiting on dates** (2026-11-27), then **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
 0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then ~~569, 568, 570~~ (done).
@@ -23159,6 +23160,74 @@ they post).
 
      Test: a 2026 page's deadline is ignored; a 2027 page's is written to
      `registration_days:`.
+
+
+#### Research pass 2026-11-27, evening (hundred-and-seventieth pass)
+
+The build loop shipped 578 and built 460 (waiting on 2027 pages). Open:
+575, 576, 579, 580. This pass checks the page the whole business is
+named for, *"This weekend in Mount Prospect"*, on the year's biggest family
+weekend, and looks at two outside angles: real-estate agents as buyers,
+and Reddit as a channel.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **An empty weekend page on Thanksgiving weekend (design/UX)** (`docs/mount-prospect-60056/this-weekend/`, built Nov 27 22:01 UTC; `events.json`; `weekly-summary.txt`) | The page reads ***"Nothing dated for this weekend yet — check back, or see all events"***. Below that, one *"Indoor ideas"* card (the ice arena) and the weather, with rain Friday and Sunday. Mount Prospect's feed really does have nothing Nov 27–29: its first event is Mon Nov 30. Palatine's page is empty too. Yet Arlington Heights and Des Plaines, 3–5 miles away, have weekend events, and the site's own hubs hold dated weekend things: Small Business Saturday downtowns, nightly holiday lights, Santa visits. The paste-ready `weekly-summary.txt` for Mount Prospect says *"Nothing new dated… - Mount Prospect Public Library"*. | This is the page aimed at the target search (*"things to do in Mount Prospect this weekend"*). A visitor landing on it on a holiday weekend sees nothing, and a near-empty page is the thin content item 516 warns about. The brand promise is *within ten miles*, and the data to keep it is already in the build. |
+| **Agents already pay for an automated local-events email** (ReminderMedia's *Local Events Email Newsletter*, per BAM/nowbam.com; The Close, Luxury Presence, HousingWire and NAR's *"12 months of ideas to stay connected locally"* on agent newsletters) | ReminderMedia sells agents a local-events email *"automatically sent every two weeks"* with *"at least seven"* events, sent to the agent's own sphere. Price not public; a $4.99 30-day trial bundles it with other tools. Every agent-newsletter guide lists a **local events calendar** as the core content. | Proof that the category pays for exactly this product, generically sourced. Within Ten's version is built from the official calendars, which is the pitch for Neighborhood Authority ($5,000/yr) and a reason to give agents a free, credited copy first. |
+| **Reddit as a discovery channel** (search for r/ArlingtonHeights, r/MountProspect, r/Palatine weekend threads) | No subreddit for these towns surfaces in search. Results are Eventbrite, Patch, Daily Herald and travel sites. | No channel worth owner time. Recorded so it isn't re-checked; Facebook groups (the existing paste-ready summary) stay the social route. |
+
+#### P1 (new)
+
+581. **Never leave a weekend or today page empty: fill from within ten
+     miles.** Build loop, for each town's `this-weekend` and `today`
+     views and its `weekly-summary.txt`:
+
+     - When the town has fewer than **3** dated events in range, add a
+       *"Nearby this weekend"* section of up to **6** events from the
+       other covered towns (`build_nearby_regions`), nearest first, each
+       with its town and *"≈ N mi"*. Use the same filters as the email:
+       attendable, not online, not past.
+     - Add the town's own dated hub entries in range: its downtown's Small
+       Business Saturday (item 543), holiday lights open those nights
+       (item 527), Santa visits in or near town (`/santa/`), and the
+       farmers' market.
+     - Replace *"Nothing dated for this weekend yet"* with *"Quiet in
+       Mount Prospect this weekend; here's what's on within ten miles"*.
+     - The page stays indexable only if the filled total reaches item
+       516's threshold.
+
+     Tests: a town with 0 events and a neighbour with 4 shows 4 nearby
+     cards with distances; a town with 5 of its own shows no nearby
+     section; the weekly summary lists nearby picks with their towns.
+
+#### P2 (new)
+
+582. **A free, credited weekly block for agents, HOAs and churches.**
+     Build loop:
+
+     - At every build, write `/<town>/share.html` (noindex): a 5-pick
+       block in plain HTML and plain text, ending *"From Within Ten,
+       local events from the official calendars:
+       withintenmiles.com/<town>/"*. Its links carry
+       `utm_source=share&utm_medium=newsletter`.
+     - Add a short `/share/` page (indexable) that explains it: free to
+       paste into your own newsletter each week, as long as the credit
+       line stays. Link it from the sponsor page and the footer.
+     - Show `utm_source=share` visits and subscribers in the audience
+       snapshot, so a sharing agent becomes a provable source.
+
+     Test: each town's share block has 5 picks (or the 581 fill) and the
+     credit line with UTM links.
+
+#### P3 (new)
+
+583. **Agents' pitch line in the sponsor kit.** Add one paragraph to
+     `SPONSOR_KIT.md` and the sponsor page's Neighborhood Authority row:
+     agents already pay for generic automated events emails; this one is
+     built from the village, library and park district calendars, and
+     Neighborhood Authority puts the agent's name on the town's share
+     block (582) and weekend page all year. Add no new price. Depends on
+     582.
 
 
 ## Working agreements for autonomous iteration
