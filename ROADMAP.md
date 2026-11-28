@@ -23273,7 +23273,7 @@ brokerages.
 585. **Family-first, town-mixed nearby picks.** In `select_nearby_events`:
 
      - Rank by the same family score the email's top picks use (free and
-       kid-friendly first; item 7391's +1 for a celebration), then by
+       kid-friendly first; the existing +1 for a celebration), then by
        distance.
      - Take **at most 3 from any one town**.
      - Put evening adult shows (8 PM or later at a ticketed venue,
