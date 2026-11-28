@@ -221,7 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
-0. **581** (empty weekend/today pages fill from within ten miles; Mount Prospect and Palatine were empty on Thanksgiving weekend), then **582** (free credited share block), **583** (agents' pitch line).
+0. ~~**581**~~ **DONE** (2026-11-28, pages only), then **582** (free credited share block), **583** (agents' pitch line).
 0. ~~**578**~~ **DONE** (2026-11-27), then ~~**460**~~ **BUILT, waiting on 2027 pages** (MPPD TeamSideline league deadlines), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
 0. ~~**577**~~ **DONE**, ~~**574**~~ **BUILT, waiting on dates** (2026-11-27), then **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
 0. ~~**571**~~ **BUILT** (first live use not yet tried: owner's call), ~~**572**~~ **DONE**, ~~**573**~~ **DONE** (2026-11-26). Then ~~569, 568, 570~~ (done).
@@ -23178,7 +23178,7 @@ and Reddit as a channel.
 
 #### P1 (new)
 
-581. **Never leave a weekend or today page empty: fill from within ten
+581. **DONE for the pages (2026-11-28).** A town `this-weekend` or `today` view with fewer than 3 attendable events of its own is re-rendered after every town is built (`nearby_jobs`), adding up to 6 events from other covered towns within 10 miles (`select_nearby_events`: attendable, in person, not a registration notice or status-changed, same days), nearest town first, each card reading *"<Town> · ≈N mi"*. The section is titled *"Quiet in <town> this weekend; here's what's on within ten miles"* when the town has none, else *"Nearby this weekend"* (*today* likewise). **Not done:** the town's own hub entries (Small Business Saturday, lights, Santa, farmers' market) aren't added, `weekly-summary.txt` isn't changed, and the item-516 indexability rule isn't applied to town pages. **Never leave a weekend or today page empty: fill from within ten
      miles.** Build loop, for each town's `this-weekend` and `today`
      views and its `weekly-summary.txt`:
 

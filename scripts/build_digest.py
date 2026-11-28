@@ -2956,6 +2956,40 @@ def keep_nearest_town(items: list[dict], region_name: str, towns: list[dict], ma
     return _collapse_regional_repeats(kept)
 
 
+NEARBY_FILL_BELOW = 3  # ROADMAP.md item 581
+NEARBY_FILL_MAX = 6
+NEARBY_MAX_MILES = 10.0
+
+
+def select_nearby_events(job: dict, sections: list[dict], limit: int = NEARBY_FILL_MAX) -> list[dict]:
+    """Item 581: up to `limit` events from the other covered towns on the job's
+    days (attendable, in person, not a registration notice), nearest town
+    first, each carrying its town and distance."""
+    if job.get("lat") is None or job.get("lon") is None:
+        return []
+    found = []
+    for sec in sections:
+        if sec["region_name"] == job["name"] or sec.get("region_lat") is None:
+            continue
+        miles = _haversine_miles(job["lat"], job["lon"], sec["region_lat"], sec["region_lon"])
+        if miles > NEARBY_MAX_MILES:
+            continue
+        pool = sec.get("weekend_events") if job["slug"] == "this-weekend" else sec.get("upcoming_events")
+        for e in pool or []:
+            day = _event_day(e)
+            if day not in job["days"] or not e.get("attendable", True) or e.get("online") or e.get("registration_notice") or e.get("event_status") or e.get("merged_away"):
+                continue
+            found.append((round(miles, 1), e.get("date_iso") or "", dict(e, nearby_town=sec["region_name"], nearby_miles=round(miles))))
+    found.sort(key=lambda f: f[:2])
+    seen, out = set(), []
+    for _, _, e in found:
+        key = (e.get("title") or "").strip().lower()
+        if key not in seen:
+            seen.add(key)
+            out.append(e)
+    return out[:limit]
+
+
 def nearest_town(lat: float, lon: float, towns: list[dict]) -> tuple[str, float] | None:
     """Item 479: the nearest of the covered towns' centres and its distance in miles."""
     best = None
@@ -9653,6 +9687,7 @@ def main() -> None:
     # drift out of sync with the per-region views.
     hub_free_sections = []
     hub_today_sections = []
+    nearby_jobs: list[dict] = []  # item 581
     feed_items = []
     events_json_groups: list[tuple[str, str, list[dict]]] = []
     llms_full_groups: list[tuple[str, str, list[dict]]] = []
@@ -10007,12 +10042,7 @@ def main() -> None:
                 ideas = thin_week_ideas(evergreen, sum(1 for e in items if e.get("attendable", True)))
                 if ideas:
                     view_blocks.append({"section": "Indoor ideas — anytime this week", "events": ideas})
-            view_html = render_region_page(
-                region_cfg,
-                view_blocks,
-                sponsor,
-                [],
-                now,
+            view_kwargs = dict(
                 heading=view_meta["h1"] if view_meta else heading,
                 subheading=subheading,
                 search_meta=view_meta,
@@ -10030,9 +10060,15 @@ def main() -> None:
                 empty_follow_url=empty_follow_url,
                 empty_follow_label=empty_follow_label,
             )
+            view_html = render_region_page(region_cfg, view_blocks, sponsor, [], now, **view_kwargs)
             view_dir = region_dir / slug
             view_dir.mkdir(parents=True, exist_ok=True)
             (view_dir / "index.html").write_text(view_html, encoding="utf-8")
+            own_count = sum(1 for e in items if e.get("attendable", True))
+            if slug in ("this-weekend", "today") and own_count < NEARBY_FILL_BELOW:  # item 581: re-rendered once every town is known
+                nearby_jobs.append({"region_cfg": region_cfg, "blocks": view_blocks, "sponsor": sponsor, "kwargs": view_kwargs, "slug": slug,
+                                    "path": view_dir / "index.html", "name": region["name"], "lat": region.get("lat"), "lon": region.get("lon"),
+                                    "own": own_count, "days": set(window_days) if slug == "this-weekend" else {local_today}})
             logger.info("Wrote %s (%d item%s)", view_dir / "index.html", len(items), "" if len(items) == 1 else "s")
 
             # ROADMAP.md item 149: same non-empty gate as hub_weekend_sections
@@ -10388,6 +10424,17 @@ def main() -> None:
         "weather": email_weather_by_region.get("mount-prospect-60056")
         or next((w for w in email_weather_by_region.values() if w), None),
     }
+    # ROADMAP.md item 581: a thin town weekend/today page gets what's on within ten miles.
+    for job in nearby_jobs:
+        nearby = select_nearby_events(job, combined_email_sections)
+        if not nearby:
+            continue
+        when = "this weekend" if job["slug"] == "this-weekend" else "today"
+        title = f"Quiet in {job['name']} {when}; here's what's on within ten miles" if job["own"] == 0 else f"Nearby {when}"
+        blocks = [b for b in job["blocks"] if b.get("events")] + [{"section": title, "events": nearby, "nearby": True}]
+        job["path"].write_text(render_region_page(job["region_cfg"], blocks, job["sponsor"], [], now, **job["kwargs"]), encoding="utf-8")
+        logger.info("Nearby fill: %s %s gets %d event(s) from within ten miles", job["name"], job["slug"], len(nearby))
+
     (OUTPUT_DIR / "combined-email-send.html").write_text(
         render_combined_email_digest(*combined_email_args, **combined_email_extra), encoding="utf-8"
     )
