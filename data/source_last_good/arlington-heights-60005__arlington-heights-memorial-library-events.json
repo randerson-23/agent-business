@@ -1,11 +1,11 @@
 {
- "fetched_at": "2026-11-28T14:05:36+00:00",
+ "fetched_at": "2026-11-28T15:40:43+00:00",
  "items": [
   {
    "date": "2026-11-28",
    "detail": "",
-   "title": "Games & Gab",
-   "url": "https://www.ahml.info/scheduling/reservation/236748"
+   "title": "Family Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224199"
   },
   {
    "date": "2026-11-30",
@@ -34,12 +34,6 @@
   {
    "date": null,
    "detail": "",
-   "title": "Clases de Computación Básica",
-   "url": "https://www.ahml.info/scheduling/reservation/236331"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Hablemos Español (Let's Speak Spanish)",
    "url": "https://www.ahml.info/scheduling/reservation/234200"
   },
@@ -52,8 +46,8 @@
   {
    "date": null,
    "detail": "",
-   "title": "Canceled - Committee of the Whole Meeting",
-   "url": "https://www.ahml.info/scheduling/reservation/198849"
+   "title": "Clases de Computación Básica",
+   "url": "https://www.ahml.info/scheduling/reservation/236331"
   },
   {
    "date": null,
@@ -64,14 +58,20 @@
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224268"
+   "title": "Canceled - Committee of the Whole Meeting",
+   "url": "https://www.ahml.info/scheduling/reservation/198849"
   },
   {
    "date": null,
    "detail": "",
    "title": "HYBRID: Senior Center Popular Books: Culpability",
    "url": "https://www.ahml.info/scheduling/reservation/230304"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224268"
   },
   {
    "date": null,
@@ -112,26 +112,26 @@
   {
    "date": null,
    "detail": "",
-   "title": "Beginning ESL",
-   "url": "https://www.ahml.info/scheduling/reservation/236751"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Silent Book Club",
    "url": "https://www.ahml.info/scheduling/reservation/224375"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224269"
+   "title": "Beginning ESL",
+   "url": "https://www.ahml.info/scheduling/reservation/236751"
   },
   {
    "date": null,
    "detail": "",
    "title": "Senior Center: Current Events",
    "url": "https://www.ahml.info/scheduling/reservation/233856"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224269"
   },
   {
    "date": null,
@@ -166,26 +166,20 @@
   {
    "date": null,
    "detail": "",
-   "title": "Resume Review",
-   "url": "https://www.ahml.info/scheduling/reservation/209846"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Makerplace Wire Wrapped Jewelry: Artisan Ring",
    "url": "https://www.ahml.info/scheduling/reservation/210090"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Culpability Discussion: A 20s & 30s Event",
-   "url": "https://www.ahml.info/scheduling/reservation/229118"
+   "title": "Resume Review",
+   "url": "https://www.ahml.info/scheduling/reservation/209846"
   },
   {
    "date": null,
    "detail": "",
-   "title": "VIRTUAL: AI and Publishing",
-   "url": "https://www.ahml.info/scheduling/reservation/226938"
+   "title": "Culpability Discussion: A 20s & 30s Event",
+   "url": "https://www.ahml.info/scheduling/reservation/229118"
   },
   {
    "date": null,
@@ -208,8 +202,14 @@
   {
    "date": null,
    "detail": "",
-   "title": "日本語のストーリータイム | Japanese Language Storytime",
-   "url": "https://www.ahml.info/scheduling/reservation/227649"
+   "title": "VIRTUAL: AI and Publishing",
+   "url": "https://www.ahml.info/scheduling/reservation/226938"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Senior Center: Travelogue",
+   "url": "https://www.ahml.info/scheduling/reservation/233824"
   },
   {
    "date": null,
@@ -280,6 +280,12 @@
   {
    "date": null,
    "detail": "",
+   "title": "Play Time",
+   "url": "https://www.ahml.info/scheduling/reservation/224270"
+  },
+  {
+   "date": null,
+   "detail": "",
    "title": "Senior Center: Tech Support",
    "url": "https://www.ahml.info/scheduling/reservation/224984"
   },
@@ -288,12 +294,6 @@
    "detail": "",
    "title": "Veterans Affairs (VA) Resource Hour",
    "url": "https://www.ahml.info/scheduling/reservation/227194"
-  },
-  {
-   "date": null,
-   "detail": "",
-   "title": "Play Time",
-   "url": "https://www.ahml.info/scheduling/reservation/224270"
   },
   {
    "date": null,
@@ -334,32 +334,32 @@
   {
    "date": null,
    "detail": "",
-   "title": "Read to Learn (District 214)",
-   "url": "https://www.ahml.info/scheduling/reservation/194371"
-  },
-  {
-   "date": null,
-   "detail": "",
    "title": "Page Turners Book Discussion: Culpability",
    "url": "https://www.ahml.info/scheduling/reservation/193783"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Social Worker in the Library",
-   "url": "https://www.ahml.info/scheduling/reservation/218152"
+   "title": "Read to Learn (District 214)",
+   "url": "https://www.ahml.info/scheduling/reservation/194371"
   },
   {
    "date": null,
    "detail": "",
-   "title": "Your Money: Medigap Planner",
-   "url": "https://www.ahml.info/scheduling/reservation/224369"
+   "title": "Read to Learn (District 214)",
+   "url": "https://www.ahml.info/scheduling/reservation/194393"
   },
   {
    "date": null,
    "detail": "",
    "title": "Our Time: Developmental Playgroup",
    "url": "https://www.ahml.info/scheduling/reservation/216185"
+  },
+  {
+   "date": null,
+   "detail": "",
+   "title": "Your Money: Medigap Planner",
+   "url": "https://www.ahml.info/scheduling/reservation/224369"
   }
  ],
  "source": "Arlington Heights Memorial Library — Events"
