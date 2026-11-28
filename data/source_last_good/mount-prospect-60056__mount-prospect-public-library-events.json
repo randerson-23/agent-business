@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-27T22:01:03+00:00",
+ "fetched_at": "2026-11-28T06:05:45+00:00",
  "items": [
-  {
-   "date": "Fri, 27 Nov 2026 00:00:00 +0000",
-   "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime.",
-   "title": "Main Library Closed",
-   "url": "https://mppl.libnet.info/event/18003233"
-  },
   {
    "date": "Mon, 30 Nov 2026 16:30:00 +0000",
    "detail": "Monday, November 30 2026 4:30pm - 5:15pm \n In this interactive club perfect for kids just starting chapter books, we'll read a fun story, and do related activities. Plus, all participants will select a free book to keep!",
@@ -360,6 +354,12 @@
    "detail": "Thursday, December 24 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime.",
    "title": "Library Closed",
    "url": "https://mppl.libnet.info/event/13706009"
+  },
+  {
+   "date": "Fri, 25 Dec 2026 00:00:00 +0000",
+   "detail": "Friday, December 25 2026 12:00am - 11:59pm \n Visit mppl.org to access library resources and digital materials anytime.",
+   "title": "Library Closed",
+   "url": "https://mppl.libnet.info/event/13706042"
   }
  ],
  "source": "Mount Prospect Public Library — Events"

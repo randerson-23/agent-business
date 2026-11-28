@@ -1,24 +1,6 @@
 {
- "fetched_at": "2026-11-27T16:49:17+00:00",
+ "fetched_at": "2026-11-28T06:05:45+00:00",
  "items": [
-  {
-   "date": "Fri, 27 Nov 2026 00:00:00 +0000",
-   "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
-   "title": "The Arlington Camera Club",
-   "url": "https://egvpl.libnet.info/event/16362695"
-  },
-  {
-   "date": "Fri, 27 Nov 2026 00:00:00 +0000",
-   "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
-   "title": "Word of the Week",
-   "url": "https://egvpl.libnet.info/event/17354438"
-  },
-  {
-   "date": "Fri, 27 Nov 2026 10:00:00 +0000",
-   "detail": "Friday, November 27 2026 10:00am - 11:30am \n Gather your family and visit the library for a fun, seasonal photo! Upon arrival, you can choose from a variety of festive backgrounds, and your photos will be emailed to you after the session.",
-   "title": "Winter Whimsy Family Photo",
-   "url": "https://egvpl.libnet.info/event/17242110"
-  },
   {
    "date": "Sat, 28 Nov 2026 00:00:00 +0000",
    "detail": "Saturday, November 28 2026 12:00am - 11:59pm \n Arlington Camera Club photography exhibit.",
@@ -171,15 +153,15 @@
   },
   {
    "date": "Thu, 03 Dec 2026 18:00:00 +0000",
-   "detail": "Thursday, December 03 2026 6:00pm - 6:30pm \n Put a photo on a mug and ornament through a sublimation process. A perfect gift for the holidays!",
-   "title": "Sublimation Mug & Ornament",
-   "url": "https://egvpl.libnet.info/event/17927343"
-  },
-  {
-   "date": "Thu, 03 Dec 2026 18:00:00 +0000",
    "detail": "Thursday, December 03 2026 6:00pm - 7:30pm \n Join us for an evening drop-in session where you can get one-on-one assistance with your technology-related questions. Perfect for those who need tech support after work hours!",
    "title": "Thursday Evening Tech Help",
    "url": "https://egvpl.libnet.info/event/17955276"
+  },
+  {
+   "date": "Thu, 03 Dec 2026 18:00:00 +0000",
+   "detail": "Thursday, December 03 2026 6:00pm - 6:30pm \n Put a photo on a mug and ornament through a sublimation process. A perfect gift for the holidays!",
+   "title": "Sublimation Mug & Ornament",
+   "url": "https://egvpl.libnet.info/event/17927343"
   },
   {
    "date": "Thu, 03 Dec 2026 18:30:00 +0000",
@@ -360,6 +342,24 @@
    "detail": "Tuesday, December 08 2026 3:30pm - 9:00pm \n Come to the High School Hub to enjoy a relaxation station before finals. Special crafts, coloring, and more!",
    "title": "Relaxation Station",
    "url": "https://egvpl.libnet.info/event/17532138"
+  },
+  {
+   "date": "Tue, 08 Dec 2026 18:30:00 +0000",
+   "detail": "Tuesday, December 08 2026 6:30pm - 7:00pm \n Hang out and learn a song on the ukulele. All experience levels are welcome! Ukuleles are provided by the library.",
+   "title": "Uke Jam Holiday Tunes",
+   "url": "https://egvpl.libnet.info/event/17653171"
+  },
+  {
+   "date": "Wed, 09 Dec 2026 00:00:00 +0000",
+   "detail": "Wednesday, December 09 2026 12:00am - 11:59pm \n Become a dictionary detective with our new Word of the Week challenge! Discover a new vocabulary word, look it up in the dictionary, write the definition, and answer a bonus question.",
+   "title": "Word of the Week",
+   "url": "https://egvpl.libnet.info/event/17354450"
+  },
+  {
+   "date": "Wed, 09 Dec 2026 00:00:00 +0000",
+   "detail": "Wednesday, December 09 2026 12:00am - 11:59pm \n Search for hidden items in our wintry display case.",
+   "title": "Winter Wonderland Seek and Find",
+   "url": "https://egvpl.libnet.info/event/17575380"
   }
  ],
  "source": "Elk Grove Village Public Library - Events"

@@ -2,8 +2,8 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Upcoming events in Mount Prospect — Within Ten",
-  "dateModified": "2026-11-27T22:01:03+00:00",
-  "numberOfItems": 41,
+  "dateModified": "2026-11-28T06:05:45+00:00",
+  "numberOfItems": 44,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -1272,6 +1272,99 @@
         },
         "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
         "description": "Thursday, December 10 2026 6:00pm - 7:00pm \n Experience the thrill of telling a computer what to do and watching your instructions come to life!"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 42,
+      "item": {
+        "@type": "Event",
+        "name": "Teen Book Café",
+        "startDate": "2026-12-11T16:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-teen-book-caf-2026-12-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/14685614",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Friday, December 11 2026 4:30pm - 6:00pm \n Love books? Come hang out with us at Khepri Kitchen + Coffee, 106 S. Emerson St. We'll talk about new books,…"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 43,
+      "item": {
+        "@type": "Event",
+        "name": "Winter Wonderland",
+        "startDate": "2026-12-11T16:30:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-winter-wonderland-2026-12-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect, IL",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL"
+          }
+        },
+        "sameAs": "https://www.mppd.org/event/winter-wonderland-2/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Park District",
+          "url": "https://www.mppd.org"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Winter Wonderland – Free Family Event 4:30-5:00 PM Sensory Friendly 5:00-7:00 PM Open House Step into the Jingle Bell Spirit and let the magic of the season…",
+        "isAccessibleForFree": true
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 44,
+      "item": {
+        "@type": "Event",
+        "name": "Build and Watch: The Grinch",
+        "startDate": "2026-12-11T17:00:00-06:00",
+        "url": "https://withintenmiles.com/mount-prospect-60056/#ev-build-and-watch-the-grinch-2026-12-11",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Mount Prospect Public Library",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Mount Prospect",
+            "addressRegion": "IL",
+            "streetAddress": "125 S Emerson St"
+          }
+        },
+        "sameAs": "https://mppl.libnet.info/event/17200260",
+        "organizer": {
+          "@type": "Organization",
+          "name": "Mount Prospect Public Library",
+          "url": "https://mppl.libnet.info"
+        },
+        "image": "https://withintenmiles.com/og/mount-prospect-60056.png",
+        "description": "Friday, December 11 2026 5:00pm - 7:00pm \n Enjoy a movie night at the library and have fun building with LEGO bricks and other various toys!"
       }
     }
   ]

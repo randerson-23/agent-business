@@ -1,13 +1,6 @@
 {
- "fetched_at": "2026-11-27T22:01:03+00:00",
+ "fetched_at": "2026-11-28T06:05:45+00:00",
  "items": [
-  {
-   "date": "20261127T080000",
-   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=1954",
-   "end_date": "20261127T170000",
-   "title": "Thanksgiving Day After - Village Hall is Closed Friday for the Than",
-   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
-  },
   {
    "date": "20261202T183000",
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=1972",
@@ -419,6 +412,13 @@
    "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2146",
    "end_date": "20270908T235900",
    "title": "Plan Commission Meeting",
+   "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
+  },
+  {
+   "date": "20270920T183000",
+   "detail": "https://www.wheelingil.gov/calendar.aspx?EID=2170",
+   "end_date": "20270920T235900",
+   "title": "Village Board Regular Meeting",
    "url": "https://www.wheelingil.gov/common/modules/iCalendar/iCalendar.aspx?feed=calendar&catID=14"
   }
  ],

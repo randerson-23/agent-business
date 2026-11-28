@@ -1,12 +1,6 @@
 {
- "fetched_at": "2026-11-27T22:01:03+00:00",
+ "fetched_at": "2026-11-28T06:05:45+00:00",
  "items": [
-  {
-   "date": "Fri, 27 Nov 2026 00:00:00 +0000",
-   "detail": "Friday, November 27 2026 12:00am - 11:59pm \n Library Closed",
-   "title": "Library Closed",
-   "url": "https://desplaines.libnet.info/event/14793249"
-  },
   {
    "date": "Sat, 28 Nov 2026 11:00:00 +0000",
    "detail": "Saturday, November 28 2026 11:00am - 12:00pm \n Presented by the Illinois Student Assistance Commision (ISAC), this session outlines the general financial aid process for college.",
@@ -360,6 +354,12 @@
    "detail": "Sunday, December 13 2026 2:30pm - 3:30pm \n Get started with your iPhone by exploring helpful tips. Learn how to customize your homescreen, add widgets, create app folders, and change text size. Please bring your own iPhone to class.",
    "title": "iPhone Basics",
    "url": "https://desplaines.libnet.info/event/17888185"
+  },
+  {
+   "date": "Mon, 14 Dec 2026 13:00:00 +0000",
+   "detail": "Monday, December 14 2026 1:00pm - 2:00pm \n Des Plaines Community Partners Meeting",
+   "title": "Des Plaines Community Partners Meeting",
+   "url": "https://desplaines.libnet.info/event/17695953"
   }
  ],
  "source": "Des Plaines Public Library — Events"

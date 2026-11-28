@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-27T22:01:03+00:00",
+ "fetched_at": "2026-11-28T06:05:45+00:00",
  "items": [
   {
    "date": "20261128T150000",
@@ -187,28 +187,6 @@
    "url": "https://fpdcc.com/event/whats-on-the-menu/2026-12-12/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
-  },
-  {
-   "date": "20261212T160000",
-   "detail": "Celebrate winter around a bonfire. Enjoy guided walks, s’mores and nighttime activities at the campground.",
-   "end_date": "20261212T190000",
-   "lat": 41.60537779,
-   "lon": -87.56303721,
-   "title": "Winter Bonfire",
-   "url": "https://fpdcc.com/event/winter-bonfire/",
-   "venue_city": "South Holland",
-   "venue_name": "Camp Shabbona Woods"
-  },
-  {
-   "date": "20261213T053000",
-   "detail": "Listen for owls during the Christmas Bird Count. Led by John Elliot from Chicago Bird Alliance. Ages 10 & up.",
-   "end_date": "20261213T053000",
-   "lat": 41.89324535,
-   "lon": -87.82630546,
-   "title": "Dawn Owl Prowl",
-   "url": "https://fpdcc.com/event/dawn-owl-prowl-2/",
-   "venue_city": "River Forest",
-   "venue_name": "Trailside Museum of Natural History"
   },
   {
    "date": "20261213T070000",
@@ -660,6 +638,28 @@
    "url": "https://fpdcc.com/event/wildlife-connections/2026-12-22/",
    "venue_city": "Northbrook",
    "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261222T103000",
+   "detail": "Stop by the visitor center to learn about reptiles, mammals and birds from the residents of Misericordia – Heart of Mercy. All ages.",
+   "end_date": "20261222T120000",
+   "lat": 42.09501105,
+   "lon": -87.88484528,
+   "title": "Wildlife Connections",
+   "url": "https://fpdcc.com/event/wildlife-connections/2026-12-22/",
+   "venue_city": "Northbrook",
+   "venue_name": "River Trail Nature Center"
+  },
+  {
+   "date": "20261222T130000",
+   "detail": "Feed our feathered friends with a cute, simple birdseed wreath. Materials provided. Ages 10 & up.",
+   "end_date": "20261222T130000",
+   "lat": 41.89324535,
+   "lon": -87.82630546,
+   "title": "DIY Holiday Birdseed Wreath",
+   "url": "https://fpdcc.com/event/diy-holiday-birdseed-wreath/",
+   "venue_city": "River Forest",
+   "venue_name": "Trailside Museum of Natural History"
   }
  ],
  "source": "Forest Preserves of Cook County — north"
