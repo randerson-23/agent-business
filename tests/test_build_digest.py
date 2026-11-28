@@ -8502,3 +8502,26 @@ def test_league_registration_dates_parse_and_show_a_week_ahead():
     assert build_digest.registration_lines_for(cfg, date(2026, 12, 20)) == []  # more than seven days out
     assert build_digest.registration_signups(cfg, today)[0]["title"] == "MPPD spring youth soccer (registration opens)"
     assert build_digest.registration_lines_for({}, today) == []
+
+
+def test_thin_weekend_page_fills_from_within_ten_miles():
+    # ROADMAP.md item 581.
+    def ev(title, iso, **kw):
+        return dict({"title": title, "url": "https://x/" + title.replace(" ", "-"), "date_iso": iso, "date": iso[:10], "attendable": True}, **kw)
+    sections = [
+        {"region_name": "Mount Prospect", "region_lat": 42.0664, "region_lon": -87.9373, "weekend_events": []},
+        {"region_name": "Arlington Heights", "region_lat": 42.0884, "region_lon": -87.9806, "weekend_events": [
+            ev("Holiday Tree Lighting", "2026-11-27T16:30:00"), ev("Games & Gab", "2026-11-28T10:00:00"),
+            ev("VIRTUAL Talk", "2026-11-28T11:00:00", online=True), ev("Next week", "2026-12-05T10:00:00")]},
+        {"region_name": "Des Plaines", "region_lat": 42.0334, "region_lon": -87.8834, "weekend_events": [ev("Kashmir", "2026-11-27T20:00:00"), ev("Craft Fair", "2026-11-28T09:00:00")]},
+        {"region_name": "Far Town", "region_lat": 42.5, "region_lon": -88.5, "weekend_events": [ev("Far Away", "2026-11-28T09:00:00")]},
+    ]
+    job = {"name": "Mount Prospect", "lat": 42.0664, "lon": -87.9373, "slug": "this-weekend",
+           "days": {date(2026, 11, 26), date(2026, 11, 27), date(2026, 11, 28), date(2026, 11, 29)}}
+    got = build_digest.select_nearby_events(job, sections)
+    assert {e["title"] for e in got} == {"Holiday Tree Lighting", "Games & Gab", "Kashmir", "Craft Fair"}
+    assert all(e["nearby_miles"] <= 10 and e["nearby_town"] in ("Arlington Heights", "Des Plaines") for e in got)
+    assert got[0]["nearby_town"] == min(("Arlington Heights", "Des Plaines"), key=lambda t: next(e["nearby_miles"] for e in got if e["nearby_town"] == t))
+    region_cfg = {"region": {"id": "mount-prospect-60056", "name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "t"}}
+    html = build_digest.render_region_page(region_cfg, [{"section": "Quiet in Mount Prospect this weekend; here's what's on within ten miles", "events": got, "nearby": True}], None, [], datetime(2026, 11, 26, tzinfo=timezone.utc), nav_current="weekend")
+    assert "Quiet in Mount Prospect this weekend" in html and "Arlington Heights · ≈" in html
