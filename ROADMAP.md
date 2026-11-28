@@ -221,6 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
+0. **584** (finish 581: weekly summary and hub entries), **585** (family-first, at most 3 per town nearby picks), then **582** (now P1: free credited share block; brokerages' weekly posts skip these towns), **586** (ALL-CAPS series prefixes), **583**.
 0. ~~**581**~~ **DONE** (2026-11-28, pages only), then **582** (free credited share block), **583** (agents' pitch line).
 0. ~~**578**~~ **DONE** (2026-11-27), then ~~**460**~~ **BUILT, waiting on 2027 pages** (MPPD TeamSideline league deadlines), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
 0. ~~**577**~~ **DONE**, ~~**574**~~ **BUILT, waiting on dates** (2026-11-27), then **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
@@ -23202,7 +23203,7 @@ and Reddit as a channel.
 
 #### P2 (new)
 
-582. **A free, credited weekly block for agents, HOAs and churches.**
+582. **(Re-ranked to P1, pass 171.)** **A free, credited weekly block for agents, HOAs and churches.**
      Build loop:
 
      - At every build, write `/<town>/share.html` (noindex): a 5-pick
@@ -23228,6 +23229,72 @@ and Reddit as a channel.
      Neighborhood Authority puts the agent's name on the town's share
      block (582) and weekend page all year. Add no new price. Depends on
      582.
+
+
+#### Research pass 2026-11-28 (hundred-and-seventy-first pass)
+
+The build loop shipped item 581 for the pages: Mount Prospect's *"This
+weekend"* now reads *"Quiet in Mount Prospect this weekend; here's what's
+on within ten miles"*, with six nearby cards. This pass reads that page on
+**Small Business Saturday**, checks Google for changes, and looks at who
+else writes weekly "things to do" for these suburbs: real-estate
+brokerages.
+
+| Angle | What it is / what we found | Why it matters here |
+|---|---|---|
+| **The filled weekend page, read on Sat Nov 28 (design/UX)** (`docs/mount-prospect-60056/this-weekend/`, `weekly-summary.txt`, after PR #506) | The nearby section works, but **5 of its 6 cards are Des Plaines**, because it sorts nearest town first. The six are an ISAC college-aid talk, a tween movie, a Steely Dan tribute (8 PM), a speakeasy jazz night (8:30 PM), a library *"Games & Gab"* and the Grinch film. Only the last two fit a family weekend. The **Grinch card's title is half capitals**: *"$1 CHRISTMAS CLASSIC FILM SERIES: …"*. There is **no mention of Small Business Saturday**, which is today, or the holiday lights. The paste-ready `weekly-summary.txt` **still says** *"Nothing new dated… - Mount Prospect Public Library"*: 581's *"Not done"* list (hub entries, weekly summary, item 516's rule) is still open. | The page now has content, but not the content a family wants. The Facebook-group text, the one social channel the owner can use, still says there's nothing on. |
+| **Brokerages already publish the weekly list, for the wrong suburbs** (Baird & Warner blog: *"Five Things To Do in the Northern Suburbs"*, weekly through 2025, and *"Eight Things To Do in the City & Western Suburbs"*; the same posts mirrored on agents' own `*.bairdwarner.com` sites; @properties/Dreamtown's *"5 Things to do in the North Suburbs"*) | Two of the region's biggest brokerages run a **weekly events post every Wednesday**, syndicated onto each agent's personal site as content. Their "northern suburbs" are the North Shore and Lake County (Grayslake, Libertyville, Glenview, Highland Park), **not Arlington Heights, Mount Prospect or Palatine**. No 2026 edition is indexed yet. | Agents here want a weekly local list for their own sites and newsletters, and their brokerage doesn't cover their towns. That is exactly item 582's free share block, and it makes 583's pitch concrete. **582 moves up to P1.** |
+| **Google, re-checked** (Search Engine Roundtable's Nov 11/13/19 2026 recaps and *November 2026 webmaster report*; PPC Land on the pre-Black-Friday core update; the Jan 2026 structured-data removals) | A **November 2026 core update** is rolling out. AI Overviews for local packs dropped their action buttons. **No change to Event rich results** turned up; the Jan 2026 removals (practice problems, nutrition facts, nearby offers) still don't name Events, as recorded in an earlier re-check. | No action. Rankings may move for two weeks, so don't read the audience snapshot's search numbers as a trend until mid-December. |
+
+**Re-ranked:** **582** (free credited share block) moves from P2 to
+**P1**, and 583 now cites the brokerage posts.
+
+#### P1 (new)
+
+584. **Finish 581: the weekly summary and the town's own hub entries.**
+     Build loop:
+
+     - `weekly-summary.txt` uses the same fill as the pages. When the
+       town is quiet, post *"Quiet in Mount Prospect this weekend; here's
+       what's on within ten miles:"* followed by the picks, each with its
+       town.
+     - Add the town's own dated hub entries in range, before the nearby
+       cards and in the summary: its downtown's Small Business Saturday
+       (item 543), holiday lights open those nights (item 527), Santa
+       visits in or within ten miles of the town (`/santa/`), and the
+       farmers' market.
+     - Apply item 516's indexability rule to town weekend and today pages
+       (noindex below 3 entries after the fill).
+
+     Tests: on a quiet Small Business Saturday, Mount Prospect's page and
+     summary both lead with the downtown entry; a town with 0 events
+     after the fill is noindex.
+
+585. **Family-first, town-mixed nearby picks.** In `select_nearby_events`:
+
+     - Rank by the same family score the email's top picks use (free and
+       kid-friendly first; item 7391's +1 for a celebration), then by
+       distance.
+     - Take **at most 3 from any one town**.
+     - Put evening adult shows (8 PM or later at a ticketed venue,
+       without a family signal, per item 567's rule) last, so they only
+       fill spare slots.
+
+     Test: with 5 Des Plaines events (2 family) and 2 Arlington Heights
+     events, the six include both Arlington Heights events and no more
+     than 3 from Des Plaines, family ones first.
+
+#### P2 (new)
+
+586. **Title-case an ALL-CAPS series prefix.** Extend `display_title`
+     (items 529 and 570): when the text before a colon is all capitals
+     and at least two words (*"$1 CHRISTMAS CLASSIC FILM SERIES"*),
+     title-case it and keep what follows as is: *"$1 Christmas Classic
+     Film Series: "How the Grinch Stole Christmas" (2000)"*. Leave known
+     acronyms (ISAC, LEGO, D211, PM) in capitals.
+
+     Test: that title renders as above; *"ISAC: College Aid Night"* is
+     unchanged.
 
 
 ## Working agreements for autonomous iteration
