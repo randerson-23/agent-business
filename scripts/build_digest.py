@@ -2959,6 +2959,7 @@ def keep_nearest_town(items: list[dict], region_name: str, towns: list[dict], ma
 NEARBY_FILL_BELOW = 3  # ROADMAP.md item 581
 NEARBY_FILL_MAX = 6
 NEARBY_MAX_MILES = 10.0
+NEARBY_PER_TOWN = 3  # item 585
 
 
 def select_nearby_events(job: dict, sections: list[dict], limit: int = NEARBY_FILL_MAX) -> list[dict]:
@@ -2979,15 +2980,25 @@ def select_nearby_events(job: dict, sections: list[dict], limit: int = NEARBY_FI
             day = _event_day(e)
             if day not in job["days"] or not e.get("attendable", True) or e.get("online") or e.get("registration_notice") or e.get("event_status") or e.get("merged_away"):
                 continue
-            found.append((round(miles, 1), e.get("date_iso") or "", dict(e, nearby_town=sec["region_name"], nearby_miles=round(miles))))
-    found.sort(key=lambda f: f[:2])
-    seen, out = set(), []
-    for _, _, e in found:
+            evening_show = is_ticketed_show(e) and (_event_start(e) or datetime.min).hour >= 20  # item 585: fills spare slots only
+            found.append((evening_show, -family_relevance(e), round(miles, 1), e.get("date_iso") or "", dict(e, nearby_town=sec["region_name"], nearby_miles=round(miles))))
+    found.sort(key=lambda f: f[:4])
+    seen, out, per_town = set(), [], {}
+    for *_, e in found:
         key = (e.get("title") or "").strip().lower()
-        if key not in seen:
-            seen.add(key)
-            out.append(e)
+        if key in seen or per_town.get(e["nearby_town"], 0) >= NEARBY_PER_TOWN:
+            continue
+        seen.add(key)
+        per_town[e["nearby_town"]] = per_town.get(e["nearby_town"], 0) + 1
+        out.append(e)
     return out[:limit]
+
+
+def _event_start(e: dict) -> datetime | None:
+    try:
+        return datetime.fromisoformat(e.get("date_iso") or "")
+    except ValueError:
+        return None
 
 
 def nearest_town(lat: float, lon: float, towns: list[dict]) -> tuple[str, float] | None:
@@ -5890,6 +5901,21 @@ def display_title(title: str | None) -> str:
     glued = re.match(r"^([A-Z]{5,})\s*(?:-|–|—|:)\s*(?=\S)(.+)$", title)
     if glued and not glued.group(2).isupper() and glued.group(1) not in _KEEP_UPPER:
         return f"{glued.group(1).capitalize()}: {glued.group(2)}"
+    # ROADMAP.md item 586: an ALL-CAPS series prefix of two or more words before a
+    # colon ("$1 CHRISTMAS CLASSIC FILM SERIES: ...") is title-cased; the rest stays.
+    head, sep, tail = title.partition(":")
+    head_letters = [c for c in head if c.isalpha()]
+    if sep and len(head.split()) >= 2 and head_letters and all(c.isupper() for c in head_letters) and any(c.islower() for c in tail):
+        words = []
+        for i, w in enumerate(head.split()):
+            core = re.sub(r"[^A-Za-z]", "", w)
+            if not core or core in _KEEP_UPPER or (len(core) <= 4 and not re.search(r"[AEIOUY]", core)):
+                words.append(w)
+            elif core.lower() in _SMALL_WORDS and i:
+                words.append(w.lower())
+            else:
+                words.append(re.sub(r"[A-Za-z]+", lambda m: m.group(0)[0].upper() + m.group(0)[1:].lower(), w, count=1))
+        return " ".join(words) + sep + tail
     letters = [c for c in title if c.isalpha()]
     if len(title) <= 12 or not letters or sum(c.isupper() for c in letters) / len(letters) <= 0.7:
         return title
@@ -7001,7 +7027,7 @@ def format_date_range(start: date, end: date) -> str:
 
 
 def build_weekly_summary_txt(
-    region: dict, weekend_events: list[dict], evergreen: list[dict], region_url: str, weekend_date_range: str
+    region: dict, weekend_events: list[dict], evergreen: list[dict], region_url: str, weekend_date_range: str, nearby: list[dict] | None = None
 ) -> str:
     """A short, plain-text block the owner can paste into an existing
     local Facebook group in about thirty seconds (ROADMAP.md Phase 11
@@ -7026,7 +7052,15 @@ def build_weekly_summary_txt(
     """
     subject_line = f"SUBJECT: {build_email_subject_line(region, weekend_events)}\n\n"
     post_lines = [f"What's happening in {region['name']} this weekend ({weekend_date_range}):", ""]
-    if weekend_events:
+    if nearby:  # item 584: the same fill as the page
+        for event in weekend_events[:6]:
+            prefix = f"{event['date']} — " if event.get("date") else ""
+            post_lines.append(f"- {prefix}{event['title']}")
+        post_lines.append(f"Quiet in {region['name']} this weekend; here's what's on within ten miles:")
+        for event in nearby[:6]:
+            prefix = f"{event['date']} — " if event.get("date") else ""
+            post_lines.append(f"- {prefix}{display_title(event['title'])} ({event['nearby_town']})")
+    elif weekend_events:
         for event in weekend_events[:6]:
             prefix = f"{event['date']} — " if event.get("date") else ""
             featured = f" (Featured, presented by {event['sponsored_by']})" if event.get("sponsored_by") else ""
@@ -9688,6 +9722,8 @@ def main() -> None:
     hub_free_sections = []
     hub_today_sections = []
     nearby_jobs: list[dict] = []  # item 581
+    summary_jobs: dict[str, tuple] = {}  # item 584
+    thin_paths: set[str] = set()  # item 516 (also used by item 584's town pages)
     feed_items = []
     events_json_groups: list[tuple[str, str, list[dict]]] = []
     llms_full_groups: list[tuple[str, str, list[dict]]] = []
@@ -9934,9 +9970,9 @@ def main() -> None:
             hub_today_label = local_today.strftime("%A, %B %-d")  # regions share a timezone today
             hub_today_iso = local_today.isoformat()
 
-        weekly_summary_txt = build_weekly_summary_txt(
-            region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range
-        )
+        weekly_summary_args = (region, weekend_events, evergreen, SITE_BASE_URL + region_id + "/", weekend_date_range)
+        summary_jobs[region["name"]] = (region_dir / "weekly-summary.txt", weekly_summary_args)  # item 584: rewritten by the nearby fill
+        weekly_summary_txt = build_weekly_summary_txt(*weekly_summary_args)
         (region_dir / "weekly-summary.txt").write_text(weekly_summary_txt, encoding="utf-8")
         logger.info("Wrote %s", region_dir / "weekly-summary.txt")
 
@@ -10427,12 +10463,19 @@ def main() -> None:
     # ROADMAP.md item 581: a thin town weekend/today page gets what's on within ten miles.
     for job in nearby_jobs:
         nearby = select_nearby_events(job, combined_email_sections)
+        rel = f"{job['region_cfg']['region']['id']}/{job['slug']}/"
         if not nearby:
+            if job["own"] < THIN_PAGE_MIN:  # item 584: item 516's rule on town pages too
+                job["path"].write_text(apply_thin_page(job["path"].read_text(encoding="utf-8"), rel, job["own"], thin_paths), encoding="utf-8")
             continue
         when = "this weekend" if job["slug"] == "this-weekend" else "today"
         title = f"Quiet in {job['name']} {when}; here's what's on within ten miles" if job["own"] == 0 else f"Nearby {when}"
         blocks = [b for b in job["blocks"] if b.get("events")] + [{"section": title, "events": nearby, "nearby": True}]
-        job["path"].write_text(render_region_page(job["region_cfg"], blocks, job["sponsor"], [], now, **job["kwargs"]), encoding="utf-8")
+        html = render_region_page(job["region_cfg"], blocks, job["sponsor"], [], now, **job["kwargs"])
+        job["path"].write_text(apply_thin_page(html, rel, job["own"] + len(nearby), thin_paths), encoding="utf-8")
+        if job["slug"] == "this-weekend" and job["name"] in summary_jobs:
+            summary_path, args = summary_jobs[job["name"]]
+            summary_path.write_text(build_weekly_summary_txt(*args, nearby=nearby), encoding="utf-8")
         logger.info("Nearby fill: %s %s gets %d event(s) from within ten miles", job["name"], job["slug"], len(nearby))
 
     (OUTPUT_DIR / "combined-email-send.html").write_text(
@@ -10542,7 +10585,6 @@ def main() -> None:
     outside_entries = load_just_outside(now.astimezone(LOCAL_TZ).date(), [{"name": c["region"]["name"], "lat": c["region"].get("lat"), "lon": c["region"].get("lon")} for c in regions])  # items 458/479
     menorah_lightings = select_menorah_lightings(holidays_entries, holiday_blocks_by_town, now.year)  # item 533
     light_displays = load_light_displays(now.astimezone(LOCAL_TZ).date(), TOWN_CENTRES)  # item 527
-    thin_paths: set[str] = set()  # item 516
     (holidays_dir / "index.html").write_text(add_compilation_note(apply_thin_page(render_holidays_page(holidays_entries, now, analytics, newsletter, contact_email, outside=outside_entries, launch=launch_rate_on(sponsors_cfg.get("launch_rate"), current_list_size()), lights=light_displays, menorahs=menorah_lightings, shop_small=build_shop_small(combined_email_sections, now.astimezone(LOCAL_TZ).date())), "holidays/", hub_entry_count(holidays_entries) + len(light_displays) + len(menorah_lightings), thin_paths), [c["region"]["id"] for c in regions], SITE_BASE_URL + "holidays/", now), encoding="utf-8")
     logger.info("Wrote %s", holidays_dir / "index.html")
     for tot in trick_or_treat_entries:  # item 398: "Also at" dealers are hosts of the same event
