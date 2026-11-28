@@ -8525,3 +8525,35 @@ def test_thin_weekend_page_fills_from_within_ten_miles():
     region_cfg = {"region": {"id": "mount-prospect-60056", "name": "Mount Prospect", "zip": "60056", "state": "IL", "tagline": "t"}}
     html = build_digest.render_region_page(region_cfg, [{"section": "Quiet in Mount Prospect this weekend; here's what's on within ten miles", "events": got, "nearby": True}], None, [], datetime(2026, 11, 26, tzinfo=timezone.utc), nav_current="weekend")
     assert "Quiet in Mount Prospect this weekend" in html and "Arlington Heights · ≈" in html
+
+
+def test_nearby_picks_are_family_first_and_town_mixed():
+    # ROADMAP.md item 585.
+    def ev(title, iso, tags=(), url=None):
+        return {"title": title, "url": url or "https://x/" + title.replace(" ", "-"), "date_iso": iso, "date": iso[:10], "attendable": True, "tags": list(tags)}
+    dp = [ev("DP Family Fair", "2026-11-28T10:00:00", ("kid_friendly", "free")), ev("DP Kids Craft", "2026-11-28T11:00:00", ("kid_friendly",)),
+          ev("DP Lecture A", "2026-11-28T12:00:00"), ev("DP Lecture B", "2026-11-28T13:00:00"),
+          ev("DP Late Concert", "2026-11-28T20:00:00", url="https://www.desplainestheatre.com/events/x")]
+    ah = [ev("AH Book Club", "2026-11-28T14:00:00"), ev("AH Talk", "2026-11-28T15:00:00")]
+    sections = [{"region_name": "Des Plaines", "region_lat": 42.0334, "region_lon": -87.8834, "weekend_events": dp},
+                {"region_name": "Arlington Heights", "region_lat": 42.0884, "region_lon": -87.9806, "weekend_events": ah}]
+    job = {"name": "Mount Prospect", "lat": 42.0664, "lon": -87.9373, "slug": "this-weekend", "days": {date(2026, 11, 28)}}
+    got = build_digest.select_nearby_events(job, sections)
+    towns = [e["nearby_town"] for e in got]
+    assert towns.count("Des Plaines") == 3 and towns.count("Arlington Heights") == 2
+    assert got[0]["title"] == "DP Family Fair" and "DP Late Concert" not in [e["title"] for e in got]
+
+
+def test_weekly_summary_uses_the_nearby_fill():
+    # ROADMAP.md item 584.
+    region = {"name": "Mount Prospect", "id": "mount-prospect-60056"}
+    nearby = [{"title": "Holiday Tree Lighting", "date": "Fri, Nov 27", "nearby_town": "Arlington Heights"}]
+    txt = build_digest.build_weekly_summary_txt(region, [], [], "https://x/", "Nov 27–29", nearby=nearby)
+    assert "Quiet in Mount Prospect this weekend; here's what's on within ten miles:" in txt
+    assert "- Fri, Nov 27 — Holiday Tree Lighting (Arlington Heights)" in txt
+
+
+def test_all_caps_series_prefix_is_title_cased():
+    # ROADMAP.md item 586.
+    assert build_digest.display_title('$1 CHRISTMAS CLASSIC FILM SERIES: "How the Grinch Stole Christmas" (2000)') == '$1 Christmas Classic Film Series: "How the Grinch Stole Christmas" (2000)'
+    assert build_digest.display_title("ISAC: College Aid Night") == "ISAC: College Aid Night"

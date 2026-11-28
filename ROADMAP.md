@@ -221,7 +221,7 @@ doesn't re-suggest something already shipped.
 **Build queue (by deadline; refreshed by the research loop, item 346).**
 > **Incident 2026-11-26 (build loop):** removing the Nov 26 → Nov 25 override on Wed Nov 25 (PR #496) let Thursday's regular send run, and it **scheduled the Thanksgiving issue a second time** (`em_26e79gznn393gttj97k082d9a4`, for Thu Nov 26 07:00 CT). The owner has to cancel it in Buttondown; the loop has no Buttondown access. Fix: `send_newsletter.py` now refuses a send or schedule within four days of another (`recent_delivery`, `--force-repeat` to override), and the config comment says an override is deleted only after its *original* Thursday. Keep the Dec 24 and Dec 31 entries until after those Thursdays.
 Pick from the top unless the owner has flagged something else:
-0. **584** (finish 581: weekly summary and hub entries), **585** (family-first, at most 3 per town nearby picks), then **582** (now P1: free credited share block; brokerages' weekly posts skip these towns), **586** (ALL-CAPS series prefixes), **583**.
+0. **584** (summary and noindex done; hub entries still open), ~~**585**~~ **DONE**, ~~**586**~~ **DONE** (2026-11-28), then **582** (now P1: free credited share block; brokerages' weekly posts skip these towns), **583**.
 0. ~~**581**~~ **DONE** (2026-11-28, pages only), then **582** (free credited share block), **583** (agents' pitch line).
 0. ~~**578**~~ **DONE** (2026-11-27), then ~~**460**~~ **BUILT, waiting on 2027 pages** (MPPD TeamSideline league deadlines), then **579** (CCSD 59 camp flyer into prospects, from Feb 1), **580** (460 for Arlington Heights and Palatine).
 0. ~~**577**~~ **DONE**, ~~**574**~~ **BUILT, waiting on dates** (2026-11-27), then **575** ("Featured camp" spot, $100 for Feb 1 – Jun 30), then **576** (camp providers as warm prospects).
@@ -23251,7 +23251,7 @@ brokerages.
 
 #### P1 (new)
 
-584. **Finish 581: the weekly summary and the town's own hub entries.**
+584. **PARTLY DONE (2026-11-28).** `weekly-summary.txt` is rewritten by the same nearby fill (*"Quiet in <town> this weekend; here's what's on within ten miles:"*, each pick with its town), and town `this-weekend` and `today` pages below item 516's minimum after the fill are noindex and out of the sitemap (`thin_paths` now starts before the town loop). **Still open:** the town's own dated hub entries (Small Business Saturday, lights, Santa, farmers' market) ahead of the nearby cards. **Finish 581: the weekly summary and the town's own hub entries.**
      Build loop:
 
      - `weekly-summary.txt` uses the same fill as the pages. When the
@@ -23270,7 +23270,7 @@ brokerages.
      summary both lead with the downtown entry; a town with 0 events
      after the fill is noindex.
 
-585. **Family-first, town-mixed nearby picks.** In `select_nearby_events`:
+585. **DONE (2026-11-28).** `select_nearby_events` sorts by evening ticketed show last (8 PM or later at a `TICKETED_VENUE_DOMAINS` venue), then family score (`family_relevance`, highest first), then distance and date, and takes at most 3 per town (`NEARBY_PER_TOWN`). **Family-first, town-mixed nearby picks.** In `select_nearby_events`:
 
      - Rank by the same family score the email's top picks use (free and
        kid-friendly first; the existing +1 for a celebration), then by
@@ -23286,7 +23286,7 @@ brokerages.
 
 #### P2 (new)
 
-586. **Title-case an ALL-CAPS series prefix.** Extend `display_title`
+586. **DONE (2026-11-28).** `display_title`: an all-capitals prefix of two or more words before a colon, followed by mixed-case text, is title-cased word by word (small words lower, `_KEEP_UPPER` and vowel-less short codes kept): *"$1 Christmas Classic Film Series: …"*, *"D211 Band Concert: …"*; *"ISAC: …"* unchanged. **Title-case an ALL-CAPS series prefix.** Extend `display_title`
      (items 529 and 570): when the text before a colon is all capitals
      and at least two words (*"$1 CHRISTMAS CLASSIC FILM SERIES"*),
      title-case it and keep what follows as is: *"$1 Christmas Classic
